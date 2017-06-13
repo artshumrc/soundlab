@@ -1,0 +1,32 @@
+.contentContainer {
+  padding-top:30px;
+  padding-left:250px;
+}
+
+.showcaseContainer, .userContainer {
+  width:40%;
+  height:400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding:0 20px;
+  overflow:scroll;
+}
+
+.showcaseContainer {
+  float:left;
+  margin-left:5%;
+  background:#ffcdd2;
+}
+
+.userContainer {
+  float:right;
+  text-align: right;
+  margin-right: 5%;
+  background:#e1bee7;
+}
+
+.userNames {
+  font-size:18px;
+  text-align:left;
+}

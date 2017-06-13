@@ -1,0 +1,16 @@
+{
+  "public": {
+    "uploads": "localhost:8888/cassandra_repo/www/wp-content/uploads",
+    "amazonS3": false
+  },
+  "private": {
+    "wp_prefix": "wp_",
+    "database": {
+      "name": "cassandra",
+      "username": "root",
+      "password": "root",
+      "host": "localhost",
+      "port": "8889"
+    }
+  }
+}
