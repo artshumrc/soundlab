@@ -18,15 +18,16 @@ export default class ShowcaseList extends Component{
     return(
 
       <div>
+
         <Card className={styles.showcaseContainer}>
-          <CardTitle title={this.props.post.post_title} subtitle="Card subtitle" />
+
+          <CardTitle title={this.props.post.post_title} subtitle={this.props.post.byline.meta_value} />
+
           <CardText>
             <PostContent content={content}/>
           </CardText>
-          <h6>{this.props.post.byline}</h6>
+
         </Card>
-
-
 
       </div>
 

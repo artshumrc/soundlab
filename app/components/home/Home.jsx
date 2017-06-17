@@ -57,11 +57,6 @@ class Home extends React.Component {
               <ShowcaseList key={post.id} post={post} />
             )}
           </Col>
-          <Col xsOffset={3} xs={6}>
-            {this.props.data.audio_upload.map((post) =>
-              <ShowcaseList key={post.id} post={post} />
-            )}
-          </Col>
         </row>
 
       </div>
@@ -72,17 +67,9 @@ class Home extends React.Component {
   }
 }
 
-const HomeQuery = gql`
-  query HomeQuery {
-    posts {
-      id
-      post_title
-      post_name
-      post_content
-      post_excerpt
-      thumbnail
-    },
-    audio_upload:posts(post_type: "audio_upload") {
+const AudioUploadQuery = gql`
+  query AudioUploadQuery {
+    posts(post_type: "audio_upload") {
       id,
       post_title
       post_content,
@@ -93,6 +80,6 @@ const HomeQuery = gql`
   }
 `
 
-const HomeWithData = graphql(HomeQuery)(Home)
+const HomeWithData = graphql(AudioUploadQuery)(Home)
 
 export default HomeWithData
