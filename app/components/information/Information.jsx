@@ -2,8 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import InformationList from './InformationList'
-import Drawer from 'material-ui/Drawer'
-import MenuItem from 'material-ui/MenuItem'
+import Sidenav from '../shared/sidenav'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './information.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
@@ -41,14 +40,7 @@ class Information extends React.Component {
       return (
       <MuiThemeProvider>
       <div>
-        {/*<nav className={styles.siteSideNav}>*/}
-        <Drawer
-          open={this.state.open}
-          width={200}
-          >
-          <MenuItem>Menu Item</MenuItem>
-          <MenuItem>Menu Item 2</MenuItem>
-        </Drawer>
+        <Sidenav />
 
         <row>
           <Col xsOffset={3} xs={6}>

@@ -3,8 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ShowcaseList from '../showcase/ShowcaseList'
 import Header from '../header/header'
-import Drawer from 'material-ui/Drawer'
-import MenuItem from 'material-ui/MenuItem'
+import Sidenav from '../shared/sidenav'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './home.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
@@ -42,14 +41,7 @@ class Home extends React.Component {
       return (
       <MuiThemeProvider>
       <div>
-        {/*<nav className={styles.siteSideNav}>*/}
-        <Drawer
-          open={this.state.open}
-          width={200}
-          >
-          <MenuItem>Menu Item</MenuItem>
-          <MenuItem>Menu Item 2</MenuItem>
-        </Drawer>
+        <Sidenav />
 
         <row>
           <Col xsOffset={3} xs={6}>
