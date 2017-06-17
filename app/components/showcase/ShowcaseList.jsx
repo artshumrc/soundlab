@@ -23,6 +23,7 @@ export default class ShowcaseList extends Component{
           <CardText>
             <PostContent content={content}/>
           </CardText>
+          <h6>{this.props.post.byline}</h6>
         </Card>
 
 
