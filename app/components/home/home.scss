@@ -3,21 +3,6 @@
   padding-left:250px;
 }
 
-.showcaseContainer, .userContainer {
-  width:40%;
-  height:400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding:0 20px;
-  overflow:scroll;
-}
-
-.showcaseContainer {
-  float:left;
-  margin-left:5%;
-  background:#ffcdd2;
-}
 
 .userContainer {
   float:right;

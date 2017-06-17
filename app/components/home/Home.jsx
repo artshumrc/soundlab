@@ -12,7 +12,6 @@ import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 
 class Home extends React.Component {
 
-
   constructor(props) {
     super(props)
 
@@ -52,24 +51,13 @@ class Home extends React.Component {
           <MenuItem>Menu Item 2</MenuItem>
         </Drawer>
 
-
-
-            <div  className={styles.contentContainer}>
-              <div className={styles.showcaseContainer}>
-
-                {this.props.data.posts.map((post) =>
-                <ShowcaseList key={post.id} post={post} />
-                )}
-
-              </div>
-              <div className={styles.userContainer}>
-                <h2 className={styles.userNames}>Othello</h2>
-                <h2 className={styles.userNames}>Lady Macbeth</h2>
-                <h2 className={styles.userNames}>Claudius</h2>
-                <h2 className={styles.userNames}>Puck</h2>
-                <h2 className={styles.userNames}>Horatio</h2>
-              </div>
-            </div>
+        <row>
+          <Col xsOffset={3} xs={6}>
+            {this.props.data.posts.map((post) =>
+              <ShowcaseList key={post.id} post={post} />
+            )}
+          </Col>
+        </row>
 
       </div>
       </MuiThemeProvider>
