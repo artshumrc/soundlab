@@ -1,36 +1,76 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import React, { Component, PropTypes } from 'react'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+import ShowcaseItem from './ShowcaseItem'
+import Sidenav from '../shared/sidenav'
+import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './showcase.scss'
-import PostContent from '../posts/PostContent.js'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
+import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 
 
+class ShowcaseList extends React.Component {
 
+  constructor(props) {
+    super(props)
 
-export default class ShowcaseList extends Component{
-  static propTypes = {
-    post: React.PropTypes.object,
+    this.state = {
+      open: true
+    }
   }
 
-  render() {
-    const { post_content: content } = this.props.post
+  static propTypes = {
+    data: PropTypes.shape({
+      loading: React.PropTypes.bool,
+      error: React.PropTypes.object,
+      posts: React.PropTypes.array,
+    }).isRequired,
+  }
 
-    return(
+  render () {
+    if (this.props.data.loading) {
+      return (<div>Loading</div>)
+    }
 
+    if (this.props.data.error) {
+      console.log(this.props.data.error)
+      return (<div>An unexpected error occurred</div>)
+    }
+    console.log(this.props.data.posts)
+    if (this.props.data.posts) {
+      return (
+      <MuiThemeProvider>
       <div>
+        <Sidenav />
 
-        <Card className={styles.showcaseContainer}>
-
-          <CardTitle title={this.props.post.post_title} subtitle={this.props.post.byline.meta_value} />
-
-          <CardText>
-            <PostContent content={content}/>
-          </CardText>
-
-        </Card>
+        <row>
+          <Col xsOffset={3} xs={6}>
+            {this.props.data.posts.map((post) =>
+              <ShowcaseItem key={post.id} post={post} />
+            )}
+          </Col>
+        </row>
 
       </div>
+      </MuiThemeProvider>
 
-    )
+      )
+    }
   }
 }
+
+const ShowcaseQuery = gql`
+  query ShowcaseQuery {
+    posts(post_type: "audio_upload") {
+      id,
+      post_title
+      post_content,
+      byline {
+        meta_value
+      }
+    }
+  }
+`
+
+const ShowcaseListWithData = graphql(ShowcaseQuery)(ShowcaseList)
+
+export default ShowcaseListWithData

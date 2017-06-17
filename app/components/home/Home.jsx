@@ -11,67 +11,22 @@ import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 
 class Home extends React.Component {
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      open: true
-    }
-  }
-
-  static propTypes = {
-    data: PropTypes.shape({
-      loading: React.PropTypes.bool,
-      error: React.PropTypes.object,
-      posts: React.PropTypes.array,
-    }).isRequired,
-  }
 
   render () {
-    if (this.props.data.loading) {
-      return (<div>Loading</div>)
-    }
-
-    if (this.props.data.error) {
-      console.log(this.props.data.error)
-      return (<div>An unexpected error occurred</div>)
-    }
-    console.log(this.props.data.posts)
-    if (this.props.data.posts) {
-      return (
+    return (
       <MuiThemeProvider>
-      <div>
-        <Sidenav />
 
-        <row>
-          <Col xsOffset={3} xs={6}>
-            {this.props.data.posts.map((post) =>
-              <ShowcaseList key={post.id} post={post} />
-            )}
-          </Col>
-        </row>
+        <div>
 
-      </div>
+          <Sidenav />
+          <ShowcaseList />
+
+        </div>
+
       </MuiThemeProvider>
 
-      )
-    }
+    )
   }
 }
 
-const AudioUploadQuery = gql`
-  query AudioUploadQuery {
-    posts(post_type: "audio_upload") {
-      id,
-      post_title
-      post_content,
-      byline {
-        meta_value
-      }
-    }
-  }
-`
-
-const HomeWithData = graphql(AudioUploadQuery)(Home)
-
-export default HomeWithData
+export default Home
