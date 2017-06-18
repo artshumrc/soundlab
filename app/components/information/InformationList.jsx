@@ -63,6 +63,7 @@ const InformationQuery = gql`
     posts(post_type: "information") {
       id,
       post_title
+      post_name
       post_content,
       info_byline {
         meta_value

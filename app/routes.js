@@ -5,7 +5,8 @@ import Home from './components/home/home'
 import About from './components/singlePage/about'
 import Contact from './components/singlePage/contact'
 import Privacy from './components/singlePage/privacy'
-import InformationList from './components/information/informationList'
+import InformationList from './components/information/InformationList'
+import InformationSingle from './components/information/InformationSingle'
 import { WordExpressPage } from 'wordexpress-components'
 import PostSingle from './components/posts/PostSingle.js'
 import Layouts from './components/layouts/layouts.js'
@@ -18,7 +19,7 @@ const routes = (
     <Route path="contact" component={Contact}/>
     <Route path="privacy" component={Privacy}/>
     <Route path="information" component={InformationList}/>
-    <Route path="post/:post" component={PostSingle}/>
+    <Route path=":post" component={InformationSingle}/>
   </Route>
 )
 
