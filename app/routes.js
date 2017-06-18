@@ -9,6 +9,8 @@ import InformationList from './components/information/InformationList'
 import InformationSingle from './components/information/InformationSingle'
 import AudioUploadList from './components/audioUpload/AudioUploadList'
 import AudioUploadSingle from './components/audioUpload/AudioUploadSingle'
+import SubmissionList from './components/submission/SubmissionList'
+import SubmissionSingle from './components/submission/SubmissionSingle'
 import { WordExpressPage } from 'wordexpress-components'
 import PostSingle from './components/posts/PostSingle.js'
 import Layouts from './components/layouts/layouts.js'
@@ -21,9 +23,11 @@ const routes = (
     <Route path="contact" component={Contact}/>
     <Route path="privacy" component={Privacy}/>
     <Route path="information" component={InformationList}/>
+    <Route path="submissions" component={SubmissionList}/>
     <Route path="uploads" component={AudioUploadList}/>
-    <Route path=":post" component={AudioUploadSingle}/>
-    <Route path=":post" component={InformationSingle}/>
+    <Route path="uploads/:post" component={AudioUploadSingle}/>
+    <Route path="information/:post" component={InformationSingle}/>
+    <Route path="submission/:post" component={SubmissionSingle}/>
   </Route>
 )
 

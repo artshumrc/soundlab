@@ -8,9 +8,7 @@ import PostContent from '../posts/PostContent.js'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 
 
-class InformationItem extends Component{
-
-
+class SubmissionItem extends Component{
 
   componentDidMount() {
     const { index } = this.props
@@ -31,8 +29,8 @@ class InformationItem extends Component{
       <div>
 
         <Card className={styles.listContainer}>
-          <Link to={"information/" + encodeURIComponent(name)} styleName="base" onClick={this.handleClick.bind(this)}>
-          <CardTitle title={title} subtitle={this.props.post.info_byline.meta_value} />
+          <Link to={"submissions/" + encodeURIComponent(name)} styleName="base" onClick={this.handleClick.bind(this)}>
+          <CardTitle title={title} subtitle={this.props.post.submission_byline.meta_value} />
           </Link>
 
         </Card>
@@ -43,10 +41,10 @@ class InformationItem extends Component{
   }
 }
 
-InformationItem.propTypes = {
+SubmissionItem.propTypes = {
   index: PropTypes.number,
   styles: PropTypes.object,
   post: PropTypes.object,
 }
 
-export default InformationItem
+export default SubmissionItem

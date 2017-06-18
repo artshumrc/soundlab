@@ -31,7 +31,7 @@ class AudioUploadItem extends Component{
       <div>
 
         <Card className={styles.listContainer}>
-          <Link to={"/" + encodeURIComponent(name)} styleName="base" onClick={this.handleClick.bind(this)}>
+          <Link to={"uploads/" + encodeURIComponent(name)} styleName="base" onClick={this.handleClick.bind(this)}>
           <CardTitle title={title} subtitle={this.props.post.byline.meta_value} />
           </Link>
 
