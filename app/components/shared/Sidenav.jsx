@@ -18,6 +18,7 @@ export default class Sidenav extends Component {
           <Link to="/contact"><MenuItem>Contact</MenuItem></Link>
           <Link to="/privacy"><MenuItem>Privacy</MenuItem></Link>
           <Link to="/information"><MenuItem>Information</MenuItem></Link>
+          <Link to="/uploads"><MenuItem>Audio Uploads</MenuItem></Link>
         </Drawer>
       </MuiThemeProvider>
     )
