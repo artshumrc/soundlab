@@ -16,7 +16,7 @@ export default class InformationItem extends Component{
 
       <div>
 
-        <Card >
+        <Card className={styles.listContainer}>
 
           <CardTitle title={this.props.post.post_title} subtitle={this.props.post.info_byline.meta_value} />
 
