@@ -6,6 +6,7 @@ import CSSModules from 'react-css-modules'
 import styles from '../posts/post.scss'
 
 
+
 @CSSModules(styles, {allowMultiple: true})
 class InformationSingle extends Component {
 
@@ -21,7 +22,9 @@ class InformationSingle extends Component {
           <div styleName="main">
             <Sidenav />
             <div styleName="wrapper">
-              <h1 styleName="title">{title}</h1>
+              <h3 styleName="title">{title}</h3>
+              <h6 className={styles.postAuthor}>{this.props.data.post.info_byline.meta_value}</h6>
+
               <PostContent content={content}/>
             </div>
           </div>
@@ -43,6 +46,9 @@ const InformationSingleQuery = gql`
       id
       post_title
       post_content
+      info_byline {
+        meta_value
+      }
 
     },
 
