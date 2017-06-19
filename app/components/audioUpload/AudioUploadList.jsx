@@ -68,6 +68,12 @@ const AudioUploadQuery = gql`
       byline {
         meta_value
       }
+      date {
+        meta_value
+      }
+      sound_cloud_link {
+        meta_value
+      }
     }
   }
 `
