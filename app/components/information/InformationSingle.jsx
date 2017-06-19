@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import { gql, graphql } from 'react-apollo'
 import PostContent from '../posts/PostContent.js'
 import Sidenav from '../shared/sidenav'
+import ReactDisqusThread from 'react-disqus-thread'
 import CSSModules from 'react-css-modules'
 import styles from '../posts/post.scss'
 
@@ -9,6 +10,10 @@ import styles from '../posts/post.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 class InformationSingle extends Component {
+
+  handleNewComment(comment) {
+    console.log(comment.text)
+  }
 
   render() {
     const { loading } = this.props.data
@@ -26,7 +31,16 @@ class InformationSingle extends Component {
               <h6 className={styles.postAuthor}>{this.props.data.post.info_byline.meta_value}</h6>
 
               <PostContent content={content}/>
+              <ReactDisqusThread
+                shortname="soundlab-1"
+                identifier="soundlab-information"
+                title="Information Thread"
+                //url="http://localhost:3000/soundlab-information"
+                //category_id="123456"
+                onNewComment={this.handleNewComment}
+              />
             </div>
+
           </div>
 
       )
