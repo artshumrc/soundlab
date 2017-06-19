@@ -27,7 +27,7 @@ const routes = (
     <Route path="uploads" component={AudioUploadList}/>
     <Route path="uploads/:post" component={AudioUploadSingle}/>
     <Route path="information/:post" component={InformationSingle}/>
-    <Route path="submission/:post" component={SubmissionSingle}/>
+    <Route path="submissions/:post" component={SubmissionSingle}/>
   </Route>
 )
 
