@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import Header from '../shared/header'
+import Footer from '../shared/footer'
 import InformationItem from './InformationItem'
 import Sidenav from '../shared/sidenav'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
@@ -40,16 +42,17 @@ class InformationList extends React.Component {
       return (
       <MuiThemeProvider>
       <div>
+        <Header />
         <Sidenav />
 
-        <row>
-          <Col xsOffset={3} xs={6}>
+        <row >
+          <Col xsOffset={3} xs={6} className={styles.informationListContainer}>
             {this.props.data.posts.map((post) =>
               <InformationItem key={post.id} post={post} />
             )}
           </Col>
         </row>
-
+        <Footer />
       </div>
       </MuiThemeProvider>
 
