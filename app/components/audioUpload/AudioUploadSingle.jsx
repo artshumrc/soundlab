@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import { gql, graphql } from 'react-apollo'
 import PostContent from '../posts/PostContent.js'
-import Sidenav from '../shared/sidenav'
 import CSSModules from 'react-css-modules'
 import styles from '../posts/post.scss'
 
@@ -14,12 +13,10 @@ class AudioUploadSingle extends Component {
 
     if (!loading) {
       const { post_title: title, post_content: content} = this.props.data.post
-//http://localhost:8888/soundlab/wp-content/uploads/2017/06/Dionisy-Resurrection.jpg
 
       return (
 
           <div styleName="main">
-            <Sidenav />
             <div styleName="wrapper">
               <img src={this.props.data.post.thumbnail} alt=""/>
               <h1 styleName="title">{title}</h1>

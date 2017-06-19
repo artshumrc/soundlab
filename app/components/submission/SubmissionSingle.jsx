@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import { gql, graphql } from 'react-apollo'
 import PostContent from '../posts/PostContent.js'
-import Sidenav from '../shared/sidenav'
 import CSSModules from 'react-css-modules'
 import styles from '../posts/post.scss'
 
@@ -19,7 +18,7 @@ class SubmissionSingle extends Component {
       return (
 
           <div styleName="main">
-            <Sidenav />
+
             <div styleName="wrapper">
               <img src={this.props.data.post.thumbnail} alt=""/>
               <h1 styleName="title">{title}</h1>
@@ -28,6 +27,7 @@ class SubmissionSingle extends Component {
               <h6>{this.props.data.post.submission_link.meta_value}</h6>
               <PostContent content={content}/>
             </div>
+
           </div>
 
       )

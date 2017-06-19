@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import Head from './components/head/head'
-import Header from './components/header/header'
+//import Header from './components/header/header'
 
 class App extends Component {
   render() {

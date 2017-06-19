@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import { gql, graphql } from 'react-apollo'
 import PostContent from '../posts/PostContent.js'
-import Sidenav from '../shared/sidenav'
 import ReactDisqusThread from 'react-disqus-thread'
 import CSSModules from 'react-css-modules'
 import styles from '../posts/post.scss'
@@ -25,7 +24,7 @@ class InformationSingle extends Component {
       return (
 
           <div styleName="main">
-            <Sidenav />
+          
             <div styleName="wrapper">
               <h3 styleName="title">{title}</h3>
               <h6 className={styles.postAuthor}>{this.props.data.post.info_byline.meta_value}</h6>

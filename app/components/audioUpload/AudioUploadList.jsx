@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import AudioUploadItem from './AudioUploadItem'
-import Sidenav from '../shared/sidenav'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './audioUpload.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
@@ -40,7 +39,6 @@ class AudioUploadList extends React.Component {
       return (
       <MuiThemeProvider>
       <div>
-        <Sidenav />
 
         <row>
           <Col xsOffset={3} xs={6}>

@@ -4,7 +4,6 @@ import gql from 'graphql-tag'
 import Header from '../shared/header'
 import Footer from '../shared/footer'
 import InformationItem from './InformationItem'
-import Sidenav from '../shared/sidenav'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './information.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
@@ -42,8 +41,6 @@ class InformationList extends React.Component {
       return (
       <MuiThemeProvider>
       <div>
-        <Header />
-        <Sidenav />
 
         <row >
           <Col xsOffset={3} xs={6} className={styles.informationListContainer}>
@@ -52,7 +49,6 @@ class InformationList extends React.Component {
             )}
           </Col>
         </row>
-        <Footer />
       </div>
       </MuiThemeProvider>
 
