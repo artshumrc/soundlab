@@ -21,6 +21,7 @@ class SubmissionSingle extends Component {
           <div styleName="main">
             <Sidenav />
             <div styleName="wrapper">
+              <img src={this.props.data.post.thumbnail} alt=""/>
               <h1 styleName="title">{title}</h1>
               <h6>{this.props.data.post.submission_byline.meta_value}</h6>
               <h6>{this.props.data.post.submission_date.meta_value}</h6>
@@ -46,6 +47,7 @@ const SubmissionSingleQuery = gql`
       id
       post_title
       post_content
+      thumbnail
       submission_byline {
         meta_value
       }

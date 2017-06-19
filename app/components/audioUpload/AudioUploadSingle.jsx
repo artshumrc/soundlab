@@ -14,13 +14,14 @@ class AudioUploadSingle extends Component {
 
     if (!loading) {
       const { post_title: title, post_content: content} = this.props.data.post
-
+//http://localhost:8888/soundlab/wp-content/uploads/2017/06/Dionisy-Resurrection.jpg
 
       return (
 
           <div styleName="main">
             <Sidenav />
             <div styleName="wrapper">
+              <img src={this.props.data.post.thumbnail} alt=""/>
               <h1 styleName="title">{title}</h1>
               <h6>{this.props.data.post.byline.meta_value}</h6>
               <h6>{this.props.data.post.date.meta_value}</h6>
@@ -47,6 +48,7 @@ const AudioUploadSingleQuery = gql`
       post_title
       post_name
       post_content
+      thumbnail
       byline {
         meta_value
       }

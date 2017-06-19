@@ -64,7 +64,8 @@ const AudioUploadQuery = gql`
       id,
       post_title
       post_name
-      post_content,
+      post_content
+      thumbnail
       byline {
         meta_value
       }

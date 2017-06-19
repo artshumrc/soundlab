@@ -64,7 +64,8 @@ const SubmissionQuery = gql`
       id,
       post_title
       post_name
-      post_content,
+      post_content
+      thumbnail
       submission_byline {
         meta_value
       }
