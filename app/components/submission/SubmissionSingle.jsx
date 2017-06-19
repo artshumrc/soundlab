@@ -22,6 +22,9 @@ class SubmissionSingle extends Component {
             <Sidenav />
             <div styleName="wrapper">
               <h1 styleName="title">{title}</h1>
+              <h6>{this.props.data.post.submission_byline.meta_value}</h6>
+              <h6>{this.props.data.post.submission_date.meta_value}</h6>
+              <h6>{this.props.data.post.submission_link.meta_value}</h6>
               <PostContent content={content}/>
             </div>
           </div>
@@ -43,6 +46,15 @@ const SubmissionSingleQuery = gql`
       id
       post_title
       post_content
+      submission_byline {
+        meta_value
+      }
+      submission_link {
+        meta_value
+      }
+      submission_date {
+        meta_value
+      }
 
     },
 

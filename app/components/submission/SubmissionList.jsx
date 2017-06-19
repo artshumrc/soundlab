@@ -68,6 +68,12 @@ const SubmissionQuery = gql`
       submission_byline {
         meta_value
       }
+      submission_link {
+        meta_value
+      }
+      submission_date {
+        meta_value
+      }
     }
   }
 `
