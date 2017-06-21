@@ -15,6 +15,7 @@ class Header extends Component {
         <Link to="/information">Information</Link>
         <Link to="/uploads">Audio Uploads</Link>
         <Link to="/submissions">User Submissions</Link>
+        <Link to="/search">Search</Link>
         </div>
       </header>
     )
