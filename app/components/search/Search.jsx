@@ -6,7 +6,9 @@ import styles from './search.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import SubmissionItem from '../submission/SubmissionItem'
 import AudioUploadItem from '../audioUpload/AudioUploadItem'
-import SampleCat from './SampleCat'
+import BeingCategory from './BeingCategory'
+import TimeCategory from './TimeCategory'
+import SearchTools from './SearchTools'
 
 
 
@@ -17,7 +19,8 @@ class Search extends React.Component {
 
     this.state = {
       //audioUploadChecked: false
-      beingFilter: true
+      beingFilter: false,
+      timeFilter: false,
     }
   }
 
@@ -29,7 +32,21 @@ class Search extends React.Component {
     }).isRequired,
   }
 
-  render () {
+  filterBeing(e) {
+    e.preventDefault()
+    this.setState({
+      beingFilter: !this.state.beingFilter
+    })
+  }
+
+  filterTime(e) {
+    e.preventDefault()
+    this.setState({
+      timeFilter: !this.state.timeFilter
+    })
+  }
+
+  render() {
   //  const audioUploadChecked = this.state.audioUploadChecked
 
     if (this.props.data.loading) {
@@ -47,10 +64,20 @@ class Search extends React.Component {
 
           <div>
 
+            <SearchTools
+              filterBeing={this.filterBeing.bind(this)}
+              filterTime={this.filterTime.bind(this)}
+            />
+
+            {this.state.timeFilter === true ?
+              <TimeCategory />
+            : '' }
 
             {this.state.beingFilter === true ?
-              <SampleCat />
+              <BeingCategory />
             : '' }
+
+
 
 
           </div>

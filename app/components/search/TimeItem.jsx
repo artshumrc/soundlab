@@ -1,14 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-import styles from '../posts/post_excerpt.scss'
-//import { Link } from 'react-router'
-import { browserHistory } from 'react-router'
-//import CSSModules from 'react-css-modules'
+import styles from './search.scss'
 import PostContent from '../posts/PostContent.js'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 
 
-class GenreItem extends Component{
+class TimeItem extends Component{
 
 
   render() {
@@ -20,7 +17,7 @@ class GenreItem extends Component{
 
         <Card className={styles.listContainer}>
 
-          <CardTitle title={title} subtitle={this.props.post.byline.meta_value} />
+          <CardTitle title={title} subtitle={this.props.post.info_byline.meta_value} />
 
         </Card>
 
@@ -30,10 +27,8 @@ class GenreItem extends Component{
   }
 }
 
-GenreItem.propTypes = {
-  index: PropTypes.number,
-  styles: PropTypes.object,
+TimeItem.propTypes = {
   post: PropTypes.object,
 }
 
-export default GenreItem
+export default TimeItem

@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import GenreItem from './GenreItem'
+import BeingItem from './BeingItem'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './search.scss'
 
-class SampleCat extends React.Component {
+class BeingCategory extends React.Component {
 
   constructor(props) {
     super(props)
@@ -39,7 +39,7 @@ class SampleCat extends React.Component {
           <div>
 
             {this.props.data.category.posts.map((post) =>
-              <GenreItem key={post.id} post={post} />
+              <BeingItem key={post.id} post={post} />
             )}
 
           </div>
@@ -51,8 +51,8 @@ class SampleCat extends React.Component {
   }
 }
 
-const SampleCatQuery = gql`
-  query SampleCatQuery {
+const BeingCategoryQuery = gql`
+  query BeingCategoryQuery {
     category(term_id:3) {
       posts(post_type: "audio_upload") {
         post_title
@@ -68,6 +68,6 @@ const SampleCatQuery = gql`
   }
 `
 
-const SampleCatWithData = graphql(SampleCatQuery)(SampleCat)
+const BeingCategoryWithData = graphql(BeingCategoryQuery)(BeingCategory)
 
-export default SampleCatWithData
+export default BeingCategoryWithData
