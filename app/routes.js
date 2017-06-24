@@ -6,6 +6,7 @@ import HomeLayout from './components/layouts/HomeLayout'
 import About from './components/singlePage/about'
 import Contact from './components/singlePage/contact'
 import Privacy from './components/singlePage/privacy'
+import Profile from './components/profile/Profile'
 import InformationList from './components/information/InformationList'
 import InformationSingle from './components/information/InformationSingle'
 import AudioUploadList from './components/audioUpload/AudioUploadList'
@@ -26,6 +27,7 @@ const routes = (
       <Route path="about" component={About}/>
       <Route path="contact" component={Contact}/>
       <Route path="privacy" component={Privacy}/>
+      <Route path="profile" component={Profile}/>
       <Route path="information" component={InformationList}/>
       <Route path="search" component={Search}/>
       <Route path="submissions" component={SubmissionList}/>

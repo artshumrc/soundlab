@@ -12,6 +12,7 @@ class Header extends Component {
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/privacy">Privacy</Link>
+        <Link to="/profile">Profile</Link>
         <Link to="/information">Information</Link>
         <Link to="/uploads">Audio Uploads</Link>
         <Link to="/submissions">User Submissions</Link>
