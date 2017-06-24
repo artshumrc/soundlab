@@ -55,6 +55,7 @@ const BeingCategoryQuery = gql`
   query BeingCategoryQuery {
     category(term_id:3) {
       posts(post_type: "audio_upload") {
+        id
         post_title
         post_content
         byline {
