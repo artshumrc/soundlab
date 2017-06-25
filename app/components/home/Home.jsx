@@ -5,7 +5,8 @@ import ShowcaseList from '../showcase/ShowcaseList'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './home.scss'
 //import AudioPlayer from 'react-responsive-audio-player'
-import ReactAudioPlayer from 'react-audio-player'
+//import ReactAudioPlayer from 'react-audio-player'
+import PlaylistList from '../playlist/PlaylistList'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 
 
@@ -21,12 +22,7 @@ class Home extends React.Component {
         <div>
 
           <ShowcaseList />
-          <ReactAudioPlayer
-            className={styles.reactAudioPlayer}
-            src="http://localhost:8888/soundlab/wp-content/uploads/2017/06/soundlabtestone.mp3"
-            autoPlay={false}
-            controls
-          />
+          <PlaylistList />
 
 
         </div>

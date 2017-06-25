@@ -1,16 +1,16 @@
 import React, { Component, PropTypes } from 'react'
-import ReactDOM from 'react-dom'
-import styles from '../posts/post_excerpt.scss'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
+import styles from './playlist.scss'
+import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
-import CSSModules from 'react-css-modules'
-import PostContent from '../posts/PostContent.js'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 
 
-class AudioUploadItem extends Component{
 
-
+class PlaylistItem extends React.Component {
 
   componentDidMount() {
     const { index } = this.props
@@ -24,15 +24,18 @@ class AudioUploadItem extends Component{
 
 
   render() {
-    const { post_content: content, post_title: title, post_name: name } = this.props.post
+    const { post_title: title, post_name: name } = this.props.post
 
     return(
 
       <div>
 
         <Card className={styles.listContainer}>
-          <Link to={"uploads/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
-          <CardTitle title={title} subtitle={this.props.post.byline.meta_value} />
+          <Link onClick={this.handleClick.bind(this)}>
+          <CardTitle title={title} subtitle={this.props.post.post_title} />
+          <CardText>
+            {this.props.post.queue.meta_value}
+          </CardText>
           </Link>
 
         </Card>
@@ -43,10 +46,10 @@ class AudioUploadItem extends Component{
   }
 }
 
-AudioUploadItem.propTypes = {
+PlaylistItem.propTypes = {
   index: PropTypes.number,
   styles: PropTypes.object,
   post: PropTypes.object,
 }
 
-export default AudioUploadItem
+export default PlaylistItem

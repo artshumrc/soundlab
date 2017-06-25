@@ -3,6 +3,7 @@ import { gql, graphql } from 'react-apollo'
 import PostContent from '../posts/PostContent.js'
 import CSSModules from 'react-css-modules'
 import styles from '../posts/post.scss'
+import Sound from 'react-sound'
 
 
 @CSSModules(styles, {allowMultiple: true})
@@ -24,7 +25,16 @@ class AudioUploadSingle extends Component {
               <h6>{this.props.data.post.date.meta_value}</h6>
               <h6>{this.props.data.post.sound_cloud_link.meta_value}</h6>
               <PostContent content={content}/>
+              <Sound
+                url="http://localhost:8888/soundlab/wp-content/uploads/2017/06/soundlabtestone.mp3"
+                playStatus={Sound.status.PLAYING}
+                //playFromPosition={300 /* in milliseconds */}
+                //onLoading={this.handleSongLoading}
+                //onPlaying={this.handleSongPlaying}
+                //onFinishedPlaying={this.handleSongFinishedPlaying}
+              />
             </div>
+
           </div>
 
       )
