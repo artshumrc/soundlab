@@ -21,8 +21,13 @@ class Home extends React.Component {
 
         <div>
 
-          <ShowcaseList />
-          <PlaylistList />
+          <div>
+            <ShowcaseList />
+          </div>
+          <div>
+              <PlaylistList />
+          </div>
+
 
 
         </div>

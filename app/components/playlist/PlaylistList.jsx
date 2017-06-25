@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import PlaylistItem from './PlaylistItem'
-import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
+//import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './playlist.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 
@@ -37,7 +37,7 @@ class PlaylistList extends React.Component {
     console.log(this.props.data.posts)
     if (this.props.data.posts) {
       return (
-      <MuiThemeProvider>
+
         <div>
 
           <row>
@@ -49,8 +49,8 @@ class PlaylistList extends React.Component {
             </Col>
           </row>
 
-        </div>`
-      </MuiThemeProvider>
+        </div>
+
 
       )
     }
