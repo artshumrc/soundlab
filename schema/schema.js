@@ -1,5 +1,7 @@
 import * as settings from '../settings/settings'
-import {WordExpressDefinitions, WordExpressDatabase, WordExpressResolvers} from 'wordexpress-schema'
+import {WordExpressDefinitions} from './definitions'
+import {WordExpressDatabase} from './db'
+import {WordExpressResolvers} from './resolvers'
 import {makeExecutableSchema} from 'graphql-tools'
 
 // returns WordExpressDatabase object that has provides connectors to the database
