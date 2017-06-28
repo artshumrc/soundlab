@@ -2,15 +2,18 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-
-import App from './App/App';
+import { Route } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from '../components/routes';
 import DevTools from './DevTools';
 
 const Root = ({ store, history }) => (
 	<MuiThemeProvider>
 		<Provider store={store}>
 			<div>
-				<App />
+        <BrowserRouter>
+          {Routes}
+        </BrowserRouter>
 				<DevTools />
 			</div>
 		</Provider>

@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class Page extends React.Component {
 
 	render() {
@@ -9,21 +8,19 @@ class Page extends React.Component {
 
 		if (loading) {
 			return (
-				<LoadingPage />
+				<div>Loading</div>
 			);
 		} else if (!loading && !page) {
 			return (
-				<NotFound
-					isTest={slug === '__test__'}
-				/>
+				<div>Not found</div>
 			);
 		}
 
 		if (page && page.title) {
-			Utils.setTitle(`${page.title} | ${settings.title}`);
+			// Utils.setTitle(`${page.title} | ${settings.title}`);
 		}
 		if (headerImageUrl) {
-			Utils.setMetaImage(headerImageUrl);
+			// Utils.setMetaImage(headerImageUrl);
 		}
 
 		return (
@@ -31,9 +28,9 @@ class Page extends React.Component {
 			<div className={`page page-${slug} content primary`}>
 
 				<section className="block header header-page cover parallax">
-					<BackgroundImageHolder
-						imgSrc="/images/apotheosis_homer.jpg"
-					/>
+					{/*<BackgroundImageHolder*/}
+						{/*imgSrc="/images/apotheosis_homer.jpg"*/}
+					{/*/>*/}
 
 					<div className="container v-align-transform">
 						<div className="grid inner">
