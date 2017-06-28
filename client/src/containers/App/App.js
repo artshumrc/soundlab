@@ -6,7 +6,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ModeCommentIcon from 'material-ui/svg-icons/editor/mode-comment';
 import { connect } from 'react-redux';
 
-import Home from 'components/home/Home';
+import Home from '../../components/home/Home';
 
 /*
 import {

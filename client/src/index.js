@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import Root from 'containers/Root';
+import Root from './containers/Root';
 import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
