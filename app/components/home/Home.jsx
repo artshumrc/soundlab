@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ShowcaseList from '../showcase/ShowcaseList'
+import AudioPlayer from '../audioPlayer/AudioPlayer'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './home.scss'
 //import AudioPlayer from 'react-responsive-audio-player'
@@ -25,7 +26,10 @@ class Home extends React.Component {
             <ShowcaseList />
           </div>
           <div>
-              <PlaylistList />
+            <PlaylistList />
+          </div>
+          <div>
+            <AudioPlayer />
           </div>
 
 
