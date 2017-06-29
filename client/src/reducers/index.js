@@ -1,10 +1,10 @@
-import merge from 'lodash.merge';
+// import merge from 'lodash.merge';
 import { combineReducers } from 'redux';
 
 import * as ActionTypes from '../actions';
 
-const defaultState = {
-};
+// const defaultState = {
+// };
 
 const errorMessage = (state = null, action) => {
 	const { type, error } = action;

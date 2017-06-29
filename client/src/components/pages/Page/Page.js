@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Page extends React.Component {
 
 	render() {
-		const { page, settings, slug, loading } = this.props;
+		const { page, slug, loading } = this.props;
 		const headerImageUrl = '/images/apotheosis_homer.jpg';
 
 		if (loading) {
@@ -64,13 +65,13 @@ class Page extends React.Component {
 }
 
 Page.propTypes = {
-	slug: React.PropTypes.string,
-	page: React.PropTypes.object,
-	ready: React.PropTypes.bool,
-	images: React.PropTypes.array,
-	thumbnails: React.PropTypes.array,
-	loading: React.PropTypes.bool,
-	settings: React.PropTypes.object,
+	slug: PropTypes.string,
+	page: PropTypes.object,
+	ready: PropTypes.bool,
+	images: PropTypes.array,
+	thumbnails: PropTypes.array,
+	loading: PropTypes.bool,
+	settings: PropTypes.object,
 };
 
 export default Page;

@@ -1,0 +1,23 @@
+.header-jumbotron {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/images/header-bg.png') center;
+  background-size: cover;
+  min-height: 800px;
+}
+.jumbotron-content {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 400px;
+  margin: 0 auto;
+  display: block;
+  color: #fff;
+  text-align: center;
+}
