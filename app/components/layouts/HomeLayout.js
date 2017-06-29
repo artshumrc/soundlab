@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Header from '../shared/header'
 import Footer from '../shared/footer'
 import styles from './layout.scss'
+import AudioPlayer from '../audioPlayer/AudioPlayer'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 
 var injectTapEventPlugin = require("react-tap-event-plugin")
@@ -20,11 +21,14 @@ class HomeLayout extends Component {
           {this.props.children}
         </div>
         <div>
+          <AudioPlayer />
+        </div>
+        <div>
           <Footer />
         </div>
       </div>
       </MuiThemeProvider>
-    );
+    )
   }
 }
-export default HomeLayout;
+export default HomeLayout
