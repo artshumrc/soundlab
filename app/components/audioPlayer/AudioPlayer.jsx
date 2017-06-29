@@ -198,7 +198,7 @@ export default class AudioPlayer extends Component {
                       onClick={this.togglePlaylistDrawer.bind(this)}
                       className={styles.playlistButton}
                     />
-                    <Drawer width={200} openSecondary={true} open={this.state.open} >
+                    <Drawer width={400} openSecondary={true} open={this.state.open} containerClassName={styles.playlistDrawer} >
                       <PlaylistList />
                     </Drawer>
                     <div className={styles.buttonWrapper}>

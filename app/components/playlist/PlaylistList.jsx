@@ -41,7 +41,7 @@ class PlaylistList extends React.Component {
         <div>
 
           <row>
-            <Col xsOffset={3} xs={6}>
+            <Col xsOffset={1} xs={10}>
               <h4>{this.props.data.posts.post}</h4>
               {this.props.data.posts.map((post) =>
                 <PlaylistItem key={post.id} post={post} />
