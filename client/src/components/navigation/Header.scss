@@ -1,14 +1,31 @@
-.social-nav{
+.navbar {
+  border: 0;
+  li a {
+    color: #fff !important;
+  }
+  li a:hover {
+    color: #60b0de !important;
+  }
+}
+
+.social-nav {
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 0;
   margin-bottom: 0;
   font-size: 12px;
   min-height: 40px;
+  max-height: 40px;
+  .container {
+    padding: 0;
+  }
+  li a {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 40px;
+  }
 }
-.navbar {
-  border: 0;
-}
-.page-nav{
+
+.page-nav {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0;
   margin-bottom: 0;
@@ -23,5 +40,12 @@
   }
   .navbar-brand:hover {
     color: #dddedf;
+  }
+  ul {
+    margin-left: 40px;
+  }
+  li a {
+    padding: 0 30px;
+    line-height: 70px;
   }
 }

@@ -11,7 +11,7 @@ const Root = ({store, history}) => (
 			<BrowserRouter>
 				{Routes}
 			</BrowserRouter>
-			<DevTools />
+			{/*<DevTools />*/}
 		</div>
 	</Provider>
 );
