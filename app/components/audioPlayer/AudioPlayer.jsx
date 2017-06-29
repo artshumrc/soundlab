@@ -8,7 +8,9 @@ import Pause from 'material-ui/svg-icons/av/pause'
 import SkipPrevious from 'material-ui/svg-icons/av/skip-previous'
 import SkipNext from 'material-ui/svg-icons/av/skip-next'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import $ from 'jquery'
+import RaisedButton from 'material-ui/RaisedButton'
+import Drawer from 'material-ui/Drawer'
+import PlaylistList from '../playlist/PlaylistList'
 
 export default class AudioPlayer extends Component {
 
@@ -22,7 +24,8 @@ export default class AudioPlayer extends Component {
       playIndex:0,
       creator:'War on Drugs',
       title:'Under the Pressure',
-      image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg'
+      image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg',
+      open:false
 
     }
   }
@@ -74,6 +77,12 @@ export default class AudioPlayer extends Component {
       title:audio.playlist[this.state.playIndex - 1].title,
       image:audio.playlist[this.state.playIndex - 1].image
 
+    })
+  }
+
+  togglePlaylistDrawer() {
+    this.setState({
+      open:!this.state.open
     })
   }
 
@@ -146,14 +155,12 @@ export default class AudioPlayer extends Component {
           autoPlay: false,
           autoLoad: true,
           whileplaying: function() {
-          document.getElementsByClassName(('progressBar')[0].style.width =  25 + '%')
 
+          },
+          onfinish: function() {
 
-        },
-         onfinish: function() {
-          // document.getElementById('progressBar').style.width = '0'
            soundManager._writeDebug(this.id + ' finished playing')
-         }
+          }
         })
       },
 
@@ -186,6 +193,14 @@ export default class AudioPlayer extends Component {
 
                   </div>
                   <div className={styles.playerControls}>
+                    <RaisedButton
+                      label="Playlist"
+                      onClick={this.togglePlaylistDrawer.bind(this)}
+                      className={styles.playlistButton}
+                    />
+                    <Drawer width={200} openSecondary={true} open={this.state.open} >
+                      <PlaylistList />
+                    </Drawer>
                     <div className={styles.buttonWrapper}>
                       <SkipPrevious
                         style={playButtonStyles}
@@ -204,9 +219,7 @@ export default class AudioPlayer extends Component {
                         onClick={this.playNext.bind(this, audio)} />
                     </div>
 
-
                   </div>
-
                 </div>
               </div>
 

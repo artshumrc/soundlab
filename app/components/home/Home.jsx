@@ -26,9 +26,6 @@ class Home extends React.Component {
             <ShowcaseList />
           </div>
           <div>
-            <PlaylistList />
-          </div>
-          <div>
             <AudioPlayer />
           </div>
 
