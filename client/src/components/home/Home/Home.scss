@@ -1,5 +1,5 @@
 .header-jumbotron {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -20,4 +20,31 @@
   display: block;
   color: #fff;
   text-align: center;
+}
+section {
+  color: #6f6f6f;
+
+  h2 {
+    text-transform: uppercase;
+    margin: 15px 0;
+  }
+  hr {
+    border-top: #bfbfbf 0.5px solid;
+  }
+  .highlight {
+    color: #60b0de;
+  }
+  .short {
+    width: 150px;
+    margin: 15px 0;
+  }
+  .orange {
+    border-top: 1px solid #efb013;
+  }
+  .italic {
+    font-style: italic;
+  }
+  .signature {
+    text-transform: uppercase;
+  }
 }
