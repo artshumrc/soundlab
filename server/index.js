@@ -5,6 +5,7 @@ import path from 'path';
 
 // middleware
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import graphqlHTTP from 'express-graphql';
 
 // mongoDB
@@ -26,16 +27,8 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-	res.header(
-		'Access-Control-Allow-Headers',
-		'Origin, X-Requested-With, Content-Type, Accept'
-	);
-	next();
-});
-
-app.use('/graphql', graphqlHTTP({
+// CORS-enabled GraphQL server
+app.use('/graphql', cors(), graphqlHTTP({
 	schema: RootSchema,
 	graphiql: true
 }));
