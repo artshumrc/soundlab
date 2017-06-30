@@ -19,6 +19,7 @@
     "mongoose": "4.10.8",
     "mongoose-schema-to-graphql": "^2.5.7",
     "mongoose-timestamp": "^0.6.0",
+    "redux": "^3.7.1",
     "sax": "^1.2.2"
   },
   "devDependencies": {
