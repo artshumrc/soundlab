@@ -4,9 +4,10 @@ import gql from 'graphql-tag'
 import ShowcaseList from '../showcase/ShowcaseList'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './home.scss'
+import PlaylistList from '../playlist/PlaylistList'
 //import AudioPlayer from 'react-responsive-audio-player'
 //import ReactAudioPlayer from 'react-audio-player'
-import PlaylistList from '../playlist/PlaylistList'
+
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 
 
@@ -24,9 +25,7 @@ class Home extends React.Component {
           <div>
             <ShowcaseList />
           </div>
-          <div>
-              <PlaylistList />
-          </div>
+
 
 
 
