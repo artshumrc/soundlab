@@ -20,11 +20,11 @@ export default class AudioPlayer extends Component {
       //audio:[],
       isPlaying: false,
       playId:'demoSound',
-      playitemUrl:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
-      playIndex:0,
+      playitmeUrl: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
+      playIndex: 0,
       creator:'War on Drugs',
       title:'Under the Pressure',
-      image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg',
+			image: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg',
       open:false
 
     }
@@ -103,24 +103,24 @@ export default class AudioPlayer extends Component {
     const playlist = [
       {
         id:'demoSound',
-        url: 'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
+        image: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg',
         creator: 'War on Drugs',
         title: 'Under the Pressure',
-        image: 'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg'
+        url: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
       },
       {
         id:'demoSound2',
-        url: 'http://localhost:8888/soundlab/wp-content/uploads/2017/06/03-Im-Not-Calling-You-a-Liar.m4a',
+        image: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/03-Im-Not-Calling-You-a-Liar.m4a',
         creator: 'Florence and the Machine',
         title: "I'm Not Calling You a Liar",
-        image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/03-Im-Not-Calling-You-a-Liar-m4a-image.jpg'
+        url: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/03-Im-Not-Calling-You-a-Liar-m4a-image.jpg',
       },
       {
         id:'demoSound3',
-        url: 'http://localhost:8888/soundlab/wp-content/uploads/2017/06/02-The-Dress-Looks-Nice-On-You.m4a',
+        image: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/02-The-Dress-Looks-Nice-On-You-m4a-image.jpg',
         creator: 'Sufjan Stevens',
         title: 'The Dress Looks Nice on You',
-        image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/02-The-Dress-Looks-Nice-On-You-m4a-image.jpg'
+        url:'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/02-The-Dress-Looks-Nice-On-You.m4a',
       }
 
     ]
