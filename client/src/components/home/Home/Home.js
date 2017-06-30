@@ -4,6 +4,7 @@ import './Home.css';
 import Header from '../../navigation/Header';
 import AboutSection from './sections/AboutSection';
 import PopularCollectionsSection from './sections/PopularCollectionsSection';
+import FeaturesSection from './sections/FeaturesSection';
 
 class Home extends React.Component {
 	render() {
@@ -21,8 +22,9 @@ class Home extends React.Component {
 					</div>
 					<div className="layer" />
 				</Jumbotron>
-        <AboutSection />
-        <PopularCollectionsSection />
+				<AboutSection />
+				<PopularCollectionsSection />
+				<FeaturesSection />
 			</div>
 		);
 	}
