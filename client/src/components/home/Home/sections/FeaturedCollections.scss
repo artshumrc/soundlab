@@ -1,0 +1,87 @@
+.collectionCard {
+  height: 370px;
+  background-color: #fff;
+  color: #6f6f6f;
+  .cardImage {
+    height: 220px;
+    background: center no-repeat;
+  }
+  .collectionBadge {
+    background-color: #60b0de;
+    color: white;
+    display: inline-block;
+    position: relative;
+    line-height: 28px;
+    padding: 0 14px;
+    margin: 0 28px;
+    vertical-align: top;
+    top: -15px;
+  }
+  .collectionBadge:before {
+    content: '';
+    border-top: 14px solid #60b0de;
+    border-right: 7px solid #60b0de;
+    border-left: 7px solid transparent;
+    border-bottom: 14px solid transparent;
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 100%;
+    top: 0;
+  }
+  .collectionBadge:after {
+    content: '';
+    border-top: 14px solid #60b0de;
+    border-right: 7px solid transparent;
+    border-left: 7px solid #60b0de;
+    border-bottom: 14px solid transparent;
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 100%;
+    top: 0;
+  }
+  .collectionDescription {
+    padding: 0 10px;
+    position: relative;
+    h4 {
+      line-height: 19px;
+      max-height: 19px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin: 0 auto;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: #2d3e50;
+      margin-bottom: 15px;
+    }
+    .location {
+      text-align: left;
+      color: #999999;
+    }
+  }
+  .collectionCardControls {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 360px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #bad9ed;
+    .control {
+      display: table-cell;
+      width: 120px;
+      height: 39px;
+      line-height: 39px;
+    }
+    .fa {
+      color: #60b0de;
+    }
+    .date {
+      border-right: 1px solid #bad9ed;
+    }
+    .comments {
+      border-left: 1px solid #bad9ed;
+    }
+  }
+}

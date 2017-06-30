@@ -1,8 +1,9 @@
 import React from 'react';
-import {Jumbotron, Button, Grid, Row, Col, Image} from 'react-bootstrap';
+import {Jumbotron, Button} from 'react-bootstrap';
 import './Home.css';
 import Header from '../../navigation/Header';
 import AboutSection from './sections/AboutSection';
+import PopularCollectionsSection from './sections/PopularCollectionsSection';
 
 class Home extends React.Component {
 	render() {
@@ -20,8 +21,8 @@ class Home extends React.Component {
 					</div>
 					<div className="layer" />
 				</Jumbotron>
-        <AboutSection/>
-
+        <AboutSection />
+        <PopularCollectionsSection />
 			</div>
 		);
 	}

@@ -1,0 +1,34 @@
+section {
+  text-align: center;
+  .react-simple-parallax-bg {
+    height: 550px;
+  }
+  .parallax {
+    background: url('/images/popularCollections-bg.png');
+    height: 700px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .parallax-content {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: relative;
+    padding-top: 70px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: block;
+    color: #fff;
+    text-align: center;
+    h2 {
+      padding-bottom: 50px;
+    }
+    h3 {
+      color: #efb013;
+      text-transform: uppercase;
+    }
+  }
+}
