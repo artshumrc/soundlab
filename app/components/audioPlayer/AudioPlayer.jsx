@@ -1,50 +1,51 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-import soundmanager from '../../../node_modules/soundmanager2'
-import styles from './audioPlayer.scss'
-import PlayArrow from 'material-ui/svg-icons/av/play-arrow'
-import Pause from 'material-ui/svg-icons/av/pause'
-import SkipPrevious from 'material-ui/svg-icons/av/skip-previous'
-import SkipNext from 'material-ui/svg-icons/av/skip-next'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import RaisedButton from 'material-ui/RaisedButton'
-import Drawer from 'material-ui/Drawer'
-import PlaylistList from '../playlist/PlaylistList'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
+import Pause from 'material-ui/svg-icons/av/pause';
+import SkipPrevious from 'material-ui/svg-icons/av/skip-previous';
+import SkipNext from 'material-ui/svg-icons/av/skip-next';
+import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
+import RaisedButton from 'material-ui/RaisedButton';
+import Drawer from 'material-ui/Drawer';
+
+import PlaylistList from '../playlist/PlaylistList';
+import soundmanager from '../../../node_modules/soundmanager2';
+import styles from './audioPlayer.scss';
 
 export default class AudioPlayer extends Component {
 
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
-			//audio:[],
-			isPlaying: true,
+			// audio:[],
+			isPlaying: false,
 			playId: 'demoSound',
-			playtimeUrl: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
+			playitemUrl: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
 			playIndex: 0,
 			creator: 'War on Drugs',
 			title: 'Under the Pressure',
 			image: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg',
-			open:false
-		}
+			open: false,
+		};
 	}
 
-	playTheSound(){
+	playTheSound() {
 
 	}
 
 	pausePlayer() {
-		soundManager.pause(this.state.playId)
+		soundManager.pause(this.state.playId);
 		this.setState({
-			isPlaying:false
-		})
+			isPlaying: false,
+		});
 	}
 
 	resumePlayer() {
-		soundManager.play(this.state.playId)
+		soundManager.play(this.state.playId);
 		this.setState({
-			isPlaying:true
-		})
+			isPlaying: true,
+		});
 	}
 
 	showState() {
@@ -52,100 +53,89 @@ export default class AudioPlayer extends Component {
 	}
 
 	playNext(playlist) {
-		soundManager.destroySound(this.state.playId)
+		soundManager.destroySound(this.state.playId);
 		this.setState({
-			playId:playlist[this.state.playIndex + 1].id,
-			playitemUrl:playlist[this.state.playIndex + 1].url,
-			playIndex:this.state.playIndex + 1,
-			isPlaying:false,
-			creator:playlist[this.state.playIndex + 1].creator,
-			title:playlist[this.state.playIndex + 1].title,
-			image:playlist[this.state.playIndex + 1].image
-
-		})
+			playId: playlist[this.state.playIndex + 1].id,
+			playitemUrl: playlist[this.state.playIndex + 1].url,
+			playIndex: this.state.playIndex + 1,
+			isPlaying: false,
+			creator: playlist[this.state.playIndex + 1].creator,
+			title: playlist[this.state.playIndex + 1].title,
+			image: playlist[this.state.playIndex + 1].image
+		});
 	}
 
 	playPrevious(playlist) {
-		soundManager.destroySound(this.state.playId)
+		soundManager.destroySound(this.state.playId);
 		this.setState({
-			playId:playlist[this.state.playIndex - 1].id,
-			playitemUrl:playlist[this.state.playIndex - 1].url,
+			playId: playlist[this.state.playIndex - 1].id,
+			playitemUrl: playlist[this.state.playIndex - 1].url,
 			playIndex: this.state.playIndex - 1,
-			isPlaying:false,
-			creator:playlist[this.state.playIndex - 1].creator,
-			title:playlist[this.state.playIndex - 1].title,
-			image:playlist[this.state.playIndex - 1].image
-
-		})
+			isPlaying: false,
+			creator: playlist[this.state.playIndex - 1].creator,
+			title: playlist[this.state.playIndex - 1].title,
+			image: playlist[this.state.playIndex - 1].image
+		});
 	}
 
 	togglePlaylistDrawer() {
 		this.setState({
-			open:!this.state.open
-		})
+			open: !this.state.open,
+		});
 	}
 
+	playAudio(playlistId) {
+		// Default playlistId to 0 if not supplied
+		playlistId = playlistId || 0;
 
-
-
-	playAudio(playlistId){
-			// Default playlistId to 0 if not supplied
-			playlistId = playlistId ? playlistId : 0;
-			// If SoundManager object exists, get rid of it...
-			if (playlist.nowPlaying){
-				playlist.nowPlaying.destruct();
-				// ...and reset array key if end reached
-				if(playlistId == playlist.length){
-						playlistId = 0;
+		// If SoundManager object exists, get rid of it...
+		if (playlist.nowPlaying) {
+			playlist.nowPlaying.destruct();
+			// ...and reset array key if end reached
+			if (playlistId === playlist.length) {
+				playlistId = 0;
 			}
 		}
 	}
 
-
 	render() {
 
-		const playId = this.state.playId
-		const playitemUrl = this.state.playitemUrl
-		const creator = this.state.creator
-		const title = this.state.title
-		const image = this.state.image
-
+		const { playId, playitemUrl, title, image } = this.state;
 
 			// Array of files you'd like played
 		const playlist = [
 			{
-				id:'demoSound',
+				id: 'demoSound',
 				image: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg',
 				creator: 'War on Drugs',
 				title: 'Under the Pressure',
 				url: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
 			},
 			{
-				id:'demoSound2',
-				image: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/03-Im-Not-Calling-You-a-Liar.m4a',
+				id: 'demoSound2',
+				image: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/03-Im-Not-Calling-You-a-Liar-m4a-image.jpg',
 				creator: 'Florence and the Machine',
 				title: "I'm Not Calling You a Liar",
-				url: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/03-Im-Not-Calling-You-a-Liar-m4a-image.jpg',
+				url: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/03-Im-Not-Calling-You-a-Liar.m4a',
 			},
 			{
-				id:'demoSound3',
+				id: 'demoSound3',
 				image: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/02-The-Dress-Looks-Nice-On-You-m4a-image.jpg',
 				creator: 'Sufjan Stevens',
 				title: 'The Dress Looks Nice on You',
-				url:'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/02-The-Dress-Looks-Nice-On-You.m4a',
+				url: 'http://admin.soundlab.archimedes.digital/wp-content/uploads/2017/06/02-The-Dress-Looks-Nice-On-You.m4a',
 			}
-
-		]
-
+		];
 
 		const playButtonStyles = {
-			height:36,
-			width:36
-		}
+			height: 36,
+			width: 36
+		};
 
+
+		// console.log(playId, playitemUrl, playlist);
 		soundManager.setup({
-			onready: function(playlistId) {
-
+			onready: (playlistId) => {
 				playlist.nowPlaying = soundManager.createSound({
 					id: playId,
 					url: playitemUrl,
@@ -153,75 +143,81 @@ export default class AudioPlayer extends Component {
 					title: playlist[0].title,
 					autoPlay: false,
 					autoLoad: true,
-					whileplaying: function() {
+					whileplaying: () => {
 
 					},
-					onfinish: function() {
-						soundManager._writeDebug(this.id + ' finished playing')
+					onfinish: () => {
+						soundManager._writeDebug(`${this.id} finished playing`);
 					}
-				})
+				});
 			},
-
-			ontimeout: function() {
+			ontimeout: () => {
 				// Uh-oh. No HTML5 support, SWF missing, Flash blocked or other issue
 			}
-		})
+		});
 
 		return (
 			<div>
 				<row>
 					<Col xsOffset={3} xs={6}>
-							<div className={styles.soundlabPlayer}>
-								<div className={styles.soundlabPlayerContainer}>
-									<div className={styles.playerMetaContainer}>
-										<div className={styles.playerAvatar}>
-											<img src={this.state.image} alt={this.state.title}/>
-										</div>
-										<div className={styles.playerMeta}>
-											<h6 className={styles.playerMetaCreator}>{this.state.creator}</h6>
-											<h6 className={styles.playerMetaTitle}>{this.state.title}</h6>
-										</div>
+						<div className={styles.soundlabPlayer}>
+							<div className={styles.soundlabPlayerContainer}>
+								<div className={styles.playerMetaContainer}>
+									<div className={styles.playerAvatar}>
+										<img src={this.state.image} alt={this.state.title}/>
 									</div>
-									<div className={styles.playerTimeline}>
-										<div className={styles.currentTrack}>
-											<div className={styles.progressBar} ref={this.progressBar}></div>
-										</div>
-
-									</div>
-									<div className={styles.playerControls}>
-										<RaisedButton
-											label="Playlist"
-											onClick={this.togglePlaylistDrawer.bind(this)}
-											className={styles.playlistButton}
-										/>
-										<Drawer width={400} openSecondary={true} open={this.state.open} containerClassName={styles.playlistDrawer} >
-											<PlaylistList />
-										</Drawer>
-										<div className={styles.buttonWrapper}>
-											<SkipPrevious
-												style={playButtonStyles}
-												onClick={this.playPrevious.bind(this, playlist)} />
-											{this.state.isPlaying === true ?
-											<Pause
-												style={playButtonStyles}
-												onClick={this.pausePlayer.bind(this, playlist)} />
-											:
-											<PlayArrow
-												style={playButtonStyles}
-												onClick={this.resumePlayer.bind(this, playlist)} />
-											}
-											<SkipNext
-												style={playButtonStyles}
-												onClick={this.playNext.bind(this, playlist)} />
-										</div>
-
+									<div className={styles.playerMeta}>
+										<h6 className={styles.playerMetaCreator}>{this.state.creator}</h6>
+										<h6 className={styles.playerMetaTitle}>{this.state.title}</h6>
 									</div>
 								</div>
-							</div>
+								<div className={styles.playerTimeline}>
+									<div className={styles.currentTrack}>
+										<div className={styles.progressBar} ref={this.progressBar}></div>
+									</div>
 
+								</div>
+								<div className={styles.playerControls}>
+									<RaisedButton
+										label="Playlist"
+										onClick={this.togglePlaylistDrawer.bind(this)}
+										className={styles.playlistButton}
+									/>
+									<Drawer
+										width={400}
+										open={this.state.open}
+										containerClassName={styles.playlistDrawer}
+										openSecondary
+									>
+										<PlaylistList />
+									</Drawer>
+									<div className={styles.buttonWrapper}>
+										<SkipPrevious
+											style={playButtonStyles}
+											onClick={this.playPrevious.bind(this, playlist)}
+										/>
+										{this.state.isPlaying === true ?
+											<Pause
+												style={playButtonStyles}
+												onClick={this.pausePlayer.bind(this, playlist)}
+											/>
+										:
+											<PlayArrow
+												style={playButtonStyles}
+												onClick={this.resumePlayer.bind(this, playlist)}
+											/>
+										}
+										<SkipNext
+											style={playButtonStyles}
+											onClick={this.playNext.bind(this, playlist)}
+										/>
+									</div>
+
+								</div>
+							</div>
+						</div>
 					</Col>
 				</row>
-
 			</div>
 		)
 	}
