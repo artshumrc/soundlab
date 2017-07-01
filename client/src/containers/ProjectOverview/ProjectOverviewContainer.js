@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import Home from '../../components/home/Home';
+import CollectionListView from '../../components/projectOverview/collectionListView';
 import Header from '../../navigation/Header';
 
 class ProjectOverviewContainer extends React.Component {
