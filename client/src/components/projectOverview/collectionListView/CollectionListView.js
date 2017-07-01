@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class CollectionListView extends React.Component {
+export class CollectionListView extends React.Component {
 
 	render() {
 		return (
@@ -12,4 +12,9 @@ class CollectionListView extends React.Component {
 	}
 }
 
-export default CollectionListView;
+const mapStateToProps = state => state;
+
+export default connect(
+	mapStateToProps, {
+	}
+)(CollectionListView);

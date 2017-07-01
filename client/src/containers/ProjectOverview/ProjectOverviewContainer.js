@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import CollectionListView from '../../components/projectOverview/collectionListView';
+import { CollectionListView } from '../../components/projectOverview/collectionListView';
 import Header from '../../navigation/Header';
 
 class ProjectOverviewContainer extends React.Component {
@@ -23,4 +23,9 @@ class ProjectOverviewContainer extends React.Component {
 
 }
 
-export default ProjectOverviewContainer;
+const mapStateToProps = state => state;
+
+export default connect(
+	mapStateToProps, {
+	}
+)(ProjectOverviewContainer);
