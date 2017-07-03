@@ -1,0 +1,34 @@
+#betterExperience {
+  .betterExperienceSection {
+    background-image: url('/images/betterExperience.png') !important;
+    height: 500px;
+  }
+  .parallax-content {
+    background-color: rgba(44, 62, 80, 0.95);;
+    position: relative;
+    padding-top: 70px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: block;
+    color: #fff;
+    text-align: left;
+  }
+  h2 {
+    text-transform: none;
+    padding-bottom: 10px;
+  }
+  p {
+    line-height: 200%;
+  }
+  ul {
+    list-style: none;
+    padding: 15px 0;
+    .listStyle {
+      color: #f39c12;
+      padding-right: 15px;
+    }
+  }
+}
