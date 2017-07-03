@@ -9,7 +9,7 @@ export default class AboutSection extends React.Component {
 				<Grid>
 					<Row>
 						<Col lg={4}>
-							<Image src="/images/engineer.png" responsive />
+							<Image src="/images/engineer.svg" responsive />
 						</Col>
 						<Col lg={8}>
 							<h2><span className="highlight">Orpheus</span> is for your digital archive</h2>
