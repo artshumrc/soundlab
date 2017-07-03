@@ -1,4 +1,5 @@
 import React from 'react';
+import {Image} from 'react-bootstrap';
 import './PopularCollectionsSection.css';
 import FeaturedCollections from './FeaturedCollections';
 
@@ -31,6 +32,7 @@ export default class PopularCollectionsSection extends React.Component {
 			<section>
 				<div className="parallax">
 					<div className="parallax-content">
+						<Image src="/images/collections.png" responsive />
 						<h3>Popular collections</h3>
 						<h2 className="invert">We have largest digital archive</h2>
 						<FeaturedCollections data={collectionData} />
