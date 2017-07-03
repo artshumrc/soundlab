@@ -13,7 +13,6 @@ export default class BetterExperienceSection extends React.Component {
       <section id="betterExperience">
         <div className="parallax betterExperienceSection">
           <div className="parallax-content">
-
             <Grid>
               <Row>
                 <Col lg={6}>

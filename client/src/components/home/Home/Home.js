@@ -9,6 +9,7 @@ import TestimonialSection from './sections/TestimonialSection';
 import WhyUsSection from './sections/WhyUsSection';
 import BetterExperienceSection from './sections/BetterExperienceSection';
 import PricingSection from './sections/PricingSection';
+import CreateAccountSection from './sections/CreateAccountSection';
 
 class Home extends React.Component {
 	render() {
@@ -34,6 +35,7 @@ class Home extends React.Component {
 				<WhyUsSection />
 				<BetterExperienceSection />
 				<PricingSection />
+				<CreateAccountSection />
 			</div>
 		);
 	}

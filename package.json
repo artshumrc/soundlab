@@ -20,6 +20,7 @@
     "mongoose-schema-to-graphql": "^2.5.7",
     "mongoose-timestamp": "^0.6.0",
     "react": "^15.6.1",
+    "react-recaptcha": "^2.3.2",
     "react-redux": "^5.0.5",
     "redux": "^3.7.1",
     "sax": "^1.2.2"
