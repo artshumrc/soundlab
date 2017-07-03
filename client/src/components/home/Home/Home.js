@@ -12,7 +12,9 @@ class Home extends React.Component {
 			<div>
 				<Header />
 				<Jumbotron className="header-jumbotron">
-					<div className="jumbotron-content">
+          <div className="jumbotron-overlay">
+          </div>
+          <div className="jumbotron-content">
 						<h1>Build your digital archive</h1>
 						<p>Be visually striking or highly appealing to succeed</p>
 						<p>
