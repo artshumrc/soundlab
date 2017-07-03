@@ -1,10 +1,9 @@
-// import merge from 'lodash.merge';
 import { combineReducers } from 'redux';
+
+import client from '../middleware/apolloClient';
 
 import * as ActionTypes from '../actions';
 
-// const defaultState = {
-// };
 
 const errorMessage = (state = null, action) => {
 	const { type, error } = action;
@@ -20,6 +19,7 @@ const errorMessage = (state = null, action) => {
 
 const rootReducer = combineReducers({
 	errorMessage,
+	apollo: client.reducer(), // graphql data
 });
 
 export default rootReducer;
