@@ -6,6 +6,7 @@ import AboutSection from './sections/AboutSection';
 import PopularCollectionsSection from './sections/PopularCollectionsSection';
 import FeaturesSection from './sections/FeaturesSection';
 import TestimonialSection from './sections/TestimonialSection';
+import WhyUsSection from './sections/WhyUsSection';
 
 class Home extends React.Component {
 	render() {
@@ -13,9 +14,8 @@ class Home extends React.Component {
 			<div>
 				<Header />
 				<Jumbotron className="header-jumbotron">
-          <div className="jumbotron-overlay">
-          </div>
-          <div className="jumbotron-content">
+					<div className="jumbotron-overlay" />
+					<div className="jumbotron-content">
 						<h1>Build your digital archive</h1>
 						<p>Be visually striking or highly appealing to succeed</p>
 						<p>
@@ -28,7 +28,8 @@ class Home extends React.Component {
 				<AboutSection />
 				<PopularCollectionsSection />
 				<FeaturesSection />
-        <TestimonialSection />
+				<TestimonialSection />
+				<WhyUsSection />
 			</div>
 		);
 	}
