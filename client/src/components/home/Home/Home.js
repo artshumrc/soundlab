@@ -5,6 +5,7 @@ import Header from '../../navigation/Header';
 import AboutSection from './sections/AboutSection';
 import PopularCollectionsSection from './sections/PopularCollectionsSection';
 import FeaturesSection from './sections/FeaturesSection';
+import TestimonialSection from './sections/TestimonialSection';
 
 class Home extends React.Component {
 	render() {
@@ -27,6 +28,7 @@ class Home extends React.Component {
 				<AboutSection />
 				<PopularCollectionsSection />
 				<FeaturesSection />
+        <TestimonialSection />
 			</div>
 		);
 	}
