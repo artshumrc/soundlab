@@ -1,19 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Provider} from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
 import {BrowserRouter} from 'react-router-dom';
+
 import Routes from '../components/routes';
 import DevTools from './DevTools';
 
+import client from '../middleware/apolloClient';
+
 const Root = ({store, history}) => (
-	<Provider store={store}>
+	<ApolloProvider
+		client={client}
+		store={store}
+	>
 		<div>
 			<BrowserRouter>
 				{Routes}
 			</BrowserRouter>
 			{/*<DevTools />*/}
 		</div>
-	</Provider>
+	</ApolloProvider>
 );
 
 Root.propTypes = {
