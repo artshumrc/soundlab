@@ -1,9 +1,22 @@
 import React from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
+import ReactDOM from 'react-dom';
+import scrollToElement from 'scroll-to-element';
 import './Header.css';
 
 export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.scrollToItem = this.scrollToItem.bind(this);
+  }
+
+  scrollToItem(event) {
+    event.preventDefault();
+    const elem = event.target.hash;
+    scrollToElement(event.target.hash, {offset: -130});
+  }
+
 	render() {
 		return (
 			<div>
@@ -29,11 +42,13 @@ export default class Header extends React.Component {
             </Navbar.Brand>
 					</Navbar.Header>
 					<Nav>
-						<NavItem eventKey={1} href="#">Home</NavItem>
-						<NavItem eventKey={2} href="#">About</NavItem>
-						<NavItem eventKey={3} href="#">Features</NavItem>
-						<NavItem eventKey={4} href="#">Portfolio</NavItem>
-						<NavItem eventKey={5} href="#">Testimonials</NavItem>
+						<NavItem href="#home" onClick={this.scrollToItem}>Home</NavItem>
+						<NavItem href="#about" onClick={this.scrollToItem} >About</NavItem>
+						<NavItem href="#collections" onClick={this.scrollToItem} >Portfolio</NavItem>
+            <NavItem href="#features" onClick={this.scrollToItem} >Features</NavItem>
+						<NavItem href="#testimonial" onClick={this.scrollToItem} >Testimonials</NavItem>
+						<NavItem href="#pricing" onClick={this.scrollToItem} >Pricing</NavItem>
+						<NavItem href="#footer" onClick={this.scrollToItem} >Contact</NavItem>
 					</Nav>
 					<Nav pullRight>
 						<NavItem eventKey={1} href="#"><FontAwesome name="search" className="social-icon" /></NavItem>

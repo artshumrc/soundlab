@@ -29,7 +29,7 @@ export default class PopularCollectionsSection extends React.Component {
 			}
 		];
 		return (
-			<section>
+			<section id="collections">
 				<div className="parallax">
 					<div className="parallax-content">
 						<Image src="/images/collections.png" responsive />

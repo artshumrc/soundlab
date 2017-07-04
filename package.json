@@ -23,7 +23,8 @@
     "react-recaptcha": "^2.3.2",
     "react-redux": "^5.0.5",
     "redux": "^3.7.1",
-    "sax": "^1.2.2"
+    "sax": "^1.2.2",
+    "scroll-to-element": "^2.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
