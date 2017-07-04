@@ -3,10 +3,6 @@ import {Grid, Row, Col, Image} from 'react-bootstrap';
 import './WhyUsSection.css';
 
 export default class WhyUsSection extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<section id="whyUs" className="text-center">

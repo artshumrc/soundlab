@@ -7,12 +7,12 @@ import {
   Button,
   Checkbox
 } from 'react-bootstrap';
-import Recaptcha from 'react-recaptcha';
+// import Recaptcha from 'react-recaptcha';
 import './CreateAccountSection.css';
 
 export default class CreateAccountSection extends React.Component {
   render() {
-    let recaptchaInstance;
+    // let recaptchaInstance;
     return (
       <section id="createAccount">
         <Grid>
@@ -89,7 +89,7 @@ export default class CreateAccountSection extends React.Component {
                     I agree to the terms of use
                   </Checkbox>
                 {/* TODO: add site key to recaptcha */}
-                <Recaptcha ref={e => recaptchaInstance = e}/>
+                {/*<Recaptcha ref={e => recaptchaInstance = e}/>*/}
                 <Button bsStyle="primary">Create account</Button>
               </form>
             </Col>

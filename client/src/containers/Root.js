@@ -4,7 +4,7 @@ import { ApolloProvider } from 'react-apollo';
 import {BrowserRouter} from 'react-router-dom';
 
 import Routes from '../components/routes';
-import DevTools from './DevTools';
+// import DevTools from './DevTools';
 
 import client from '../middleware/apolloClient';
 

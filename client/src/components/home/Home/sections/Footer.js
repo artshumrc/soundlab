@@ -4,7 +4,6 @@ import {
   Row,
   Col,
   Button,
-  Checkbox,
   NavItem,
   Navbar,
   Nav

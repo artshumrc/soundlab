@@ -4,10 +4,6 @@ import {Grid, Row, Col, Image, Panel, Button} from 'react-bootstrap';
 import './PricingSection.css';
 
 export default class PricingSection extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<section id="pricing" className="text-center">

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
-import ReactDOM from 'react-dom';
 import scrollToElement from 'scroll-to-element';
 import './Header.css';
 
@@ -13,7 +12,6 @@ export default class Header extends React.Component {
 
   scrollToItem(event) {
     event.preventDefault();
-    const elem = event.target.hash;
     scrollToElement(event.target.hash, {offset: -130});
   }
 
