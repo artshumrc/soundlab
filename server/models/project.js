@@ -9,15 +9,11 @@ const ProjectSchema = new Schema({
 		default: '',
 		trim: true
 	},
-	testField: {
-		type: String,
-	}
+	slug: String,
 });
 
 ProjectSchema.plugin(timestamp);
 
 const Project = mongoose.model('Project', ProjectSchema);
-
-const newProject = new Project({ title: 'test' });
 
 export default Project;
