@@ -1,10 +1,9 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux';
 import { mount, shallow } from 'enzyme';
 
-import configureStore from 'store/configureStore';
+// import configureStore from 'store/configureStore';
 import { App } from './App';
 
 injectTapEventPlugin();

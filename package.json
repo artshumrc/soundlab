@@ -17,6 +17,7 @@
     "express-graphql": "^0.6.6",
     "express-session": "^1.15.3",
     "graphql": "^0.10.3",
+    "jest": "^20.0.4",
     "mongoose": "4.10.8",
     "mongoose-schema-to-graphql": "^2.5.7",
     "mongoose-timestamp": "^0.6.0",
@@ -24,8 +25,7 @@
     "react-recaptcha": "^2.3.2",
     "react-redux": "^5.0.5",
     "redux": "^3.7.1",
-    "sax": "^1.2.2",
-    "scroll-to-element": "^2.0.0"
+    "sax": "^1.2.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
