@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const ProjectSchema = new Schema({
 	title: {
 		type: String,
+		unique: true,
 		default: '',
 		trim: true
 	},

@@ -1,4 +1,4 @@
-import { GraphQLString } from 'graphql';
+import { GraphQLString, GraphQLNonNull } from 'graphql';
 
 // types
 import projectType from '../types/models/project';
@@ -6,36 +6,39 @@ import projectType from '../types/models/project';
 // bll
 import Projects from '../bll/projects';
 
+// errors
+import { AuthenticationError, DBError } from '../errors';
+
 
 const projectFileds = {
 
 	projectCreate: {
-		type: GraphQLString,
+		type: projectType,
 		args: {
 			title: {
-				type: GraphQLString
+				type: new GraphQLNonNull(GraphQLString)
 			},
 			slug: {
-				type: GraphQLString
+				type: new GraphQLNonNull(GraphQLString)
 			},
 		},
-		resolve(parent, { title, slug }, { session: { passport } }) {
-			try {
+		async resolve(parent, { title, slug }, { session: { passport } }) {
+			const project = {
+				title,
+				slug,
+			};
 
-				const project = {
-					title,
-					slug,
-				};
+			if (passport) {
+				try {
+					return await Projects.create(passport.user, project);
+				} catch (err) {
+					console.error(err);
 
-				Projects.create(passport.user, project).then(
-					doc => doc,
-					err => console.error(err));
-
-			} catch (err) {
-				console.error(err);
-			}
-			if (passport && passport.user) {
-				return 'the secret';
+					// TODO: can pass validation error here if needed
+					throw new DBError();
+				}
+			} else {
+				throw new AuthenticationError();
 			}
 		}
 	}

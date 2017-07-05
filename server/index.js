@@ -10,6 +10,7 @@ import logger from 'morgan';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import graphqlHTTP from 'express-graphql';
+import { formatError } from 'apollo-errors';
 import passport from 'passport';
 import PassportLocal from 'passport-local';
 
@@ -56,6 +57,7 @@ app.use(passport.session());
 // CORS-enabled GraphQL server
 app.use('/graphql', cors(), graphqlHTTP({
 	schema: RootSchema,
+	formatError,
 	graphiql: true
 }));
 
@@ -79,6 +81,7 @@ app.get('/secret', authenticationMiddleware(), function(req, res) {
 	res.status(200).send('SECRET');
 });
 
+// CORS-enabled login
 app.use('/login', cors());
 
 app.get('/login', function(req, res) {

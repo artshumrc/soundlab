@@ -1,6 +1,11 @@
-import check from 'check-types';
-
+// models
 import Project from '../models/project';
+
+// errors
+import { AuthenticationError } from '../errors';
+
+// bll
+import { validateUser } from './authentication';
 
 class ProjectsClass {
 
@@ -8,13 +13,16 @@ class ProjectsClass {
 		this.ProjectModel = ProjectModel;
 	}
 
-	create(user, project) {
-		if (!user) throw new Error('not authorized');
-		// TODO find user
-		if (!check.object(project)) throw new Error('Provided project is not an object.');
+	async create(username, project) {
 
-		const newProject = new this.ProjectModel(project);
-		return newProject.save();
+		const createProject = async () => {
+
+			const newProject = new this.ProjectModel(project);
+
+			return newProject.save();
+		};
+
+		return await validateUser(username, createProject);
 	}
 
 	findById(_id) {
@@ -28,15 +36,15 @@ class ProjectsClass {
 		return new Promise((resolve, reject) => reject('slug not specified'));
 	}
 
-	addTenant(user, tenatnId) {
+	addTenant(username, tenatnId) {
 		// TODO
 	}
 
-	removeTenant(user, project) {
+	removeTenant(username, project) {
 		// TODO
 	}
 
-	removeProject(user, _id) {
+	removeProject(username, _id) {
 		// TODO
 	}
 
