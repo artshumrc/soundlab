@@ -33,9 +33,9 @@ export default class TextArea extends React.Component {
 				{label}
 				<textarea
 					rows={this.props.rows} disabled={this.props.disabled} onKeyUp={this.countCharacters}
-					className={style}
+					className={style} placeholder={this.props.placeholder}
 				>
-          The textarea tag defines a multi-line text input control.
+          {this.props.value}
         </textarea>
 				{required}
 			</div>

@@ -56,22 +56,24 @@ export default class Articles extends React.Component {
 							<div className="sectionTitle">Text inputs with labels</div>
 							<TextInput placeholder="Placeholder" label="Label" />
 							<TextInput placeholder="Placeholder" label="Label" required />
-              <TextArea rows={7} label="Label" disabled />
+              <TextArea rows={7} value="The textarea tag defines a multi-line text input control." label="Label" disabled />
 						</Col>
 						<Col lg={3}>
               <div className="sectionTitle">Correct value label</div>
               <TextInput placeholder="Placeholder" value="Correct value" valid={true} label="Label" />
               <TextInput placeholder="Placeholder" value="Correct value" valid={true} label="Label" required />
-              <TextArea rows={7} label="Label" min={40} />
+              <TextArea rows={7} value="The textarea tag defines a multi-line text input control." label="Label" min={40} />
             </Col>
 						<Col lg={3}>
               <div className="sectionTitle">Wrong value label</div>
               <TextInput placeholder="Placeholder" value="Wrong value" valid={false} label="Label" />
               <TextInput placeholder="Placeholder" value="Wron value" valid={false} label="Label" required />
-              <TextArea rows={7} label="Label" required/>
+              <TextArea rows={7} value="The textarea tag defines a multi-line text input control." label="Label" required/>
             </Col>
 						<Col lg={3}>
-							<div className="sectionTitle">Custom fields</div>
+							<div className="sectionTitle">Textarea</div>
+              <TextArea placeholder="Placeholder" rows={7} />
+              <TextArea value="The textarea tag defines a multi-line text input control." label="Label" rows={7} required />
 						</Col>
 					</Row>
 				</div>
