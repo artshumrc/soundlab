@@ -6,6 +6,10 @@
     height: 100%;
     background-color: #333d56;
     z-index: 1000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
     .container {
       width: 100%;
     }
@@ -38,6 +42,18 @@
       }
     }
   }
+  .sidebarWrapped {
+    width: 50px;
+    h3 {
+      display: none;
+    }
+    .listItemText {
+      display: none;
+    }
+    .fa {
+      margin-left: 15px !important;
+    }
+  }
   .dashboardPanel {
     display: table-cell;
   }
@@ -45,10 +61,17 @@
     position: absolute;
     padding-left: 300px;
     width: 100%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
     .topNav {
       height: 90px;
       line-height: 90px;
       background-color: #445171;
+      .toggleSidebar {
+        margin-left: 20px;
+      }
       .fa {
         margin: 0 2px;
         vertical-align: middle;
@@ -59,11 +82,26 @@
       a:hover {
         color: #fff;
       }
+      input {
+        margin-left: 25px;
+        border: 1px solid #a8acb9;
+        color: #a8acb9;
+        padding: 10px;
+        border-radius: 100px;
+        background-color: transparent;
+        line-height: normal;
+      }
+      input::placeholder {
+        color: #a8acb9;
+      }
+      input:focus {
+        width: 270px;
+        outline: none;
+      }
       .navigation {
         .userPanel {
-          height: 50px;
           margin: 20px 10px;
-          padding: 0 10px;
+          padding: 15px 10px;
           line-height: 50px;
           border-left: 1px solid #393f4f;
           color: #fff;
@@ -76,7 +114,6 @@
             position: relative;
             display: inline-block;
           }
-
           .status {
             position: absolute;
             right: 10px;
@@ -88,17 +125,42 @@
             height: 15px;
             border: 2px solid #5a6378;
           }
-
           .fa {
             margin: 0 10px;
             color: #393f4f;
           }
         }
         .notifications {
+          margin-right: 25px;
           .fa {
             margin: 0 10px;
             background-color: #393f4f;
             color: #fff;
+          }
+          .fa {
+            padding: 10px;
+            display: inline-block;
+            -moz-border-radius: 100px;
+            -webkit-border-radius: 100px;
+            border-radius: 100px;
+          }
+          .notification {
+            position: relative;
+            display: inline-block;
+            .notificationBadge {
+              font-size: 8px;
+              overflow: hidden;
+              position: absolute;
+              width: 13px;
+              height: 13px;
+              right: 8px;
+              top: 30px;
+              background: #ff6b6b;
+              text-align: center;
+              border-radius: 100px;
+              color: white;
+              line-height: normal;
+            }
           }
         }
         div {
@@ -107,5 +169,8 @@
       }
     }
 
+  }
+  .contentWrapperExpand {
+    padding-left: 50px;
   }
 }
