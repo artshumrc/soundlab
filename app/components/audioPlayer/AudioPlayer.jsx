@@ -8,41 +8,33 @@ import Pause from 'material-ui/svg-icons/av/pause'
 import SkipPrevious from 'material-ui/svg-icons/av/skip-previous'
 import SkipNext from 'material-ui/svg-icons/av/skip-next'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import $ from 'jquery'
+import { resumePlayer, pausePlayer } from '../../actions/actions'
+import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-export default class AudioPlayer extends Component {
+class AudioPlayer extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
       audio:[],
-      isPlaying: false,
       playId:'demoSound',
       playitemUrl:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
       playIndex:0,
       creator:'War on Drugs',
       title:'Under the Pressure',
       image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg'
-
     }
   }
 
-  playTheSound(){
-
-  }
-
-  pausePlayer() {
+  pauseTheSound(){
+    this.props.dispatch(pausePlayer())
     soundManager.pause(this.state.playId)
-    this.setState({
-      isPlaying:false
-    })
   }
 
-  resumePlayer() {
+  resumeTheSound(){
+    this.props.dispatch(resumePlayer())
     soundManager.play(this.state.playId)
-    this.setState({
-      isPlaying:true
-    })
   }
 
   showState() {
@@ -51,6 +43,7 @@ export default class AudioPlayer extends Component {
 
   playNext(audio) {
     soundManager.destroySound(this.state.playId)
+    console.log(this.state.isPlaying)
     this.setState({
       playId:audio.playlist[this.state.playIndex + 1].id,
       playitemUrl:audio.playlist[this.state.playIndex + 1].url,
@@ -76,10 +69,6 @@ export default class AudioPlayer extends Component {
 
     })
   }
-
-
-
-
 
   render() {
 
@@ -146,7 +135,7 @@ export default class AudioPlayer extends Component {
           autoPlay: false,
           autoLoad: true,
           whileplaying: function() {
-          document.getElementsByClassName(('progressBar')[0].style.width =  25 + '%')
+          //document.getElementsByClassName(('progressBar')[0].style.width =  25 + '%')
 
 
         },
@@ -190,14 +179,14 @@ export default class AudioPlayer extends Component {
                       <SkipPrevious
                         style={playButtonStyles}
                         onClick={this.playPrevious.bind(this, audio)} />
-                      {this.state.isPlaying === true ?
+                      {this.props.ui.isPlaying === true ?
                       <Pause
                         style={playButtonStyles}
-                        onClick={this.pausePlayer.bind(this, audio)} />
+                        onClick={this.pauseTheSound.bind(this)} />
                       :
                       <PlayArrow
                         style={playButtonStyles}
-                        onClick={this.resumePlayer.bind(this, audio)} />
+                        onClick={this.resumeTheSound.bind(this)} />
                       }
                       <SkipNext
                         style={playButtonStyles}
@@ -219,5 +208,14 @@ export default class AudioPlayer extends Component {
 }
 
 AudioPlayer.propTypes = {
-  audio: PropTypes.array
+  audio: PropTypes.array,
+  resumePlayer:PropTypes.func
 }
+
+function mapStateToProps(state){
+  return {
+    ui:state.ui
+  }
+}
+
+export default connect(mapStateToProps)(AudioPlayer)

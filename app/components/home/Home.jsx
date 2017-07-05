@@ -29,7 +29,9 @@ class Home extends React.Component {
             <PlaylistList />
           </div>
           <div>
-            <AudioPlayer />
+            <AudioPlayer
+
+             />
           </div>
 
 

@@ -1,6 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { ApolloClient } from 'react-apollo'
 import { routerReducer } from 'react-router-redux'
+import logger from 'redux-logger'
+import thunk from 'redux-thunk'
+
 
 import ui from './reducers/ui'
 
@@ -8,12 +11,12 @@ export const client = new ApolloClient()
 
 export const store = createStore(
   combineReducers({
-    ui: ui,
+    ui:ui,
     apollo: client.reducer(),
     routing: routerReducer
   }),
   compose(
-    applyMiddleware(client.middleware()),
+    applyMiddleware(client.middleware(), thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 )

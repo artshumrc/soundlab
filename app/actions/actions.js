@@ -1,8 +1,17 @@
-export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+export const RESUME_PLAYER = 'RESUME_PLAYER'
+export const PAUSE_PLAYER = 'PAUSE_PLAYER'
 
-export function toggleSidebar(sidebarState) {
+
+export function resumePlayer() {
   return {
-    type: TOGGLE_SIDEBAR,
-    sidebarState
-  };
+    type: RESUME_PLAYER,
+    isPlaying:true
+  }
+}
+
+export function pausePlayer() {
+  return {
+    type: PAUSE_PLAYER,
+    isPlaying:false
+  }
 }
