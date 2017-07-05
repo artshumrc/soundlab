@@ -1,7 +1,9 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import {Image} from 'react-bootstrap';
+import {Route} from 'react-router';
 import './Dashboard.css';
+import Articles from './routes/Articles';
 import ListItem from './components/ListItem';
 
 export default class Dashboard extends React.Component {
@@ -78,7 +80,9 @@ export default class Dashboard extends React.Component {
 							</div>
 						</div>
 					</div>
-					<div className="dashboardContent" />
+					<div className="dashboardContent">
+            <Route path="/dashboard/articles" component={Articles} />
+          </div>
 				</div>
 			</div>
 		);
