@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Col, Row} from 'react-bootstrap';
 import TextInput from '../components/TextInput';
+import TextArea from '../components/TextArea';
 import './Articles.css';
 
 export default class Articles extends React.Component {
@@ -55,17 +56,20 @@ export default class Articles extends React.Component {
 							<div className="sectionTitle">Text inputs with labels</div>
 							<TextInput placeholder="Placeholder" label="Label" />
 							<TextInput placeholder="Placeholder" label="Label" required />
+              <TextArea rows={7} label="Label" disabled />
 						</Col>
 						<Col lg={3}>
               <div className="sectionTitle">Correct value label</div>
               <TextInput placeholder="Placeholder" value="Correct value" valid={true} label="Label" />
               <TextInput placeholder="Placeholder" value="Correct value" valid={true} label="Label" required />
+              <TextArea rows={7} label="Label" min={40} />
             </Col>
 						<Col lg={3}>
               <div className="sectionTitle">Wrong value label</div>
               <TextInput placeholder="Placeholder" value="Wrong value" valid={false} label="Label" />
               <TextInput placeholder="Placeholder" value="Wron value" valid={false} label="Label" required />
-						</Col>
+              <TextArea rows={7} label="Label" required/>
+            </Col>
 						<Col lg={3}>
 							<div className="sectionTitle">Custom fields</div>
 						</Col>
