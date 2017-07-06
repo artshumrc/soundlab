@@ -7,7 +7,7 @@ import projectType from '../types/models/project';
 import Projects from '../bll/projects';
 
 // errors
-import { AuthenticationError, DBError } from '../errors';
+import { AuthenticationError } from '../errors';
 
 
 const projectFileds = {
@@ -18,28 +18,23 @@ const projectFileds = {
 			title: {
 				type: new GraphQLNonNull(GraphQLString)
 			},
-			slug: {
-				type: new GraphQLNonNull(GraphQLString)
-			},
 		},
 		async resolve(parent, { title, slug }, { session: { passport } }) {
-			const project = {
-				title,
-				slug,
-			};
 
 			if (passport) {
+
+				const project = {
+					title,
+					slug,
+				};
+
 				try {
 					return await Projects.create(passport.user, project);
 				} catch (err) {
-					console.error(err);
-
-					// TODO: can pass validation error here if needed
-					throw new DBError();
+					throw err;
 				}
-			} else {
-				throw new AuthenticationError();
-			}
+
+			} throw new AuthenticationError();
 		}
 	}
 };

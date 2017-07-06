@@ -10,7 +10,11 @@ import Projects from '../bll/projects';
 const projectFileds = {
 	projectById: {
 		type: projectType,
-		args: { _id: { type: GraphQLString } },
+		args: {
+			_id: {
+				type: GraphQLString
+			}
+		},
 		resolve(parent, {_id}) {
 			return Projects.findById(_id).then(
 				doc => doc,

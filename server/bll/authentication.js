@@ -4,20 +4,18 @@ import check from 'check-types';
 import User from '../models/user';
 
 
-export async function validateUser(username, validMethod) {
+export async function validateUser(username) {
 
 	if (username && check.string(username)) {
 		try {
 			const user = await User.findOne({ username });
 
-			if (user) {
+			if (user) return user;
 
-				return validMethod();
-
-			} throw new AuthenticationError();
+			throw new AuthenticationError();
 
 		} catch (err) {
-			throw new Error(err);
+			throw err;
 		}
 
 	} throw new AuthenticationError();

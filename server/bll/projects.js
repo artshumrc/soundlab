@@ -7,6 +7,7 @@ import { AuthenticationError } from '../errors';
 // bll
 import { validateUser } from './authentication';
 
+
 class ProjectsClass {
 
 	constructor(ProjectModel) {
@@ -15,14 +16,16 @@ class ProjectsClass {
 
 	async create(username, project) {
 
-		const createProject = async () => {
+		try {
+			const user = await validateUser(username);
 
 			const newProject = new this.ProjectModel(project);
 
-			return newProject.save();
-		};
+			return await newProject.save();
 
-		return await validateUser(username, createProject);
+		} catch (err) {
+			throw err;
+		}
 	}
 
 	findById(_id) {
