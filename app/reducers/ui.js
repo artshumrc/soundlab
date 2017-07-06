@@ -1,7 +1,9 @@
 import { RESUME_PLAYER } from '../actions/actions'
+import { NEXT_TRACK } from '../actions/actions'
 
 const initialUIState = {
-  isPlaying: false
+  isPlaying: false,
+  currentIndex: 0
 }
 
 export default function (state = initialUIState, action) {
@@ -16,6 +18,18 @@ export default function (state = initialUIState, action) {
   case 'PAUSE_PLAYER':
     return Object.assign({}, state, {
       ...state,
+      isPlaying: action.isPlaying
+    })
+  case 'NEXT_TRACK':
+    return Object.assign({}, state, {
+      ...state,
+      currentIndex: action.currentIndex,
+      isPlaying: action.isPlaying
+    })
+  case 'PREVIOUS_TRACK':
+    return Object.assign({}, state, {
+      ...state,
+      currentIndex: action.currentIndex,
       isPlaying: action.isPlaying
     })
 

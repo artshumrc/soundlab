@@ -22,9 +22,9 @@ class Home extends React.Component {
 
         <div>
 
-          <div>
+          {/*<div>
             <ShowcaseList />
-          </div>
+          </div>*/}
           <div>
             <PlaylistList />
           </div>
