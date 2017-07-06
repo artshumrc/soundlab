@@ -1,9 +1,13 @@
 import { RESUME_PLAYER } from '../actions/actions'
 import { NEXT_TRACK } from '../actions/actions'
+import { TOGGLE_BEING_CATEGORY } from '../actions/searchActions'
+import { TOGGLE_TIME_CATEGORY } from '../actions/searchActions'
 
 const initialUIState = {
   isPlaying: false,
-  currentIndex: 0
+  currentIndex: 0,
+  displayTime: false,
+  displayBeing: false
 }
 
 export default function (state = initialUIState, action) {
@@ -32,7 +36,16 @@ export default function (state = initialUIState, action) {
       currentIndex: action.currentIndex,
       isPlaying: action.isPlaying
     })
-
+  case 'TOGGLE_BEING_CATEGORY':
+    return Object.assign({}, state, {
+      ...state,
+      displayBeing: action.displayBeing
+    })
+  case 'TOGGLE_TIME_CATEGORY':
+    return Object.assign({}, state, {
+      ...state,
+      displayTime: action.displayTime
+    })
   default:
     return state
   }

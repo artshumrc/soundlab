@@ -9,6 +9,8 @@ import AudioUploadItem from '../audioUpload/AudioUploadItem'
 import BeingCategory from './BeingCategory'
 import TimeCategory from './TimeCategory'
 import SearchTools from './SearchTools'
+import { toggleTimeCategory, toggleBeingCategory } from '../../actions/searchActions'
+import { connect } from 'react-redux'
 
 
 
@@ -18,9 +20,7 @@ class Search extends React.Component {
     super(props)
 
     this.state = {
-      //audioUploadChecked: false
-      beingFilter: false,
-      timeFilter: false,
+
     }
   }
 
@@ -34,16 +34,14 @@ class Search extends React.Component {
 
   filterBeing(e) {
     e.preventDefault()
-    this.setState({
-      beingFilter: !this.state.beingFilter
-    })
+    this.props.dispatch(toggleBeingCategory())
+
   }
 
   filterTime(e) {
     e.preventDefault()
-    this.setState({
-      timeFilter: !this.state.timeFilter
-    })
+    this.props.dispatch(toggleTimeCategory())
+
   }
 
   render() {
@@ -69,11 +67,11 @@ class Search extends React.Component {
               filterTime={this.filterTime.bind(this)}
             />
 
-            {this.state.timeFilter === true ?
+            {this.props.ui.displayTime === true ?
               <TimeCategory />
             : '' }
 
-            {this.state.beingFilter === true ?
+            {this.props.ui.displayBeing === true ?
               <BeingCategory />
             : '' }
 
@@ -88,6 +86,13 @@ class Search extends React.Component {
     }
   }
 }
+
+function mapStateToProps(state){
+  return {
+    ui:state.ui,
+  }
+}
+
 
 const SearchQuery = gql`
   query SearchQuery {
@@ -128,20 +133,4 @@ const SearchQuery = gql`
 
 const SearchWithData = graphql(SearchQuery)(Search)
 
-export default SearchWithData
-
-/*
-
-{this.state.audioUploadChecked === true ?
-  <div>
-    {this.props.data.posts.map((post) =>
-      <AudioUploadItem key={post.id} post={post} />
-    )}
-  </div>
-: '' }
-
-{this.props.data.submission.map((post) =>
-  <SubmissionItem key={post.id} post={post} />
-)}
-
-*/
+export default connect(mapStateToProps)(SearchWithData)
