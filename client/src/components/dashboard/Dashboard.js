@@ -4,6 +4,7 @@ import {Image} from 'react-bootstrap';
 import {Route} from 'react-router';
 import './Dashboard.css';
 import Articles from './routes/Articles';
+import MainPanel from './routes/MainPanel';
 import ListItem from './components/ListItem';
 
 export default class Dashboard extends React.Component {
@@ -71,6 +72,7 @@ export default class Dashboard extends React.Component {
 						</div>
 					</div>
 					<div className="dashboardContent">
+            <Route exact path="/dashboard" component={MainPanel} />
 						<Route path="/dashboard/articles" component={Articles} />
 					</div>
 				</div>
