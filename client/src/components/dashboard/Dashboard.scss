@@ -27,13 +27,10 @@
           color: #5a6277;
           border-left: 2px solid #333d56;
         }
-        li:hover {
+        li:hover, li.active {
           background-color: #2a303e;
           border-left: 2px solid #63baf0;
           color: #fff
-        }
-        li.active {
-          color: #fff;
         }
         .fa {
           margin-left: 30px;

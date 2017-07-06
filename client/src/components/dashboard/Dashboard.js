@@ -22,19 +22,19 @@ export default class Dashboard extends React.Component {
 	render() {
 		const sidebarClass = this.state.sidebarVisible ? 'sidebar' : 'sidebar sidebarWrapped';
 		const contentWrapperClass = this.state.sidebarVisible ? 'contentWrapper' : 'contentWrapper contentWrapperExpand';
-
+    const currentLocation = this.props.location.pathname;
 		return (
 			<div id="dashboard">
 				<div className={sidebarClass}>
 					<h3 className="invert">Orpheus</h3>
 					<div className="sidebarMenu">
 						<ul>
-							<ListItem fa="file-text-o" name="Main Panel" url="/dashboard" />
-							<ListItem fa="file" name="Articles" url="/dashboard/articles" />
-							<ListItem fa="user" name="User Profile" url="/dashboard/user" />
-							<ListItem fa="window-maximize" name="Data Entry" url="/dashboard/data" />
-							<ListItem fa="folder-open-o" name="Projects" url="/dashboard/projects" />
-							<ListItem fa="cog" name="Settings" url="/dashboard/settings" />
+							<ListItem currentLocation={currentLocation} fa="file-text-o" name="Main Panel" url="/dashboard" />
+							<ListItem currentLocation={currentLocation} fa="file" name="Articles" url="/dashboard/articles" />
+							<ListItem currentLocation={currentLocation} fa="user" name="User Profile" url="/dashboard/user" />
+							<ListItem currentLocation={currentLocation} fa="window-maximize" name="Data Entry" url="/dashboard/data" />
+							<ListItem currentLocation={currentLocation} fa="folder-open-o" name="Projects" url="/dashboard/projects" />
+							<ListItem currentLocation={currentLocation} fa="cog" name="Settings" url="/dashboard/settings" />
 						</ul>
 					</div>
 				</div>
