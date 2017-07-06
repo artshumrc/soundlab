@@ -6,6 +6,9 @@ import './stylesheets/TextInput.css';
 export default class TextInput extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			value: this.props.value
+		};
 	}
 
 	render() {
@@ -31,7 +34,7 @@ export default class TextInput extends React.Component {
 				{label}
 				<div className={style}>
 					{icon}
-					<input placeholder={this.props.placeholder} value={this.props.value} disabled={this.props.disabled} />
+					<input placeholder={this.props.placeholder} value={this.state.value} onChange={this.props.changeCb} disabled={this.props.disabled} />
 					{iconRight}
 					{required}
 				</div>
@@ -42,5 +45,6 @@ export default class TextInput extends React.Component {
 TextInput.propTypes = {
 	placeholder: PropTypes.string.isRequired,
 	valid: PropTypes.bool,
-	value: PropTypes.string
+	value: PropTypes.string,
+	changeCb: PropTypes.func.isRequired
 };

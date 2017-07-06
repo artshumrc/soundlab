@@ -7,6 +7,11 @@ import './Articles.css';
 export default class Articles extends React.Component {
 	constructor(props) {
 		super(props);
+		this.handleFormChange = this.handleFormChange.bind(this);
+	}
+
+	handleFormChange() {
+
 	}
 
 	render() {
@@ -23,28 +28,28 @@ export default class Articles extends React.Component {
 					<Row>
 						<Col lg={3}>
 							<div className="sectionTitle">Text inputs</div>
-							<TextInput placeholder="Placeholder" />
-							<TextInput placeholder="Placeholder" value="value" />
-							<TextInput placeholder="Error" valid={false} />
-							<TextInput placeholder="Success" valid />
-							<TextInput placeholder="Disabled" disabled />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Error" valid={false} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid />
+							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled />
 						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">With icon</div>
-							<TextInput placeholder="Placeholder" icon="calendar" />
-							<TextInput placeholder="Placeholder" value="value" icon="user-o" />
-							<TextInput placeholder="Error" valid={false} icon="calendar" />
-							<TextInput placeholder="Success" valid icon="user-o" />
-							<TextInput placeholder="Disabled" disabled icon="calendar" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" icon="calendar" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" icon="user-o" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Error" valid={false} icon="calendar" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid icon="user-o" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled icon="calendar" />
 						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">With icon - right side</div>
 
-							<TextInput placeholder="Placeholder" iconRight="calendar" />
-							<TextInput placeholder="Placeholder" value="value" iconRight="user-o" />
-							<TextInput placeholder="Error" valid={false} iconRight="calendar" />
-							<TextInput placeholder="Success" valid iconRight="user-o" />
-							<TextInput placeholder="Disabled" disabled iconRight="calendar" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" iconRight="calendar" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" iconRight="user-o" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Error" valid={false} iconRight="calendar" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid iconRight="user-o" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled iconRight="calendar" />
 
 						</Col>
 						<Col lg={3}>
@@ -54,26 +59,26 @@ export default class Articles extends React.Component {
 					<Row>
 						<Col lg={3}>
 							<div className="sectionTitle">Text inputs with labels</div>
-							<TextInput placeholder="Placeholder" label="Label" />
-							<TextInput placeholder="Placeholder" label="Label" required />
-              <TextArea rows={7} value="The textarea tag defines a multi-line text input control." label="Label" disabled />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" label="Label" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" label="Label" required />
+							<TextArea changeCb={this.handleFormChange} rows={7} value="The textarea tag defines a multi-line text input control." label="Label" disabled />
 						</Col>
 						<Col lg={3}>
-              <div className="sectionTitle">Correct value label</div>
-              <TextInput placeholder="Placeholder" value="Correct value" valid={true} label="Label" />
-              <TextInput placeholder="Placeholder" value="Correct value" valid={true} label="Label" required />
-              <TextArea rows={7} value="The textarea tag defines a multi-line text input control." label="Label" min={40} />
-            </Col>
+							<div className="sectionTitle">Correct value label</div>
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Correct value" valid label="Label" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Correct value" valid label="Label" required />
+							<TextArea changeCb={this.handleFormChange} rows={7} value="The textarea tag defines a multi-line text input control." label="Label" min={40} />
+						</Col>
 						<Col lg={3}>
-              <div className="sectionTitle">Wrong value label</div>
-              <TextInput placeholder="Placeholder" value="Wrong value" valid={false} label="Label" />
-              <TextInput placeholder="Placeholder" value="Wron value" valid={false} label="Label" required />
-              <TextArea rows={7} value="The textarea tag defines a multi-line text input control." label="Label" required/>
-            </Col>
+							<div className="sectionTitle">Wrong value label</div>
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Wrong value" valid={false} label="Label" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Wron value" valid={false} label="Label" required />
+							<TextArea changeCb={this.handleFormChange} rows={7} value="The textarea tag defines a multi-line text input control." label="Label" required />
+						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">Textarea</div>
-              <TextArea placeholder="Placeholder" rows={7} />
-              <TextArea value="The textarea tag defines a multi-line text input control." label="Label" rows={7} required />
+							<TextArea changeCb={this.handleFormChange} placeholder="Placeholder" rows={7} />
+							<TextArea changeCb={this.handleFormChange} value="The textarea tag defines a multi-line text input control." label="Label" rows={7} required />
 						</Col>
 					</Row>
 				</div>
