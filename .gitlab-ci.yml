@@ -1,0 +1,7 @@
+image: node:6.10.2
+before_script:
+  - yarn install
+job:
+  script:
+  - npm run test-client-ci
+
