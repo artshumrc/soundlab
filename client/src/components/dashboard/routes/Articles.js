@@ -3,6 +3,8 @@ import {Button, Col, Row} from 'react-bootstrap';
 import TextInput from '../components/TextInput';
 import TextInputIcon from '../components/TextInputIcon';
 import TextArea from '../components/TextArea';
+import NumberInput from '../components/NumberInput';
+import InputAction from '../components/InputAction';
 import './Articles.css';
 
 export default class Articles extends React.Component {
@@ -16,6 +18,7 @@ export default class Articles extends React.Component {
 	}
 
 	render() {
+	  const actionOptions = [{name: "USD"}, {name: "PLN"}];
 		return (
 			<div id="articles">
 				<div className="topBar">
@@ -55,7 +58,12 @@ export default class Articles extends React.Component {
 						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">Custom fields</div>
-							<TextInputIcon icon="user-o" value="User" placeholder="Username" changeCb={this.handleFormChange} />
+
+							<TextInputIcon changeCb={this.handleFormChange} icon="user-o" value="User" placeholder="Username" />
+              <TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled iconRight="calendar" />
+              <InputAction options={actionOptions} />
+							<NumberInput changeCb={this.handleFormChange} />
+
 						</Col>
 					</Row>
 					<Row>
