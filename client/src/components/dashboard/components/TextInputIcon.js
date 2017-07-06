@@ -4,7 +4,7 @@ import FontAwesome from 'react-fontawesome';
 import PropTypes from 'prop-types';
 import './stylesheets/TextInputIcon.css';
 
-export default class NumberInput extends React.Component {
+export default class TextInputIcon extends React.Component {
 	render() {
 		return (
 			<div className="textInputIconWrapper">
@@ -23,12 +23,12 @@ export default class NumberInput extends React.Component {
 		);
 	}
 }
-NumberInput.propTypes = {
+TextInputIcon.propTypes = {
 	icon: PropTypes.string.isRequired,
 	value: PropTypes.string,
 	changeCb: PropTypes.func.isRequired,
 	placeholder: PropTypes.string.isRequired
 };
-NumberInput.defaultProps = {
+TextInputIcon.defaultProps = {
 	value: ''
 };
