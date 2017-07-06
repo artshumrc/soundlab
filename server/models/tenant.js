@@ -4,27 +4,23 @@ import URLSlugs from 'mongoose-url-slugs';
 
 const Schema = mongoose.Schema;
 
-const ProjectSchema = new Schema({
-	title: {
+const TenantSchema = new Schema({
+	name: {
 		type: String,
 		unique: true,
 		required: true,
 		trim: true
 	},
-	tenantIds: [{
-		type: Schema.Types.ObjectId,
-		ref: 'Tenant'
-	}],
 });
 
 
 // add timestamp (createdAt, updatedAt)
-ProjectSchema.plugin(timestamp);
+TenantSchema.plugin(timestamp);
 
 // add slug (slug)
-ProjectSchema.plugin(URLSlugs('title'));
+TenantSchema.plugin(URLSlugs('title'));
 
 
-const Project = mongoose.model('Project', ProjectSchema);
+const Tenant = mongoose.model('Tenant', TenantSchema);
 
-export default Project;
+export default Tenant;
