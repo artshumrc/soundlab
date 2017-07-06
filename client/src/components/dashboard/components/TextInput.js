@@ -4,13 +4,6 @@ import FontAwesome from 'react-fontawesome';
 import './stylesheets/TextInput.css';
 
 export default class TextInput extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			value: this.props.value
-		};
-	}
-
 	render() {
 		let iconRight;
 		let style = this.props.icon ? 'inner-addon both-addon ' : 'textInput inner-addon right-addon ';
@@ -34,7 +27,7 @@ export default class TextInput extends React.Component {
 				{label}
 				<div className={style}>
 					{icon}
-					<input placeholder={this.props.placeholder} value={this.state.value} onChange={this.props.changeCb} disabled={this.props.disabled} />
+					<input placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.changeCb} disabled={this.props.disabled} />
 					{iconRight}
 					{required}
 				</div>
