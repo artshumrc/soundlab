@@ -18,7 +18,7 @@ export default class Articles extends React.Component {
 	}
 
 	render() {
-	  const actionOptions = [{name: "USD"}, {name: "PLN"}];
+	  const actionOptions = [{name: 'USD'}, {name: 'PLN'}];
 		return (
 			<div id="articles">
 				<div className="topBar">
@@ -60,8 +60,8 @@ export default class Articles extends React.Component {
 							<div className="sectionTitle">Custom fields</div>
 
 							<TextInputIcon changeCb={this.handleFormChange} icon="user-o" value="User" placeholder="Username" />
-              <TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled iconRight="calendar" />
-              <InputAction options={actionOptions} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled iconRight="calendar" />
+							<InputAction options={actionOptions} />
 							<NumberInput changeCb={this.handleFormChange} />
 
 						</Col>
