@@ -55,7 +55,7 @@ export default class Articles extends React.Component {
 						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">Custom fields</div>
-              <TextInputIcon icon="user-o" value="User"/>
+							<TextInputIcon icon="user-o" value="User" placeholder="Username" changeCb={this.handleFormChange} />
 						</Col>
 					</Row>
 					<Row>
