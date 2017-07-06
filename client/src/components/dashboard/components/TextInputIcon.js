@@ -7,14 +7,19 @@ import './stylesheets/TextInputIcon.css';
 export default class NumberInput extends React.Component {
 	render() {
 		return (
-			<FormGroup className="textInputIcon">
-				<InputGroup>
-					<InputGroup.Addon>
-						<FontAwesome name={this.props.icon} />
-					</InputGroup.Addon>
-					<FormControl type="text" placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.changeCb} />
-				</InputGroup>
-			</FormGroup>
+			<div className="textInputIconWrapper">
+				<FormGroup className="textInputIcon">
+					<InputGroup>
+						<InputGroup.Addon>
+							<FontAwesome name={this.props.icon} />
+						</InputGroup.Addon>
+						<FormControl
+							type="text" placeholder={this.props.placeholder} value={this.props.value}
+							onChange={this.props.changeCb}
+						/>
+					</InputGroup>
+				</FormGroup>
+			</div>
 		);
 	}
 }
