@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Col, Row} from 'react-bootstrap';
 import TextInput from '../components/TextInput';
+import TextInputIcon from '../components/TextInputIcon';
 import TextArea from '../components/TextArea';
 import './Articles.css';
 
@@ -54,6 +55,7 @@ export default class Articles extends React.Component {
 						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">Custom fields</div>
+              <TextInputIcon icon="user-o" value="User"/>
 						</Col>
 					</Row>
 					<Row>
