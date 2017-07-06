@@ -17,7 +17,6 @@
     "express-graphql": "^0.6.6",
     "express-session": "^1.15.3",
     "graphql": "^0.10.3",
-    "jest": "^20.0.4",
     "mongoose": "4.10.8",
     "mongoose-schema-to-graphql": "^2.5.7",
     "mongoose-timestamp": "^0.6.0",
@@ -41,6 +40,7 @@
     "eslint-plugin-react": "^7.0.1",
     "faucet": "^0.0.1",
     "flow-bin": "^0.47.0",
+    "jest": "^20.0.4",
     "leaked-handles": "^5.2.0",
     "nodemon": "^1.11.0",
     "tape": "^4.6.3"
