@@ -32,15 +32,21 @@
     .notification {
       display: inline-block;
       h2 {
+        font-family: 'Montserrat', sans-serif;
+        padding-bottom: 5px;
+        text-transform: none;
         margin-top: 5px;
         margin-bottom: 3px;
         font-size: 16px;
         letter-spacing: 1px;
       }
       h3 {
+        font-family: 'Montserrat', sans-serif;
+        text-transform: none;
         margin-top: 0;
         font-size: 13px;
         color: #9a9a9a;
+        letter-spacing: normal;
       }
     }
     .panel-heading {
