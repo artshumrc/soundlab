@@ -1,13 +1,9 @@
 import React from 'react';
 import {Col, Row, Image, ListGroup, ListGroupItem} from 'react-bootstrap';
-import './UserProfile.css';
 import FontAwesome from 'react-fontawesome';
+import './UserProfile.css';
 
 export default class UserProfile extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<div id="userProfile">
