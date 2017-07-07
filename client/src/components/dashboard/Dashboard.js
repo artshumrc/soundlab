@@ -7,6 +7,7 @@ import Articles from './routes/Articles';
 import Articles2 from './routes/Articles2';
 import MainPanel from './routes/MainPanel';
 import UserProfile from './routes/UserProfile';
+import UserProfileTimeline from './routes/UserProfileTimeline';
 import ListItem from './components/ListItem';
 
 export default class Dashboard extends React.Component {
@@ -78,6 +79,7 @@ export default class Dashboard extends React.Component {
 						<Route path="/dashboard/articles" component={Articles} />
 						<Route path="/dashboard/articles2" component={Articles2} />
 						<Route path="/dashboard/user" component={UserProfile} />
+						<Route path="/dashboard/user2" component={UserProfileTimeline} />
 					</div>
 				</div>
 			</div>
