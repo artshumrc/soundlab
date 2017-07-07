@@ -35,16 +35,31 @@ if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
 }
 
+
+
+
 app.use(logger('dev'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 app.use(session({
-	secret: 'keyboard cat',
+	secret: '6243@7GLKrs&W6pA$fK!',
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: false,
+	// cookie: {
+	// 	// path: '/',
+	// 	domain: '.192.168.0.25:3000',
+	// 	maxAge: 24 * 6 * 60 * 10000
+	// },
 }));
+
+const corsOptions = {
+	origin: 'http://192.168.0.25:3000',
+	credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 // passport config
 passport.use(new PassportLocal.Strategy(User.authenticate()));
@@ -55,7 +70,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // CORS-enabled GraphQL server
-app.use('/graphql', cors(), graphqlHTTP({
+app.use('/graphql', graphqlHTTP({
 	schema: RootSchema,
 	formatError,
 	graphiql: true
@@ -82,7 +97,7 @@ app.get('/secret', authenticationMiddleware(), function(req, res) {
 });
 
 // CORS-enabled login
-app.use('/login', cors());
+// app.use('/login', cors(corsOptions));
 
 app.get('/login', function(req, res) {
 	res.sendFile(__dirname + '/login.html');
@@ -90,8 +105,9 @@ app.get('/login', function(req, res) {
 
 app.post('/login', passport.authenticate('local'), function(req, res) {
 	console.log(req.isAuthenticated());
-	res.setHeader('Content-Type', 'application/json');
-	res.send(JSON.stringify({ isAuthenticated: req.isAuthenticated() }));
+	// res.setHeader('Content-Type', 'application/json');
+	// res.send(JSON.stringify({ isAuthenticated: req.isAuthenticated() }));
+	res.sendStatus(200);
 	// res.redirect('/graphql');
 });
 

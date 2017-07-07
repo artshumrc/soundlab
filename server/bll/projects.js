@@ -21,7 +21,25 @@ class ProjectsClass {
 
 			const newProject = new this.ProjectModel(project);
 
-			return await newProject.save();
+			return newProject.save();
+
+		} catch (err) {
+			throw err;
+		}
+	}
+
+	// test:
+	findOne() {
+		return this.ProjectModel.findOne();
+	}
+
+	// test:
+	async findOneSecret(username) {
+		try {
+			const user = await validateUser(username);
+			const test = await this.ProjectModel.findOne();
+			console.log('test', test)
+			return test;
 
 		} catch (err) {
 			throw err;

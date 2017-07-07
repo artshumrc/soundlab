@@ -20,7 +20,6 @@ const projectFileds = {
 			},
 		},
 		async resolve(parent, { title, slug }, { session: { passport } }) {
-
 			if (passport) {
 
 				const project = {

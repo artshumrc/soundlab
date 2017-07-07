@@ -3,6 +3,8 @@ import check from 'check-types';
 // models
 import User from '../models/user';
 
+// errors
+import { AuthenticationError } from '../errors';
 
 export async function validateUser(username) {
 

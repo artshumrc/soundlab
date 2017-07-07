@@ -6,6 +6,8 @@ import projectType from '../types/models/project';
 // bll
 import Projects from '../bll/projects';
 
+// errors
+import { AuthenticationError } from '../errors';
 
 const projectFileds = {
 	projectById: {
@@ -28,6 +30,28 @@ const projectFileds = {
 			return Projects.findBySlug(slug).then(
 				doc => doc,
 				err => console.error(err));
+		},
+	},
+	projectRandom: {
+		type: projectType,
+		async resolve(parent, { slug }) {
+			try {
+				return await Projects.findOne();
+			} catch (err) {
+				throw err;
+			}
+		},
+	},
+	projectSecret: {
+		type: projectType,
+		async resolve(parent, { slug }, { session: { passport } }) {
+			if (passport) {
+				try {
+					return await Projects.findOneSecret(passport.user);
+				} catch (err) {
+					throw err;
+				}
+			} throw new AuthenticationError();
 		},
 	},
 };
