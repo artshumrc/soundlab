@@ -1,4 +1,5 @@
 import React from 'react';
+import {Image} from 'react-bootstrap';
 import './PopularCollectionsSection.css';
 import FeaturedCollections from './FeaturedCollections';
 
@@ -9,7 +10,7 @@ export default class PopularCollectionsSection extends React.Component {
 				name: 'Neolithic era art found in Egypt',
 				country: 'Egypt',
 				location: 'Easter play of Muri',
-				category: 'Photography and much more asdqweasda',
+				category: 'Photography and much more',
 				imageUrl: '/images/sampleCollection.png',
 			},
 			{
@@ -28,11 +29,12 @@ export default class PopularCollectionsSection extends React.Component {
 			}
 		];
 		return (
-			<section>
+			<section id="collections">
 				<div className="parallax">
 					<div className="parallax-content">
+						<Image src="/images/collections.png" responsive />
 						<h3>Popular collections</h3>
-						<h2>We have largest digital archive</h2>
+						<h2 className="invert">We have largest digital archive</h2>
 						<FeaturedCollections data={collectionData} />
 					</div>
 				</div>

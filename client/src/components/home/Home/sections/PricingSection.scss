@@ -1,0 +1,87 @@
+#pricing {
+  background-color: #f1f1f1;
+  .panel {
+    border: 0;
+  }
+  .panel-pricing {
+    color: #969595;
+    .panel-heading {
+      color: #fff;
+    }
+    .panel-body {
+      border: transparent;
+    }
+    .price {
+      color: #000;
+      font-size: 70px;
+      font-family: 'Roboto Slab', serif;
+      font-weight: bold;
+      sup {
+        top: -0.5em;
+        font-size: 40px;
+      }
+      sub {
+        font-size: 16px;
+      }
+    }
+    hr {
+      border-color: #ebebeb;
+    }
+    ul {
+      list-style: none;
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 15px;
+      -webkit-margin-start: 0;
+      -webkit-margin-end: 0;
+      -webkit-padding-start: 0;
+      li {
+        padding: 5px 0;
+      }
+    }
+  }
+  .simple {
+    .panel-heading {
+      background-color: #3fc8db;
+      border-color: #3fc8db;
+    }
+    .panel-body {
+      .fa {
+        color: #3fc8db;
+      }
+      button {
+        background-color: #3fc8db;
+        border: #3fc8db;
+      }
+    }
+  }
+  .standard {
+    .panel-heading {
+      background-color: #31aae2;
+      border-color: #31aae2;
+    }
+    .panel-body {
+      .fa {
+        color: #31aae2;
+      }
+      button {
+        background-color: #31aae2;
+        border: #31aae2;
+      }
+    }
+  }
+  .ultimate {
+    .panel-heading {
+      background-color: #e74c3c;
+      border-color: #e74c3c;
+    }
+    .panel-body {
+      .fa {
+        color: #e74c3c;
+      }
+      button {
+        background-color: #e74c3c;
+        border: #e74c3c;
+      }
+    }
+  }
+}
