@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, Col, Row, Panel} from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
-import {BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer} from 'recharts';
+import {AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer} from 'recharts';
 import {Timeline, TimelineItem} from '../components/Timeline';
 
 import './MainPanel.css';
@@ -17,6 +17,15 @@ export default class MainPanel extends React.Component {
       {name: '90', pv: 90},
       {name: '80', pv: 60},
 		];
+    const data2 = [
+      {name: '80', pv: 60, uv: 90},
+      {name: '60', pv: 80, uv: 60},
+      {name: '90', pv: 90, uv: 30},
+      {name: '120', pv: 120, uv: 90},
+      {name: '80', pv: 80, uv: 60},
+      {name: '90', pv: 90, uv: 120},
+      {name: '80', pv: 60, uv: 90},
+    ];
 		const timelineData = [
       {message: 'Mark wrote a message', date: ' 2 min ago'},
       {message: 'Anna created a new website ', date: '1 hour ago'},
@@ -133,7 +142,6 @@ export default class MainPanel extends React.Component {
 								<div className="panel-body">
 									<ResponsiveContainer height={300} width="100%">
 										<BarChart
-
 											data={data}
 											margin={{top: 5, right: 30, left: 20, bottom: 5}}
 										>
@@ -167,6 +175,22 @@ export default class MainPanel extends React.Component {
 							</div>
 						</Col>
 					</Row>
+          <Row>
+            <Col lg={12}>
+              <Panel header="Article reach">
+                <ResponsiveContainer height={300} width="100%">
+                  <AreaChart data={data2}
+                             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <Area type="monotone" dataKey="pv" stroke="#a4d882" fillOpacity={1} fill="#a4d882" />
+                    <Area type="monotone" dataKey="uv" stroke="#547df9" fillOpacity={1} fill="#547df9" />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </Panel>
+            </Col>
+          </Row>
 				</div>
 			</div>);
 	}
