@@ -3,10 +3,6 @@ import './stylesheets/NumberInput.css';
 import PropTypes from 'prop-types';
 
 export default class NumberInput extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="numberInputWrapper">

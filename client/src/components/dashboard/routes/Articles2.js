@@ -1,13 +1,9 @@
 import React from 'react';
+import {Button, Row} from 'react-bootstrap';
 import './Articles.css';
-import {Button, Col, Row} from 'react-bootstrap';
 import ArticlePreview from '../components/ArticlePreview';
 
 export default class Articles2 extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const data = [
 			{
@@ -48,7 +44,7 @@ export default class Articles2 extends React.Component {
 					<h3>All Articles</h3>
 					<hr />
 					{
-            withRows.map(row => <Row>{row.map(article => <ArticlePreview articleData={article} key={article._id} />)}</Row>)
+            withRows.map((row, index) => <Row key={index}>{row.map(article => <ArticlePreview articleData={article} key={article._id} />)}</Row>)
           }
 				</div>
 			</div>

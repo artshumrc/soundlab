@@ -3,10 +3,6 @@ import {FormGroup, InputGroup, FormControl, DropdownButton, MenuItem} from 'reac
 import './stylesheets/InputAction.css';
 
 export default class InputAction extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<div className="inputAction">
