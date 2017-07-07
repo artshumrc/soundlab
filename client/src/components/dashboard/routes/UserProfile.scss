@@ -1,0 +1,78 @@
+#userProfile {
+  h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #3c3c3c;
+    font-size: 18px;
+    letter-spacing: normal;
+    padding-bottom: 0;
+  }
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: #2c3e50;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #666666;
+    text-transform: none;
+    margin-top: 10px;
+  }
+  .socialIcons {
+    margin: 20px 0;
+  }
+  .fa {
+    color: #4a4a4a;
+    margin: 0 5px;
+  }
+  .fa:hover {
+    color: #31aae2;
+  }
+  p {
+    font-size: 13px;
+    margin: 30px 0;
+    line-height: 26px;
+    color: #757575;
+    text-align: justify;
+  }
+  .content {
+    .row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  .contactDetails {
+    width: 70%;
+
+    .list-group-item {
+      background-color: transparent;
+      border-left: 0;
+      border-right: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .fa {
+        display: inline-block;
+        margin-right: 20px;
+        color: #3498db;
+      }
+      .details {
+        display: inline-block;
+        h5 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 14px;
+          color: #333333;
+          margin-top: 0;
+          margin-bottom: 15px;
+        }
+        .value {
+          color: #6f6f6f;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
