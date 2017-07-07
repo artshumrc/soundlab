@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, Col, Row, Panel} from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
-import {BarChart, Bar, XAxis, YAxis, CartesianGrid} from 'recharts';
+import {BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer} from 'recharts';
 import {Timeline, TimelineItem} from '../components/Timeline';
 
 import './MainPanel.css';
@@ -131,17 +131,18 @@ export default class MainPanel extends React.Component {
                   </div>
 								</div>
 								<div className="panel-body">
-									<BarChart
-										width={600}
-										height={300}
-										data={data}
-										margin={{top: 5, right: 30, left: 20, bottom: 5}}
-									>
-										<XAxis dataKey="name" />
-										<YAxis />
-										<CartesianGrid strokeDasharray="3 3" />
-										<Bar dataKey="pv" fill="#5ba2e4" />
-									</BarChart>
+									<ResponsiveContainer height={300} width="100%">
+										<BarChart
+
+											data={data}
+											margin={{top: 5, right: 30, left: 20, bottom: 5}}
+										>
+											<XAxis dataKey="name" />
+											<YAxis />
+											<CartesianGrid strokeDasharray="3 3" />
+											<Bar dataKey="pv" fill="#5ba2e4" />
+										</BarChart>
+									</ResponsiveContainer>
 								</div>
 							</div>
 						</Col>
