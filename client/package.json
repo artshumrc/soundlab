@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "build-css": "^0.2.0",
     "classnames": "^2.2.5",
     "dotenv": "^4.0.0",
     "draft-js": "^0.10.1",
@@ -11,7 +12,7 @@
     "eslint-plugin-import": "^2.3.0",
     "lodash.merge": "^4.6.0",
     "medium-editor": "^5.23.0",
-    "node-sass-chokidar": "^0.0.3",
+    "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.0.2",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
