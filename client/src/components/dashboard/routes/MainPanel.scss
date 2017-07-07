@@ -85,27 +85,55 @@
       margin: 0 auto;
     }
   }
-  .timeline {
-    .timelineDate {
-      display: block;
-      color: #9a9a9a;
-      font-weight: 400;
+  .timelineWrapper {
+    .timeline {
+      list-style: none;
+      padding-left: 5px;
+      .timelineDate {
+        display: block;
+        color: #9a9a9a;
+        font-weight: 400;
+      }
+      .timelineItem {
+        padding-left: 15px;
+        margin: 0;
+        text-indent: -22px;
+        .timelineItemContent {
+          margin-left: 25px;
+          margin-top: -25px;
+          padding: 15px;
+          padding-top: 0;
+        }
+      }
+      .timelineItem::before {
+        content: "• ";
+        font-size: 50px;
+        line-height: 10px;
+      }
+      .timelineItem:nth-child(4n+1) {
+        border-left: 1px solid #547df9;
+      }
+      .timelineItem:nth-child(4n+1)::before {
+        color: #547df9;
+      }
+      .timelineItem:nth-child(4n+2) {
+        border-left: 1px solid #f6da40;
+      }
+      .timelineItem:nth-child(4n+2)::before {
+        color: #f6da40;
+      }
+      .timelineItem:nth-child(4n+3) {
+        border-left: 1px solid #88b669;
+      }
+      .timelineItem:nth-child(4n+3)::before {
+        color: #88b669;
+      }
+      .timelineItem:nth-child(4n+4) {
+        border-left: 1px solid #ea546d;
+      }
+      .timelineItem:nth-child(4n+4)::before {
+        color: #ea546d;
+      }
     }
-    .list-group-item {
-      border: 0;
-    }
-    .list-group-item:nth-child(4n+1) {
-      border-left: 1px solid #547df9;
-    }
-    .list-group-item:nth-child(4n+2) {
-      border-left: 1px solid #f6da40;
-    }
-    .list-group-item:nth-child(4n+3) {
-      border-left: 1px solid #88b669;
-    }
-    .list-group-item:nth-child(4n+4) {
-      border-left: 1px solid #ea546d;
-    }
-
   }
 }

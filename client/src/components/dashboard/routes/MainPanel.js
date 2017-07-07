@@ -1,7 +1,8 @@
 import React from 'react';
-import {Image, Col, Row, Panel, ListGroup, ListGroupItem} from 'react-bootstrap';
+import {Image, Col, Row, Panel} from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid} from 'recharts';
+import {Timeline, TimelineItem} from '../components/Timeline';
 
 import './MainPanel.css';
 
@@ -15,6 +16,12 @@ export default class MainPanel extends React.Component {
       {name: '80', pv: 80},
       {name: '90', pv: 90},
       {name: '80', pv: 60},
+		];
+		const timelineData = [
+      {message: 'Mark wrote a message', date: ' 2 min ago'},
+      {message: 'Anna created a new website ', date: '1 hour ago'},
+      {message: 'Jonatan sent a new message', date: '3 hours ago'},
+      {message: 'Mark wrote a message', date: '1 week ago'}
 		];
 		return (
 			<div id="mainPanel">
@@ -138,7 +145,7 @@ export default class MainPanel extends React.Component {
 								</div>
 							</div>
 						</Col>
-						<Col lg={6} className="timeline">
+						<Col lg={6} className="timelineWrapper">
 							<div className="panel panel-default">
 								<div className="panel-heading">
                   Activities
@@ -147,22 +154,19 @@ export default class MainPanel extends React.Component {
                   </div>
 								</div>
 								<div className="panel-body">
-									<ListGroup>
-										<ListGroupItem>Mark wrote a message <span className="timelineDate">2 min ago</span></ListGroupItem>
-										<ListGroupItem>Anna created a new website <span
-											className="timelineDate"
-										>1 hour ago</span></ListGroupItem>
-										<ListGroupItem>Jonatan sent a new message <span
-											className="timelineDate"
-										>3 hours ago</span></ListGroupItem>
-										<ListGroupItem>Mark wrote a message <span className="timelineDate">1 week ago</span></ListGroupItem>
-									</ListGroup>
+									<Timeline>
+										{
+                      timelineData.map(timelineItem => (<TimelineItem
+	message={timelineItem.message}
+	date={timelineItem.date}
+                      />))
+                    }
+									</Timeline>
 								</div>
 							</div>
 						</Col>
 					</Row>
 				</div>
-			</div>
-		);
+			</div>);
 	}
 }
