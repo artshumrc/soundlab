@@ -20,14 +20,13 @@ class AudioPlayer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
-
+      open:false
     }
   }
 
   pauseTheSound(){
     this.props.dispatch(pausePlayer())
-    soundManager.pause(this.props.playlist.id)
+    soundManager.pause(this.props.playlist[this.props.ui.currentIndex].id)
   }
 
   resumeTheSound(props){
@@ -40,10 +39,17 @@ class AudioPlayer extends Component {
     this.props.dispatch(nextTrack())
   }
 
-  playPrevious(audio) {
+  playPrevious() {
     soundManager.destroySound(this.props.playlist[this.props.ui.currentIndex].id)
     this.props.dispatch(previousTrack())
   }
+
+  togglePlaylistDrawer() {
+    this.setState({
+      open:!this.state.open
+    })
+  }
+
 
   createListItems() {
     let currentIndex = 0
@@ -72,7 +78,7 @@ class AudioPlayer extends Component {
 
     const playId = this.props.playlist[this.props.ui.currentIndex].id //this.state.playId
     const playitemUrl = this.props.playlist[this.props.ui.currentIndex].url//this.state.playitemUrl
-    const audio = []
+    const playlist = []
       // Array of files you'd like played
 
     const playButtonStyles = {
@@ -147,7 +153,7 @@ class AudioPlayer extends Component {
                     <div className={styles.buttonWrapper}>
                       <SkipPrevious
                         style={playButtonStyles}
-                        onClick={this.playPrevious.bind(this, audio)} />
+                        onClick={this.playPrevious.bind(this, playlist)} />
                       {this.props.ui.isPlaying === true ?
                       <Pause
                         style={playButtonStyles}
@@ -175,9 +181,7 @@ class AudioPlayer extends Component {
 }
 
 AudioPlayer.propTypes = {
-  playlist: PropTypes.array
-  audio: PropTypes.array,
-  resumePlayer:PropTypes.func
+  playlist: PropTypes.array,
 }
 
 function mapStateToProps(state){

@@ -5,6 +5,7 @@ import ShowcaseList from '../showcase/ShowcaseList'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './home.scss'
 import PlaylistList from '../playlist/PlaylistList'
+import AudioPlayer from '../audioPlayer/AudioPlayer'
 //import AudioPlayer from 'react-responsive-audio-player'
 //import ReactAudioPlayer from 'react-audio-player'
 
@@ -24,9 +25,6 @@ class Home extends React.Component {
 
           <div>
             <ShowcaseList />
-          </div>
-          <div>
-            <PlaylistList />
           </div>
           <div>
             <AudioPlayer />
