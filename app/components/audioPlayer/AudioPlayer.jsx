@@ -11,120 +11,69 @@ import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import RaisedButton from 'material-ui/RaisedButton'
 import Drawer from 'material-ui/Drawer'
 import PlaylistList from '../playlist/PlaylistList'
+import { resumePlayer, pausePlayer, nextTrack, previousTrack } from '../../actions/actions'
+import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-export default class AudioPlayer extends Component {
+class AudioPlayer extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      //audio:[],
-      isPlaying: false,
-      playId:'demoSound',
-      playitemUrl:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
-      playIndex:0,
-      creator:'War on Drugs',
-      title:'Under the Pressure',
-      image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg',
-      open:false
+
 
     }
   }
 
-  playTheSound(){
-
+  pauseTheSound(){
+    this.props.dispatch(pausePlayer())
+    soundManager.pause(this.props.playlist.id)
   }
 
-  pausePlayer() {
-    soundManager.pause(this.state.playId)
-    this.setState({
-      isPlaying:false
+  resumeTheSound(props){
+    this.props.dispatch(resumePlayer())
+    soundManager.play(this.props.playlist[this.props.ui.currentIndex].id)
+  }
+
+  playNext(props) {
+    soundManager.destroySound(this.props.playlist[this.props.ui.currentIndex].id)
+    this.props.dispatch(nextTrack())
+  }
+
+  playPrevious(audio) {
+    soundManager.destroySound(this.props.playlist[this.props.ui.currentIndex].id)
+    this.props.dispatch(previousTrack())
+  }
+
+  createListItems() {
+    let currentIndex = 0
+    let nextTrack = currentIndex + 1
+    let previousTrack = currentIndex - 1
+
+    return this.props.playlist.map((playlistItem, index) => {
+      if(index === this.props.ui.currentIndex){
+        return (
+            <div key={index} className={styles.currentPlayMeta} >
+              <div className={styles.playerAvatar}>
+                <img src={playlistItem.image} alt={playlistItem.title}/>
+              </div>
+              <div className={styles.playerMeta}>
+                <h6 className={styles.playerMetaCreator}>{playlistItem.creator}</h6>
+                <h6 className={styles.playerMetaTitle}>{playlistItem.title}</h6>
+              </div>
+            </div>
+
+        )
+      }
     })
   }
-
-  resumePlayer() {
-    soundManager.play(this.state.playId)
-    this.setState({
-      isPlaying:true
-    })
-  }
-
-  showState() {
-
-  }
-
-  playNext(playlist) {
-    soundManager.destroySound(this.state.playId)
-    this.setState({
-      playId:playlist[this.state.playIndex + 1].id,
-      playitemUrl:playlist[this.state.playIndex + 1].url,
-      playIndex:this.state.playIndex + 1,
-      isPlaying:false,
-      creator:playlist[this.state.playIndex + 1].creator,
-      title:playlist[this.state.playIndex + 1].title,
-      image:playlist[this.state.playIndex + 1].image
-
-    })
-  }
-
-  playPrevious(playlist) {
-    soundManager.destroySound(this.state.playId)
-    this.setState({
-      playId:playlist[this.state.playIndex - 1].id,
-      playitemUrl:playlist[this.state.playIndex - 1].url,
-      playIndex: this.state.playIndex - 1,
-      isPlaying:false,
-      creator:playlist[this.state.playIndex - 1].creator,
-      title:playlist[this.state.playIndex - 1].title,
-      image:playlist[this.state.playIndex - 1].image
-
-    })
-  }
-
-  togglePlaylistDrawer() {
-    this.setState({
-      open:!this.state.open
-    })
-  }
-
-
-
-
 
   render() {
 
-    const playId = this.state.playId
-    const playitemUrl = this.state.playitemUrl
-    const creator = this.state.creator
-    const title = this.state.title
-    const image = this.state.image
-
-
+    const playId = this.props.playlist[this.props.ui.currentIndex].id //this.state.playId
+    const playitemUrl = this.props.playlist[this.props.ui.currentIndex].url//this.state.playitemUrl
+    const audio = []
       // Array of files you'd like played
-    const playlist = [
-      {
-        id:'demoSound',
-        url: 'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
-        creator: 'War on Drugs',
-        title: 'Under the Pressure',
-        image: 'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg'
-      },
-      {
-        id:'demoSound2',
-        url: 'http://localhost:8888/soundlab/wp-content/uploads/2017/06/03-Im-Not-Calling-You-a-Liar.m4a',
-        creator: 'Florence and the Machine',
-        title: "I'm Not Calling You a Liar",
-        image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/03-Im-Not-Calling-You-a-Liar-m4a-image.jpg'
-      },
-      {
-        id:'demoSound3',
-        url: 'http://localhost:8888/soundlab/wp-content/uploads/2017/06/02-The-Dress-Looks-Nice-On-You.m4a',
-        creator: 'Sufjan Stevens',
-        title: 'The Dress Looks Nice on You',
-        image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/02-The-Dress-Looks-Nice-On-You-m4a-image.jpg'
-      }
-
-    ]
-
 
     const playButtonStyles = {
       height:36,
@@ -145,20 +94,19 @@ export default class AudioPlayer extends Component {
     }
 
     soundManager.setup({
+
       onready: function(playlistId) {
 
         playlist.nowPlaying = soundManager.createSound({
           id:playId,
-          url: playitemUrl,
-          creator: playlist[0].creator,
-          title: playlist[0].title,
+          url:playitemUrl,
           autoPlay: false,
           autoLoad: true,
           whileplaying: function() {
-
-          },
-          onfinish: function() {
-
+          //document.getElementsByClassName(('progressBar')[0].style.width =  25 + '%')
+        },
+         onfinish: function() {
+          // document.getElementById('progressBar').style.width = '0'
            soundManager._writeDebug(this.id + ' finished playing')
           }
         })
@@ -169,6 +117,7 @@ export default class AudioPlayer extends Component {
       }
     })
 
+
     return (
       <div>
 
@@ -178,13 +127,7 @@ export default class AudioPlayer extends Component {
               <div className={styles.soundlabPlayer}>
                 <div className={styles.soundlabPlayerContainer}>
                   <div className={styles.playerMetaContainer}>
-                    <div className={styles.playerAvatar}>
-                      <img src={this.state.image} alt={this.state.title}/>
-                    </div>
-                    <div className={styles.playerMeta}>
-                      <h6 className={styles.playerMetaCreator}>{this.state.creator}</h6>
-                      <h6 className={styles.playerMetaTitle}>{this.state.title}</h6>
-                    </div>
+                    {this.createListItems()}
                   </div>
                   <div className={styles.playerTimeline}>
                     <div className={styles.currentTrack}>
@@ -204,15 +147,15 @@ export default class AudioPlayer extends Component {
                     <div className={styles.buttonWrapper}>
                       <SkipPrevious
                         style={playButtonStyles}
-                        onClick={this.playPrevious.bind(this, playlist)} />
-                      {this.state.isPlaying === true ?
+                        onClick={this.playPrevious.bind(this, audio)} />
+                      {this.props.ui.isPlaying === true ?
                       <Pause
                         style={playButtonStyles}
-                        onClick={this.pausePlayer.bind(this, playlist)} />
+                        onClick={this.pauseTheSound.bind(this)} />
                       :
                       <PlayArrow
                         style={playButtonStyles}
-                        onClick={this.resumePlayer.bind(this, playlist)} />
+                        onClick={this.resumeTheSound.bind(this)} />
                       }
                       <SkipNext
                         style={playButtonStyles}
@@ -233,4 +176,15 @@ export default class AudioPlayer extends Component {
 
 AudioPlayer.propTypes = {
   playlist: PropTypes.array
+  audio: PropTypes.array,
+  resumePlayer:PropTypes.func
 }
+
+function mapStateToProps(state){
+  return {
+    ui:state.ui,
+    playlist:state.playlist
+  }
+}
+
+export default connect(mapStateToProps)(AudioPlayer)
