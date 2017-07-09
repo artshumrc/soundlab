@@ -8,21 +8,24 @@ import Pause from 'material-ui/svg-icons/av/pause'
 import SkipPrevious from 'material-ui/svg-icons/av/skip-previous'
 import SkipNext from 'material-ui/svg-icons/av/skip-next'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import $ from 'jquery'
+import RaisedButton from 'material-ui/RaisedButton'
+import Drawer from 'material-ui/Drawer'
+import PlaylistList from '../playlist/PlaylistList'
 
 export default class AudioPlayer extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      audio:[],
+      //audio:[],
       isPlaying: false,
       playId:'demoSound',
       playitemUrl:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
       playIndex:0,
       creator:'War on Drugs',
       title:'Under the Pressure',
-      image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg'
+      image:'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure-m4a-image.jpg',
+      open:false
 
     }
   }
@@ -46,34 +49,40 @@ export default class AudioPlayer extends Component {
   }
 
   showState() {
-    console.log(this.state.audio.playlist.creator)
+
   }
 
-  playNext(audio) {
+  playNext(playlist) {
     soundManager.destroySound(this.state.playId)
     this.setState({
-      playId:audio.playlist[this.state.playIndex + 1].id,
-      playitemUrl:audio.playlist[this.state.playIndex + 1].url,
+      playId:playlist[this.state.playIndex + 1].id,
+      playitemUrl:playlist[this.state.playIndex + 1].url,
       playIndex:this.state.playIndex + 1,
       isPlaying:false,
-      creator:audio.playlist[this.state.playIndex + 1].creator,
-      title:audio.playlist[this.state.playIndex + 1].title,
-      image:audio.playlist[this.state.playIndex + 1].image
+      creator:playlist[this.state.playIndex + 1].creator,
+      title:playlist[this.state.playIndex + 1].title,
+      image:playlist[this.state.playIndex + 1].image
 
     })
   }
 
-  playPrevious(audio) {
+  playPrevious(playlist) {
     soundManager.destroySound(this.state.playId)
     this.setState({
-      playId:audio.playlist[this.state.playIndex - 1].id,
-      playitemUrl:audio.playlist[this.state.playIndex - 1].url,
+      playId:playlist[this.state.playIndex - 1].id,
+      playitemUrl:playlist[this.state.playIndex - 1].url,
       playIndex: this.state.playIndex - 1,
       isPlaying:false,
-      creator:audio.playlist[this.state.playIndex - 1].creator,
-      title:audio.playlist[this.state.playIndex - 1].title,
-      image:audio.playlist[this.state.playIndex - 1].image
+      creator:playlist[this.state.playIndex - 1].creator,
+      title:playlist[this.state.playIndex - 1].title,
+      image:playlist[this.state.playIndex - 1].image
 
+    })
+  }
+
+  togglePlaylistDrawer() {
+    this.setState({
+      open:!this.state.open
     })
   }
 
@@ -89,9 +98,9 @@ export default class AudioPlayer extends Component {
     const title = this.state.title
     const image = this.state.image
 
-    const audio = []
+
       // Array of files you'd like played
-    audio.playlist = [
+    const playlist = [
       {
         id:'demoSound',
         url: 'http://localhost:8888/soundlab/wp-content/uploads/2017/06/01-Under-the-Pressure.m4a',
@@ -126,10 +135,10 @@ export default class AudioPlayer extends Component {
         // Default playlistId to 0 if not supplied
         playlistId = playlistId ? playlistId : 0;
         // If SoundManager object exists, get rid of it...
-        if (audio.nowPlaying){
-          audio.nowPlaying.destruct();
+        if (playlist.nowPlaying){
+          playlist.nowPlaying.destruct();
           // ...and reset array key if end reached
-          if(playlistId == audio.playlist.length){
+          if(playlistId == playlist.length){
               playlistId = 0;
         }
       }
@@ -138,22 +147,20 @@ export default class AudioPlayer extends Component {
     soundManager.setup({
       onready: function(playlistId) {
 
-        audio.nowPlaying = soundManager.createSound({
+        playlist.nowPlaying = soundManager.createSound({
           id:playId,
           url: playitemUrl,
-          creator: audio.playlist[0].creator,
-          title: audio.playlist[0].title,
+          creator: playlist[0].creator,
+          title: playlist[0].title,
           autoPlay: false,
           autoLoad: true,
           whileplaying: function() {
-          document.getElementsByClassName(('progressBar')[0].style.width =  25 + '%')
 
+          },
+          onfinish: function() {
 
-        },
-         onfinish: function() {
-          // document.getElementById('progressBar').style.width = '0'
            soundManager._writeDebug(this.id + ' finished playing')
-         }
+          }
         })
       },
 
@@ -186,27 +193,33 @@ export default class AudioPlayer extends Component {
 
                   </div>
                   <div className={styles.playerControls}>
+                    <RaisedButton
+                      label="Playlist"
+                      onClick={this.togglePlaylistDrawer.bind(this)}
+                      className={styles.playlistButton}
+                    />
+                    <Drawer width={400} openSecondary={true} open={this.state.open} containerClassName={styles.playlistDrawer} >
+                      <PlaylistList />
+                    </Drawer>
                     <div className={styles.buttonWrapper}>
                       <SkipPrevious
                         style={playButtonStyles}
-                        onClick={this.playPrevious.bind(this, audio)} />
+                        onClick={this.playPrevious.bind(this, playlist)} />
                       {this.state.isPlaying === true ?
                       <Pause
                         style={playButtonStyles}
-                        onClick={this.pausePlayer.bind(this, audio)} />
+                        onClick={this.pausePlayer.bind(this, playlist)} />
                       :
                       <PlayArrow
                         style={playButtonStyles}
-                        onClick={this.resumePlayer.bind(this, audio)} />
+                        onClick={this.resumePlayer.bind(this, playlist)} />
                       }
                       <SkipNext
                         style={playButtonStyles}
-                        onClick={this.playNext.bind(this, audio)} />
+                        onClick={this.playNext.bind(this, playlist)} />
                     </div>
 
-
                   </div>
-
                 </div>
               </div>
 
@@ -219,5 +232,5 @@ export default class AudioPlayer extends Component {
 }
 
 AudioPlayer.propTypes = {
-  audio: PropTypes.array
+  playlist: PropTypes.array
 }
