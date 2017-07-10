@@ -4,6 +4,10 @@ import URLSlugs from 'mongoose-url-slugs';
 
 const Schema = mongoose.Schema;
 
+/**
+ * Base Project mongoose schema
+ * @type {Schema}
+ */
 const ProjectSchema = new Schema({
 	title: {
 		type: String,
@@ -24,7 +28,10 @@ ProjectSchema.plugin(timestamp);
 // add slug (slug)
 ProjectSchema.plugin(URLSlugs('title'));
 
-
+/**
+ * Project mongoose model
+ * @type {mongoose.model}
+ */
 const Project = mongoose.model('Project', ProjectSchema);
 
 export default Project;

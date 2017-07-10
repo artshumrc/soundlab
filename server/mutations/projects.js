@@ -9,9 +9,16 @@ import Projects from '../bll/projects';
 // errors
 import { AuthenticationError } from '../errors';
 
-
+/**
+ * GraphQL mutation project fileds
+ * @type {Object}
+ */
 const projectFileds = {
 
+	/**
+	 * Create new project
+	 * @type {Object}
+	 */
 	projectCreate: {
 		type: projectType,
 		args: {

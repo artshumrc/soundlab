@@ -6,6 +6,11 @@ import User from '../models/user';
 // errors
 import { AuthenticationError } from '../errors';
 
+/**
+ * Validate user based on his username
+ * @param  {String} username The username of the user
+ * @return {Object}          The user object from db
+ */
 export async function validateUser(username) {
 
 	if (username && check.string(username)) {
