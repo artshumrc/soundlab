@@ -27,6 +27,7 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
     "sax": "^1.2.2",
+    "scroll-to-element": "^2.0.0",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
