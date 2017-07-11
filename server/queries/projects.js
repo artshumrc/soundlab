@@ -1,29 +1,47 @@
-import { GraphQLString } from 'graphql';
+import { GraphQLString, GraphQLNonNull } from 'graphql';
 
+// types
 import projectType from '../types/models/project';
-import Project from '../models/project';
 
-const projectFileds = {
-	projectByTitle: {
-		type: projectType,
-		args: { title: { type: GraphQLString } },
-		resolve(_, {title}) {
-			const projectDoc = Project.findOne({ title });
-			return projectDoc.then(
-				doc => doc,
-				err => console.error(err));
-		},
-	},
+// bll
+import Projects from '../bll/projects';
+
+// errors
+import { AuthenticationError } from '../errors';
+
+/**
+ * raphQL project query fileds
+ * @type {Object}
+ * @property {Object} projectById 	Get project by _id
+ * @property {Object} projectBySlug Get project by slug
+ */
+const projectQueryFileds = {
 	projectById: {
 		type: projectType,
-		args: { _id: { type: GraphQLString } },
-		resolve(parent, {_id}) {
-			const projectDoc = Project.findById(_id);
-			return projectDoc.then(
-				doc => doc,
-				err => console.error(err));
+		args: {
+			_id: {
+				type: new GraphQLNonNull(GraphQLString),
+			}
+		},
+		async resolve(parent, {_id}) {
+			try {
+				return await Projects.findById(_id);
+			} catch (err) {
+				throw err;
+			}
+		},
+	},
+	projectBySlug: {
+		type: projectType,
+		args: { slug: { type: GraphQLString } },
+		async resolve(parent, { slug }) {
+			try {
+				return await Projects.findBySlug(slug);
+			} catch (err) {
+				throw err;
+			}
 		},
 	},
 };
 
-export default projectFileds;
+export default projectQueryFileds;
