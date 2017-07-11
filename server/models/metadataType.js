@@ -5,10 +5,10 @@ import URLSlugs from 'mongoose-url-slugs';
 const Schema = mongoose.Schema;
 
 /**
- * Tenant base schema
+ * MetadataType base schema
  * @type {Schema}
  */
-const TenantSchema = new Schema({
+const MetadataTypeSchema = new Schema({
 	name: {
 		type: String,
 		unique: true,
@@ -19,17 +19,17 @@ const TenantSchema = new Schema({
 
 
 // add timestamp (createdAt, updatedAt)
-TenantSchema.plugin(timestamp);
+MetadataTypeSchema.plugin(timestamp);
 
 // add slug (slug)
-TenantSchema.plugin(URLSlugs('name'));
+MetadataTypeSchema.plugin(URLSlugs('name'));
 
 /**
- * Tenant mongoose model
+ * MetadataType mongoose model
  * @type {mongoose model}
  */
-const Tenant = mongoose.model('Tenant', TenantSchema);
+const MetadataType = mongoose.model('MetadataType', MetadataTypeSchema);
 
-export default Tenant;
-export { TenantSchema };
+export default MetadataType;
+export { MetadataTypeSchema };
 
