@@ -12,13 +12,10 @@ import { AuthenticationError } from '../errors';
 /**
  * GraphQL mutation project fileds
  * @type {Object}
+ * @property {Object} projectCreate 	Create project
  */
-const projectFileds = {
+const projectMutationFileds = {
 
-	/**
-	 * Create new project
-	 * @type {Object}
-	 */
 	projectCreate: {
 		type: projectType,
 		args: {
@@ -45,4 +42,4 @@ const projectFileds = {
 	}
 };
 
-export default projectFileds;
+export default projectMutationFileds;

@@ -30,8 +30,9 @@ ProjectSchema.plugin(URLSlugs('title'));
 
 /**
  * Project mongoose model
- * @type {mongoose.model}
+ * @type {mongoose model}
  */
 const Project = mongoose.model('Project', ProjectSchema);
 
 export default Project;
+export { ProjectSchema };

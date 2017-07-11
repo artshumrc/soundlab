@@ -1,4 +1,4 @@
-import { GraphQLString } from 'graphql';
+import { GraphQLString, GraphQLNonNull } from 'graphql';
 
 // types
 import projectType from '../types/models/project';
@@ -9,51 +9,39 @@ import Projects from '../bll/projects';
 // errors
 import { AuthenticationError } from '../errors';
 
-const projectFileds = {
+/**
+ * raphQL project query fileds
+ * @type {Object}
+ * @property {Object} projectById 	Get project by _id
+ * @property {Object} projectBySlug Get project by slug
+ */
+const projectQueryFileds = {
 	projectById: {
 		type: projectType,
 		args: {
 			_id: {
-				type: GraphQLString
+				type: new GraphQLNonNull(GraphQLString),
 			}
 		},
-		resolve(parent, {_id}) {
-			return Projects.findById(_id).then(
-				doc => doc,
-				err => console.error(err));
-		},
-	},
-	projectBySlug: {
-		type: projectType,
-		args: { slug: { type: GraphQLString } },
-		resolve(parent, { slug }) {
-			return Projects.findBySlug(slug).then(
-				doc => doc,
-				err => console.error(err));
-		},
-	},
-	projectRandom: {
-		type: projectType,
-		async resolve(parent, { slug }) {
+		async resolve(parent, {_id}) {
 			try {
-				return await Projects.findOne();
+				return await Projects.findById(_id);
 			} catch (err) {
 				throw err;
 			}
 		},
 	},
-	projectSecret: {
+	projectBySlug: {
 		type: projectType,
-		async resolve(parent, { slug }, { session: { passport } }) {
-			if (passport) {
-				try {
-					return await Projects.findOneSecret(passport.user);
-				} catch (err) {
-					throw err;
-				}
-			} throw new AuthenticationError();
+		args: { slug: { type: GraphQLString } },
+		async resolve(parent, { slug }) {
+			try {
+				return await Projects.findBySlug(slug);
+			} catch (err) {
+				throw err;
+			}
 		},
 	},
 };
 
-export default projectFileds;
+export default projectQueryFileds;

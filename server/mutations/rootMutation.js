@@ -1,11 +1,15 @@
 import { GraphQLObjectType } from 'graphql';
 
-import projectFileds from './projects';
+import projectMutationFileds from './projects';
 
+/**
+ * Root mutations
+ * @type {GraphQLObjectType}
+ */
 const RootMutations = new GraphQLObjectType({
 	name: 'RootMutationType',
 	fields: {
-		...projectFileds,
+		...projectMutationFileds,
 	}
 });
 

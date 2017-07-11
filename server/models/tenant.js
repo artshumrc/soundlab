@@ -4,6 +4,10 @@ import URLSlugs from 'mongoose-url-slugs';
 
 const Schema = mongoose.Schema;
 
+/**
+ * Tenant base schema
+ * @type {Schema}
+ */
 const TenantSchema = new Schema({
 	name: {
 		type: String,
@@ -20,7 +24,12 @@ TenantSchema.plugin(timestamp);
 // add slug (slug)
 TenantSchema.plugin(URLSlugs('title'));
 
-
+/**
+ * Tenant mongoose model
+ * @type {mongoose model}
+ */
 const Tenant = mongoose.model('Tenant', TenantSchema);
 
 export default Tenant;
+export { TenantSchema };
+
