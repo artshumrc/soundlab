@@ -5,31 +5,39 @@ import URLSlugs from 'mongoose-url-slugs';
 const Schema = mongoose.Schema;
 
 /**
- * MetadataType base schema
+ * Item base schema
  * @type {Schema}
  */
-const MetadataTypeSchema = new Schema({
-	name: {
+const ItemSchema = new Schema({
+	title: {
 		type: String,
-		unique: true,
 		required: true,
-		trim: true
+		trim: true,
+		index: true,
+	},
+	collectionId: {
+		type: Schema.Types.ObjectId,
+		ref: 'Collection',
+		index: true
+	},
+	metadata: {
+		type: Schema.Types.Mixed,
 	},
 });
 
 
 // add timestamp (createdAt, updatedAt)
-MetadataTypeSchema.plugin(timestamp);
+ItemSchema.plugin(timestamp);
 
 // add slug (slug)
-MetadataTypeSchema.plugin(URLSlugs('name'));
+ItemSchema.plugin(URLSlugs('title'));
 
 /**
- * MetadataType mongoose model
+ * Item mongoose model
  * @type {mongoose model}
  */
-const MetadataType = mongoose.model('MetadataType', MetadataTypeSchema);
+const Item = mongoose.model('Item', ItemSchema);
 
-export default MetadataType;
-export { MetadataTypeSchema };
+export default Item;
+export { ItemSchema };
 

@@ -13,7 +13,16 @@ const MetadataTypeSchema = new Schema({
 		type: String,
 		unique: true,
 		required: true,
-		trim: true
+		trim: true,
+		index: true
+	},
+	type: {
+		type: String,
+		enum: ['String', 'Number', 'Boolean', 'Array(String)', 'Array(Number)', 'Array(Boolean)'],
+	},
+	patternId: {
+		type: Schema.Types.ObjectId,
+		ref: 'MetadataPattern',
 	},
 });
 

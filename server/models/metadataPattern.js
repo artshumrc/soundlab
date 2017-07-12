@@ -13,7 +13,8 @@ const MetadataPatternSchema = new Schema({
 		type: String,
 		unique: true,
 		required: true,
-		trim: true
+		trim: true,
+		index: true
 	},
 	private: {
 		type: Boolean,

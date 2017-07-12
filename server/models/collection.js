@@ -13,11 +13,13 @@ const CollectionSchema = new Schema({
 		type: String,
 		unique: true,
 		required: true,
-		trim: true
+		trim: true,
+		index: true
 	},
 	projectId: {
 		type: Schema.Types.ObjectId,
-		ref: 'Project'
+		ref: 'Project',
+		index: true
 	},
 	metadataPatternId: {
 		type: Schema.Types.ObjectId,

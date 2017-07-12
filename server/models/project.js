@@ -13,11 +13,18 @@ const ProjectSchema = new Schema({
 		type: String,
 		unique: true,
 		required: true,
-		trim: true
+		trim: true,
+		index: true
+	},
+	userId: {
+		type: Schema.Types.ObjectId,
+		ref: 'User',
+		index: true
 	},
 	tenantIds: [{
 		type: Schema.Types.ObjectId,
-		ref: 'Tenant'
+		ref: 'Tenant',
+		index: true
 	}],
 });
 
