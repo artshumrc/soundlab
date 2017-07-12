@@ -17,7 +17,7 @@ const Users = {
 
 		if (username && check.string(username)) {
 			try {
-				const user = await this.UsersModel.findOne({ username });
+				const user = await User.findOne({ username });
 
 				if (user) return user;
 

@@ -27,7 +27,8 @@
     "react-tooltip": "^3.3.0",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "scroll-to-element": "^2.0.0"
   },
   "devDependencies": {
     "babel-jest": "^20.0.3",
