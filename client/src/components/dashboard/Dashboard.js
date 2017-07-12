@@ -1,13 +1,8 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import {Image} from 'react-bootstrap';
-import {Route} from 'react-router';
 import './Dashboard.css';
-import Articles from './routes/Articles';
-import Articles2 from './routes/Articles2';
-import MainPanel from './routes/MainPanel';
-import UserProfile from './routes/UserProfile';
-import UserProfileTimeline from './routes/UserProfileTimeline';
+
 import ListItem from './components/ListItem';
 
 export default class Dashboard extends React.Component {
@@ -24,6 +19,7 @@ export default class Dashboard extends React.Component {
 	}
 
 	render() {
+	  console.log("this.props LOG", this.props);
 		const sidebarClass = this.state.sidebarVisible ? 'sidebar' : 'sidebar sidebarWrapped';
 		const contentWrapperClass = this.state.sidebarVisible ? 'contentWrapper' : 'contentWrapper contentWrapperExpand';
     const currentLocation = this.props.location.pathname;
@@ -39,6 +35,7 @@ export default class Dashboard extends React.Component {
 							<ListItem currentLocation={currentLocation} fa="window-maximize" name="Data Entry" url="/dashboard/data" />
 							<ListItem currentLocation={currentLocation} fa="folder-open-o" name="Projects" url="/dashboard/projects" />
 							<ListItem currentLocation={currentLocation} fa="cog" name="Settings" url="/dashboard/settings" />
+							<ListItem currentLocation={currentLocation} fa="file" name="Example Forms" url="/dashboard/form" />
 						</ul>
 					</div>
 				</div>
@@ -75,11 +72,7 @@ export default class Dashboard extends React.Component {
 						</div>
 					</div>
 					<div className="dashboardContent">
-            <Route exact path="/dashboard" component={MainPanel} />
-						<Route path="/dashboard/articles" component={Articles} />
-						<Route path="/dashboard/articles2" component={Articles2} />
-						<Route path="/dashboard/user" component={UserProfile} />
-						<Route path="/dashboard/user2" component={UserProfileTimeline} />
+            {this.props.children}
 					</div>
 				</div>
 			</div>

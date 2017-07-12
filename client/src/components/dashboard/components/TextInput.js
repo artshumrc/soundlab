@@ -5,6 +5,7 @@ import './stylesheets/TextInput.css';
 
 export default class TextInput extends React.Component {
 	render() {
+	  console.log("this.props TextInput LOG", this.props);
 		let iconRight;
 		let style = this.props.icon ? 'inner-addon both-addon ' : 'textInput inner-addon right-addon ';
 		const icon = this.props.icon ? <FontAwesome name={this.props.icon} className="icon" /> : '';
@@ -21,13 +22,12 @@ export default class TextInput extends React.Component {
 		const label = this.props.label ? <label>{this.props.label}</label> : '';
 		const required = this.props.required ?
 			<div className="required"><FontAwesome name="info-circle" /> This is required value</div> : '';
-
 		return (
 			<div className="textInput">
 				{label}
 				<div className={style}>
 					{icon}
-					<input placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.changeCb} disabled={this.props.disabled} />
+					<input {...this.props} />
 					{iconRight}
 					{required}
 				</div>
@@ -39,5 +39,4 @@ TextInput.propTypes = {
 	placeholder: PropTypes.string.isRequired,
 	valid: PropTypes.bool,
 	value: PropTypes.string,
-	changeCb: PropTypes.func.isRequired
 };

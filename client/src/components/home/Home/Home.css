@@ -1,4 +1,4 @@
-.header-jumbotron {
+#home .header-jumbotron {
   position: relative;
   top: 0;
   left: 0;
@@ -8,7 +8,7 @@
   background-size: cover;
   min-height: 800px; }
 
-.jumbotron-overlay {
+#home .jumbotron-overlay {
   background: url("/images/head-overlay.jpg") center;
   opacity: 0.8;
   position: absolute;
@@ -17,7 +17,7 @@
   width: 100%;
   height: 100%; }
 
-.jumbotron-content {
+#home .jumbotron-content {
   position: absolute;
   top: 0;
   left: 0;
@@ -29,19 +29,19 @@
   color: #fff;
   text-align: center; }
 
-h1 {
+#home h1 {
   font-size: 50px;
   font-weight: bold;
   letter-spacing: 2px;
   font-family: 'Roboto Slab', serif;
   text-transform: uppercase; }
 
-p {
+#home p {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   font-size: 15px; }
 
-h2 {
+#home h2 {
   font-family: 'Roboto Slab', serif;
   font-weight: bold;
   color: #3c3d41;
@@ -49,17 +49,17 @@ h2 {
   padding-bottom: 50px;
   letter-spacing: 2px; }
 
-.invert {
+#home .invert {
   color: #fff; }
 
-h3 {
+#home h3 {
   font-family: 'Roboto Slab', serif;
   font-weight: bold;
   letter-spacing: 2px;
   color: #efb013;
   text-transform: uppercase; }
 
-h4 {
+#home h4 {
   line-height: 19px;
   max-height: 19px;
   overflow: hidden;
@@ -74,7 +74,7 @@ h4 {
   font-size: 14px;
   color: #2c3e50; }
 
-h5 {
+#home h5 {
   font-family: 'Roboto Slab', serif;
   font-weight: bold;
   text-transform: uppercase;
