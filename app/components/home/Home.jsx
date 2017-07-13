@@ -11,6 +11,7 @@ import AudioPlayer from '../audioPlayer/AudioPlayer'
 
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 
+//@CSSModules(styles, {allowMultiple: true})
 
 class Home extends React.Component {
 
