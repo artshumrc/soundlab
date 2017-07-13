@@ -5,7 +5,10 @@ import ShowcaseItem from './ShowcaseItem'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './showcase.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import CSSModules from 'react-css-modules'
 
+
+@CSSModules(styles, {allowMultiple: true})
 
 class ShowcaseList extends React.Component {
 

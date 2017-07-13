@@ -2,7 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import styles from './search.scss'
 import RaisedButton from 'material-ui/RaisedButton'
+import CSSModules from 'react-css-modules'
 
+
+@CSSModules(styles, {allowMultiple: true})
 
 
 class SearchTools extends Component{

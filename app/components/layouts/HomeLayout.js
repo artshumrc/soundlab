@@ -4,20 +4,21 @@ import Footer from '../shared/footer'
 import styles from './layout.scss'
 import AudioPlayer from '../audioPlayer/AudioPlayer'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
+import CSSModules from 'react-css-modules'
 
 var injectTapEventPlugin = require("react-tap-event-plugin")
 injectTapEventPlugin()
 
-
+@CSSModules(styles, {allowMultiple: true})
 class HomeLayout extends Component {
   render() {
     return (
       <MuiThemeProvider>
-      <div className={styles.siteWrapper}>
+      <div>
         <div>
           <Header />
         </div>
-        <div className={styles.homeLayoutContainer}>
+        <div styleName="homeLayoutContainer">
           {this.props.children}
         </div>
         <div>

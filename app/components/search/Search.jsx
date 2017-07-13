@@ -11,7 +11,10 @@ import TimeCategory from './TimeCategory'
 import SearchTools from './SearchTools'
 import { toggleTimeCategory, toggleBeingCategory } from '../../actions/searchActions'
 import { connect } from 'react-redux'
+import CSSModules from 'react-css-modules'
 
+
+@CSSModules(styles, {allowMultiple: true})
 
 
 class Search extends React.Component {

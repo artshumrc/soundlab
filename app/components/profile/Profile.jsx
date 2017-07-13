@@ -6,7 +6,10 @@ import styles from './profile.scss'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
+import CSSModules from 'react-css-modules'
 
+
+@CSSModules(styles, {allowMultiple: true})
 class Profile extends Component{
 
   constructor(props) {
@@ -51,7 +54,7 @@ class Profile extends Component{
 
     return(
       <MuiThemeProvider>
-        <div className={styles.profileWrapper}>
+        <div styleName="profileWrapper">
           <TextField
             fullWidth={true}
             floatingLabelText="Username"

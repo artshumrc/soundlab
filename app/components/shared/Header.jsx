@@ -1,13 +1,17 @@
 import React, {Component} from 'react'
 import styles from './header.scss'
 import { Link } from 'react-router'
+import CSSModules from 'react-css-modules'
+
+
+@CSSModules(styles, {allowMultiple: true})
 
 
 class Header extends Component {
   render() {
     return (
-      <header className={styles.header}>
-        <div className={styles.linkContainer}>
+      <header styleName="header">
+        <div styleName="linkContainer">
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>

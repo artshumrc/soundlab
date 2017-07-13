@@ -4,8 +4,8 @@ import PostContent from '../posts/PostContent.js'
 import CSSModules from 'react-css-modules'
 import styles from '../posts/post.scss'
 
-
 @CSSModules(styles, {allowMultiple: true})
+
 class SubmissionSingle extends Component {
 
   render() {
@@ -13,7 +13,6 @@ class SubmissionSingle extends Component {
 
     if (!loading) {
       const { post_title: title, post_content: content} = this.props.data.post
-
 
       return (
 

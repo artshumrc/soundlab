@@ -1,16 +1,16 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-import styles from '../posts/post_excerpt.scss'
 import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
 import CSSModules from 'react-css-modules'
 import PostContent from '../posts/PostContent.js'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
+import styles from '../posts/post_excerpt.scss'
 
+
+@CSSModules(styles, {allowMultiple: true})
 
 class InformationItem extends Component{
-
-
 
   componentDidMount() {
     const { index } = this.props
@@ -30,8 +30,8 @@ class InformationItem extends Component{
 
       <div>
 
-        <Card className={styles.listContainer}>
-          <Link to={"information/" + encodeURIComponent(name)} styleName="base" onClick={this.handleClick.bind(this)}>
+        <Card styleName="listContainer">
+          <Link to={"information/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
           <CardTitle title={title} subtitle={this.props.post.info_byline.meta_value} />
           </Link>
 

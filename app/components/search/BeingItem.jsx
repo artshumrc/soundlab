@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom'
 import styles from './search.scss'
 import PostContent from '../posts/PostContent.js'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
+import CSSModules from 'react-css-modules'
 
+
+@CSSModules(styles, {allowMultiple: true})
 
 class BeingItem extends Component{
 
@@ -15,7 +18,7 @@ class BeingItem extends Component{
 
       <div>
 
-        <Card className={styles.listContainer}>
+        <Card>
 
           <CardTitle title={title} subtitle={this.props.post.byline.meta_value} />
           <CardText>

@@ -7,9 +7,6 @@ class App extends Component {
     const { children } = this.props
     return (
       <div className="application">
-        {/*<Head/>
-        <Header/>
-        <h1>hello world</h1> */}
         {children}
       </div>
     )

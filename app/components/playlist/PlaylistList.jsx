@@ -2,10 +2,11 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import PlaylistItem from './PlaylistItem'
-//import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './playlist.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import CSSModules from 'react-css-modules'
 
+@CSSModules(styles, {allowMultiple: true})
 
 class PlaylistList extends React.Component {
 

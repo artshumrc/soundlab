@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import soundmanager from '../../../node_modules/soundmanager2'
-import styles from './audioPlayer.scss'
+import { resumePlayer, pausePlayer, nextTrack, previousTrack } from '../../actions/actions'
+import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+import PlaylistList from '../playlist/PlaylistList'
 import PlayArrow from 'material-ui/svg-icons/av/play-arrow'
 import Pause from 'material-ui/svg-icons/av/pause'
 import SkipPrevious from 'material-ui/svg-icons/av/skip-previous'
 import SkipNext from 'material-ui/svg-icons/av/skip-next'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import RaisedButton from 'material-ui/RaisedButton'
 import Drawer from 'material-ui/Drawer'
-import PlaylistList from '../playlist/PlaylistList'
-import { resumePlayer, pausePlayer, nextTrack, previousTrack } from '../../actions/actions'
-import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux'
+import soundmanager from '../../../node_modules/soundmanager2'
+import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import styles from './audioPlayer.scss'
+import CSSModules from 'react-css-modules'
+
+@CSSModules(styles, {allowMultiple: true})
 
 class AudioPlayer extends Component {
 
@@ -59,13 +62,13 @@ class AudioPlayer extends Component {
     return this.props.playlist.map((playlistItem, index) => {
       if(index === this.props.ui.currentIndex){
         return (
-            <div key={index} className={styles.currentPlayMeta} >
-              <div className={styles.playerAvatar}>
+            <div key={index} styleName="currentPlayMeta" >
+              <div styleName="playerAvatar">
                 <img src={playlistItem.image} alt={playlistItem.title}/>
               </div>
-              <div className={styles.playerMeta}>
-                <h6 className={styles.playerMetaCreator}>{playlistItem.creator}</h6>
-                <h6 className={styles.playerMetaTitle}>{playlistItem.title}</h6>
+              <div styleName="playerMeta">
+                <h6 styleName="playerMetaCreator">{playlistItem.creator}</h6>
+                <h6 styleName="playerMetaTitle">{playlistItem.title}</h6>
               </div>
             </div>
 
@@ -109,7 +112,7 @@ class AudioPlayer extends Component {
           autoPlay: false,
           autoLoad: true,
           whileplaying: function() {
-          //document.getElementsByClassName(('progressBar')[0].style.width =  25 + '%')
+          //document.getElementsBystyleName(('progressBar')[0].style.width =  25 + '%')
         },
          onfinish: function() {
           // document.getElementById('progressBar').style.width = '0'
@@ -130,27 +133,27 @@ class AudioPlayer extends Component {
         <row>
           <Col xsOffset={3} xs={6}>
 
-              <div className={styles.soundlabPlayer}>
-                <div className={styles.soundlabPlayerContainer}>
-                  <div className={styles.playerMetaContainer}>
+              <div styleName="soundlabPlayer">
+                <div styleName="soundlabPlayerContainer">
+                  <div styleName="playerMetaContainer">
                     {this.createListItems()}
                   </div>
-                  <div className={styles.playerTimeline}>
-                    <div className={styles.currentTrack}>
-                      <div className={styles.progressBar} ref={this.progressBar}></div>
+                  <div styleName="playerTimeline">
+                    <div styleName="currentTrack">
+                      <div styleName="progressBar" ref={this.progressBar}></div>
                     </div>
 
                   </div>
-                  <div className={styles.playerControls}>
+                  <div styleName="playerControls">
                     <RaisedButton
                       label="Playlist"
                       onClick={this.togglePlaylistDrawer.bind(this)}
-                      className={styles.playlistButton}
+                      styleName="playlistButton"
                     />
-                    <Drawer width={400} openSecondary={true} open={this.state.open} containerClassName={styles.playlistDrawer} >
+                    <Drawer width={400} openSecondary={true} open={this.state.open} containerClassName="playlistDrawer" >
                       <PlaylistList />
                     </Drawer>
-                    <div className={styles.buttonWrapper}>
+                    <div styleName="buttonWrapper">
                       <SkipPrevious
                         style={playButtonStyles}
                         onClick={this.playPrevious.bind(this, playlist)} />

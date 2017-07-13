@@ -2,22 +2,18 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ShowcaseList from '../showcase/ShowcaseList'
-import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
-import styles from './home.scss'
 import PlaylistList from '../playlist/PlaylistList'
 import AudioPlayer from '../audioPlayer/AudioPlayer'
-//import AudioPlayer from 'react-responsive-audio-player'
-//import ReactAudioPlayer from 'react-audio-player'
-
+import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import styles from './home.scss'
+import CSSModules from 'react-css-modules'
 
-//@CSSModules(styles, {allowMultiple: true})
+@CSSModules(styles, {allowMultiple: true})
 
 class Home extends React.Component {
 
-
-
-  render () {
+  render() {
 
     return (
       <MuiThemeProvider>
@@ -30,9 +26,6 @@ class Home extends React.Component {
           <div>
             <AudioPlayer />
           </div>
-
-
-
 
         </div>
 

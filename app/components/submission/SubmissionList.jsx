@@ -5,7 +5,10 @@ import SubmissionItem from './SubmissionItem'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './submission.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import CSSModules from 'react-css-modules'
 
+
+@CSSModules(styles, {allowMultiple: true})
 
 class SubmissionList extends React.Component {
 

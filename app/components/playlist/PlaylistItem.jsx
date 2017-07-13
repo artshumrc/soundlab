@@ -1,15 +1,16 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
-import styles from './playlist.scss'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
+import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
+import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import styles from './playlist.scss'
+import CSSModules from 'react-css-modules'
 
 
-
+@CSSModules(styles, {allowMultiple: true})
 class PlaylistItem extends React.Component {
 
   componentDidMount() {

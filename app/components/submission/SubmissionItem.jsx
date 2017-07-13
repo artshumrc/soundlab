@@ -8,6 +8,9 @@ import PostContent from '../posts/PostContent.js'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 
 
+
+@CSSModules(styles, {allowMultiple: true})
+
 class SubmissionItem extends Component{
 
   componentDidMount() {
@@ -28,8 +31,8 @@ class SubmissionItem extends Component{
 
       <div>
 
-        <Card className={styles.listContainer}>
-          <Link to={"submissions/" + encodeURIComponent(name)} styleName="base" onClick={this.handleClick.bind(this)}>
+        <Card styleName="listContainer">
+          <Link to={"submissions/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
           <CardTitle title={title} subtitle={this.props.post.submission_byline.meta_value} />
           </Link>
 

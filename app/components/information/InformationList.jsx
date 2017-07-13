@@ -5,9 +5,11 @@ import Header from '../shared/header'
 import Footer from '../shared/footer'
 import InformationItem from './InformationItem'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
-import styles from './information.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import styles from './information.scss'
+import CSSModules from 'react-css-modules'
 
+@CSSModules(styles, {allowMultiple: true})
 
 class InformationList extends React.Component {
 
@@ -43,7 +45,7 @@ class InformationList extends React.Component {
       <div>
 
         <row >
-          <Col xsOffset={3} xs={6} className={styles.informationListContainer}>
+          <Col xsOffset={3} xs={6} styleName="informationListContainer">
             {this.props.data.posts.map((post) =>
               <InformationItem key={post.id} post={post} />
             )}

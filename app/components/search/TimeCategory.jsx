@@ -4,12 +4,15 @@ import gql from 'graphql-tag'
 import TimeItem from './TimeItem'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import styles from './search.scss'
+import CSSModules from 'react-css-modules'
+
+
+@CSSModules(styles, {allowMultiple: true})
 
 class TimeCategory extends React.Component {
 
   constructor(props) {
     super(props)
-
 
   }
 
@@ -21,7 +24,7 @@ class TimeCategory extends React.Component {
     }).isRequired,
   }
 
-  render () {
+  render() {
 
     if (this.props.data.loading) {
       return (<div>Loading</div>)
