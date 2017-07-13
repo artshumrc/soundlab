@@ -192,6 +192,7 @@ function mapStateToProps(state){
     ui:state.ui,
     playlist:state.playlist
   }
+
 }
 
 export default connect(mapStateToProps)(AudioPlayer)

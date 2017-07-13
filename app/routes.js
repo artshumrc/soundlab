@@ -1,11 +1,12 @@
 import React from 'react'
 import { IndexRoute, Route } from 'react-router'
-import App from './App.js'
-import Home from './components/home/home'
+
+import App from './App'
+import Home from './components/home/Home'
 import HomeLayout from './components/layouts/HomeLayout'
-import About from './components/singlePage/about'
-import Contact from './components/singlePage/contact'
-import Privacy from './components/singlePage/privacy'
+import About from './components/singlePage/About'
+import Contact from './components/singlePage/Contact'
+import Privacy from './components/singlePage/Privacy'
 import Profile from './components/profile/Profile'
 import InformationList from './components/information/InformationList'
 import InformationSingle from './components/information/InformationSingle'
@@ -14,9 +15,6 @@ import AudioUploadSingle from './components/audioUpload/AudioUploadSingle'
 import SubmissionList from './components/submission/SubmissionList'
 import SubmissionSingle from './components/submission/SubmissionSingle'
 import Search from './components/search/Search'
-import { WordExpressPage } from 'wordexpress-components'
-import PostSingle from './components/posts/PostSingle.js'
-import Layouts from './components/layouts/layouts.js'
 
 const routes = (
   <Route component={HomeLayout}>
