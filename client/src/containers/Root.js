@@ -14,7 +14,6 @@ const Root = ({store, history}) => {
     >
       <div>
         <Router history={history} routes={Routes}/>
-        <DevTools/>
       </div>
     </ApolloProvider>
   );
