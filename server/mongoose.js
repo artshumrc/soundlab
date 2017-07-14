@@ -11,6 +11,11 @@ const getURL = () => {
 	return `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 };
 
+const closeDB = () => {
+	mongoose.disconnect();
+	console.log('database closed');
+};
+
 /**
  * Sets up the mongoose connection based on the process.env settings.
  * @return {[function]} mongoose connection instance
@@ -31,3 +36,4 @@ const setupDB = () => {
 };
 
 export default setupDB;
+export { getURL, closeDB };

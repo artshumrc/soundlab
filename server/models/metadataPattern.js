@@ -4,6 +4,8 @@ import URLSlugs from 'mongoose-url-slugs';
 
 const Schema = mongoose.Schema;
 
+const metadataTypes = ['String', 'Number', 'Boolean', 'Array/String', 'Array/Number', 'Array/Boolean'];
+
 /**
  * MetadataPattern base schema
  * @type {Schema}
@@ -21,10 +23,18 @@ const MetadataPatternSchema = new Schema({
 		default: false,
 	},
 	structure: [{
-		key: String,
-		typeId: {
+		key: {
+			type: String,
+			lowercase: true
+		},
+		title: String,
+		type: {
+			type: String,
+			enum: [...metadataTypes, 'patternId'],
+		},
+		patterId: {
 			type: Schema.Types.ObjectId,
-			ref: 'MetadataType',
+			ref: 'MetadataPattern',
 		},
 	}],
 });
@@ -43,5 +53,5 @@ MetadataPatternSchema.plugin(URLSlugs('name'));
 const MetadataPattern = mongoose.model('MetadataPattern', MetadataPatternSchema);
 
 export default MetadataPattern;
-export { MetadataPatternSchema };
+export { MetadataPatternSchema, metadataTypes };
 

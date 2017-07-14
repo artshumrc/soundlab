@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
 
+require('mongoose-type-url');
+
 const Schema = mongoose.Schema;
 
 /**
@@ -16,6 +18,12 @@ const TenantSchema = new Schema({
 		trim: true,
 		index: true
 	},
+	url: {
+		unique: true,
+		type: mongoose.SchemaTypes.Url,
+		required: true,
+		index: true,
+	}
 });
 
 

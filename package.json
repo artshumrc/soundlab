@@ -19,6 +19,7 @@
     "mongoose-schema-to-graphql": "^2.5.7",
     "mongoose-timestamp": "^0.6.0",
     "mongoose-type-email": "^1.0.5",
+    "mongoose-type-url": "^1.0.2",
     "mongoose-url-slugs": "^1.0.0",
     "morgan": "^1.8.2",
     "passport": "^0.3.2",
@@ -44,6 +45,7 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1",
+    "faker": "^4.1.0",
     "faucet": "^0.0.1",
     "flow-bin": "^0.47.0",
     "leaked-handles": "^5.2.0",
@@ -58,7 +60,9 @@
     "test-server": "babel-tape-runner ./server/tests/**/*.test.js | faucet",
     "test": "npm run test-client-ci && npm run test-server",
     "server": "nodemon server --exec babel-node",
-    "start": "concurrently \"npm run server\" \"npm run client\""
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "db-seed": "babel-node scripts/run-seed.js",
+    "db-clear": "babel-node scripts/run-clear-db.js"
   },
   "repository": {
     "type": "git",
