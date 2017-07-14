@@ -1,28 +1,18 @@
-import { modelReducer, formReducer, combineForms} from 'react-redux-form';
-import {combineReducers} from 'redux';
+import { CHANGE_VALUE } from '../actions/exampleForm';
 
 const initialState = {
-  username: 'test',
-  email: ''
+	username: 'test',
+	email: 'bruce@wayneenterprises.com'
 };
 
-const store = combineForms({
-  user: initialState
-});
+export default function exampleForm(state = initialState, action) {
+	switch (action.type) {
 
-export default store;
-// export default function (state = initialState, action) {
-//
-//   console.log('reducer was called with state', state, 'and action', action);
-//
-//   switch (action.type) {
-//     case 'CHANGE_VALUE':
-//       return Object.assign({}, state, {
-//         ...state,
-//         value: action.value
-//
-//       });
-//     default:
-//       return state;
-//   }
-// }
+	case CHANGE_VALUE:
+		const newValue = {};
+		newValue[action.name] = action.currentValue;
+		return Object.assign({}, state, newValue);
+	default:
+		return state;
+	}
+}

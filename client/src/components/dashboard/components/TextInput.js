@@ -5,7 +5,6 @@ import './stylesheets/TextInput.css';
 
 export default class TextInput extends React.Component {
 	render() {
-	  console.log("this.props TextInput LOG", this.props);
 		let iconRight;
 		let style = this.props.icon ? 'inner-addon both-addon ' : 'textInput inner-addon right-addon ';
 		const icon = this.props.icon ? <FontAwesome name={this.props.icon} className="icon" /> : '';
@@ -27,7 +26,10 @@ export default class TextInput extends React.Component {
 				{label}
 				<div className={style}>
 					{icon}
-					<input {...this.props} />
+					<input
+						placeholder={this.props.placeholder} value={this.props.form[this.props.name]}
+						onChange={this.props.changeCb} disabled={this.props.disabled} {...this.props}
+					/>
 					{iconRight}
 					{required}
 				</div>
