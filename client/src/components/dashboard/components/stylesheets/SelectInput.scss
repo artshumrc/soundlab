@@ -9,7 +9,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: url('/images/dropdown-caret.png') no-repeat 96% 50%;
+    background: url('/images/dropdown-caret.png') no-repeat 96% 50% #fff;
   }
   select:focus {
     outline: none;
@@ -17,5 +17,12 @@
   }
   select option:disabled {
     color: #3a9fbf;
+  }
+  .errorBottom {
+    color: #ed1c24;
+    margin-bottom: 10px;
+    .fa {
+      color: #ed1c24;
+    }
   }
 }

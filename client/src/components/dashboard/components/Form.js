@@ -1,22 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {reduxForm} from 'redux-form';
 
-export default class Form extends React.Component {
+class Form extends React.Component {
 	constructor(props) {
 		super(props);
-		this.renderChildren = this.renderChildren.bind(this);
-	}
-
-	renderChildren() {
-		return React.Children.map(this.props.children, child => React.cloneElement(child, {
-			form: this.props.store
-		}));
 	}
 
 	render() {
 		return (
-			<form>
-				{this.renderChildren()}
+			<form onSubmit={this.props.handleSubmit}>
+				{this.props.children}
+				<button type="submit">Submit</button>
 			</form>
 		);
 	}
 }
+
+Form.propTypes = {
+	children: PropTypes.object.isRequired,
+};
+
+export default reduxForm()(Form);

@@ -1,17 +1,19 @@
 import React from 'react';
+import FontAwesome from 'react-fontawesome';
 import './stylesheets/SelectInput.css';
 
 export default class SelectInput extends React.Component {
-  render() {
-    return (
-      <div className="selectInput">
-        <select placeholder="Placeholder">
-          <option disabled selected>Placeholder</option>
-          {this.props.options.map((option) => {
-            return <option value={option.value}>{option.name}</option>
-          })}
-        </select>
-      </div>
-    )
-  }
+	render() {
+		const error = this.props.meta.error && this.props.meta.touched ?
+			<div className="errorBottom"><FontAwesome name="info-circle" /> {this.props.meta.error}</div> : '';
+		return (
+			<div className="selectInput">
+				<select {...this.props.input}>
+					<option selected hidden value="">Placeholder</option>
+					{this.props.children}
+				</select>
+				{error}
+			</div>
+		);
+	}
 }

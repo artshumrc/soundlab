@@ -26,10 +26,11 @@
     color: #7f8fa4;
     margin-bottom: 0;
   }
-  .required {
-    color: #7f8fa4;
+  .errorBottom {
+    color: #ed1c24;
+    margin-bottom: 10px;
     .fa {
-      color: #c5d0de;
+      color: #ed1c24;
     }
   }
 }

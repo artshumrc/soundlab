@@ -19,6 +19,8 @@ export default class Articles extends React.Component {
 
 	render() {
 	  const actionOptions = [{name: 'USD'}, {name: 'PLN'}];
+	  const meta = {meta: {touched: false}};
+	  const metaError = {meta: {touched: true, error: true}};
 		return (
 			<div id="articles">
 				<div className="topBar">
@@ -32,35 +34,35 @@ export default class Articles extends React.Component {
 					<Row>
 						<Col lg={3}>
 							<div className="sectionTitle">Text inputs</div>
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Error" valid={false} />
-							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid />
-							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Error"  {...metaError} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled {...meta} />
 						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">With icon</div>
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" icon="calendar" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" icon="user-o" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Error" valid={false} icon="calendar" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid icon="user-o" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled icon="calendar" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" icon="calendar" {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" icon="user-o" {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Error"  icon="calendar" {...metaError} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid icon="user-o" {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled icon="calendar" {...meta} />
 						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">With icon - right side</div>
 
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" iconRight="calendar" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" iconRight="user-o" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Error" valid={false} iconRight="calendar" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid iconRight="user-o" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled iconRight="calendar" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" iconRight="calendar" {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" iconRight="user-o" {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Error"  iconRight="calendar" {...metaError} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid iconRight="user-o" {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled iconRight="calendar" {...meta} />
 
 						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">Custom fields</div>
 
 							<TextInputIcon changeCb={this.handleFormChange} icon="user-o" value="User" placeholder="Username" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled iconRight="calendar" />
+							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled iconRight="calendar" {...meta} />
 							<InputAction options={actionOptions} />
 							<NumberInput changeCb={this.handleFormChange} />
 
@@ -69,20 +71,20 @@ export default class Articles extends React.Component {
 					<Row>
 						<Col lg={3}>
 							<div className="sectionTitle">Text inputs with labels</div>
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" label="Label" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" label="Label" required />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" label="Label" {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" label="Label" required {...meta} />
 							<TextArea changeCb={this.handleFormChange} rows={7} value="The textarea tag defines a multi-line text input control." label="Label" disabled />
 						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">Correct value label</div>
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Correct value" valid label="Label" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Correct value" valid label="Label" required />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Correct value" valid label="Label" {...meta} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Correct value" valid label="Label" required {...meta} />
 							<TextArea changeCb={this.handleFormChange} rows={7} value="The textarea tag defines a multi-line text input control." label="Label" min={40} />
 						</Col>
 						<Col lg={3}>
 							<div className="sectionTitle">Wrong value label</div>
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Wrong value" valid={false} label="Label" />
-							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Wron value" valid={false} label="Label" required />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Wrong value" label="Label" {...metaError} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="Wron value" label="Label" required {...metaError} />
 							<TextArea changeCb={this.handleFormChange} rows={7} value="The textarea tag defines a multi-line text input control." label="Label" required />
 						</Col>
 						<Col lg={3}>

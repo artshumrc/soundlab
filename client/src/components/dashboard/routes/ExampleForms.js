@@ -1,31 +1,86 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import TextInput from '../components/TextInput';
+import {Field} from 'redux-form';
+import validator from 'validator';
 import Form from '../components/Form';
-import {changeValue} from '../../../actions/exampleForm';
+import TextInput from '../components/TextInput';
+import SelectInput from '../components/SelectInput';
 
-const mapStateToProps = state => ({user: state.exampleForm});
+const mapStateToProps = state => ({
+	initialValues: {
+		email: 'bruce@wayneenterprises.gth',
+		firstName: 'Bruce',
+		lastName: 'Wayne'
+	}
+});
+
+const validate = (values) => {
+	const errors = {};
+	if (!values.firstName) {
+		errors.firstName = 'Required';
+	}
+	if (!values.email) {
+		errors.email = 'Required';
+	} else if (!validator.isEmail(values.email)) {
+		errors.email = 'Invalid email address';
+	}
+	if (!values.sex) {
+		errors.sex = 'Required';
+	}
+
+	return errors;
+};
 
 class ExampleForms extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleChange(event) {
-		this.props.dispatch(changeValue(event.target.name, event.target.value));
+	handleSubmit(event) {
+		console.log('event LOG', event);
 	}
+
+	inputComponent(props) {
+		return <TextInput {...props} />;
+	}
+
+	selectComponent(props) {
+		return <SelectInput {...props} />;
+	}
+
 
 	render() {
 		return (
 			<div className="content">
-				<Form store={this.props.user}>
-					<TextInput placeholder="Placeholder" name="username" onChange={this.handleChange} />
-					<TextInput placeholder="Placeholder" name="email" onChange={this.handleChange} />
-				</Form>
+				<div className="container">
+					<Form onSubmit={this.handleSubmit} validate={validate} form="exampleForm" initialValues={this.props.initialValues}>
+						<div>
+							<label htmlFor="email">E-mail</label>
+							<Field name="email" component={this.inputComponent} type="email" placeholder="e-mail" />
+						</div>
+						<div>
+							<label htmlFor="firstName">First Name</label>
+							<Field name="firstName" component={this.inputComponent} type="text" placeholder="first name" />
+						</div>
+						<div>
+							<label htmlFor="lastName">Last Name</label>
+							<Field name="lastName" component={this.inputComponent} type="text" placeholder="last name" />
+						</div>
+						<div>
+							<label htmlFor="sex">Sex</label>
+							<Field name="sex" component={this.selectComponent} type="text">
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+							</Field>
+						</div>
+					</Form>
+				</div>
 			</div>
 		);
 	}
 }
 
+
 export default connect(mapStateToProps)(ExampleForms);
+

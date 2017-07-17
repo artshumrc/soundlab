@@ -29,11 +29,13 @@
     "react-tooltip": "^3.3.0",
     "recharts": "^1.0.0-alpha.1",
     "redux": "^3.6.0",
+    "redux-form": "^7.0.0",
     "redux-logger": "^3.0.6",
     "redux-slider-monitor": "^2.0.0-1",
     "redux-thunk": "^2.2.0",
     "scroll-to-element": "^2.0.0",
-    "tween": "^0.9.0"
+    "tween": "^0.9.0",
+    "validator": "^8.0.0"
   },
   "devDependencies": {
     "babel-jest": "^20.0.3",
