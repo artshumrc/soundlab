@@ -20,7 +20,7 @@ const closeDB = () => {
  * Sets up the mongoose connection based on the process.env settings.
  * @return {[function]} mongoose connection instance
  */
-const setupDB = () => {
+const dbSetup = () => {
 	
 	const url = getURL();
 
@@ -35,5 +35,5 @@ const setupDB = () => {
 	return mongoose.connect(url, options).connection;
 };
 
-export default setupDB;
+export default dbSetup;
 export { getURL, closeDB };
