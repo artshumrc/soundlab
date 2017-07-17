@@ -36,9 +36,9 @@ To start the project you need to follow these steps:
 	REACT_APP_GRAPHQL_SERVER=http://localhost:3001
 	REACT_APP_GRAPHQL_URI=graphql
 	REACT_APP_AUTH_SERVER=http://localhost:3001
-	REACT_APP_LOGIN_URI=login
-	REACT_APP_LOGOUT_URI=logout
-	REACT_APP_REGISTER_URI=register
+	REACT_APP_LOGIN_URI=auth/login
+	REACT_APP_LOGOUT_URI=auth/logout
+	REACT_APP_REGISTER_URI=auth/register
 	```
 
 5.	Generate mock data using the seed script:
