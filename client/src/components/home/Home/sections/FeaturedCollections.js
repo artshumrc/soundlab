@@ -8,9 +8,9 @@ export default class FeaturedCollections extends React.Component {
 		return (
 			<Grid>
 				<Row>
-					{this.props.data.map((collection) => {
+					{this.props.data.map((collection, i) => {
 						const cardImageUrl = {backgroundImage: `url(${collection.imageUrl})`};
-						return (<Col lg={4}>
+						return (<Col lg={4} key={`${collection.name}.${i}`}>
 							<div className="collectionCard">
 								<div className="cardImage" style={cardImageUrl} />
 								<div className="collectionBadge">{collection.category}</div>
