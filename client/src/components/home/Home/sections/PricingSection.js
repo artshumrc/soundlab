@@ -13,7 +13,7 @@ export default class PricingSection extends React.Component {
 				<Grid>
 					<Row>
 						<Col lg={4}>
-							<Panel header="Standard" bsStyle="pricing" className="simple">
+							<Panel header="Standard" bsStyle="primary" className="simple">
                 <span className="price"><sup>$</sup>100<sub>/mo</sub></span>
                 <div>4 quarterly payments</div>
                 <hr />
@@ -28,7 +28,7 @@ export default class PricingSection extends React.Component {
               </Panel>
 						</Col>
             <Col lg={4}>
-              <Panel header="Standard" bsStyle="pricing" className="standard">
+              <Panel header="Standard" bsStyle="primary" className="standard">
                 <span className="price"><sup>$</sup>200<sub>/mo</sub></span>
                 <div>4 quarterly payments</div>
                 <hr />
@@ -43,7 +43,7 @@ export default class PricingSection extends React.Component {
               </Panel>
             </Col>
             <Col lg={4}>
-              <Panel header="Standard" bsStyle="pricing" className="ultimate">
+              <Panel header="Standard" bsStyle="primary" className="ultimate">
                 <span className="price"><sup>$</sup>300<sub>/mo</sub></span>
                 <div>4 quarterly payments</div>
                 <hr />

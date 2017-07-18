@@ -50,10 +50,12 @@
 	li {
 		display: inline-block;
 		vertical-align: top;
+		font-family: $font-label;
+
 		a {
 			height: 60px;
-			padding: 15px 10px;
-
+			padding: 15px 20px;
+			font-weight: bold;
 
 			&:hover {
 				background: #eee;

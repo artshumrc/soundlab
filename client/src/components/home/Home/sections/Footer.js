@@ -22,17 +22,13 @@ export default class Footer extends React.Component {
                 <h4 className="invert">ORPHEUS</h4>
                 <p>
                   HUGE Website Builder is a big library of pre-designed web elements which help you create website in few minutes.
-                  <div>
-                    <Button className="btn-contact">Contact</Button>
-                  </div>
+                  <Button className="btn-contact">Contact</Button>
                 </p>
               </Col>
               <Col lg={4}>
                 <h4 className="invert">Need a project done</h4>
                 <p>Need help with designing your brand new website or you have any idea and thinking of getting it’s branding done then get a FREE quote today.
-                  <div>
-                    <Button className="btn-contact blue">Free quote</Button>
-                  </div>
+                  <Button className="btn-contact blue">Free quote</Button>
                 </p>
 
               </Col>
@@ -42,13 +38,10 @@ export default class Footer extends React.Component {
                   Send an Email on contact@orphe.us
                   Visit Us 123 Fake Street- London 12358
                   United Kingdom
-                  <div>
-                    <Button className="btn-contact socialIcon"><FontAwesome name="facebook"/></Button>
-                    <Button className="btn-contact socialIcon"><FontAwesome name="twitter"/></Button>
-                    <Button className="btn-contact socialIcon"><FontAwesome name="google-plus"/></Button>
-                    <Button className="btn-contact socialIcon"><FontAwesome name="dribbble"/></Button>
-                  </div>
-
+                  <Button className="btn-contact socialIcon"><FontAwesome name="facebook"/></Button>
+                  <Button className="btn-contact socialIcon"><FontAwesome name="twitter"/></Button>
+                  <Button className="btn-contact socialIcon"><FontAwesome name="google-plus"/></Button>
+                  <Button className="btn-contact socialIcon"><FontAwesome name="dribbble"/></Button>
                 </p>
               </Col>
             </Row>
