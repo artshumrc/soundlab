@@ -1,0 +1,113 @@
+.textInput {
+  input {
+    width: 100%;
+    border: 1px solid #dfe3e9;
+    border-radius: 7px;
+    padding: 15px 12px;
+    color: #354052;
+    margin: 10px 0;
+  }
+  input:hover {
+    border: 1px solid #ced0da;
+  }
+  input::placeholder {
+    color: #a7acb4;
+  }
+  input:focus {
+    outline: none;
+    border: 1px solid #2ea2f8;
+    color: #354052;
+  }
+  input:disabled, input:disabled:hover {
+    border: 1px solid #dfe3e9;
+    background-color: #e9edf1;
+  }
+  label {
+    color: #7f8fa4;
+    margin-bottom: 0;
+  }
+  .errorBottom {
+    color: #ed1c24;
+    margin-bottom: 10px;
+    .fa {
+      color: #ed1c24;
+    }
+  }
+}
+
+.invalid {
+  input, input:hover, input:focus {
+    border: 1px solid #ed1c24;
+    color: #ed1c24;
+  }
+  .addon {
+    color: #ed1c24;
+  }
+}
+.valid {
+  input, input:hover, input:focus {
+    border: 1px solid #1bb934;
+  }
+  .addon {
+    color: #1bb934;
+  }
+}
+
+.inner-addon {
+  position: relative;
+}
+
+.inner-addon .addon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+.right-addon .addon {
+  top: 17px;
+  right: 0;
+}
+
+.right-addon input {
+  padding-right: 30px;
+}
+
+.left-addon .addon {
+  top: 1px;
+  left: 0;
+}
+
+.left-addon input {
+  padding-left: 30px;
+}
+
+.both-addon input {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.both-addon .addon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  top: 17px;
+  right: 0;
+}
+
+.both-addon .icon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  top: 17px;
+  left: 0;
+  color: #ced0da;
+}
+
+.inner-addon .iconRight {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  top: 17px;
+  right: 0;
+  color: #ced0da;
+}

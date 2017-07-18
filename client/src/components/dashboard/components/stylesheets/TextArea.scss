@@ -1,0 +1,41 @@
+.textArea {
+  textarea {
+    width: 100%;
+    border: 1px solid #dfe3e9;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 10px 0;
+    max-width: 100%;
+  }
+  textarea:focus {
+    outline: none;
+    border: 1px solid #2ea2f8;
+  }
+  textarea:disabled {
+    background-color: #e9edf1;
+    color: #8f96a1;
+  }
+  textarea::placeholder {
+    color: #a7acb4;
+  }
+  label {
+    width: 100%;
+    color: #7f8fa4;
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+  small.error {
+    border: none;
+    color: #ed1c24;
+  }
+  .error, .error:focus {
+    border: 1px solid #ed1c24;
+  }
+  .required {
+    color: #7f8fa4;
+    .fa {
+      color: #c5d0de;
+    }
+  }
+
+}
