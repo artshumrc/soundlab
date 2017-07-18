@@ -10,7 +10,7 @@ export default function authSetup(app) {
 	// JWT strategy
 	const JWTOptions = {
 		jwtFromRequest: ExtractJwt.fromAuthHeader(),
-		secretOrKey: process.env.JWT_SECREST,
+		secretOrKey: process.env.JWT_SECRET,
 	};
 
 	passport.use(new JwtStrategy(JWTOptions, (jwtPayload, done) => {
