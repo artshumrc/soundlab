@@ -10,7 +10,7 @@ import Projects from '../bll/projects';
 import { AuthenticationError } from '../errors';
 
 /**
- * GraphQL mutation project fileds
+ * GraphQL mutation project fields
  * @type {Object}
  * @property {Object} projectCreate 	Create project
  */
@@ -18,6 +18,7 @@ const projectMutationFileds = {
 
 	projectCreate: {
 		type: projectType,
+		description: 'Create new project',
 		args: {
 			title: {
 				type: new GraphQLNonNull(GraphQLString)

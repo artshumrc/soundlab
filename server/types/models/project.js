@@ -1,3 +1,4 @@
+import { GraphQLList } from 'graphql';
 import createType from 'mongoose-schema-to-graphql';
 
 // models
@@ -5,6 +6,7 @@ import Project from '../../models/project';
 
 // types
 import tenantType from './tenant';
+import userType from './user';
 
 const config = {
 	name: 'projectType',
@@ -13,8 +15,11 @@ const config = {
 	schema: Project.schema,
 	exclude: ['_id'],
 	extend: {
+		userId: {
+			type: userType,
+		},
 		tenantIds: {
-			type: tenantType,
+			type: new GraphQLList(tenantType),
 		},
 	}
 };

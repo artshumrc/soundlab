@@ -8,9 +8,10 @@ import projectMutationFileds from './projects';
  */
 const RootMutations = new GraphQLObjectType({
 	name: 'RootMutationType',
+	description: 'Root mutation object type',
 	fields: {
 		...projectMutationFileds,
-	}
+	},
 });
 
 export default RootMutations;

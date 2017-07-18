@@ -8,9 +8,10 @@ import projectQueryFileds from './projects';
  */
 const RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',
+	description: 'Root query object type',
 	fields: {
 		...projectQueryFileds,
-	}
+	},
 });
 
 export default RootQuery;

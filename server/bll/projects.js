@@ -29,7 +29,7 @@ const Projects = {
 	},
 	findById(_id) {
 		if (_id) {
-			return Project.findById(_id);
+			return Project.findById(_id).populate('userId tenantIds');
 		}
 		throw new Error('_id not specified');
 	},

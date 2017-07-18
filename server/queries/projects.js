@@ -1,4 +1,4 @@
-import { GraphQLString, GraphQLNonNull } from 'graphql';
+import { GraphQLString, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 
 // types
 import projectType from '../types/models/project';
@@ -18,6 +18,7 @@ import { AuthenticationError } from '../errors';
 const projectQueryFileds = {
 	projectById: {
 		type: projectType,
+		description: 'Find project by _id',
 		args: {
 			_id: {
 				type: new GraphQLNonNull(GraphQLString),
@@ -33,6 +34,7 @@ const projectQueryFileds = {
 	},
 	projectBySlug: {
 		type: projectType,
+		description: 'Find project by slug',
 		args: { slug: { type: GraphQLString } },
 		async resolve(parent, { slug }) {
 			try {
