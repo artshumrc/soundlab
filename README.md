@@ -30,6 +30,7 @@ To start the project you need to follow these steps:
 	DB_PORT=27017
 	DB_NAME=orpheus
 	CLIENT_SERVER=http://localhost:3000
+	JWT_SECRET=secret
 	```
 
 	Environment variables for the *client* (*!IMPORTANT*: this should be set in the `client` folder):
@@ -37,10 +38,12 @@ To start the project you need to follow these steps:
 	// client/.env
 	REACT_APP_GRAPHQL_SERVER=http://localhost:3001
 	REACT_APP_GRAPHQL_URI=graphql
-	REACT_APP_AUTH_SERVER=http://localhost:3001
+	REACT_APP_SERVER=http://localhost:3001
 	REACT_APP_LOGIN_URI=auth/login
+	REACT_APP_LOGIN_JWT_URI=auth/login-jwt
 	REACT_APP_LOGOUT_URI=auth/logout
 	REACT_APP_REGISTER_URI=auth/register
+	REACT_APP_REGISTER_JWT_URI=auth/register
 	```
 
 5.	Generate mock data using the seed script:

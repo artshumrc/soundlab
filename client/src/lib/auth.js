@@ -8,7 +8,7 @@ const login = async (username, password) => {
 	if (userLoggedIn()) return null;
 
 	try {
-		const res = await fetch(`${process.env.REACT_APP_AUTH_SERVER}/${process.env.REACT_APP_LOGIN_URI}`, {
+		const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_LOGIN_URI}`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
@@ -30,7 +30,7 @@ const loginJWT = async (username, password) => {
 	if (userLoggedIn()) return null;
 
 	try {
-		const res = await fetch(`${process.env.REACT_APP_AUTH_SERVER}/${process.env.REACT_APP_LOGIN_JWT_URI}`, {
+		const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_LOGIN_JWT_URI}`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
@@ -55,7 +55,7 @@ const logout = async (username, password) => {
 	if (userLoggedIn()) return null;
 
 	try {
-		const res = await fetch(`${process.env.REACT_APP_AUTH_SERVER}/${process.env.REACT_APP_LOGOUT_URI}`, {
+		const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_LOGOUT_URI}`, {
 			method: 'POST',
 			credentials: 'include',
 		});
@@ -67,7 +67,7 @@ const logout = async (username, password) => {
 
 const register = async (username, password) => {
 	try {
-		const res = await fetch(`${process.env.REACT_APP_AUTH_SERVER}/${process.env.REACT_APP_REGISTER_URI}`, {
+		const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_REGISTER_URI}`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
@@ -87,7 +87,7 @@ const register = async (username, password) => {
 
 const registerJWT = async (username, password) => {
 	try {
-		const res = await fetch(`${process.env.REACT_APP_AUTH_SERVER}/${process.env.REACT_APP_REGISTER_JWT_URI}`, {
+		const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_REGISTER_JWT_URI}`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
