@@ -18,14 +18,10 @@ class Home extends React.Component {
 			<div id="home">
 				<Header />
 				<Cover />
-				<AboutSection />
-				<PopularCollectionsSection />
 				<FeaturesSection />
-				<TestimonialSection />
+				<PopularCollectionsSection />
 				<WhyUsSection />
-				<BetterExperienceSection />
 				<PricingSection />
-				<CreateAccountSection />
 				<Footer />
 			</div>
 		);

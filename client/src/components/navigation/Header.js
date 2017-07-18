@@ -16,14 +16,14 @@ export default class Header extends React.Component {
 
 	render() {
 		return (
-			<Headroom>
+			<Headroom className="header">
 				<div className="nav-header">
 					<i className="mdi mdi-bars left-menu-toggle-icon" />
 					<h2 className="site-title">
 						orphe.us
 					</h2>
 				</div>
-				<ul role="nav">
+				<ul role="nav" className="nav">
 					<li>
 						<a href="#services" onClick={this.scrollToItem} >
 							Services

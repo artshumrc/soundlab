@@ -1,8 +1,8 @@
 @import './variables.scss';
 
 html, body, input, p, span, label {
-	font-family:$font-body;
-	color:$font-gray;
+	font-family: $font-body;
+	color: $text-gray;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -17,10 +17,10 @@ body {
 }
 
 a {
-	color:$dark;
+	color: $text-primary;
 	text-decoration: none;
 	&:hover, &:focus {
-		color:$dark;
+		color: $text-primary;
 		text-decoration: none;
 	}
 }
@@ -113,12 +113,14 @@ li {
 .z100 {
   z-index: 100;
 }
+
 .btn {
-  font-family: 'Montserrat', sans-serif;
+  font-family: $font-label;
   font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
 .btn-primary {
   background-color: #2797d8;
   color: #fff;
@@ -126,6 +128,7 @@ li {
   margin: 0 10px;
   border: 2px solid #2797d8;
 }
+
 .btn-secondary {
   background-color: transparent;
   color: #fff;
@@ -133,17 +136,21 @@ li {
   margin: 0 10px;
   border: 2px solid #fff;
 }
+
 .btn-primary:hover {
   background-color: #60b0de;
   border: 2px solid #60b0de;
 }
+
 .btn-secondary:hover {
   background-color: #fff;
   color: #9f9f9f;
   border: 2px solid #fff;
 }
+
 section {
   padding: 70px 0;
+
   img {
     margin: 0 auto;
   }
