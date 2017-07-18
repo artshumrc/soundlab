@@ -3,6 +3,10 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 
+//aws
+import aws from 'aws-sdk';
+import S3Router from 'react-s3-uploader/s3router';
+
 // middleware
 import bodyParser from 'body-parser';
 import session from 'express-session';
@@ -33,6 +37,12 @@ const app = express();
 
 const db = setupDB();
 
+aws.config.update({
+  region: process.env.AWS_REGION,
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+});
+
 app.set('port', (process.env.PORT || 3001));
 
 // middleware
@@ -55,11 +65,12 @@ app.use(session({
 
 
 // CORS:
-const whitelist = ['http://192.168.0.24:3001', process.env.CLIENT_SERVER];
+const whitelist = ['http://localhost:3000', 'http://lvh.me:3000', process.env.CLIENT_SERVER];
 
 const corsOptionsDelegate = function (req, callback) {
 	const corsOptions = {
 		origin: false,
+    credentials: true
 	};
 	if (whitelist.indexOf(req.header('Origin')) !== -1) {
 		corsOptions.origin = true;
@@ -85,6 +96,13 @@ app.use('/graphql', graphqlHTTP({
 	graphiql: true
 }));
 
+//s3
+app.use('/s3', S3Router({
+  bucket: process.env.AWS_BUCKET,
+  region: process.env.AWS_REGION,
+  ACL: 'private',
+  uniquePrefix: true
+}));
 
 // authentication routs:
 function authenticationMiddleware() {

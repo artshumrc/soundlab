@@ -20,8 +20,8 @@ class Home extends React.Component {
 				<Jumbotron id="home" className="header-jumbotron">
 					<div className="jumbotron-overlay" />
 					<div className="jumbotron-content">
-						<h1>Build your digital archive</h1>
-						<p>Be visually striking or highly appealing to succeed</p>
+						<h1>The archive, reimagined</h1>
+						<p>Create and share digital collections across platforms when, where, and how you want</p>
 						<p>
 							<Button bsStyle="secondary">Get started</Button>
 							<Button bsStyle="primary">Learn more</Button>
