@@ -6,6 +6,7 @@ import zxcvbn from 'zxcvbn';
 // models
 import User from './models/user';
 
+
 export default function authSetup(app) {
 	// JWT strategy
 	const JWTOptions = {

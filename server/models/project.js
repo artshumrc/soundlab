@@ -9,31 +9,20 @@ const Schema = mongoose.Schema;
  * @type {Schema}
  */
 const ProjectSchema = new Schema({
-	title: {
-		type: String,
-		unique: true,
+	languages: {
+		type: [String],
 		required: true,
-		trim: true,
-		index: true
 	},
 	userId: {
 		type: Schema.Types.ObjectId,
 		ref: 'User',
 		index: true
 	},
-	tenantIds: [{
-		type: Schema.Types.ObjectId,
-		ref: 'Tenant',
-		index: true
-	}],
 });
 
 
-// add timestamp (createdAt, updatedAt)
+// add timestamps (createdAt, updatedAt)
 ProjectSchema.plugin(timestamp);
-
-// add slug (slug)
-ProjectSchema.plugin(URLSlugs('title'));
 
 /**
  * Project mongoose model
