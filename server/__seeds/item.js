@@ -1,4 +1,5 @@
 import faker from 'faker';
+import shortid from 'shortid';
 
 // models
 import Item from '../models/item';
@@ -9,28 +10,8 @@ import MetadataPattern from '../models/metadataPattern';
 import generateTenants from './tenant';
 
 // utils
-import { canSeed, generateData, notEmptyError, getRandom } from './utils';
+import { canSeed, generateData, insertData, notEmptyError, getRandom } from './utils';
 
-
-const _insertOneItem = async (item) => {
-	try {
-		return await _registerUserPromiseWrapper(item);
-	} catch (err) {
-		throw err;
-	}
-};
-
-const _insertData = async data => Promise.all(
-	data.map(async (el) => {
-		try {
-			const newItem = new Item(el);
-			const item = await newItem.save();
-			return item._id;
-		} catch (err) {
-			throw err;
-		}
-	})
-);
 
 const _arrayGenerator = (valueMethod) => {
 	const arraySize = Math.floor((Math.random() * 10) + 1);
@@ -64,7 +45,7 @@ const _getValue = (type) => {
 };
 
 const _getMetadata = (metadataPattern) => {
-	return Promise.all(metadataPattern.structure.map(async (struc) => {
+	return Promise.all(metadataPattern.structure.map(async(struc) => {
 		if (struc.patterId) {
 			try {
 				const newMetadataPattern = await MetadataPattern.findById(struc.patterId);
@@ -83,8 +64,9 @@ const _getMetadata = (metadataPattern) => {
 			type: struc.type,
 			value: _getValue(struc.type),
 		};
-	}
-))};
+	}));
+};
+
 
 const generateItem = async (count, collectionIds) => {
 	if (await canSeed(Item)) {
@@ -94,8 +76,6 @@ const generateItem = async (count, collectionIds) => {
 			try {
 				const collection = await Collection.findById(getRandom(collectionIds));
 				const metadataPattern = await MetadataPattern.findById(collection.metadataPatternId);
-				// console.log('collection', collection)
-				// console.log('metadataPattern', metadataPattern)
 
 				return {
 					title: faker.commerce.productName(),
@@ -108,7 +88,7 @@ const generateItem = async (count, collectionIds) => {
 		});
 
 		try {
-			const itemIds = await _insertData(data);
+			const itemIds = await insertData(data, Item);
 			return itemIds;
 		} catch (err) {
 			throw err;

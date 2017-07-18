@@ -4,28 +4,8 @@ import faker from 'faker';
 import Tenant from '../models/tenant';
 
 // utils
-import { canSeed, generateData, notEmptyError } from './utils';
+import { canSeed, generateData, insertData, notEmptyError } from './utils';
 
-
-const _insertOneItem = async (item) => {
-	try {
-		return await _registerUserPromiseWrapper(item);
-	} catch (err) {
-		throw err;
-	}
-};
-
-const _insertData = async data => Promise.all(
-	data.map(async (item) => {
-		try {
-			const newTenant = new Tenant(item);
-			const tenant = await newTenant.save();
-			return tenant._id;
-		} catch (err) {
-			throw err;
-		}
-	})
-);
 
 const generateTenants = async (count) => {
 	if (await canSeed(Tenant)) {
@@ -36,7 +16,7 @@ const generateTenants = async (count) => {
 		}));
 
 		try {
-			const tenantIds = await _insertData(data);
+			const tenantIds = await insertData(data, Tenant, ['name', 'url']);
 			return tenantIds;
 		} catch (err) {
 			throw err;

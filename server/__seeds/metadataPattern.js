@@ -4,29 +4,9 @@ import faker from 'faker';
 import MetadataPattern, { metadataTypes } from '../models/metadataPattern';
 
 // utils
-import { canSeed, generateData, notEmptyError, getRandom } from './utils';
+import { canSeed, generateData, insertData, notEmptyError, getRandom } from './utils';
 
 const metadataTypesCopy = metadataTypes.slice();
-
-const _insertOneItem = async (item) => {
-	try {
-		return await _registerUserPromiseWrapper(item);
-	} catch (err) {
-		throw err;
-	}
-};
-
-const _insertData = async data => Promise.all(
-	data.map(async (item) => {
-		try {
-			const newMetadataPattern = new MetadataPattern(item);
-			const metadataPattern = await newMetadataPattern.save();
-			return metadataPattern._id;
-		} catch (err) {
-			throw err;
-		}
-	})
-);
 
 const _getType = () => {
 	const type = metadataTypesCopy[0];
@@ -49,7 +29,7 @@ const _generateSingleValuePatterns = async () => {
 	});
 
 	try {
-		const metadataPatternIds = await _insertData(data);
+		const metadataPatternIds = await insertData(data, MetadataPattern, ['name']);
 		return metadataPatternIds;
 	} catch (err) {
 		throw err;
@@ -76,7 +56,7 @@ const _generateMultiValuePatterns = async (count) => {
 	});
 
 	try {
-		const metadataPatternIds = await _insertData(data);
+		const metadataPatternIds = await insertData(data, MetadataPattern, ['name']);
 		return metadataPatternIds;
 	} catch (err) {
 		throw err;
@@ -103,7 +83,7 @@ const _generateNestedPatterns = async (count, patternIds) => {
 	});
 
 	try {
-		const metadataPatternIds = await _insertData(data);
+		const metadataPatternIds = await insertData(data, MetadataPattern, ['name']);
 		return metadataPatternIds;
 	} catch (err) {
 		throw err;

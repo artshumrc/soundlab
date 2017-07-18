@@ -15,6 +15,7 @@
     "express-session": "^1.15.3",
     "graphql": "^0.10.3",
     "graphql-errors": "^2.1.0",
+    "jsonwebtoken": "^7.4.1",
     "mongoose": "4.10.8",
     "mongoose-schema-to-graphql": "^2.5.7",
     "mongoose-timestamp": "^0.6.0",
@@ -52,6 +53,7 @@
     "jest": "^20.0.4",
     "leaked-handles": "^5.2.0",
     "nodemon": "^1.11.0",
+    "shortid": "^2.2.8",
     "tape": "^4.6.3"
   },
   "scripts": {
@@ -63,8 +65,8 @@
     "test": "npm run test-client-ci && npm run test-server",
     "server": "nodemon server --exec babel-node",
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "db-seed": "babel-node scripts/run-seed.js",
-    "db-clear": "babel-node scripts/run-clear-db.js"
+    "db-seed": "babel-node scripts/run-db-seed.js",
+    "db-clear": "babel-node scripts/run-db-clear.js"
   },
   "repository": {
     "type": "git",

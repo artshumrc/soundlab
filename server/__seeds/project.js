@@ -1,4 +1,5 @@
 import faker from 'faker';
+import shortid from 'shortid';
 
 // models
 import Project from '../models/project';
@@ -7,28 +8,8 @@ import Project from '../models/project';
 import generateTenants from './tenant';
 
 // utils
-import { canSeed, generateData, notEmptyError, getRandom } from './utils';
+import { canSeed, generateData, insertData, notEmptyError, getRandom } from './utils';
 
-
-const _insertOneItem = async (item) => {
-	try {
-		return await _registerUserPromiseWrapper(item);
-	} catch (err) {
-		throw err;
-	}
-};
-
-const _insertData = async data => Promise.all(
-	data.map(async (item) => {
-		try {
-			const newProject = new Project(item);
-			const project = await newProject.save();
-			return project._id;
-		} catch (err) {
-			throw err;
-		}
-	})
-);
 
 const generateProjects = async (count, userIds) => {
 	if (await canSeed(Project)) {
@@ -40,7 +21,7 @@ const generateProjects = async (count, userIds) => {
 		}));
 
 		try {
-			const projectIds = await _insertData(data);
+			const projectIds = await insertData(data, Project, ['title']);
 			return projectIds;
 		} catch (err) {
 			throw err;

@@ -30,7 +30,7 @@ const ItemSchema = new Schema({
 ItemSchema.plugin(timestamp);
 
 // add slug (slug)
-ItemSchema.plugin(URLSlugs('title'));
+ItemSchema.plugin(URLSlugs('title _id'));
 
 /**
  * Item mongoose model

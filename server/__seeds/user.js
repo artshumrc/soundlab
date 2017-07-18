@@ -24,6 +24,20 @@ const _insertData = async data => Promise.all(
 			const account = await _registerUserPromiseWrapper(item);
 			return account._id;
 		} catch (err) {
+			// duplicate key error
+			if (err.name === 'MongoError' && err.code === 11000) {
+
+				const newItem = Object.assign(item);
+
+				newItem.username = `${item.username} ${shortid.generate()}`;
+
+				try {
+					const account2 = await _registerUserPromiseWrapper(newItem);
+					return account2._id;
+				} catch (err2) {
+					throw err2;
+				}
+			}
 			throw err;
 		}
 	})
