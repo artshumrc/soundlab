@@ -19,16 +19,11 @@
     height: 100%;
   }
   .jumbotron-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding-top: 400px;
-    margin: 0 auto;
-    display: block;
-    color: #fff;
-    text-align: center;
+    position: relative;
+    transform: translate3d(0, -50%, 0);
+    -webkit-transform: translate3d(0, -50%, 0);
+    top: 50%;
+    z-index: 2;
   }
 
   h1 {

@@ -1,9 +1,34 @@
+@import './variables.scss';
+
+html, body, input, p, span, label {
+	font-family:$font-body;
+	color:$font-gray;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family:$font-title;
+}
+
 body {
-  color: #090909;
+  color: #ffffff;
   font-family: sans-serif;
   margin: 0;
   padding: 0;
 }
+
+a {
+	color:$dark;
+	text-decoration: none;
+	&:hover, &:focus {
+		color:$dark;
+		text-decoration: none;
+	}
+}
+
+li {
+	list-style:none;
+}
+
 
 /* Remove scroll on the body when react-modal is open */
 .ReactModal__Body--open {
