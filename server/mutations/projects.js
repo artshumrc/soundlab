@@ -24,12 +24,11 @@ const projectMutationFileds = {
 				type: new GraphQLNonNull(GraphQLString)
 			},
 		},
-		async resolve(parent, { title, slug }, { session: { passport } }) {
+		async resolve(parent, { title }, { session: { passport } }) {
 			if (passport) {
 
 				const project = {
 					title,
-					slug,
 				};
 
 				try {

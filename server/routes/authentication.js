@@ -26,11 +26,13 @@ router.post('/login-jwt', passport.authenticate('local'), (req, res) => {
 	res.json({ success: true, token: `JWT ${token}` });
 });
 
+
 // LOGOUT
 router.post('/logout', (req, res) => {
 	req.logOut();
 	res.send(JSON.stringify({ status: 'Logged out' }));
 });
+
 
 // REGISTER
 router.post('/register', checkPasswordStrength(), (req, res) => {
@@ -40,10 +42,7 @@ router.post('/register', checkPasswordStrength(), (req, res) => {
 		if (err) {
 			return res.status(200).send(err);
 		}
-		console.log('account', account);
 		passport.authenticate('local')(req, res, () => {
-			console.log('JESTEM')
-			console.log('req.user', req.user)
 			res.send(JSON.stringify({ username: req.user.username }));
 		});
 	});
