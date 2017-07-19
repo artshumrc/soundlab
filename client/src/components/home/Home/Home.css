@@ -116,16 +116,6 @@ font-family: "Material Design Icons";
  @https://github.com/Upstatement/ups-mixin-lib
 
 ******************************************************************************/
-.brick {
-  border: 6px solid transparent;
-  outline: 4px solid transparent;
-  -moz-transition: all 100ms ease-in-out;
-  -o-transition: all 100ms ease-in-out;
-  -webkit-transition: all 100ms ease-in-out;
-  transition: all 100ms ease-in-out; }
-  .brick:hover {
-    outline: 4px solid #B3E5FC; }
-
 #home h1 {
   font-size: 50px;
   letter-spacing: 2px; }

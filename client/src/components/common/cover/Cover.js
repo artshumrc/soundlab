@@ -1,5 +1,6 @@
 import React from 'react';
 import CoverBackground from './CoverBackground';
+import './Cover.css';
 
 
 const Cover = props => (

@@ -1,6 +1,7 @@
 import React from 'react';
 import Bricks from 'bricks.js'
 import _ from 'underscore'
+import './Bricks.css';
 
 const initializeBricks = () => {
 	const instance = Bricks({

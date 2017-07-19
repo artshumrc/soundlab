@@ -1,14 +1,4 @@
 @import '../../../variables.scss';
-.brick {
-	border: 6px solid transparent;
-	outline: 4px solid transparent;
-	@include transition(all 100ms ease-in-out);
-	&:hover {
-		outline: 4px solid $primary-100;
-	}
-
-}
-
 #home {
   h1 {
     font-size: 50px;

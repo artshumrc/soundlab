@@ -3,19 +3,17 @@
 .bricks {
 	margin: 0 auto;
 	text-align: center;
-	background: blue;
-}
-#home .bricks {
-	background: blue;
 }
 
 .brick {
-	opacity: 0.9;
+	border: 6px solid transparent;
+	outline: 4px solid transparent;
 	@include transition(all 100ms ease-in-out);
+	opacity: 0.9;
 
 	&:hover {
-		opacity: 0.1;
-		border: 2px solid transparent;
-		outline: 2px solid $primary;
+		outline: 4px solid $primary-100;
+		opacity: 1;
 	}
+
 }
