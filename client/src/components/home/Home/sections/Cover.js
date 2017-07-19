@@ -2,38 +2,67 @@ import React from 'react'
 import Bricks from 'bricks.js'
 import _ from 'underscore'
 
+const initializeBricks = () => {
+	const instance = Bricks({
+	  container: '.brick-mosaic',
+		packed: 'data-packed',
+		sizes: [
+			{ columns: 6, gutter: 10 },
+			{ mq: '600px', columns: 7, gutter: 15 },
+			{ mq: '700px', columns: 8, gutter: 15 },
+			{ mq: '800px', columns: 9, gutter: 20 },
+			{ mq: '900px', columns: 10, gutter: 20 },
+			{ mq: '1000px', columns: 11, gutter: 20 },
+			{ mq: '1200px', columns: 13, gutter: 20 },
+			{ mq: '1400px', columns: 16, gutter: 20 },
+			{ mq: '1600px', columns: 19, gutter: 20 },
+		],
+		position: true,
+	})
+
+	instance.resize(true)
+};
+
 class Cover extends React.Component {
 
-	componentWillUpdate() {
-		const instance = Bricks({
-		  container: '.block-mosaic'
-		})
+	componentDidMount() {
+		initializeBricks();
 	}
 
 	render() {
 		const images = [];
-		const imagesUpperRange = 106;
-		const nImages = 55;
+		const imagesUpperRange = 105;
+		const windowWidth = window.innerWidth;
+		let nImages = 55;
 		let randInt;
-		let i = 10000;
+		let i = 0;
 
-		while (images.length < nImages && i > 0) {
+		if (windowWidth > 1400) {
+			nImages = 105;
+		} else if (windowWidth > 1200) {
+			nImages = 75;
+		} else if (windowWidth > 900) {
+			nImages = 55;
+		} else if (windowWidth > 600) {
+			nImages = 25;
+		}
+
+		while (images.length < nImages && i < 1000) {
 			randInt = Math.floor(Math.random() * imagesUpperRange) + 1;
 			if (!~images.indexOf(randInt)) {
 				images.push(randInt);
 			}
-			i -= 1;
+			i += 1;
 		}
-
-		console.log(images);
 
 		return (
 				<div className="cover home-cover">
 					<div className="cover-background">
-						<div className="block-mosaic">
+						<div className="brick-mosaic">
 							{images.map((image, i) => (
 								<img
-									className="block-mosaic-image"
+									key={`${image}-${i}`}
+									className="brick-mosaic-image"
 									src={`//iiif.orphe.us/orpheus/art/${image}.jpg/full/90,/0/default.jpg`}
 								/>
 							))}
