@@ -1,13 +1,13 @@
 import { GraphQLString, GraphQLNonNull } from 'graphql';
 
 // types
-import projectType from '../types/models/project';
+import projectType from '../../types/models/project';
 
 // bll
-import Projects from '../bll/projects';
+import Projects from '../../bll/projects';
 
 // errors
-import { AuthenticationError } from '../errors';
+import { AuthenticationError } from '../../errors';
 
 /**
  * GraphQL mutation project fields
