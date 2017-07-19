@@ -160,3 +160,21 @@ font-family: "Material Design Icons";
   color: #3c3d41;
   font-size: 18px;
   letter-spacing: 2px; }
+
+#home .home-cover-content {
+  margin: 0 auto;
+  display: inline-block;
+  display: block;
+  max-width: 90%;
+  width: 720px;
+  padding-bottom: 90px; }
+  #home .home-cover-content h1 {
+    color: #222;
+    padding: 20px 0;
+    text-shadow: 0px 0px 20px #fff; }
+  #home .home-cover-content .lead {
+    color: #222;
+    padding: 20px 0 40px;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 20px #fff;
+    font-size: 20px; }

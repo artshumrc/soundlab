@@ -40,12 +40,10 @@ const makeDefaultBricks = () => {
 
 	if (windowWidth > 1400) {
 		nImages = 105;
-	} else 	if (windowWidth > 1200) {
-		nImages = 75;
 	} else if (windowWidth > 900) {
-		nImages = 50;
+		nImages = 75;
 	} else if (windowWidth > 600) {
-		nImages = 20;
+		nImages = 50;
 	}
 
 	for (let i = 0; i < imagesUpperRange - nImages; i++ ) {

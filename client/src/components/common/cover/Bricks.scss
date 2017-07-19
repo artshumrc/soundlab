@@ -1,18 +1,17 @@
 @import '../../../variables.scss';
 
 .bricks {
-	margin: 0 auto;
-	text-align: center;
+	overflow: visible;
 }
 
 .brick {
 	border: 6px solid transparent;
-	outline: 4px solid transparent;
-	@include transition(all 100ms ease-in-out);
-	opacity: 0.9;
+	outline: 1px solid transparent;
+	opacity: 0.2;
+	@include transition(all 100ms linear);
 
 	&:hover {
-		outline: 4px solid $primary-100;
+		outline: 1px solid $divider;
 		opacity: 1;
 	}
 

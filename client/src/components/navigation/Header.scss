@@ -47,6 +47,10 @@
 
 .site-title {
 	font-family: $font-logo;
+	padding: 10px 15px;
+	line-height: 1.2em;
+	margin: 0;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6);
 }
 
 .nav {
@@ -56,9 +60,15 @@
 		font-family: $font-label;
 
 		a {
-			height: 60px;
 			padding: 15px 20px;
 			font-weight: bold;
+			background: rgba(255, 255, 255, 0.4);
+			text-transform: uppercase;
+
+			&.login-button  {
+				background: $primary;
+				color: $light;
+			}
 
 			&:hover {
 				background: #eee;

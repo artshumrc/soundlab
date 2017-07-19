@@ -19,23 +19,25 @@ class HomeCover extends React.Component {
 					<div className="home-overlay" />
 				}
 			>
-				<h1>the archive, reimagined</h1>
-				<p>Create and share digital collections across platforms when, where, and how you want</p>
-				<div>
-					<Button
-						href="#learn"
-						onClick={Util.scrollToElement}
-						transparentLight
-					>
-						Learn More
-					</Button>
-					<Button
-						href="#getStarted"
-						onClick={Util.scrollToElement}
-						primary
-					>
-						Get Started
-					</Button>
+				<div className="home-cover-content">
+					<h1>the archive, reimagined</h1>
+					<p className="lead">Create and share digital collections across platforms when, where, and how you want</p>
+					<div>
+						<Button
+							href="#learn"
+							onClick={Util.scrollToElement}
+							transparentLight
+						>
+							Learn More
+						</Button>
+						<Button
+							href="#getStarted"
+							onClick={Util.scrollToElement}
+							primary
+						>
+							Get Started
+						</Button>
+					</div>
 				</div>
 			</Cover>
 		)
