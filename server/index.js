@@ -38,7 +38,6 @@ const app = express();
 const db = setupDB();
 
 aws.config.update({
-  region: process.env.AWS_REGION,
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
@@ -99,8 +98,7 @@ app.use('/graphql', graphqlHTTP({
 //s3
 app.use('/s3', S3Router({
   bucket: process.env.AWS_BUCKET,
-  region: process.env.AWS_REGION,
-  ACL: 'private',
+  ACL: 'public-read',
   uniquePrefix: true
 }));
 
