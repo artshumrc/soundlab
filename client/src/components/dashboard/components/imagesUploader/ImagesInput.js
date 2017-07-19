@@ -2,6 +2,7 @@ import React from 'react';
 import S3Upload from 'react-s3-uploader/s3upload';
 import CircularProgressbar from 'react-circular-progressbar';
 import {Field} from 'redux-form';
+import FontAwesome from 'react-fontawesome';
 import TextInput from '../../components/TextInput';
 
 export default class ImagesInput extends React.Component {
@@ -10,6 +11,7 @@ export default class ImagesInput extends React.Component {
 		this.handleProgress = this.handleProgress.bind(this);
 		this.handleFinish = this.handleFinish.bind(this);
 		this.handleError = this.handleError.bind(this);
+		this.deleteImage = this.deleteImage.bind(this);
 		this.imageIndex = this.props.imageIndex;
 		this.state = {
 			progress: 0,
@@ -55,16 +57,26 @@ export default class ImagesInput extends React.Component {
 		});
 	}
 
+	deleteImage() {
+	  this.props.deleteImage(this.imageIndex);
+  }
+
 	render() {
 		if (!this.props.image.path && !this.state.uploading) {
 			this.uploadFile();
 		}
 		return (
 			<div className="row fileInput">
+
 				<div className="col-lg-2 progressBox">
 					{this.props.image.path ? <img src={this.props.image.thumbPath} /> : <CircularProgressbar percentage={this.state.progress} />}
 				</div>
 				<div className="col-lg-10">
+          <div className="deleteButton">
+            <a href="#" onClick={this.deleteImage}>
+              <FontAwesome name="times" />
+            </a>
+          </div>
 					<div>
 						<Field name={`images[${this.props.imageIndex}].label`} component={this.inputComponent} type="text" placeholder="Image label..." value={this.props.image.label} />
 					</div>

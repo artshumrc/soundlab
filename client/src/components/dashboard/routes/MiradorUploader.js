@@ -39,6 +39,7 @@ export default class Test extends React.Component {
 		this.inputComponent = this.inputComponent.bind(this);
 		this.addImage = this.addImage.bind(this);
 		this.updateImage = this.updateImage.bind(this);
+		this.removeImage = this.removeImage.bind(this);
 		this.state = {
 			images: []
 		};
@@ -81,8 +82,13 @@ export default class Test extends React.Component {
 		this.setState({images: currentImages});
 	}
 
+	removeImage(index) {
+    const currentImages = this.state.images;
+    currentImages.splice(index, 1);
+    this.setState(currentImages);
+  }
+
 	render() {
-		const images = this.state.images;
 		console.log('process.env LOG', process.env);
 		return (
 			<div className="content">
@@ -119,7 +125,7 @@ export default class Test extends React.Component {
 							name="images" component={images => (<div>
 								{images.fields.getAll().map((image, index) => (<ImagesInput
 									image={image} imageIndex={index} key={index}
-									updateImageCb={this.updateImage}
+									updateImageCb={this.updateImage} deleteImage={this.removeImage}
 								/>))}
 							</div>)
             }

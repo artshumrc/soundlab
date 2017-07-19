@@ -17,6 +17,10 @@
   border-radius: 7px;
   border: 1px solid #dfe3e9;
   margin: 10px 0;
+  .deleteButton {
+    margin: 10px 15px;
+    text-align: right;
+  }
 }
 .progressBox {
   padding: 30px;
