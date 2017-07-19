@@ -30,12 +30,13 @@ class Cover extends React.Component {
 	}
 
 	render() {
-		const images = [];
 		const imagesUpperRange = 105;
+		const images = _.shuffle(_.range(1, imagesUpperRange));
 		const windowWidth = window.innerWidth;
 		let nImages = 55;
 		let randInt;
-		let i = 0;
+
+		// images = []
 
 		if (windowWidth > 1400) {
 			nImages = 105;
@@ -47,13 +48,12 @@ class Cover extends React.Component {
 			nImages = 25;
 		}
 
-		while (images.length < nImages && i < 1000) {
+		for (let i = 0; i < nImages; i++ ) {
 			randInt = Math.floor(Math.random() * imagesUpperRange) + 1;
-			if (!~images.indexOf(randInt)) {
-				images.push(randInt);
-			}
-			i += 1;
+			delete images[randInt];
 		}
+
+		// images = [3, 27, 9, 62.....]
 
 		return (
 				<div className="cover home-cover">
