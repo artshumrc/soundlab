@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
+
+// plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
+import language from './plugins/language';
 
 const Schema = mongoose.Schema;
 
@@ -20,17 +23,25 @@ const ItemSchema = new Schema({
 		ref: 'Collection',
 		index: true
 	},
-	metadata: {
-		type: Schema.Types.Mixed,
-	},
+	metadata: [{
+		key: String,
+		title: String,
+		type: {
+			type: String,
+		},
+		value: Schema.Types.Mixed,
+	}],
 });
 
 
-// add timestamp (createdAt, updatedAt)
+// add timestamps (createdAt, updatedAt)
 ItemSchema.plugin(timestamp);
 
 // add slug (slug)
 ItemSchema.plugin(URLSlugs('title _id'));
+
+// add language (language)
+ItemSchema.plugin(language);
 
 /**
  * Item mongoose model

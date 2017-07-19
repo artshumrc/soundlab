@@ -62,7 +62,8 @@
     "server": "nodemon server --exec babel-node",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "db-seed": "babel-node scripts/run-db-seed.js",
-    "db-clear": "babel-node scripts/run-db-clear.js"
+    "db-clear": "babel-node scripts/run-db-clear.js",
+    "db-setup": "npm run db-clear && npm run db-seed"
   },
   "repository": {
     "type": "git",

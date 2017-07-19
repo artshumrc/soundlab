@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
+
+// plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
-import languages from 'languages';
+import language from './plugins/language';
 
 const Schema = mongoose.Schema;
 
@@ -17,11 +19,6 @@ const ProjectDetailSchema = new Schema({
 		trim: true,
 		index: true
 	},
-	language: {
-		type: String,
-		required: true,
-		enum: languages.getAllLanguageCode(),
-	},
 	projectId: {
 		type: Schema.Types.ObjectId,
 		ref: 'Project',
@@ -35,6 +32,9 @@ ProjectDetailSchema.plugin(timestamp);
 
 // add slug (slug)
 ProjectDetailSchema.plugin(URLSlugs('title'));
+
+// add language (language)
+ProjectDetailSchema.plugin(language);
 
 /**
  * ProjectDetail mongoose model

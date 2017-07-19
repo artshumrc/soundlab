@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
+import languages from 'languages';
 
 const Schema = mongoose.Schema;
 
@@ -9,15 +10,17 @@ const Schema = mongoose.Schema;
  * @type {Schema}
  */
 const ProjectSchema = new Schema({
-	languages: [{
-		type: String,
-		required: true,
-	}],
 	userId: {
 		type: Schema.Types.ObjectId,
 		ref: 'User',
 		index: true
 	},
+	languages: [{
+		type: String,
+		required: true,
+		default: 'en',
+		enum: languages.getAllLanguageCode(),
+	}],
 });
 
 

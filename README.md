@@ -50,13 +50,19 @@ To start the project you need to follow these steps:
 
 	If your database is not clear use this script to remove all elements:
 	```sh
-	yarn run db-clear
+	yarn db-clear
 	```
 
 	To generate the new documents, run:
 	```sh
-	yarn run db-seed
+	yarn db-seed
 	```
+
+	To run both scripts, one after the other, use:
+	```sh
+	yarn db-setup
+	```
+
 
 6.	Use one of the following npm scripts to start the application:
 
