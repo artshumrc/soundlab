@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
 import Header from '../../navigation/Header';
-import Cover from './sections/Cover';
+import HomeCover from './sections/HomeCover';
 import AboutSection from './sections/AboutSection';
 import PopularCollectionsSection from './sections/PopularCollectionsSection';
 import FeaturesSection from './sections/FeaturesSection';
@@ -17,7 +17,7 @@ class Home extends React.Component {
 		return (
 			<div id="home">
 				<Header />
-				<Cover />
+				<HomeCover />
 				<FeaturesSection />
 				<PopularCollectionsSection />
 				<WhyUsSection />
