@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
-    "dotenv": "^4.0.0",
     "draft-js": "^0.10.1",
     "es6-shim": "^0.35.3",
     "eslint-import-resolver-node": "^0.3.0",

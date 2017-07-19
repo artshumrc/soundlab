@@ -9,9 +9,8 @@ import session from 'express-session';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 
-// libs
-import dotenv from 'dotenv';
-
+// dotenv
+import dotenvSetup from './dotenv';
 // mongoDB
 import dbSetup from './mongoose';
 
@@ -28,8 +27,8 @@ import setupGraphql from './graphql';
 import authenticationRouter from './routes/authentication';
 import playgroundRouter from './routes/playground';
 
-
-dotenv.config();
+// environment variables setup
+dotenvSetup();
 
 const app = express();
 

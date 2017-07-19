@@ -9,10 +9,10 @@ const Schema = mongoose.Schema;
  * @type {Schema}
  */
 const ProjectSchema = new Schema({
-	languages: {
-		type: [String],
+	languages: [{
+		type: String,
 		required: true,
-	},
+	}],
 	userId: {
 		type: Schema.Types.ObjectId,
 		ref: 'User',

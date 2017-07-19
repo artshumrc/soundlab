@@ -2,7 +2,7 @@ import cors from 'cors';
 
 export default function corsSetup(app) {
 	// CORS:
-	const whitelist = [process.env.CLIENT_SERVER, 'http://10.9.40.53:3001'];
+	const whitelist = [process.env.CLIENT_SERVER, 'http://192.168.0.24:3001'];
 
 	const corsOptionsDelegate = function (req, callback) {
 		const corsOptions = {
