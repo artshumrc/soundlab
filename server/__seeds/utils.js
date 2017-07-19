@@ -1,3 +1,4 @@
+import shortid from 'shortid';
 
 export const canSeed = async Model => Model.count().exec().then(count => count === 0);
 

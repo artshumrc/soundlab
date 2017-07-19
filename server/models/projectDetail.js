@@ -8,47 +8,39 @@ import language from './plugins/language';
 const Schema = mongoose.Schema;
 
 /**
- * Item base schema
+ * Base ProjectDetail mongoose schema
  * @type {Schema}
  */
-const ItemSchema = new Schema({
+const ProjectDetailSchema = new Schema({
 	title: {
 		type: String,
+		unique: true,
 		required: true,
 		trim: true,
-		index: true,
-	},
-	collectionId: {
-		type: Schema.Types.ObjectId,
-		ref: 'Collection',
 		index: true
 	},
-	metadata: [{
-		key: String,
-		title: String,
-		type: {
-			type: String,
-		},
-		value: Schema.Types.Mixed,
-	}],
+	projectId: {
+		type: Schema.Types.ObjectId,
+		ref: 'Project',
+		index: true
+	},
 });
 
 
 // add timestamps (createdAt, updatedAt)
-ItemSchema.plugin(timestamp);
+ProjectDetailSchema.plugin(timestamp);
 
 // add slug (slug)
-ItemSchema.plugin(URLSlugs('title _id'));
+ProjectDetailSchema.plugin(URLSlugs('title'));
 
 // add language (language)
-ItemSchema.plugin(language);
+ProjectDetailSchema.plugin(language);
 
 /**
- * Item mongoose model
+ * ProjectDetail mongoose model
  * @type {mongoose model}
  */
-const Item = mongoose.model('Item', ItemSchema);
+const ProjectDetail = mongoose.model('ProjectDetail', ProjectDetailSchema);
 
-export default Item;
-export { ItemSchema };
-
+export default ProjectDetail;
+export { ProjectDetailSchema };

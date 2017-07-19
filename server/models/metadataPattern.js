@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
+
+// plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
+import language from './plugins/language';
 
 const Schema = mongoose.Schema;
 
@@ -40,11 +43,14 @@ const MetadataPatternSchema = new Schema({
 });
 
 
-// add timestamp (createdAt, updatedAt)
+// add timestamps (createdAt, updatedAt)
 MetadataPatternSchema.plugin(timestamp);
 
 // add slug (slug)
 MetadataPatternSchema.plugin(URLSlugs('name'));
+
+// add language (language)
+MetadataPatternSchema.plugin(language);
 
 /**
  * MetadataPattern mongoose model

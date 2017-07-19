@@ -18,7 +18,7 @@ To start the project you need to follow these steps:
 3.	Run npm install:
 
 	```sh
-	npm install
+	yarn
 	```
 
 4.	Setup environment variables:
@@ -50,21 +50,27 @@ To start the project you need to follow these steps:
 
 	If your database is not clear use this script to remove all elements:
 	```sh
-	npm run db-clear
+	yarn db-clear
 	```
 
 	To generate the new documents, run:
 	```sh
-	npm run db-seed
+	yarn db-seed
 	```
+
+	To run both scripts, one after the other, use:
+	```sh
+	yarn db-setup
+	```
+
 
 6.	Use one of the following npm scripts to start the application:
 
 	| shell script | Description |
 	| ------ | ------ |
-	| `npm start` | Starts the server and the client application |
-	| `npm run server` | Starts the server application |
-	| `npm run client` | Starts the client application|
+	| `yarn start` | Starts the server and the client application |
+	| `yarn server` | Starts the server application |
+	| `yarn client` | Starts the client application|
 
 ## Authentication
 
@@ -106,3 +112,23 @@ The project consists of two authentication strategies:
 	4. `apollo-client` has a middleware attached to the `networkInterface`, which reads the token value from the `localStorage`.
 
 Use methods from `client/src/lib/auth' to login, logout or register.
+
+## Environment variables
+
+Priority of environment variables in `.env` files (client and server):
+
+1.	Development:
+
+	1.	`.env.development.local`
+	2.	`.env.development`
+	3.	`.env.local`
+	4.	`.env`
+
+2.	Production:
+
+	1.	`.env.production.local`
+	2.	`.env.production`
+	3.	`.env.local`
+	4.	`.env`
+
+**!IMPORTANT** do NOT commit `.env*.local` files to the repository. These should be used for __personal configuration__ and __secret values__.
