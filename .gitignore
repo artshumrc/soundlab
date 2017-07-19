@@ -5,6 +5,10 @@ coverage
 *.log
 /**/*.css
 
+# Fonts
+!client/public/css/materialdesignicons.css
+!client/public/css/materialdesignicons.min.css
+
 # Temp files
 tmp/
 
