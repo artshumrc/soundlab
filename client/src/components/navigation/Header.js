@@ -1,17 +1,11 @@
 import React from 'react';
 import Headroom from 'react-headroom';
-import scrollToElement from 'scroll-to-element';
 import './Header.css';
+import { scrollToElement } from '../../lib/util';
 
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.scrollToItem = this.scrollToItem.bind(this);
-  }
-
-  scrollToItem(event) {
-    event.preventDefault();
-    scrollToElement(event.target.hash, {offset: -130});
   }
 
 	render() {
