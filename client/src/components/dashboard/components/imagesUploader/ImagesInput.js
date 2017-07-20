@@ -21,7 +21,7 @@ export default class ImagesInput extends React.Component {
 	}
 
 	componentWillMount() {
-		if (!this.props.image.path) {
+		if (!this.props.image.path && process.env.AWS_BUCKET_URL) {
 			this._id = Math.random().toString(36).substring(2);
 			this.uploadFile();
 		}
@@ -46,8 +46,8 @@ export default class ImagesInput extends React.Component {
 		this.props.updateImageCb(this.imageIndex, image);
 	}
 
-	handleError(event) {
-		console.log('event handleError LOG', event);
+	handleError(error) {
+		this.props.showError(error)
 	}
 
 	uploadFile() {
@@ -73,22 +73,32 @@ export default class ImagesInput extends React.Component {
 	}
 
 	render() {
-		return (
-			<div className="row fileInput">
-				<div className="col-lg-2 progressBox">
-					{this.props.image.path ? <img src={this.props.image.thumbPath} /> : <CircularProgressbar percentage={this.state.progress} />}
-				</div>
-				<div className="col-lg-10">
-					<div className="deleteButton">
-						<a href="#" onClick={this.deleteImage}>
-							<FontAwesome name="times" />
-						</a>
+    if (!process.env.AWS_BUCKET_URL) {
+			this.deleteImage();
+			this.handleError('AWS_BUCKET_URL is not set, upload cancelled');
+			return null
+		} else {
+			return (
+				<div className="row fileInput">
+					<div className="col-lg-2 progressBox">
+						{this.props.image.path ? <img src={this.props.image.thumbPath} /> :
+						<CircularProgressbar percentage={this.state.progress} />}
 					</div>
-					<div>
-						<Field name={`images[${this.props.imageIndex}].label`} component={this.inputComponent} type="text" placeholder="Image label..." value={this.props.image.label} />
+					<div className="col-lg-10">
+						<div className="deleteButton">
+							<a href="#" onClick={this.deleteImage}>
+								<FontAwesome name="times" />
+							</a>
+						</div>
+						<div>
+							<Field
+								name={`images[${this.props.imageIndex}].label`} component={this.inputComponent} type="text"
+								placeholder="Image label..." value={this.props.image.label}
+							/>
+						</div>
 					</div>
 				</div>
-			</div>
-		);
+			);
+		}
 	}
 }

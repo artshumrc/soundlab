@@ -1,5 +1,6 @@
 import React from 'react';
 import {Field, FieldArray} from 'redux-form';
+import AlertContainer from 'react-alert';
 import Form from '../components/Form';
 import TextInput from '../components/TextInput';
 import ImagesUploader from '../components/imagesUploader/ImagesUploader';
@@ -19,12 +20,12 @@ const validate = (values) => {
 	if (!values.author) {
 		errors.author = 'Required';
 	}
-  if (!values.seeAlso) {
-    errors.seeAlso = 'Required';
-  }
-  if (!values.attr) {
-    errors.attr = 'Required';
-  }
+	if (!values.seeAlso) {
+		errors.seeAlso = 'Required';
+	}
+	if (!values.attr) {
+		errors.attr = 'Required';
+	}
 	return errors;
 };
 
@@ -40,6 +41,7 @@ export default class Test extends React.Component {
 		this.addImage = this.addImage.bind(this);
 		this.updateImage = this.updateImage.bind(this);
 		this.removeImage = this.removeImage.bind(this);
+		this.showError = this.showError.bind(this);
 		this.state = {
 			images: []
 		};
@@ -83,15 +85,30 @@ export default class Test extends React.Component {
 	}
 
 	removeImage(index) {
-    const currentImages = this.state.images;
-    currentImages.splice(index, 1);
-    this.setState(currentImages);
-  }
+		const currentImages = this.state.images;
+		currentImages.splice(index, 1);
+		this.setState(currentImages);
+	}
+
+	showError(error) {
+		this.state.alert.show(error, {
+			type: 'error'
+		});
+	}
 
 	render() {
-		console.log('process.env LOG', process.env);
+		const alertOptions = {
+			offset: 14,
+			position: 'bottom right',
+			theme: 'light',
+			time: 5000,
+			transition: 'scale',
+			type: 'error'
+		};
+
 		return (
 			<div className="content">
+				<AlertContainer ref={a => !this.state.alert && this.setState({alert: a})} {...alertOptions} />
 				<div className="container">
 					<Form
 						onSubmit={this.handleSubmit} validate={validate} form="exampleForm"
@@ -123,10 +140,11 @@ export default class Test extends React.Component {
 						</div>
 						<FieldArray
 							name="images" component={images => (<div>
-								{images.fields.getAll().map((image, index) => (<ImagesInput
-									image={image} imageIndex={index} key={index}
-									updateImageCb={this.updateImage} deleteImage={this.removeImage}
-								/>))}
+								{images.fields.getAll().map((image, index) => (
+									<ImagesInput
+										image={image} imageIndex={index} key={index}
+										updateImageCb={this.updateImage} deleteImage={this.removeImage} showError={this.showError}
+									/>))}
 							</div>)
             }
 						/>
