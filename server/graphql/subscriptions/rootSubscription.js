@@ -3,7 +3,7 @@ import { GraphQLObjectType } from 'graphql';
 // types
 import projectType from '../../types/models/project';
 
-
+import { pubsub } from '../../graphql';
 
 
 /**
