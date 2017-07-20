@@ -22,6 +22,7 @@ export default class ImagesInput extends React.Component {
 
 	componentWillMount() {
 		if (!this.props.image.path) {
+			this._id = Math.random().toString(36).substring(2);
 			this.uploadFile();
 		}
 	}
@@ -39,7 +40,8 @@ export default class ImagesInput extends React.Component {
 			name: event.filename,
 			type: this.imageType,
 			path: `${process.env.AWS_BUCKET_URL}/${event.filename}`,
-			thumbPath: `http://iiif.orphe.us/${event.filename}/full/90,/0/default.jpg`
+			thumbPath: `http://iiif.orphe.us/${event.filename}/full/90,/0/default.jpg`,
+			_id: this._id
 		};
 		this.props.updateImageCb(this.imageIndex, image);
 	}
@@ -58,7 +60,10 @@ export default class ImagesInput extends React.Component {
 			onError: this.handleError,
 			uploadRequestHeaders: {'x-amz-acl': 'public-read'},
 			contentDisposition: 'auto',
-			scrubFilename: filename => filename.replace(/[^\w\d_\-\.]+/ig, ''),
+			scrubFilename: (filename) => {
+				const secureFilename = filename.replace(/[^\w\d_\-\.]+/ig, '');
+				return `${this._id}-${secureFilename}`;
+			},
 			signingUrlMethod: 'GET',
 		});
 	}
