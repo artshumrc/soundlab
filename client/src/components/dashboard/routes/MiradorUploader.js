@@ -118,8 +118,8 @@ export default class Test extends React.Component {
 							<Field name="seeAlso" component={this.inputComponent} type="text" placeholder="See Also..." />
 						</div>
 						<div>
-							<label htmlFor="attr">Attribution</label>
-							<Field name="attr" component={this.inputComponent} type="text" placeholder="Attribution..." />
+							<label htmlFor="attribution">Attribution</label>
+							<Field name="attribution" component={this.inputComponent} type="text" placeholder="Attribution..." />
 						</div>
 						<FieldArray
 							name="images" component={images => (<div>
