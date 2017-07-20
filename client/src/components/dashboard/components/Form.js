@@ -18,7 +18,7 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-	children: PropTypes.object.isRequired,
+	children: PropTypes.array.isRequired,
 };
 
 export default reduxForm()(Form);
