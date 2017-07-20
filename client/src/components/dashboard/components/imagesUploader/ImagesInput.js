@@ -13,14 +13,21 @@ export default class ImagesInput extends React.Component {
 		this.handleError = this.handleError.bind(this);
 		this.deleteImage = this.deleteImage.bind(this);
 		this.imageIndex = this.props.imageIndex;
+		this.imageType = this.props.image.type;
 		this.state = {
 			progress: 0,
 			files: [this.props.image]
 		};
 	}
 
+	componentWillMount() {
+		if (!this.props.image.path) {
+			this.uploadFile();
+		}
+	}
+
 	handleProgress(percentage) {
-		this.setState({uploading: true, progress: percentage});
+		this.setState({progress: percentage});
 	}
 
 	inputComponent(props) {
@@ -30,12 +37,11 @@ export default class ImagesInput extends React.Component {
 	handleFinish(event) {
 		const image = {
 			name: event.filename,
-			type: 'image/jpeg',
+			type: this.imageType,
 			path: `${process.env.AWS_BUCKET_URL}/${event.filename}`,
 			thumbPath: `http://iiif.orphe.us/${event.filename}/full/90,/0/default.jpg`
 		};
 		this.props.updateImageCb(this.imageIndex, image);
-		this.setState({uploading: false});
 	}
 
 	handleError(event) {
@@ -58,25 +64,21 @@ export default class ImagesInput extends React.Component {
 	}
 
 	deleteImage() {
-	  this.props.deleteImage(this.imageIndex);
-  }
+		this.props.deleteImage(this.imageIndex);
+	}
 
 	render() {
-		if (!this.props.image.path && !this.state.uploading) {
-			this.uploadFile();
-		}
 		return (
 			<div className="row fileInput">
-
 				<div className="col-lg-2 progressBox">
 					{this.props.image.path ? <img src={this.props.image.thumbPath} /> : <CircularProgressbar percentage={this.state.progress} />}
 				</div>
 				<div className="col-lg-10">
-          <div className="deleteButton">
-            <a href="#" onClick={this.deleteImage}>
-              <FontAwesome name="times" />
-            </a>
-          </div>
+					<div className="deleteButton">
+						<a href="#" onClick={this.deleteImage}>
+							<FontAwesome name="times" />
+						</a>
+					</div>
 					<div>
 						<Field name={`images[${this.props.imageIndex}].label`} component={this.inputComponent} type="text" placeholder="Image label..." value={this.props.image.label} />
 					</div>
