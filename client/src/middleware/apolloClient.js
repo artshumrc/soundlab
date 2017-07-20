@@ -1,6 +1,5 @@
 import { ApolloClient, createNetworkInterface } from 'react-apollo';
-
-require('../lib/auth');
+import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 
 const networkInterface = createNetworkInterface({
 	uri: `${process.env.REACT_APP_GRAPHQL_SERVER}/${process.env.REACT_APP_GRAPHQL_URI}`,
@@ -19,8 +18,20 @@ networkInterface.use([{
 	}
 }]);
 
+const wsClient = new SubscriptionClient(`${process.env.REACT_APP_WS_SERVER}/${process.env.REACT_APP_WS_SERVER_URI}`, {
+	reconnect: true,
+	connectionParams: {
+		authToken: localStorage.getItem('token') ? localStorage.getItem('token') : null
+	},
+});
+
+const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
+  networkInterface,
+  wsClient
+);
+
 const client = new ApolloClient({
-	networkInterface,
+	networkInterface: networkInterfaceWithSubscriptions,
 });
 
 export default client; 

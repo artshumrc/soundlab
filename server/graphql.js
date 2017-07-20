@@ -24,6 +24,7 @@ const RootSchema = new GraphQLSchema({
 // mask error messages
 maskErrors(RootSchema);
 
+// TODO should be moved to something more scalable horizontally like Redis, MQTT
 export const pubsub = new PubSub();
 
 
@@ -40,18 +41,31 @@ export default function setupGraphql(app) {
 
 	app.use('/graphiql', graphiqlExpress({
 		endpointURL: '/graphql',
-		subscriptionsEndpoint: `ws://192.168.0.24:3002/subscriptions`
+		subscriptionsEndpoint: `ws://${process.env.WS_SERVER_HOST}:${process.env.WS_SERVER_PORT}/${process.env.WS_SERVER_URI}`
 	}));
 
 	// Wrap the Express server
 	const ws = createServer(app);
-	ws.listen(3002, () => {
-		console.log(`GraphQL Server is now running on http://localhost:${3002}`);
+	ws.listen(process.env.WS_SERVER_PORT, () => {
+		console.log(`GraphQL WebSocket Server is now running on ws://${process.env.WS_SERVER_HOST}:${process.env.WS_SERVER_PORT}`);
 		// Set up the WebSocket for handling GraphQL subscriptions
 		const subscriptionsServer = new SubscriptionServer({
 			execute,
 			subscribe,
 			schema: RootSchema,
+			onConnect: (connectionParams, webSocket) => {
+				console.log('connectionParams', connectionParams);
+				// if (connectionParams.authToken) {
+				// 	return validateToken(connectionParams.authToken)
+				// 		.then(findUser(connectionParams.authToken))
+				// 		.then((user) => {
+				// 			return {
+				// 				currentUser: user,
+				// 			};
+				// 		});
+				// }
+				// throw new Error('Missing auth token!');
+			}
 		}, {
 			server: ws,
 			path: '/subscriptions',

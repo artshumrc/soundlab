@@ -29,8 +29,14 @@ To start the project you need to follow these steps:
 	DB_HOST=localhost
 	DB_PORT=27017
 	DB_NAME=orpheus
+
 	CLIENT_SERVER=http://localhost:3000
+
 	JWT_SECRET=secret
+
+	WS_SERVER_PORT=3002
+	WS_SERVER_HOST=localhost
+	WS_SERVER_URI=subscriptions
 	```
 
 	Environment variables for the *client* (*!IMPORTANT*: this should be set in the `client` folder):
@@ -44,6 +50,10 @@ To start the project you need to follow these steps:
 	REACT_APP_LOGOUT_URI=auth/logout
 	REACT_APP_REGISTER_URI=auth/register
 	REACT_APP_REGISTER_JWT_URI=auth/register
+	REACT_APP_WS_SERVER=http://localhost:3002
+
+	REACT_APP_WS_SERVER=ws://localhost:3002
+	REACT_APP_WS_SERVER_URI=subscriptions
 	```
 
 5.	Generate mock data using the seed script:
