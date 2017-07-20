@@ -2,6 +2,7 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
+import request from 'request';
 
 //aws
 import aws from 'aws-sdk';
@@ -64,7 +65,7 @@ app.use(session({
 
 
 // CORS:
-const whitelist = ['http://localhost:3000', 'http://lvh.me:3000', process.env.CLIENT_SERVER];
+const whitelist = ['http://localhost:3000', 'http://lvh.me:3000', process.env.CLIENT_SERVER, 'http://generate-manifests.orphe.us'];
 
 const corsOptionsDelegate = function (req, callback) {
 	const corsOptions = {
@@ -99,8 +100,17 @@ app.use('/graphql', graphqlHTTP({
 app.use('/s3', S3Router({
   bucket: process.env.AWS_BUCKET,
   ACL: 'public-read',
-  uniquePrefix: true
+  uniquePrefix: false
 }));
+
+app.post('/createManifest', (req, res) => {
+  const reqBody = {manifest: JSON.stringify(req.body), responseUrl: 'http://126208a5.ngrok.io/manifestCreated'};
+  request.post('http://generate-manifests.orphe.us/manifests', {form: reqBody});
+});
+
+app.post('/manifestCreated', (req, res) => {
+  console.log("MANIFEST CREATED LOG", req.body);
+});
 
 // authentication routs:
 function authenticationMiddleware() {

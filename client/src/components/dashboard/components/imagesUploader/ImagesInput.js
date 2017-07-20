@@ -14,6 +14,7 @@ export default class ImagesInput extends React.Component {
 		this.deleteImage = this.deleteImage.bind(this);
 		this.imageIndex = this.props.imageIndex;
 		this.imageType = this.props.image.type;
+		this.imageName = this.props.image.name;
 		this.state = {
 			progress: 0,
 			files: [this.props.image]
@@ -21,7 +22,7 @@ export default class ImagesInput extends React.Component {
 	}
 
 	componentWillMount() {
-		if (!this.props.image.path && process.env.AWS_BUCKET_URL) {
+		if (!this.props.image.path && process.env.REACT_APP_BUCKET_URL) {
 			this._id = Math.random().toString(36).substring(2);
 			this.uploadFile();
 		}
@@ -37,9 +38,9 @@ export default class ImagesInput extends React.Component {
 
 	handleFinish(event) {
 		const image = {
-			name: event.filename,
+			name: this.imageName,
 			type: this.imageType,
-			path: `${process.env.AWS_BUCKET_URL}/${event.filename}`,
+			path: `${process.env.REACT_APP_BUCKET_URL}/${event.filename}`,
 			thumbPath: `http://iiif.orphe.us/${event.filename}/full/90,/0/default.jpg`,
 			_id: this._id
 		};
@@ -73,9 +74,9 @@ export default class ImagesInput extends React.Component {
 	}
 
 	render() {
-    if (!process.env.AWS_BUCKET_URL) {
+    if (!process.env.REACT_APP_BUCKET_URL) {
 			this.deleteImage();
-			this.handleError('AWS_BUCKET_URL is not set, upload cancelled');
+			this.handleError('REACT_APP_BUCKET_URL is not set, upload cancelled');
 			return null
 		} else {
 			return (

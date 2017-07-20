@@ -5,6 +5,7 @@ import Form from '../components/Form';
 import TextInput from '../components/TextInput';
 import ImagesUploader from '../components/imagesUploader/ImagesUploader';
 import ImagesInput from '../components/imagesUploader/ImagesInput';
+import {createManifest} from '../../../lib/createManifest';
 
 const validate = (values) => {
 	const errors = {};
@@ -32,10 +33,6 @@ const validate = (values) => {
 export default class Test extends React.Component {
 	constructor(props) {
 		super(props);
-		this.onUploadStart = this.onUploadStart.bind(this);
-		this.onUploadProgress = this.onUploadProgress.bind(this);
-		this.onUploadError = this.onUploadError.bind(this);
-		this.onUploadFinish = this.onUploadFinish.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.inputComponent = this.inputComponent.bind(this);
 		this.addImage = this.addImage.bind(this);
@@ -47,24 +44,10 @@ export default class Test extends React.Component {
 		};
 	}
 
-	onUploadStart(event) {
-		console.log('event onUploadStart LOG', event);
-	}
-
-	onUploadProgress(event) {
-		console.log('event onUploadProgress LOG', event);
-	}
-
-	onUploadError(event) {
-		console.log('event onUploadError LOG', event);
-	}
-
-	onUploadFinish(event) {
-		console.log('event onUploadFinish LOG', event);
-	}
-
-	handleSubmit(event) {
-		console.log('event LOG', event);
+	handleSubmit(values) {
+		const manifest = values;
+		manifest._id = Math.random().toString(36).substring(2);
+		createManifest(manifest);
 	}
 
 	inputComponent(props) {
@@ -72,7 +55,6 @@ export default class Test extends React.Component {
 	}
 
 	addImage(image) {
-		console.log('this.state LOG', this.state);
 		const currentImages = this.state.images;
 		currentImages.push(image);
 		this.setState({images: currentImages});
@@ -105,7 +87,6 @@ export default class Test extends React.Component {
 			transition: 'scale',
 			type: 'error'
 		};
-
 		return (
 			<div className="content">
 				<AlertContainer ref={a => !this.state.alert && this.setState({alert: a})} {...alertOptions} />
