@@ -10,7 +10,7 @@ import {createManifest} from '../../../lib/createManifest';
 const validate = (values) => {
 	const errors = {};
 	if (!values.title) {
-		errors.firstName = 'Required';
+		errors.title = 'Required';
 	}
 	if (!values.label) {
 		errors.label = 'Required';
