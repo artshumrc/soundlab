@@ -1,4 +1,4 @@
-import { setLocalStorageItem } from './storage';
+import { setLocalStorageItem, removeLocalStorageItem } from './storage';
 
 const userLoggedIn = () => {
 	// TODO
@@ -51,7 +51,7 @@ const loginJWT = async (username, password) => {
 	}
 };
 
-const logout = async (username, password) => {
+const logout = async () => {
 	if (userLoggedIn()) return null;
 
 	try {
@@ -64,6 +64,8 @@ const logout = async (username, password) => {
 		throw err;
 	}
 };
+
+const logoutJWT = async () => removeLocalStorageItem('token');
 
 const register = async (username, password) => {
 	try {
@@ -108,4 +110,4 @@ const registerJWT = async (username, password) => {
 	}
 };
 
-export { login, logout, register };
+export { login, loginJWT, logout, logoutJWT, register, registerJWT };

@@ -5,10 +5,14 @@ import { maskErrors } from 'graphql-errors';
 import { createServer } from 'http';
 import { PubSub } from 'graphql-subscriptions';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
+import jwt from 'jsonwebtoken';
 
 import RootQuery from './graphql/queries/rootQuery';
 import RootMutation from './graphql/mutations/rootMutation';
 import RootSubscription from './graphql/subscriptions/rootSubscription';
+
+// bll
+import Users from './bll/users';
 
 
 /**
@@ -53,18 +57,24 @@ export default function setupGraphql(app) {
 			execute,
 			subscribe,
 			schema: RootSchema,
-			onConnect: (connectionParams, webSocket) => {
-				console.log('connectionParams', connectionParams);
-				// if (connectionParams.authToken) {
-				// 	return validateToken(connectionParams.authToken)
-				// 		.then(findUser(connectionParams.authToken))
-				// 		.then((user) => {
-				// 			return {
-				// 				currentUser: user,
-				// 			};
-				// 		});
-				// }
-				// throw new Error('Missing auth token!');
+			onConnect: async (connectionParams, webSocket) => {
+				// validate user token on connection
+				if (connectionParams.authToken) {
+					const token = connectionParams.authToken.slice(4); // remove JWT from the start of the string
+					try {
+						const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+						const user = await Users.findById(decoded._id);
+						if (user) return { user };
+						throw new Error('Not authorized');
+					} catch (err) {
+						console.error(err);
+						throw new Error('Error while processing token');
+					}
+				}
+				throw new Error('Missing auth token!');
+			},
+			onDisconnect: (webSocket) => {
+				console.log('disconected');
 			}
 		}, {
 			server: ws,

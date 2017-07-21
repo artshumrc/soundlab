@@ -28,6 +28,19 @@ const Users = {
 			}
 
 		} throw new AuthenticationError();
+	},
+	async findById(_id) {
+		if (_id) {
+			try {
+				const user = await User.findById(_id);
+
+				if (user) return user;
+
+				throw new Error('User not found');
+			} catch (err) {
+				throw err;
+			}
+		}
 	}
 };
 
