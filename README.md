@@ -26,6 +26,8 @@ To start the project you need to follow these steps:
 	Environment variables for the *server*:
 	```sh
 	// .env
+	SESSION_SECRET=secret
+	
 	DB_HOST=localhost
 	DB_PORT=27017
 	DB_NAME=orpheus

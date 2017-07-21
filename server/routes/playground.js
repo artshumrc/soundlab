@@ -7,7 +7,6 @@ const router = express.Router();
 
 
 router.get('/secret', passport.authenticate(['jwt']), (req, res) => {
-	console.log('req', req)
 	res.status(200).send('the secret');
 });
 

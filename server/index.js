@@ -11,8 +11,9 @@ import cookieParser from 'cookie-parser';
 
 // dotenv
 import dotenvSetup from './dotenv';
+
 // mongoDB
-import dbSetup from './mongoose';
+import dbSetup, { storeSetup } from './mongoose';
 
 // authentication
 import authSetup from './authentication';
@@ -47,9 +48,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // session:
 app.use(session({
-	secret: '6243@7GLKrs&W6pA$fK!',
+	secret: process.env.SESSION_SECRET || 'secret',
 	resave: false,
 	saveUninitialized: false,
+	store: storeSetup(session),
 }));
 
 

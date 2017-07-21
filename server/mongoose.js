@@ -1,5 +1,9 @@
 import mongoose from 'mongoose';
 
+// session store
+import createMongoDBStore from 'connect-mongodb-session';
+
+
 // Use native promises
 mongoose.Promise = global.Promise;
 
@@ -35,5 +39,25 @@ const dbSetup = () => {
 	return mongoose.connect(url, options).connection;
 };
 
+const storeSetup = (session) => {
+
+	const uri = getURL();
+
+	const MongoDBStore = createMongoDBStore(session);
+
+	const store = new MongoDBStore({
+		uri,
+		collection: 'session',
+	});
+
+	// Catch errors 
+	store.on('error', (error) => {
+		assert.ifError(error);
+		assert.ok(false);
+	});
+
+	return store;
+};
+
 export default dbSetup;
-export { getURL, closeDB };
+export { getURL, closeDB, storeSetup };
