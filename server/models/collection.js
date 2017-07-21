@@ -26,7 +26,7 @@ const CollectionSchema = new Schema({
 	},
 	metadataPatternId: {
 		type: Schema.Types.ObjectId,
-		ref: 'MetadataPattern'
+		ref: 'ItemSchema'
 	},
 });
 
