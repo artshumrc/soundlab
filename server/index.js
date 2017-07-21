@@ -32,6 +32,11 @@ import RootSchema from './rootSchema';
 // passport
 import User from './models/user';
 
+//mirador
+import Mirador from './models/mirador';
+import Image from './models/image';
+
+
 dotenv.config();
 
 const app = express();
@@ -104,8 +109,25 @@ app.use('/s3', S3Router({
 }));
 
 app.post('/createManifest', (req, res) => {
-  const reqBody = {manifest: JSON.stringify(req.body), responseUrl: 'http://126208a5.ngrok.io/manifestCreated'};
-  request.post('http://generate-manifests.orphe.us/manifests', {form: reqBody});
+  const newMirador = {
+    images: []
+  };
+
+  req.body.images.forEach((image)=> {
+    newMirador.images.push(new Image(image));
+  });
+
+  const miradorObject = Object.assign({}, req.body, newMirador);
+
+  const mirador = new Mirador(miradorObject);
+
+  mirador.save((error) => {
+    if(error) {
+      console.log("error LOG", error);
+    }
+  });
+  // const reqBody = {manifest: JSON.stringify(req.body), responseUrl: 'http://126208a5.ngrok.io/manifestCreated'};
+  // request.post('http://generate-manifests.orphe.us/manifests', {form: reqBody});
 });
 
 app.post('/manifestCreated', (req, res) => {
