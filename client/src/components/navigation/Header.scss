@@ -2,8 +2,6 @@
 
 .header {
 	width: 100%;
-	height: 60px;
-	background: rgba(255, 255, 255, 0.2);
 
 	.nav-header, .nav {
 		display: inline-block;
@@ -15,14 +13,21 @@
 	}
 }
 
+.headroom-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+  z-index: 100;
+}
+
 .headroom {
   top: 0;
   left: 0;
   right: 0;
-  zIndex: 1;
+  z-index: 1;
+	position: fixed;
 }
 .headroom--unfixed {
-  position: relative;
   transform: translateY(0);
 }
 .headroom--scrolled {
@@ -30,11 +35,9 @@
 	background: #fff;
 }
 .headroom--unpinned {
-  position: fixed;
   transform: translateY(-100%);
 }
 .headroom--pinned {
-  position: fixed;
   transform: translateY(0%);
 }
 
@@ -44,6 +47,10 @@
 
 .site-title {
 	font-family: $font-logo;
+	padding: 10px 15px;
+	line-height: 1.2em;
+	margin: 0;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6);
 }
 
 .nav {
@@ -53,9 +60,15 @@
 		font-family: $font-label;
 
 		a {
-			height: 60px;
 			padding: 15px 20px;
 			font-weight: bold;
+			background: rgba(255, 255, 255, 0.4);
+			text-transform: uppercase;
+
+			&.login-button  {
+				background: $primary;
+				color: $light;
+			}
 
 			&:hover {
 				background: #eee;

@@ -35,6 +35,7 @@
 $grey: #555;
 $light: #fff;
 $dark: #222;
+$divider: #999;
 
 /******************************************************************************
 
@@ -64,7 +65,11 @@ $accent-800: #EF6C00;
 $accent-900: #E65100;
 
 $primary: $primary-500;
+$primary-light: $primary-300;
+$primary-dark: $primary-800;
 $accent: $accent-500;
+$accent-light: $accent-300;
+$accent-dark: $accent-800;
 
 /******************************************************************************
 
@@ -134,9 +139,9 @@ $font-logo: 'Slate W04 Black';
 2.2 Title Fonts
 
 ******************************************************************************/
-$font-title: 'Slate W04 Bold';
-$font-title-light: 'Slate W04 Regular';
-$font-title-bold: 'Slate W04 Bold';
+$font-title: 'Proxima Nova W08 Reg';
+$font-title-light: 'Proxima Nova W08 Light';
+$font-title-bold: 'Proxima Nova W08 Reg'; // Need to add bold
 
 /******************************************************************************
 
@@ -169,6 +174,7 @@ $font-lemma: 'Gentium Basic', 'Merriweather', serif;
 
 ******************************************************************************/
 
+
 @import "scss/default-settings";
 
 @import "scss/functions/auto";
@@ -199,3 +205,4 @@ $font-lemma: 'Gentium Basic', 'Merriweather', serif;
 @import "scss/mixins/size";
 @import "scss/mixins/svg";
 @import "scss/mixins/triangle";
+@import "scss/mixins/transition";
