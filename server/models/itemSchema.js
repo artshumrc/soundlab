@@ -19,12 +19,17 @@ const ItemSchemaSchema = new Schema({
 		trim: true,
 		index: true
 	},
+	fileds: Schema.Types.Mixed,
+	plugins: Schema.Types.Mixed,
+	createdBy: {
+		type: Schema.Types.ObjectId,
+		ref: 'User',
+		index: true
+	},
 	private: {
 		type: Boolean,
 		default: false,
 	},
-	fileds: Schema.Types.Mixed,
-	plugins: Schema.Types.Mixed,
 });
 
 

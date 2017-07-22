@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
-import languages from 'languages';
+
+// api
+import { getAllLanguages } from '../api/languages';
 
 const Schema = mongoose.Schema;
 
@@ -10,16 +12,19 @@ const Schema = mongoose.Schema;
  * @type {Schema}
  */
 const ProjectSchema = new Schema({
-	userId: {
-		type: Schema.Types.ObjectId,
-		ref: 'User',
-		index: true
-	},
+	users: [{
+		userId: {
+			type: Schema.Types.ObjectId,
+			ref: 'User',
+			index: true
+		},
+		role: String,	// e.g.: 'Owner' TODO
+	}],
 	languages: [{
 		type: String,
 		required: true,
 		default: 'en',
-		enum: languages.getAllLanguageCode(),
+		enum: getAllLanguages(),
 	}],
 });
 
