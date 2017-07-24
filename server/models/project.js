@@ -23,7 +23,7 @@ const ProjectSchema = new Schema({
 	languages: [{
 		type: String,
 		required: true,
-		default: 'en',
+		default: process.env.DEFAULT_LANGUAGE,
 		enum: getAllLanguages(),
 	}],
 });
@@ -34,7 +34,7 @@ ProjectSchema.plugin(timestamp);
 
 /**
  * Project mongoose model
- * @type {mongoose model}
+ * @type {Object}
  */
 const Project = mongoose.model('Project', ProjectSchema);
 

@@ -40,7 +40,7 @@ ItemSchemaSchema.plugin(URLSlugs('name'));
 
 /**
  * ItemSchema mongoose model
- * @type {mongoose model}
+ * @type {Object}
  */
 const ItemSchema = mongoose.model('ItemSchema', ItemSchemaSchema);
 

@@ -29,7 +29,7 @@ CollectionSchema.plugin(timestamp);
 
 /**
  * Collection mongoose model
- * @type {mongoose model}
+ * @type {Object}
  */
 const Collection = mongoose.model('Collection', CollectionSchema);
 

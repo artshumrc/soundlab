@@ -22,7 +22,7 @@ const closeDB = () => {
 
 /**
  * Sets up the mongoose connection based on the process.env settings.
- * @return {[function]} mongoose connection instance
+ * @return {function} mongoose connection instance
  */
 const dbSetup = () => {
 	

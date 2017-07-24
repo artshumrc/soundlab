@@ -19,6 +19,7 @@ const ProjectDetailSchema = new Schema({
 		trim: true,
 		index: true
 	},
+	description: String,
 	projectId: {
 		type: Schema.Types.ObjectId,
 		ref: 'Project',
@@ -39,7 +40,7 @@ ProjectDetailSchema.plugin(language);
 
 /**
  * ProjectDetail mongoose model
- * @type {mongoose model}
+ * @type {Object}
  */
 const ProjectDetail = mongoose.model('ProjectDetail', ProjectDetailSchema);
 

@@ -37,7 +37,7 @@ ItemSchemaFieldsSchema.plugin(language);
 
 /**
  * ItemSchemaFileds mongoose model
- * @type {mongoose model}
+ * @type {Object}
  */
 const ItemSchemaFileds = mongoose.model('ItemSchemaFileds', ItemSchemaFieldsSchema);
 

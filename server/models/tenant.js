@@ -41,7 +41,7 @@ TenantSchema.plugin(URLSlugs('name'));
 
 /**
  * Tenant mongoose model
- * @type {mongoose model}
+ * @type {Object}
  */
 const Tenant = mongoose.model('Tenant', TenantSchema);
 

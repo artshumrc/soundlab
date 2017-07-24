@@ -40,7 +40,7 @@ CollectionDetailSchema.plugin(language);
 
 /**
  * CollectionDetail mongoose model
- * @type {mongoose model}
+ * @type {Object}
  */
 const CollectionDetail = mongoose.model('CollectionDetail', CollectionDetailSchema);
 

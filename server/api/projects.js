@@ -48,7 +48,7 @@ const Projects = {
 
 			const projectObj = _creatNewProjectObject(user, languages);
 
-			return await Project(projectObj).save();
+			return await new Project(projectObj).save();
 
 		} catch (err) {
 			throw err;
