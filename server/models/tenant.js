@@ -18,6 +18,12 @@ const TenantSchema = new Schema({
 		trim: true,
 		index: true
 	},
+	projectId: {
+		type: Schema.Types.ObjectId,
+		ref: 'Project',
+		index: true,
+		required: true,
+	},
 	url: {
 		unique: true,
 		type: mongoose.SchemaTypes.Url,

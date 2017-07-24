@@ -19,16 +19,15 @@ const ItemSchemaSchema = new Schema({
 		trim: true,
 		index: true
 	},
-	fileds: Schema.Types.Mixed,
-	plugins: Schema.Types.Mixed,
-	createdBy: {
-		type: Schema.Types.ObjectId,
-		ref: 'User',
-		index: true
-	},
 	private: {
 		type: Boolean,
 		default: false,
+	},
+	createdBy: {
+		type: Schema.Types.ObjectId,
+		ref: 'User',
+		required: true,
+		index: true
 	},
 });
 
@@ -39,9 +38,6 @@ ItemSchemaSchema.plugin(timestamp);
 // add slug (slug)
 ItemSchemaSchema.plugin(URLSlugs('name'));
 
-// add language (language)
-ItemSchemaSchema.plugin(language);
-
 /**
  * ItemSchema mongoose model
  * @type {mongoose model}
@@ -49,5 +45,5 @@ ItemSchemaSchema.plugin(language);
 const ItemSchema = mongoose.model('ItemSchema', ItemSchemaSchema);
 
 export default ItemSchema;
-export { ItemSchemaSchema, metadataTypes };
+export { ItemSchemaSchema };
 
