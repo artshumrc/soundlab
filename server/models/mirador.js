@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
-import ImageSchema from './image';
+import {ImageSchema} from './image';
 
 const Schema = mongoose.Schema;
 

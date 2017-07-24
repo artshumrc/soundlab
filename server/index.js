@@ -34,8 +34,8 @@ import User from './models/user';
 
 //mirador
 import Mirador from './models/mirador';
-import Image from './models/image';
-
+import {Image} from './models/image';
+import Miradors from './bll/miradors';
 
 dotenv.config();
 
@@ -44,8 +44,8 @@ const app = express();
 const db = setupDB();
 
 aws.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+	accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
 app.set('port', (process.env.PORT || 3001));
@@ -75,7 +75,7 @@ const whitelist = ['http://localhost:3000', 'http://lvh.me:3000', process.env.CL
 const corsOptionsDelegate = function (req, callback) {
 	const corsOptions = {
 		origin: false,
-    credentials: true
+		credentials: true
 	};
 	if (whitelist.indexOf(req.header('Origin')) !== -1) {
 		corsOptions.origin = true;
@@ -101,37 +101,50 @@ app.use('/graphql', graphqlHTTP({
 	graphiql: true
 }));
 
-//s3
+// s3
 app.use('/s3', S3Router({
-  bucket: process.env.AWS_BUCKET,
-  ACL: 'public-read',
-  uniquePrefix: false
+	bucket: process.env.AWS_BUCKET,
+	ACL: 'public-read',
+	uniquePrefix: false
 }));
 
 app.post('/createManifest', (req, res) => {
-  const newMirador = {
-    images: []
-  };
+	const newMirador = {
+		images: []
+	};
 
-  req.body.images.forEach((image)=> {
-    newMirador.images.push(new Image(image));
-  });
+	req.body.images.forEach((image) => {
+		newMirador.images.push(new Image(image));
+	});
 
-  const miradorObject = Object.assign({}, req.body, newMirador);
+	const miradorObject = Object.assign({}, req.body, newMirador);
 
-  const mirador = new Mirador(miradorObject);
+	const mirador = new Mirador(miradorObject);
 
-  mirador.save((error) => {
-    if(error) {
-      console.log("error LOG", error);
-    }
-  });
-  // const reqBody = {manifest: JSON.stringify(req.body), responseUrl: 'http://126208a5.ngrok.io/manifestCreated'};
-  // request.post('http://generate-manifests.orphe.us/manifests', {form: reqBody});
+	mirador.save((error) => {
+		if (error) {
+			console.log('Mirador DB save error: ', error);
+		} else {
+			const reqBody = {manifest: JSON.stringify(req.body), responseUrl: `${process.env.REACT_APP_SERVER}/manifestCreated`};
+			request.post('http://generate-manifests.orphe.us/manifests', {form: reqBody});
+		}
+	});
 });
 
 app.post('/manifestCreated', (req, res) => {
-  console.log("MANIFEST CREATED LOG", req.body);
+	const exampleSecret = 'examplewebhookkey';
+	if (req.body.secret === exampleSecret) {
+	  Mirador.update(req.body.manifestId, {remoteUri: req.body.manifestUri});
+
+		// Mirador.findByIdAndUpdate(req.body.manifestId, {$set: { remoteUri: req.body.manifestUri }}, {new: true}, (error, manifest) => {
+		// 	if (error) {
+		// 		console.log('Manifest callback find error: ', error);
+		// 	}				else {
+		// 		  console.log('updatedManifest LOG', manifest);
+		// 	}
+		// });
+		console.log('MANIFEST CREATED LOG', req.body);
+	}
 });
 
 // authentication routs:
