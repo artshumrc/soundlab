@@ -1,5 +1,5 @@
 import languages from 'languages';
-import check from 'check-type';
+import check from 'check-types';
 
 export const getAllLanguages = () => languages.getAllLanguageCode();
 

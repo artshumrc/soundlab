@@ -1,3 +1,6 @@
+import check from 'check-types';
+import mongoose from 'mongoose';
+
 // models
 import ProjectDetail from '../models/projectDetail';
 
@@ -49,8 +52,9 @@ export default class ProjectDetailClass {
 	 */
 	async create(projectId, title) {
 		// check if method can run
+		mongoose.Types.ObjectId.isValid(projectId);
 		check.assert.string(title);
-		if (this.projectDetail) throw new Error('Project detail already set');
+		if (this.isSet) throw new Error('Project detail already set');
 
 		try {
 			await this._createProjectDetail(projectId, title);
@@ -66,7 +70,7 @@ export default class ProjectDetailClass {
 	 * @return {ProjectDetailClass}     Instance of the project detail class (this)
 	 */
 	async remove() {
-		if (!this.projectDetail) throw new Error('Project detail is not set');
+		if (!this.isSet) throw new Error('Project detail is not set');
 		try {
 			await ProjectDetail.remove({ _id: this.projectDetail._id });
 			this.projectDetail = null;
@@ -77,33 +81,54 @@ export default class ProjectDetailClass {
 		}
 	}
 
-	/**
-	 * Set title
-	 * @param  {!String} title 	New title
-	 * @return {[type]}       	[description]
-	 */
-	set title(title) { /* TODO */ }
+	get isSet() {
+		if (this.projectDetail) return true;
+		return false;
+	}
 
-	/**
-	 * Get title
-	 * @return {String} The title
-	 */
-	get title() {
-		if (this.projectDetail) return this.projectDetail.title;
+	get __projectDetail() {
+		return this.projectDetail;
+	}
+
+	async setTitle(title) {
+		if (this.isSet) {
+			const projectDetail = await ProjectDetail.update({ _id: this.projectDetail._id }, { $set: { title } });
+			this.projectDetail = projectDetail;
+			return this;
+		}
 		throw new Error('Project Detail not set');
 	}
 
-	set description(description) { /* TODO */ }
+	get title() {
+		if (this.isSet) return this.projectDetail.title;
+		throw new Error('Project Detail not set');
+	}
+
+	async setDescription(description) {
+		if (this.isSet) {
+			const projectDetail = await ProjectDetail.update({ _id: this.projectDetail._id }, { $set: { description } });
+			this.projectDetail = projectDetail;
+			return this;
+		}
+		throw new Error('Project Detail not set');
+	}
 
 	get description() {
-		if (this.projectDetail) return this.projectDetail.description;
+		if (this.isSet) return this.projectDetail.description;
 		throw new Error('Project Detail not set');
 	}
 
-	set language(description) { /* TODO */ }
+	async setLanguage(language) {
+		if (this.isSet) {
+			const projectDetail = await ProjectDetail.update({ _id: this.projectDetail._id }, { $set: { language } });
+			this.projectDetail = projectDetail;
+			return this;
+		}
+		throw new Error('Project Detail not set');
+	}
 
 	get language() {
-		if (this.projectDetail) return this.projectDetail.language;
+		if (this.isSet) return this.projectDetail.language;
 		throw new Error('Project Detail not set');
 	}
 

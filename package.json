@@ -55,6 +55,7 @@
     "faucet": "^0.0.1",
     "flow-bin": "^0.51.0",
     "jest": "^20.0.4",
+    "mockingoose": "^2.2.5",
     "nodemon": "^1.11.0",
     "regenerator-runtime": "^0.10.5",
     "shortid": "^2.2.8"
