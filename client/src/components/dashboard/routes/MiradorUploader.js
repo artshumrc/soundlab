@@ -5,8 +5,8 @@ import mongoose from 'mongoose';
 import Form from '../components/Form';
 import TextInput from '../components/TextInput';
 import ImagesUploader from '../components/imagesUploader/ImagesUploader';
-import ImagesInput from '../components/imagesUploader/ImagesInput';
 import {createManifest} from '../../../lib/createManifest';
+import FormImagesUploader from '../components/imagesUploader/FormImagesUploader';
 
 const validate = (values) => {
 	const errors = {};
@@ -121,20 +121,14 @@ export default class Test extends React.Component {
 							<Field name="attribution" component={this.inputComponent} type="text" placeholder="Attribution..." />
 						</div>
 						<FieldArray
-							name="images" component={images => (<div>
-								{images.fields.getAll().map((image, index) => (
-									<ImagesInput
-										image={image} imageIndex={index} key={index}
-										updateImageCb={this.updateImage} deleteImage={this.removeImage} showError={this.showError}
-									/>))}
-							</div>)
-            }
+							name="images"
+							component={images => (
+								<FormImagesUploader imagesFormState={images} showError={this.showError} />
+            )}
 						/>
 					</Form>
-					<ImagesUploader addImage={this.addImage} />
 				</div>
 			</div>
-
 		);
 	}
 }
