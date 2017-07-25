@@ -37,6 +37,7 @@
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
     "babel-plugin-lodash": "^3.2.11",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -53,7 +54,9 @@
     "faker": "^4.1.0",
     "faucet": "^0.0.1",
     "flow-bin": "^0.51.0",
+    "jest": "^20.0.4",
     "nodemon": "^1.11.0",
+    "regenerator-runtime": "^0.10.5",
     "shortid": "^2.2.8"
   },
   "scripts": {
@@ -61,8 +64,8 @@
     "lint": "eslint .",
     "test-client": "node run-client-tests.js",
     "test-client-ci": "node run-client-tests-ci.js",
-    "test-server": "babel-tape-runner ./server/tests/**/*.test.js | faucet",
-    "test": "npm run test-client-ci && npm run test-server",
+    "test-server": "jest ./server",
+    "test": "npm run test-server",
     "server": "nodemon server --exec babel-node",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "db-seed": "babel-node scripts/run-db-seed.js",

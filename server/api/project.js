@@ -105,7 +105,7 @@ export default class ProjectClass {
 	async _createProjectDetail(title, language) {
 
 		try {
-			this.projectDetails.push(await new ProjectDetail(this.project._id).create(title));
+			this.projectDetails.push(await new ProjectDetail().create(this.project._id, title));
 			return true;
 
 		} catch (err) {
@@ -335,6 +335,16 @@ export default class ProjectClass {
 	async addTenant(name) { /* TODO */ }
 
 	async removeTenant(tenantId) { /* TODO */ }
+
+	/**
+	 * [getProjectDetail description]
+	 * @param  {String} [role=DEFAULT_LANGUAGE] language 	Language of the project detail
+	 * @return {ProjectDetail}          					ProjectDetail object instance
+	 */
+	getProjectDetail(language = process.env.DEFAULT_LANGUAGE) {
+		if (this.projectDetails.length) return this.projectDetails.find(projDetail => projDetail.language === language);
+		throw new Error('Project Details not set');
+	}
 
 	/**
 	 * Get the mongodb raw document of the project
