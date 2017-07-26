@@ -14,20 +14,20 @@ import MiradorUploader from './dashboard/routes/MiradorUploader';
 import MiradorViewer from './dashboard/routes/MiradorViewer';
 
 export default (
-  <div>
-    <Route exact path="/" component={Home} />
-    <Route path="/page/new" component={Page} />
-    <Route path="/page" component={Page} />
-    <Route path="/dashboard" component={Dashboard}>
-      <IndexRoute component={MainPanel} />
-      <Route path="/dashboard/articles" component={Articles} />
-      <Route path="/dashboard/articles2" component={Articles2} />
-      <Route path="/dashboard/articles3" component={Articles3} />
-      <Route path="/dashboard/user" component={UserProfile} />
-      <Route path="/dashboard/user2" component={UserProfileTimeline} />
-      <Route path="/dashboard/form" component={ExampleForms} />
-      <Route path="/dashboard/mirador" component={MiradorUploader} />
-      <Route path="/dashboard/mirador/:id" component={MiradorViewer} />
-    </Route>
-  </div>
+	<div>
+		<Route exact path="/" component={Home} />
+		<Route path="/page/new" component={Page} />
+		<Route path="/page" component={Page} />
+		<Route path="/dashboard" component={Dashboard}>
+			<IndexRoute component={MainPanel} />
+			<Route path="/dashboard/articles" component={Articles} />
+			<Route path="/dashboard/articles2" component={Articles2} />
+			<Route path="/dashboard/articles3" component={Articles3} />
+			<Route path="/dashboard/user" component={UserProfile} />
+			<Route path="/dashboard/user2" component={UserProfileTimeline} />
+			<Route path="/dashboard/form" component={ExampleForms} />
+			<Route path="/dashboard/mirador" component={MiradorUploader} />
+		</Route>
+		<Route exact path="/mirador/:id" component={MiradorViewer} />
+	</div>
 );

@@ -1,65 +1,72 @@
 import React from 'react';
-import { gql, graphql } from 'react-apollo';
+import {gql, graphql} from 'react-apollo';
 
 const Mirador = window.Mirador;
-
 class MiradorViewer extends React.Component {
 	componentDidUpdate() {
-		setTimeout(() => {
-			const {manifest, manifestUri} = this.props;
-			let miradorManifestUri = manifestUri;
+		if (!this.props.data.loading) {
+			setTimeout(() => {
 
-			if (manifest) {
-				miradorManifestUri = manifest.remoteUri;
-			}
+				const manifest = this.props.data.miradorById;
+				const manifestUri = this.props.data.miradorById.remoteUri;
+				let miradorManifestUri = manifestUri;
 
-			console.log(miradorManifestUri);
+				if (manifest) {
+					miradorManifestUri = manifest.remoteUri;
+				}
 
-			if (!miradorManifestUri) {
-				return null;
-			}
+				console.log(miradorManifestUri);
 
-			Mirador({
-				id: 'miradorViewer',
-				layout: '1x1',
+				if (!miradorManifestUri) {
+					return null;
+				}
 
-				data: [
-					{
-						manifestUri: miradorManifestUri,
-						location: 'Harvard University'
-					}
-				],
+				Mirador({
+					id: 'miradorViewer',
+					layout: '1x1',
 
-				windowObjects: [{
-					loadedManifest: miradorManifestUri,
-				}],
+					data: [
+						{
+							manifestUri: miradorManifestUri,
+							location: 'Harvard University'
+						}
+					],
 
-				windowSettings: {
-					sidePanel: false,
-					canvasControls: {
-						annotations: {
-							annotationLayer: false
+					windowObjects: [{
+						loadedManifest: miradorManifestUri,
+					}],
+
+					windowSettings: {
+						sidePanel: false,
+						canvasControls: {
+							annotations: {
+								annotationLayer: false
+							},
+							imageManipulation: {
+								manipulationLayer: false
+							},
 						},
-						imageManipulation: {
-							manipulationLayer: false
-						},
+						displayLayout: false,
 					},
-					displayLayout: false,
-				},
 
-				mainMenuSettings: {
-					show: false
-				},
-			});
-		}, 1000);
+					mainMenuSettings: {
+						show: false
+					},
+				});
+			}, 1000);
+		}
 	}
 
 	render() {
-		console.log(' LOG', );
-		const {manifest, manifestUri} = this.props;
+		if (this.props.data.loading) {
+			return <div>Loading</div>;
+		}
+    
+		const manifest = this.props.data.miradorById;
+		const manifestUri = this.props.data.miradorById.remoteUri;
 
 		if (!manifest && !manifestUri) {
-      // TODO: Return 404
+        // TODO: Return 404
 			return null;
 		}
 
@@ -76,6 +83,7 @@ class MiradorViewer extends React.Component {
 				}}
 			/>
 		);
+    
 	}
 }
 
@@ -93,7 +101,8 @@ const MiradorDetailsQuery = gql`query getMirador($id: String!) {
     author, 
     seeAlso, 
     attribution, 
-    slug, 
+    slug,
+    remoteUri,
     images {
       name
       type
@@ -108,6 +117,7 @@ const MiradorWithData = graphql(MiradorDetailsQuery, {
 		variables: {
 			id: ownProps.params.id
 		}
-	})})(MiradorViewer);
+	})
+})(MiradorViewer);
 
 export default MiradorWithData;

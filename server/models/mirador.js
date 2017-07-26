@@ -36,11 +36,15 @@ const MiradorSchema = new Schema({
 		trim: true,
 		index: true
 	},
-  attribution: {
+	attribution: {
 		type: String,
 		required: true,
 		trim: true,
 		index: true
+	},
+	remoteUri: {
+		type: String,
+		required: false,
 	},
 	images: [ImageSchema],
 });
