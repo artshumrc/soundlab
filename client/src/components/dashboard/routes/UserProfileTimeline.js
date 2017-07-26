@@ -31,7 +31,7 @@ export default class UserProfileTimeline extends React.Component {
                   <div className="item">
                     <div className="image">
                       <div className="insideImage">
-                        <Image src="/images/timeline1.png" circle/>
+                        <Image src="/images/timeline1.png" alt="profilePicture" circle/>
                       </div>
                     </div>
                     <div className="details">
@@ -42,7 +42,7 @@ export default class UserProfileTimeline extends React.Component {
                       <div className="comment">
                         <Row className="commentContent">
                           <Col lg={1}>
-                            <Image src="http://lorempixel.com/60/60/people/3/" circle/>
+                            <Image src="http://lorempixel.com/60/60/people/3/" alt="profilePicture" circle/>
                           </Col>
                           <Col lg={11}>
                             Far curiosity incommode now allowance. Favour bed assure son things yet.
@@ -55,7 +55,7 @@ export default class UserProfileTimeline extends React.Component {
                   <div className="item">
                     <div className="image">
                       <div className="insideImage">
-                        <img src="http://lorempixel.com/400/400/people/1/"/>
+                        <img src="http://lorempixel.com/400/400/people/1/" alt="profilePicture"/>
                       </div>
                     </div>
                     <div className="detailsBorder">
@@ -69,7 +69,7 @@ export default class UserProfileTimeline extends React.Component {
                   <div className="item">
                     <div className="image">
                       <div className="insideImage">
-                        <img src="http://lorempixel.com/400/400/people/2/"/>
+                        <img src="http://lorempixel.com/400/400/people/2/" alt="profilePicture"/>
                       </div>
                     </div>
                     <div className="details">
@@ -84,7 +84,7 @@ export default class UserProfileTimeline extends React.Component {
                   <div className="item">
                     <div className="image">
                       <div className="insideImage">
-                        <img src="http://lorempixel.com/400/400/people/4/"/>
+                        <img src="http://lorempixel.com/400/400/people/4/" alt="profilePicture" />
                       </div>
                     </div>
                     <div className="details">

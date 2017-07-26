@@ -19,7 +19,6 @@ export default class Dashboard extends React.Component {
 	}
 
 	render() {
-	  console.log("this.props LOG", this.props);
 		const sidebarClass = this.state.sidebarVisible ? 'sidebar' : 'sidebar sidebarWrapped';
 		const contentWrapperClass = this.state.sidebarVisible ? 'contentWrapper' : 'contentWrapper contentWrapperExpand';
     const currentLocation = this.props.location.pathname;
@@ -41,13 +40,13 @@ export default class Dashboard extends React.Component {
 				</div>
 				<div className={contentWrapperClass}>
 					<div className="topNav">
-						<a href="#" onClick={this.toggleSidebar} className="toggleSidebar">
+						<a href="#sidebar" onClick={this.toggleSidebar} className="toggleSidebar">
 							<FontAwesome name="caret-left" />
 							<FontAwesome name="bars" size="2x" />
 						</a>
 						<input type="text" className="searchInput" placeholder="Search..." />
 						<div className="navigation pull-right">
-							<a href="#">
+							<a href="#profile">
 								<div className="userPanel">
 									<div className="userImage">
 										<span className="status" />

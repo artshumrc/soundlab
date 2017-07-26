@@ -3,7 +3,7 @@ import './Button.css';
 
 const Button = props => {
 
-	const { className, href, onClick, light, transparentLight, primary, accent } = props;
+	const { href, onClick, light, transparentLight, primary, accent } = props;
 	const classes = ['orpheus-button'];
 
 	if (primary) {

@@ -54,6 +54,12 @@ To start the project you need to follow these steps:
 
 	REACT_APP_WS_SERVER=ws://localhost:3002
 	REACT_APP_WS_SERVER_URI=subscriptions
+
+	AWS_ACCESS_KEY_ID=
+    AWS_SECRET_ACCESS=
+    AWS_BUCKET=iiif-orpheus
+    AWS_REGION=us-east-1
+    REACT_APP_BUCKET_URL=https://iiif-orpheus.s3.amazonaws.com
 	```
 
 5.	Generate mock data using the seed script:

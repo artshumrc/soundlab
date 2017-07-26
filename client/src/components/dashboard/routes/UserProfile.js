@@ -21,22 +21,22 @@ export default class UserProfile extends React.Component {
 							<h3>Dr. Johnathon Doe</h3>
 							<h4>Senior Chief Trainer</h4>
 							<div className="socialIcons">
-								<a href="#">
+								<a href="#twitter">
 									<FontAwesome name="twitter" />
 								</a>
-								<a href="#">
+								<a href="#linkedin">
 									<FontAwesome name="linkedin-square" />
 								</a>
-								<a href="#">
+								<a href="#facebook">
 									<FontAwesome name="facebook-official" />
 								</a>
-								<a href="#">
+								<a href="#skype">
 									<FontAwesome name="skype" />
 								</a>
-								<a href="#">
+								<a href="#pinterest">
 									<FontAwesome name="pinterest-square" />
 								</a>
-								<a href="#">
+								<a href="#apple">
 									<FontAwesome name="apple" />
 								</a>
 							</div>

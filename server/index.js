@@ -2,6 +2,11 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
+import request from 'request';
+
+//aws
+import aws from 'aws-sdk';
+import S3Router from 'react-s3-uploader/s3router';
 
 // middleware
 import bodyParser from 'body-parser';
@@ -30,9 +35,19 @@ import playgroundRouter from './routes/playground';
 // environment variables setup
 dotenvSetup();
 
+//mirador
+import Mirador from './models/mirador';
+import {Image} from './models/image';
+import Miradors from './bll/miradors';
+
 const app = express();
 
 const db = dbSetup();
+
+aws.config.update({
+	accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+});
 
 app.set('port', (process.env.PORT || 3001));
 
@@ -61,6 +76,58 @@ authSetup(app);
 
 // GraphQl setup
 setupGraphql(app);
+
+// Routes
+app.use('/auth', authenticationRouter);
+app.use('/playground', playgroundRouter);
+
+// s3
+app.use('/s3', S3Router({
+	bucket: process.env.AWS_BUCKET,
+	ACL: 'public-read',
+	uniquePrefix: false
+}));
+
+app.post('/createManifest', (req, res) => {
+	const newMirador = {
+		images: []
+	};
+
+	req.body.images.forEach((image) => {
+		newMirador.images.push(new Image(image));
+	});
+
+	const miradorObject = Object.assign({}, req.body, newMirador);
+
+	const mirador = new Mirador(miradorObject);
+
+	mirador.save((error) => {
+		if (error) {
+			console.log('Mirador DB save error: ', error);
+		} else {
+			const reqBody = {manifest: JSON.stringify(req.body), responseUrl: `${process.env.REACT_APP_SERVER}/manifestCreated`};
+			request.post('http://generate-manifests.orphe.us/manifests', {form: reqBody});
+		}
+	});
+});
+
+app.post('/manifestCreated', (req, res) => {
+	const exampleSecret = 'examplewebhookkey';
+	if (req.body.secret === exampleSecret) {
+	  Mirador.update(req.body.manifestId, {remoteUri: req.body.manifestUri});
+
+		// Mirador.findByIdAndUpdate(req.body.manifestId, {$set: { remoteUri: req.body.manifestUri }}, {new: true}, (error, manifest) => {
+		// 	if (error) {
+		// 		console.log('Manifest callback find error: ', error);
+		// 	}				else {
+		// 		  console.log('updatedManifest LOG', manifest);
+		// 	}
+		// });
+		console.log('MANIFEST CREATED LOG', req.body);
+	}
+});
+
+
 
 // Routes
 app.use('/auth', authenticationRouter);
