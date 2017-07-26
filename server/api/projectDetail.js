@@ -101,7 +101,7 @@ export default class ProjectDetailClass {
 
 	get title() {
 		if (this.isSet) return this.projectDetail.title;
-		throw new Error('Project Detail not set');
+		return null;
 	}
 
 	async setDescription(description) {
@@ -115,7 +115,7 @@ export default class ProjectDetailClass {
 
 	get description() {
 		if (this.isSet) return this.projectDetail.description;
-		throw new Error('Project Detail not set');
+		return null;
 	}
 
 	async setLanguage(language) {
@@ -129,15 +129,18 @@ export default class ProjectDetailClass {
 
 	get language() {
 		if (this.isSet) return this.projectDetail.language;
-		throw new Error('Project Detail not set');
+		return null;
 	}
 
 }
 
 export const getProjectDetails = async (projectId) => {
 	try {
-		const projectDetails = await ProjectDetail.find({ projectId: projectId });
-		return projectDetails.map(projectDetail => new ProjectDetailClass(projectDetail));
+		if (projectId) {
+			const projectDetails = await ProjectDetail.find({ projectId: projectId });
+			return projectDetails.map(projectDetail => new ProjectDetailClass(projectDetail));
+		}
+		throw new Error('no projectId provided');
 	} catch (err) {
 		console.error(err);
 		throw err;
