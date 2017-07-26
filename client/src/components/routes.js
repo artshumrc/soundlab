@@ -11,6 +11,7 @@ import UserProfile from './dashboard/routes/UserProfile';
 import UserProfileTimeline from './dashboard/routes/UserProfileTimeline';
 import ExampleForms from './dashboard/routes/ExampleForms';
 import MiradorUploader from './dashboard/routes/MiradorUploader';
+import MiradorViewer from './dashboard/routes/MiradorViewer';
 
 export default (
   <div>
@@ -26,6 +27,7 @@ export default (
       <Route path="/dashboard/user2" component={UserProfileTimeline} />
       <Route path="/dashboard/form" component={ExampleForms} />
       <Route path="/dashboard/mirador" component={MiradorUploader} />
+      <Route path="/dashboard/mirador/:id" component={MiradorViewer} />
     </Route>
   </div>
 );
