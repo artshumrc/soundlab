@@ -36,9 +36,6 @@ export default class Test extends React.Component {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.inputComponent = this.inputComponent.bind(this);
-		this.addImage = this.addImage.bind(this);
-		this.updateImage = this.updateImage.bind(this);
-		this.removeImage = this.removeImage.bind(this);
 		this.showError = this.showError.bind(this);
 		this.state = {
 			images: []
@@ -53,24 +50,6 @@ export default class Test extends React.Component {
 
 	inputComponent(props) {
 		return <TextInput {...props} />;
-	}
-
-	addImage(image) {
-		const currentImages = this.state.images;
-		currentImages.push(image);
-		this.setState({images: currentImages});
-	}
-
-	updateImage(index, image) {
-		const currentImages = this.state.images;
-		currentImages[index] = image;
-		this.setState({images: currentImages});
-	}
-
-	removeImage(index) {
-		const currentImages = this.state.images;
-		currentImages.splice(index, 1);
-		this.setState(currentImages);
 	}
 
 	showError(error) {
