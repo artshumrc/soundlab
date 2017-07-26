@@ -1,6 +1,6 @@
 .dropzone {
   background-color: #ffffff;
-  border: 2px dashed #ddd;
+  border: 2px dashed #dfe3e9;
   border-radius: 10px 10px 10px 10px;
   height: 100px;
   position: relative;
@@ -17,9 +17,17 @@
   border-radius: 7px;
   border: 1px solid #dfe3e9;
   margin: 10px 0;
+  padding: 10px 15px;
   .deleteButton {
     margin: 10px 15px;
     text-align: right;
+  }
+  .moveButton {
+    margin: 10px 15px;
+    color: #dfe3e9;
+  }
+  .moveButton:hover {
+    cursor: move;
   }
 }
 .progressBox {

@@ -34,7 +34,7 @@ export default class FormImagesUploader extends React.Component {
 					}}
 					updateImage={this.updateImage}
 					showError={this.props.showError}
-					distance={20}
+					useDragHandle
 				/>
 				<ImagesUploader addImage={this.addImage} />
 			</div>

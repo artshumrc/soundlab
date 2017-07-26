@@ -5,6 +5,7 @@ import {Field} from 'redux-form';
 import FontAwesome from 'react-fontawesome';
 import mongoose from 'mongoose';
 import TextInput from '../../components/TextInput';
+import {SortableHandle} from 'react-sortable-hoc';
 
 export default class ImagesInput extends React.Component {
 	constructor(props) {
@@ -13,6 +14,7 @@ export default class ImagesInput extends React.Component {
 		this.handleFinish = this.handleFinish.bind(this);
 		this.handleError = this.handleError.bind(this);
 		this.deleteImage = this.deleteImage.bind(this);
+		this.test = this.test.bind(this);
 		this.imageIndex = this.props.imageIndex;
 		this.imageType = this.props.image.type;
 		this.imageName = this.props.image.name;
@@ -49,7 +51,7 @@ export default class ImagesInput extends React.Component {
 	}
 
 	handleError(error) {
-		this.props.showError(error)
+		this.props.showError(error);
 	}
 
 	uploadFile() {
@@ -75,32 +77,46 @@ export default class ImagesInput extends React.Component {
 	}
 
 	render() {
-    if (!process.env.REACT_APP_BUCKET_URL) {
+		const DragHandle = SortableHandle(() => <div className="moveButton"><FontAwesome name="bars" /></div>); // This can be any component you want
+		const disableInput = !this.props.image.path;
+		if (!process.env.REACT_APP_BUCKET_URL) {
 			this.deleteImage();
 			this.handleError('REACT_APP_BUCKET_URL is not set, upload cancelled');
-			return null
-		} else {
-			return (
+			return null;
+		}
+		return (
+			<div>
+
 				<div className="row fileInput">
-					<div className="col-lg-2 progressBox">
-						{this.props.image.path ? <img src={this.props.image.thumbPath} /> :
-						<CircularProgressbar percentage={this.state.progress} />}
-					</div>
-					<div className="col-lg-10">
-						<div className="deleteButton">
-							<a href="#" onClick={this.deleteImage}>
-								<FontAwesome name="times" />
-							</a>
+					<div className="row">
+						<div className="col-lg-2">
+							<DragHandle />
 						</div>
-						<div>
-							<Field
-								name={`images[${this.props.imageIndex}].label`} component={this.inputComponent} type="text"
-								placeholder="Image label..." value={this.props.image.label}
-							/>
+						<div className="col-lg-10">
+							<div className="deleteButton">
+								<a href="#" onClick={this.deleteImage}>
+									<FontAwesome name="times" />
+								</a>
+							</div>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-lg-2 progressBox">
+							{this.props.image.path ? <img src={this.props.image.thumbPath} /> :
+							<CircularProgressbar percentage={this.state.progress} />}
+						</div>
+						<div className="col-lg-10">
+							<div>
+								<Field
+									name={`images[${this.props.imageIndex}].label`} component={this.inputComponent} type="text"
+									placeholder="Image label..." value={this.props.image.label} disabled={disableInput} onClick={this.test}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
-			);
-		}
+			</div>
+		);
+
 	}
 }
