@@ -5,19 +5,14 @@ import mongoose from 'mongoose';
 import Tenant from '../models/tenant';
 
 
-const __tenantMember = Symbol('private tenant member');
+const __tenant = Symbol('private tenant member');
 
 export default class TenantClass {
 	constructor(tenant) {
 		if (tenant) {
-			/**
-			 * Tenant object from database
-			 * @type {[type]}
-		 	 * @private
-			 */
-			this[__tenantMember] = tenant;
+			this[__tenant] = tenant;
 		} else {
-			this[__tenantMember] = null;
+			this[__tenant] = null;
 		}
 	}
 
@@ -28,7 +23,7 @@ export default class TenantClass {
 				projectId,
 			};
 
-			this[__tenantMember] = await Tenant.create(tenantParams);
+			this[__tenant] = await Tenant.create(tenantParams);
 			return true;
 
 		} catch (err) {
@@ -54,8 +49,8 @@ export default class TenantClass {
 	async remove() {
 		if (!this.isSet) throw new Error('Tenant is not set');
 		try {
-			await Tenant.remove({ _id: this[__tenantMember]._id });
-			this[__tenantMember] = null;
+			await Tenant.remove({ _id: this[__tenant]._id });
+			this[__tenant] = null;
 			return this;
 		} catch (err) {
 			throw err;
@@ -63,25 +58,25 @@ export default class TenantClass {
 	}
 
 	get isSet() {
-		if (this[__tenantMember]) return true;
+		if (this[__tenant]) return true;
 		return false;
 	}
 
 	get __tenant() {
-		return this[__tenantMember];
+		return this[__tenant];
 	}
 
 	async setName(name) {
 		if (this.isSet) {
-			const tenant = await Tenant.update({ _id: this[__tenantMember]._id }, { $set: { name } });
-			this[__tenantMember] = tenant;
+			const tenant = await Tenant.update({ _id: this[__tenant]._id }, { $set: { name } });
+			this[__tenant] = tenant;
 			return this;
 		}
 		throw new Error('Tenant not set');
 	}
 
 	get name() {
-		if (this.isSet) return this[__tenantMember].name;
+		if (this.isSet) return this[__tenant].name;
 		return null;
 	}
 }

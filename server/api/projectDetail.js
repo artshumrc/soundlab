@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import ProjectDetail from '../models/projectDetail';
 
 
-const __projectDetailMember = Symbol('private project detail member');
+const __projectDetail = Symbol('private project detail member');
 
 
 /**
@@ -24,9 +24,9 @@ export default class ProjectDetailClass {
 			 * @type {[type]}
 		 	 * @private
 			 */
-			this[__projectDetailMember] = projectDetail;
+			this[__projectDetail] = projectDetail;
 		} else {
-			this[__projectDetailMember] = null;
+			this[__projectDetail] = null;
 		}
 	}
 
@@ -39,7 +39,7 @@ export default class ProjectDetailClass {
 				language,
 			};
 
-			this[__projectDetailMember] = await ProjectDetail.create(projectDetailParams);
+			this[__projectDetail] = await ProjectDetail.create(projectDetailParams);
 			return true;
 
 		} catch (err) {
@@ -74,8 +74,8 @@ export default class ProjectDetailClass {
 	async remove() {
 		if (!this.isSet) throw new Error('Project detail is not set');
 		try {
-			await ProjectDetail.remove({ _id: this[__projectDetailMember]._id });
-			this[__projectDetailMember] = null;
+			await ProjectDetail.remove({ _id: this[__projectDetail]._id });
+			this[__projectDetail] = null;
 			return this;
 		} catch (err) {
 			throw err;
@@ -83,53 +83,53 @@ export default class ProjectDetailClass {
 	}
 
 	get isSet() {
-		if (this[__projectDetailMember]) return true;
+		if (this[__projectDetail]) return true;
 		return false;
 	}
 
 	get __projectDetail() {
-		return this[__projectDetailMember];
+		return this[__projectDetail];
 	}
 
 	async setTitle(title) {
 		if (this.isSet) {
-			const projectDetail = await ProjectDetail.update({ _id: this[__projectDetailMember]._id }, { $set: { title } });
-			this[__projectDetailMember] = projectDetail;
+			const projectDetail = await ProjectDetail.update({ _id: this[__projectDetail]._id }, { $set: { title } });
+			this[__projectDetail] = projectDetail;
 			return this;
 		}
 		throw new Error('Project Detail not set');
 	}
 
 	get title() {
-		if (this.isSet) return this[__projectDetailMember].title;
+		if (this.isSet) return this[__projectDetail].title;
 		return null;
 	}
 
 	async setDescription(description) {
 		if (this.isSet) {
-			const projectDetail = await ProjectDetail.update({ _id: this[__projectDetailMember]._id }, { $set: { description } });
-			this[__projectDetailMember] = projectDetail;
+			const projectDetail = await ProjectDetail.update({ _id: this[__projectDetail]._id }, { $set: { description } });
+			this[__projectDetail] = projectDetail;
 			return this;
 		}
 		throw new Error('Project Detail not set');
 	}
 
 	get description() {
-		if (this.isSet) return this[__projectDetailMember].description;
+		if (this.isSet) return this[__projectDetail].description;
 		return null;
 	}
 
 	async setLanguage(language) {
 		if (this.isSet) {
-			const projectDetail = await ProjectDetail.update({ _id: this[__projectDetailMember]._id }, { $set: { language } });
-			this[__projectDetailMember] = projectDetail;
+			const projectDetail = await ProjectDetail.update({ _id: this[__projectDetail]._id }, { $set: { language } });
+			this[__projectDetail] = projectDetail;
 			return this;
 		}
 		throw new Error('Project Detail not set');
 	}
 
 	get language() {
-		if (this.isSet) return this[__projectDetailMember].language;
+		if (this.isSet) return this[__projectDetail].language;
 		return null;
 	}
 
