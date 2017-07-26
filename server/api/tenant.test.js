@@ -74,7 +74,7 @@ describe('TenantClass', () => {
 			mockingoose.Tenant.toReturn(updatedTenant, 'create');
 			await Tenant.create(projectId, name);
 			Object.keys(updatedTenant).forEach((key) => {
-				expect(Tenant.__tenant).hasOwnProperty(key, updatedTenant[key]);
+				expect(Tenant._tenant).hasOwnProperty(key, updatedTenant[key]);
 			});
 		});
 	});
@@ -95,11 +95,11 @@ describe('TenantClass', () => {
 			expect(TenantModel.remove).toHaveBeenCalled();
 		});
 
-		test('should update tenant to be null', async () => {
+		test('should update tenant and isSet should return false', async () => {
 			const Tenant = new TenantClass({});
 			mockingoose.Tenant.toReturn(1, 'remove');
 			await Tenant.remove(projectId, name);
-			expect(Tenant.__tenant).toBeNull();
+			expect(Tenant.isSet).toBe(false);
 		});
 	});
 });

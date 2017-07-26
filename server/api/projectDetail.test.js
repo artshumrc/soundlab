@@ -126,7 +126,7 @@ describe('ProjectDetailClass', () => {
 			mockingoose.ProjectDetail.toReturn(updatedProjectDetail, 'create');
 			await ProjectDetail.create(projectId, title);
 			Object.keys(updatedProjectDetail).forEach((key) => {
-				expect(ProjectDetail.__projectDetail).hasOwnProperty(key, updatedProjectDetail[key]);
+				expect(ProjectDetail._projectDetail).hasOwnProperty(key, updatedProjectDetail[key]);
 			});
 		});
 	});
@@ -147,11 +147,11 @@ describe('ProjectDetailClass', () => {
 			expect(ProjectDetailModel.remove).toHaveBeenCalled();
 		});
 
-		test('should update projectDetail to be null', async () => {
+		test('should update projectDetail and isSet should return false', async () => {
 			const ProjectDetail = new ProjectDetailClass({});
 			mockingoose.ProjectDetail.toReturn(1, 'remove');
 			await ProjectDetail.remove(projectId, title);
-			expect(ProjectDetail.__projectDetail).toBeNull();
+			expect(ProjectDetail.isSet).toBe(false);
 		});
 	});
 });
