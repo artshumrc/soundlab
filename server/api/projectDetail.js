@@ -4,26 +4,29 @@ import mongoose from 'mongoose';
 // models
 import ProjectDetail from '../models/projectDetail';
 
+
+const __projectDetailMember = Symbol('private project detail member');
+
+
 /**
  * 
  */
 export default class ProjectDetailClass {
 	
 	/**
-	 * ProjectDetailClass constructor: initiates the projectId and initiate projectDetail members.
-	 * If projectDetail not provided, use create method to create new projectDetail. 
+	 * ProjectDetailClass constructor: initiates the projectDetail member.
 	 * @param  {Object} projectDetail 	 mongodb raw document of the project detail
 	 */
 	constructor(projectDetail) {
 		if (projectDetail) {
 			/**
-			 * Project detail obejct from database
+			 * Project detail object from database
 			 * @type {[type]}
 		 	 * @private
 			 */
-			this.projectDetail = projectDetail;
+			this[__projectDetailMember] = projectDetail;
 		} else {
-			this.projectDetail = null;
+			this[__projectDetailMember] = null;
 		}
 	}
 
@@ -36,7 +39,7 @@ export default class ProjectDetailClass {
 				language,
 			};
 
-			this.projectDetail = await ProjectDetail.create(projectDetailParams);
+			this[__projectDetailMember] = await ProjectDetail.create(projectDetailParams);
 			return true;
 
 		} catch (err) {
@@ -60,7 +63,6 @@ export default class ProjectDetailClass {
 			await this._createProjectDetail(projectId, title);
 			return this;
 		} catch (err) {
-			console.error(err);
 			throw err;
 		}
 	}
@@ -72,63 +74,62 @@ export default class ProjectDetailClass {
 	async remove() {
 		if (!this.isSet) throw new Error('Project detail is not set');
 		try {
-			await ProjectDetail.remove({ _id: this.projectDetail._id });
-			this.projectDetail = null;
+			await ProjectDetail.remove({ _id: this[__projectDetailMember]._id });
+			this[__projectDetailMember] = null;
 			return this;
 		} catch (err) {
-			console.error(err);
 			throw err;
 		}
 	}
 
 	get isSet() {
-		if (this.projectDetail) return true;
+		if (this[__projectDetailMember]) return true;
 		return false;
 	}
 
 	get __projectDetail() {
-		return this.projectDetail;
+		return this[__projectDetailMember];
 	}
 
 	async setTitle(title) {
 		if (this.isSet) {
-			const projectDetail = await ProjectDetail.update({ _id: this.projectDetail._id }, { $set: { title } });
-			this.projectDetail = projectDetail;
+			const projectDetail = await ProjectDetail.update({ _id: this[__projectDetailMember]._id }, { $set: { title } });
+			this[__projectDetailMember] = projectDetail;
 			return this;
 		}
 		throw new Error('Project Detail not set');
 	}
 
 	get title() {
-		if (this.isSet) return this.projectDetail.title;
+		if (this.isSet) return this[__projectDetailMember].title;
 		return null;
 	}
 
 	async setDescription(description) {
 		if (this.isSet) {
-			const projectDetail = await ProjectDetail.update({ _id: this.projectDetail._id }, { $set: { description } });
-			this.projectDetail = projectDetail;
+			const projectDetail = await ProjectDetail.update({ _id: this[__projectDetailMember]._id }, { $set: { description } });
+			this[__projectDetailMember] = projectDetail;
 			return this;
 		}
 		throw new Error('Project Detail not set');
 	}
 
 	get description() {
-		if (this.isSet) return this.projectDetail.description;
+		if (this.isSet) return this[__projectDetailMember].description;
 		return null;
 	}
 
 	async setLanguage(language) {
 		if (this.isSet) {
-			const projectDetail = await ProjectDetail.update({ _id: this.projectDetail._id }, { $set: { language } });
-			this.projectDetail = projectDetail;
+			const projectDetail = await ProjectDetail.update({ _id: this[__projectDetailMember]._id }, { $set: { language } });
+			this[__projectDetailMember] = projectDetail;
 			return this;
 		}
 		throw new Error('Project Detail not set');
 	}
 
 	get language() {
-		if (this.isSet) return this.projectDetail.language;
+		if (this.isSet) return this[__projectDetailMember].language;
 		return null;
 	}
 
@@ -142,7 +143,6 @@ export const getProjectDetails = async (projectId) => {
 		}
 		throw new Error('no projectId provided');
 	} catch (err) {
-		console.error(err);
 		throw err;
 	}
 };

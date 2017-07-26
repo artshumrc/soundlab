@@ -23,12 +23,6 @@ const TenantSchema = new Schema({
 		ref: 'Project',
 		index: true,
 		required: true,
-	},
-	url: {
-		unique: true,
-		type: mongoose.SchemaTypes.Url,
-		required: true,
-		index: true,
 	}
 });
 

@@ -130,6 +130,7 @@ describe('ProjectDetailClass', () => {
 			});
 		});
 	});
+
 	describe('remove', () => {
 		const projectId = mongoose.Types.ObjectId();
 		const title = faker.commerce.productName();
@@ -156,11 +157,11 @@ describe('ProjectDetailClass', () => {
 });
 
 describe('getProjectDetails', () => {
-	test('should fail if run with no argument', () => {
+	test('should fail if run with no argument ', () => {
 		expect(getProjectDetails()).rejects.toBeInstanceOf(Error);
 	});
 
-	test('should return array of ProjectDetailClass instances', async () => {
+	test('should return array of ProjectDetailClass with isSet equal to true', async () => {
 		mockingoose.ProjectDetail.toReturn([{}, {}], 'find');
 		const projectId = mongoose.Types.ObjectId();
 		const projectDetails = await getProjectDetails(projectId);
