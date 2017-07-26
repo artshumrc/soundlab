@@ -14,7 +14,6 @@ export default class ImagesInput extends React.Component {
 		this.handleFinish = this.handleFinish.bind(this);
 		this.handleError = this.handleError.bind(this);
 		this.deleteImage = this.deleteImage.bind(this);
-		this.test = this.test.bind(this);
 		this.imageIndex = this.props.imageIndex;
 		this.imageType = this.props.image.type;
 		this.imageName = this.props.image.name;
