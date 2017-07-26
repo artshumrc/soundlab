@@ -3,11 +3,11 @@ import check from 'check-type';
 // models
 import Project from '../models/project';
 import User from '../models/user';
-import Tenant from '../models/tenant';
 import Collection from '../models/collection';
 
 // api
-import ProjectDetail, { getProjectDetails } from './projectDetail';
+import ProjectDetail from './projectDetail';
+import Tenant from './tenant';
 
 
 const _getUser = async (_id) => {
@@ -177,7 +177,7 @@ export default class ProjectClass {
 	async _setTenant() {
 		try {
 			_checkProject();
-			this.tenants = await Tenant.findOne({ projectId: this.project._id });
+			this.tenants = await new Tenant().init(this.project._id);
 			return true;
 		} catch (err) {
 			throw err;
@@ -187,7 +187,7 @@ export default class ProjectClass {
 	async _setProjectDetails() {
 		try {
 			_checkProject();
-			this.projectDetails = await getProjectDetails(this.project._id);
+			this.projectDetails = await new ProjectDetail().init(this.project._id);
 			return true;
 		} catch (err) {
 			throw err;

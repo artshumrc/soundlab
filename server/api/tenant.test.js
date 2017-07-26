@@ -6,116 +6,116 @@ import mongoose from 'mongoose';
 import TenantModel from '../models/tenant';
 
 // tested module
-import TenantClass, { getTenantsForProject } from './tenant';
+import TenantClass from './tenant';
 
 describe('TenantClass', () => {
 
-	describe('isSet', () => {
-		test('return false if tenant is not set', () => {
+	describe('init', () => {
+		test('isSet return false if not initiated', () => {
 			const Tenant = new TenantClass();
 			expect(Tenant.isSet).toEqual(false);
 		});
-		test('return true if tenant is set', () => {
-			const Tenant = new TenantClass({});
-			expect(Tenant.isSet).toEqual(true);
+		test('should fail if projectId not provided', () => {
+			expect(new TenantClass().init()).rejects.toBeInstanceOf(Error);
 		});
+		test('should make isSet true', async () => {
+			mockingoose.Tenant.toReturn([{}, {}], 'find');
+			const tenant = await new TenantClass().init(mongoose.Types.ObjectId());
+			expect(tenant.isSet).toBeTruthy();
+		});
+		// test('should fail on second call');
 	});
 
-	describe('getters and setters', () => {
-		describe('Name', () => {
-			const name = faker.commerce.productName();
-			const tenant = {
-				name,
-			};
-			const Tenant = new TenantClass(tenant);
+	// describe('isSet', () => {
+	// 	test('return false if tenant is not set', () => {
+	// 		const Tenant = new TenantClass();
+	// 		expect(Tenant.isSet).toEqual(false);
+	// 	});
+	// 	test('return true if tenant is set', () => {
+	// 		const Tenant = new TenantClass({});
+	// 		expect(Tenant.isSet).toEqual(true);
+	// 	});
+	// });
 
-			test('get name', () => {
-				expect(Tenant.name).toEqual(name);
-			});
+	// describe('getters and setters', () => {
+	// 	describe('Name', () => {
+	// 		const name = faker.commerce.productName();
+	// 		const tenant = {
+	// 			name,
+	// 		};
+	// 		const Tenant = new TenantClass(tenant);
 
-			test('get name should return null if tenant not set', () => {
-				expect(new TenantClass().name).toBeNull();
-			});
+	// 		test('get name', () => {
+	// 			expect(Tenant.name).toEqual(name);
+	// 		});
 
-			test('setName', async () => {
-				const newName = faker.commerce.productName();
-				const updatedTenant = {
-					name: newName,
-				};
-				mockingoose.Tenant.toReturn(updatedTenant, 'update');
-				await Tenant.setName(newName);
-				expect(Tenant.name).toEqual(newName);
-			});
-		});
-	});
+	// 		test('get name should return null if tenant not set', () => {
+	// 			expect(new TenantClass().name).toBeNull();
+	// 		});
 
-	describe('create', () => {
-		const projectId = mongoose.Types.ObjectId();
-		const name = faker.commerce.productName();
+	// 		test('setName', async () => {
+	// 			const newName = faker.commerce.productName();
+	// 			const updatedTenant = {
+	// 				name: newName,
+	// 			};
+	// 			mockingoose.Tenant.toReturn(updatedTenant, 'update');
+	// 			await Tenant.setName(newName);
+	// 			expect(Tenant.name).toEqual(newName);
+	// 		});
+	// 	});
+	// });
 
-		test('should fail if tenant already set', async () => {
-			const Tenant = new TenantClass({});
-			await expect(Tenant.create(projectId, name)).rejects.toBeInstanceOf(Error);
-		});
+	// describe('create', () => {
+	// 	const projectId = mongoose.Types.ObjectId();
+	// 	const name = faker.commerce.productName();
 
-		test('should call model create method', async () => {
-			const Tenant = new TenantClass();
-			TenantModel.create = jest.fn();
-			await Tenant.create(projectId, name);
-			expect(TenantModel.create).toHaveBeenCalled();
-		});
+	// 	test('should fail if tenant already set', async () => {
+	// 		const Tenant = new TenantClass({});
+	// 		await expect(Tenant.create(projectId, name)).rejects.toBeInstanceOf(Error);
+	// 	});
 
-		test('should update tenant', async () => {
-			const Tenant = new TenantClass();
-			const updatedTenant = {
-				name,
-				projectId,
-			};
-			mockingoose.Tenant.toReturn(updatedTenant, 'create');
-			await Tenant.create(projectId, name);
-			Object.keys(updatedTenant).forEach((key) => {
-				expect(Tenant._tenant).hasOwnProperty(key, updatedTenant[key]);
-			});
-		});
-	});
+	// 	test('should call model create method', async () => {
+	// 		const Tenant = new TenantClass();
+	// 		TenantModel.create = jest.fn();
+	// 		await Tenant.create(projectId, name);
+	// 		expect(TenantModel.create).toHaveBeenCalled();
+	// 	});
+
+	// 	test('should update tenant', async () => {
+	// 		const Tenant = new TenantClass();
+	// 		const updatedTenant = {
+	// 			name,
+	// 			projectId,
+	// 		};
+	// 		mockingoose.Tenant.toReturn(updatedTenant, 'create');
+	// 		await Tenant.create(projectId, name);
+	// 		Object.keys(updatedTenant).forEach((key) => {
+	// 			expect(Tenant._tenant).hasOwnProperty(key, updatedTenant[key]);
+	// 		});
+	// 	});
+	// });
 	
-	describe('remove', () => {
-		const projectId = mongoose.Types.ObjectId();
-		const name = faker.commerce.productName();
+	// describe('remove', () => {
+	// 	const projectId = mongoose.Types.ObjectId();
+	// 	const name = faker.commerce.productName();
 
-		test('should fail if tenant is not set', async () => {
-			const Tenant = new TenantClass();
-			await expect(Tenant.remove()).rejects.toBeInstanceOf(Error);
-		});
+	// 	test('should fail if tenant is not set', async () => {
+	// 		const Tenant = new TenantClass();
+	// 		await expect(Tenant.remove()).rejects.toBeInstanceOf(Error);
+	// 	});
 
-		test('should call model remove method', async () => {
-			const Tenant = new TenantClass({});
-			TenantModel.remove = jest.fn();
-			await Tenant.remove();
-			expect(TenantModel.remove).toHaveBeenCalled();
-		});
+	// 	test('should call model remove method', async () => {
+	// 		const Tenant = new TenantClass({});
+	// 		TenantModel.remove = jest.fn();
+	// 		await Tenant.remove();
+	// 		expect(TenantModel.remove).toHaveBeenCalled();
+	// 	});
 
-		test('should update tenant and isSet should return false', async () => {
-			const Tenant = new TenantClass({});
-			mockingoose.Tenant.toReturn(1, 'remove');
-			await Tenant.remove(projectId, name);
-			expect(Tenant.isSet).toBe(false);
-		});
-	});
+	// 	test('should update tenant and isSet should return false', async () => {
+	// 		const Tenant = new TenantClass({});
+	// 		mockingoose.Tenant.toReturn(1, 'remove');
+	// 		await Tenant.remove(projectId, name);
+	// 		expect(Tenant.isSet).toBe(false);
+	// 	});
+	// });
 });
-
-describe('getTenantsForProject', () => {
-	test('should fail if run with no argument', () => {
-		expect(getTenantsForProject()).rejects.toBeInstanceOf(Error);
-	});
-
-	test('should return array of TenantClass with isSet equal to true', async () => {
-		mockingoose.Tenant.toReturn([{}, {}], 'find');
-		const projectId = mongoose.Types.ObjectId();
-		const tenants = await getTenantsForProject(projectId);
-		tenants.forEach((tenant) => {
-			expect(tenant.isSet).toEqual(true);
-		});
-	});
-});
-
