@@ -1,6 +1,6 @@
 const createManifest = async (manifest) => {
   try {
-    const res = await fetch(`${process.env.REACT_APP_AUTH_SERVER}/createManifest`, {
+    const res = await fetch(`${process.env.REACT_APP_SERVER}/createManifest`, {
       method: 'POST',
       credentials: 'include',
       headers: {

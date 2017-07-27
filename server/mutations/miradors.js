@@ -11,7 +11,7 @@ import { AuthenticationError } from '../errors';
 
 const miradorMutationFileds = {
 
-	projectCreate: {
+	mutationCreate: {
 		type: miradorType,
 		args: {
 			title: {

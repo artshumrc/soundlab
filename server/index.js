@@ -43,10 +43,9 @@ import Miradors from './bll/miradors';
 const app = express();
 
 const db = dbSetup();
-
 aws.config.update({
 	accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+	secretAccessKey: process.env.AWS_SECRET_ACCESS,
 });
 
 app.set('port', (process.env.PORT || 3001));
@@ -58,7 +57,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 
 // session:
 app.use(session({
@@ -100,12 +99,14 @@ app.post('/createManifest', (req, res) => {
 	const miradorObject = Object.assign({}, req.body, newMirador);
 
 	const mirador = new Mirador(miradorObject);
-
 	mirador.save((error) => {
 		if (error) {
 			console.log('Mirador DB save error: ', error);
 		} else {
-			const reqBody = {manifest: JSON.stringify(req.body), responseUrl: `${process.env.REACT_APP_SERVER}/manifestCreated`};
+			const reqBody = {
+				manifest: JSON.stringify(req.body),
+				responseUrl: `${process.env.REACT_APP_SERVER}/manifestCreated`
+			};
 			request.post('http://generate-manifests.orphe.us/manifests', {form: reqBody});
 		}
 	});
@@ -114,20 +115,19 @@ app.post('/createManifest', (req, res) => {
 app.post('/manifestCreated', (req, res) => {
 	const exampleSecret = 'examplewebhookkey';
 	if (req.body.secret === exampleSecret) {
-	  Mirador.update(req.body.manifestId, {remoteUri: req.body.manifestUri});
-
-		// Mirador.findByIdAndUpdate(req.body.manifestId, {$set: { remoteUri: req.body.manifestUri }}, {new: true}, (error, manifest) => {
-		// 	if (error) {
-		// 		console.log('Manifest callback find error: ', error);
-		// 	}				else {
-		// 		  console.log('updatedManifest LOG', manifest);
-		// 	}
-		// });
-		console.log('MANIFEST CREATED LOG', req.body);
+		Mirador.findByIdAndUpdate(req.body.manifestId, {$set: {remoteUri: req.body.manifestUri}}, (error, manifest) => {
+			if (error) {
+				console.log('Manifest created callback error: ', error);
+				res.send('Error updating manifest!');
+			}			else {
+				res.send('Roger that!');
+			}
+		});
+	}	else {
+		console.log('/manifestCreated: Authentication error!');
+		res.send('Authentication needed!');
 	}
 });
-
-
 
 // Routes
 app.use('/auth', authenticationRouter);
@@ -141,10 +141,10 @@ function listen() {
 }
 
 db.on('error', console.error)
-	.on('disconnected', dbSetup)
-	.once('open', () => {
-		console.info(`Connected to mongodb ( host: ${db.host}, port: ${db.port}, name: ${db.name} )`);
+  .on('disconnected', dbSetup)
+  .once('open', () => {
+	console.info(`Connected to mongodb ( host: ${db.host}, port: ${db.port}, name: ${db.name} )`);
 
-		// START application:
-		listen();
-	});
+    // START application:
+	listen();
+});

@@ -42,6 +42,9 @@ const MiradorSchema = new Schema({
 		trim: true,
 		index: true
 	},
+  remoteUri: {
+    type: String,
+  },
 	images: [ImageSchema],
 });
 

@@ -59,7 +59,7 @@ export default class ImagesInput extends React.Component {
 			onFinishS3Put: this.handleFinish,
 			fileElement: this.state,
 			signingUrl: '/s3/sign',
-			server: process.env.REACT_APP_AUTH_SERVER,
+			server: process.env.REACT_APP_SERVER,
 			onError: this.handleError,
 			uploadRequestHeaders: {'x-amz-acl': 'public-read'},
 			contentDisposition: 'auto',
@@ -68,6 +68,7 @@ export default class ImagesInput extends React.Component {
 				return `${this._id}-${secureFilename}`;
 			},
 			signingUrlMethod: 'GET',
+      signingUrlWithCredentials: true
 		});
 	}
 
