@@ -21,11 +21,12 @@ export default class ProjectDetailClass extends ModelAPIClass {
 		super(ProjectDetail, ['title', 'description']);
 	}
 
-	async create(projectId, title, language = process.env.DEFAULT_LANGUAGE) {
+	async create(projectId, { title, description }, language = process.env.DEFAULT_LANGUAGE) {
 		// check if method can run
 		check.assert.string(title);
+		check.assert.string(description);
 		try {
-			await super.create(projectId, { title }, language);
+			await super.create(projectId, { title, description }, language);
 			return this;
 		} catch (err) {
 			throw err;
