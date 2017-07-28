@@ -64,7 +64,7 @@
     "lint": "eslint .",
     "test-client": "node scripts/run-client-tests.js",
     "test-client-ci": "node scripts/run-client-tests-ci.js",
-    "test-server": "jest ./server",
+    "test-server": "jest --config ./jest.config.js ./server",
     "test": "npm run test-server",
     "server": "nodemon server --exec babel-node",
     "start": "concurrently \"npm run server\" \"npm run client\"",
@@ -77,9 +77,5 @@
     "url": "git@gitlab.archimedesdigital.io:archimedes/orpheus.git"
   },
   "author": "Archimedes Digital",
-  "license": "MIT",
-  "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": ["server/api/**/*.js"]
-  }
+  "license": "MIT"
 }
