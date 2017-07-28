@@ -3,13 +3,14 @@ import mongoose from 'mongoose';
 import mockingoose from 'mockingoose';
 
 // tested module
-import modelAPIClass from './modelAPI';
+import ModelAPIClass from './modelAPI';
 
-describe('ProjectDetailClass', () => {
+describe('ModelAPIClass', () => {
 
 	const modelFindReturnValue = [{}, {}];
 	const Model = {};
-	const fields = [];
+	const parentFiledName = 'parentFiled';
+	const parentId = mongoose.Types.ObjectId();
 
 	describe('init', () => {
 
@@ -18,25 +19,20 @@ describe('ProjectDetailClass', () => {
 		});
 
 		test('isSet return false if not initiated', () => {
-			expect(new modelAPIClass(Model, fields).isSet).toEqual(false);
+			expect(new ModelAPIClass(Model).isSet).toEqual(false);
 		});
-		test('should fail if projectId not provided', () => {
-			expect(new modelAPIClass(Model, fields).init()).rejects.toBeInstanceOf(Error);
+		test('should fail if parentId and/or parentFiledName not provided', () => {
+			expect(new ModelAPIClass(Model).init()).rejects.toBeInstanceOf(Error);
 		});
 		test('should set the models from db', async () => {
-			const model = await new modelAPIClass(Model, fields).init(mongoose.Types.ObjectId());
+			const model = await new ModelAPIClass(Model).init(parentFiledName, parentId);
 			expect(Model.find).toHaveBeenCalled();
 			expect(model._models).toMatchObject(modelFindReturnValue);
 		});
-		test('should fail if no document found', async () => {
-			Model.find = jest.fn().mockReturnValue([]);
-			const ModelAPI = new modelAPIClass(Model, fields);
-			expect(ModelAPI.init(mongoose.Types.ObjectId())).rejects.toBeInstanceOf(Error);
-		});
 		test('should fail on second call', async () => {
-			const ModelAPI = new modelAPIClass(Model, fields);
-			const model = await ModelAPI.init(mongoose.Types.ObjectId());
-			expect(ModelAPI.init(mongoose.Types.ObjectId())).rejects.toBeInstanceOf(Error);
+			const ModelAPI = new ModelAPIClass(Model);
+			const model = await ModelAPI.init(parentFiledName, parentId);
+			expect(ModelAPI.init(parentFiledName, parentId)).rejects.toBeInstanceOf(Error);
 		});
 	});
 
@@ -47,12 +43,12 @@ describe('ProjectDetailClass', () => {
 		});
 
 		test('should return false if not initiated', () => {
-			const ModelAPI = new modelAPIClass(Model, fields);
+			const ModelAPI = new ModelAPIClass(Model);
 			expect(ModelAPI.isSet).toBe(false);
 		});
 		test('should return true if initiated', async () => {
-			const ModelAPI = new modelAPIClass(Model, fields);
-			const model = await ModelAPI.init(mongoose.Types.ObjectId());
+			const ModelAPI = new ModelAPIClass(Model);
+			const model = await ModelAPI.init(parentFiledName, parentId);
 			expect(ModelAPI.isSet).toBe(true);
 		});
 	});
@@ -70,15 +66,16 @@ describe('ProjectDetailClass', () => {
 			}, {
 				language: selectedLanguage,
 			}]);
-			const ModelAPI = new modelAPIClass(Model, fields);
-			const model = await ModelAPI.init(mongoose.Types.ObjectId());
+			const ModelAPI = new ModelAPIClass(Model);
+			const model = await ModelAPI.init(parentFiledName, parentId);
 			expect(model.getLanguageVersion(selectedLanguage)).hasOwnProperty('language', selectedLanguage);
 		});
 	});
 
 	describe('create', () => {
-		const projectId = mongoose.Types.ObjectId();
 		const title = faker.commerce.productName();
+		const multilanguageFileds = ['title'];
+		const otherFields = [];
 
 		beforeAll(() => {
 			Model.find = jest.fn().mockReturnValue(modelFindReturnValue);
@@ -89,26 +86,25 @@ describe('ProjectDetailClass', () => {
 		});
 
 		test('should fail if language version exists', async () => {
-			const ModelAPI = new modelAPIClass(Model, fields);
-			await expect(ModelAPI.create(projectId, { title })).rejects.toBeInstanceOf(Error);
+			const ModelAPI = new ModelAPIClass(Model);
+			await expect(ModelAPI.create({ title })).rejects.toBeInstanceOf(Error);
 		});
 
 		test('should call model create method', async () => {
 			Model.create = jest.fn();
-			const ModelAPI = new modelAPIClass(Model, fields);
-			await ModelAPI.create(projectId, { title });
+			const ModelAPI = new ModelAPIClass(Model, multilanguageFileds);
+			await ModelAPI.create({ title });
 			expect(Model.create).toHaveBeenCalled();
 		});
 
 		test('should create new document', async () => {
 			const doc = {
 				title,
-				projectId,
 			};
 			Model.create = jest.fn().mockReturnValue(doc);
-			const ModelAPI = new modelAPIClass(Model, fields);
+			const ModelAPI = new ModelAPIClass(Model, multilanguageFileds);
 			mockingoose.ProjectDetail.toReturn(doc, 'create');
-			await ModelAPI.create(projectId, { title });
+			await ModelAPI.create({ title });
 			Object.keys(doc).forEach((key) => {
 				expect(ModelAPI._projectDetail).hasOwnProperty(key, doc[key]);
 			});
@@ -124,24 +120,24 @@ describe('ProjectDetailClass', () => {
 		});
 
 		test('should fail if not initiated', async () => {
-			const ModelAPI = new modelAPIClass(Model, fields);
+			const ModelAPI = new ModelAPIClass(Model);
 			await expect(ModelAPI.remove()).rejects.toBeInstanceOf(Error);
 		});
 
 		test('should call model remove method', async () => {
 			Model.remove = jest.fn();
-			const ModelAPI = new modelAPIClass(Model, fields);
-			await ModelAPI.init(mongoose.Types.ObjectId());
+			const ModelAPI = new ModelAPIClass(Model);
+			await ModelAPI.init(parentFiledName, parentId);
 			await ModelAPI.remove();
 			expect(Model.remove).toHaveBeenCalled();
 		});
 
-		test('should make isSet return false', async () => {
-			const ModelAPI = new modelAPIClass(Model, fields);
-			await ModelAPI.init(mongoose.Types.ObjectId());
+		test('should make hasModels return false', async () => {
+			const ModelAPI = new ModelAPIClass(Model);
+			await ModelAPI.init(parentFiledName, parentId);
 			Model.find = jest.fn().mockReturnValue([]);
 			await ModelAPI.remove();
-			expect(ModelAPI.isSet).toBe(false);
+			expect(ModelAPI.hasModels).toBe(false);
 		});
 	});
 
@@ -159,14 +155,14 @@ describe('ProjectDetailClass', () => {
 
 		test('should fail if language version does not exist', async () => {
 			const selectedLanguage = 'unreal language';
-			const ModelAPI = new modelAPIClass(Model, fields);
-			await ModelAPI.init(mongoose.Types.ObjectId());
+			const ModelAPI = new ModelAPIClass(Model);
+			await ModelAPI.init(parentFiledName, parentId);
 			expect(ModelAPI.removeLanguageVersion(selectedLanguage)).rejects.toBeInstanceOf(Error);
 		});
 		test('should call model remove method', async () => {
 			Model.remove = jest.fn();
-			const ModelAPI = new modelAPIClass(Model, fields);
-			await ModelAPI.init(mongoose.Types.ObjectId());
+			const ModelAPI = new ModelAPIClass(Model);
+			await ModelAPI.init(parentFiledName, parentId);
 			await ModelAPI.remove();
 			expect(Model.remove).toHaveBeenCalled();
 		});
@@ -174,9 +170,9 @@ describe('ProjectDetailClass', () => {
 
 	describe('getValue', () => {
 
-		const editableFileds = [faker.lorem.word(), 'testFiled'];
+		const multilanguageFileds = [faker.lorem.word(), 'testFiled'];
 		const languages = [faker.random.locale(), faker.random.locale()];
-		const ModelAPI = new modelAPIClass(Model, editableFileds);
+		const ModelAPI = new ModelAPIClass(Model, multilanguageFileds);
 
 		beforeAll(async () => {
 			Model.find = jest.fn().mockReturnValue([{
@@ -184,15 +180,15 @@ describe('ProjectDetailClass', () => {
 			}, {
 				language: languages[1],
 			}]);
-			await ModelAPI.init(mongoose.Types.ObjectId());
+			await ModelAPI.init(parentFiledName, parentId);
 		});
 
-		test('should fail if provided field is not in the editable fields', () => {
+		test('should fail if provided field is not in the allowed fields', () => {
 			expect(() => ModelAPI.getValue('unreal field')).toThrow();
 		});
 		test('should return null if language version not found', () => {
 			const selectedLanguage = 'unreal language';
-			expect(ModelAPI.getValue(editableFileds[0], selectedLanguage)).toBeNull();
+			expect(ModelAPI.getValue(multilanguageFileds[0], selectedLanguage)).toBeNull();
 		});
 		test('should return filed value', async () => {
 			Model.find = jest.fn().mockReturnValue([{
@@ -202,17 +198,18 @@ describe('ProjectDetailClass', () => {
 				testFiled: 'testValue2',
 				language: languages[1],
 			}]);
-			const NewModelAPI = new modelAPIClass(Model, editableFileds);
-			await NewModelAPI.init(mongoose.Types.ObjectId());
+			const NewModelAPI = new ModelAPIClass(Model, multilanguageFileds);
+			await NewModelAPI.init(parentFiledName, parentId);
 			expect(NewModelAPI.getValue('testFiled', languages[1])).toEqual('testValue2');
 		});
 	});
 
 	describe('setValue', () => {
 
-		const editableFileds = [faker.lorem.word(), 'testFiled'];
+		const multilanguageFileds = [faker.lorem.word(), 'multiLanguageTestFiled'];
+		const otherFields = ['otherTestFiled'];
 		const languages = [faker.random.locale(), faker.random.locale()];
-		const ModelAPI = new modelAPIClass(Model, editableFileds);
+		const ModelAPI = new ModelAPIClass(Model, multilanguageFileds, otherFields);
 
 		beforeAll(async () => {
 			Model.find = jest.fn().mockReturnValue([{
@@ -220,22 +217,20 @@ describe('ProjectDetailClass', () => {
 			}, {
 				language: languages[1],
 			}]);
-			await ModelAPI.init(mongoose.Types.ObjectId());
+			Model.update = jest.fn();
+			await ModelAPI.init(parentFiledName, parentId);
 		});
 
-		test('should fail if provided field is not in the editable fields', () => {
+		test('should fail if provided field is not in the allowed fields', () => {
 			expect(ModelAPI.setValue('unreal field', 'new value')).rejects.toBeInstanceOf(Error);
 		});
-		test('should return null if language version not found', () => {
-			const selectedLanguage = 'unreal language';
-			expect(ModelAPI.setValue(editableFileds[0], 'new value', selectedLanguage)).rejects.toBeInstanceOf(Error);
-		});
-		test('should run update and find method', async () => {
-			Model.update = jest.fn();
-			Model.find = jest.fn();
-			await ModelAPI.setValue(editableFileds[0], 'new value', languages[0]);
+		test('should run update method if filed is in the other fields', async () => {
+			await ModelAPI.setValue('otherTestFiled', 'new value');
 			expect(Model.update).toHaveBeenCalled();
-			expect(Model.find).toHaveBeenCalled();
+		});
+		test('should run update method if filed is in the multi language fields', async () => {
+			await ModelAPI.setValue('multiLanguageTestFiled', 'new value', languages[0]);
+			expect(Model.update).toHaveBeenCalled();
 		});
 	});
 });

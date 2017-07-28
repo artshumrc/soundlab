@@ -6,7 +6,6 @@ import ProjectDetail from '../models/projectDetail';
 
 // api
 import ModelAPIClass from './modelAPI';
-import { checkLanguage } from './languages';
 
 
 /**
@@ -17,19 +16,16 @@ export default class ProjectDetailClass extends ModelAPIClass {
 	/**
 	 * ProjectDetailClass constructor: initiates  members.
 	 */
-	constructor() {
-		super(ProjectDetail, ['title', 'description']);
+	constructor(parentId) {
+		const multilanguageFileds = ['title', 'description'];
+		const otherFields = [];
+		super(ProjectDetail, multilanguageFileds, otherFields);
+
+		this._parentFiledName = 'projectId';
+		this._parentId = parentId;
 	}
 
-	async create(projectId, { title, description }, language = process.env.DEFAULT_LANGUAGE) {
-		// check if method can run
-		check.assert.string(title);
-		check.assert.string(description);
-		try {
-			await super.create(projectId, { title, description }, language);
-			return this;
-		} catch (err) {
-			throw err;
-		}
+	async init() {
+		return super.init(this._parentFiledName, this._parentId);
 	}
 }

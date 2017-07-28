@@ -2,18 +2,24 @@ import check from 'check-types';
 import mongoose from 'mongoose';
 
 // models
-import Tenant from '../models/tenant';
+import CollectionDetail from '../models/collectionDetail';
 
 // api
 import ModelAPIClass from './modelAPI';
-import { checkLanguage } from './languages';
 
 
-export default class TenantClass extends ModelAPIClass {
+/**
+ * 
+ */
+export default class CollectionDetailClass extends ModelAPIClass {
+	
+	/**
+	 * ProjectDetailClass constructor: initiates  members.
+	 */
 	constructor() {
-		const multilanguageFileds = ['name'];
+		const multilanguageFileds = ['title', 'description'];
 		const otherFields = [];
-		super(Tenant, multilanguageFileds, otherFields);
+		super(CollectionDetail, multilanguageFileds, otherFields);
 
 		this._parentFiledName = 'projectId';
 		this._parentId = parentId;
