@@ -62,8 +62,8 @@
   "scripts": {
     "client": "babel-node scripts/start-client.js",
     "lint": "eslint .",
-    "test-client": "node run-client-tests.js",
-    "test-client-ci": "node run-client-tests-ci.js",
+    "test-client": "node scripts/run-client-tests.js",
+    "test-client-ci": "node scripts/run-client-tests-ci.js",
     "test-server": "jest ./server",
     "test": "npm run test-server",
     "server": "nodemon server --exec babel-node",
