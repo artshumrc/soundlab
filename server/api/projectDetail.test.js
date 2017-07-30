@@ -9,10 +9,10 @@ describe('ProjectDetailClass', () => {
 
 	describe('init', () => {
 		test('should call ModelAPI init method correct params', async () => {
-			const Tenant = new ProjectDetailClass();
-			const ModelAPI = Object.getPrototypeOf(Object.getPrototypeOf(Tenant));
+			const ProjectDetail = new ProjectDetailClass();
+			const ModelAPI = Object.getPrototypeOf(Object.getPrototypeOf(ProjectDetail));
 			ModelAPI.init = jest.fn();
-			await Tenant.init(projectId);
+			await ProjectDetail.init(projectId);
 			expect(ModelAPI.init).toHaveBeenCalledWith('projectId', projectId);
 		});
 	});

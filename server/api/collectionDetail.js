@@ -21,11 +21,11 @@ export default class CollectionDetailClass extends ModelAPIClass {
 		const otherFields = [];
 		super(CollectionDetail, multilanguageFileds, otherFields);
 
-		this._parentFiledName = 'projectId';
-		this._parentId = parentId;
+		this._parentFiledName = 'collectionId';
 	}
 
-	async init() {
+	async init(parentId) {
+		this._parentId = parentId;
 		return super.init(this._parentFiledName, this._parentId);
 	}
 }

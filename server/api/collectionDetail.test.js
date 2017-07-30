@@ -7,21 +7,15 @@ import CollectionDetailClass from './collectionDetail';
 
 describe('CollectionDetailClass', () => {
 
-	const projectId = mongoose.Types.ObjectId();
-	const title = faker.commerce.productName();
-	const description = faker.commerce.productName();
+	const collectionId = mongoose.Types.ObjectId();
 
-	describe('create', () => {
-		test('ModelAPI create method is called wth correct params', async () => {
-			// const CollectionDetail = new CollectionDetailClass();
-			// const ModelAPI = Object.getPrototypeOf(Object.getPrototypeOf(CollectionDetail));
-			// ModelAPI.create = jest.fn();
-			// const insertObject = {
-			// 	title,
-			// 	description,
-			// };
-			// await CollectionDetail.create(projectId, insertObject);
-			// expect(ModelAPI.create).toHaveBeenCalledWith(projectId, insertObject, process.env.DEFAULT_LANGUAGE);
+	describe('init', () => {
+		test('should call ModelAPI init method correct params', async () => {
+			const CollectionDetail = new CollectionDetailClass();
+			const ModelAPI = Object.getPrototypeOf(Object.getPrototypeOf(CollectionDetail));
+			ModelAPI.init = jest.fn();
+			await CollectionDetail.init(collectionId);
+			expect(ModelAPI.init).toHaveBeenCalledWith('collectionId', collectionId);
 		});
 	});
 });
