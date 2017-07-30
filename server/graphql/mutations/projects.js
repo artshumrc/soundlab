@@ -4,7 +4,7 @@ import { GraphQLString, GraphQLNonNull } from 'graphql';
 import projectType from '../../types/models/project';
 
 // api
-import Projects from '../../api/projects';
+// import Projects from '../../api/projects';
 
 // errors
 import { AuthenticationError } from '../../errors';
@@ -25,19 +25,19 @@ const projectMutationFileds = {
 			},
 		},
 		async resolve(parent, { title }, { session: { passport } }) {
-			if (passport) {
+			// if (passport) {
 
-				const project = {
-					title,
-				};
+			// 	const project = {
+			// 		title,
+			// 	};
 
-				try {
-					return await Projects.create(passport.user, project);
-				} catch (err) {
-					throw err;
-				}
+			// 	try {
+			// 		return await Projects.create(passport.user, project);
+			// 	} catch (err) {
+			// 		throw err;
+			// 	}
 
-			} throw new AuthenticationError();
+			// } throw new AuthenticationError();
 		}
 	}
 };

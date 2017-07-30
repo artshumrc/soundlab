@@ -4,7 +4,7 @@ import { GraphQLString, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import projectType from '../../types/models/project';
 
 // api
-import Projects from '../../api/projects';
+// import Projects from '../../api/projects';
 
 // errors
 import { AuthenticationError } from '../../errors';
@@ -25,25 +25,25 @@ const projectQueryFileds = {
 			}
 		},
 		async resolve(parent, {_id}) {
-			try {
-				return await Projects.findById(_id);
-			} catch (err) {
-				throw err;
-			}
+			// try {
+			// 	return await Projects.findById(_id);
+			// } catch (err) {
+			// 	throw err;
+			// }
 		},
 	},
-	projectBySlug: {
-		type: projectType,
-		description: 'Find project by slug',
-		args: { slug: { type: GraphQLString } },
-		async resolve(parent, { slug }) {
-			try {
-				return await Projects.findBySlug(slug);
-			} catch (err) {
-				throw err;
-			}
-		},
-	},
+	// projectBySlug: {
+	// 	type: projectType,
+	// 	description: 'Find project by slug',
+	// 	args: { slug: { type: GraphQLString } },
+	// 	async resolve(parent, { slug }) {
+	// 		try {
+	// 			return await Projects.findBySlug(slug);
+	// 		} catch (err) {
+	// 			throw err;
+	// 		}
+	// 	},
+	// },
 };
 
 export default projectQueryFileds;

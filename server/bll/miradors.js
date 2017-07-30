@@ -5,7 +5,7 @@ import Mirador from '../models/mirador';
 import { AuthenticationError } from '../errors';
 
 // bll
-import Users from './users';
+import Users from '../api/users';
 
 const Miradors = {
 

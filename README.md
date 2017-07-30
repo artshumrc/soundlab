@@ -27,7 +27,7 @@ To start the project you need to follow these steps:
 	```sh
 	// .env
 	SESSION_SECRET=secret
-	
+
 	DB_HOST=localhost
 	DB_PORT=27017
 	DB_NAME=orpheus
@@ -39,6 +39,10 @@ To start the project you need to follow these steps:
 	WS_SERVER_PORT=3002
 	WS_SERVER_HOST=localhost
 	WS_SERVER_URI=subscriptions
+
+	DEFAULT_LANGUAGE=en
+
+	AWS_BUCKET=bucketName
 	```
 
 	Environment variables for the *client* (*!IMPORTANT*: this should be set in the `client` folder):

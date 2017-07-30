@@ -78,7 +78,7 @@ export default function setupGraphql(app) {
 			}
 		}, {
 			server: ws,
-			path: '/subscriptions',
+			path: `/${process.env.WS_SERVER_URI}`,
 		});
 	});
 }
