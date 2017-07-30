@@ -1,6 +1,3 @@
-import check from 'check-types';
-import mongoose from 'mongoose';
-
 // models
 import ProjectDetail from '../models/projectDetail';
 
@@ -8,24 +5,21 @@ import ProjectDetail from '../models/projectDetail';
 import ModelAPIClass from './modelAPI';
 
 
-/**
- * 
- */
 export default class ProjectDetailClass extends ModelAPIClass {
 	
 	/**
 	 * ProjectDetailClass constructor: initiates  members.
 	 */
-	constructor(parentId) {
+	constructor() {
 		const multilanguageFileds = ['title', 'description'];
 		const otherFields = [];
 		super(ProjectDetail, multilanguageFileds, otherFields);
 
 		this._parentFiledName = 'projectId';
-		this._parentId = parentId;
 	}
 
-	async init() {
+	async init(parentId) {
+		this._parentId = parentId;
 		return super.init(this._parentFiledName, this._parentId);
 	}
 }

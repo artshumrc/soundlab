@@ -1,12 +1,8 @@
-import check from 'check-types';
-import mongoose from 'mongoose';
-
 // models
 import Tenant from '../models/tenant';
 
 // api
 import ModelAPIClass from './modelAPI';
-import { checkLanguage } from './languages';
 
 
 export default class TenantClass extends ModelAPIClass {
@@ -16,10 +12,10 @@ export default class TenantClass extends ModelAPIClass {
 		super(Tenant, multilanguageFileds, otherFields);
 
 		this._parentFiledName = 'projectId';
-		this._parentId = parentId;
 	}
 
-	async init() {
+	async init(parentId) {
+		this._parentId = parentId;
 		return super.init(this._parentFiledName, this._parentId);
 	}
 }
