@@ -1,21 +1,18 @@
 // models
-import ProjectDetail from '../models/projectDetail';
+import ItemSchemaFields from '../models/itemSchemaFields';
 
 // api
 import MultilanguageModelClass from './multilanguageModel';
 
 
-export default class ProjectDetailClass extends MultilanguageModelClass {
+export default class CollectionDetailClass extends MultilanguageModelClass {
 	
-	/**
-	 * ProjectDetailClass constructor: initiates  members.
-	 */
 	constructor() {
 		const multilanguageFileds = ['title', 'description'];
 		const otherFields = [];
-		super(ProjectDetail, multilanguageFileds, otherFields);
+		super(ItemSchemaFields, multilanguageFileds, otherFields);
 
-		this._parentFiledName = 'projectId';
+		this._parentFiledName = 'itemSchemaId';
 	}
 
 	async init(parentId) {

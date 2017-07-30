@@ -1,21 +1,12 @@
-import check from 'check-types';
-import mongoose from 'mongoose';
-
 // models
 import CollectionDetail from '../models/collectionDetail';
 
 // api
-import ModelAPIClass from './modelAPI';
+import MultilanguageModelClass from './multilanguageModel';
 
 
-/**
- * 
- */
-export default class CollectionDetailClass extends ModelAPIClass {
+export default class CollectionDetailClass extends MultilanguageModelClass {
 	
-	/**
-	 * ProjectDetailClass constructor: initiates  members.
-	 */
 	constructor() {
 		const multilanguageFileds = ['title', 'description'];
 		const otherFields = [];

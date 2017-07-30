@@ -8,12 +8,12 @@ describe('TenantClass', () => {
 	const projectId = mongoose.Types.ObjectId();
 
 	describe('init', () => {
-		test('should call ModelAPI init method correct params', async () => {
+		test('should call multilanguageModel init method correct params', async () => {
 			const Tenant = new TenantClass();
-			const ModelAPI = Object.getPrototypeOf(Object.getPrototypeOf(Tenant));
-			ModelAPI.init = jest.fn();
+			const multilanguageModel = Object.getPrototypeOf(Object.getPrototypeOf(Tenant));
+			multilanguageModel.init = jest.fn();
 			await Tenant.init(projectId);
-			expect(ModelAPI.init).toHaveBeenCalledWith('projectId', projectId);
+			expect(multilanguageModel.init).toHaveBeenCalledWith('projectId', projectId);
 		});
 	});
 });

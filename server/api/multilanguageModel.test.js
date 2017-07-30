@@ -3,9 +3,9 @@ import mongoose from 'mongoose';
 import mockingoose from 'mockingoose';
 
 // tested module
-import ModelAPIClass from './modelAPI';
+import MultilanguageModelClass from './multilanguageModel';
 
-describe('ModelAPIClass', () => {
+describe('MultilanguageModelClass', () => {
 
 	const modelFindReturnValue = [{}, {}];
 	const Model = {};
@@ -19,20 +19,20 @@ describe('ModelAPIClass', () => {
 		});
 
 		test('isSet return false if not initiated', () => {
-			expect(new ModelAPIClass(Model).isSet).toEqual(false);
+			expect(new MultilanguageModelClass(Model).isSet).toEqual(false);
 		});
 		test('should fail if parentId and/or parentFiledName not provided', () => {
-			expect(new ModelAPIClass(Model).init()).rejects.toBeInstanceOf(Error);
+			expect(new MultilanguageModelClass(Model).init()).rejects.toBeInstanceOf(Error);
 		});
 		test('should set the models from db', async () => {
-			const model = await new ModelAPIClass(Model).init(parentFiledName, parentId);
+			const model = await new MultilanguageModelClass(Model).init(parentFiledName, parentId);
 			expect(Model.find).toHaveBeenCalled();
-			expect(model._models).toMatchObject(modelFindReturnValue);
+			expect(model._documents).toMatchObject(modelFindReturnValue);
 		});
 		test('should fail on second call', async () => {
-			const ModelAPI = new ModelAPIClass(Model);
-			const model = await ModelAPI.init(parentFiledName, parentId);
-			expect(ModelAPI.init(parentFiledName, parentId)).rejects.toBeInstanceOf(Error);
+			const multilanguageModel = new MultilanguageModelClass(Model);
+			const model = await multilanguageModel.init(parentFiledName, parentId);
+			expect(multilanguageModel.init(parentFiledName, parentId)).rejects.toBeInstanceOf(Error);
 		});
 	});
 
@@ -43,13 +43,13 @@ describe('ModelAPIClass', () => {
 		});
 
 		test('should return false if not initiated', () => {
-			const ModelAPI = new ModelAPIClass(Model);
-			expect(ModelAPI.isSet).toBe(false);
+			const multilanguageModel = new MultilanguageModelClass(Model);
+			expect(multilanguageModel.isSet).toBe(false);
 		});
 		test('should return true if initiated', async () => {
-			const ModelAPI = new ModelAPIClass(Model);
-			const model = await ModelAPI.init(parentFiledName, parentId);
-			expect(ModelAPI.isSet).toBe(true);
+			const multilanguageModel = new MultilanguageModelClass(Model);
+			const model = await multilanguageModel.init(parentFiledName, parentId);
+			expect(multilanguageModel.isSet).toBe(true);
 		});
 	});
 
@@ -66,8 +66,8 @@ describe('ModelAPIClass', () => {
 			}, {
 				language: selectedLanguage,
 			}]);
-			const ModelAPI = new ModelAPIClass(Model);
-			const model = await ModelAPI.init(parentFiledName, parentId);
+			const multilanguageModel = new MultilanguageModelClass(Model);
+			const model = await multilanguageModel.init(parentFiledName, parentId);
 			expect(model.getLanguageVersion(selectedLanguage)).hasOwnProperty('language', selectedLanguage);
 		});
 	});
@@ -86,14 +86,14 @@ describe('ModelAPIClass', () => {
 		});
 
 		test('should fail if language version exists', async () => {
-			const ModelAPI = new ModelAPIClass(Model);
-			await expect(ModelAPI.create({ title })).rejects.toBeInstanceOf(Error);
+			const multilanguageModel = new MultilanguageModelClass(Model);
+			await expect(multilanguageModel.create({ title })).rejects.toBeInstanceOf(Error);
 		});
 
 		test('should call model create method', async () => {
 			Model.create = jest.fn();
-			const ModelAPI = new ModelAPIClass(Model, multilanguageFileds);
-			await ModelAPI.create({ title });
+			const multilanguageModel = new MultilanguageModelClass(Model, multilanguageFileds);
+			await multilanguageModel.create({ title });
 			expect(Model.create).toHaveBeenCalled();
 		});
 
@@ -102,11 +102,11 @@ describe('ModelAPIClass', () => {
 				title,
 			};
 			Model.create = jest.fn().mockReturnValue(doc);
-			const ModelAPI = new ModelAPIClass(Model, multilanguageFileds);
+			const multilanguageModel = new MultilanguageModelClass(Model, multilanguageFileds);
 			mockingoose.ProjectDetail.toReturn(doc, 'create');
-			await ModelAPI.create({ title });
+			await multilanguageModel.create({ title });
 			Object.keys(doc).forEach((key) => {
-				expect(ModelAPI._projectDetail).hasOwnProperty(key, doc[key]);
+				expect(multilanguageModel._projectDetail).hasOwnProperty(key, doc[key]);
 			});
 		});
 	});
@@ -120,24 +120,24 @@ describe('ModelAPIClass', () => {
 		});
 
 		test('should fail if not initiated', async () => {
-			const ModelAPI = new ModelAPIClass(Model);
-			await expect(ModelAPI.remove()).rejects.toBeInstanceOf(Error);
+			const multilanguageModel = new MultilanguageModelClass(Model);
+			await expect(multilanguageModel.remove()).rejects.toBeInstanceOf(Error);
 		});
 
 		test('should call model remove method', async () => {
 			Model.remove = jest.fn();
-			const ModelAPI = new ModelAPIClass(Model);
-			await ModelAPI.init(parentFiledName, parentId);
-			await ModelAPI.remove();
+			const multilanguageModel = new MultilanguageModelClass(Model);
+			await multilanguageModel.init(parentFiledName, parentId);
+			await multilanguageModel.remove();
 			expect(Model.remove).toHaveBeenCalled();
 		});
 
-		test('should make hasModels return false', async () => {
-			const ModelAPI = new ModelAPIClass(Model);
-			await ModelAPI.init(parentFiledName, parentId);
+		test('should make hasDocuments return false', async () => {
+			const multilanguageModel = new MultilanguageModelClass(Model);
+			await multilanguageModel.init(parentFiledName, parentId);
 			Model.find = jest.fn().mockReturnValue([]);
-			await ModelAPI.remove();
-			expect(ModelAPI.hasModels).toBe(false);
+			await multilanguageModel.remove();
+			expect(multilanguageModel.hasDocuments).toBe(false);
 		});
 	});
 
@@ -155,15 +155,15 @@ describe('ModelAPIClass', () => {
 
 		test('should fail if language version does not exist', async () => {
 			const selectedLanguage = 'unreal language';
-			const ModelAPI = new ModelAPIClass(Model);
-			await ModelAPI.init(parentFiledName, parentId);
-			expect(ModelAPI.removeLanguageVersion(selectedLanguage)).rejects.toBeInstanceOf(Error);
+			const multilanguageModel = new MultilanguageModelClass(Model);
+			await multilanguageModel.init(parentFiledName, parentId);
+			expect(multilanguageModel.removeLanguageVersion(selectedLanguage)).rejects.toBeInstanceOf(Error);
 		});
 		test('should call model remove method', async () => {
 			Model.remove = jest.fn();
-			const ModelAPI = new ModelAPIClass(Model);
-			await ModelAPI.init(parentFiledName, parentId);
-			await ModelAPI.remove();
+			const multilanguageModel = new MultilanguageModelClass(Model);
+			await multilanguageModel.init(parentFiledName, parentId);
+			await multilanguageModel.remove();
 			expect(Model.remove).toHaveBeenCalled();
 		});
 	});
@@ -172,7 +172,7 @@ describe('ModelAPIClass', () => {
 
 		const multilanguageFileds = [faker.lorem.word(), 'testFiled'];
 		const languages = [faker.random.locale(), faker.random.locale()];
-		const ModelAPI = new ModelAPIClass(Model, multilanguageFileds);
+		const multilanguageModel = new MultilanguageModelClass(Model, multilanguageFileds);
 
 		beforeAll(async () => {
 			Model.find = jest.fn().mockReturnValue([{
@@ -180,15 +180,15 @@ describe('ModelAPIClass', () => {
 			}, {
 				language: languages[1],
 			}]);
-			await ModelAPI.init(parentFiledName, parentId);
+			await multilanguageModel.init(parentFiledName, parentId);
 		});
 
 		test('should fail if provided field is not in the allowed fields', () => {
-			expect(() => ModelAPI.getValue('unreal field')).toThrow();
+			expect(() => multilanguageModel.getValue('unreal field')).toThrow();
 		});
 		test('should return null if language version not found', () => {
 			const selectedLanguage = 'unreal language';
-			expect(ModelAPI.getValue(multilanguageFileds[0], selectedLanguage)).toBeNull();
+			expect(multilanguageModel.getValue(multilanguageFileds[0], selectedLanguage)).toBeNull();
 		});
 		test('should return filed value', async () => {
 			Model.find = jest.fn().mockReturnValue([{
@@ -198,9 +198,9 @@ describe('ModelAPIClass', () => {
 				testFiled: 'testValue2',
 				language: languages[1],
 			}]);
-			const NewModelAPI = new ModelAPIClass(Model, multilanguageFileds);
-			await NewModelAPI.init(parentFiledName, parentId);
-			expect(NewModelAPI.getValue('testFiled', languages[1])).toEqual('testValue2');
+			const NewmultilanguageModel = new MultilanguageModelClass(Model, multilanguageFileds);
+			await NewmultilanguageModel.init(parentFiledName, parentId);
+			expect(NewmultilanguageModel.getValue('testFiled', languages[1])).toEqual('testValue2');
 		});
 	});
 
@@ -209,7 +209,7 @@ describe('ModelAPIClass', () => {
 		const multilanguageFileds = [faker.lorem.word(), 'multiLanguageTestFiled'];
 		const otherFields = ['otherTestFiled'];
 		const languages = [faker.random.locale(), faker.random.locale()];
-		const ModelAPI = new ModelAPIClass(Model, multilanguageFileds, otherFields);
+		const multilanguageModel = new MultilanguageModelClass(Model, multilanguageFileds, otherFields);
 
 		beforeAll(async () => {
 			Model.find = jest.fn().mockReturnValue([{
@@ -218,18 +218,18 @@ describe('ModelAPIClass', () => {
 				language: languages[1],
 			}]);
 			Model.update = jest.fn();
-			await ModelAPI.init(parentFiledName, parentId);
+			await multilanguageModel.init(parentFiledName, parentId);
 		});
 
 		test('should fail if provided field is not in the allowed fields', () => {
-			expect(ModelAPI.setValue('unreal field', 'new value')).rejects.toBeInstanceOf(Error);
+			expect(multilanguageModel.setValue('unreal field', 'new value')).rejects.toBeInstanceOf(Error);
 		});
 		test('should run update method if filed is in the other fields', async () => {
-			await ModelAPI.setValue('otherTestFiled', 'new value');
+			await multilanguageModel.setValue('otherTestFiled', 'new value');
 			expect(Model.update).toHaveBeenCalled();
 		});
 		test('should run update method if filed is in the multi language fields', async () => {
-			await ModelAPI.setValue('multiLanguageTestFiled', 'new value', languages[0]);
+			await multilanguageModel.setValue('multiLanguageTestFiled', 'new value', languages[0]);
 			expect(Model.update).toHaveBeenCalled();
 		});
 	});

@@ -8,12 +8,12 @@ describe('ProjectDetailClass', () => {
 	const projectId = mongoose.Types.ObjectId();
 
 	describe('init', () => {
-		test('should call ModelAPI init method correct params', async () => {
+		test('should call multilanguageModel init method correct params', async () => {
 			const ProjectDetail = new ProjectDetailClass();
-			const ModelAPI = Object.getPrototypeOf(Object.getPrototypeOf(ProjectDetail));
-			ModelAPI.init = jest.fn();
+			const multilanguageModel = Object.getPrototypeOf(Object.getPrototypeOf(ProjectDetail));
+			multilanguageModel.init = jest.fn();
 			await ProjectDetail.init(projectId);
-			expect(ModelAPI.init).toHaveBeenCalledWith('projectId', projectId);
+			expect(multilanguageModel.init).toHaveBeenCalledWith('projectId', projectId);
 		});
 	});
 });

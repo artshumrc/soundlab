@@ -10,12 +10,12 @@ describe('CollectionDetailClass', () => {
 	const collectionId = mongoose.Types.ObjectId();
 
 	describe('init', () => {
-		test('should call ModelAPI init method correct params', async () => {
+		test('should call multilanguageModel init method correct params', async () => {
 			const CollectionDetail = new CollectionDetailClass();
-			const ModelAPI = Object.getPrototypeOf(Object.getPrototypeOf(CollectionDetail));
-			ModelAPI.init = jest.fn();
+			const multilanguageModel = Object.getPrototypeOf(Object.getPrototypeOf(CollectionDetail));
+			multilanguageModel.init = jest.fn();
 			await CollectionDetail.init(collectionId);
-			expect(ModelAPI.init).toHaveBeenCalledWith('collectionId', collectionId);
+			expect(multilanguageModel.init).toHaveBeenCalledWith('collectionId', collectionId);
 		});
 	});
 });

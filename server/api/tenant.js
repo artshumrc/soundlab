@@ -2,10 +2,10 @@
 import Tenant from '../models/tenant';
 
 // api
-import ModelAPIClass from './modelAPI';
+import MultilanguageModelClass from './multilanguageModel';
 
 
-export default class TenantClass extends ModelAPIClass {
+export default class TenantClass extends MultilanguageModelClass {
 	constructor() {
 		const multilanguageFileds = ['name'];
 		const otherFields = [];

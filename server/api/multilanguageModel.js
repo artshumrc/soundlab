@@ -1,14 +1,57 @@
 import mongoose from 'mongoose';
 import check from 'check-types';
 
+/**
+ * This is a low level class for handling operations on the models by API classes.
+ */
+export default class MultilanguageModelClass {
 
-export default class ModelAPIClass {
+	/**
+	 * Sets class members.
+	 * @param  {Object} Model               			Mongoose collection object.
+	 * @param  {Array[String]}  multilanguageFileds 	Array of filed names which can have different language versions.
+	 * @param  {Array[String]}  otherFields         	Array of filed names which do NOT have different language versions.
+	 */
 	constructor(Model, multilanguageFileds = [], otherFields = []) {
+		/**
+		 * Array of filed names which can have different language versions.
+		 * @type {Array[String]}
+		 * @private
+		 */
 		this._multilanguageFileds = multilanguageFileds;
+
+		/**
+		 * Array of filed names which do NOT have different language versions.
+		 * @type {Array[String]}
+		 * @private
+		 */
 		this._otherFields = otherFields;
+
+		/**
+		 * Mongoose collection object.
+		 * @type {Object}
+		 * @private
+		 */
 		this._Model = Model;
-		this._models = [];
+
+		/**
+		 * Array of documents.
+		 * @type {Array[Object]}
+		 * @private
+		 */
+		this._documents = [];
+
+		/**
+		 * Name of the parent filed.
+		 * @type {String}
+		 * @private
+		 */
 		this._parentFiledName = null;
+
+		/**
+		 * Id of the parent
+		 * @type {mongoose.Types.ObjectId}
+		 */
 		this._parentId = null;
 	}
 
@@ -30,8 +73,8 @@ export default class ModelAPIClass {
 		return query;
 	}
 
-	async _updateModels() {
-		this._models = await this._Model.find(this._parentQuery);
+	async _updateDocuments() {
+		this._documents = await this._Model.find(this._parentQuery);
 	}
 
 	_checkCreateParams(params) {
@@ -45,6 +88,12 @@ export default class ModelAPIClass {
 		}
 	}
 
+	/**
+	 * Initiate the class. Alway run after running the constructor.
+	 * @param  {!String} parentFiledName 				Name of the filed in which the parent id is stored.
+	 * @param  {!mongoose.Types.ObjectId} parentId       Id of the parent
+	 * @return {this}                 					Return itself
+	 */
 	async init(parentFiledName, parentId) {
 		// check if method can run
 		if (!mongoose.Types.ObjectId.isValid(parentId)) throw new Error('Incorrect parent id');
@@ -52,31 +101,58 @@ export default class ModelAPIClass {
 		try {
 			this._parentFiledName = parentFiledName;
 			this._parentId = parentId;
-			this._updateModels();
+			this._updateDocuments();
 			return this;
 		} catch (err) {
 			throw err;
 		}
 	}
 
+	/**
+	 * Check if parent Id has been set (if init method has been run)
+	 * @return {Boolean} True if init method has been run.
+	 */
 	get isSet() {
 		if (this._parentId) return true;
 		return false;
 	}
 
-	get hasModels() {
-		return this._models.length > 0;
+	/**
+	 * Check if object has documents set
+	 * @return {Boolean} True if object has documents set
+	 */
+	get hasDocuments() {
+		return this._documents.length > 0;
 	}
 
+	/**
+	 * Get parentId
+	 * @return {mongoose.Types.ObjectId} parentId
+	 */
+	get parentId() {
+		if (this._parentId) return this._parentId;
+		throw new Error('Not initiated');
+	}
+
+	/**
+	 * Get a document with selected language version.
+	 * @param  {!String} language Language shortcut
+	 * @return {Object}          Matching document.
+	 */
 	getLanguageVersion(language) {
-		return this._models.find(element => element.language === language);
+		return this._documents.find(element => element.language === language);
 	}
 
+	/**
+	 * Create a new document
+	 * @param  {!Object} params   Object of params to be inserted into the model
+	 * @param  {String} language Language shortcut.
+	 * @return {[type]}          [description]
+	 */
 	async create(params, language = process.env.DEFAULT_LANGUAGE) {
-		// check if method can run
 		check.assert.object(params);
 		this._checkCreateParams(params);
-		if (this.getLanguageVersion(language)) throw new Error('Models of this language version exists');
+		if (this.getLanguageVersion(language)) throw new Error('Document of this language version already exists.');
 
 		try {
 			const modelParams = {
@@ -84,7 +160,7 @@ export default class ModelAPIClass {
 				...params,
 			};
 			modelParams[this._parentFiledName] = this._parentId;
-			this._models.push(await this._Model.create(modelParams));
+			this._documents.push(await this._Model.create(modelParams));
 			return this;
 		} catch (err) {
 			throw err;
@@ -92,10 +168,10 @@ export default class ModelAPIClass {
 	}
 
 	async remove() {
-		if (!this.hasModels) throw new Error('Model is not set');
+		if (!this.hasDocuments) throw new Error('Model is not set');
 		try {
 			await this._Model.remove(this._parentQuery);
-			await this._updateModels();
+			await this._updateDocuments();
 			return this;
 		} catch (err) {
 			throw err;
@@ -106,7 +182,7 @@ export default class ModelAPIClass {
 		const model = this.getLanguageVersion(language);
 		if (model) {
 			await this._Model.remove({ _id: model._id });
-			await this._updateModels();
+			await this._updateDocuments();
 			return this;
 		}
 		throw new Error('Language version not found');
@@ -122,7 +198,7 @@ export default class ModelAPIClass {
 				};
 				setObj.$set[field] = value;
 				await this._Model.update({ _id: model._id }, setObj);
-				this._updateModels();
+				this._updateDocuments();
 				return this;
 			}
 			throw new Error(`Model with language ${language} not set`);
@@ -134,7 +210,7 @@ export default class ModelAPIClass {
 			};
 			setObj.$set[field] = value;
 			await this._Model.update(this._parentQuery, setObj);
-			this._updateModels();
+			this._updateDocuments();
 			return this;
 		}
 		throw new Error('incorrect field');		
@@ -147,10 +223,5 @@ export default class ModelAPIClass {
 			return null;
 		}
 		throw new Error(`Field '${field}' is not allowed`);
-	}
-
-	get parentId() {
-		if (this._parentId) return this._parentId;
-		throw new Error('Not initiated');
 	}
 }
