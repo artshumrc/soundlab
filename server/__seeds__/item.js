@@ -45,7 +45,7 @@ const _getValue = (type) => {
 };
 
 const _getMetadata = (metadataPattern) => {
-	return Promise.all(metadataPattern.structure.map(async(struc) => {
+	return Promise.all(metadataPattern.structure.map(async (struc) => {
 		if (struc.patterId) {
 			try {
 				const newMetadataPattern = await MetadataPattern.findById(struc.patterId);

@@ -3,11 +3,11 @@ import faker from 'faker';
 
 import setupDB, { closeDB } from '../server/mongoose';
 
-import generateUsers from '../server/__seeds/user';
-import generateProjects from '../server/__seeds/project';
-import generateMetadataPatterns from '../server/__seeds/metadataPattern';
-import generateCollection from '../server/__seeds/collection';
-import generateItem from '../server/__seeds/item';
+import generateUsers from '../server/__seeds__/user';
+import generateProjects from '../server/__seeds__/project';
+import generateMetadataPatterns from '../server/__seeds__/metadataPattern';
+import generateCollection from '../server/__seeds__/collection';
+import generateItem from '../server/__seeds__/item';
 
 dotenv.config();
 

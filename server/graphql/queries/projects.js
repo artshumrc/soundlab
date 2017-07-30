@@ -3,8 +3,8 @@ import { GraphQLString, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 // types
 import projectType from '../../types/models/project';
 
-// bll
-import Projects from '../../bll/projects';
+// api
+import Projects from '../../api/projects';
 
 // errors
 import { AuthenticationError } from '../../errors';

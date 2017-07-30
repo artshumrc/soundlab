@@ -8,10 +8,10 @@ import language from './plugins/language';
 const Schema = mongoose.Schema;
 
 /**
- * Base ProjectDetail mongoose schema
+ * CollectionDetail base schema
  * @type {Schema}
  */
-const ProjectDetailSchema = new Schema({
+const CollectionDetailSchema = new Schema({
 	title: {
 		type: String,
 		unique: true,
@@ -19,30 +19,31 @@ const ProjectDetailSchema = new Schema({
 		trim: true,
 		index: true
 	},
-	description: String,
-	projectId: {
+	collectionId: {
 		type: Schema.Types.ObjectId,
-		ref: 'Project',
+		ref: 'Collection',
 		index: true,
 		required: true,
 	},
+	description: String,
 });
 
 
 // add timestamps (createdAt, updatedAt)
-ProjectDetailSchema.plugin(timestamp);
+CollectionDetailSchema.plugin(timestamp);
 
 // add slug (slug)
-ProjectDetailSchema.plugin(URLSlugs('title'));
+CollectionDetailSchema.plugin(URLSlugs('title'));
 
 // add language (language)
-ProjectDetailSchema.plugin(language);
+CollectionDetailSchema.plugin(language);
 
 /**
- * ProjectDetail mongoose model
+ * CollectionDetail mongoose model
  * @type {Object}
  */
-const ProjectDetail = mongoose.model('ProjectDetail', ProjectDetailSchema);
+const CollectionDetail = mongoose.model('CollectionDetail', CollectionDetailSchema);
 
-export default ProjectDetail;
-export { ProjectDetailSchema };
+export default CollectionDetail;
+export { CollectionDetailSchema };
+

@@ -1,19 +1,16 @@
-import languages from 'languages';
+// api
+import { getAllLanguages } from '../../api/languages';
 
 export default function languagePlugin(schema, options) {
 
-	let required = true;
-	if (options && typeof options.required === 'boolean') required = options.required;
-
-	let defaultValue = 'en';
+	let defaultValue = process.env.DEFAULT_LANGUAGE;
 	if (options && typeof options.defaultValue === 'string') defaultValue = options.defaultValue;
 
 	schema.add({
 		language: {
 			type: String,
-			required,
 			default: defaultValue,
-			enum: languages.getAllLanguageCode(),
+			enum: getAllLanguages(),
 		}
 	});
 

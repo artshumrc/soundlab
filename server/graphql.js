@@ -11,8 +11,8 @@ import RootQuery from './graphql/queries/rootQuery';
 import RootMutation from './graphql/mutations/rootMutation';
 import RootSubscription from './graphql/subscriptions/rootSubscription';
 
-// bll
-import Users from './bll/users';
+// api
+import Users from './api/users';
 
 
 /**

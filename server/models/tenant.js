@@ -18,11 +18,11 @@ const TenantSchema = new Schema({
 		trim: true,
 		index: true
 	},
-	url: {
-		unique: true,
-		type: mongoose.SchemaTypes.Url,
-		required: true,
+	projectId: {
+		type: Schema.Types.ObjectId,
+		ref: 'Project',
 		index: true,
+		required: true,
 	}
 });
 
@@ -35,7 +35,7 @@ TenantSchema.plugin(URLSlugs('name'));
 
 /**
  * Tenant mongoose model
- * @type {mongoose model}
+ * @type {Object}
  */
 const Tenant = mongoose.model('Tenant', TenantSchema);
 

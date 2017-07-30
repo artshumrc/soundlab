@@ -22,7 +22,7 @@ UserSchema.plugin(timestamp);
 
 /**
  * User mongoose model
- * @type {mongoose model}
+ * @type {Object}
  */
 const User = mongoose.model('User', UserSchema);
 

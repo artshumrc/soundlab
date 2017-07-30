@@ -1,6 +1,6 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 
-export default function dotenvSetup() {
+function dotenvSetup() {
 
 	if (process.env.NODE_ENV === 'production') {
 		dotenv.config({ path: '.env.production.local' });
@@ -12,3 +12,5 @@ export default function dotenvSetup() {
 	dotenv.config({ path: '.env.local' });
 	dotenv.config({ path: '.env' });
 }
+
+module.exports = dotenvSetup;
