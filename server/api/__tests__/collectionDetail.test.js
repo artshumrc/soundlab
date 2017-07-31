@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 // tested module
-import CollectionDetailClass from './collectionDetail';
+import CollectionDetailClass from '../collectionDetail';
 
 describe('CollectionDetailClass', () => {
 

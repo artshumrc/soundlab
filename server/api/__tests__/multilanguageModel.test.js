@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import mockingoose from 'mockingoose';
 
 // tested module
-import MultilanguageModelClass from './multilanguageModel';
+import MultilanguageModelClass from '../multilanguageModel';
 
 describe('MultilanguageModelClass', () => {
 

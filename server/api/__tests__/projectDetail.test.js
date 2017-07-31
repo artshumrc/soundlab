@@ -1,18 +1,18 @@
 import mongoose from 'mongoose';
 
 // tested module
-import TenantClass from './tenant';
+import ProjectDetailClass from '../tenant';
 
-describe('TenantClass', () => {
+describe('ProjectDetailClass', () => {
 
 	const projectId = mongoose.Types.ObjectId();
 
 	describe('init', () => {
 		test('should call multilanguageModel init method correct params', async () => {
-			const Tenant = new TenantClass();
-			const multilanguageModel = Object.getPrototypeOf(Object.getPrototypeOf(Tenant));
+			const ProjectDetail = new ProjectDetailClass();
+			const multilanguageModel = Object.getPrototypeOf(Object.getPrototypeOf(ProjectDetail));
 			multilanguageModel.init = jest.fn();
-			await Tenant.init(projectId);
+			await ProjectDetail.init(projectId);
 			expect(multilanguageModel.init).toHaveBeenCalledWith('projectId', projectId);
 		});
 	});
