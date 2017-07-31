@@ -1,5 +1,3 @@
-import faker from 'faker';
-import mockingoose from 'mockingoose';
 import mongoose from 'mongoose';
 
 // tested module
