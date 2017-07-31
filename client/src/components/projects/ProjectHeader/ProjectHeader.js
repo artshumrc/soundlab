@@ -1,9 +1,10 @@
 import React from 'react';
 import Headroom from 'react-headroom';
-import './Header.css';
-import { scrollToElement } from '../../lib/util';
+import '../../navigation/Header/Header.css';
+import './ProjectHeader.css';
+import { scrollToElement } from '../../../lib/util';
 
-export default class Header extends React.Component {
+export default class ProjectHeader extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -14,23 +15,33 @@ export default class Header extends React.Component {
 				<div className="nav-header">
 					<i className="mdi mdi-bars left-menu-toggle-icon" />
 					<h2 className="site-title">
-						orphe.us
+						Project Name
 					</h2>
 				</div>
 				<ul role="nav" className="nav">
 					<li>
-						<a href="#services" onClick={this.scrollToItem} >
-							Services
+						<a href="#featured" onClick={this.scrollToItem} >
+							Featured
 						</a>
 					</li>
 					<li>
-						<a href="/community" onClick={this.scrollToItem} >
-							Community
+						<a href="/collections" onClick={this.scrollToItem} >
+							Collections
+						</a>
+					</li>
+					<li>
+						<a href="/articles" onClick={this.scrollToItem} >
+							Articles
 						</a>
 					</li>
 					<li>
 						<a href="#about" onClick={this.scrollToItem} >
 							About
+						</a>
+					</li>
+					<li>
+						<a href="#visit" onClick={this.scrollToItem} >
+							Visit
 						</a>
 					</li>
 					<li>
