@@ -54,11 +54,7 @@ export default class ItemSchemaClass {
 		if (this._itemSchema) {
 			const mongooseItemSchemaFields = {};
 			this._fileds.forEach((Filed) => {
-				if (Filed.isArray) {
-					
-				} else {
-					mongooseItemSchemaFields[filed._id] = Field.mongooseFields;
-				}
+				mongooseItemSchemaFields[filed._id] = Field.mongooseFields;
 			});
 			return mongooseItemSchemaFields;
 		}
@@ -86,6 +82,26 @@ export default class ItemSchemaClass {
 		const ItemModel = mongoose.model('Item', GeneratedItemSchema);
 
 		return ItemModel;
+	}
+
+	get multilanguageFields() {
+		const multilanguageFields = ['title'];
+		this._fileds.forEach((filed) => {
+			if (filed.isMultilanguage) {
+				multilanguageFields.push(filed._id);
+			}
+		});
+		return multilanguageFields;
+	}
+
+	get nonMultilanguageFields() {
+		const nonMultilanguageFields = [];
+		this._fileds.forEach((filed) => {
+			if (!filed.isMultilanguage) {
+				nonMultilanguageFields.push(filed._id);
+			}
+		});
+		return nonMultilanguageFields;
 	}
 
 	get isSet() {

@@ -40,7 +40,7 @@ export default class FieldClass {
 	get _mogooseType() {
 		if (this._field) {
 			if (this.isArray) {
-				return {
+				return [{
 					type: this._field.arrayFiled.type,
 					required: this._field.arrayFiled.required,
 					default: this._field.arrayFiled.default,
@@ -48,7 +48,7 @@ export default class FieldClass {
 					enum: this._field.arrayFiled.enum,
 					min: this._field.arrayFiled.min,
 					max: this._field.arrayFiled.max,
-				};
+				}];
 			}
 			return this._filed.type;
 		}
@@ -65,6 +65,11 @@ export default class FieldClass {
 
 	get isSet() {
 		if (this._field) return true;
+		throw new Error('Run init method');
+	}
+
+	get isMultilanguage() {
+		if (this._field) return this._field.multilanguage;
 		throw new Error('Run init method');
 	}
 

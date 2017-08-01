@@ -44,7 +44,7 @@ const FieldSchema = new Schema({
 	max: {
 		type: Number,
 	},
-	multilanguage: {
+	multilanguage: { // only type String can be multilanguage
 		type: Boolean,
 		defaut: false,
 	}
