@@ -4,13 +4,11 @@ import MultilanguageModelClass from './multilanguageModel';
 
 export default class ItemClass extends MultilanguageModelClass {
 	
-	constructor() {
+	constructor(ItemModel) {
 		const multilanguageFileds = ['title'];
 
 		const otherFields = []; // TODO generate based on itemScehma
-		// TODO generate Item model from ItemSchema and base fields:
-		const Item = null;
-		super(Item, multilanguageFileds, otherFields);
+		super(ItemModel, multilanguageFileds, otherFields);
 
 		this._parentFiledName = 'collectionId';
 	}

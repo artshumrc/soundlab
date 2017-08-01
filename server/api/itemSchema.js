@@ -12,6 +12,21 @@ import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
 import language from './plugins/language';
 
+const DEFAULT_ITEM_SCHEMA_FIELDS = {
+	title: {
+		type: String,
+		unique: true,
+		required: true,
+		trim: true,
+		index: true
+	},
+	collectionId: {
+		type: Schema.Types.ObjectId,
+		ref: 'Collection',
+		index: true,
+		required: true,
+	}
+};
 
 export default class ItemSchemaClass {
 	
@@ -39,37 +54,22 @@ export default class ItemSchemaClass {
 		if (this._itemSchema) {
 			const mongooseItemSchemaFields = {};
 			this._fileds.forEach((Filed) => {
-				mongooseItemSchemaFields[filed._id] = Field.mongooseFields;
+				if (Filed.isArray) {
+					
+				} else {
+					mongooseItemSchemaFields[filed._id] = Field.mongooseFields;
+				}
 			});
 			return mongooseItemSchemaFields;
 		}
 		throw new Error('Run init method');
 	}
 
-	_generateDefaultItemSchemaFields() {
-		return {
-			title: {
-				type: String,
-				unique: true,
-				required: true,
-				trim: true,
-				index: true
-			},
-			collectionId: {
-				type: Schema.Types.ObjectId,
-				ref: 'Collection',
-				index: true,
-				required: true,
-			}
-		};
-	}
-
 	get ItemModel() {
 		const mongooseItemSchemaFields = this._generateMongooseItemSchemaFields();
-		const defaultItemSchemaFields = this._generateDefaultItemSchemaFields();
 		const itemSchemaFields = {
 			...mongooseItemSchemaFields,
-			...defaultItemSchemaFields,
+			...DEFAULT_ITEM_SCHEMA_FIELDS,
 		};
 		const Schema = mongoose.Schema;
 		const GeneratedItemSchema = new Schema(itemSchemaFields);
@@ -78,7 +78,7 @@ export default class ItemSchemaClass {
 		GeneratedItemSchema.plugin(timestamp);
 
 		// add slug (slug)
-		GeneratedItemSchema.plugin(URLSlugs('name'));
+		GeneratedItemSchema.plugin(URLSlugs('title'));
 
 		// add language (language)
 		GeneratedItemSchema.plugin(language);

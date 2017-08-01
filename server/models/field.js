@@ -21,7 +21,9 @@ const FieldSchema = new Schema({
 		type: Object,
 		required: true,
 		enum: ['String', 'Number', 'Date', 'Boolean', 'ObjectId', 'Array'],
-		// 'Array' type has ref filed set to 'Filed' collection, pointing to another field type
+	},
+	arrayFieldId: {
+		type: String,
 	},
 	required: {
 		type: Boolean,
@@ -42,6 +44,10 @@ const FieldSchema = new Schema({
 	max: {
 		type: Number,
 	},
+	multilanguage: {
+		type: Boolean,
+		defaut: false,
+	}
 });
 
 
@@ -53,6 +59,7 @@ FieldSchema.pre('validate', (next) => {
 	switch(this.type) {
 	case 'String': {
 		if (!check.string(this.default)) next(Error(`filed 'default' is type of ${typeof this.default}. Must be a string`));
+		if (this.arrayFieldId) next(Error(`filed 'arrayFieldId' can not be set with type = string`));
 		if (this.ref) next(Error(`filed 'ref' can not be set with type = string`));
 		if (this.enum instanceof Array) {
 			this.enum.forEach((enumValue) => {
@@ -67,6 +74,7 @@ FieldSchema.pre('validate', (next) => {
 	}
 	case 'Number': {
 		if (!check.number(this.default)) next(Error(`filed 'default' is type of ${typeof this.default}. Must be a number`));
+		if (this.arrayFieldId) next(Error(`filed 'arrayFieldId' can not be set with type = number`));
 		if (this.ref) next(Error(`filed 'ref' can not be set with type = number`));
 		if (this.enum instanceof Array) {
 			this.enum.forEach((enumValue) => {
@@ -77,10 +85,12 @@ FieldSchema.pre('validate', (next) => {
 		}
 		if (!check.number(this.min)) next(Error(`filed 'min' is type of ${typeof this.default}. Must be a number`));
 		if (!check.number(this.max)) next(Error(`filed 'max' is type of ${typeof this.default}. Must be a number`));
+		this.multilanguage = false;
 		break;
 	}
 	case 'Date': {
 		if (!check.date(this.default)) next(Error(`filed 'default' is type of ${typeof this.default}. Must be a date`));
+		if (this.arrayFieldId) next(Error(`filed 'arrayFieldId' can not be set with type = date`));
 		if (this.ref) next(Error(`filed 'ref' can not be set with type = date`));
 		if (this.enum instanceof Array) {
 			this.enum.forEach((enumValue) => {
@@ -91,29 +101,35 @@ FieldSchema.pre('validate', (next) => {
 		}
 		if (!check.date(this.min)) next(Error(`filed 'min' is type of ${typeof this.default}. Must be a date`));
 		if (!check.date(this.max)) next(Error(`filed 'max' is type of ${typeof this.default}. Must be a date`));
+		this.multilanguage = false;
 		break;
 	}
 	case 'Boolean': {
 		if (!check.boolean(this.default)) next(Error(`filed 'default' is type of ${typeof this.default}. Must be a boolean`));
+		if (this.arrayFieldId) next(Error(`filed 'arrayFieldId' can not be set with type = boolean`));
 		if (this.ref) next(Error(`filed 'ref' can not be set with type = boolean`));
 		if (this.enum) next(Error(`filed 'enum' can not be set with type = boolean`));
 		if (this.min) next(Error(`filed 'min' can not be set with type = boolean`));
 		if (this.max) next(Error(`filed 'max' can not be set with type = boolean`));
+		this.multilanguage = false;
 		break;
 	}
 	case 'ObjectId': {
 		if (this.default instanceof Schema.Types.ObjectId) next(Error(`filed 'default' is not instance of ObjectId`));
+		if (!this.arrayFieldId) next(Error(`filed 'arrayFieldId' must be set with type = ObjectId`));
 		if (this.enum) next(Error(`filed 'enum' can not be set with type = ObjectId`));
 		if (this.min) next(Error(`filed 'min' can not be set with type = ObjectId`));
 		if (this.max) next(Error(`filed 'max' can not be set with type = ObjectId`));
+		this.multilanguage = false;
 		break;
 	}
 	case 'Array': {
-		if (this.default instanceof Schema.Types.ObjectId) next(Error(`filed 'default' is not instance of ObjectId`));
-		this.ref = 'Filed';
-		if (this.enum) next(Error(`filed 'enum' can not be set with type = ObjectId`));
-		if (this.min) next(Error(`filed 'min' can not be set with type = ObjectId`));
-		if (this.max) next(Error(`filed 'max' can not be set with type = ObjectId`));
+		if (this.default instanceof Array) next(Error(`filed 'default' is not instance of Array`));
+		if (this.ref) next(Error(`filed 'ref' can not be set with type = Array`));
+		if (this.enum) next(Error(`filed 'enum' can not be set with type = Array`));
+		if (this.min) next(Error(`filed 'min' can not be set with type = Array`));
+		if (this.max) next(Error(`filed 'max' can not be set with type = Array`));
+		this.multilanguage = false;
 		break;
 	}
 	}
