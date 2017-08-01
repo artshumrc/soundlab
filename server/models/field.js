@@ -20,7 +20,8 @@ const FieldSchema = new Schema({
 	type: {
 		type: Object,
 		required: true,
-		enum: ['String', 'Number', 'Date', 'Boolean', 'ObjectId'],
+		enum: ['String', 'Number', 'Date', 'Boolean', 'ObjectId', 'Array'],
+		// 'Array' type has ref filed set to 'Filed' collection, pointing to another field type
 	},
 	required: {
 		type: Boolean,
@@ -102,6 +103,14 @@ FieldSchema.pre('validate', (next) => {
 	}
 	case 'ObjectId': {
 		if (this.default instanceof Schema.Types.ObjectId) next(Error(`filed 'default' is not instance of ObjectId`));
+		if (this.enum) next(Error(`filed 'enum' can not be set with type = ObjectId`));
+		if (this.min) next(Error(`filed 'min' can not be set with type = ObjectId`));
+		if (this.max) next(Error(`filed 'max' can not be set with type = ObjectId`));
+		break;
+	}
+	case 'Array': {
+		if (this.default instanceof Schema.Types.ObjectId) next(Error(`filed 'default' is not instance of ObjectId`));
+		this.ref = 'Filed';
 		if (this.enum) next(Error(`filed 'enum' can not be set with type = ObjectId`));
 		if (this.min) next(Error(`filed 'min' can not be set with type = ObjectId`));
 		if (this.max) next(Error(`filed 'max' can not be set with type = ObjectId`));

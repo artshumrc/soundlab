@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 // plug-ins
 import timestamp from 'mongoose-timestamp';
+import URLSlugs from 'mongoose-url-slugs';
 import language from './plugins/language';
 
 const Schema = mongoose.Schema;
@@ -28,6 +29,9 @@ const FieldDetailSchema = new Schema({
 
 // add timestamps (createdAt, updatedAt)
 FieldDetailSchema.plugin(timestamp);
+
+// add slug (slug)
+CollectionDetailSchema.plugin(URLSlugs('label'));
 
 // add language (language)
 FieldDetailSchema.plugin(language);

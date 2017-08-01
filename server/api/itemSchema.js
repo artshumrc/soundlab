@@ -3,10 +3,14 @@ import check from 'check-types';
 // models
 import ItemSchema from '../models/itemSchema';
 
+// api
+import { getAllItemSchemaFields } from './filed';
+
 export default class ItemSchemaClass {
 	
 	constructor() {
 		this._itemSchema = null;
+		this._fileds = [];
 	}
 
 	async init(name) {
@@ -15,6 +19,7 @@ export default class ItemSchemaClass {
 			const itemSchema = await ItemSchema.findOne({ name });
 			if (itemSchema) {
 				this._itemSchema = itemSchema;
+				this._fileds = await getAllItemSchemaFields(this._itemSchema);
 				return this;
 			}
 			throw new Error(`Item Schame with name: ${name} is not available`);
