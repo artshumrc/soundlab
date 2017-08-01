@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 // plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
-import language from './plugins/language';
 
 // api
 import { getAllLanguages } from '../api/languages';

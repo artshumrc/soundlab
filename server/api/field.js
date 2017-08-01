@@ -31,6 +31,18 @@ export default class FieldClass {
 		if (this._field) return true;
 		throw new Error('Run init method');
 	}
+
+	get mongooseFields() {
+		return {
+			type: this._field.type,
+			required: this._field.required,
+			default: this._field.default,
+			ref: this._field.ref,
+			enum: this._field.enum,
+			min: this._field.min,
+			max: this._field.max,
+		};
+	}
 }
 
 export const getAllItemSchemaFields = async (itemSchemaId) => {
