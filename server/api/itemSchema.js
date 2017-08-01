@@ -35,16 +35,16 @@ export default class ItemSchemaClass {
 		this._fileds = [];
 	}
 
-	async init(name) {
-		check.asser.string(name);
+	async init(itemSchemaId) {
+		check.asser.string(itemSchemaId);
 		try {
-			const itemSchema = await ItemSchema.findOne({ name });
+			const itemSchema = await ItemSchema.findById(itemSchemaId);
 			if (itemSchema) {
 				this._itemSchema = itemSchema;
 				this._fileds = await getAllItemSchemaFields(this._itemSchema);
 				return this;
 			}
-			throw new Error(`Item Schame with name: ${name} is not available`);
+			throw new Error(`Item Schame with itemSchemaId: ${itemSchemaId} is not available`);
 		} catch (err) {
 			throw err;
 		}
