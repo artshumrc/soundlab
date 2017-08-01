@@ -12,6 +12,8 @@ export default class CollectionClass {
 	
 	constructor() {
 		this._collection = null;
+		this._collectionDetail = null;
+		this._itemSchema = null;
 	}
 
 	async init(collectionId, projectId) {

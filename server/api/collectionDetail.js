@@ -13,6 +13,7 @@ export default class CollectionDetailClass extends MultilanguageModelClass {
 		super(CollectionDetail, multilanguageFileds, otherFields);
 
 		this._parentFiledName = 'collectionId';
+		this._parentId = null;
 	}
 
 	async init(parentId) {

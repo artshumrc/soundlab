@@ -18,7 +18,10 @@ const ProjectSchema = new Schema({
 			ref: 'User',
 			index: true
 		},
-		role: String,	// e.g.: 'Owner' TODO
+		role: {
+			type: String,
+			enum: ['Owner']
+		}
 	}],
 	languages: [{
 		type: String,

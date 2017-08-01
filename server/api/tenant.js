@@ -1,21 +1,34 @@
+// import check from 'check-types';
+
 // models
 import Tenant from '../models/tenant';
 
-// api
-import MultilanguageModelClass from './multilanguageModel';
 
-
-export default class TenantClass extends MultilanguageModelClass {
+export default class TenantClass {
+	
 	constructor() {
-		const multilanguageFileds = ['name'];
-		const otherFields = [];
-		super(Tenant, multilanguageFileds, otherFields);
-
-		this._parentFiledName = 'projectId';
+		this._tenant = null;
 	}
 
-	async init(parentId) {
-		this._parentId = parentId;
-		return super.init(this._parentFiledName, this._parentId);
+	async init(tenantId, projectId) {
+		try {
+			const tenant = await Tenant.findById({ _id: tenantId, projectId });
+			if (tenant) {
+				this._tenant = tenant;
+				return this;
+			}
+			throw new Error(`Tenant with id: ${tenantId} and projectId: ${projectId} is not available`);
+		} catch (err) {
+			throw err;
+		}
 	}
 }
+
+export const getAllProjectTenants = async (projectId) => {
+	try {
+		const foundTenants = await Tenant.find({ projectId });
+		return Promise.all(foundTenants.map(async tenant => new Tenant().init(tenant._id, projectId)));
+	} catch (err) {
+		throw err;
+	}
+};
