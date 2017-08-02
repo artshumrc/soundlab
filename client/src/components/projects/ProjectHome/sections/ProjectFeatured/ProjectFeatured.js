@@ -6,33 +6,26 @@ export default class ProjectFeatured extends React.Component {
 
 	render() {
 		return (
-			<section id="people">
-				<h3>People</h3>
+			<section id="featured">
 				<Grid>
 					<Row>
-						<Col lg={3}>
-							<Image src="/images/book.png" />
-							<h4>Example Person</h4>
+						<Col lg={4}>
+							<Image src="//iiif.orphe.us/orpheus/art/18.jpg/full/320,/0/default.jpg" />
+							<h4>Artefact</h4>
 							<hr />
-							<p>Museum Administrator</p>
+							<p>Quid faciat laetas segetes</p>
 						</Col>
-						<Col lg={3}>
-							<Image src="/images/book.png" />
-							<h4>Example Person</h4>
+						<Col lg={4}>
+							<Image src="//iiif.orphe.us/orpheus/art/7.jpg/full/320,/0/default.jpg" />
+							<h4>Artefact</h4>
 							<hr />
-							<p>Editor</p>
+							<p>Quid faciat laetas segetes</p>
 						</Col>
-						<Col lg={3}>
-							<Image src="/images/book.png" />
-							<h4>Example Person</h4>
+						<Col lg={4}>
+							<Image src="//iiif.orphe.us/orpheus/art/67.jpg/full/320,/0/default.jpg" />
+							<h4>Artefact</h4>
 							<hr />
-							<p>Curator</p>
-						</Col>
-						<Col lg={3}>
-							<Image src="/images/book.png" />
-							<h4>Example Person</h4>
-							<hr />
-							<p>Professor</p>
+							<p>Quid faciat laetas segetes</p>
 						</Col>
 					</Row>
 				</Grid>
