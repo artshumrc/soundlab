@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 // import check from 'check-types';
 
 // models
@@ -6,18 +7,19 @@ import Tenant from '../models/tenant';
 
 export default class TenantClass {
 	
-	constructor() {
-		this._tenant = null;
+	constructor(tenantId, projectId) {
+		if (!mongoose.Types.ObjectId.isValid(tenantId)) throw new Error('Incorrect tenantId');
+		if (!mongoose.Types.ObjectId.isValid(projectId)) throw new Error('Incorrect projectId');
+
+		this._tenantId = tenantId;
+		this._projectId = projectId;
 	}
 
-	async init(tenantId, projectId) {
+	async _tenant() {
 		try {
-			const tenant = await Tenant.findById({ _id: tenantId, projectId });
-			if (tenant) {
-				this._tenant = tenant;
-				return this;
-			}
-			throw new Error(`Tenant with id: ${tenantId} and projectId: ${projectId} is not available`);
+			const tenant = await Tenant.findById({ _id: this._tenantId, projectId: this._projectId });
+			if (tenant && tenant.length) return tenant;
+			throw new Error('Tenant not found');
 		} catch (err) {
 			throw err;
 		}
@@ -25,10 +27,13 @@ export default class TenantClass {
 }
 
 export const getAllProjectTenants = async (projectId) => {
+	if (!mongoose.Types.ObjectId.isValid(projectId)) throw new Error('Incorrect projectId');
+
 	try {
 		const foundTenants = await Tenant.find({ projectId });
-		return Promise.all(foundTenants.map(async tenant => new Tenant().init(tenant._id, projectId)));
+		return foundTenants.map(tenant => new Tenant(tenant._id, projectId));
 	} catch (err) {
+		console.error(err);
 		throw err;
 	}
 };

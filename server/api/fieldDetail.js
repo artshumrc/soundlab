@@ -7,16 +7,9 @@ import MultilanguageModelClass from './multilanguageModel';
 
 export default class FieldDetailClass extends MultilanguageModelClass {
 	
-	constructor() {
+	constructor(parentId) {
 		const multilanguageFileds = ['label', 'description'];
 		const otherFields = [];
-		super(FieldDetail, multilanguageFileds, otherFields);
-
-		this._parentFiledName = 'fieldId';
-	}
-
-	async init(parentId) {
-		this._parentId = parentId;
-		return super.init(this._parentFiledName, this._parentId);
+		super(FieldDetail, 'fieldId', parentId, multilanguageFileds, otherFields);
 	}
 }

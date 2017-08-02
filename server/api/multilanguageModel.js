@@ -1,6 +1,12 @@
 import mongoose from 'mongoose';
 import check from 'check-types';
 
+
+const _getLanguageVersion = (documents, language) => {
+	return documents.find(element => element.language === language);
+};
+
+
 /**
  * This is a low level class for handling operations on the models by API classes.
  */
@@ -9,19 +15,25 @@ export default class MultilanguageModelClass {
 	/**
 	 * Sets class members.
 	 * @param  {Object} Model               			Mongoose collection object.
-	 * @param  {Array[String]}  multilanguageFileds 	Array of filed names which can have different language versions.
-	 * @param  {Array[String]}  otherFields         	Array of filed names which do NOT have different language versions.
+	 * @param  {Array[String]}  multilanguageFields 	Array of field names which can have different language versions.
+	 * @param  {Array[String]}  otherFields         	Array of field names which do NOT have different language versions.
 	 */
-	constructor(Model, multilanguageFileds = [], otherFields = []) {
+	constructor(Model, parentFieldName, parentId, multilanguageFields = [], otherFields = []) {
+		check.assert.object(Model);
+		check.assert.string(parentFieldName);
+		if (!mongoose.Types.ObjectId.isValid(parentId)) throw new Error('Incorrect parent id');
+		check.assert.array(multilanguageFields);
+		if (otherFields) check.assert.array(otherFields);
+
 		/**
-		 * Array of filed names which can have different language versions.
+		 * Array of field names which can have different language versions.
 		 * @type {Array[String]}
 		 * @private
 		 */
-		this._multilanguageFileds = multilanguageFileds;
+		this._multilanguageFields = multilanguageFields;
 
 		/**
-		 * Array of filed names which do NOT have different language versions.
+		 * Array of field names which do NOT have different language versions.
 		 * @type {Array[String]}
 		 * @private
 		 */
@@ -42,45 +54,49 @@ export default class MultilanguageModelClass {
 		this._documents = [];
 
 		/**
-		 * Name of the parent filed.
+		 * Name of the parent field.
 		 * @type {String}
 		 * @private
 		 */
-		this._parentFiledName = null;
+		this._parentFieldName = parentFieldName;
 
 		/**
 		 * Id of the parent
 		 * @type {mongoose.Types.ObjectId}
 		 */
-		this._parentId = null;
-	}
-
-	get _allFields() {
-		return this._multilanguageFileds.concat(this._otherFields);
-	}
-
-	_checkIfMultilanguageFiled(field) {
-		return this._multilanguageFileds.indexOf(field) > -1;
-	}
-
-	_checkIfFiled(field) {
-		return this._allFields.indexOf(field) > -1;
+		this._parentId = parentId;
 	}
 
 	get _parentQuery() {
 		const query = {};
-		query[this._parentFiledName] = this._parentId;
+		query[this._parentFieldName] = this._parentId;
 		return query;
 	}
 
-	async _updateDocuments() {
-		this._documents = await this._Model.find(this._parentQuery);
+	_documents() {
+		try {
+			return this._Model.find(this._parentQuery);
+		} catch (err) {
+			throw err;
+		}
+	}
+
+	get _allFields() {
+		return this._multilanguageFields.concat(this._otherFields);
+	}
+
+	_checkIfMultilanguageField(field) {
+		return this._multilanguageFields.indexOf(field) > -1;
+	}
+
+	_checkIfField(field) {
+		return this._allFields.indexOf(field) > -1;
 	}
 
 	_checkCreateParams(params) {
 		try {
 			Object.keys(params).forEach((key) => {
-				if (this._checkIfFiled(key)) return;
+				if (this._checkIfField(key)) return;
 				throw new Error('');
 			});
 		} catch (err) {
@@ -89,58 +105,31 @@ export default class MultilanguageModelClass {
 	}
 
 	/**
-	 * Initiate the class. Alway run after running the constructor.
-	 * @param  {!String} parentFiledName 				Name of the filed in which the parent id is stored.
-	 * @param  {!mongoose.Types.ObjectId} parentId       Id of the parent
-	 * @return {this}                 					Return itself
-	 */
-	async init(parentFiledName, parentId) {
-		// check if method can run
-		if (!mongoose.Types.ObjectId.isValid(parentId)) throw new Error('Incorrect parent id');
-		if (this.isSet) throw new Error('Model is already set');
-		try {
-			this._parentFiledName = parentFiledName;
-			this._parentId = parentId;
-			this._updateDocuments();
-			return this;
-		} catch (err) {
-			throw err;
-		}
-	}
-
-	/**
-	 * Check if parent Id has been set (if init method has been run)
-	 * @return {Boolean} True if init method has been run.
-	 */
-	get isSet() {
-		if (this._parentId) return true;
-		return false;
-	}
-
-	/**
-	 * Check if object has documents set
-	 * @return {Boolean} True if object has documents set
-	 */
-	get hasDocuments() {
-		return this._documents.length > 0;
-	}
-
-	/**
 	 * Get parentId
 	 * @return {mongoose.Types.ObjectId} parentId
 	 */
 	get parentId() {
-		if (this._parentId) return this._parentId;
-		throw new Error('Not initiated');
+		return this._parentId;
 	}
 
-	/**
-	 * Get a document with selected language version.
-	 * @param  {!String} language Language shortcut
-	 * @return {Object}          Matching document.
-	 */
-	getLanguageVersion(language) {
-		return this._documents.find(element => element.language === language);
+	_setMultilanguageFiled(documents, language, field, value) {
+		const doc = _getLanguageVersion(documents, language);
+		if (doc) {
+			const setObj = {
+				$set: {},
+			};
+			setObj.$set[field] = value;
+			return this._Model.update({ _id: doc._id }, setObj);
+		}
+		throw new Error('Language version not found');
+	}
+
+	_setNonMultilanguageFiled(documents, field, value) {
+		const setObj = {
+			$set: {},
+		};
+		setObj.$set[field] = value;
+		return this._Model.update(this._parentQuery, setObj);
 	}
 
 	/**
@@ -152,74 +141,82 @@ export default class MultilanguageModelClass {
 	async create(params, language = process.env.DEFAULT_LANGUAGE) {
 		check.assert.object(params);
 		this._checkCreateParams(params);
-		if (this.getLanguageVersion(language)) throw new Error('Document of this language version already exists.');
+		check.assert.string(language);
 
 		try {
+			const documents = await this._documents();
+
+			if (await _getLanguageVersion(documents, language)) throw new Error('Document of this language version already exists.');
+
 			const modelParams = {
 				language,
 				...params,
 			};
-			modelParams[this._parentFiledName] = this._parentId;
-			this._documents.push(await this._Model.create(modelParams));
-			return this;
+			modelParams[this._parentFieldName] = this._parentId;
+			return this._Model.create(modelParams);
 		} catch (err) {
+			console.error(err);
 			throw err;
 		}
 	}
 
-	async remove() {
-		if (!this.hasDocuments) throw new Error('Model is not set');
+	removeAll() {
 		try {
-			await this._Model.remove(this._parentQuery);
-			await this._updateDocuments();
-			return this;
+			return this._Model.remove(this._parentQuery);
 		} catch (err) {
+			console.error(err);
 			throw err;
 		}
 	}
 
 	async removeLanguageVersion(language) {
-		const model = this.getLanguageVersion(language);
-		if (model) {
-			await this._Model.remove({ _id: model._id });
-			await this._updateDocuments();
-			return this;
+		check.assert.string(language);
+
+		try {
+			const documents = await this._documents();
+			const doc = _getLanguageVersion(documents, language);
+			if (doc) {
+				return this._Model.remove({ _id: doc._id });
+			}
+			throw new Error('Language version not found');
+		} catch (err) {
+			console.error(err);
+			throw err;
 		}
-		throw new Error('Language version not found');
 	}
 
 	async setValue(field, value, language = process.env.DEFAULT_LANGUAGE) {
+		check.assert.string(field);
+		check.assert.string(language);
 
-		if (this._checkIfMultilanguageFiled(field)) {
-			const model = this.getLanguageVersion(language);
-			if (model) {
-				const setObj = {
-					$set: {},
-				};
-				setObj.$set[field] = value;
-				await this._Model.update({ _id: model._id }, setObj);
-				this._updateDocuments();
-				return this;
+		try {
+			const documents = await this._documents();
+
+			if (this._checkIfMultilanguageField(field)) {
+				return this._setMultilanguageFiled(documents, language, field, value);
 			}
-			throw new Error(`Model with language ${language} not set`);
+
+			// if it is an other field (not multi language):
+			if (this._checkIfField(field)) {
+				return this._setNonMultilanguageFiled(documents, field, value);
+			}
+			throw new Error(`Field '${field}' is not allowed`);	
+
+		} catch (err) {
+			console.error(err);
+			throw err;
 		}
-		// if it is an other field (not multi language):
-		if (this._checkIfFiled(field)) {
-			const setObj = {
-				$set: {},
-			};
-			setObj.$set[field] = value;
-			await this._Model.update(this._parentQuery, setObj);
-			this._updateDocuments();
-			return this;
-		}
-		throw new Error('incorrect field');		
 	}
 
-	getValue(field, language = process.env.DEFAULT_LANGUAGE) {
-		if (this._checkIfFiled(field)) {
-			const model = this.getLanguageVersion(language);
-			if (model) return model[field];
+	async getValue(field, language = process.env.DEFAULT_LANGUAGE) {
+		check.assert.string(field);
+		check.assert.string(language);
+
+		if (this._checkIfField(field)) {
+			const documents = await this._documents();
+
+			const doc = _getLanguageVersion(documents, language);
+			if (doc) return doc[field];
 			return null;
 		}
 		throw new Error(`Field '${field}' is not allowed`);

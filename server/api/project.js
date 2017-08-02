@@ -1,4 +1,4 @@
-// import check from 'check-types';
+import mongoose from 'mongoose';
 
 // models
 import Project from '../models/project';
@@ -10,43 +10,56 @@ import { getAllProjectTenants } from './tenant';
 
 export default class ProjectClass {
 
-	constructor() {
-		this._project = null;
-		this._projectDetail = null;
-		this._tenant = null;
-		this._userId = null;
+	constructor(projectId, userId) {
+		if (!mongoose.Types.ObjectId.isValid(projectId)) throw new Error('Incorrect projectId');
+		if (!mongoose.Types.ObjectId.isValid(userId)) throw new Error('Incorrect userId');
+
+		this._projectId = projectId;
+		this._userId = userId;
+
+		this._projectDetail = new ProjectDetailClass(projectId);
 	}
 
-	async init(projectId, userId) {
+	async _project() {
 		try {
-			const project = await Project.findOne({ _id: projectId, users: { $elemMatch: { userId } } });
-			if (project) {
-				this._project = project;
-				this._userId = userId;
-				this._projectDetail = await new ProjectDetailClass().init(projectId);
-				this._tenant = await getAllProjectTenants(projectId);
-				return this;
-			}
-			throw new Error(`Project with id: ${projectId} and userId: ${userId} is not available`);
+			const project = await Project.findOne({ _id: this._projectId, users: { $elemMatch: { userId: this._userId } } });
+			if (project && project.length) return project;
+			throw new Error('Project not found');
 		} catch (err) {
 			throw err;
 		}
 	}
 
-	get userRole() {
-		if (this._project) {
-			const projectUser = this._project.users.find(user => user.userId === this._userId);
-			return projectUser.role;
+	async _tenants() {
+		try {
+			const tenants = await getAllProjectTenants(this._projectId);
+			if (tenants && tenants.length) return tenants;
+			throw new Error('Tenants not found');
+		} catch (err) {
+			throw err;
 		}
-		throw new Error('Run init method');
+	}
+
+	async userRole() {
+		try {
+			const project = await this._project();
+			const projectUser = project.users.find(user => user.userId === this._userId);
+			return projectUser.role;
+		} catch (err) {
+			console.error(err);
+			throw err;
+		}
 	}
 }
 
 export const getAllUserProjects = async (userId) => {
+	if (!mongoose.Types.ObjectId.isValid(userId)) throw new Error('Incorrect userId');
+
 	try {
 		const foundProjects = await Project.find({ users: userId });
-		return Promise.all(foundProjects.map(async project => new Project().init(project._id, userId)));
+		return foundProjects.map(async project => new Project(project._id, userId));
 	} catch (err) {
+		console.error(err);
 		throw err;
 	}
 };

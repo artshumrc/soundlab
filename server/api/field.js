@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import check from 'check-types';
 
 // models
@@ -7,90 +8,108 @@ import Field from '../models/field';
 import FieldDetailClass from './fieldDetail';
 
 
-const _propagateFiledTypeArray = async (filed) => {
-	if (filed.type === 'Array') {
-		const foundFiled = await Field.findById(filed.arrayFieldId);
-		filed.arrayFiled = foundFiled;
+const _propagateFieldTypeArray = async (field) => {
+	if (field.type === 'Array') {
+		const foundField = await Field.findById(field.arrayFieldId);
+		field.arrayField = foundField;
 	}
-	return filed;
+	return field;
 };
 
 
 export default class FieldClass {
 	
-	constructor() {
-		this._field = null;
+	constructor(fieldId, itemSchemaId) {
+		if (!mongoose.Types.ObjectId.isValid(fieldId)) throw new Error('Incorrect filed id');
+		if (!mongoose.Types.ObjectId.isValid(itemSchemaId)) throw new Error('Incorrect itemSchema id');
+
+		this._fieldId = fieldId;
+		this._itemSchemaId = itemSchemaId;
+
+		this._fieldDetail = new FieldDetailClass(fieldId);
+
+		this._isArray = null;
+		this._isMultilanguage = null;
 	}
 
-	async init(filedId, itemSchemaId) {
-		check.asser.string(name);
+	async _field() {
 		try {
-			const filed = await Field.findOne({ _id: filedId, itemSchemaId });
-			if (filed) {
-				this._field = await _propagateFiledTypeArray(filed);
-				this._filedDetail = await new FieldDetailClass().init(filedId);
-				return this;
+			const field = await Field.findOne({ _id: this._fieldId, _itemSchemaId: this._itemSchemaId });
+			if (field && field.length) {
+				this._setProps(filed);
+				return _propagateFieldTypeArray(field);
 			}
-			throw new Error(`Filed with id: ${filedId} and itemSchemaId: ${itemSchemaId} is not available`);
+			throw new Error('Field not found');
 		} catch (err) {
 			throw err;
 		}
 	}
 
-	get _mogooseType() {
-		if (this._field) {
-			if (this.isArray) {
-				return [{
-					type: this._field.arrayFiled.type,
-					required: this._field.arrayFiled.required,
-					default: this._field.arrayFiled.default,
-					ref: this._field.arrayFiled.ref,
-					enum: this._field.arrayFiled.enum,
-					min: this._field.arrayFiled.min,
-					max: this._field.arrayFiled.max,
-				}];
-			}
-			return this._filed.type;
+	_setProps(field) {
+		// _isArray
+		if (field.type === 'Array') this._isArray = true;
+		else this._isArray = false;
+
+		// _isMultilanguage
+		this._isMultilanguage = field.multilanguage;
+	}
+
+	_getMongooseType(field) {
+		if (this._isArray) {
+			return [{
+				type: field.arrayField.type,
+				required: field.arrayField.required,
+				default: field.arrayField.default,
+				ref: field.arrayField.ref,
+				enum: field.arrayField.enum,
+				min: field.arrayField.min,
+				max: field.arrayField.max,
+			}];
 		}
-		throw new Error('Run init method');
+		return field.type;
 	}
 
-	get isArray() {
-		if (this._field) {
-			if (this._field.type === 'Array') return true;
-			return false;
+	async getMongooseFields() {
+		try {
+			const field = await this._field();
+			return {
+				type: this._getMongooseType(field),
+				required: field.required,
+				default: field.default,
+				ref: field.ref,
+				enum: field.enum,
+				min: field.min,
+				max: field.max,
+			};
+		} catch (err) {
+			console.error(err);
+			throw err;
 		}
-		throw new Error('Run init method');
 	}
 
-	get isSet() {
-		if (this._field) return true;
-		throw new Error('Run init method');
+	async isMultilanguage() {
+		try {
+			await this._fields();
+			return this._isMultilanguage;
+		} catch (err) {
+			console.error(err);
+			throw err;
+		}
 	}
 
-	get isMultilanguage() {
-		if (this._field) return this._field.multilanguage;
-		throw new Error('Run init method');
-	}
-
-	get mongooseFields() {
-		return {
-			type: this._mogooseType,
-			required: this._field.required,
-			default: this._field.default,
-			ref: this._field.ref,
-			enum: this._field.enum,
-			min: this._field.min,
-			max: this._field.max,
-		};
+	get id() {
+		return this._fieldId;
 	}
 }
 
 export const getAllItemSchemaFields = async (itemSchemaId) => {
+	if (!mongoose.Types.ObjectId.isValid(itemSchemaId)) throw new Error('Incorrect itemSchemaId');
+
 	try {
 		const foundFields = await Field.find({ itemSchemaId });
-		return Promise.all(foundFields.map(async field => new Field().init(field._id, itemSchemaId)));
+		return foundFields.map(field => new Field(field._id, itemSchemaId));
 	} catch (err) {
+		console.error(err);
 		throw err;
 	}
 };

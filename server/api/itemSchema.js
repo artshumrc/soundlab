@@ -5,12 +5,13 @@ import check from 'check-types';
 import ItemSchema from '../models/itemSchema';
 
 // api
-import { getAllItemSchemaFields } from './filed';
+import { getAllItemSchemaFields } from './field';
 
 // plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
 import language from './plugins/language';
+
 
 const DEFAULT_ITEM_SCHEMA_FIELDS = {
 	title: {
@@ -28,96 +29,107 @@ const DEFAULT_ITEM_SCHEMA_FIELDS = {
 	}
 };
 
+const DEFAULT_MULTILANGUAGE_FIELDS = ['title'];
+
+
 export default class ItemSchemaClass {
 	
-	constructor() {
-		this._itemSchema = null;
-		this._fileds = [];
+	constructor(itemSchemaId) {
+		if (!mongoose.Types.ObjectId.isValid(itemSchemaId)) throw new Error('Incorrect item schema id');
+		this._itemSchemaId = itemSchemaId;
 	}
 
-	async init(itemSchemaId) {
-		check.asser.string(itemSchemaId);
+	async _itemSchema() {
 		try {
-			const itemSchema = await ItemSchema.findById(itemSchemaId);
-			if (itemSchema) {
-				this._itemSchema = itemSchema;
-				this._fileds = await getAllItemSchemaFields(this._itemSchema);
-				return this;
-			}
-			throw new Error(`Item Schame with itemSchemaId: ${itemSchemaId} is not available`);
+			const itemSchame = await ItemSchema.findById(this._itemSchemaId);
+			if (itemSchame && itemSchame.length) return itemSchame;
+			throw new Error('ItemSchema not found');
 		} catch (err) {
 			throw err;
 		}
 	}
 
-	_generateMongooseItemSchemaFields() {
-		if (this._itemSchema) {
-			const mongooseItemSchemaFields = {};
-			this._fileds.forEach((Filed) => {
-				mongooseItemSchemaFields[filed._id] = Field.mongooseFields;
-			});
-			return mongooseItemSchemaFields;
+	async _fields() {
+		try {
+			const fields = await getAllItemSchemaFields(this._itemSchema);
+			if (fields && fields.length) return fields;
+			throw new Error('Fields not found');
+		} catch (err) {
+			throw err;
 		}
-		throw new Error('Run init method');
 	}
 
-	get ItemModel() {
-		const mongooseItemSchemaFields = this._generateMongooseItemSchemaFields();
-		const itemSchemaFields = {
-			...mongooseItemSchemaFields,
-			...DEFAULT_ITEM_SCHEMA_FIELDS,
-		};
-		const Schema = mongoose.Schema;
-		const GeneratedItemSchema = new Schema(itemSchemaFields);
-
-		// add timestamps (createdAt, updatedAt)
-		GeneratedItemSchema.plugin(timestamp);
-
-		// add slug (slug)
-		GeneratedItemSchema.plugin(URLSlugs('title'));
-
-		// add language (language)
-		GeneratedItemSchema.plugin(language);
-
-		const ItemModel = mongoose.model('Item', GeneratedItemSchema);
-
-		return ItemModel;
+	async _generateMongooseItemSchemaFields() {
+		try {
+			const fields = await this._fields();
+			const mongooseItemSchemaFields = {};
+			await Promise.all(fields.map(async (Field) => {
+				mongooseItemSchemaFields[Field.id] = await Field.getMongooseFields();
+			}));
+			return mongooseItemSchemaFields;
+		} catch (err) {
+			throw err;
+		}
 	}
 
-	get multilanguageFields() {
-		const multilanguageFields = ['title'];
-		this._fileds.forEach((filed) => {
-			if (filed.isMultilanguage) {
-				multilanguageFields.push(filed._id);
-			}
-		});
-		return multilanguageFields;
+	async getItemModel() {
+		try {
+			const mongooseItemSchemaFields = await this._generateMongooseItemSchemaFields();
+			const itemSchemaFields = {
+				...mongooseItemSchemaFields,
+				...DEFAULT_ITEM_SCHEMA_FIELDS,
+			};
+			const Schema = mongoose.Schema;
+			const GeneratedItemSchema = new Schema(itemSchemaFields);
+
+			// add timestamps (createdAt, updatedAt)
+			GeneratedItemSchema.plugin(timestamp);
+
+			// add slug (slug)
+			GeneratedItemSchema.plugin(URLSlugs('title'));
+
+			// add language (language)
+			GeneratedItemSchema.plugin(language);
+
+			const ItemModel = mongoose.model('Item', GeneratedItemSchema);
+
+			return ItemModel;
+		} catch (err) {
+			console.error(err);
+			throw err;
+		}
 	}
 
-	get nonMultilanguageFields() {
-		const nonMultilanguageFields = [];
-		this._fileds.forEach((filed) => {
-			if (!filed.isMultilanguage) {
-				nonMultilanguageFields.push(filed._id);
-			}
-		});
-		return nonMultilanguageFields;
+	async getMultilanguageFields() {
+		try {
+			const fields = await this._fields();
+			const multilanguageFields = [...DEFAULT_MULTILANGUAGE_FIELDS];
+			await Promise.all(fields.map(async (Field) => {
+				if (await Field.isMultilanguage()) {
+					multilanguageFields.push(Field.id);
+				}
+			}));
+			return multilanguageFields;
+		} catch (err) {
+			console.error(err);
+			throw err;
+		}
 	}
 
-	get isSet() {
-		if (this._itemSchema) return true;
-		throw new Error('Run init method');
-	}
-
-	get name() {
-		if (this.isSet) return this._itemSchema.name;
-	}
-
-	get languages() {
-		if (this.isSet) return this._itemSchema.languages;
-	}
-
-	get private() {
-		if (this.isSet) return this._itemSchema.private;
+	async getNonMultilanguageFields() {
+		try {
+			const fields = await this._fields();
+			const nonMultilanguageFields = [...DEFAULT_MULTILANGUAGE_FIELDS];
+			await Promise.all(fields.map(async (Field) => {
+				const isMultilanguage = await Field.isMultilanguage();
+				if (!isMultilanguage) {
+					nonMultilanguageFields.push(Field.id);
+				}
+			}));
+			return nonMultilanguageFields;
+		} catch (err) {
+			console.error(err);
+			throw err;
+		}
 	}
 }
