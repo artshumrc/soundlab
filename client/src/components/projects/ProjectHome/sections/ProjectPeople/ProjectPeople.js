@@ -43,15 +43,11 @@ export default class ProjectPeople extends React.Component {
 		return (
 			<section id="people">
 				<h3>People</h3>
-				<Grid>
-					<Row>
-						{people.map(person => (
-							<Col lg={3}>
-								<ProjectPerson {...person} />
-							</Col>
-						))}
-					</Row>
-				</Grid>
+				<div className="peopleList">
+					{people.map(person => (
+						<ProjectPerson {...person} />
+					))}
+				</div>
 			</section>
 		);
 	}

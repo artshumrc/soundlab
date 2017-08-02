@@ -8,7 +8,7 @@ const ProjectPerson = props => (
 			alt={props.name}
 			src={`//iiif.orphe.us/orpheus/${props.imageName}/full/full/0/default.jpg`}
 		/>
-		<h4>{props.name}</h4>
+		<h4 className="projectPersonName">{props.name}</h4>
 		<hr />
 		<p>{props.role}</p>
 	</div>
