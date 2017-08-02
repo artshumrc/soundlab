@@ -1,6 +1,10 @@
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
+import MainLayout from './layouts/MainLayout';
+import ProjectLayout from './layouts/ProjectLayout';
 import Home from './home/Home';
+import CollectionsListPage from './collections/CollectionsListPage';
+import CollectionDetail from './collections/CollectionDetail';
 import ProjectHome from './projects/ProjectHome';
 import Page from './pages/Page/Page';
 import Dashboard from './dashboard/Dashboard';
@@ -23,6 +27,12 @@ export default (
 
     <Route path="/page/new" component={Page} />
     <Route path="/page" component={Page} />
+
+    <Route path="/collections" component={ProjectLayout}>
+      <IndexRoute component={CollectionsListPage} />
+      <Route path="/collections/:slug" component={CollectionDetail} />
+		</Route>
+
     <Route path="/dashboard" component={Dashboard}>
       <IndexRoute component={MainPanel} />
       <Route path="/dashboard/articles" component={Articles} />

@@ -1,12 +1,12 @@
 import React from 'react';
 import './ProjectPerson.css';
+import Avatar from '../../users/Avatar';
 
 const ProjectPerson = props => (
 	<div className="projectPerson">
-		<img
-			className="projectPersonAvatar"
+		<Avatar
 			alt={props.name}
-			src={`//iiif.orphe.us/orpheus/${props.imageName}/full/full/0/default.jpg`}
+			src={props.imageName}
 		/>
 		<h4 className="projectPersonName">{props.name}</h4>
 		<hr />

@@ -19,6 +19,7 @@ class ProjectCover extends React.Component {
 				overlay={
 					<div className="home-overlay" />
 				}
+				full
 			>
 				<div className="home-cover-content">
 					<h1>Example Project Museum or Archive</h1>
