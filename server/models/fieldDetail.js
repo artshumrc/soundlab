@@ -31,7 +31,7 @@ const FieldDetailSchema = new Schema({
 FieldDetailSchema.plugin(timestamp);
 
 // add slug (slug)
-CollectionDetailSchema.plugin(URLSlugs('label'));
+FieldDetailSchema.plugin(URLSlugs('label'));
 
 // add language (language)
 FieldDetailSchema.plugin(language);

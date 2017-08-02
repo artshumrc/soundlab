@@ -18,7 +18,7 @@ export default class MultilanguageModelClass {
 	 * @param  {Array[String]}  multilanguageFields 	Array of field names which can have different language versions.
 	 * @param  {Array[String]}  otherFields         	Array of field names which do NOT have different language versions.
 	 */
-	constructor(Model, parentFieldName, parentId, multilanguageFields = [], otherFields = []) {
+	constructor(Model, parentFieldName, parentId, multilanguageFields = [], otherFields = [], userRole) {
 		check.assert.object(Model);
 		check.assert.string(parentFieldName);
 		if (!mongoose.Types.ObjectId.isValid(parentId)) throw new Error('Incorrect parent id');
@@ -65,6 +65,8 @@ export default class MultilanguageModelClass {
 		 * @type {mongoose.Types.ObjectId}
 		 */
 		this._parentId = parentId;
+
+		this._userRole = userRole;
 	}
 
 	get _parentQuery() {
@@ -113,6 +115,8 @@ export default class MultilanguageModelClass {
 	}
 
 	_setMultilanguageFiled(documents, language, field, value) {
+		if (!this._userRole === 'Owner') return null;
+
 		const doc = _getLanguageVersion(documents, language);
 		if (doc) {
 			const setObj = {
@@ -125,6 +129,8 @@ export default class MultilanguageModelClass {
 	}
 
 	_setNonMultilanguageFiled(documents, field, value) {
+		if (!this._userRole === 'Owner') return null;
+
 		const setObj = {
 			$set: {},
 		};
@@ -139,6 +145,8 @@ export default class MultilanguageModelClass {
 	 * @return {[type]}          [description]
 	 */
 	async create(params, language = process.env.DEFAULT_LANGUAGE) {
+		if (!this._userRole === 'Owner') return null;
+
 		check.assert.object(params);
 		this._checkCreateParams(params);
 		check.assert.string(language);
@@ -161,6 +169,8 @@ export default class MultilanguageModelClass {
 	}
 
 	removeAll() {
+		if (!this._userRole === 'Owner') return null;
+
 		try {
 			return this._Model.remove(this._parentQuery);
 		} catch (err) {
@@ -170,6 +180,8 @@ export default class MultilanguageModelClass {
 	}
 
 	async removeLanguageVersion(language) {
+		if (!this._userRole === 'Owner') return null;
+
 		check.assert.string(language);
 
 		try {
@@ -186,6 +198,8 @@ export default class MultilanguageModelClass {
 	}
 
 	async setValue(field, value, language = process.env.DEFAULT_LANGUAGE) {
+		if (!this._userRole === 'Owner') return null;
+
 		check.assert.string(field);
 		check.assert.string(language);
 
@@ -209,6 +223,8 @@ export default class MultilanguageModelClass {
 	}
 
 	async getValue(field, language = process.env.DEFAULT_LANGUAGE) {
+		if (!this._userRole === 'Owner') return null;
+
 		check.assert.string(field);
 		check.assert.string(language);
 

@@ -19,24 +19,25 @@ const _propagateFieldTypeArray = async (field) => {
 
 export default class FieldClass {
 	
-	constructor(fieldId, itemSchemaId) {
-		if (!mongoose.Types.ObjectId.isValid(fieldId)) throw new Error('Incorrect filed id');
+	constructor(fieldId, itemSchemaId, userRole) {
+		if (!mongoose.Types.ObjectId.isValid(fieldId)) throw new Error('Incorrect field id');
 		if (!mongoose.Types.ObjectId.isValid(itemSchemaId)) throw new Error('Incorrect itemSchema id');
 
 		this._fieldId = fieldId;
 		this._itemSchemaId = itemSchemaId;
+		this._userRole = userRole;
 
-		this._fieldDetail = new FieldDetailClass(fieldId);
+		this._fieldDetail = new FieldDetailClass(fieldId, this._userRole);
 
 		this._isArray = null;
 		this._isMultilanguage = null;
 	}
 
-	async _field() {
+	async _fieldDoc() {
 		try {
 			const field = await Field.findOne({ _id: this._fieldId, _itemSchemaId: this._itemSchemaId });
 			if (field && field.length) {
-				this._setProps(filed);
+				this._setProps(field);
 				return _propagateFieldTypeArray(field);
 			}
 			throw new Error('Field not found');
@@ -71,7 +72,7 @@ export default class FieldClass {
 
 	async getMongooseFields() {
 		try {
-			const field = await this._field();
+			const field = await this._fieldDoc();
 			return {
 				type: this._getMongooseType(field),
 				required: field.required,
@@ -102,12 +103,12 @@ export default class FieldClass {
 	}
 }
 
-export const getAllItemSchemaFields = async (itemSchemaId) => {
+export const getAllItemSchemaFields = async (itemSchemaId, userRole) => {
 	if (!mongoose.Types.ObjectId.isValid(itemSchemaId)) throw new Error('Incorrect itemSchemaId');
 
 	try {
 		const foundFields = await Field.find({ itemSchemaId });
-		return foundFields.map(field => new Field(field._id, itemSchemaId));
+		return foundFields.map(field => new Field(field._id, itemSchemaId, userRole));
 	} catch (err) {
 		console.error(err);
 		throw err;

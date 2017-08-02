@@ -10,8 +10,11 @@ import { getAllItemSchemaFields } from './field';
 // plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
-import language from './plugins/language';
+import language from '../models/plugins/language';
 
+
+
+const Schema = mongoose.Schema;
 
 const DEFAULT_ITEM_SCHEMA_FIELDS = {
 	title: {
@@ -34,12 +37,14 @@ const DEFAULT_MULTILANGUAGE_FIELDS = ['title'];
 
 export default class ItemSchemaClass {
 	
-	constructor(itemSchemaId) {
+	constructor(itemSchemaId, userRole) {
 		if (!mongoose.Types.ObjectId.isValid(itemSchemaId)) throw new Error('Incorrect item schema id');
+
 		this._itemSchemaId = itemSchemaId;
+		this._userRole = userRole;
 	}
 
-	async _itemSchema() {
+	async _itemSchemaDoc() {
 		try {
 			const itemSchame = await ItemSchema.findById(this._itemSchemaId);
 			if (itemSchame && itemSchame.length) return itemSchame;
@@ -51,7 +56,7 @@ export default class ItemSchemaClass {
 
 	async _fields() {
 		try {
-			const fields = await getAllItemSchemaFields(this._itemSchema);
+			const fields = await getAllItemSchemaFields(this._itemSchemaDoc, this._userRole);
 			if (fields && fields.length) return fields;
 			throw new Error('Fields not found');
 		} catch (err) {
@@ -79,7 +84,7 @@ export default class ItemSchemaClass {
 				...mongooseItemSchemaFields,
 				...DEFAULT_ITEM_SCHEMA_FIELDS,
 			};
-			const Schema = mongoose.Schema;
+
 			const GeneratedItemSchema = new Schema(itemSchemaFields);
 
 			// add timestamps (createdAt, updatedAt)
