@@ -21,5 +21,16 @@ export default class UserClass {
 			throw err;
 		}
 	}
+
+	async isValid() {
+		try {
+			const user = await this._user();
+			return true;
+		} catch (err) {
+			if (err.message === 'User not found') return false;
+			console.error(err);
+			throw err;
+		}
+	}
 }
 
