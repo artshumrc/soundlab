@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-// import check from 'check-types';
 
 // models
 import Tenant from '../models/tenant';

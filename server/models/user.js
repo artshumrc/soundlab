@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import timestamp from 'mongoose-timestamp';
 import passportLocalMongoose from 'passport-local-mongoose';
-require('mongoose-type-email');
 
 const Schema = mongoose.Schema;
 
@@ -10,8 +9,8 @@ const Schema = mongoose.Schema;
  * @type {Schema}
  */
 const UserSchema = new Schema({
-	username: mongoose.SchemaTypes.Email,
-	password: String
+	username: String,
+	password: String,
 });
 
 // add password hash and salt

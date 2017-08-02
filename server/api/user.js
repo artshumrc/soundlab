@@ -1,21 +1,22 @@
+import check from 'check-types';
+
 // models
 import User from '../models/user';
 
 
 export default class UserClass {
 
-	constructor() {
-		this._user = null;
+	constructor(username) {
+		check.assert.string(username);
+
+		this._username = username;
 	}
 
-	async init(username) {
+	async _user() {
 		try {
-			const user = await User.find({ username });
-			if (user) {
-				this._user = user;
-				return this;
-			}
-			throw new Error(`User with name: ${username} is not available`);
+			const user = await User.findByUsername(this._username);
+			if (user && user.length) return user;
+			throw new Error('User not found');
 		} catch (err) {
 			throw err;
 		}
