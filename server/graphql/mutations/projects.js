@@ -24,8 +24,11 @@ const projectMutationFileds = {
 				type: new GraphQLNonNull(GraphQLString)
 			},
 		},
-		async resolve(parent, { title }, test) {
-			console.log(test)
+		async resolve(parent, { title }, Orpheus) {
+			console.log('Orpheus', Orpheus);
+			const user = Orpheus.user;
+			console.log('username', user.username);
+			// console.log(Orpheus.user)
 			// if (passport) {
 
 			// 	const project = {

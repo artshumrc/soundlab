@@ -82,5 +82,9 @@ export default class UserClass {
 			throw err;
 		}
 	}
+
+	get username() {
+		return this._username;
+	}
 }
 
