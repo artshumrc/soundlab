@@ -1,32 +1,24 @@
 import React from 'react'
-import Button from '../../../common/buttons/Button';
-import Cover from '../../../common/cover/Cover';
-import CoverTitle from '../../../common/cover/CoverTitle';
-import BackgroundImage from '../../../common/cover/BackgroundImage';
-import { Bricks } from '../../../common/cover/Bricks';
-import Util from '../../../../lib/util';
+import Cover from '../../common/cover/Cover';
+import CoverTitle from '../../common/cover/CoverTitle';
+import BackgroundImage from '../../common/cover/BackgroundImage';
 
 
-class CollectionsCover extends React.Component {
-
-	render() {
-
-		return (
-			<Cover
-				className="home-cover"
-				background={
-					<BackgroundImage
-						src="//iiif.orphe.us/orpheus/art/7.jpg/full/1400,/0/default.jpg"
-					/>
-				}
-			>
-				<CoverTitle
-					title="Example Collection: Quid Faciat Laetas Segetes"
-				/>
-			</Cover>
-		)
-	}
-}
+const CollectionsCover = props => (
+	<Cover
+		className="collections-cover"
+		background={
+			<BackgroundImage
+				src="//iiif.orphe.us/orpheus/art/43.jpg/full/1400,/0/default.jpg"
+			/>
+		}
+		bottom
+	>
+		<CoverTitle
+			title={props.title}
+		/>
+	</Cover>
+)
 
 
-export default HomeCover;
+export default CollectionsCover;

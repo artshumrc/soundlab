@@ -1,10 +1,12 @@
 import React from 'react';
+import './BackgroundImage.css';
 
 const BackgroundImage = props => (
 	<div
-		styles={{
+		className="backgroundImage"
+		style={{
 			backgroundSize: 'cover',
-			backgroundImage: props.src,
+			backgroundImage: `url(${props.src})`,
 		}}
 	/>
 );

@@ -1,0 +1,18 @@
+@import '../../../variables.scss';
+
+.collectionTag {
+	font-family: $font-label-mono;
+	font-size: 14px;
+	color: $text-secondary;
+	display: inline-block;
+	vertical-align: top;
+	padding: 3px 0;
+	margin: 2px 5px;
+	border-bottom: 1px solid $light-grey;
+	@include transition(all 100ms ease-in-out);
+	cursor: pointer;
+
+	&:hover {
+		border-bottom: 1px solid transparent;
+	}
+}

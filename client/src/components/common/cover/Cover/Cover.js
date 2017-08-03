@@ -10,41 +10,48 @@ const Cover = props => {
 		classes.push('cover--full');
 	}
 
-	if (props.center) {
-		classes.push('cover--center');
-	}
-
 	if (props.bottom) {
 		classes.push('cover--bottom');
+	} else {
+		classes.push('cover--center');
 	}
 
 
 	return (
 		<div
-			className={`cover ${props.className}`}
+			className={`cover ${classes.join(' ')}`}
 			style={{
 				width: window.innerWidth,
-				height: props.full ? window.innerHeight : 300,
+				height: props.full ? window.innerHeight : 400,
 			}}
 		>
-			{
-				props.background &&
-				<CoverBackground>
-					{props.background}
-				</CoverBackground>
-			}
-			{
-				props.children &&
-				<div className="cover-content">
-					{props.children}
-				</div>
-			}
-			{
-				props.overlay &&
-				<div className="cover-overlay">
-					{props.overlay}
-				</div>
-			}
+			<div
+				className="cover-inner"
+				style={{
+					width: window.innerWidth,
+				}}
+			>
+				{
+					props.background &&
+					<CoverBackground
+						reactsToMouse={props.reactsToMouse}
+					>
+						{props.background}
+					</CoverBackground>
+				}
+				{
+					props.children &&
+					<div className="cover-content">
+						{props.children}
+					</div>
+				}
+				{
+					props.overlay &&
+					<div className="cover-overlay">
+						{props.overlay}
+					</div>
+				}
+			</div>
 		</div>
 	);
 }

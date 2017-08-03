@@ -43,5 +43,6 @@ export default (
       <Route path="/dashboard/form" component={ExampleForms} />
       <Route path="/dashboard/mirador" component={MiradorUploader} />
     </Route>
+
   </div>
 );

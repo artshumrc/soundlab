@@ -45,7 +45,10 @@ export default class ProjectPeople extends React.Component {
 				<h3>People</h3>
 				<div className="peopleList">
 					{people.map(person => (
-						<ProjectPerson {...person} />
+						<ProjectPerson
+							key={person.name}
+							{...person}
+						/>
 					))}
 				</div>
 			</section>

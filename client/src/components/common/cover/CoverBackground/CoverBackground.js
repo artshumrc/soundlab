@@ -17,14 +17,18 @@ class CoverBackground extends React.Component {
 	}
 
 	translateBackground(e) {
-		let x = e.pageX / window.innerHeight;
-		x = x * -2;
-		let y = e.pageY / window.innerHeight;
-		y = y * -4;
+		const { reactsToMouse } = this.props;
 
-		this.setState({
-			transform:  `translate(${x}%, ${y}%)`,
-		});
+		if (reactsToMouse) {
+			let x = e.pageX / window.innerHeight;
+			x = x * -2;
+			let y = e.pageY / window.innerHeight;
+			y = y * -4;
+
+			this.setState({
+				transform:  `translate(${x}%, ${y}%)`,
+			});
+		}
 	}
 
 	render() {

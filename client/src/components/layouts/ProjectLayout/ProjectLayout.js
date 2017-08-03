@@ -1,13 +1,13 @@
 import React from 'react';
-import './MainLayout.css';
+import './ProjectLayout.css';
 import ProjectHeader from '../../navigation/ProjectHeader';
 import ProjectFooter from '../../navigation/ProjectFooter';
 
-const ProjectLayout = props (
+const ProjectLayout = props => (
 	<div>
-		<Header />
+		<ProjectHeader />
 		{props.children}
-		<Footer />
+		<ProjectFooter />
 	</div>
 );
 

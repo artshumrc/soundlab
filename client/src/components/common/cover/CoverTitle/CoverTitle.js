@@ -8,4 +8,4 @@ const CoverTitle = props => (
 );
 
 
-export default CollectionsListPageTitle;
+export default CoverTitle;
