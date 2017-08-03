@@ -16,6 +16,28 @@ const _propagateFieldTypeArray = async (field) => {
 	return field;
 };
 
+const _getMongooseTypeFromString = (stringType) => {
+	let type = null;
+	switch (stringType) {
+	case 'String':
+		type = String;
+		break;
+	case 'Number':
+		type = Number;
+		break;
+	case 'Date':
+		type = Date;
+		break;
+	case 'Boolean':
+		type = Boolean;
+		break;
+	case 'ObjectId':
+		type = mongoose.Types.ObjectId;
+		break;
+	}
+	return type;
+};
+
 
 export default class FieldClass {
 	
@@ -36,7 +58,7 @@ export default class FieldClass {
 	async _fieldDoc() {
 		try {
 			const field = await Field.findOne({ _id: this._fieldId, _itemSchemaId: this._itemSchemaId });
-			if (field && field.length) {
+			if (field) {
 				this._setProps(field);
 				return _propagateFieldTypeArray(field);
 			}
@@ -58,7 +80,7 @@ export default class FieldClass {
 	_getMongooseType(field) {
 		if (this._isArray) {
 			return [{
-				type: field.arrayField.type,
+				type: _getMongooseTypeFromString(field.arrayField.type),
 				required: field.arrayField.required,
 				default: field.arrayField.default,
 				ref: field.arrayField.ref,
@@ -67,7 +89,7 @@ export default class FieldClass {
 				max: field.arrayField.max,
 			}];
 		}
-		return field.type;
+		return _getMongooseTypeFromString(field.type);
 	}
 
 	async getMongooseFields() {
@@ -90,7 +112,7 @@ export default class FieldClass {
 
 	async isMultilanguage() {
 		try {
-			await this._fields();
+			await this._fieldDoc();
 			return this._isMultilanguage;
 		} catch (err) {
 			console.error(err);
@@ -105,10 +127,11 @@ export default class FieldClass {
 
 export const getAllItemSchemaFields = async (itemSchemaId, userRole) => {
 	if (!mongoose.Types.ObjectId.isValid(itemSchemaId)) throw new Error('Incorrect itemSchemaId');
+	check.assert.string(userRole);
 
 	try {
 		const foundFields = await Field.find({ itemSchemaId });
-		return foundFields.map(field => new Field(field._id, itemSchemaId, userRole));
+		return foundFields.map(field => new FieldClass(field._id, itemSchemaId, userRole));
 	} catch (err) {
 		console.error(err);
 		throw err;

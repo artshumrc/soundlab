@@ -2,13 +2,11 @@ import mongoose from 'mongoose';
 import check from 'check-types';
 
 
-const _getLanguageVersion = (documents, language) => {
-	return documents.find(element => element.language === language);
-};
+const _getLanguageVersion = (documents, language) => documents.find(element => element.language === language);
 
 
 /**
- * This is a low level class for handling operations on the models by API classes.
+ * This is a low level class for multi language models.
  */
 export default class MultilanguageModelClass {
 
@@ -18,8 +16,17 @@ export default class MultilanguageModelClass {
 	 * @param  {Array[String]}  multilanguageFields 	Array of field names which can have different language versions.
 	 * @param  {Array[String]}  otherFields         	Array of field names which do NOT have different language versions.
 	 */
+	/**
+	 * Sets class members.
+	 * @param  {!Object} Model               				Mongoose collection object.
+	 * @param  {!String} parentFieldName     				Name of the field containing the ref to parent document.
+	 * @param  {!mongoose.Types.ObjectId} parentId           Id of the parent document.
+	 * @param  {Array}  multilanguageFields 				Array of fields with multi language values.
+	 * @param  {Array}  otherFields         				Array of fields which don't have multi language values.
+	 * @param  {String} userRole            				User role.
+	 */
 	constructor(Model, parentFieldName, parentId, multilanguageFields = [], otherFields = [], userRole) {
-		check.assert.object(Model);
+		check.assert.function(Model);
 		check.assert.string(parentFieldName);
 		if (!mongoose.Types.ObjectId.isValid(parentId)) throw new Error('Incorrect parent id');
 		check.assert.array(multilanguageFields);
@@ -47,13 +54,6 @@ export default class MultilanguageModelClass {
 		this._Model = Model;
 
 		/**
-		 * Array of documents.
-		 * @type {Array[Object]}
-		 * @private
-		 */
-		this._documents = [];
-
-		/**
 		 * Name of the parent field.
 		 * @type {String}
 		 * @private
@@ -61,11 +61,15 @@ export default class MultilanguageModelClass {
 		this._parentFieldName = parentFieldName;
 
 		/**
-		 * Id of the parent
+		 * Id of the parent.
 		 * @type {mongoose.Types.ObjectId}
 		 */
 		this._parentId = parentId;
 
+		/**
+		 * User role.
+		 * @type {String}
+		 */
 		this._userRole = userRole;
 	}
 
@@ -99,24 +103,14 @@ export default class MultilanguageModelClass {
 		try {
 			Object.keys(params).forEach((key) => {
 				if (this._checkIfField(key)) return;
-				throw new Error('');
+				throw new Error('Incorrect param');
 			});
 		} catch (err) {
 			throw err;
 		}
 	}
 
-	/**
-	 * Get parentId
-	 * @return {mongoose.Types.ObjectId} parentId
-	 */
-	get parentId() {
-		return this._parentId;
-	}
-
 	_setMultilanguageFiled(documents, language, field, value) {
-		if (!this._userRole === 'Owner') return null;
-
 		const doc = _getLanguageVersion(documents, language);
 		if (doc) {
 			const setObj = {
@@ -129,8 +123,6 @@ export default class MultilanguageModelClass {
 	}
 
 	_setNonMultilanguageFiled(documents, field, value) {
-		if (!this._userRole === 'Owner') return null;
-
 		const setObj = {
 			$set: {},
 		};
@@ -140,12 +132,12 @@ export default class MultilanguageModelClass {
 
 	/**
 	 * Create a new document
-	 * @param  {!Object} params   Object of params to be inserted into the model
-	 * @param  {String} language Language shortcut.
-	 * @return {[type]}          [description]
+	 * @param  {!Object} params   	Object of params to be inserted into the model.
+	 * @param  {String} language 	Language shortcut.
+	 * @return {Promise}          	Model.create promise
 	 */
 	async create(params, language = process.env.DEFAULT_LANGUAGE) {
-		if (!this._userRole === 'Owner') return null;
+		if (this._userRole !== 'Owner') return null;
 
 		check.assert.object(params);
 		this._checkCreateParams(params);
@@ -168,8 +160,12 @@ export default class MultilanguageModelClass {
 		}
 	}
 
+	/**
+	 * Remove all language revisions of this document
+	 * @return {Promise}	Model.remove promise
+	 */
 	removeAll() {
-		if (!this._userRole === 'Owner') return null;
+		if (this._userRole !== 'Owner') return null;
 
 		try {
 			return this._Model.remove(this._parentQuery);
@@ -179,8 +175,13 @@ export default class MultilanguageModelClass {
 		}
 	}
 
+	/**
+	 * Remove a single language version.
+	 * @param  {String} language 	Language shortcut.
+	 * @return {Promise}			Model.remove promise
+	 */
 	async removeLanguageVersion(language) {
-		if (!this._userRole === 'Owner') return null;
+		if (this._userRole !== 'Owner') return null;
 
 		check.assert.string(language);
 
@@ -197,8 +198,15 @@ export default class MultilanguageModelClass {
 		}
 	}
 
+	/**
+	 * Set a field value.
+	 * @param {String} field    Changed field.
+	 * @param {Any} value    	Value to be inserted
+	 * @param {String} language Language shortcut.
+	 * @return {Promise}		Model.update promise
+	 */
 	async setValue(field, value, language = process.env.DEFAULT_LANGUAGE) {
-		if (!this._userRole === 'Owner') return null;
+		if (this._userRole !== 'Owner') return null;
 
 		check.assert.string(field);
 		check.assert.string(language);
@@ -222,8 +230,14 @@ export default class MultilanguageModelClass {
 		}
 	}
 
+	/**
+	 * Get a field value.
+	 * @param {String} field    Selected field.
+	 * @param {String} 			language Language shortcut.
+	 * @return {Any}			Model.update promise
+	 */
 	async getValue(field, language = process.env.DEFAULT_LANGUAGE) {
-		if (!this._userRole === 'Owner') return null;
+		if (this._userRole !== 'Owner') return null;
 
 		check.assert.string(field);
 		check.assert.string(language);
@@ -235,6 +249,6 @@ export default class MultilanguageModelClass {
 			if (doc) return doc[field];
 			return null;
 		}
-		throw new Error(`Field '${field}' is not allowed`);
+		return null;
 	}
 }

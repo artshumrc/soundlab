@@ -56,7 +56,7 @@ export default class ItemSchemaClass {
 
 	async _fields() {
 		try {
-			const fields = await getAllItemSchemaFields(this._itemSchemaDoc, this._userRole);
+			const fields = await getAllItemSchemaFields(this._itemSchemaId, this._userRole);
 			if (fields && fields.length) return fields;
 			throw new Error('Fields not found');
 		} catch (err) {
