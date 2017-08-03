@@ -5,6 +5,8 @@ import ProjectLayout from './layouts/ProjectLayout';
 import Home from './home/Home';
 import CollectionsListPage from './collections/CollectionsListPage';
 import CollectionDetail from './collections/CollectionDetail';
+import ItemsListPage from './items/ItemsListPage';
+import ItemDetail from './items/ItemDetail';
 import ProjectHome from './projects/ProjectHome';
 import Page from './pages/Page/Page';
 import Dashboard from './dashboard/Dashboard';
@@ -31,6 +33,11 @@ export default (
     <Route path="/collections" component={ProjectLayout}>
       <IndexRoute component={CollectionsListPage} />
       <Route path="/collections/:slug" component={CollectionDetail} />
+		</Route>
+
+    <Route path="/items" component={ProjectLayout}>
+      <IndexRoute component={ItemsListPage} />
+      <Route path="/items/:slug" component={ItemDetail} />
 		</Route>
 
     <Route path="/dashboard" component={Dashboard}>
