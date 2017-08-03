@@ -20,3 +20,15 @@
 	-ms-flex-pack: center;
 	justify-content: center;
 }
+
+.itemsList.itemsListHorizontal {
+	width: auto;
+	max-height: 720px;
+	overflow-y: hidden;
+	overflow-x: scroll;
+
+	.itemListItem {
+		display: inline-block;
+		vertical-align: top;
+	}
+}
