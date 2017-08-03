@@ -38,10 +38,14 @@ export const pubsub = new PubSub();
  */
 export default function setupGraphql(app) {
 
-	app.use('/graphql', graphqlExpress({
+	app.use('/graphql', graphqlExpress(req => ({
 		schema: RootSchema,
+		context: {
+			tenant: req.get('host'),
+			user: req.session.passport ? req.session.passport.user : null,
+		},
 		formatError,
-	}));
+	})));
 
 	app.use('/graphiql', graphiqlExpress({
 		endpointURL: '/graphql',
