@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'underscore';
 import PrimaryImage from './PrimaryImage';
 import ThumbnailImages from './ThumbnailImages';
+import './ItemImageViewer.css';
 
 const ItemImageViewer = props => {
 
@@ -14,7 +15,9 @@ const ItemImageViewer = props => {
 			<PrimaryImage
 				src={`//iiif.orphe.us/orpheus/art/${selImage}.jpg/full/600,/0/default.jpg`}
 			/>
-			<ThumbnailImages />
+			<ThumbnailImages
+				images={_.range(0, 4)}
+			/>
 		</div>
 	);
 }

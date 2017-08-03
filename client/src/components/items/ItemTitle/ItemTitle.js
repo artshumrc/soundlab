@@ -1,8 +1,11 @@
 import React from 'react';
 
-const ItemImageViewer = props => (
-	<div />
+import './ItemTitle.css';
 
+const ItemTitle = props => (
+	<div className="itemTitleOuter">
+		<h1 className="itemTitle">Example Item Quid faciat laetas segetes</h1>
+	</div>
 );
 
-export default ItemImageViewer;
+export default ItemTitle;

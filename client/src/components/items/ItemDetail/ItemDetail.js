@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Tags from '../../tags/Tags';
 import ItemImageViewer from '../ItemImageViewer';
 import ItemTitle from '../ItemTitle';
 import ItemDescription from '../ItemDescription';
@@ -14,7 +14,32 @@ const ItemDetail = props => (
 		<ItemImageViewer />
 		<ItemTitle />
 		<ItemDescription />
-		<ItemMetaFields />
+		<Tags
+			tags={[
+			'Example Tag', 'Manuscripts', 'Psalters', 'Illuminated Manuscripts',
+			]}
+		/>
+		<ItemMetaFields
+			metaFields={[{
+				label: 'Date',
+				value: '1400',
+			}, {
+				label: 'Creator',
+				value: 'P. Vergilius Maro',
+			}, {
+				label: 'Country of origin',
+				value: 'Italy',
+			}, {
+				label: 'Type',
+				value: 'Manuscript',
+			}, {
+				label: 'Material',
+				value: 'Bound vellum with leather.',
+			}, {
+				label: 'Notes',
+				value: 'Illumination on r17, v29, r30, v30.',
+			}]}
+		/>
 		<ItemCollection />
 		<ItemProject />
 	</div>

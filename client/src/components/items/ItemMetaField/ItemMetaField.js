@@ -2,7 +2,10 @@ import React from 'react';
 import './ItemMetaField.css';
 
 const ItemMetaField = props => (
-	<div />
+	<div className="itemMetaField">
+		<label>{props.label}</label>
+		<span>{props.value}</span>
+	</div>
 );
 
 
