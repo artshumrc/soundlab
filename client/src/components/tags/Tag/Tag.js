@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
-import './CollectionTag.css';
+import './Tag.css';
 
-const CollectionTags = props => (
+const Tags = props => (
 	<Link to={`/search/?tag=${props.tag}`}>
-		<span className="collectionTag">
+		<span className="tag">
 			{props.tag}
 		</span>
 	</Link>
 );
 
 
-export default CollectionTags;
+export default Tags;

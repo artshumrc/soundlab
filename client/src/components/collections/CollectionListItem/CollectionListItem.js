@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import CollectionTags from '../CollectionTags';
+import Tags from '../../tags/Tags';
 import './CollectionListItem.css';
 
 const CollectionListItem = props => {
@@ -14,7 +14,7 @@ const CollectionListItem = props => {
 			<Link to={collectionUrl}>
 				<h3>{props.title}</h3>
 			</Link>
-			<CollectionTags tags={props.tags} />
+			<Tags tags={props.tags} />
 		</div>
 	);
 }

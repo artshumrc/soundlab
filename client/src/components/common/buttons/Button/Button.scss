@@ -12,6 +12,9 @@
 	&.orpheus-button--primary {
 		background: $primary;
 		border: 2px solid $primary;
+		&.orpheus-button--outline {
+			border: 2px solid $light;
+		}
 		&:hover {
 			background: $primary-dark;
 			border: 2px solid $primary-dark;
@@ -22,6 +25,9 @@
 	&.orpheus-button--accent {
 		background: $accent;
 		border: 2px solid $accent;
+		&.orpheus-button--outline {
+			border: 2px solid $light;
+		}
 		&:hover {
 			background: $accent-dark;
 			border: 2px solid $accent-dark;
@@ -33,6 +39,9 @@
 		background: $light;
 		border: 2px solid $light;
 		color: $dark;
+		&.orpheus-button--outline {
+			border: 2px solid $dark;
+		}
 		&:hover {
 			background: $primary;
 			border: 2px solid $primary;
@@ -44,6 +53,9 @@
 		background: rgba(255, 255, 255, 0.8);
 		border: 2px solid rgba(255, 255, 255, 0.8);
 		color: $dark;
+		&.orpheus-button--outline {
+			border: 2px solid $dark;
+		}
 		&:hover {
 			background: $primary;
 			border: 2px solid $primary;

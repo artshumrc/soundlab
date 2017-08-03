@@ -51,7 +51,7 @@ export default class ProjectHeader extends React.Component {
 					</li>
 					<li>
 						<a href="/search">
-							<i className="mdi mdi-search search-icon" />
+							<i className="mdi mdi-magnify search-icon" />
 						</a>
 					</li>
 				</ul>

@@ -16,6 +16,7 @@
 		margin-left: -10px;
 		border: 10px solid transparent;
 		outline: 2px solid transparent;
+		cursor:pointer;
 
 		&:hover {
 			outline: 2px solid $grey;
@@ -25,5 +26,6 @@
 	h3 {
 		font-family: $font-title-variant;
 		color: $text-primary;
+		cursor:pointer;
 	}
 }
