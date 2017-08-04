@@ -6,7 +6,6 @@ export default class WhyUsSection extends React.Component {
 	render() {
 		return (
 			<section id="whyUs" className="text-center">
-				<Image src="/images/why_us.png" responsive />
 				<h3>Why choose us</h3>
 				<h2>We have unique facilities for archives</h2>
 				<Grid className="featureSquares">

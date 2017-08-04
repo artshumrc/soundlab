@@ -1,0 +1,73 @@
+#footer {
+  height: 250px;
+  background-size: cover;
+  padding: 0;
+  .footerContent {
+    background-color: rgba(44, 62, 80, 0.95);
+    position: relative;
+    padding-top: 70px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: block;
+    color: #fff;
+    text-align: left;
+  }
+  .footerNav {
+    background-color: #1e212d;
+    margin-bottom: 0;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    .navbar-brand {
+      color: #6b6b6b;
+      font-size: 13px;
+    }
+  }
+  h4 {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    text-transform: none;
+    font-size: 16px;
+  }
+  p {
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: #969595;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .btn-contact {
+    background-color: transparent;
+    border: solid 1px #6b6b6b;
+    border-radius: 15px;
+    text-transform: uppercase;
+    letter-spacing: normal;
+    color: #6b6b6b;
+    margin-top: 25px;
+  }
+  .blue {
+    background-color: #31aae1;
+    border: 1px solid #31aae1;
+    color: #fff;
+  }
+  .socialIcon {
+    background-color: #fff;
+    border: 1px solid #fff;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #6b6b6b;
+    height: 35px;
+    width: 35px;
+    border-radius: 20px;
+  }
+  .socialIcon:hover {
+    background-color: #31aae1;
+    border: 1px solid #31aae1;
+    color: #fff;
+  }
+}

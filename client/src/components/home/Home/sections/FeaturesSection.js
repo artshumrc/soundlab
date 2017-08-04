@@ -7,34 +7,27 @@ export default class FeaturesSection extends React.Component {
 	render() {
 		return (
 			<section id="features">
-				<Image src="/images/features.png" responsive />
-				<h3>Popular collections</h3>
-				<h2>We have largest digital archive</h2>
 				<Grid>
 					<Row>
-						<Col lg={3}>
+						<Col lg={4}>
 							<Image src="/images/book.png" />
-							<h4>Awesome archive</h4>
+							<h4>Digital Collections</h4>
 							<hr />
-							<p>Lorem ipsum dolors item amet coti adipisicing elt, sed do eimd at.</p>
+							<p>Manage multimedia data records and publish articles related to your items</p>
 						</Col>
-						<Col lg={3}>
+						<Col lg={4}>
 							<Image src="/images/bulb.png" />
-							<h4>Real experience</h4>
+							<h4>Linked Data</h4>
 							<hr />
-							<p>Lorem ipsum dolors item amet coti adipisicing elt, sed do eimd at.</p>
+							<p>Leverage existing ontologies and create your own schemata for your item records</p>
 						</Col>
-						<Col lg={3}>
+						<Col lg={4}>
 							<Image src="/images/notes.png" />
-							<h4>Data analysis</h4>
+							<h4>Cross-platform Access</h4>
 							<hr />
-							<p>Lorem ipsum dolors item amet coti adipisicing elt, sed do eimd at.</p>
-						</Col>
-						<Col lg={3}>
-							<Image src="/images/computer.png" />
-							<h4>Digital archive</h4>
-							<hr />
-							<p>Lorem ipsum dolors item amet coti adipisicing elt, sed do eimd at.</p>
+							<p>
+								Access your data on web, mobile, and in augmented and virtual reality
+							</p>
 						</Col>
 					</Row>
 				</Grid>

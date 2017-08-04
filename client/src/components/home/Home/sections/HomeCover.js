@@ -18,6 +18,8 @@ class HomeCover extends React.Component {
 				overlay={
 					<div className="home-overlay" />
 				}
+				reactsToMouse
+				full
 			>
 				<div className="home-cover-content">
 					<h1>the archive, reimagined</h1>

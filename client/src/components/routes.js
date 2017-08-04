@@ -1,6 +1,13 @@
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
+import MainLayout from './layouts/MainLayout';
+import ProjectLayout from './layouts/ProjectLayout';
 import Home from './home/Home';
+import CollectionsListPage from './collections/CollectionsListPage';
+import CollectionDetail from './collections/CollectionDetail';
+import ItemsListPage from './items/ItemsListPage';
+import ItemDetail from './items/ItemDetail';
+import ProjectHome from './projects/ProjectHome';
 import Page from './pages/Page/Page';
 import Dashboard from './dashboard/Dashboard';
 import Articles from './dashboard/routes/Articles';
@@ -14,9 +21,25 @@ import MiradorUploader from './dashboard/routes/MiradorUploader';
 
 export default (
   <div>
+		{/* Normal home landing page */}
     <Route exact path="/" component={Home} />
+
+		{/* Project home landing page (for tenant *.orphe.us instead of main orphe.us) */}
+    <Route exact path="/project" component={ProjectHome} />
+
     <Route path="/page/new" component={Page} />
     <Route path="/page" component={Page} />
+
+    <Route path="/collections" component={ProjectLayout}>
+      <IndexRoute component={CollectionsListPage} />
+      <Route path="/collections/:slug" component={CollectionDetail} />
+		</Route>
+
+    <Route path="/items" component={ProjectLayout}>
+      <IndexRoute component={ItemsListPage} />
+      <Route path="/items/:slug" component={ItemDetail} />
+		</Route>
+
     <Route path="/dashboard" component={Dashboard}>
       <IndexRoute component={MainPanel} />
       <Route path="/dashboard/articles" component={Articles} />
@@ -27,5 +50,6 @@ export default (
       <Route path="/dashboard/form" component={ExampleForms} />
       <Route path="/dashboard/mirador" component={MiradorUploader} />
     </Route>
+
   </div>
 );
