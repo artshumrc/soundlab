@@ -1,20 +1,26 @@
 import React from 'react';
-import {Grid, Row, Col, Image} from 'react-bootstrap';
+import Button from '../../../../common/buttons/Button';
+
 import './ProjectAbout.css';
 
 export default class ProjectAbout extends React.Component {
 
 	render() {
 		return (
-			<section id="about">
-				<h3>About</h3>
-				<Grid>
-					<Row>
-						<Col lg={9}>
-							<p>Quid faciat laetas segets quo sidere terram vertere mycenas ulmisque adiungere vites conveniat</p>
-						</Col>
-					</Row>
-				</Grid>
+			<section className="projectAbout">
+				<h2>About</h2>
+				<p>
+					Quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisuque
+					adiungere vites conveniat quae curum boum qui cultus habendo sit pecori
+					apibus quanta experientia parcis hinc canere incipiam
+				</p>
+				<Button
+					href={`/articles/example-article`}
+					light
+					outline
+				>
+					Read more
+				</Button>
 			</section>
 		);
 	}

@@ -1,9 +1,10 @@
-section {
+@import '../../../../variables.scss';
+.showcaseCollections {
   .react-simple-parallax-bg {
     height: 550px;
   }
   .parallax {
-    background: url('/images/popularCollections-bg.png');
+		background: #f6f6f6;
     height: 800px;
     background-attachment: fixed;
     background-position: center;
@@ -11,7 +12,6 @@ section {
     background-size: cover;
   }
   .parallax-content {
-    background-color: rgba(32, 45, 59, 0.85);
     position: relative;
     padding-top: 70px;
     top: 0;

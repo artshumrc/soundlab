@@ -2,6 +2,7 @@ import React from 'react';
 import './ProjectPeople.css';
 import {Grid, Row, Col, Image} from 'react-bootstrap';
 import ProjectPerson from '../../../ProjectPerson';
+import './ProjectPeople.css';
 
 export default class ProjectPeople extends React.Component {
 
@@ -41,9 +42,9 @@ export default class ProjectPeople extends React.Component {
 		}];
 
 		return (
-			<section id="people">
-				<h3>People</h3>
-				<div className="peopleList">
+			<section className="peopleList">
+				<h2>People</h2>
+				<div>
 					{people.map(person => (
 						<ProjectPerson
 							key={person.name}
