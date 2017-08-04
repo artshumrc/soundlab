@@ -1,21 +1,54 @@
+import mongoose from 'mongoose';
+import check from 'check-types';
+
 // models
 import Tenant from '../models/tenant';
 
 // api
-import ModelAPIClass from './modelAPI';
+import ProjectClass from './project';
 
 
-export default class TenantClass extends ModelAPIClass {
-	constructor() {
-		const multilanguageFileds = ['name'];
-		const otherFields = [];
-		super(Tenant, multilanguageFileds, otherFields);
+export default class TenantClass {
+	
+	constructor(name, userRole) {
+		check.assert.string(name);
 
-		this._parentFiledName = 'projectId';
+		this._name = name;
+		this._userRole = userRole;
 	}
 
-	async init(parentId) {
-		this._parentId = parentId;
-		return super.init(this._parentFiledName, this._parentId);
+	async _tenantDoc() {
+		try {
+			const tenant = await Tenant.find({ name: this._name });
+			if (tenant && tenant.length) return tenant;
+			throw new Error('Tenant not found');
+		} catch (err) {
+			throw err;
+		}
+	}
+
+	async _project() {
+		try {
+			const tenant = await this._tenantDoc();
+			this._project = new ProjectClass(tenant.projectId);
+		} catch (err) {
+			throw err;
+		}
+	}
+
+	get project() {
+		return this._project();
 	}
 }
+
+export const getAllProjectTenants = async (projectId, userRole) => {
+	if (!mongoose.Types.ObjectId.isValid(projectId)) throw new Error('Incorrect projectId');
+
+	try {
+		const foundTenants = await Tenant.find({ projectId });
+		return foundTenants.map(tenant => new Tenant(tenant.name, userRole));
+	} catch (err) {
+		console.error(err);
+		throw err;
+	}
+};

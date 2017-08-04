@@ -1,356 +1,123 @@
-import check from 'check-type';
+import mongoose from 'mongoose';
 
 // models
 import Project from '../models/project';
-import User from '../models/user';
-import Collection from '../models/collection';
 
 // api
-import ProjectDetail from './projectDetail';
-import Tenant from './tenant';
+import ProjectDetailClass from './projectDetail';
+import { getAllProjectTenants } from './tenant';
+import { getAllProjectCollections } from './collection';
 
 
-const _getUser = async (_id) => {
-	try {
-		const user = User.findById(_id);
-		if (user) return user;
-		throw new Error(`user with id ${_id} not found`);
-	} catch (err) {
-		throw err;
-	}
-};
-
-const _getUserByName = async (username) => {
-	try {
-		const user = User.find({ username });
-		if (user) return user;
-		throw new Error(`user with username ${username} not found`);
-	} catch (err) {
-		throw err;
-	}
-};
-
-
-/**
- * API project class. This is the main class
- * to be used to perform operations on the projects and related elements.
- */
 export default class ProjectClass {
 
-	/**
-	 * ProjectClass constructor - initiate members
-	 */
-	constructor() {
-		/**
-		 * Project object from database
-		 * @type {Object}
-		 * @private
-		 */
-		this.project = null;
-		
-		/**
-		 * User who created the instance of the Project - owner of the project.
-		 * @type {Object}
-		 * @private
-		 */
-		this.owner = null;
+	constructor(projectId, userId) {
+		if (!mongoose.Types.ObjectId.isValid(projectId)) throw new Error('Incorrect projectId');
+		if (!mongoose.Types.ObjectId.isValid(userId)) throw new Error('Incorrect userId');
 
-		/**
-		 * Array of users having any access level to this project.
-		 * @type {Array}
-		 * @private
-		 */
-		this.users = [];
+		this._projectId = projectId;
+		this._userId = userId;
 
-		/**
-		 * Array of tenants pointing at this project.
-		 * @type {Array}
-		 * @private
-		 */
-		this.tenants = [];
-
-		/**
-		 * Array of project details describing this project.
-		 * @type {Array}
-		 * @private
-		 */
-		this.projectDetails = [];
-
-		/**
-		 * [Array of collections related to this project.
-		 * @type {Array}
-		 * @private
-		 */
-		this.collections = [];
+		this._projectDetail = new ProjectDetailClass(projectId, this._userId);
 	}
 
-	async _createProject(languages) {
+	async _projectDoc() {
 		try {
-			const projectParams = {
-				users: [{
-					userId: this.owner._id,
-					role: 'Owner',
-				}],
-				languages,
-			};
-
-			this.project = await new Project(projectParams).save();
-			return true;
-
+			const project = await Project.findOne({ _id: this._projectId });
+			if (project && project.length) return project;
+			throw new Error('Project not found');
 		} catch (err) {
 			throw err;
 		}
 	}
 
-	async _createProjectDetail(title, language) {
+	async _tenants() {
+		const userRole = await this.userRole;
+		if (!userRole === 'Owner') return null;
 
 		try {
-			this.projectDetails.push(await new ProjectDetail().create(this.project._id, title));
-			return true;
-
+			const tenants = await getAllProjectTenants(this._projectId, userRole);
+			if (tenants && tenants.length) return tenants;
+			throw new Error('Tenants not found');
 		} catch (err) {
 			throw err;
 		}
 	}
 
-	async _setProject(_id) {
-		check.assert.string(_id);
+	async _tenant(tenantId) {
 		try {
-			this.project = await Project.findById(_id);
-			return true;
-		} catch (err) {
-			throw err;
-		}
-	}
-
-	_checkProject() {
-		if (this.project) return true;
-		throw new Error('Project not set.');
-	}
-
-	_getUserRole(userId) {
-		try {
-			_checkProject();
-			const projectUser = this.project.users.find(user => user.userId === userId);
-			if (projectUser) return projectUser.role;
-			return null;
-		} catch (err) {
-			throw err;
-		}
-	}
-
-	_userIsOwner(userId) {
-		try {
-			const role = this._getUserRole(userId);
-			if (role === 'Owner') return true;
-			return false;
-		} catch (err) {
-			throw err;
-		}
-	}
-
-	async _setOwner(username) {
-		try {
-			_checkProject();
-			const user = await _getUserByName(username);
-
-			if (this._userIsOwner(user._id)) this.owner = user;
-			return true;
-		} catch (err) {
-			throw err;
-		}
-	}
-
-	async _setUsers() {
-		try {
-			_checkProject();
-			this.users = await this.project.users.map(async projektUser => ({
-				user: await User.findById(projektUser.user_id),
-				role: projektUser.role,
-			}));
-			return true;
-		} catch (err) {
-			throw err;
-		}
-	}
-
-	async _setTenant() {
-		try {
-			_checkProject();
-			this.tenants = await new Tenant().init(this.project._id);
-			return true;
-		} catch (err) {
-			throw err;
-		}
-	}
-
-	async _setProjectDetails() {
-		try {
-			_checkProject();
-			this.projectDetails = await new ProjectDetail().init(this.project._id);
-			return true;
-		} catch (err) {
-			throw err;
-		}
-	}
-
-	async _setCollections() {
-		try {
-			_checkProject();
-			this.collections = await Collection.find({ projectId: this.project._id });
-			return true;
-		} catch (err) {
-			throw err;
-		}
-	}
-
-
-	/**
-	 * Initiate the Project object
-	 * @param  {!String} username  	Owner of the project
-	 * @param  {!String} projectId 	Project id
-	 * @return {ProjectClass}     	Instance of the project class (this)
-	 */
-	async init(username, projectId) {
-
-		check.assert.string(username);
-		if (!username) throw new Error('Username not provided');
-		check.assert.string(projectId);
-		if (!projectId) throw new Error('Project id not provided');
-
-		try {
-			await this._setProject(projectId);
-			await this._setOwner(username);
-			await this._setUsers();
-			await this._setTenant();
-			await this._setProjectDetails();
-			await this._setCollections();
-
-			return this;
+			const tenants = await this._tenants();
+			return tenants.find(tenant => tenant.id === tenantId);
 		} catch (err) {
 			console.error(err);
 			throw err;
 		}
 	}
 
-	/**
-	 * Create new project
-	 * @param  {!String} title 		Title of the new project
-	 * @return {ProjectClass}       Instance of the project class (this)
-	 */
-	async create(title) {
+	get tenants() {
+		return this._tenants();
+	}
 
-		// check if method can run
-		check.assert.string(title);
-		if (this.project) throw new Error('Project already set');
-		if (this.projectDetails.length) throw new Error('Project detail already set');
-		if (!this.owner) throw new Error('Owner not set - run init method');
+	getTenant(tenantId) {
+		if (!mongoose.Types.ObjectId.isValid(tenantId)) throw new Error('Incorrect tenantId');
+		return this._tenant(tenantId);
+	}
 
+	async _collections() {
 		try {
-			this._createProject();
-
-			try {
-				this._createProjectDetail(title);
-			} catch (err) {
-				// if project detail insert fails - remove created project
-				await new Project().remove({ _id: this.project._id });
-				console.error(err);
-				throw err;
-			}
-
-			return this;
-
+			const collections = await getAllProjectCollections(this._projectId, await this.userRole);
+			if (collections && collections.length) return collections;
+			throw new Error('Collections not found');
 		} catch (err) {
 			throw err;
 		}
 	}
 
-	async remove() {
-		// TODO
-	}
-
-	/**
-	 * Add a user to the project
-	 * @param {!String} userId 				Id of the user
-	 * @param {String} [role=Owner] role   	Role of the user
-	 * @return {ProjectClass}       Instance of the project class (this)
-	 */
-	async addUser(userId, role = 'Owner') {
+	async _collection(collectionId) {
 		try {
-			_checkProject();
-			const user = await _getUser(userId);
-
-			await Project.update({ _id: this.project._id }, { $push: { users: { userId, role} } });
-
-			// update this
-			await _setProject(this.project._id);
-			await _setUsers();
-			return true;
-
+			const collections = await this._collections();
+			return collections.find(collection => collection.id === collectionId);
 		} catch (err) {
 			console.error(err);
 			throw err;
 		}
 	}
 
-	async removeUser(userId) {
-		// TODO
+	get collections() {
+		return this._collections();
 	}
 
-	/**
-	 * Change a users role
-	 * @param {!String} userId  		Id of the user
-	 * @param {!String} newRole 	The new role
-	 * @return {ProjectClass}       Instance of the project class (this)
-	 */
-	async setUserRole(userId, newRole) {
+	getCollection(collectionId) {
+		if (!mongoose.Types.ObjectId.isValid(collectionId)) throw new Error('Incorrect collectionId');
+		return this._collection(collectionId);
+	}
+
+	async userRole() {
+		if (!this._userId) return null;
+
 		try {
-			_checkProject();
-
-			const projectUser = this.users.find(projUser => projectUser.user._id === userId);
-
-			if (projectUser) {
-				await Project.update({
-					_id: this.project._id,
-					'users.userId': userId,
-				}, {
-					$set: {
-						'users.$.role': newRole,
-					}
-				});
-
-				// update this
-				await _setProject(this.project._id);
-				await _setUsers();
-				return true;
-			}
-			throw new Error(`User with id ${userId} is not connected with this project`);
-
+			const project = await this._projectDoc();
+			const projectUser = project.users.find(user => user.userId === this._userId);
+			return projectUser.role;
 		} catch (err) {
 			console.error(err);
 			throw err;
 		}
 	}
 
-	async addTenant(name) { /* TODO */ }
-
-	async removeTenant(tenantId) { /* TODO */ }
-
-	/**
-	 * [getProjectDetail description]
-	 * @param  {String} [role=DEFAULT_LANGUAGE] language 	Language of the project detail
-	 * @return {ProjectDetail}          					ProjectDetail object instance
-	 */
-	getProjectDetail(language = process.env.DEFAULT_LANGUAGE) {
-		if (this.projectDetails.length) return this.projectDetails.find(projDetail => projDetail.language === language);
-		throw new Error('Project Details not set');
-	}
-
-	/**
-	 * Get the mongodb raw document of the project
-	 * @return {Object} 	Mongodb project raw document
-	 */
-	get project() {
-		return this.project;
+	get id() {
+		return this._projectId;
 	}
 }
+
+export const getAllUserProjects = async (userId) => {
+	if (!mongoose.Types.ObjectId.isValid(userId)) throw new Error('Incorrect userId');
+
+	try {
+		const foundProjects = await Project.find({ users: userId });
+		return foundProjects.map(async project => new Project(project._id));
+	} catch (err) {
+		console.error(err);
+		throw err;
+	}
+};

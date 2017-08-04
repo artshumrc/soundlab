@@ -1,31 +1,15 @@
-import check from 'check-types';
-import mongoose from 'mongoose';
-
 // models
 import CollectionDetail from '../models/collectionDetail';
 
 // api
-import ModelAPIClass from './modelAPI';
+import MultilanguageModelClass from './multilanguageModel';
 
 
-/**
- * 
- */
-export default class CollectionDetailClass extends ModelAPIClass {
+export default class CollectionDetailClass extends MultilanguageModelClass {
 	
-	/**
-	 * ProjectDetailClass constructor: initiates  members.
-	 */
-	constructor() {
+	constructor(parentId, userRole) {
 		const multilanguageFileds = ['title', 'description'];
 		const otherFields = [];
-		super(CollectionDetail, multilanguageFileds, otherFields);
-
-		this._parentFiledName = 'projectId';
-		this._parentId = parentId;
-	}
-
-	async init() {
-		return super.init(this._parentFiledName, this._parentId);
+		super(CollectionDetail, 'collectionId', parentId, multilanguageFileds, otherFields, userRole);
 	}
 }

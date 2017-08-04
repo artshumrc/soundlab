@@ -1,6 +1,7 @@
 import { GraphQLObjectType } from 'graphql';
 
 import projectMutationFileds from './projects';
+import miradorMutationFileds from './miradors';
 
 /**
  * Root mutations
@@ -11,6 +12,7 @@ const RootMutations = new GraphQLObjectType({
 	description: 'Root mutation object type',
 	fields: {
 		...projectMutationFileds,
+		...miradorMutationFileds,
 	},
 });
 

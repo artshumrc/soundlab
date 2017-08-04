@@ -13,6 +13,7 @@ import RootSubscription from './graphql/subscriptions/rootSubscription';
 
 // api
 import Users from './api/users';
+import Orpheus from './api';
 
 
 /**
@@ -31,6 +32,11 @@ maskErrors(RootSchema);
 // TODO should be moved to something more scalable horizontally like Redis, MQTT
 export const pubsub = new PubSub();
 
+const getGraphglContext = (req) => {
+	let user = null;
+	if (req.session.passport && req.session.passport.user) user = req.session.passport.user;
+	return new Orpheus(req.get('host'), user);
+};
 
 /**
  * Set up the graphQL HTTP endpoint
@@ -38,10 +44,11 @@ export const pubsub = new PubSub();
  */
 export default function setupGraphql(app) {
 
-	app.use('/graphql', graphqlExpress({
+	app.use('/graphql', graphqlExpress(req => ({
 		schema: RootSchema,
+		context: getGraphglContext(req),
 		formatError,
-	}));
+	})));
 
 	app.use('/graphiql', graphiqlExpress({
 		endpointURL: '/graphql',

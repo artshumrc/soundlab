@@ -3,7 +3,9 @@ import mongoose from 'mongoose';
 // plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
-import language from './plugins/language';
+
+// api
+import { getAllLanguages } from '../api/languages';
 
 const Schema = mongoose.Schema;
 
@@ -19,15 +21,15 @@ const ItemSchemaSchema = new Schema({
 		trim: true,
 		index: true
 	},
+	languages: [{
+		type: String,
+		required: true,
+		default: process.env.DEFAULT_LANGUAGE,
+		enum: getAllLanguages(),
+	}],
 	private: {
 		type: Boolean,
 		default: false,
-	},
-	createdBy: {
-		type: Schema.Types.ObjectId,
-		ref: 'User',
-		required: true,
-		index: true
 	},
 });
 
