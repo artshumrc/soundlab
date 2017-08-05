@@ -5,6 +5,7 @@ import './ThumbnailImage.css';
 const ThumbnailImage = props => (
 	<img
 		className="thumbnailImage"
+		alt={props.alt}
 		src={props.src}
 	/>
 );

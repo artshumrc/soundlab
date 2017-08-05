@@ -20,32 +20,32 @@ export default class ProjectHeader extends React.Component {
 				</div>
 				<ul role="nav" className="nav">
 					<li>
-						<a href="#featured" onClick={this.scrollToItem} >
+						<a href="#featured" onClick={scrollToElement} >
 							Featured
 						</a>
 					</li>
 					<li>
-						<a href="/collections" onClick={this.scrollToItem} >
+						<a href="/collections" >
 							Collections
 						</a>
 					</li>
 					<li>
-						<a href="/articles" onClick={this.scrollToItem} >
+						<a href="/articles" >
 							Articles
 						</a>
 					</li>
 					<li>
-						<a href="#about" onClick={this.scrollToItem} >
+						<a href="#about" onClick={scrollToElement} >
 							About
 						</a>
 					</li>
 					<li>
-						<a href="#visit" onClick={this.scrollToItem} >
+						<a href="#visit" onClick={scrollToElement} >
 							Visit
 						</a>
 					</li>
 					<li>
-						<a onClick={this.scrollToItem} className="login-button">
+						<a href="/" className="login-button">
 							Sign Up / In
 						</a>
 					</li>

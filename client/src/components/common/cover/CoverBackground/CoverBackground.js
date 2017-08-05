@@ -1,11 +1,5 @@
 import React from 'react';
 
-const getBackgroundPosition = () => {
-
-
-}
-
-
 class CoverBackground extends React.Component {
 
 	constructor(props) {

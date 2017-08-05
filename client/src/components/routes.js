@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
-import MainLayout from './layouts/MainLayout';
+// import MainLayout from './layouts/MainLayout';
 import ProjectLayout from './layouts/ProjectLayout';
 import Home from './home/Home';
 import CollectionsListPage from './collections/CollectionsListPage';

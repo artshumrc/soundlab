@@ -19,22 +19,22 @@ export default class Header extends React.Component {
 				</div>
 				<ul role="nav" className="nav">
 					<li>
-						<a href="#services" onClick={this.scrollToItem} >
+						<a href="#services" onClick={scrollToElement} >
 							Services
 						</a>
 					</li>
 					<li>
-						<a href="/community" onClick={this.scrollToItem} >
+						<a href="/community" >
 							Community
 						</a>
 					</li>
 					<li>
-						<a href="#about" onClick={this.scrollToItem} >
+						<a href="#about" onClick={scrollToElement} >
 							About
 						</a>
 					</li>
 					<li>
-						<a onClick={this.scrollToItem} className="login-button">
+						<a href="/" className="login-button">
 							Sign Up / In
 						</a>
 					</li>

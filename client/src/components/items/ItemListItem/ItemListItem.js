@@ -9,7 +9,7 @@ const ItemListItem = props => {
 	return (
 		<div className="itemListItem">
 			<Link to={itemUrl}>
-				<img src={props.imageUrl} />
+				<img src={props.imageUrl} alt={props.title} />
 			</Link>
 			<Tags tags={props.tags} />
 			<Link to={itemUrl}>

@@ -11,8 +11,8 @@ import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-import { loginJWT } from './lib/auth';
-import { wsClient } from './middleware/apolloClient'
+import { loginJWT } from './lib/auth'; // eslint-disable-line
+import { wsClient } from './middleware/apolloClient';  // eslint-disable-line
 
 // const testAuthToke = () => {
 // 	setTimeout(() => loginJWT('test01@test.com', 'XqcyR**UrmQ&MrQ*KH7w'), 50000);

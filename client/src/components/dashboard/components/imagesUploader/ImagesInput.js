@@ -64,7 +64,7 @@ export default class ImagesInput extends React.Component {
 			uploadRequestHeaders: {'x-amz-acl': 'public-read'},
 			contentDisposition: 'auto',
 			scrubFilename: (filename) => {
-				const secureFilename = filename.replace(/[^\w\d_\-\.]+/ig, '');
+				const secureFilename = filename.replace(/[^\w\d_\-\.]+/ig, ''); // eslint-disable-line
 				return `${this._id}-${secureFilename}`;
 			},
 			signingUrlMethod: 'GET',

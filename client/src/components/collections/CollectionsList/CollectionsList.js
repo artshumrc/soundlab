@@ -1,5 +1,4 @@
 import React from 'react';
-import {Grid, Row, Col, Image} from 'react-bootstrap';
 
 import CollectionListItem from '../CollectionListItem';
 
