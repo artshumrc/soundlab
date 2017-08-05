@@ -1,7 +1,7 @@
 import React from 'react';
 import {Field, FieldArray} from 'redux-form';
 import AlertContainer from 'react-alert';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 import Form from '../components/Form';
 import TextInput from '../components/TextInput';
 import {createManifest} from '../../../lib/createManifest';
@@ -43,7 +43,7 @@ export default class Test extends React.Component {
 
 	handleSubmit(values) {
 		const manifest = values;
-		manifest._id = mongoose.Types.ObjectId();
+		// manifest._id = mongoose.Types.ObjectId();
 		createManifest(manifest);
 	}
 
