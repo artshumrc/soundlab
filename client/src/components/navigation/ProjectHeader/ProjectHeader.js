@@ -2,12 +2,9 @@ import React from 'react';
 import Headroom from 'react-headroom';
 import '../../navigation/Header/Header.css';
 import './ProjectHeader.css';
-import { scrollToElement } from '../../../lib/util';
+import scrollToElement from '../../../lib/scrollToElement';
 
 export default class ProjectHeader extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
 	render() {
 		return (
@@ -18,7 +15,7 @@ export default class ProjectHeader extends React.Component {
 						Project Name
 					</h2>
 				</div>
-				<ul role="nav" className="nav">
+				<ul className="nav">
 					<li>
 						<a href="#featured" onClick={scrollToElement} >
 							Featured
