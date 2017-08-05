@@ -19,11 +19,15 @@ node-build:
     - cd client/
     - yarn install
     - npm run build
+    - cd ..
+  artifacts:
+    paths:
+      - client/build
 
 docker-build:
   stage: package
   script:
-    - docker build -t us.gcr.io/archimedes-01201/orpheus-app:test
+    - docker build -t us.gcr.io/archimedes-01201/orpheus-app:test .
 
 k8s-deploy:
   image: google/cloud-sdk
