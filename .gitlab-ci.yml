@@ -17,6 +17,7 @@ node-build:
     - yarn install
   script:
     - cd client/
+    - yarn install
     - npm run build
 
 docker-build:
