@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-
+import assert from 'assert';
 // session store
 import createMongoDBStore from 'connect-mongodb-session';
 
@@ -25,7 +25,7 @@ const closeDB = () => {
  * @return {function} mongoose connection instance
  */
 const dbSetup = () => {
-	
+
 	const url = getURL();
 
 	const options = {
@@ -50,7 +50,7 @@ const storeSetup = (session) => {
 		collection: 'session',
 	});
 
-	// Catch errors 
+	// Catch errors
 	store.on('error', (error) => {
 		assert.ifError(error);
 		assert.ok(false);
