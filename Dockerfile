@@ -1,8 +1,10 @@
-FROM node:6.10.2
+FROM node:8.2.1
 
 RUN mkdir /app
 COPY . /app/.
-RUN cd /app \
-	&& yarn install
+WORKDIR /app
+RUN rm -rf node_modules
+RUN rm -rf client/node_modules
+RUN yarn install
 
-CMD ["nodemon", "server", "--exec", "babel-node"]
+CMD ["yarn", "start"]
