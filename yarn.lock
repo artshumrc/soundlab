@@ -3293,10 +3293,6 @@ minimist@^1.1.1, minimist@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
-mockingoose@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/mockingoose/-/mockingoose-2.2.5.tgz#088e8ec9018d064a91f22b53a3a96e33f2437876"
-
 moment@2.x.x:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"

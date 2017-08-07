@@ -23,7 +23,19 @@ const TenantSchema = new Schema({
 		ref: 'Project',
 		index: true,
 		required: true,
-	}
+	},
+	homePage: {
+		type: Boolean,
+		default: false,
+	},
+	adminPage: {
+		type: Boolean,
+		default: false,
+	},
+	projectPage: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 

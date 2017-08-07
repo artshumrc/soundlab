@@ -1,13 +1,13 @@
 import { GraphQLString, GraphQLNonNull } from 'graphql';
 
 // types
-import miradorType from '../types/models/mirador';
+import miradorType from '../../types/models/mirador';
 
 // bll
-import Miradors from '../bll/miradors';
+import Miradors from '../../bll/miradors';
 
 // errors
-import { AuthenticationError } from '../errors';
+import { AuthenticationError } from '../../errors';
 
 const miradorMutationFileds = {
 
