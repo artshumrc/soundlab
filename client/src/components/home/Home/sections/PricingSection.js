@@ -1,6 +1,6 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
-import {Grid, Row, Col, Image, Panel, Button} from 'react-bootstrap';
+// import FontAwesome from 'react-fontawesome';
+import {Grid, Row, Col, Panel, Button} from 'react-bootstrap';
 import './PricingSection.css';
 
 export default class PricingSection extends React.Component {

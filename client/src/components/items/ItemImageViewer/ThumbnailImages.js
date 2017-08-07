@@ -13,6 +13,7 @@ const ThumbnailImages = props => (
 			return (
 				<ThumbnailImage
 					key={`${selImage}-${i}`}
+					alt={selImage}
 					src={`//iiif.orphe.us/orpheus/art/${selImage}.jpg/square/90,/0/default.jpg`}
 				/>
 			);

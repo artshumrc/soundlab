@@ -1,4 +1,3 @@
-import scrollToElement from 'scroll-to-element';
 
 export default {
 	timeSince: (date) => {
@@ -49,8 +48,4 @@ export default {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
 		return capitalized;
 	},
-  scrollToElement(event) {
-    event.preventDefault();
-    scrollToElement(event.target.hash, {offset: -130});
-  },
 };

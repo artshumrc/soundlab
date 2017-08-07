@@ -1,12 +1,9 @@
 import React from 'react';
 import Headroom from 'react-headroom';
 import './Header.css';
-import { scrollToElement } from '../../../lib/util';
+import scrollToElement from '../../../lib/scrollToElement';
 
 export default class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
 	render() {
 		return (
@@ -17,24 +14,24 @@ export default class Header extends React.Component {
 						orphe.us
 					</h2>
 				</div>
-				<ul role="nav" className="nav">
+				<ul className="nav">
 					<li>
-						<a href="#services" onClick={this.scrollToItem} >
+						<a href="#services" onClick={scrollToElement} >
 							Services
 						</a>
 					</li>
 					<li>
-						<a href="/community" onClick={this.scrollToItem} >
+						<a href="/community" >
 							Community
 						</a>
 					</li>
 					<li>
-						<a href="#about" onClick={this.scrollToItem} >
+						<a href="#about" onClick={scrollToElement} >
 							About
 						</a>
 					</li>
 					<li>
-						<a onClick={this.scrollToItem} className="login-button">
+						<a href="/" className="login-button">
 							Sign Up / In
 						</a>
 					</li>

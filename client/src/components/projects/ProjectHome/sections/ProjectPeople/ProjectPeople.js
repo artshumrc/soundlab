@@ -1,6 +1,4 @@
 import React from 'react';
-import './ProjectPeople.css';
-import {Grid, Row, Col, Image} from 'react-bootstrap';
 import ProjectPerson from '../../../ProjectPerson';
 import './ProjectPeople.css';
 

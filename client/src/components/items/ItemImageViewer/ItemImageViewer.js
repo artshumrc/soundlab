@@ -13,6 +13,7 @@ const ItemImageViewer = props => {
 	return (
 		<div className="itemImageViewer">
 			<PrimaryImage
+				alt={props.title}
 				src={`//iiif.orphe.us/orpheus/art/${selImage}.jpg/full/600,/0/default.jpg`}
 			/>
 			<ThumbnailImages

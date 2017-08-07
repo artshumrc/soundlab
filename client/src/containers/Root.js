@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {ApolloProvider} from 'react-apollo';
 import {Router} from 'react-router';
 import Routes from '../components/routes';
-import DevTools from './DevTools';
 import client from '../middleware/apolloClient';
 
 const Root = ({store, history}) => {

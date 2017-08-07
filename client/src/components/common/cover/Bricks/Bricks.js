@@ -53,6 +53,7 @@ const makeDefaultBricks = () => {
 
 	return images.map((image, i) => (
 		<img
+			alt={image}
 			key={`${image}-${i}`}
 			className="brick"
 			src={`//iiif.orphe.us/orpheus/art/${image}.jpg/full/90,/0/default.jpg`}

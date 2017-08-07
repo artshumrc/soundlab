@@ -12,7 +12,9 @@ import './ItemDetail.css';
 const ItemDetail = props => (
 	<div className="itemDetail">
 		<div className='itemDetailColumn'>
-			<ItemImageViewer />
+			<ItemImageViewer
+				title="Example Item"
+			/>
 			<ItemTitle />
 			<ItemDescription />
 			<Tags

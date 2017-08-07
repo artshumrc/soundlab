@@ -105,7 +105,7 @@ you new shade drift hopes small.
 
                           <FontAwesome name="expand" />
                           <div className="pull-right">
-                            <a href="#">send</a>
+                            <a href="/dashboard">send</a>
                           </div>
                         </div>
                       </div>

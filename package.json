@@ -67,6 +67,7 @@
   "scripts": {
     "client": "babel-node scripts/start-client.js",
     "lint": "eslint .",
+    "build-client": "node scripts/run-client-build.js",
     "test-client": "node scripts/run-client-tests.js",
     "test-client-ci": "node scripts/run-client-tests-ci.js",
     "test-server": "jest --config ./jest.config.js ./server",
