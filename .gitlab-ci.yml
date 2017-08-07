@@ -18,7 +18,7 @@ k8s-deploy:
   image: google/cloud-sdk
   stage: deploy
   script:
-      - apt install docker
+      - apt-get install docker.io
       - echo "$GOOGLE_KEY" > key.json # Google Cloud service account key
       - gcloud auth activate-service-account --key-file key.json
       - gcloud config set compute/zone us-east1-b
