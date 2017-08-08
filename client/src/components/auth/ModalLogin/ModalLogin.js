@@ -1,7 +1,8 @@
 import React from 'react';
-
+import Modal from '../../common/modal/Modal';
 import OAuthButtons from '../OAuthButtons';
 import PWDLoginForm from '../PWDLoginForm';
+import './ModalLogin.css';
 
 
 const ESCAPE_KEY = 27;
@@ -62,60 +63,46 @@ class ModalLogin extends React.Component {
 	}
 
 	render() {
-
-		const { lowered, closeModal } = this.props;
 		const { errorSocial, errorMsg } = this.state;
 
 		return (
-			<div
-				className={`orpheus-modal-login
-				orpheus-modal orpheus-login-signup ${((lowered) ? ' lowered' : '')}`}
-			>
-				<div
-					className="close-modal paper-shadow"
-					onClick={closeModal}
-				>
-					<i className="mdi mdi-close" />
-				</div>
-				<div className="modal-inner">
-					<div className="at-form">
+			<Modal>
+				<div className="at-form">
+					<div className="at-title">
+						<h3>Sign In</h3>
+					</div>
 
-						<div className="at-title">
-							<h3>Sign In</h3>
-						</div>
+					<span className="error-text">
+						{errorSocial}
+					</span>
 
-						<span className="error-text">
-							{errorSocial}
-						</span>
+					<OAuthButtons
+						handleFacebook={this.handleLoginFacebook}
+						handleGoogle={this.handleLoginGoogle}
+						handleTwitter={this.handleLoginTwitter}
+					/>
 
-						<OAuthButtons
-							handleFacebook={this.handleLoginFacebook}
-							handleGoogle={this.handleLoginGoogle}
-							handleTwitter={this.handleLoginTwitter}
-						/>
+					<div className="at-sep">
+						<strong>OR</strong>
+					</div>
 
-						<div className="at-sep">
-							<strong>OR</strong>
-						</div>
+					<PWDLoginForm
+						login={this.handleLogin}
+						errorMsg={errorMsg}
+					/>
 
-						<PWDLoginForm
-							login={this.handleLogin}
-							errorMsg={errorMsg}
-						/>
-
-						<div className="at-signup-link">
-							<p>
-								Don't have an account? <a href="/sign-up" id="at-signUp" className="at-link at-signup">Register.</a>
-							</p>
-						</div>
-						<div className="at-resend-verification-email-link at-wrap">
-							<p>
-								Verification email lost? <a href="/send-again" id="at-resend-verification-email" className="at-link at-resend-verification-email">Send again.</a>
-							</p>
-						</div>
+					<div className="at-signup-link">
+						<p>
+							Don't have an account? <a href="/sign-up" id="at-signUp" className="at-link at-signup">Register.</a>
+						</p>
+					</div>
+					<div className="at-resend-verification-email-link at-wrap">
+						<p>
+							Verification email lost? <a href="/send-again" id="at-resend-verification-email" className="at-link at-resend-verification-email">Send again.</a>
+						</p>
 					</div>
 				</div>
-			</div>
+			</Modal>
 		);
 	}
 }

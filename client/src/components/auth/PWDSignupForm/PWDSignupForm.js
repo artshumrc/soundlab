@@ -1,14 +1,11 @@
 import React from 'react';
+import '../PWDLoginForm/PWDLoginForm.css';
 
 const PWDSignupForm = ({ signup, errorMsg }) => {
 
-	const handleSignup = (e) => {
-		e.preventDefault();
-		const email = $('.sign-in-input--email').val();
-		const password = $('.sign-in-input--password').val();
-		const passwordRepeat = $('.sign-in-input--password-repeat').val();
+	const handleSignup = () => {
 
-		signup(email, password, passwordRepeat);
+		// signup(email, password, passwordRepeat);
 	};
 
 	return (
