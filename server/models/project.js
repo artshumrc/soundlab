@@ -35,6 +35,11 @@ const ProjectSchema = new Schema({
 // add timestamps (createdAt, updatedAt)
 ProjectSchema.plugin(timestamp);
 
+// Statics
+ProjectSchema.statics.findByUserId = function findByUserId(userId, cb) {
+	return this.find({ users: { $elemMatch: { userId } } }, cb);
+};
+
 /**
  * Project mongoose model
  * @type {Object}

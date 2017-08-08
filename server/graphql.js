@@ -33,9 +33,13 @@ maskErrors(RootSchema);
 export const pubsub = new PubSub();
 
 const getGraphglContext = (req) => {
-	let user = null;
-	if (req.session.passport && req.session.passport.user) user = req.session.passport.user;
-	return new Orpheus(req.get('host'), user);
+	let username = null;
+	if (req.session.passport && req.session.passport.user) username = req.session.passport.user;
+	// return new Orpheus(req.get('host'), username);
+	return {
+		username,
+		tenant: req.get('host'),
+	};
 };
 
 /**

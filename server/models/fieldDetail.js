@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 // plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
-import language from './plugins/language';
+import languageplugin from './plugins/language';
 
 const Schema = mongoose.Schema;
 
@@ -34,7 +34,17 @@ FieldDetailSchema.plugin(timestamp);
 FieldDetailSchema.plugin(URLSlugs('label'));
 
 // add language (language)
-FieldDetailSchema.plugin(language);
+FieldDetailSchema.plugin(languageplugin);
+
+// Statics
+FieldDetailSchema.statics.findByFieldId = function findByFieldId(fieldId, cb) {
+	return this.find({ fieldId }, cb);
+};
+
+// helpers
+FieldDetailSchema.query.byLanguage = function byLanguage(language) {
+	return this.find({ language });
+};
 
 /**
  * FiledDetail mongoose model

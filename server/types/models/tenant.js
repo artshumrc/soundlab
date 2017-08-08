@@ -1,15 +1,19 @@
+import { GraphQLObjectType, GraphQLInt, GraphQLString } from 'graphql';
+
 import createType from 'mongoose-schema-to-graphql';
 
+// model
 import Tenant from '../../models/tenant';
 
 const config = {
-	name: 'tenantType',
-	description: 'Tenant base schema',
+	name: 'TenantType',
+	description: 'Tenant base type',
 	class: 'GraphQLObjectType',
 	schema: Tenant.schema,
-	exclude: ['_id'],
+	exclude: ['_id']
 };
 
-const tenantType = createType(config);
+const TenantType = createType(config);
 
-export default tenantType;
+
+export default TenantType;

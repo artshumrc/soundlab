@@ -27,6 +27,11 @@ const CollectionSchema = new Schema({
 // add timestamps (createdAt, updatedAt)
 CollectionSchema.plugin(timestamp);
 
+// Statics
+CollectionSchema.statics.findByProjectId = function findByProjectId(projectId, cb) {
+	return this.find({ projectId }, cb);
+};
+
 /**
  * Collection mongoose model
  * @type {Object}

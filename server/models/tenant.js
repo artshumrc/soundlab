@@ -45,6 +45,16 @@ TenantSchema.plugin(timestamp);
 // add slug (slug)
 TenantSchema.plugin(URLSlugs('name'));
 
+// Statics
+TenantSchema.statics.findByHost = function findByHost(host, cb) {
+	const name = host; // do any required formating
+	return this.findOne({ name }, cb);
+};
+TenantSchema.statics.findByProjectId = function findByHost(projectId, cb) {
+	return this.find({ projectId }, cb);
+};
+
+
 /**
  * Tenant mongoose model
  * @type {Object}

@@ -1,29 +1,72 @@
-import { GraphQLList } from 'graphql';
+import { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLString } from 'graphql';
 import createType from 'mongoose-schema-to-graphql';
 
 // models
 import Project from '../../models/project';
+import Collection from '../../models/collection';
+import ProjectDetail from '../../models/projectDetail';
 
 // types
-import tenantType from './tenant';
-import userType from './user';
+import TenantType from './tenant';
+import CollectionType from './collection';
+import ProjectDetailType from './projectDetail';
+import UserType from './user';
 
 const config = {
-	name: 'projectType',
-	description: 'Project base schema',
+	name: 'ProjectType',
+	description: 'Project base type',
 	class: 'GraphQLObjectType',
 	schema: Project.schema,
-	exclude: ['_id'],
+	exclude: ['_id', 'users'],
 	extend: {
-		userId: {
-			type: userType,
+		collections: {
+			type: new GraphQLList(CollectionType),
+			description: 'Get all project collection',
+			resolver(project, args, context) {
+				return Collection.findByProjectId(project.projectId);
+			}
 		},
-		tenantIds: {
-			type: new GraphQLList(tenantType),
+		tenants: {
+			type: TenantType,
+			description: 'Get all project tenants',
+			resolver(project, args, context) {
+				return Tenant.findByProjectId(project.projectId);
+			}
 		},
+		users: {
+			type: new GraphQLObjectType({
+				name: 'ProjectUsersType',
+				fields: {
+					user: {
+						type: UserType,
+						resolver(projectUser, args, context) {
+							return User.findById(projectUser.userId);
+						}
+					},
+					role: {
+						type: GraphQLString,
+					}
+				}
+			}),
+			resolver(project, args, context) {
+				return project.users;
+			}
+		},
+		detail: {
+			type: ProjectDetailType,
+			description: 'Get project details by language',
+			args: {
+				language: {
+					type: GraphQLString,
+				},
+			},
+			resolver(project, { language = process.env.DEFAULT_LANGUAGE }, context) {
+				return ProjectDetail.findByProjectId(project._id).byLanguage(args.language);
+			}
+		}
 	}
 };
 
-const projectType = createType(config);
+const ProjectType = createType(config);
 
-export default projectType;
+export default ProjectType;

@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 // plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
-import language from './plugins/language';
+import languagePlugin from './plugins/language';
 
 const Schema = mongoose.Schema;
 
@@ -36,7 +36,18 @@ ProjectDetailSchema.plugin(timestamp);
 ProjectDetailSchema.plugin(URLSlugs('title'));
 
 // add language (language)
-ProjectDetailSchema.plugin(language);
+ProjectDetailSchema.plugin(languagePlugin);
+
+// Statics
+ProjectDetailSchema.statics.findByProjectId = function findByProjectId(projectId, cb) {
+	return this.find({ projectId }, cb);
+};
+
+// helpers
+ProjectDetailSchema.query.byLanguage = function byLanguage(language) {
+	return this.find({ language });
+};
+
 
 /**
  * ProjectDetail mongoose model
