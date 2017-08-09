@@ -48,7 +48,7 @@ TenantSchema.plugin(URLSlugs('name'));
 // Statics
 TenantSchema.statics.findByHost = function findByHost(host, cb) {
 	const name = host; // do any required formating
-	return this.findOne({ name }, cb);
+	return Tenant.findOne({ name }, cb);
 };
 TenantSchema.statics.findByProjectId = function findByHost(projectId, cb) {
 	return this.find({ projectId }, cb);

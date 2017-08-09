@@ -31,6 +31,9 @@ import s3Setup from './s3';
 // tenant
 import tenantSetup from './tenant';
 
+// Redis
+import redisSetup from './redis';
+
 // Routes
 import authenticationRouter from './routes/authentication';
 import playgroundRouter from './routes/playground';
@@ -42,6 +45,8 @@ dotenvSetup();
 const app = express();
 
 const db = dbSetup();
+
+const redisClient = redisSetup();
 
 app.set('port', (process.env.PORT || 3001));
 
@@ -63,7 +68,7 @@ app.use(session({
 }));
 
 // Tenant setup 
-tenantSetup(app);
+tenantSetup(app, redisClient);
 
 // CORS setup
 corsSetup(app);
