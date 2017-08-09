@@ -3,7 +3,8 @@ import { formatError } from 'apollo-errors';
 import { GraphQLSchema, execute, subscribe } from 'graphql';
 import { maskErrors } from 'graphql-errors';
 import { createServer } from 'http';
-import { PubSub } from 'graphql-subscriptions';
+// import { PubSub } from 'graphql-subscriptions';
+import { RedisPubSub } from 'graphql-redis-subscriptions';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import jwt from 'jsonwebtoken';
 
@@ -27,8 +28,13 @@ const RootSchema = new GraphQLSchema({
 // mask error messages
 maskErrors(RootSchema);
 
-// TODO should be moved to something more scalable horizontally like Redis, MQTT
-export const pubsub = new PubSub();
+export const pubsub = new RedisPubSub({
+	connection: {
+		host: process.env.REDIS_HOST,
+		port: process.env.REDIS_PORT,
+	},
+});
+
 
 const getGraphglContext = req => ({
 	user: req.user,

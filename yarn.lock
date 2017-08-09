@@ -2261,13 +2261,21 @@ graphql-errors@^2.1.0:
     babel-runtime "^6.6.1"
     uuid "^2.0.2"
 
+graphql-redis-subscriptions@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/graphql-redis-subscriptions/-/graphql-redis-subscriptions-1.2.0.tgz#70c60033157f2b6fca0eb6aeb83e90a68f1d91dc"
+  dependencies:
+    graphql-subscriptions "^0.4.2"
+    iterall "^1.1.1"
+    redis "^2.6.3"
+
 graphql-server-express@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/graphql-server-express/-/graphql-server-express-1.0.4.tgz#09acd722c8be2a240262d40b43bcb2675ba1bad5"
   dependencies:
     apollo-server-express "^1.0.4"
 
-graphql-subscriptions@^0.4.4:
+graphql-subscriptions@^0.4.2, graphql-subscriptions@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-0.4.4.tgz#39cff32d08dd3c990113864bab77154403727e9b"
   dependencies:
@@ -4049,7 +4057,7 @@ redis-parser@^2.4.0, redis-parser@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/redis-parser/-/redis-parser-2.6.0.tgz#52ed09dacac108f1a631c07e9b69941e7a19504b"
 
-redis@^2.8.0:
+redis@^2.6.3, redis@^2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/redis/-/redis-2.8.0.tgz#202288e3f58c49f6079d97af7a10e1303ae14b02"
   dependencies:
