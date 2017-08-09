@@ -13,7 +13,7 @@ import RootSubscription from './graphql/subscriptions/rootSubscription';
 
 // api
 import Users from './api/users';
-import Orpheus from './api';
+// import Orpheus from './api';
 
 
 /**
@@ -32,15 +32,10 @@ maskErrors(RootSchema);
 // TODO should be moved to something more scalable horizontally like Redis, MQTT
 export const pubsub = new PubSub();
 
-const getGraphglContext = (req) => {
-	let username = null;
-	if (req.session.passport && req.session.passport.user) username = req.session.passport.user;
-	// return new Orpheus(req.get('host'), username);
-	return {
-		username,
-		tenant: req.get('host'),
-	};
-};
+const getGraphglContext = req => ({
+	user: req.user,
+	tenant: req.tenant,
+});
 
 /**
  * Set up the graphQL HTTP endpoint

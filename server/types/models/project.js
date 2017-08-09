@@ -22,14 +22,14 @@ const config = {
 		collections: {
 			type: new GraphQLList(CollectionType),
 			description: 'Get all project collection',
-			resolver(project, args, context) {
+			resolve(project, args, context) {
 				return Collection.findByProjectId(project.projectId);
 			}
 		},
 		tenants: {
 			type: TenantType,
 			description: 'Get all project tenants',
-			resolver(project, args, context) {
+			resolve(project, args, context) {
 				return Tenant.findByProjectId(project.projectId);
 			}
 		},
@@ -39,7 +39,7 @@ const config = {
 				fields: {
 					user: {
 						type: UserType,
-						resolver(projectUser, args, context) {
+						resolve(projectUser, args, context) {
 							return User.findById(projectUser.userId);
 						}
 					},
@@ -48,7 +48,7 @@ const config = {
 					}
 				}
 			}),
-			resolver(project, args, context) {
+			resolve(project, args, context) {
 				return project.users;
 			}
 		},
@@ -60,8 +60,8 @@ const config = {
 					type: GraphQLString,
 				},
 			},
-			resolver(project, { language = process.env.DEFAULT_LANGUAGE }, context) {
-				return ProjectDetail.findByProjectId(project._id).byLanguage(args.language);
+			resolve(project, { language = process.env.DEFAULT_LANGUAGE }, context) {
+				return ProjectDetail.findByProjectId(project._id, language);
 			}
 		}
 	}

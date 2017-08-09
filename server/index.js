@@ -28,6 +28,9 @@ import setupGraphql from './graphql';
 // S3
 import s3Setup from './s3';
 
+// tenant
+import tenantSetup from './tenant';
+
 // Routes
 import authenticationRouter from './routes/authentication';
 import playgroundRouter from './routes/playground';
@@ -59,6 +62,8 @@ app.use(session({
 	store: storeSetup(session),
 }));
 
+// Tenant setup 
+tenantSetup(app);
 
 // CORS setup
 corsSetup(app);
@@ -71,6 +76,7 @@ setupGraphql(app);
 
 // S3 setup
 s3Setup(app);
+
 
 // Routes
 app.use('/auth', authenticationRouter);

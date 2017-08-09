@@ -23,12 +23,12 @@ const ProjectSchema = new Schema({
 			enum: ['Owner']
 		}
 	}],
-	languages: [{
-		type: String,
-		required: true,
-		default: process.env.DEFAULT_LANGUAGE,
-		enum: getAllLanguages(),
-	}],
+	// languages: {
+	// 	type: [String],
+	// 	required: true,
+	// 	default: [process.env.DEFAULT_LANGUAGE],
+	// 	// enum: getAllLanguages(),
+	// },
 });
 
 
@@ -38,6 +38,17 @@ ProjectSchema.plugin(timestamp);
 // Statics
 ProjectSchema.statics.findByUserId = function findByUserId(userId, cb) {
 	return this.find({ users: { $elemMatch: { userId } } }, cb);
+};
+ProjectSchema.statics.isOwner = function isOwner(userId, cb) {
+	return this.find({ users: { $elemMatch: { userId, role: 'Owner' } } }, cb);
+};
+ProjectSchema.statics.createByOwner = function createByOwner(userId, cb) {
+	return this.create({
+		users: [{
+			userId,
+			role: 'Owner',
+		}],
+	}, cb);
 };
 
 /**
