@@ -2,7 +2,7 @@ import { GraphQLList, GraphQLID } from 'graphql';
 import createType from 'mongoose-schema-to-graphql';
 
 // models
-import ProjectDetail from '../../models/projectDetail';
+import ProjectDetail from '../../../models/projectDetail';
 
 const config = {
 	name: 'ProjectDetailType',

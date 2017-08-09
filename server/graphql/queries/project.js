@@ -1,7 +1,7 @@
 import { GraphQLID, GraphQLNonNull } from 'graphql';
 
 // types
-import ProjectType from '../../types/models/project';
+import ProjectType from '../types/models/project';
 
 // models
 import Project from '../../models/project';

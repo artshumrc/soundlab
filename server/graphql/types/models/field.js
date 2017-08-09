@@ -2,8 +2,8 @@ import { GraphQLList, GraphQLString } from 'graphql';
 import createType from 'mongoose-schema-to-graphql';
 
 // models
-import Field from '../../models/field';
-import FieldDetail from '../../models/fieldDetail';
+import Field from '../../../models/field';
+import FieldDetail from '../../../models/fieldDetail';
 
 // types
 import FieldDetailType from './fieldDetail';

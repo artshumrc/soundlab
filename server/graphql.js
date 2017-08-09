@@ -11,10 +11,8 @@ import RootQuery from './graphql/queries/rootQuery';
 import RootMutation from './graphql/mutations/rootMutation';
 import RootSubscription from './graphql/subscriptions/rootSubscription';
 
-// api
-import Users from './api/users';
-// import Orpheus from './api';
-
+// models
+import User from './models/user';
 
 /**
  * Root schema
@@ -69,7 +67,7 @@ export default function setupGraphql(app) {
 					const token = connectionParams.authToken.slice(4); // remove JWT from the start of the string
 					try {
 						const decoded = await jwt.verify(token, process.env.JWT_SECRET);
-						const user = await Users.findById(decoded._id);
+						const user = await User.findById(decoded._id);
 						if (user) return { user };
 						throw new Error('Not authorized');
 					} catch (err) {

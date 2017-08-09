@@ -2,7 +2,7 @@ import { GraphQLObjectType } from 'graphql';
 import createType from 'mongoose-schema-to-graphql';
 
 // models
-import ItemValue from '../../models/itemValue';
+import ItemValue from '../../../models/itemValue';
 
 // types
 import userType from './user';

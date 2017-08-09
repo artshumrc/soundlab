@@ -1,10 +1,7 @@
 import { GraphQLString, GraphQLNonNull } from 'graphql';
 
 // types
-import miradorType from '../../types/models/mirador';
-
-// bll
-import Miradors from '../../bll/miradors';
+import miradorType from '../types/models/mirador';
 
 // errors
 import { AuthenticationError } from '../../errors';
@@ -18,20 +15,16 @@ const miradorMutationFileds = {
 				type: new GraphQLNonNull(GraphQLString)
 			},
 		},
-		async resolve(parent, { title }, { session: { passport } }) {
-			if (passport) {
+		async resolve(parent, { title }, { user, tenant }) {
 
+			if (user && tenant.adminPage) {
 				const mirador = {
 					title
 				};
 
-				try {
-					return await Miradors.create(passport.user, mirador);
-				} catch (err) {
-					throw err;
-				}
-
-			} throw new AuthenticationError();
+				return Mirador(mirador).save();
+			}
+			throw new AuthenticationError();
 		}
 	}
 };

@@ -2,9 +2,9 @@ import { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLString } from 'graphq
 import createType from 'mongoose-schema-to-graphql';
 
 // models
-import Project from '../../models/project';
-import Collection from '../../models/collection';
-import ProjectDetail from '../../models/projectDetail';
+import Project from '../../../models/project';
+import Collection from '../../../models/collection';
+import ProjectDetail from '../../../models/projectDetail';
 
 // types
 import TenantType from './tenant';

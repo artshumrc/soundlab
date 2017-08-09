@@ -1,7 +1,7 @@
 import createType from 'mongoose-schema-to-graphql';
 
 // models
-import FieldDetail from '../../models/fieldDetail';
+import FieldDetail from '../../../models/fieldDetail';
 
 
 const config = {

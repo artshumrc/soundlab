@@ -4,9 +4,6 @@ import express from 'express';
 import Mirador from '../models/mirador';
 import {Image} from '../models/image';
 
-// bll - TODO: change to api
-import Miradors from '../bll/miradors';
-
 const router = express.Router();
 
 router.post('/createManifest', (req, res) => {

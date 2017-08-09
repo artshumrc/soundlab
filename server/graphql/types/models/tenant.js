@@ -3,7 +3,7 @@ import { GraphQLObjectType, GraphQLInt, GraphQLString } from 'graphql';
 import createType from 'mongoose-schema-to-graphql';
 
 // model
-import Tenant from '../../models/tenant';
+import Tenant from '../../../models/tenant';
 
 const config = {
 	name: 'TenantType',

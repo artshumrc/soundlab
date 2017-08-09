@@ -2,8 +2,8 @@
 import createType from 'mongoose-schema-to-graphql';
 
 // models
-import ItemSchema from '../../models/itemSchema';
-import Field from '../../models/field';
+import ItemSchema from '../../../models/itemSchema';
+import Field from '../../../models/field';
 
 // types
 import FieldType from './field';

@@ -1,7 +1,7 @@
 import { GraphQLString, GraphQLNonNull } from 'graphql';
 
 // types
-import tenantType from '../../types/models/tenant';
+import tenantType from '../types/models/tenant';
 
 // models
 import Tenant from '../../models/tenant';
