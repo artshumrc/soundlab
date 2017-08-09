@@ -3,57 +3,82 @@ import CoverBackground from '../CoverBackground';
 import './Cover.css';
 
 
-const Cover = props => {
-	const classes = [props.className];
+class Cover extends React.Component {
 
-	if (props.full) {
-		classes.push('cover--full');
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			width: window.innerWidth,
+		};
 	}
 
-	if (props.bottom) {
-		classes.push('cover--bottom');
-	} else {
-		classes.push('cover--center');
+	componentDidMount() {
+		window.addEventListener('resize', () => {
+			this.handleResize();
+		});
 	}
 
+	handleResize() {
+		this.setState({
+			windowWidth: window.innerWidth,
+		});
+	}
 
-	return (
-		<div
-			className={`cover ${classes.join(' ')}`}
-			style={{
-				width: window.innerWidth,
-				height: props.full ? window.innerHeight : 400,
-			}}
-		>
+	render() {
+		const { className, full, bottom, background, reactsToMouse, overlay } = this.props;
+		const classes = [className];
+		const { windowWidth } = this.state;
+
+		if (full) {
+			classes.push('cover--full');
+		}
+
+		if (bottom) {
+			classes.push('cover--bottom');
+		} else {
+			classes.push('cover--center');
+		}
+
+
+		return (
 			<div
-				className="cover-inner"
+				className={`cover ${classes.join(' ')}`}
 				style={{
-					width: window.innerWidth,
+					width: windowWidth,
+					height: full ? window.innerHeight : 400,
 				}}
 			>
-				{
-					props.background &&
-					<CoverBackground
-						reactsToMouse={props.reactsToMouse}
-					>
-						{props.background}
-					</CoverBackground>
-				}
-				{
-					props.children &&
-					<div className="cover-content">
-						{props.children}
-					</div>
-				}
-				{
-					props.overlay &&
-					<div className="cover-overlay">
-						{props.overlay}
-					</div>
-				}
+				<div
+					className="cover-inner"
+					style={{
+						width: windowWidth
+					}}
+				>
+					{
+						background &&
+						<CoverBackground
+							reactsToMouse={reactsToMouse}
+						>
+							{background}
+						</CoverBackground>
+					}
+					{
+						this.props.children &&
+						<div className="cover-content">
+							{this.props.children}
+						</div>
+					}
+					{
+						overlay &&
+						<div className="cover-overlay">
+							{overlay}
+						</div>
+					}
+				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 }
 
 export default Cover;
