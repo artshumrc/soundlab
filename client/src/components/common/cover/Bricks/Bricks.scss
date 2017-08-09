@@ -1,15 +1,27 @@
 @import '../../../../variables.scss';
 
+@keyframes pulse {
+  0% {
+		opacity: 0.3;
+  }
+  50% {
+		opacity: 1;
+  }
+  100% {
+		opacity: 0.3;
+  }
+}
+
 .bricks {
 	overflow: visible;
 
 	&.loading {
 		background: #eee;
-		-webkit-animation: flash linear 1.2s infinite;
-		animation: flash linear 1.2s infinite;
+		-webkit-animation: pulse linear 1.2s infinite;
+		animation: pulse linear 1.2s infinite;
 
 		.bricks-inner {
-			opacity: 0;
+			opacity: 0.1;
 		}
 	}
 

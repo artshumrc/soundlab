@@ -68,7 +68,7 @@ class _Bricks extends React.Component {
 		const { nImages, nLoadedImages } = this.state;
 		const _nLoadedImages = nLoadedImages + 1;
 
-		if (nImages === _nLoadedImages) {
+		if (nImages - 1 === _nLoadedImages) {
 			this.setState({
 			 	loaded: true,
 			});
@@ -106,14 +106,14 @@ class _Bricks extends React.Component {
 	render() {
 	 	let bricks = this.props.children;
 		// const { loaded } = this.state;
-		const loaded = false;
+		const loaded = true;
 
 		if (!bricks) {
 			bricks = this.makeDefaultBricks();
 		}
 
 		return (
-			<div className={`bricks ${loaded ? 'loading' : ''}`}>
+			<div className={`bricks ${loaded ? '' : 'loading'}`}>
 				<div className="bricks-inner">
 					{bricks}
 				</div>
