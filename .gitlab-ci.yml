@@ -6,17 +6,8 @@ variables:
   DOCKER_DRIVER: overlay
 
 stages:
-  - test
   - package
   - deploy
-
-test:
-  stage: test
-  before_script:
-    - yarn install
-  script:
-    - npm run test-client-ci
-
 
 docker-build:
   stage: package
