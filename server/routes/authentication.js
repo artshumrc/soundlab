@@ -10,45 +10,27 @@ import { authenticationMiddleware, checkPasswordStrength } from '../authenticati
 
 const router = express.Router();
 
+router.post('/login', async (req, res) => {
 
-// LOGIN
-router.post('/login', passport.authenticate('local'), (req, res) => {
-	res.setHeader('Content-Type', 'application/json');
-	res.send(JSON.stringify({ username: req.user.username }));
-});
+	const { username, password } = req.body;
 
-router.post('/login-jwt', passport.authenticate('local'), (req, res) => {
-	// Create token if the password matched and no error was thrown
-	const user = { _id: req.user._id };
-	const token = jwt.sign(user, process.env.JWT_SECRET, {
-		expiresIn: 10080 // in seconds
-	});
-	res.json({ success: true, token: `JWT ${token}` });
-});
-
-
-// LOGOUT
-router.post('/logout', (req, res) => {
-	req.logOut();
-	res.send(JSON.stringify({ status: 'Logged out' }));
-});
-
-
-// REGISTER
-router.post('/register', checkPasswordStrength(), (req, res) => {
-	User.register(new User({
-		username: req.body.username
-	}), req.body.password, (err, account) => {
-		if (err) {
-			return res.status(200).send(err);
-		}
-		passport.authenticate('local')(req, res, () => {
-			res.send(JSON.stringify({ username: req.user.username }));
+	const user = await User.findByUsername(username);
+	if (user) {
+		user.authenticate(password, (_, isValid, message) => {
+			if (isValid) {
+				const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+					expiresIn: 10080 // in seconds
+				});
+				console.log('token', token);
+				res.json({ success: true, token: `JWT ${token}` });
+			} else {
+				res.status(401).send(message);
+			}
 		});
-	});
+	}
 });
 
-router.post('/register-jwt', checkPasswordStrength(), (req, res) => {
+router.post('/register', checkPasswordStrength(), (req, res) => {
 	User.register(new User({
 		username: req.body.username
 	}), req.body.password, (err, account) => {

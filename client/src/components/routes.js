@@ -12,8 +12,13 @@ import UserProfileTimeline from './dashboard/routes/UserProfileTimeline';
 import ExampleForms from './dashboard/routes/ExampleForms';
 import MiradorUploader from './dashboard/routes/MiradorUploader';
 
+import GraphiQL from './graphiql';
+
 export default (
   <div>
+    {process.env.NODE_ENV === 'development' &&
+      <Route exact path="/graphiql" component={GraphiQL} />
+    }
     <Route exact path="/" component={Home} />
     <Route path="/page/new" component={Page} />
     <Route path="/page" component={Page} />

@@ -36,7 +36,6 @@ import redisSetup from './redis';
 
 // Routes
 import authenticationRouter from './routes/authentication';
-import playgroundRouter from './routes/playground';
 import manifestRouter from './routes/manifest';
 
 // environment variables setup
@@ -74,7 +73,7 @@ tenantSetup(app, redisClient);
 corsSetup(app);
 
 // Authentication setup
-authSetup(app);
+authSetup(app, redisClient);
 
 // GraphQl setup
 setupGraphql(app);
@@ -82,10 +81,8 @@ setupGraphql(app);
 // S3 setup
 s3Setup(app);
 
-
 // Routes
 app.use('/auth', authenticationRouter);
-app.use('/playground', playgroundRouter);
 app.use('/', manifestRouter);
 
 

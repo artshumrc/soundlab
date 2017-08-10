@@ -8,6 +8,8 @@ import { RedisPubSub } from 'graphql-redis-subscriptions';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import jwt from 'jsonwebtoken';
 
+import { jwtAuthenticate } from './authentication';
+
 import RootQuery from './graphql/queries/rootQuery';
 import RootMutation from './graphql/mutations/rootMutation';
 import RootSubscription from './graphql/subscriptions/rootSubscription';
@@ -35,7 +37,6 @@ export const pubsub = new RedisPubSub({
 	},
 });
 
-
 const getGraphglContext = req => ({
 	user: req.user,
 	tenant: req.tenant,
@@ -47,16 +48,16 @@ const getGraphglContext = req => ({
  */
 export default function setupGraphql(app) {
 
-	app.use('/graphql', graphqlExpress(req => ({
+	app.use('/graphql', jwtAuthenticate, graphqlExpress(req => ({
 		schema: RootSchema,
 		context: getGraphglContext(req),
 		formatError,
 	})));
 
-	app.use('/graphiql', graphiqlExpress({
-		endpointURL: '/graphql',
-		subscriptionsEndpoint: `ws://${process.env.WS_SERVER_HOST}:${process.env.WS_SERVER_PORT}/${process.env.WS_SERVER_URI}`
-	}));
+	// app.use('/graphiql', graphiqlExpress({
+	// 	endpointURL: '/graphql',
+	// 	subscriptionsEndpoint: `ws://${process.env.WS_SERVER_HOST}:${process.env.WS_SERVER_PORT}/${process.env.WS_SERVER_URI}`
+	// }));
 
 	// Wrap the Express server
 	const ws = createServer(app);
@@ -67,25 +68,25 @@ export default function setupGraphql(app) {
 			execute,
 			subscribe,
 			schema: RootSchema,
-			onConnect: async (connectionParams, webSocket) => {
-				// validate user token on connection
-				if (connectionParams.authToken) {
-					const token = connectionParams.authToken.slice(4); // remove JWT from the start of the string
-					try {
-						const decoded = await jwt.verify(token, process.env.JWT_SECRET);
-						const user = await User.findById(decoded._id);
-						if (user) return { user };
-						throw new Error('Not authorized');
-					} catch (err) {
-						console.error(err);
-						throw new Error('Error while processing token');
-					}
-				}
-				throw new Error('Missing auth token!');
-			},
-			onDisconnect: (webSocket) => {
-				console.log('disconected');
-			}
+			// onConnect: async (connectionParams, webSocket) => {
+			// 	// validate user token on connection
+			// 	if (connectionParams.authToken) {
+			// 		const token = connectionParams.authToken.slice(4); // remove JWT from the start of the string
+			// 		try {
+			// 			const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+			// 			const user = await User.findById(decoded._id);
+			// 			if (user) return { user };
+			// 			throw new Error('Not authorized');
+			// 		} catch (err) {
+			// 			console.error(err);
+			// 			throw new Error('Error while processing token');
+			// 		}
+			// 	}
+			// 	throw new Error('Missing auth token!');
+			// },
+			// onDisconnect: (webSocket) => {
+			// 	console.log('disconected');
+			// }
 		}, {
 			server: ws,
 			path: `/${process.env.WS_SERVER_URI}`,
