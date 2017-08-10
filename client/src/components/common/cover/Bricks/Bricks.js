@@ -1,6 +1,10 @@
 import React from 'react';
 import Bricks from 'bricks.js'
 import _ from 'underscore'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as bricksActions from '../../../../actions/bricks';
+
 import './Bricks.css';
 
 
@@ -9,33 +13,22 @@ class _Bricks extends React.Component {
 	constructor(props){
 		super(props);
 		const windowWidth = window.innerWidth;
-		let nImages = 55;
+		let nImages = 105;
 
-		if (windowWidth > 1400) {
-			nImages = 105;
-		} else if (windowWidth > 900) {
-			nImages = 75;
-		} else if (windowWidth > 600) {
+		if (windowWidth < 600) {
 			nImages = 50;
 		}
 
-		this.state = {
-			nImages,
-			nLoadedImages: 0,
-			loaded: false,
-		};
+		this.nImages = nImages;
+		this.nImagesLoaded = 0;
+	}
+
+	static defaultProps = {
+		loaded: false,
 	}
 
 	componentDidMount() {
 		this.initializeBricks();
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-
-		if (this.state.nLoadedImages !== nextState.nLoadedImages) {
-			return false;
-		}
-
 	}
 
 	initializeBricks() {
@@ -65,32 +58,27 @@ class _Bricks extends React.Component {
 
 
 	handleImageLoad() {
-		const { nImages, nLoadedImages } = this.state;
-		const _nLoadedImages = nLoadedImages + 1;
+		const { loaded } = this.props;
 
-		if (nImages - 1 === _nLoadedImages) {
-			this.setState({
-			 	loaded: true,
-			});
-			this.instance.pack();
+		if (!loaded) {
+			this.nImagesLoaded += 1;
 
-		} else {
-			this.setState({
-				nLoadedImages: _nLoadedImages,
-			});
+			if (this.nImages <= this.nImagesLoaded) {
+				this.handleAllImagesLoaded();
+			}
 		}
+	}
+
+	handleAllImagesLoaded() {
+		this.props.actions.imagesLoaded();
+		setTimeout(() => { this.instance.pack() }, 100);
 	}
 
 	makeDefaultBricks() {
 		const imagesUpperRange = 106;
-		const images = _.shuffle(_.range(1, imagesUpperRange));
-		let randInt;
-		const { nImages } = this.state;
+		let images = _.shuffle(_.range(1, imagesUpperRange));
+		images.splice(this.nImages + 1, imagesUpperRange - this.nImages);
 
-		for (let i = 0; i < imagesUpperRange - nImages; i++ ) {
-			randInt = Math.floor(Math.random() * imagesUpperRange) + 1;
-			delete images[randInt];
-		}
 
 		return images.map((image, i) => (
 			<img
@@ -105,11 +93,13 @@ class _Bricks extends React.Component {
 
 	render() {
 	 	let bricks = this.props.children;
-		// const { loaded } = this.state;
-		const loaded = true;
+		const { loaded } = this.props;
 
 		if (!bricks) {
 			bricks = this.makeDefaultBricks();
+		}
+
+		if (loaded) {
 		}
 
 		return (
@@ -122,4 +112,16 @@ class _Bricks extends React.Component {
 	}
 }
 
-export { _Bricks as Bricks };
+const mapStateToProps = (state, props) => {
+	return {
+		loaded: state.bricks.loaded,
+	};
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		actions: bindActionCreators(bricksActions, dispatch),
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(_Bricks);
