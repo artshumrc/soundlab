@@ -6,10 +6,22 @@ variables:
   DOCKER_DRIVER: overlay
 
 stages:
+#  - test
   - package
   - deploy
 
+#test:
+#  stage: test
+#  image: node:6.10.2
+#  before_script:
+#  - yarn install
+#  script:
+#  - npm run test-client-ci
+
 docker-build:
+  image: docker:latest
+  services:
+    - docker:dind
   stage: package
   script:
     - docker build -t us.gcr.io/archimedes-01201/orpheus-app:test .
