@@ -21,7 +21,11 @@ export default function corsSetup(app, redisClient) {
 		}
 	);
 
-	const whitelist = [process.env.CLIENT_SERVER, 'http://192.168.0.24:3001', 'http://192.168.0.6', 'http://generate-manifests.orphe.us'];
+	const whitelist = ['http://generate-manifests.orphe.us'];
+
+	if (process.env.NODE_ENV === 'development') {
+		whitelist.push(process.env.CLIENT_SERVER);
+	}
 
 	// Check if tenant is white listed or in a database
 	// Set the req.tenant value
