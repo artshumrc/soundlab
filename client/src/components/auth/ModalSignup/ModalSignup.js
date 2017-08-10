@@ -51,44 +51,8 @@ class ModalSignup extends React.Component {
 	handleSignup(email, password, passwordRepeat) {
 
 		if (password !== passwordRepeat) {
-			this.setState({
-				errorMsg: 'Passwords do not match.',
-			});
-			console.error('Passwords do not match');
+			// TODO handle error
 		}
-
-		/*
-		Meteor.call('createAccount', { email, checkPassword }, (err, result) => {
-			const path = '/';
-
-			if (!err) {
-				Meteor.loginWithToken(result.stampedToken.token, (_err) => {
-					if (_err) {
-						this.setState({
-							errorMsg: 'Invalid email or password',
-						});
-
-						return false;
-					}
-
-					const domain = Utils.getEnvDomain();
-
-					if (domain) {
-						Cookies.set('userId', Meteor.userId(), { domain });
-						Cookies.set('loginToken', token, { domain });
-					} else {
-						Cookies.set('userId', Meteor.userId());
-						Cookies.set('loginToken', token);
-					}
-					this.props.closeModal();
-				});
-			} else {
-				this.setState({
-					errorMsg: 'Invalid email or password',
-				});
-			}
-		});
-		*/
 	}
 
 	handleSignupFacebook() {
