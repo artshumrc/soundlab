@@ -28,9 +28,6 @@ import setupGraphql from './graphql';
 // S3
 import s3Setup from './s3';
 
-// tenant
-import tenantSetup from './tenant';
-
 // Redis
 import redisSetup from './redis';
 
@@ -66,11 +63,8 @@ app.use(session({
 	store: storeSetup(session),
 }));
 
-// Tenant setup 
-tenantSetup(app, redisClient);
-
 // CORS setup
-corsSetup(app);
+corsSetup(app, redisClient);
 
 // Authentication setup
 authSetup(app, redisClient);
