@@ -6,8 +6,17 @@ variables:
   DOCKER_DRIVER: overlay
 
 stages:
+  - test
   - package
   - deploy
+
+test:
+  stage: test
+  before_script:
+    - yarn install
+  script:
+    - npm run test-client-ci
+
 
 docker-build:
   stage: package
@@ -19,12 +28,7 @@ k8s-deploy:
   stage: deploy
   script:
       - apt-get update
-      - apt-get install -y \
-         apt-transport-https \
-         ca-certificates \
-         curl \
-         gnupg2 \
-         software-properties-common
+      - apt-get install software-properties-common
       - curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
       - apt-key fingerprint 0EBFCD88
       - add-apt-repository \
