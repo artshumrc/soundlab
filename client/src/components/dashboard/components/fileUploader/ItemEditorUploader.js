@@ -33,7 +33,7 @@ export default class ItemEditorUploader extends React.Component {
             updateFile={this.updateFile}
             showError={this.props.showError}
             axis="xy"
-            useDragHandle
+            // useDragHandle
           />
         </div>
         <FileUploader addFile={this.addFile} />

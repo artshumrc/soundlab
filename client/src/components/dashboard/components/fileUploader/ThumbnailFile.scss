@@ -128,20 +128,22 @@ font-family: "Material Design Icons";
   transition: all 100ms ease-in-out;
 }
 .singleImage {
-  display: inline-block;
+  display: block;
   text-align: center;
 }
 .thumbnailImage:hover {
   outline: 2px solid #222;
 }
 .imageTitle {
-  position: absolute;
+  display: inline-block;
+  width: 100%;
   background: #fff;
   border: 1px solid #7f8fa4;
   border-radius: 10px;
   padding: 10px 40px;
   z-index: 1000;
 }
-.hide {
-  display: none;
-}
+//.titleHide {
+//  height: 0;
+//  width: 0;
+//}

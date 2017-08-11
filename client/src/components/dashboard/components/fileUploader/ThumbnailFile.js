@@ -25,17 +25,16 @@ export default class ThumbnailFile extends React.Component {
   }
 
   render() {
-    const displayTitle = this.state.showTitle ? '' : 'hide';
+    const displayTitle = this.state.showTitle ? '' : 'titleHide';
     const DragHandle = SortableHandle(() => <div className="moveButton"><FontAwesome name="bars" /></div>); // This can be any component you want
 
     return (
-      <div className="singleImage">
-        <DragHandle/>
+      <div className="singleImage" onClick={this.toggleTitleInput}>
+        <DragHandle />
         <img
           className="thumbnailImage"
           alt={this.props.file.title}
           src={`//iiif.orphe.us/orpheus/art/${this.props.file.fileName}/square/90,/0/default.jpg`}
-          onClick={this.toggleTitleInput}
         />
         <div className={`imageTitle ${displayTitle}`}>
           <Field
