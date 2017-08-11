@@ -1,7 +1,6 @@
 import React from 'react';
 import ItemEditorUploader from '../../components/fileUploader/ItemEditorUploader';
 import PrimaryImage from '../../../items/ItemImageViewer/PrimaryImage';
-import _ from 'underscore';
 import {Field, FieldArray} from 'redux-form';
 import Form from '../../components/Form';
 
@@ -11,7 +10,12 @@ export default class ItemEditor extends React.Component {
     super(props);
     this.state = {
       files: [{title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '48.jpg'},
-        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '16.jpg'}]
+        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '16.jpg'},
+        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/38.jpg/full/600,/0/default.jpg', fileName: '38.jpg'},
+        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/47.jpg/full/600,/0/default.jpg', fileName: '47.jpg'},
+        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/3.jpg/full/600,/0/default.jpg', fileName: '3.jpg'},
+        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/95.jpg/full/600,/0/default.jpg', fileName: '95.jpg'},
+      ]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.showError = this.showError.bind(this);
