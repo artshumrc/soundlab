@@ -35,7 +35,8 @@ export default class Dashboard extends React.Component {
 							<ListItem currentLocation={currentLocation} fa="folder-open-o" name="Projects" url="/dashboard/projects" />
 							<ListItem currentLocation={currentLocation} fa="cog" name="Settings" url="/dashboard/settings" />
 							<ListItem currentLocation={currentLocation} fa="file" name="Example Forms" url="/dashboard/form" />
-						</ul>
+              <ListItem currentLocation={currentLocation} fa="file" name="Item Editor" url="/dashboard/itemEditor" />
+            </ul>
 					</div>
 				</div>
 				<div className={contentWrapperClass}>
