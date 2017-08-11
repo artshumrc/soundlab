@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../../../common/buttons/Button';
 import Cover from '../../../common/cover/Cover';
-import { Bricks } from '../../../common/cover/Bricks';
+import Bricks from '../../../common/cover/Bricks';
 import Util from '../../../../lib/util';
 
 

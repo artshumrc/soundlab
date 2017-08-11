@@ -6,8 +6,17 @@ variables:
   DOCKER_DRIVER: overlay
 
 stages:
+#  - test
   - package
   - deploy
+
+#test:
+#  stage: test
+#  image: node:6.10.2
+#  before_script:
+#  - yarn install
+#  script:
+#  - npm run test-client-ci
 
 docker-build:
   stage: package
@@ -15,15 +24,14 @@ docker-build:
     - docker build -t us.gcr.io/archimedes-01201/orpheus-app:test .
 
 k8s-deploy:
-  image: google/cloud-sdk
+  image: geertjohan/google-cloud-sdk-with-docker
   stage: deploy
   script:
-      - apt install docker
-      - echo "$GOOGLE_KEY" > key.json # Google Cloud service account key
-      - gcloud auth activate-service-account --key-file key.json
-      - gcloud config set compute/zone us-east1-b
-      - gcloud config set project archimedes-01201
-      - gcloud config set container/use_client_certificate True
-      - gcloud container clusters get-credentials orpheus-cluster
-      - gcloud docker -- push us.gcr.io/archimedes-01201/orpheus-app:test
-      - kubectl apply -f k8s/
+    - echo "$GOOGLE_KEY" > key.json # Google Cloud service account key
+    - gcloud auth activate-service-account --key-file key.json
+    - gcloud config set compute/zone us-east1-b
+    - gcloud config set project archimedes-01201
+    - gcloud config set container/use_client_certificate True
+    - gcloud container clusters get-credentials orpheus-cluster
+    # - gcloud docker -- push us.gcr.io/archimedes-01201/orpheus-app:test
+    # - kubectl apply -f k8s/

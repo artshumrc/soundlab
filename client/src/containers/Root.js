@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ApolloProvider} from 'react-apollo';
-import {Router} from 'react-router';
+import { ApolloProvider } from 'react-apollo';
+import { Router } from 'react-router';
 import Routes from '../components/routes';
 import client from '../middleware/apolloClient';
 
