@@ -63,47 +63,51 @@ class ModalLogin extends React.Component {
 	}
 
 	render() {
+		const { lowered } = this.props;
 		const { errorSocial, errorMsg } = this.state;
 
-		return (
-			<Modal>
-				<div className="at-form">
-					<div className="at-title">
-						<h3>Sign In</h3>
+		if (lowered) {
+			return (
+				<Modal>
+					<div className="at-form">
+						<div className="at-title">
+							<h3>Sign In</h3>
+						</div>
+
+						<span className="error-text">
+							{errorSocial}
+						</span>
+
+						<OAuthButtons
+							handleFacebook={this.handleLoginFacebook}
+							handleGoogle={this.handleLoginGoogle}
+							handleTwitter={this.handleLoginTwitter}
+						/>
+
+						<div className="at-sep">
+							<strong>OR</strong>
+						</div>
+
+						<PWDLoginForm
+							login={this.handleLogin}
+							errorMsg={errorMsg}
+						/>
+
+						<div className="at-signup-link">
+							<p>
+								Don't have an account? <a href="/sign-up" id="at-signUp" className="at-link at-signup">Register.</a>
+							</p>
+						</div>
+						<div className="at-resend-verification-email-link at-wrap">
+							<p>
+								Verification email lost? <a href="/send-again" id="at-resend-verification-email" className="at-link at-resend-verification-email">Send again.</a>
+							</p>
+						</div>
 					</div>
-
-					<span className="error-text">
-						{errorSocial}
-					</span>
-
-					<OAuthButtons
-						handleFacebook={this.handleLoginFacebook}
-						handleGoogle={this.handleLoginGoogle}
-						handleTwitter={this.handleLoginTwitter}
-					/>
-
-					<div className="at-sep">
-						<strong>OR</strong>
-					</div>
-
-					<PWDLoginForm
-						login={this.handleLogin}
-						errorMsg={errorMsg}
-					/>
-
-					<div className="at-signup-link">
-						<p>
-							Don't have an account? <a href="/sign-up" id="at-signUp" className="at-link at-signup">Register.</a>
-						</p>
-					</div>
-					<div className="at-resend-verification-email-link at-wrap">
-						<p>
-							Verification email lost? <a href="/send-again" id="at-resend-verification-email" className="at-link at-resend-verification-email">Send again.</a>
-						</p>
-					</div>
-				</div>
-			</Modal>
-		);
+				</Modal>
+			);
+		}
+		return null;
 	}
 }
 

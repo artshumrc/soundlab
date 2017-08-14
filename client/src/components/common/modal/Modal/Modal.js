@@ -31,6 +31,6 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
 	classes: [],
-}
+};
 
 export default Modal;

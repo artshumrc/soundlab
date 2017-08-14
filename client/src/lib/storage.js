@@ -14,3 +14,9 @@ export const removeLocalStorageItem = (key) => {
 		throw new Error('Storage not available');
 	}
 };
+
+export const setCookie = () => {
+
+}
+
+// export const removeCookie

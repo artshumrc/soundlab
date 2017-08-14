@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import bricks from './bricks';
+import header from './header';
 import client from '../middleware/apolloClient';
 
 
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   apollo: client.reducer(), // graphql data
   routing: routerReducer,
 	bricks,
+  header,
 });
 
 export default rootReducer;
