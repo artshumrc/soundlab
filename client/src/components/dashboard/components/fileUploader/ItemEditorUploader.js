@@ -10,6 +10,7 @@ export default class ItemEditorUploader extends React.Component {
     this.addFile = this.addFile.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.moveField = this.moveField.bind(this);
+    this.removeFile = this.removeFile.bind(this);
     this.state = {
       files: this.props.files.fields.getAll()
     };
@@ -38,6 +39,10 @@ export default class ItemEditorUploader extends React.Component {
     this.props.files.changeValue("files", newFilesState);
   }
 
+  removeFile(index) {
+    this.props.files.fields.remove(index);
+  }
+
   render() {
     const files = this.state.files;
     return (
@@ -50,6 +55,7 @@ export default class ItemEditorUploader extends React.Component {
             showError={this.props.showError}
             axis="xy"
             useDragHandle
+            removeFile={this.removeFile}
           />
         </div>
         <FileUploader addFile={this.addFile} />
@@ -69,7 +75,7 @@ const SortableItem = SortableElement(({file, fileIndex, removeFile, updateFileCb
   />)
 );
 
-const SortableList = SortableContainer(({files, updateFile, showError}) => (
+const SortableList = SortableContainer(({files, updateFile, showError, removeFile}) => (
   <div>
     {files.map((file, index) => (<SortableItem
         file={file}
@@ -77,9 +83,7 @@ const SortableList = SortableContainer(({files, updateFile, showError}) => (
         fileIndex={index}
         key={generateKey()}
         updateFileCb={updateFile}
-        removeFile={() => {
-          files.fields.remove(index);
-        }}
+        removeFile={removeFile}
         showError={showError}
       />
     ))}

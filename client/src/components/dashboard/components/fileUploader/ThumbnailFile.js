@@ -21,6 +21,7 @@ export default class ThumbnailFile extends React.Component {
     this.uploadFile = this.uploadFile.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
     this.handleFinish = this.handleFinish.bind(this);
+    this.setTitle = this.setTitle.bind(this);
   }
 
   componentWillMount() {
@@ -56,7 +57,7 @@ export default class ThumbnailFile extends React.Component {
   handleFinish(event) {
     const file = {
       name: event.filename,
-      type: this.imageType,
+      type: this.fileType,
       path: `${process.env.REACT_APP_BUCKET_URL}/${event.filename}`,
       thumbPath: `http://iiif.orphe.us/${event.filename}/full/90,/0/default.jpg`,
       _id: this._id
@@ -64,31 +65,38 @@ export default class ThumbnailFile extends React.Component {
     this.props.updateFileCb(this.fileIndex, file);
   }
 
-  inputComponent(props) {
-    return <TextInput {...props} />;
-  }
-
   toggleTitleInput() {
     this.setState({
       showTitle: !this.state.showTitle
     });
   }
+  setTitle(event) {
+    const file = this.props.file;
+    file.title = event.target.value;
+    this.props.updateFileCb(this.fileIndex, file);
+  }
 
   render() {
-    const displayTitle = this.state.showTitle ? '' : 'titleHide';
+    const displayTitle = this.state.showTitle ? 'fileDetails' : 'fileDetails hide';
     const DragHandle = SortableHandle(() => <div className="moveButton"><FontAwesome name="bars" /></div>); // This can be any component you want
     return (
-      <div className="singleImage" onClick={this.toggleTitleInput}>
+      <div className="singleImage">
         <DragHandle />
           <img
             className="thumbnailImage"
             alt={this.props.file.title}
             src={`//iiif.orphe.us/${this.props.file.name}/square/90,/0/default.jpg`}
+            onClick={this.toggleTitleInput}
           />
-          {/*<Field*/}
-            {/*name={`files[${this.props.fileIndex}].title`} component={this.inputComponent} type="text"*/}
-            {/*placeholder="Image label..." value={this.props.file.title}*/}
-          {/*/>*/}
+        <div className={displayTitle}>
+          <div className="textInput">
+            <input onChange={this.setTitle} placeholder="File title" value={this.props.file.title} />
+          </div>
+          <div className="fileDetailsButtons">
+            <button className="deleteFile pull-left" onClick={()=>{this.props.deleteFile(this.fileIndex)}}><FontAwesome name="trash" /></button>
+            <button onClick={this.toggleTitleInput}>Save</button>
+          </div>
+        </div>
       </div>
     )
   }
