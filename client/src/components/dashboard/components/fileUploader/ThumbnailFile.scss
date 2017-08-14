@@ -130,7 +130,13 @@ font-family: "Material Design Icons";
 .singleImage {
   display: inline-block;
   text-align: center;
-
+  .fileUploading {
+    height: 90px;
+    width: 90px;
+    border: 2px solid #dfe3e9;
+    line-height: 90px;
+    margin: 0px 4px;
+  }
 }
 .thumbnailImage:hover {
   outline: 2px solid #222;
@@ -166,6 +172,9 @@ font-family: "Material Design Icons";
       color: #fff;
     }
   }
+}
+.fileDetailsHide {
+  visibility: hidden;
 }
 .fileDetailsButtons {
   padding: 0 10px;
