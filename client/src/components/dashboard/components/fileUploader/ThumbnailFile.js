@@ -31,17 +31,15 @@ export default class ThumbnailFile extends React.Component {
     return (
       <div className="singleImage" onClick={this.toggleTitleInput}>
         <DragHandle />
-        <img
-          className="thumbnailImage"
-          alt={this.props.file.title}
-          src={`//iiif.orphe.us/orpheus/art/${this.props.file.fileName}/square/90,/0/default.jpg`}
-        />
-        <div className={`imageTitle ${displayTitle}`}>
-          <Field
-            name={`files[${this.props.fileIndex}].title`} component={this.inputComponent} type="text"
-            placeholder="Image label..." value={this.props.file.title}
+          <img
+            className="thumbnailImage"
+            alt={this.props.file.title}
+            src={`//iiif.orphe.us/orpheus/art/${this.props.file.fileName}/square/90,/0/default.jpg`}
           />
-        </div>
+          {/*<Field*/}
+            {/*name={`files[${this.props.fileIndex}].title`} component={this.inputComponent} type="text"*/}
+            {/*placeholder="Image label..." value={this.props.file.title}*/}
+          {/*/>*/}
       </div>
     )
   }

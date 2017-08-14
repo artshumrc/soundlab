@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
-import {SortableContainer, SortableElement} from 'react-sortable-hoc';
+import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import FileUploader from './FileUploader';
 import ThumbnailFile from './ThumbnailFile';
 
@@ -9,6 +9,10 @@ export default class ItemEditorUploader extends React.Component {
     super(props);
     this.addFile = this.addFile.bind(this);
     this.updateFile = this.updateFile.bind(this);
+    this.moveField = this.moveField.bind(this);
+    this.state = {
+      files: this.props.files.fields.getAll()
+    };
   }
 
   addFile() {
@@ -20,20 +24,26 @@ export default class ItemEditorUploader extends React.Component {
     this.props.files.fields.insert(index, file);
   }
 
+  moveField({oldIndex, newIndex}) {
+    const newFilesState = arrayMove(this.state.files, oldIndex, newIndex);
+    this.setState({
+      files: newFilesState
+    });
+    this.props.files.changeValue("files", newFilesState);
+  }
+
   render() {
-    const files = this.props.files;
+    const files = this.state.files;
     return (
       <div>
         <div className="thumbnailImages">
           <SortableList
             files={files}
-            onSortEnd={({oldIndex, newIndex}) => {
-              files.fields.move(oldIndex, newIndex);
-            }}
+            onSortEnd={this.moveField}
             updateFile={this.updateFile}
             showError={this.props.showError}
             axis="xy"
-            // useDragHandle
+            useDragHandle
           />
         </div>
         <FileUploader addFile={this.addFile} />
@@ -50,13 +60,12 @@ const SortableItem = SortableElement(({file, fileIndex, removeFile, updateFileCb
     updateFileCb={updateFileCb}
     deleteFile={removeFile}
     showError={showError}
-
   />)
 );
 
 const SortableList = SortableContainer(({files, updateFile, showError}) => (
   <div>
-    {files.fields.getAll().map((file, index) => (<SortableItem
+    {files.map((file, index) => (<SortableItem
         file={file}
         index={index}
         fileIndex={index}
