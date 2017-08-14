@@ -39,7 +39,7 @@ export default class ItemEditor extends React.Component {
           <Form
             onSubmit={this.handleSubmit} form="itemEditor" initialValues={this.state}
           >
-            {/*<PrimaryImage alt={this.state.files[0].title} src={this.state.files[0].url} />*/}
+            <Field name="files" component={files => (files.input.value[0] && files.input.value[0].path ? <PrimaryImage alt={files.input.value[0].name} src={`//iiif.orphe.us/${files.input.value[0].name}/full/600,/0/default.jpg`} /> : null)} />
             <FieldArray
               name="files"
               component={files => (
