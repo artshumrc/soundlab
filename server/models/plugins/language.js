@@ -1,5 +1,4 @@
-// api
-import { getAllLanguages } from '../../api/languages';
+import languages from 'languages';
 
 export default function languagePlugin(schema, options) {
 
@@ -10,7 +9,7 @@ export default function languagePlugin(schema, options) {
 		language: {
 			type: String,
 			default: defaultValue,
-			enum: getAllLanguages(),
+			enum: languages.getAllLanguageCode(),
 		}
 	});
 

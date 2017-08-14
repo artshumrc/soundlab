@@ -19,6 +19,11 @@ UserSchema.plugin(passportLocalMongoose);
 // add timestamp (createdAt, updatedAt)
 UserSchema.plugin(timestamp);
 
+// Statics
+UserSchema.statics.findById = function findById(_id, cb) {
+	return User.findOne({ _id }, cb);
+};
+
 /**
  * User mongoose model
  * @type {Object}

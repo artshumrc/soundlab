@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 // plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
-import language from './plugins/language';
+import languagePlugin from './plugins/language';
 
 const Schema = mongoose.Schema;
 
@@ -36,7 +36,30 @@ ProjectDetailSchema.plugin(timestamp);
 ProjectDetailSchema.plugin(URLSlugs('title'));
 
 // add language (language)
-ProjectDetailSchema.plugin(language);
+ProjectDetailSchema.plugin(languagePlugin);
+
+// Statics
+ProjectDetailSchema.statics.findByProjectId = function findByProjectId(projectId, language = process.env.DEFAULT_LANGUAGE, cb) {
+	return this.find({ projectId }, cb).byLanguage(language);
+};
+ProjectDetailSchema.statics.setProjectDetail = async function setProjectDetail(projectId, projectInput, language = process.env.DEFAULT_LANGUAGE) {
+	const query = {
+		projectId,
+		language
+	};
+	const projectDetail = await this.find(query);
+	console.log('projectDetail', projectDetail);
+	if (projectDetail.length) {
+		return this.findOneAndUpdate(query, { $set: projectInput }, { new: true });
+	}
+	return this.create({ projectId, language, ...projectInput });
+};
+
+// helpers
+ProjectDetailSchema.query.byLanguage = function byLanguage(language) {
+	return this.findOne({ language });
+};
+
 
 /**
  * ProjectDetail mongoose model

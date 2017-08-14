@@ -4,9 +4,6 @@ import mongoose from 'mongoose';
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
 
-// api
-import { getAllLanguages } from '../api/languages';
-
 const Schema = mongoose.Schema;
 
 /**
@@ -21,12 +18,6 @@ const ItemSchemaSchema = new Schema({
 		trim: true,
 		index: true
 	},
-	languages: [{
-		type: String,
-		required: true,
-		default: process.env.DEFAULT_LANGUAGE,
-		enum: getAllLanguages(),
-	}],
 	private: {
 		type: Boolean,
 		default: false,

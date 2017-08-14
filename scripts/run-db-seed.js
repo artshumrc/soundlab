@@ -3,11 +3,11 @@ import faker from 'faker';
 
 import setupDB, { closeDB } from '../server/mongoose';
 
-import generateUsers from '../server/__seeds__/user';
-import generateProjects from '../server/__seeds__/project';
-import generateMetadataPatterns from '../server/__seeds__/metadataPattern';
-import generateCollection from '../server/__seeds__/collection';
-import generateItem from '../server/__seeds__/item';
+// import generateUsers from '../server/__seeds__/user';
+// import generateProjects from '../server/__seeds__/project';
+// import generateMetadataPatterns from '../server/__seeds__/metadataPattern';
+// import generateCollection from '../server/__seeds__/collection';
+// import generateItem from '../server/__seeds__/item';
 
 dotenv.config();
 
@@ -20,39 +20,39 @@ db.on('error', console.error)
 
 		const ids = {};
 
-		// generateUsers
-		try {
-			ids.users = await generateUsers(10);
-		} catch (err) {
-			console.error(err);
-		}
+		// // generateUsers
+		// try {
+		// 	ids.users = await generateUsers(10);
+		// } catch (err) {
+		// 	console.error(err);
+		// }
 
-		// generate projects with tenants
-		try {
-			ids.projects = await generateProjects(10, ids.users);
-		} catch (err) {
-			console.error(err);
-		}
+		// // generate projects with tenants
+		// try {
+		// 	ids.projects = await generateProjects(10, ids.users);
+		// } catch (err) {
+		// 	console.error(err);
+		// }
 
-		try {
-			ids.metadataPatternIds = await generateMetadataPatterns(5, 3);
-		} catch (err) {
-			console.error(err);
-		}
+		// try {
+		// 	ids.metadataPatternIds = await generateMetadataPatterns(5, 3);
+		// } catch (err) {
+		// 	console.error(err);
+		// }
 
-		try {
-			ids.collectionIds = await generateCollection(25, ids.projects, ids.metadataPatternIds);
-		} catch (err) {
-			console.error(err);
-		}
+		// try {
+		// 	ids.collectionIds = await generateCollection(25, ids.projects, ids.metadataPatternIds);
+		// } catch (err) {
+		// 	console.error(err);
+		// }
 
-		try {
-			ids.itemIds = await generateItem(100, ids.collectionIds);
-		} catch (err) {
-			console.error(err);
-		}
+		// try {
+		// 	ids.itemIds = await generateItem(100, ids.collectionIds);
+		// } catch (err) {
+		// 	console.error(err);
+		// }
 
-		console.log('ids', ids);
+		// console.log('ids', ids);
 
 		// end seed generation process
 		db.close(() => {

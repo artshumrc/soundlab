@@ -42,6 +42,10 @@ const dbSetup = () => {
 		},
 	};
 
+	if (process.env.NODE_ENV === 'development') {
+		mongoose.set('debug', true);
+	}
+
 	return mongoose.connect(url, options).connection;
 };
 

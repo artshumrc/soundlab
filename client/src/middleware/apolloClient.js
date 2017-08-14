@@ -4,9 +4,9 @@ import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-trans
 
 const networkInterface = createNetworkInterface({
 	uri: `${process.env.REACT_APP_GRAPHQL_SERVER}/${process.env.REACT_APP_GRAPHQL_URI}`,
-	opts: {
-		credentials: 'include',
-	}
+	// opts: {
+	// 	credentials: 'include',
+	// }
 });
 
 networkInterface.use([{

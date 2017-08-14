@@ -19,6 +19,8 @@ import UserProfileTimeline from './dashboard/routes/UserProfileTimeline';
 import ExampleForms from './dashboard/routes/ExampleForms';
 import MiradorUploader from './dashboard/routes/MiradorUploader';
 
+import GraphiQL from './graphiql';
+
 export default (
   <div>
 		{/* Normal home landing page */}
@@ -50,6 +52,10 @@ export default (
       <Route path="/dashboard/form" component={ExampleForms} />
       <Route path="/dashboard/mirador" component={MiradorUploader} />
     </Route>
+
+    {process.env.NODE_ENV === 'development' &&
+      <Route exact path="/graphiql" component={GraphiQL} />
+    }
 
   </div>
 );

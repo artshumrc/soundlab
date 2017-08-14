@@ -1,6 +1,6 @@
 import { GraphQLObjectType } from 'graphql';
 
-import projectQueryFileds from './projects';
+import projectQueryFileds from './project';
 
 /**
  * Root Queries

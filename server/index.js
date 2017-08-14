@@ -28,9 +28,11 @@ import setupGraphql from './graphql';
 // S3
 import s3Setup from './s3';
 
+// Redis
+import redisSetup from './redis';
+
 // Routes
 import authenticationRouter from './routes/authentication';
-import playgroundRouter from './routes/playground';
 import manifestRouter from './routes/manifest';
 
 // environment variables setup
@@ -39,6 +41,8 @@ dotenvSetup();
 const app = express();
 
 const db = dbSetup();
+
+const redisClient = redisSetup();
 
 app.set('port', (process.env.PORT || 3001));
 
@@ -59,12 +63,11 @@ app.use(session({
 	store: storeSetup(session),
 }));
 
-
 // CORS setup
-corsSetup(app);
+corsSetup(app, redisClient);
 
 // Authentication setup
-authSetup(app);
+authSetup(app, redisClient);
 
 // GraphQl setup
 setupGraphql(app);
@@ -74,7 +77,6 @@ s3Setup(app);
 
 // Routes
 app.use('/auth', authenticationRouter);
-app.use('/playground', playgroundRouter);
 app.use('/', manifestRouter);
 
 
