@@ -15,8 +15,8 @@ export default class ItemEditorUploader extends React.Component {
     };
   }
 
-  addFile() {
-
+  addFile(file) {
+    this.props.files.fields.push(file);
   }
 
   updateFile(index, file) {
@@ -33,7 +33,7 @@ export default class ItemEditorUploader extends React.Component {
   }
 
   render() {
-    const files = this.state.files;
+    const files = this.props.files.fields.getAll();
     return (
       <div>
         <div className="thumbnailImages">

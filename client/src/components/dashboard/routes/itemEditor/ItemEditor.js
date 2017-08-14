@@ -8,14 +8,17 @@ import Form from '../../components/Form';
 export default class ItemEditor extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   files: [{title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '48.jpg'},
+    //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '16.jpg'},
+    //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/38.jpg/full/600,/0/default.jpg', fileName: '38.jpg'},
+    //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/47.jpg/full/600,/0/default.jpg', fileName: '47.jpg'},
+    //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/3.jpg/full/600,/0/default.jpg', fileName: '3.jpg'},
+    //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/95.jpg/full/600,/0/default.jpg', fileName: '95.jpg'},
+    //   ]
+    // };
     this.state = {
-      files: [{title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '48.jpg'},
-        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '16.jpg'},
-        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/38.jpg/full/600,/0/default.jpg', fileName: '38.jpg'},
-        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/47.jpg/full/600,/0/default.jpg', fileName: '47.jpg'},
-        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/3.jpg/full/600,/0/default.jpg', fileName: '3.jpg'},
-        {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/95.jpg/full/600,/0/default.jpg', fileName: '95.jpg'},
-      ]
+      files: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.showError = this.showError.bind(this);
@@ -36,7 +39,7 @@ export default class ItemEditor extends React.Component {
           <Form
             onSubmit={this.handleSubmit} form="itemEditor" initialValues={this.state}
           >
-            <PrimaryImage alt={this.state.files[0].title} src={this.state.files[0].url} />
+            {/*<PrimaryImage alt={this.state.files[0].title} src={this.state.files[0].url} />*/}
             <FieldArray
               name="files"
               component={files => (
