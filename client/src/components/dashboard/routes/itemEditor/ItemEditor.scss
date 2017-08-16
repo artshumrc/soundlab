@@ -119,4 +119,29 @@ font-family: "Material Design Icons";
 .itemImageViewer {
   margin: 20px auto;
   max-width: 600px;
-  width: 95%; }
+  width: 95%;
+}
+.itemEditor {
+  input {
+    font-family: "Proxima Nova W08 Reg", sans-serif;
+    background-color: transparent;
+    width: 100%;
+    border: 0;
+    color: #212121;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.5s ease;
+  }
+  input:focus {
+    outline: none;
+    border-bottom: 1px solid #62baf0;
+    transition: border-color 0.5s ease;
+  }
+  .itemTitleEdit {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 36px;
+  }
+  .itemDescriptioneEdit {
+
+  }
+}

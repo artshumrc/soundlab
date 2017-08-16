@@ -1,9 +1,9 @@
 import React from 'react';
+import {Field, FieldArray} from 'redux-form';
 import ItemEditorUploader from '../../components/fileUploader/ItemEditorUploader';
 import PrimaryImage from '../../../items/ItemImageViewer/PrimaryImage';
-import {Field, FieldArray} from 'redux-form';
 import Form from '../../components/Form';
-
+import './ItemEditor.css';
 
 export default class ItemEditor extends React.Component {
   constructor(props) {
@@ -33,19 +33,25 @@ export default class ItemEditor extends React.Component {
   }
 
   render() {
+    const inputComponent = (props) => <input type={props.type} name={props.name} placeholder={props.placeholder} className={props.className} />;
+
     return (
       <div className="content">
-        <div className="itemImageViewer">
+        <div className="itemImageViewer itemEditor">
           <Form
             onSubmit={this.handleSubmit} form="itemEditor" initialValues={this.state}
           >
-            <Field name="files" component={files => (files.input.value[0] && files.input.value[0].path ? <PrimaryImage alt={files.input.value[0].name} src={`//iiif.orphe.us/${files.input.value[0].name}/full/600,/0/default.jpg`} /> : null)} />
+            <Field name="files" component={files => (files.input.value[0] && files.input.value[0].path ?
+              <PrimaryImage alt={files.input.value[0].name}
+                            src={`//iiif.orphe.us/${files.input.value[0].name}/full/600,/0/default.jpg`}/> : null)}/>
             <FieldArray
               name="files"
               component={files => (
-                <ItemEditorUploader files={files} showError={this.showError} />
+                <ItemEditorUploader files={files} showError={this.showError}/>
               )}
             />
+            <Field name="title" component={inputComponent} type="text" placeholder="Title..."
+                   className="itemTitleEdit"/>
           </Form>
         </div>
       </div>

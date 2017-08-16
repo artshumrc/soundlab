@@ -1,8 +1,8 @@
 import React from 'react';
-import './ThumbnailFile.css';
 import {SortableHandle} from 'react-sortable-hoc';
 import FontAwesome from 'react-fontawesome';
 import S3Upload from 'react-s3-uploader/s3upload';
+import './ThumbnailFile.css';
 
 export default class ThumbnailFile extends React.Component {
 	constructor(props) {
