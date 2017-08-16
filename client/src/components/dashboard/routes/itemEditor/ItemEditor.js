@@ -4,6 +4,7 @@ import Textarea from 'react-textarea-autosize';
 import ItemEditorUploader from '../../components/fileUploader/ItemEditorUploader';
 import PrimaryImage from '../../../items/ItemImageViewer/PrimaryImage';
 import Form from '../../components/Form';
+import TagEditor from './TagEditor';
 import './ItemEditor.css';
 
 export default class ItemEditor extends React.Component {
@@ -54,6 +55,9 @@ export default class ItemEditor extends React.Component {
             <Field name="title" component={inputComponent} type="text" placeholder="Title..."
                    className="itemTitleEdit"/>
             <Field name="description" className="itemDescriptionEdit" placeholder="Description..." component={Textarea} />
+            <FieldArray name="tags" component={tags => (
+              <TagEditor tags={tags} />
+            )}/>
           </Form>
         </div>
       </div>

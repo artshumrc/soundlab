@@ -122,12 +122,12 @@ font-family: "Material Design Icons";
   width: 95%;
 }
 .itemEditor {
+  color: #212121;
   input {
     font-family: "Proxima Nova W08 Reg", sans-serif;
     background-color: transparent;
     width: 100%;
     border: 0;
-    color: #212121;
     border-bottom: 1px solid transparent;
     transition: border-color 0.5s ease;
   }
@@ -147,7 +147,6 @@ font-family: "Material Design Icons";
     font-family: "Merriweather", serif;
     font-weight: 100;
     font-size: 20px;
-    color: #212121;
     line-height: 1.7em;
     padding: 30px 0;
     text-align: left;
@@ -162,5 +161,18 @@ font-family: "Material Design Icons";
     outline: none;
     border-bottom: 1px solid #62baf0;
     transition: border-color 0.5s ease;
+  }
+  .tagList {
+    font-family: "Courier W07 Regular", sans-serif;
+    font-size: 14px;
+    color: #727272;
+    display: inline-block;
+    vertical-align: top;
+    padding: 3px 0;
+    margin: 2px 5px;
+    -o-transition: all 100ms ease-in-out;
+    -webkit-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out;
+    cursor: pointer;
   }
 }
