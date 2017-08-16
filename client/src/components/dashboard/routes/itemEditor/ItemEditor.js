@@ -1,5 +1,6 @@
 import React from 'react';
 import {Field, FieldArray} from 'redux-form';
+import Textarea from 'react-textarea-autosize';
 import ItemEditorUploader from '../../components/fileUploader/ItemEditorUploader';
 import PrimaryImage from '../../../items/ItemImageViewer/PrimaryImage';
 import Form from '../../components/Form';
@@ -52,6 +53,7 @@ export default class ItemEditor extends React.Component {
             />
             <Field name="title" component={inputComponent} type="text" placeholder="Title..."
                    className="itemTitleEdit"/>
+            <Field name="description" component={Textarea} />
           </Form>
         </div>
       </div>
