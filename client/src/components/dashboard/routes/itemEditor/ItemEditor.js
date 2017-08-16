@@ -40,6 +40,7 @@ export default class ItemEditor extends React.Component {
 			{...props.input}
 			placeholder={props.placeholder}
 			className={props.className}
+			autoFocus
 		/>);
 		const textComponent = props => (<Textarea
 			{...props.input}
@@ -87,12 +88,12 @@ export default class ItemEditor extends React.Component {
 								<TagEditor tags={tags} />
               )}
 						/>
-            <FieldArray
-              name="meta"
-              component={meta => (
-                <MetaEditor meta={meta} />
+						<FieldArray
+							name="meta"
+							component={meta => (
+								<MetaEditor meta={meta} />
               )}
-            />
+						/>
 					</Form>
 				</div>
 			</div>
