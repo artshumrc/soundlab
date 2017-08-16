@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'underscore';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import FileUploader from './FileUploader';
 import ThumbnailFile from './ThumbnailFile';
