@@ -1,0 +1,53 @@
+.metaEditor {
+  margin: 15px 0;
+  padding: 10px 0;
+  .addMeta {
+    color: #999;
+    font-size: 14px;
+    font-family: "Slate W04 Light", sans-serif;
+  }
+  .itemMetaField {
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    margin: 15px 0;
+    border-top: 1px solid transparent;
+    padding: 10px 0;
+    .metaLabel {
+      margin-right: 15px;
+      min-width: 160px;
+      color: #727272;
+      font-family: "Proxima Nova W08 Reg", sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: right;
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.5s ease;
+    }
+    .metaLabel:focus {
+      outline: 0;
+      border-bottom: 1px solid #62baf0;
+      transition: border-color 0.5s ease;
+    }
+    .metaValue {
+      color: #212121;
+      font-family: "Slate W04 Light", sans-serif;
+      font-size: 18px;
+      line-height: 1.7em;
+      text-align: left;
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.5s ease;
+    }
+    .metaValue:focus {
+      outline: 0;
+      border-bottom: 1px solid #62baf0;
+      transition: border-color 0.5s ease;
+    }
+  }
+}

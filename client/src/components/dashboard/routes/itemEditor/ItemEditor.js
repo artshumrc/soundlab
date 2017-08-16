@@ -5,6 +5,7 @@ import ItemEditorUploader from '../../components/fileUploader/ItemEditorUploader
 import PrimaryImage from '../../../items/ItemImageViewer/PrimaryImage';
 import Form from '../../components/Form';
 import TagEditor from './TagEditor';
+import MetaEditor from './MetaEditor';
 import './ItemEditor.css';
 
 export default class ItemEditor extends React.Component {
@@ -86,6 +87,12 @@ export default class ItemEditor extends React.Component {
 								<TagEditor tags={tags} />
               )}
 						/>
+            <FieldArray
+              name="meta"
+              component={meta => (
+                <MetaEditor meta={meta} />
+              )}
+            />
 					</Form>
 				</div>
 			</div>
