@@ -18,9 +18,6 @@ export default class TagEditor extends React.Component {
       {value: 'example-tag', label: 'Example Tag'},
       {value: 'manuscripts', label: 'Manuscripts'}
 		];
-		console.log('this.props LOG', this.props);
-		console.log('this.props LOG', this.props.tags.fields.getAll());
-
 		return (
 			<div className="tagList">
 				<Creatable
