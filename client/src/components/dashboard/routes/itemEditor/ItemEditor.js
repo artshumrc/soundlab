@@ -35,7 +35,8 @@ export default class ItemEditor extends React.Component {
   }
 
   render() {
-    const inputComponent = (props) => <input type={props.type} name={props.name} placeholder={props.placeholder} className={props.className} />;
+    const inputComponent = (props) => <input type={props.type} name={props.name} placeholder={props.placeholder}
+                                             className={props.className}/>;
 
     return (
       <div className="content">
@@ -53,10 +54,11 @@ export default class ItemEditor extends React.Component {
               )}
             />
             <Field name="title" component={inputComponent} type="text" placeholder="Title..."
-                   className="itemTitleEdit"/>
-            <Field name="description" className="itemDescriptionEdit" placeholder="Description..." component={Textarea} />
+                   className="itemTitleEdit detailInput"/>
+            <Field name="description" className="itemDescriptionEdit detailInput" placeholder="Description..."
+                   component={Textarea}/>
             <FieldArray name="tags" component={tags => (
-              <TagEditor tags={tags} />
+              <TagEditor tags={tags}/>
             )}/>
           </Form>
         </div>

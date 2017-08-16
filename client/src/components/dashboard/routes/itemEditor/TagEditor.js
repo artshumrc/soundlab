@@ -1,24 +1,40 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
+import {Creatable} from 'react-select';
+import './TagEditor.css';
 
 export default class TagEditor extends React.Component {
-  constructor(props) {
-    super(props);
-    this.addTag = this.addTag.bind(this);
-  }
+	constructor(props) {
+		super(props);
+		this.addTag = this.addTag.bind(this);
+	}
 
-  addTag() {
-    this.props.tags.fields.push();
-  }
+	addTag(value) {
+		this.props.tags.changeValue('tags', value);
+	}
 
-  render() {
-    console.log("this.props LOG", this.props);
-    return (
-      <div className="tagList">Tags
-        <a href="#addTag" onClick={this.addTag}>
-          <FontAwesome name="plus-circle" />
-        </a>
-      </div>
-    );
-  }
+	render() {
+		const currentTags = this.props.tags.fields.getAll();
+		const options = [
+      {value: 'example-tag', label: 'Example Tag'},
+      {value: 'manuscripts', label: 'Manuscripts'}
+		];
+		console.log('this.props LOG', this.props);
+		console.log('this.props LOG', this.props.tags.fields.getAll());
+
+		return (
+			<div className="tagList">
+				<Creatable
+					name="tags"
+					options={options}
+					onChange={this.addTag}
+					complete
+					value={currentTags}
+					multi
+					backspaceRemoves={false}
+					clearable={false}
+					placeholder="Select tags..."
+				/>
+			</div>
+		);
+	}
 }
