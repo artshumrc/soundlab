@@ -53,7 +53,7 @@ export default class ItemEditor extends React.Component {
             />
             <Field name="title" component={inputComponent} type="text" placeholder="Title..."
                    className="itemTitleEdit"/>
-            <Field name="description" component={Textarea} />
+            <Field name="description" className="itemDescriptionEdit" placeholder="Description..." component={Textarea} />
           </Form>
         </div>
       </div>
