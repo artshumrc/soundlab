@@ -15,6 +15,7 @@
     margin: 15px 0;
     border-top: 1px solid transparent;
     padding: 10px 0;
+    align-items: center;
     .metaLabel {
       margin-right: 15px;
       min-width: 160px;
@@ -48,6 +49,19 @@
       outline: 0;
       border-bottom: 1px solid #62baf0;
       transition: border-color 0.5s ease;
+    }
+    .deleteMeta {
+      height: 100%;
+    }
+    span {
+      line-height: 16px;
+      font: normal normal normal 16px FontAwesome;
+      color: #d0d1d2;
+      transition: color 0.5s ease;
+    }
+    span:hover {
+      color: #a4142a;
+      transition: color 0.5s ease;
     }
   }
 }

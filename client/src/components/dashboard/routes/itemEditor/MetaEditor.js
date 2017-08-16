@@ -7,10 +7,15 @@ export default class MetaEditor extends React.Component {
 	constructor(props) {
 		super(props);
 		this.addMeta = this.addMeta.bind(this);
+		this.deleteMeta = this.deleteMeta.bind(this);
 	}
 
 	addMeta() {
 		this.props.meta.fields.push();
+	}
+
+	deleteMeta(index) {
+	  this.props.meta.fields.remove(index);
 	}
 
 	render() {
@@ -25,15 +30,18 @@ export default class MetaEditor extends React.Component {
 			type="text"
 			component="input"
 			className="metaLabel"
-      placeholder="Label..."
+			placeholder="Label..."
 		/>
 		<Field
 			name={`meta[${index}].value`}
 			type="text"
 			component="input"
 			className="metaValue"
-      placeholder="Value..."
+			placeholder="Value..."
 		/>
+		<a href="#deleteMeta" className="deleteMeta" onClick={() => { this.deleteMeta(index); }}>
+			<FontAwesome name="trash-o" />
+		</a>
 	</div>))
         }
 				<a href="#addMeta" className="addMeta" onClick={this.addMeta}>
