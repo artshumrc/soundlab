@@ -3,7 +3,7 @@ import Headroom from 'react-headroom';
 import './NavBar.css';
 import scrollToElement from '../../../../lib/scrollToElement';
 
-const NavBar = ({ onToggleLoginModal }) => (
+const NavBar = ({ onToggleAuthModal }) => (
 	<Headroom className="navbar">
 		<div className="nav-navbar">
 			<i className="mdi mdi-bars left-menu-toggle-icon" />
@@ -28,7 +28,7 @@ const NavBar = ({ onToggleLoginModal }) => (
 				</a>
 			</li>
 			<li>
-				<a href="#" className="login-button" onClick={onToggleLoginModal}>
+				<a href="#" className="login-button" onClick={onToggleAuthModal}>
 					Sign Up / In
 				</a>
 			</li>

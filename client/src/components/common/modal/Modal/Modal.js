@@ -3,33 +3,38 @@ import PropTypes from 'prop-types';
 
 import './Modal.css';
 
-class Modal extends React.Component {
 
-	render() {
-		const { classes } = this.props;
+const Modal = ({ children, classes, show, closeModal }) => {
 
+	if (show) {
 		return (
 			<div
 				className={`orpheusModal ${classes.join(' ')}`}
 			>
 				<div
 					className="closeModal"
+					onClick={closeModal}
 				>
 					<i className="mdi mdi-close" />
 				</div>
 				<div className="modalInner">
-					{this.props.children}
+					{children}
 				</div>
 			</div>
 		);
 	}
-}
+	return null;
+};
 
 Modal.propTypes = {
+	children: PropTypes.element.isRequired,
+	closeModal: PropTypes.func.isRequired,
 	classes: PropTypes.arrayOf(PropTypes.string),
+	show: PropTypes.bool,
 };
 
 Modal.defaultProps = {
+	show: false,
 	classes: [],
 };
 
