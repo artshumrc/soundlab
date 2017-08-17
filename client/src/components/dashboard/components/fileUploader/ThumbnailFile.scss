@@ -117,30 +117,41 @@ font-family: "Material Design Icons";
  @https://github.com/Upstatement/ups-mixin-lib
 
 ******************************************************************************/
-.thumbnailImage {
-  margin: 0px 4px;
-  border: 8px solid transparent;
-  outline: 2px solid transparent;
-  cursor: pointer;
-  -moz-transition: all 100ms ease-in-out;
-  -o-transition: all 100ms ease-in-out;
-  -webkit-transition: all 100ms ease-in-out;
-  transition: all 100ms ease-in-out;
-}
+
 .singleImage {
   display: inline-block;
   text-align: center;
-  .fileUploading {
-    height: 90px;
-    width: 90px;
-    border: 2px solid #dfe3e9;
+  .fileThumbnail {
     line-height: 90px;
     margin: 0px 4px;
+    border: 8px solid transparent;
+    outline: 2px solid transparent;
+    cursor: pointer;
+    -o-transition: all 100ms ease-in-out;
+    -webkit-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out;
+    .fileIcon {
+      border: 1px solid #999;
+      width: 88px;
+      height: 88px;
+      margin: 8px 12px;
+    }
+  }
+  .fileThumbnail:hover {
+    outline: 2px solid #222;
+  }
+  .thumbnailImage {
+    margin: 0px 4px;
+    border: 8px solid transparent;
+    outline: 2px solid transparent;
+    cursor: pointer;
+    -moz-transition: all 100ms ease-in-out;
+    -o-transition: all 100ms ease-in-out;
+    -webkit-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out;
   }
 }
-.thumbnailImage:hover {
-  outline: 2px solid #222;
-}
+
 .imageTitle {
   display: inline-block;
   width: 100%;

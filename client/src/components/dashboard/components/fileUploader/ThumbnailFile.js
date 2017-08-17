@@ -81,16 +81,24 @@ export default class ThumbnailFile extends React.Component {
 	render() {
 		const displayTitle = this.state.showTitle ? 'fileDetails' : 'fileDetails fileDetailsHide';
 		const DragHandle = SortableHandle(() => <div className="moveButton"><FontAwesome name="bars" /></div>); // This can be any component you want
+
+		const fileType = this.props.file.type;
+		const isImage = fileType.slice(0, fileType.indexOf('/')) === 'image';
+
+		const thumbnail = isImage ? (<div className="fileThumbnail"><img
+			className="thumbnailImage"
+			alt={this.props.file.title}
+			src={`//iiif.orphe.us/${this.props.file.name}/square/90,/0/default.jpg`}
+			onClick={this.toggleTitleInput}
+    /></div>) : <div className="fileThumbnail"><div className="fileIcon"><FontAwesome name="file-pdf-o" /></div></div>;
+
+    //add more conditions if needed
+
 		return (
 			<div className="singleImage">
 				<DragHandle />
-				{this.props.file.path ? <img
-					className="thumbnailImage"
-					alt={this.props.file.title}
-					src={`//iiif.orphe.us/${this.props.file.name}/square/90,/0/default.jpg`}
-					onClick={this.toggleTitleInput}
-				/>
-          : <div className="fileUploading"><FontAwesome name="circle-o-notch" spin /></div>
+				{this.props.file.path ? thumbnail
+          : <div className="fileThumbnail"><FontAwesome name="circle-o-notch" spin /></div>
         }
 
 

@@ -3,6 +3,7 @@ import {Field, FieldArray} from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import ItemEditorUploader from '../../components/fileUploader/ItemEditorUploader';
 import PrimaryImage from '../../../items/ItemImageViewer/PrimaryImage';
+import PrimaryFile from './PrimaryFile';
 import Form from '../../components/Form';
 import TagEditor from './TagEditor';
 import MetaEditor from './MetaEditor';
@@ -25,6 +26,7 @@ export default class ItemEditor extends React.Component {
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.showError = this.showError.bind(this);
+		this.isImage = this.isImage.bind(this);
 	}
 
 	handleSubmit(values) {
@@ -33,6 +35,10 @@ export default class ItemEditor extends React.Component {
 
 	showError(error) {
 		console.error(error);
+	}
+
+	isImage(fileType) {
+		return fileType.slice(0, fileType.indexOf('/')) === 'image';
 	}
 
 	render() {
@@ -58,10 +64,12 @@ export default class ItemEditor extends React.Component {
 						<Field
 							name="files"
 							component={files => (files.input.value[0] && files.input.value[0].path ?
-								<PrimaryImage
-									alt={files.input.value[0].name}
-									src={`//iiif.orphe.us/${files.input.value[0].name}/full/600,/0/default.jpg`}
-								/> : null)}
+                this.isImage(files.input.value[0].type) ?
+	<PrimaryImage
+		alt={files.input.value[0].name}
+		src={`//iiif.orphe.us/${files.input.value[0].name}/full/600,/0/default.jpg`}
+	/> :
+	<PrimaryFile file={files.input.value[0]} /> : null)}
 						/>
 						<FieldArray
 							name="files"
