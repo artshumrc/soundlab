@@ -1,7 +1,7 @@
 .metaEditor {
   margin: 15px 0;
   padding: 10px 0;
-  .addMeta {
+  .optionsVisible {
     color: #999;
     font-size: 14px;
     font-family: "Slate W04 Light", sans-serif;
@@ -63,5 +63,39 @@
       color: #a4142a;
       transition: color 0.5s ease;
     }
+  }
+  .fa {
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 10px;
+  }
+  .options {
+    width: 0;
+    -moz-transition: width .5s, height 0s;
+    -ms-transition: width .5s, height 0s;
+    -o-transition: width .5s, height 0s;
+    -webkit-transition: width .5s, height 0s;
+    transition: width .5s;
+    overflow: hidden;
+    display: inline-flex;
+    white-space: nowrap;
+    .fa {
+      border-bottom: 1px solid #999;
+    }
+    .fa:hover {
+      border-bottom: 1px solid transparent;
+    }
+
+  }
+  .expand {
+    width: 100px;
+  }
+  .addMeta {
+    cursor: pointer;
+    display: inline-flex;
+    color: #999;
+    font-size: 14px;
+    font-family: "Slate W04 Light", sans-serif;
+    margin-top: -15px;
   }
 }
