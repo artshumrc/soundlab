@@ -41,12 +41,11 @@ export default class FormImagesUploader extends React.Component {
 		);
 	}
 }
-const generateKey = () => Math.random().toString(36).substring(2);
 const SortableItem = SortableElement(({image, imageIndex, removeImage, updateImageCb, showError}) =>
   (<ImagesInput
 	image={image}
 	imageIndex={imageIndex}
-	key={generateKey()}
+	key={`image-key-${image.name}`}
 	updateImageCb={updateImageCb} 
 	deleteImage={removeImage}
 	showError={showError}
@@ -59,7 +58,7 @@ const SortableList = SortableContainer(({images, updateImage, showError}) => (
 			image={image}
 			index={index}
 			imageIndex={index}
-			key={generateKey()}
+			key={`image-key-${image.name}`}
 			updateImageCb={updateImage}
 			removeImage={() => {
 				images.fields.remove(index);

@@ -5,9 +5,14 @@ import './stylesheets/Form.css';
 
 class Form extends React.Component {
 	render() {
-		return (
+    const childrenWithProps = React.Children.map(this.props.children,
+      (child) => React.cloneElement(child, {
+        changeValue: this.props.change
+      })
+    );
+    return (
 			<form onSubmit={this.props.handleSubmit}>
-				{this.props.children}
+				{childrenWithProps}
 				<div className="submitButton">
 					<button type="submit">Submit</button>
 				</div>

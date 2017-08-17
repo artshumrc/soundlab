@@ -3,7 +3,6 @@ import S3Upload from 'react-s3-uploader/s3upload';
 import CircularProgressbar from 'react-circular-progressbar';
 import {Field} from 'redux-form';
 import FontAwesome from 'react-fontawesome';
-// import mongoose from 'mongoose';
 import TextInput from '../../components/TextInput';
 import {SortableHandle} from 'react-sortable-hoc';
 
@@ -25,7 +24,7 @@ export default class ImagesInput extends React.Component {
 
 	componentWillMount() {
 		if (!this.props.image.path && process.env.REACT_APP_BUCKET_URL) {
-			// this._id = mongoose.Types.ObjectId();
+			this._id = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
 			this.uploadFile();
 		}
 	}

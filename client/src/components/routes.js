@@ -18,6 +18,7 @@ import UserProfile from './dashboard/routes/UserProfile';
 import UserProfileTimeline from './dashboard/routes/UserProfileTimeline';
 import ExampleForms from './dashboard/routes/ExampleForms';
 import MiradorUploader from './dashboard/routes/MiradorUploader';
+import ItemEditor from './dashboard/routes/itemEditor/ItemEditor';
 
 import GraphiQL from './graphiql';
 
@@ -51,6 +52,8 @@ export default (
       <Route path="/dashboard/user2" component={UserProfileTimeline} />
       <Route path="/dashboard/form" component={ExampleForms} />
       <Route path="/dashboard/mirador" component={MiradorUploader} />
+      <Route path="/dashboard/itemEditor" component={ItemEditor} />
+
     </Route>
 
     {process.env.NODE_ENV === 'development' &&
