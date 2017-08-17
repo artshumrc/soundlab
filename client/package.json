@@ -22,6 +22,7 @@
     "react-apollo": "^1.4.2",
     "react-bootstrap": "^0.31.0",
     "react-circular-progressbar": "^0.1.5",
+    "react-datetime": "^2.9.0",
     "react-dom": "^15.5.4",
     "react-dropzone": "^3.13.3",
     "react-fontawesome": "^1.6.1",
