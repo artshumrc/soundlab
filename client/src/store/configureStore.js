@@ -1,19 +1,17 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import api from '../middleware/api';
 import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
 import client from '../middleware/apolloClient';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const configureStore = preloadedState => {
 	const store = createStore(
 		rootReducer,
 		preloadedState,
-		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-		compose(
-			applyMiddleware(thunk, api, createLogger(), client.middleware()),
-			DevTools.instrument()
+		composeEnhancers(
+			applyMiddleware(thunk, createLogger(), client.middleware()),
 		)
 	);
 

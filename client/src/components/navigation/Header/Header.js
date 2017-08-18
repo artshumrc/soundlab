@@ -4,35 +4,34 @@ import PropTypes from 'prop-types';
 
 // components
 import NavBar from './NavBar';
-import AuthModal from '../../auth/AuthModal';
 
 // actions
-import { toggleAuthModal } from '../../../actions/auth';
+import { authActions } from '../../../modules/auth';
 
-const _Header = ({ showAuthModal, onToggleAuthModal }) => (
+const _Header = ({ dispatchToggleAuthModal, loggedIn, dispatchToggleLogout }) => (
 	<div>
 		<NavBar
-			onToggleAuthModal={onToggleAuthModal}
-		/>
-		<AuthModal
-			showAuthModal={showAuthModal}
-			toggleAuthModal={onToggleAuthModal}
+			toggleAuthModal={dispatchToggleAuthModal}
+			loggedIn={loggedIn}
+			logout={dispatchToggleLogout}
 		/>
 	</div>
 );
 
 _Header.propTypes = {
-	showAuthModal: PropTypes.bool.isRequired,
-	onToggleAuthModal: PropTypes.func.isRequired,
+	dispatchToggleAuthModal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-	showAuthModal: state.auth.showAuthModal,
+	loggedIn: state.auth.userId ? true : false,
 });
 
 const mapDispatchToProps = dispatch => ({
-	onToggleAuthModal: () => {
-		dispatch(toggleAuthModal());
+	dispatchToggleAuthModal: () => {
+		dispatch(authActions.toggleAuthModal());
+	},
+	dispatchToggleLogout: () => {
+		dispatch(authActions.toggleLogout());
 	}
 });
 

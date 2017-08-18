@@ -3,7 +3,7 @@ import Headroom from 'react-headroom';
 import './NavBar.css';
 import scrollToElement from '../../../../lib/scrollToElement';
 
-const NavBar = ({ onToggleAuthModal }) => (
+const NavBar = ({ toggleAuthModal, loggedIn, logout }) => (
 	<Headroom className="navbar">
 		<div className="nav-navbar">
 			<i className="mdi mdi-bars left-menu-toggle-icon" />
@@ -28,9 +28,15 @@ const NavBar = ({ onToggleAuthModal }) => (
 				</a>
 			</li>
 			<li>
-				<a href="#" className="login-button" onClick={onToggleAuthModal}>
-					Sign Up / In
-				</a>
+				{loggedIn ? 
+					<a href="#" className="login-button" onClick={logout}>
+						LogOUt
+					</a>
+					:
+					<a href="#" className="login-button" onClick={toggleAuthModal}>
+						Sign Up / In
+					</a>
+				}
 			</li>
 			<li>
 				<a href="/search">

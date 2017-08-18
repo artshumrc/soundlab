@@ -43,17 +43,6 @@ export default function authSetup(app, redisClient) {
 		} catch (err) {
 			return done(err, false);
 		}
-
-		// User.findOne({ _id: jwtPayload._id }, (err, user) => {
-		// 	if (err) {
-		// 		return done(err, false);
-		// 	}
-		// 	if (user) {
-		// 		done(null, user);
-		// 	} else {
-		// 		done(null, false);
-		// 	}
-		// });
 	}));
 
 	// LOCAL strategy

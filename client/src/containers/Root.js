@@ -5,22 +5,28 @@ import { Router } from 'react-router';
 import Routes from '../components/routes';
 import client from '../middleware/apolloClient';
 
-const Root = ({store, history}) => {
-  return (
-    <ApolloProvider
-      client={client}
-      store={store}
-    >
-      <div>
-        <Router history={history} routes={Routes}/>
-      </div>
-    </ApolloProvider>
-  );
-};
+// auth
+import AuthModal from '../modules/auth';
+import { login, verifyToken } from '../lib/auth';
+
+const Root = ({store, history}) => (
+	<ApolloProvider
+		client={client}
+		store={store}
+	>
+		<div>
+			<Router history={history} routes={Routes} />
+			<AuthModal
+				loginMethod={login}
+				getUserFromServer={verifyToken}
+			/>
+		</div>
+	</ApolloProvider>
+);
 
 Root.propTypes = {
-  store: PropTypes.shape({/* TODO: update */}).isRequired,
-  history: PropTypes.shape({/* TODO: update */}).isRequired,
+	store: PropTypes.shape({/* TODO: update */}).isRequired,
+	history: PropTypes.shape({/* TODO: update */}).isRequired,
 };
 
 export default Root;

@@ -1,21 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import OAuthButtons from '../OAuthButtons';
+// import OAuthButtons from '../OAuthButtons';
 import PWDLoginForm from '../PWDLoginForm';
-import './ModalLogin.css';
-
-import { login } from '../../../lib/auth';
+import './Login.css';
 
 
 const ESCAPE_KEY = 27;
 
 
-class ModalLogin extends React.Component {
+class Login extends React.Component {
 
 	static propTypes = {
 		onRegisterClick: PropTypes.func.isRequired,
-		setUser: PropTypes.func.isRequired,
+		login: PropTypes.func.isRequired,
 	}
 
 	constructor(props) {
@@ -41,7 +39,7 @@ class ModalLogin extends React.Component {
 	}
 
 	render() {
-		const { onRegisterClick, setUser } = this.props;
+		const { onRegisterClick, login } = this.props;
 
 		return (
 			<div className="at-form">
@@ -63,7 +61,6 @@ class ModalLogin extends React.Component {
 
 				<PWDLoginForm
 					submitMethod={login}
-					setUser={setUser}
 				/>
 
 				<div className="at-signup-link">
@@ -89,4 +86,4 @@ class ModalLogin extends React.Component {
 	}
 }
 
-export default ModalLogin;
+export default Login;

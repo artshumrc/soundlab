@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Modal from '../../common/modal/Modal';
+import Modal from '../Modal';
 
 // auth types:
-import ModalLogin from '../ModalLogin';
-import ModalSignup from '../ModalSignup';
+import Login from '../Login';
+// import ModalSignup from '../ModalSignup';
 
 // actions
-import { toggleAuthModal, changeAuthMode, setUser } from '../../../actions/auth';
+import { toggleAuthModal, changeAuthMode, setUser, login } from '../../redux/actions';
 
 
 const ESCAPE_KEY = 27;
@@ -22,7 +22,7 @@ class _AuthModal extends React.Component {
 		authMode: PropTypes.string,
 		dispatchToggleAuthModal: PropTypes.func.isRequired,
 		dispachChangeAuthMode: PropTypes.func.isRequired,
-		dispachSetUser: PropTypes.func.isRequired,
+		dispatchLogin: PropTypes.func.isRequired,
 	};
 
 	static defaultProps = {
@@ -35,10 +35,13 @@ class _AuthModal extends React.Component {
 
 		// methods:
 		this._handleKeyDown = this._handleKeyDown.bind(this);
+		this._initiateUser = this._initiateUser.bind(this);
 	}
 
 	componentWillMount() {
 		document.addEventListener('keydown', this._handleKeyDown);
+
+		this._initiateUser();
 	}
 
 	componentWillUnmount() {
@@ -50,8 +53,21 @@ class _AuthModal extends React.Component {
 		if (event.keyCode === ESCAPE_KEY) dispatchToggleAuthModal();
 	}
 
+	async _initiateUser() {
+		const { getUserFromServer, dispachSetUser } = this.props;
+		if (getUserFromServer) {
+			try {
+				const user = await getUserFromServer();
+				user.userId = user._id;
+				dispachSetUser(user);
+			} catch (err) {
+				// do nothing
+			}
+		}
+	}
+
 	render() {
-		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, dispachSetUser } = this.props;
+		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, dispatchLogin } = this.props;
 
 		return (
 			<Modal
@@ -60,15 +76,15 @@ class _AuthModal extends React.Component {
 			>
 				<div>
 					{authMode === 'login' ? 
-						<ModalLogin
+						<Login
 							onRegisterClick={dispachChangeAuthMode.bind(null, 'signup')}
-							setUser={dispachSetUser}
+							login={dispatchLogin}
 						/>
 					: null}
 
-					{authMode === 'signup' ? 
+					{/* authMode === 'signup' ? 
 						<ModalSignup />
-					: null}
+					: null */}
 				</div>
 			</Modal>
 		);
@@ -80,16 +96,20 @@ const mapStateToProps = state => ({
 	showAuthModal: state.auth.showAuthModal,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispachChangeAuthMode: (mode) => {
 		dispatch(changeAuthMode(mode));
 	},
+	dispatchLogin: (username, password) => {
+		dispatch(login(ownProps.loginMethod, username, password));
+	},
 	dispachSetUser: (userObject) => {
 		dispatch(setUser(userObject));
+		dispatch(toggleAuthModal(false));
 	},
 	dispatchToggleAuthModal: () => {
 		dispatch(toggleAuthModal());
-	}
+	},
 });
 
 export default connect(
