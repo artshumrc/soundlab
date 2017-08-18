@@ -1,0 +1,43 @@
+.collectionEditor {
+  background-color: #fff;
+  .collectionTitleEdit {
+    padding: 40px 60px 15px;
+    border: 0;
+    width: 66%;
+    font-size: 54px;
+    color: #212121;
+    margin-top: -70px;
+    z-index: 1000;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.5s ease;
+    position: absolute;
+  }
+  .collectionTitleEdit:focus {
+    outline: 0;
+    border-bottom: 1px solid #62baf0;
+    transition: border-color 0.5s ease;
+  }
+  .center {
+    margin-top: 90px;
+    text-align: center;
+  }
+  .collectionArticleEdit {
+    text-align: left;
+    font-family: "Merriweather", serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 50px 0;
+    width: 720px;
+    margin: 0px auto;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.5s ease;
+    resize: none;
+  }
+  .collectionArticleEdit:focus {
+    outline: 0;
+    border-bottom: 1px solid #62baf0;
+    transition: border-color 0.5s ease;  }
+}
