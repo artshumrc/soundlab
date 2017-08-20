@@ -16,10 +16,10 @@ const projectMutationFileds = {
 		description: 'Create new project',
 		args: {
 			title: {
-				type: new GraphQLNonNull(GraphQString),
+				type: new GraphQLNonNull(GraphQLString),
 			},
 			description: {
-				type: GraphQString,
+				type: GraphQLString,
 			},
 		},
 		resolve(parent, { title, description }, { user, tenant }) {
