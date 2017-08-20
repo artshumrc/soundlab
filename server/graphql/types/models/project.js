@@ -4,12 +4,10 @@ import createType from 'mongoose-schema-to-graphql';
 // models
 import Project from '../../../models/project';
 import Collection from '../../../models/collection';
-import ProjectDetail from '../../../models/projectDetail';
 
 // types
 import TenantType from './tenant';
 import CollectionType from './collection';
-import ProjectDetailType from './projectDetail';
 import UserType from './user';
 
 const config = {
@@ -23,7 +21,6 @@ const config = {
 			type: new GraphQLList(CollectionType),
 			description: 'Get all project collection',
 			resolve(project, args, context) {
-				console.log(project)
 				return Collection.findByProjectId(project._id);
 			}
 		},
@@ -44,18 +41,6 @@ const config = {
 			}),
 			resolve(project, args, context) {
 				return project.users;
-			}
-		},
-		detail: {
-			type: ProjectDetailType,
-			description: 'Get project details by language',
-			args: {
-				language: {
-					type: GraphQLString,
-				},
-			},
-			resolve(project, { language = process.env.DEFAULT_LANGUAGE }, context) {
-				return ProjectDetail.findByProjectId(project._id, language);
 			}
 		}
 	}

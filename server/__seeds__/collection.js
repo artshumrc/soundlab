@@ -7,25 +7,24 @@ import Collection from '../models/collection';
 import { canSeed, generateData, insertData, notEmptyError, getRandom } from './utils';
 
 
-const generateCollection = async (count, projectIds, itemSchemaIds) => {
+const generateCollection = async (count, projectIds) => {
 
- if (await canSeed(Collection)) {
-	 const data = await generateData(count, async () => ({
-		 title: faker.commerce.productName(),
-		 projectId: getRandom(projectIds),
-		 itemSchemaId: getRandom(itemSchemaIds),
-	 }));
+	if (await canSeed(Collection)) {
+		const data = await generateData(count, async() => ({
+			title: faker.commerce.productName(),
+			description: faker.lorem.sentences(),
+			projectId: getRandom(projectIds),
+		}));
 
-	 try {
-		 const collectionIds = await insertData(data, Collection, ['title']);
-		 return collectionIds;
-	 } catch (err) {
-		 throw err;
-	 }
- }
+		try {
+			const collectionIds = await insertData(data, Collection, ['title']);
+			return collectionIds;
+		} catch (err) {
+			throw err;
+		}
+	}
 
- throw notEmptyError('Collection');
+	throw notEmptyError('Collection');
 };
-
 
 export default generateCollection;

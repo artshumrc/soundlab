@@ -3,14 +3,10 @@ import createType from 'mongoose-schema-to-graphql';
 
 // models
 import Collection from '../../../models/collection';
-import ItemSchema from '../../../models/itemSchema';
 import Item from '../../../models/item';
-import CollectionDetail from '../../../models/collectionDetail';
 
 // types
-import ItemSchemaType from './itemSchema';
 import ItemType from './item';
-import CollectionDetailType from './collectionDetail';
 
 
 const config = {
@@ -20,16 +16,10 @@ const config = {
 	schema: Collection.schema,
 	exclude: ['_id', 'projectId', 'itemSchemaId'],
 	extend: {
-		itemSchema: {
-			type: ItemSchemaType,
-			resolve(collection, arg, context) {
-				return ItemSchema.findById(collection.itemSchemaId);
-			}
-		},
 		items: {
 			type: new GraphQLList(ItemType),
 			args: {
-				offset: {
+				skip: {
 					type: GraphQLInt,
 				},
 				limit: {
@@ -49,17 +39,6 @@ const config = {
 			},
 			resolve(collection, { _id }) {
 				return Item.findById(_id);
-			}
-		},
-		detail: {
-			type: CollectionDetailType,
-			args: {
-				language: {
-					type: GraphQLString,
-				},
-			},
-			resolve(collection, { language = process.env.DEFAULT_LANGUAGE }, context) {
-				return CollectionDetail.findByCollectionId(collection._id).byLanguage(language);
 			}
 		}
 	}

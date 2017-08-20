@@ -14,7 +14,7 @@ const Schema = mongoose.Schema;
 const ItemSchema = new Schema({
 	title: {
 		type: String,
-		// unique: true, // does not need to be unique across projects
+		unique: true,
 		required: true,
 		trim: true,
 		index: true
@@ -24,6 +24,25 @@ const ItemSchema = new Schema({
 		ref: 'Collection',
 		index: true
 	},
+	description: {
+		type: String,
+	},
+	tags: [{
+		value: {
+			type: String,
+		},
+		label: {
+			type: String,
+		}
+	}],
+	metadata: [{
+		value: {
+			type: String,
+		},
+		label: {
+			type: String,
+		}
+	}],
 	private: {
 		type: Boolean,
 		default: false,

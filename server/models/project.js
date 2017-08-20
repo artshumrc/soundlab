@@ -9,6 +9,16 @@ const Schema = mongoose.Schema;
  * @type {Schema}
  */
 const ProjectSchema = new Schema({
+	title: {
+		type: String,
+		unique: true,
+		required: true,
+		trim: true,
+		index: true
+	},
+	description: {
+		type: String,
+	},
 	users: [{
 		userId: {
 			type: Schema.Types.ObjectId,
@@ -26,6 +36,9 @@ const ProjectSchema = new Schema({
 // add timestamps (createdAt, updatedAt)
 ProjectSchema.plugin(timestamp);
 
+// add slug (slug)
+ProjectSchema.plugin(URLSlugs('title'));
+
 // Statics
 ProjectSchema.statics.findByUserId = function findByUserId(userId, cb) {
 	return this.find({ users: { $elemMatch: { userId } } }, cb);
@@ -33,12 +46,13 @@ ProjectSchema.statics.findByUserId = function findByUserId(userId, cb) {
 ProjectSchema.statics.isOwner = function isOwner(projectId, userId, cb) {
 	return this.find({ _id: projectId, users: { $elemMatch: { userId, role: 'Owner' } } }, cb);
 };
-ProjectSchema.statics.createByOwner = function createByOwner(userId, cb) {
+ProjectSchema.statics.createByOwner = function createByOwner(userId, otherFields, cb) {
 	return this.create({
 		users: [{
 			userId,
 			role: 'Owner',
 		}],
+		...otherFields,
 	}, cb);
 };
 ProjectSchema.statics.findById = function findById(projectId, cb) {
