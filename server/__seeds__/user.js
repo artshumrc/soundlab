@@ -1,10 +1,16 @@
 import faker from 'faker';
+import shortid from 'shortid';
 
 // models
 import User from '../models/user';
 
 // utils
 import { canSeed, generateData, notEmptyError } from './utils';
+
+const users = [{
+	username: 'test01',
+	password: 'test01'
+}];
 
 
 const _registerUserPromiseWrapper = ({ username, password }) => {
@@ -46,10 +52,7 @@ const _insertData = async data => Promise.all(
 const generateUsers = async (count) => {
 	if (await canSeed(User)) {
 
-		const data = await generateData(count, async () => ({
-			username: faker.internet.email(),
-			password: faker.internet.password(),
-		}));
+		const data = users;
 
 		try {
 			const userIds = await _insertData(data);

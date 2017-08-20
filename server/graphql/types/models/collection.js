@@ -4,11 +4,9 @@ import createType from 'mongoose-schema-to-graphql';
 // models
 import Collection from '../../../models/collection';
 import Item from '../../../models/item';
-import CollectionDetail from '../../../models/collectionDetail';
 
 // types
 import ItemType from './item';
-import CollectionDetailType from './collectionDetail';
 
 
 const config = {
@@ -41,12 +39,6 @@ const config = {
 			},
 			resolve(collection, { _id }) {
 				return Item.findById(_id);
-			}
-		},
-		detail: {
-			type: CollectionDetailType,
-			resolve(collection, args, context) {
-				return CollectionDetail.findByCollectionId(collection._id);
 			}
 		}
 	}

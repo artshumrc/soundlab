@@ -3,100 +3,57 @@ import shortid from 'shortid';
 
 // models
 import Item from '../models/item';
-import ItemSchema from '../models/itemSchema';
-import Collection from '../models/collection';
 
 // utils
 import { canSeed, generateData, insertData, notEmptyError, getRandom } from './utils';
 
-
-const _arrayGenerator = (valueMethod) => {
-	const arraySize = Math.floor((Math.random() * 10) + 1);
-	const array = Array.from(Array(arraySize));
-	return array.map(() => valueMethod());
-};
-
-const _getValue = (type) => {
-	let value = null;
-	switch(type) {
-	case 'String':
-		value = faker.lorem.words();
-		break;
-	case 'Number':
-		value = faker.random.number();
-		break;
-	case 'Boolean':
-		value = faker.random.boolean();
-		break;
-	case 'Array/String':
-		value = _arrayGenerator(faker.lorem.words);
-		break;
-	case 'Array/Number':
-		value = _arrayGenerator(faker.random.number);
-		break;
-	case 'Array/Boolean':
-		value = _arrayGenerator(faker.random.boolean);
-		break;
+const generateTags = () => {
+	const count = Math.floor(Math.random() * 5);
+	const tags = [];
+	for (let i = 0; i < count; i += 1) {
+		const label = faker.lorem.word();
+		const value = faker.helpers.slugify(label);
+		tags.push({
+			value,
+			label,
+		});
 	}
-	return value;
+	return tags;
 };
 
-const _getItemSchema = (itemSchema) => {
-	return Promise.all([async (struc) => {
-		if (struc._id) {
-			try {
-				const newItemSchema = await ItemSchema.findById(struc.itemSchemaId);
-				return {
-					name: struc.name,
-					type: 'itemSchemaId',
-					// value: await _getValue(newItemSchema),
-				};
-			} catch (err) {
-				throw err;
-			}
-		}
-
-		return {
-			key: struc.key,
-			type: struc.type,
-			value: _getValue(struc.type),
-		};
-	}]);
+const generateMetadata = () => {
+	const count = Math.floor(Math.random() * 5);
+	const metadata = [];
+	for (let i = 0; i < count; i += 1) {
+		const label = faker.lorem.word();
+		const value = faker.helpers.slugify(label);
+		metadata.push({
+			value,
+			label,
+		});
+	}
+	return metadata;
 };
-
 
 const generateItem = async (count, collectionIds) => {
+
 	if (await canSeed(Item)) {
-
-		const data = await generateData(count, async () => {
-
-			try {
-				const collection = await Collection.findById(getRandom(collectionIds));
-				const metadataPattern = await ItemSchema.findById(collection.itemSchemaId);
-
-				let title = faker.commerce.productName();
-
-				while (await Item.findOne({ title: title })) {
-					title = faker.commerce.productName();
-				};
-
-				return {
-					title,
-					metadata: await _getItemSchema(metadataPattern),
-				};
-
-			} catch (err) {
-				throw err;
-			}
-		});
+		const data = await generateData(count, async() => ({
+			title: faker.commerce.productName(),
+			description: faker.lorem.sentences(),
+			collectionIds: getRandom(collectionIds),
+			tags: generateTags(),
+			metadata: generateMetadata(),
+		}));
 
 		try {
-			const itemIds = await insertData(data, Item);
+			const itemIds = await insertData(data, Item, ['title']);
 			return itemIds;
 		} catch (err) {
 			throw err;
 		}
 	}
+
 	throw notEmptyError('Item');
 };
 

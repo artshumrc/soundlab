@@ -1,4 +1,4 @@
-// import { GraphQLString, GraphQLNonNull } from 'graphql';
+import { GraphQLString, GraphQLNonNull } from 'graphql';
 
 // types
 import ProjectType from '../types/models/project';
@@ -14,11 +14,23 @@ const projectMutationFileds = {
 	projectCreate: {
 		type: ProjectType,
 		description: 'Create new project',
-		resolve(parent, { title }, { user, tenant }) {
+		args: {
+			title: {
+				type: new GraphQLNonNull(GraphQString),
+			},
+			description: {
+				type: GraphQString,
+			},
+		},
+		resolve(parent, { title, description }, { user, tenant }) {
 
 			// only a logged in user and coming from the admin page, can create new project
 			if (user && tenant.adminPage) {
-				return Project.createByOwner(user._id);
+				const otherFields = {
+					title,
+					description,
+				};
+				return Project.createByOwner(user._id, otherFields);
 			}
 			throw AuthenticationError();
 		}

@@ -6,7 +6,6 @@ import setupDB, { closeDB } from '../server/mongoose';
 import generateUsers from '../server/__seeds__/user';
 import generateProjects from '../server/__seeds__/project';
 import generateCollection from '../server/__seeds__/collection';
-import generateItemSchema from '../server/__seeds__/itemSchema';
 import generateItem from '../server/__seeds__/item';
 
 dotenv.config();
@@ -34,25 +33,18 @@ db.on('error', console.error)
 			console.error(err);
 		}
 
-		// generate itemSchemas
-		try {
-			ids.itemSchemaIds = await generateItemSchema(25, ids.projects);
-		} catch (err) {
-			console.error(err);
-		}
-
 		// generate collections for projects with itemSchemas
 		try {
-			ids.collectionIds = await generateCollection(25, ids.projects, ids.itemSchemaIds);
+			ids.collectionIds = await generateCollection(25, ids.projects);
 		} catch (err) {
 			console.error(err);
 		}
 
 		// generate items
 		try {
-		 	ids.itemIds = await generateItem(100, ids.collectionIds);
+			ids.itemIds = await generateItem(100, ids.collectionIds);
 		} catch (err) {
-		 	console.error(err);
+			console.error(err);
 		}
 
 		// end seed generation process

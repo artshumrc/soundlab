@@ -4,12 +4,10 @@ import createType from 'mongoose-schema-to-graphql';
 // models
 import Project from '../../../models/project';
 import Collection from '../../../models/collection';
-import ProjectDetail from '../../../models/projectDetail';
 
 // types
 import TenantType from './tenant';
 import CollectionType from './collection';
-import ProjectDetailType from './projectDetail';
 import UserType from './user';
 
 const config = {
@@ -43,13 +41,6 @@ const config = {
 			}),
 			resolve(project, args, context) {
 				return project.users;
-			}
-		},
-		detail: {
-			type: ProjectDetailType,
-			description: 'Get project details',
-			resolve(project, args, context) {
-				return ProjectDetail.findByProjectId(project._id);
 			}
 		}
 	}
