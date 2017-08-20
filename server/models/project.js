@@ -41,6 +41,9 @@ ProjectSchema.statics.createByOwner = function createByOwner(userId, cb) {
 		}],
 	}, cb);
 };
+ProjectSchema.statics.findById = function findById(projectId, cb) {
+	return this.findOne({ _id: projectId }, cb);
+};
 
 /**
  * Project mongoose model

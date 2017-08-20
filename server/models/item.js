@@ -37,9 +37,6 @@ ItemSchema.plugin(timestamp);
 // add slug (slug)
 ItemSchema.plugin(URLSlugs('title'));
 
-// add pagination (slug)
-ItemSchema.plugin(mongoosePaginate);
-
 // Statics
 ItemSchema.statics.collectionCount = function collectionCount(collectionId, cb) {
 	return this.count({ collectionId }, cb);

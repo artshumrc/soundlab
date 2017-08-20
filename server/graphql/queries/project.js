@@ -16,7 +16,6 @@ const projectQueryFields = {
 			},
 		},
 		resolve(tenant, { _id }, context) {
-			console.log('context', context)
 			return Project.findById(_id);
 		}
 	},

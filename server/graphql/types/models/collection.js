@@ -36,8 +36,8 @@ const config = {
 					type: GraphQLInt,
 				}
 			},
-			resolve(collection, { offset = 0, limit = 10 }) {
-				return Item.paginate({}, { offset, limit });
+			resolve(collection, { skip = 0, limit = 10 }) {
+				return Item.find({}).skip(skip).limit(limit);
 			}
 		},
 		item: {

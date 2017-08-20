@@ -23,14 +23,8 @@ const config = {
 			type: new GraphQLList(CollectionType),
 			description: 'Get all project collection',
 			resolve(project, args, context) {
-				return Collection.findByProjectId(project.projectId);
-			}
-		},
-		tenants: {
-			type: TenantType,
-			description: 'Get all project tenants',
-			resolve(project, args, context) {
-				return Tenant.findByProjectId(project.projectId);
+				console.log(project)
+				return Collection.findByProjectId(project._id);
 			}
 		},
 		users: {
