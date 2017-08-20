@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 // plug-ins
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
-import languagePlugin from './plugins/language';
 
 const Schema = mongoose.Schema;
 
@@ -35,17 +34,9 @@ CollectionDetailSchema.plugin(timestamp);
 // add slug (slug)
 CollectionDetailSchema.plugin(URLSlugs('title'));
 
-// add language (language)
-CollectionDetailSchema.plugin(languagePlugin);
-
 // Statics
 CollectionDetailSchema.statics.findByCollectionId = function findByCollectionId(collectionId, cb) {
-	return this.find({ collectionId }, cb);
-};
-
-// helpers
-CollectionDetailSchema.query.byLanguage = function byLanguage(language) {
-	return this.find({ language });
+	return this.findOne({ collectionId }, cb);
 };
 
 /**

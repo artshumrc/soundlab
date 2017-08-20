@@ -23,7 +23,6 @@ const config = {
 			type: new GraphQLList(CollectionType),
 			description: 'Get all project collection',
 			resolve(project, args, context) {
-				console.log(project)
 				return Collection.findByProjectId(project._id);
 			}
 		},
@@ -48,14 +47,9 @@ const config = {
 		},
 		detail: {
 			type: ProjectDetailType,
-			description: 'Get project details by language',
-			args: {
-				language: {
-					type: GraphQLString,
-				},
-			},
-			resolve(project, { language = process.env.DEFAULT_LANGUAGE }, context) {
-				return ProjectDetail.findByProjectId(project._id, language);
+			description: 'Get project details',
+			resolve(project, args, context) {
+				return ProjectDetail.findByProjectId(project._id);
 			}
 		}
 	}

@@ -25,15 +25,12 @@ const projectDetailMutationFileds = {
 			projectInput: {
 				type: new GraphQLNonNull(ProjectDetailInputType),
 			},
-			language: {
-				type: GraphQLString,
-			},
 		},
-		async resolve(parent, { projectInput, projectId, language = process.env.DEFAULT_LANGUAGE }, { user, tenant }) {
+		async resolve(parent, { projectInput, projectId }, { user, tenant }) {
 
 			// only a project owner and from the admin page can set projectDetail
 			if (await Project.isOwner(projectId, user._id) && tenant.adminPage) {
-				return ProjectDetail.setProjectDetail(projectId, projectInput, language);
+				return ProjectDetail.setProjectDetail(projectId, projectInput);
 			}
 			throw AuthenticationError();
 		}

@@ -3,10 +3,10 @@ import createType from 'mongoose-schema-to-graphql';
 
 // models
 import Item from '../../../models/item';
-import ItemValue from '../../../models/itemValue';
+import File from '../../../models/file';
 
 // types
-import ItemValueType from './itemValue';
+import FileType from './tenant';
 
 const config = {
 	name: 'ItemType',
@@ -15,22 +15,12 @@ const config = {
 	schema: Item.schema,
 	exclude: ['_id'],
 	extend: {
-		values: {
-			type: new GraphQLList(ItemValueType),
+		files: {
+			type: new GraphQLList(FileType),
+			description: 'Get all item files',
 			resolve(item, args, context) {
-				return ItemValue.findByItemId(item._id);
-			},
-		},
-		value: {
-			type: ItemValueType,
-			args: {
-				_id: {
-					type: GraphQLID,
-				},
-			},
-			resolve(item, { _id }, context) {
-				return ItemValue.findById(_id);
-			},
+				return File.getByItemId(item._id);
+			}
 		},
 	}
 };
