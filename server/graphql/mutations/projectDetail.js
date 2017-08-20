@@ -8,7 +8,7 @@ import ProjectDetailInputType from '../types/inputs/projectDetail';
 
 // models
 import Project from '../../models/project';
-import ProjectDetail from '../../models/projectDetail';
+// import ProjectDetail from '../../models/projectDetail';
 
 // errors
 import { AuthenticationError } from '../../errors';
@@ -30,7 +30,8 @@ const projectDetailMutationFileds = {
 
 			// only a project owner and from the admin page can set projectDetail
 			if (await Project.isOwner(projectId, user._id) && tenant.adminPage) {
-				return ProjectDetail.setProjectDetail(projectId, projectInput);
+				// return ProjectDetail.setProjectDetail(projectId, projectInput);
+				return true;
 			}
 			throw AuthenticationError();
 		}

@@ -4,6 +4,7 @@ build
 coverage
 *.log
 /**/*.css
+dump.rdb
 
 # Fonts
 !client/public/css/materialdesignicons.css
