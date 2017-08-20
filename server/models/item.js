@@ -14,7 +14,7 @@ const Schema = mongoose.Schema;
 const ItemSchema = new Schema({
 	title: {
 		type: String,
-		unique: true,
+		// unique: true, // does not need to be unique across projects
 		required: true,
 		trim: true,
 		index: true
@@ -57,4 +57,3 @@ const Item = mongoose.model('Item', ItemSchema);
 
 export default Item;
 export { ItemSchema };
-

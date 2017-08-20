@@ -8,13 +8,13 @@ import languageplugin from './plugins/language';
 const Schema = mongoose.Schema;
 
 /**
- * FiledDetail base schema
+ * FieldDetail base schema
  * @type {Schema}
  */
 const FieldDetailSchema = new Schema({
 	fieldId: {
 		type: Schema.Types.ObjectId,
-		ref: 'Filed',
+		ref: 'Field',
 		required: true,
 		index: true
 	},
@@ -47,11 +47,10 @@ FieldDetailSchema.query.byLanguage = function byLanguage(language) {
 };
 
 /**
- * FiledDetail mongoose model
+ * FieldDetail mongoose model
  * @type {Object}
  */
-const FiledDetail = mongoose.model('FiledDetail', FieldDetailSchema);
+const FieldDetail = mongoose.model('FieldDetail', FieldDetailSchema);
 
-export default FiledDetail;
+export default FieldDetail;
 export { FieldDetailSchema };
-

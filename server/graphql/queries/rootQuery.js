@@ -1,6 +1,6 @@
 import { GraphQLObjectType } from 'graphql';
 
-import projectQueryFileds from './project';
+import projectQueryFields from './project';
 
 /**
  * Root Queries
@@ -10,7 +10,7 @@ const RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',
 	description: 'Root query object type',
 	fields: {
-		...projectQueryFileds,
+		...projectQueryFields,
 	},
 });
 

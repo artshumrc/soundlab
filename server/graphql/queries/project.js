@@ -6,7 +6,7 @@ import ProjectType from '../types/models/project';
 // models
 import Project from '../../models/project';
 
-const projectQueryFileds = {
+const projectQueryFields = {
 	project: {
 		type: ProjectType,
 		description: 'Get project document',
@@ -22,4 +22,4 @@ const projectQueryFileds = {
 	},
 };
 
-export default projectQueryFileds;
+export default projectQueryFields;

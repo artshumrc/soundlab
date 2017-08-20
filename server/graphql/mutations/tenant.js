@@ -9,7 +9,7 @@ import Tenant from '../../models/tenant';
 // errors
 import { AuthenticationError } from '../../errors';
 
-const tenantMutationFileds = {
+const tenantMutationFields = {
 
 	createTenant: {
 		type: tenantType,
@@ -28,4 +28,4 @@ const tenantMutationFileds = {
 	}
 };
 
-export default tenantMutationFileds;
+export default tenantMutationFields;
