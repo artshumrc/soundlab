@@ -1,4 +1,4 @@
-import { setLocalStorageItem, removeLocalStorageItem } from './storage';
+import { setLocalStorageItem, removeLocalStorageItem, getLocalStorageItem } from './storage';
 
 const userLoggedIn = () => {
 	// TODO
@@ -20,9 +20,13 @@ const login = async (username, password) => {
 				password,
 			})
 		});
+		if (!res.ok) {
+			throw new Error(res.statusText);
+		}
 		const resJson = await res.json();
 		if (resJson.token) {
-			return setLocalStorageItem('token', resJson.token);
+			setLocalStorageItem('token', resJson.token);
+			return resJson;
 		}
 	} catch (err) {
 		throw err;
@@ -45,6 +49,9 @@ const register = async (username, password) => {
 				password,
 			})
 		});
+		if (!res.ok) {
+			throw new Error(res.statusText);
+		}
 		const resJson = await res.json();
 		if (resJson.token) {
 			return setLocalStorageItem('token', resJson.token);
@@ -54,4 +61,29 @@ const register = async (username, password) => {
 	}
 };
 
-export { login, logout, register };
+const verifyToken = async () => {
+	// REACT_APP_VeRIFY_TOKEN_URI
+	const token = getLocalStorageItem('token');
+	if (token) {
+		try {
+			const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_VERIFY_TOKEN_URI}`, {
+				method: 'POST',
+				credentials: 'include',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					'authorization': token,
+				}
+			});
+			if (!res.ok) {
+				throw new Error(res.statusText);
+			}
+			return res.json();
+		} catch (err) {
+			throw err;
+		}
+	}
+	return null;
+};
+
+export { login, logout, register, verifyToken };

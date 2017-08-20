@@ -1,6 +1,6 @@
 import React from 'react';
 import Headroom from 'react-headroom';
-import '../../navigation/Header/Header.css';
+import '../../navigation/Header/NavBar/NavBar.css';
 import './ProjectHeader.css';
 import scrollToElement from '../../../lib/scrollToElement';
 
