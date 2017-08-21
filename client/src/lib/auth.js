@@ -59,7 +59,14 @@ const register = async (username, password) => {
 		}
 		const resJson = await res.json();
 		if (resJson.token) {
-			return setLocalStorageItem('token', resJson.token);
+			setLocalStorageItem('token', resJson.token);
+			return resJson;
+		}
+		if (resJson.passwordStrength) {
+			throw {
+				passwordError: true,
+				suggestion: resJson.passwordStrength.feedback.suggestions[0],
+			};
 		}
 	} catch (err) {
 		throw err;

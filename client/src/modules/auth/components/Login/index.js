@@ -5,10 +5,6 @@ import PropTypes from 'prop-types';
 import PWDLoginForm from '../PWDLoginForm';
 import './Login.css';
 
-
-const ESCAPE_KEY = 27;
-
-
 class Login extends React.Component {
 
 	static propTypes = {

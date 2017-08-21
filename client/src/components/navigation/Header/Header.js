@@ -22,7 +22,11 @@ _Header.propTypes = {
 	toggleAuthModal: PropTypes.func.isRequired,
 	logout: PropTypes.func.isRequired,
 
-	userId: React.PropTypes.string.isRequired,
+	userId: React.PropTypes.string,
+};
+
+_Header.defaultProps = {
+	userId : null
 };
 
 const mapStateToProps = state => ({
