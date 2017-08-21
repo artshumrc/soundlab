@@ -43,6 +43,10 @@ To start the project you need to follow these steps:
 	DEFAULT_LANGUAGE=en
 
 	AWS_BUCKET=bucketName
+	AWS_ACCESS_KEY_ID=x
+	AWS_SECRET_ACCESS_KEY=x
+	AWS_BUCKET=iiif-orpheus
+	AWS_REGION=us-east-1
 	```
 
 	Environment variables for the *client* (*!IMPORTANT*: this should be set in the `client` folder):
@@ -96,34 +100,18 @@ To start the project you need to follow these steps:
 
 ## Authentication
 
-The project consists of two authentication strategies:
-1.	Session based (local strategy - username / password)
+### Auth on Server
+
+JSON Web Tokens (JWT):
 
 	1. Login route: **/auth/login**.
 
 		Pass `username` and `password` in the req body.
 
-	2. Logout route: **/auth/logout**.
-
-	3. Register route: **/auth/register**.
-
-		Pass `username` and `password` in the req body.
-
-	4. When using the `fetch` method in the client app, remember to set `credentials: 'include'`. Otherwise the request will not be authenticated.
-
-	5. `apollo-client` has this value set in the `networkInterface`.
-
-2.	JSON Web Tokens (JWT)
-
-	1. Login route: **/auth/login-jwt**.
-
-		Pass `username` and `password` in the req body.
-
 		If username and password are correct, server will respond with a `token`.
 
-	// TODO: logout - end token duration
 
-	2. Register route: **/auth/register-jwt**.
+	2. Register route: **/auth/register**.
 
 		Pass `username` and `password` in the req body.
 
@@ -133,7 +121,30 @@ The project consists of two authentication strategies:
 
 	4. `apollo-client` has a middleware attached to the `networkInterface`, which reads the token value from the `localStorage`.
 
-Use methods from `client/src/lib/auth' to login, logout or register.
+### Auth on Client
+
+#### Authentication methods (`client/src/lib/auth.js`):
+
+	1. **login**
+
+		Runs fetch method to the login route and on success sets `token` value in `localStorage`.
+
+	2. **logout**
+
+		Deletes `token` value in `localStorage`.
+
+	3. **register**
+
+		Runs fetch method to the register route and on success sets `token` value in `localStorage`.
+
+#### Auth redux:
+
+There is a `AuthModal` component placed in the `Root` component, which handles all user authentication operations.
+
+**Q: Where is user data stored in Redx Store?**
+
+A: `userId` and `username are stored in `store.auth`. 
+
 
 ## Environment variables
 
