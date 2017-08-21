@@ -13,33 +13,11 @@ class Login extends React.Component {
 
 	static propTypes = {
 		onRegisterClick: PropTypes.func.isRequired,
-		login: PropTypes.func.isRequired,
-	}
-
-	constructor(props) {
-		super(props);
-
-		// methods:
-		this.handleLogin = this.handleLogin.bind(this);
-		this.handleLoginFacebook = this.handleLoginFacebook.bind(this);
-		this.handleLoginGoogle = this.handleLoginGoogle.bind(this);
-		this.handleLoginTwitter = this.handleLoginTwitter.bind(this);
-	}
-
-	handleLogin(email, password) {
-	}
-
-	handleLoginFacebook() {
-	}
-
-	handleLoginGoogle() {
-	}
-
-	handleLoginTwitter() {
+		loginMethod: PropTypes.func.isRequired,
 	}
 
 	render() {
-		const { onRegisterClick, login } = this.props;
+		const { onRegisterClick, loginMethod } = this.props;
 
 		return (
 			<div className="at-form">
@@ -60,7 +38,7 @@ class Login extends React.Component {
 				</div> */}
 
 				<PWDLoginForm
-					submitMethod={login}
+					loginMethod={loginMethod}
 				/>
 
 				<div className="at-signup-link">

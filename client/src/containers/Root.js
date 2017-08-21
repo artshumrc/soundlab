@@ -7,7 +7,7 @@ import client from '../middleware/apolloClient';
 
 // auth
 import AuthModal from '../modules/auth';
-import { login, verifyToken } from '../lib/auth';
+import { login, logout, verifyToken } from '../lib/auth';
 
 const Root = ({store, history}) => (
 	<ApolloProvider
@@ -18,6 +18,7 @@ const Root = ({store, history}) => (
 			<Router history={history} routes={Routes} />
 			<AuthModal
 				loginMethod={login}
+				logoutMethod={logout}
 				getUserFromServer={verifyToken}
 			/>
 		</div>

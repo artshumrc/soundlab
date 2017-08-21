@@ -1,7 +1,10 @@
 import { setLocalStorageItem, removeLocalStorageItem, getLocalStorageItem } from './storage';
 
 const userLoggedIn = () => {
-	// TODO
+	const token = getLocalStorageItem('token');
+
+	if (token) return true;
+	return false;
 };
 
 const login = async (username, password) => {
@@ -36,6 +39,8 @@ const login = async (username, password) => {
 const logout = async () => removeLocalStorageItem('token');
 
 const register = async (username, password) => {
+	if (userLoggedIn()) return null;
+
 	try {
 		const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_REGISTER_URI}`, {
 			method: 'POST',
@@ -62,7 +67,6 @@ const register = async (username, password) => {
 };
 
 const verifyToken = async () => {
-	// REACT_APP_VeRIFY_TOKEN_URI
 	const token = getLocalStorageItem('token');
 	if (token) {
 		try {

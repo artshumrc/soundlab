@@ -5,6 +5,13 @@ const initialState = {
 	authMode: 'login',
 };
 
+const getShowAuthModal = (state, action) => {
+	if (typeof action.value !== 'undefined' && typeof action.value === 'boolean') {
+		return action.value;
+	}
+	return !state.showAuthModal;
+};
+
 export default (state = initialState, action) => {
 	switch (action.type) {
 	case types.CHANGE_AUTH_MODE: {
@@ -14,21 +21,10 @@ export default (state = initialState, action) => {
 		};
 	}
 	case types.TOGGLE_AUTH_MODAL: {
-		// if (state.showAuthModal) {
-		// 	return {
-		// 		...state,
-		// 		authMode: initialState.authMode,
-		// 		showAuthModal: typeof action.value !== 'undefined' ? action.value : !state.showAuthModal,
-		// 	};
-		// }
-		// return {
-		// 	...state,
-		// 	showAuthModal: !state.showAuthModal,
-		// };
 		return {
 			...state,
 			authMode: initialState.authMode,
-			showAuthModal: typeof action.value !== 'undefined' ? action.value : !state.showAuthModal,
+			showAuthModal: getShowAuthModal(state, action),
 		};
 	}
 	case types.TOGGLE_LOGOUT: {

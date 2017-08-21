@@ -6,10 +6,11 @@ import Modal from '../Modal';
 
 // auth types:
 import Login from '../Login';
+import Logout from '../Logout';
 // import ModalSignup from '../ModalSignup';
 
 // actions
-import { toggleAuthModal, changeAuthMode, setUser, login } from '../../redux/actions';
+import { toggleAuthModal, changeAuthMode, setUser, logout } from '../../redux/actions';
 
 
 const ESCAPE_KEY = 27;
@@ -18,11 +19,13 @@ const ESCAPE_KEY = 27;
 class _AuthModal extends React.Component {
 
 	static propTypes = {
+		loginMethod: PropTypes.func.isRequired,
+		logoutMethod: PropTypes.func.isRequired,
+
 		showAuthModal: PropTypes.bool,
 		authMode: PropTypes.string,
 		dispatchToggleAuthModal: PropTypes.func.isRequired,
 		dispachChangeAuthMode: PropTypes.func.isRequired,
-		dispatchLogin: PropTypes.func.isRequired,
 	};
 
 	static defaultProps = {
@@ -67,7 +70,7 @@ class _AuthModal extends React.Component {
 	}
 
 	render() {
-		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, dispatchLogin } = this.props;
+		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, loginMethod, logout } = this.props;
 
 		return (
 			<Modal
@@ -78,13 +81,19 @@ class _AuthModal extends React.Component {
 					{authMode === 'login' ? 
 						<Login
 							onRegisterClick={dispachChangeAuthMode.bind(null, 'signup')}
-							login={dispatchLogin}
+							loginMethod={loginMethod}
 						/>
 					: null}
 
 					{/* authMode === 'signup' ? 
 						<ModalSignup />
 					: null */}
+
+					{authMode === 'logout' ? 
+						<Logout
+							logoutMethod={logout}
+						/>
+					: null}
 				</div>
 			</Modal>
 		);
@@ -97,19 +106,19 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+	dispatchToggleAuthModal: (value) => {
+		dispatch(toggleAuthModal(value));
+	},
 	dispachChangeAuthMode: (mode) => {
 		dispatch(changeAuthMode(mode));
-	},
-	dispatchLogin: (username, password) => {
-		dispatch(login(ownProps.loginMethod, username, password));
 	},
 	dispachSetUser: (userObject) => {
 		dispatch(setUser(userObject));
 		dispatch(toggleAuthModal(false));
 	},
-	dispatchToggleAuthModal: () => {
-		dispatch(toggleAuthModal());
-	},
+	logout: () => {
+		dispatch(logout(ownProps.logoutMethod));
+	}
 });
 
 export default connect(

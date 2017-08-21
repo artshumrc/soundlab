@@ -8,30 +8,34 @@ import NavBar from './NavBar';
 // actions
 import { authActions } from '../../../modules/auth';
 
-const _Header = ({ dispatchToggleAuthModal, loggedIn, dispatchToggleLogout }) => (
+const _Header = ({ toggleAuthModal, logout, userId }) => (
 	<div>
 		<NavBar
-			toggleAuthModal={dispatchToggleAuthModal}
-			loggedIn={loggedIn}
-			logout={dispatchToggleLogout}
+			toggleAuthModal={toggleAuthModal}
+			userId={userId}
+			logout={logout}
 		/>
 	</div>
 );
 
 _Header.propTypes = {
-	dispatchToggleAuthModal: PropTypes.func.isRequired,
+	toggleAuthModal: PropTypes.func.isRequired,
+	logout: PropTypes.func.isRequired,
+
+	userId: React.PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
-	loggedIn: state.auth.userId ? true : false,
+	userId: state.auth.userId,
 });
 
 const mapDispatchToProps = dispatch => ({
-	dispatchToggleAuthModal: () => {
+	toggleAuthModal: () => {
 		dispatch(authActions.toggleAuthModal());
 	},
-	dispatchToggleLogout: () => {
-		dispatch(authActions.toggleLogout());
+	logout: () => {
+		dispatch(authActions.toggleAuthModal());
+		dispatch(authActions.changeAuthMode('logout'));
 	}
 });
 

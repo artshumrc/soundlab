@@ -4,10 +4,14 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import './PWDLoginForm.css';
 
+// actions
+import { toggleAuthModal, setUser } from '../../redux/actions';
 
-const wrapSubmit = submitMethod => (values) => {
+const wrapSubmit = loginMethod => async (values, dispatch) => {
 	try {
-		submitMethod(values.username, values.password);
+		const userObj = await loginMethod(values.username, values.password);
+		dispatch(setUser(userObj));
+		dispatch(toggleAuthModal(false));
 		return {};
 	} catch (err) {
 		throw new SubmissionError({ _error: 'Login failed!' });
@@ -36,9 +40,9 @@ function renderField({ input, label, type, meta }) {
 	);
 }
 
-const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, submitMethod }) => (
+const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, loginMethod }) => (
 	<div className="at-pwd-form">
-		<form onSubmit={handleSubmit(wrapSubmit(submitMethod))}>
+		<form onSubmit={handleSubmit(wrapSubmit(loginMethod))}>
 			<Field
 				name="username"
 				label="Username"
@@ -67,7 +71,7 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, submit
 );
 
 PWDLoginForm.propTypes = {
-	submitMethod: PropTypes.func.isRequired,
+	loginMethod: PropTypes.func.isRequired,
 };
 PWDLoginForm.defaultProps = {
 	// errorMsg: null,
