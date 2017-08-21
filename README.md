@@ -104,38 +104,38 @@ To start the project you need to follow these steps:
 
 JSON Web Tokens (JWT):
 
-	1. Login route: **/auth/login**.
+1. Login route: **/auth/login**.
 
-		Pass `username` and `password` in the req body.
+	Pass `username` and `password` in the req body.
 
-		If username and password are correct, server will respond with a `token`.
+	If username and password are correct, server will respond with a `token`.
 
 
-	2. Register route: **/auth/register**.
+2. Register route: **/auth/register**.
 
-		Pass `username` and `password` in the req body.
+	Pass `username` and `password` in the req body.
 
-		If username and password are correct, server will respond with a `token`.
+	If username and password are correct, server will respond with a `token`.
 
-	3. When using the `fetch` method in the client app, remember to set `authorization' header to the token value`. Otherwise the request will not be authenticated.
+3. When using the `fetch` method in the client app, remember to set `authorization' header to the token value`. Otherwise the request will not be authenticated.
 
-	4. `apollo-client` has a middleware attached to the `networkInterface`, which reads the token value from the `localStorage`.
+4. `apollo-client` has a middleware attached to the `networkInterface`, which reads the token value from the `localStorage`.
 
 ### Auth on Client
 
 #### Authentication methods (`client/src/lib/auth.js`):
 
-	1. **login**
+**1. login**
 
-		Runs fetch method to the login route and on success sets `token` value in `localStorage`.
+	Runs fetch method to the login route and on success sets `token` value in `localStorage`.
 
-	2. **logout**
+**2. logout**
 
-		Deletes `token` value in `localStorage`.
+	Deletes `token` value in `localStorage`.
 
-	3. **register**
+**3. register**
 
-		Runs fetch method to the register route and on success sets `token` value in `localStorage`.
+	Runs fetch method to the register route and on success sets `token` value in `localStorage`.
 
 #### Auth redux:
 
@@ -143,7 +143,7 @@ There is a `AuthModal` component placed in the `Root` component, which handles a
 
 **Q: Where is user data stored in Redx Store?**
 
-A: `userId` and `username are stored in `store.auth`. 
+A: `userId` and `username` are stored in `store.auth`. 
 
 
 ## Environment variables
