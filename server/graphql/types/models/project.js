@@ -12,7 +12,7 @@ import UserType from './user';
 
 const config = {
 	name: 'ProjectType',
-	description: 'Project base type',
+	description: 'Project base query type',
 	class: 'GraphQLObjectType',
 	schema: Project.schema,
 	exclude: ['_id', 'users'],
@@ -46,6 +46,16 @@ const config = {
 	}
 };
 
+const configInput = {
+	name: 'ProjectInputType',
+	description: 'Project base input type',
+	class: 'GraphQLInputObjectType',
+	schema: Project.schema,
+	exclude: ['_id', 'slug', 'users', 'createdAt', 'updatedAt'],
+};
+
 const ProjectType = createType(config);
+const ProjectInputType = createType(configInput);
 
 export default ProjectType;
+export { ProjectInputType };

@@ -16,3 +16,6 @@ const config = {
 const UserType = createType(config);
 
 export default UserType;
+
+// IMPORTANT: no possibility of inputing a user (creating / registering new user) through graphql
+// that is why, there in no input type for user

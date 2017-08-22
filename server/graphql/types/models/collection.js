@@ -11,10 +11,10 @@ import ItemType from './item';
 
 const config = {
 	name: 'CollectionType',
-	description: 'Collection base schema',
+	description: 'Collection base query type',
 	class: 'GraphQLObjectType',
 	schema: Collection.schema,
-	exclude: ['_id', 'projectId', 'itemSchemaId'],
+	exclude: ['_id', 'projectId'],
 	extend: {
 		items: {
 			type: new GraphQLList(ItemType),
@@ -44,6 +44,16 @@ const config = {
 	}
 };
 
+const configInput = {
+	name: 'CollectionInputType',
+	description: 'Collection base input type',
+	class: 'GraphQLInputObjectType',
+	schema: Collection.schema,
+	exclude: ['_id', 'slug', 'createdAt', 'updatedAt'],
+};
+
 const CollectionType = createType(config);
+const CollectionInputType = createType(configInput);
 
 export default CollectionType;
+export { CollectionInputType };

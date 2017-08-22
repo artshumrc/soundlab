@@ -9,14 +9,21 @@ import File from '../../../models/file';
 
 const config = {
 	name: 'FileType',
-	description: 'File Schema base schema',
+	description: 'File Schema base query type',
 	class: 'GraphQLObjectType',
 	schema: File.schema,
-	exclude: ['_id'],
-	extend: {}
+};
+
+const configInput = {
+	name: 'FileInputType',
+	description: 'File Schema base input type',
+	class: 'GraphQLInputObjectType',
+	schema: File.schema,
+	exclude: ['_id', 'slug', 'createdAt', 'updatedAt'],
 };
 
 const FileType = createType(config);
+const FileInputType = createType(configInput);
 
 export default FileType;
-
+export { FileInputType };
