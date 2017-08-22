@@ -58,14 +58,14 @@ class _AuthModal extends React.Component {
 	}
 
 	async _initiateUser() {
-		const { getUserFromServer, dispachSetUser } = this.props;
+		const { getUserFromServer, dispachSetUser, dispatchLogout } = this.props;
 		if (getUserFromServer) {
 			try {
 				const user = await getUserFromServer();
 				user.userId = user._id;
 				dispachSetUser(user);
 			} catch (err) {
-				// do nothing
+				dispatchLogout();
 			}
 		}
 	}
