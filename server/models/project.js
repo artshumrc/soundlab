@@ -39,24 +39,50 @@ ProjectSchema.plugin(timestamp);
 // add slug (slug)
 ProjectSchema.plugin(URLSlugs('title'));
 
-// Statics
-ProjectSchema.statics.findByUserId = function findByUserId(userId, cb) {
-	return this.find({ users: { $elemMatch: { userId } } }, cb);
+
+/**
+ * Statics
+ */
+
+/**
+ * Find project by user id
+ * @param  {String}   userId 	User id
+ * @return {Promise}          	(Promise) Array of projects
+ */
+ProjectSchema.statics.findByUserId = function findByUserId(userId) {
+	return this.find({ users: { $elemMatch: { userId } } });
 };
-ProjectSchema.statics.isOwner = function isOwner(projectId, userId, cb) {
-	return this.find({ _id: projectId, users: { $elemMatch: { userId, role: 'Owner' } } }, cb);
+
+/**
+ * Check if user is an owner of a project by project id
+ * @param  {String}   projectId 	Project id
+ * @param  {String}   userId    	User id
+ * @return {Promise}            	(Promise) True if user has the role of owner for this project
+ */
+ProjectSchema.statics.isUserOwner = async function isUserOwner(projectId, userId) {
+	const project = await this.find({ _id: projectId, users: { $elemMatch: { userId, role: 'Owner' } } });
+	return project ? true : false;
 };
-ProjectSchema.statics.createByOwner = function createByOwner(userId, otherFields, cb) {
+
+// TODO: check if needed (why was it implemented?):
+// ProjectSchema.statics.findById = function findById(projectId) {
+// 	return this.findOne({ _id: projectId });
+// };
+
+/**
+ * Create a new project by user
+ * @param  {String}   userId    	User id
+ * @param  {Object}   newProject 	Object with new project values
+ * @return {Promise}               	(Promise) The new Project
+ */
+ProjectSchema.statics.createByOwner = function createByOwner(userId, newProject) {
 	return this.create({
 		users: [{
 			userId,
 			role: 'Owner',
 		}],
-		...otherFields,
-	}, cb);
-};
-ProjectSchema.statics.findById = function findById(projectId, cb) {
-	return this.findOne({ _id: projectId }, cb);
+		...newProject,
+	});
 };
 
 /**

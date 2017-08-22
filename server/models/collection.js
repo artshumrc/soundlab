@@ -36,10 +36,38 @@ CollectionSchema.plugin(timestamp);
 // add slug (slug)
 CollectionSchema.plugin(URLSlugs('title'));
 
-// Statics
-CollectionSchema.statics.findByProjectId = function findByProjectId(projectId, cb) {
-	return this.find({ projectId }, cb);
+/**
+ * Statics
+ */
+
+/**
+ * Find all collections belonging to a project (by project id)
+ * @param  {String}   projectId 	Project id
+ * @return {Promise}             	(Promise) Array of found collections
+ */
+CollectionSchema.statics.findByProjectId = function findByProjectId(projectId) {
+	return this.find({ projectId });
 };
+
+/**
+ * Check if a user is an owner of a collection by id
+ * @param  {String}  collectionId Collection id
+ * @param  {String}  userId       User id
+ * @return {Promise}              (Promise) True if user is owner of the collection
+ */
+CollectionSchema.statics.isUserOwner = async function isUserOwner(collectionId, userId) {
+	try {
+		const collection = await this.findById(collectionId).populate('projectId');
+		if (collection && collection.projectId && collection.projectId.users && collection.projectId.users.length) {
+			const projectUser = collection.projectId.users.find(user => user.userId === userId);
+			return projectUser ? true : false;
+		}
+		return null;
+	} catch (err) {
+		throw err;
+	}
+};
+
 
 /**
  * Collection mongoose model
