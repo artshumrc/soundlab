@@ -2,6 +2,7 @@ import { GraphQLNonNull, GraphQLID } from 'graphql';
 
 // types
 import ItemType, { ItemCreateInputType, ItemUpdateInputType } from '../types/models/item';
+import { RemoveType } from '../types';
 
 // models
 import Item from '../../models/item';
@@ -46,7 +47,7 @@ const itemMutationFileds = {
 			/**
 			 * Validate resolver specific arguments
 			 */
-			if (!item.collectionId) throw new ArgumentError({ data: { field: 'collectionId' } });
+			if (!item.collectionId) throw new ArgumentError({ data: { field: 'item.collectionId' } });
 
 
 			/**
@@ -105,6 +106,7 @@ const itemMutationFileds = {
 			 * Initiate item
 			 */
 			const FoundItem = await Item.findById(itemId);
+			if (!FoundItem) throw new ArgumentError({ data: { field: 'itemId' } });
 
 
 			/**
@@ -126,6 +128,57 @@ const itemMutationFileds = {
 			// Save new item
 			try {
 				return await FoundItem.save();
+			} catch (err) {
+				handleMongooseError(err);
+			}
+		}
+	},
+
+	itemRemove: {
+		type: RemoveType,
+		description: 'Remove item',
+		args: {
+			itemId: {
+				type: new GraphQLNonNull(GraphQLID),
+			}
+		},
+		async resolve(parent, { itemId }, { user, tenant }) {
+
+			/**
+			 * Validate connection
+			 */
+
+			// if operation doesn't come from admin page
+			if (!tenant.adminPage) throw new TenantError();
+
+			// if user is not logged in
+			if (!user) throw new AuthenticationError();
+
+
+			/**
+			 * Initiate item
+			 */
+			const FoundItem = await Item.findById(itemId);
+			if (!FoundItem) throw new ArgumentError({ data: { field: 'itemId' } });
+
+
+			/**
+			 * Validate permissions
+			 */
+			const userIsOwner = await FoundItem.validateUser(user._id);
+			if (!userIsOwner) throw new PermissionError();
+			
+			
+			/**
+			 * Perform action
+			 */
+
+			// Save new item
+			try {
+				await FoundItem.remove();
+				return {
+					_id: itemId,
+				};
 			} catch (err) {
 				handleMongooseError(err);
 			}
