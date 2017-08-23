@@ -47,7 +47,7 @@ FileSchema.plugin(timestamp);
 FileSchema.plugin(URLSlugs('title'));
 
 // Statics
-FileSchema.statics.getByItemId = function collectionCount(itemId, cb) {
+FileSchema.statics.getByItemId = function getByItemId(itemId, cb) {
 	return this.findOne({ itemId }, cb);
 };
 

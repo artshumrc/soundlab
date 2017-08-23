@@ -5,6 +5,8 @@ import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
 import mongoosePaginate from 'mongoose-paginate';
 
+// models
+import Collection from './collection';
 
 const Schema = mongoose.Schema;
 
@@ -67,14 +69,41 @@ ItemSchema.plugin(timestamp);
 ItemSchema.plugin(URLSlugs('title'));
 
 
-// Statics
-ItemSchema.statics.collectionCount = function collectionCount(collectionId) {
-	return this.count({ collectionId });
-};
+
+/**
+ * Statics
+ */
+
+/**
+ * Find all items belonging to a collection
+ * @param  {String} collectionId 	Collection id
+ * @return {Promise}              	(Promise) Array of found items
+ */
+
 ItemSchema.statics.findByCollectionId = function findByCollectionId(collectionId) {
 	return this.find({ collectionId }).select({ _id: 1 });
 };
 
+
+/**
+ * Methods
+ */
+
+ItemSchema.methods.validateUser = function validateUser(userId) {
+	return Collection.isUserOwner(this.collectionId, userId);
+};
+
+// ItemSchema.statics.createByUser = async function createByUser(newItem, userId) {
+
+// 	try {
+// 		const userIsOwner = await Collection.isUserOwner(item.collectionId, user._id);
+// 		if (!userIsOwner) throw new PermissionError();
+// 	} catch (err) {
+// 		console.error(err);
+// 		throw new MongooseGeneralError();
+// 	}
+
+// };
 
 /**
  * Item mongoose model

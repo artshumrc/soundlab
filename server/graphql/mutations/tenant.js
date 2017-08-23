@@ -7,7 +7,7 @@ import tenantType from '../types/models/tenant';
 import Tenant from '../../models/tenant';
 
 // errors
-import { AuthenticationError } from '../../errors';
+import { AuthenticationError } from '../errors';
 
 const tenantMutationFields = {
 

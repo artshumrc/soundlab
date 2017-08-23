@@ -10,7 +10,7 @@ const config = {
 	description: 'Tenant base query type',
 	class: 'GraphQLObjectType',
 	schema: Tenant.schema,
-	exclude: ['_id']
+	exclude: []
 };
 
 const configInput = {

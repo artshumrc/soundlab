@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
 
+
 const Schema = mongoose.Schema;
 
 /**
@@ -60,8 +61,16 @@ ProjectSchema.statics.findByUserId = function findByUserId(userId) {
  * @return {Promise}            	(Promise) True if user has the role of owner for this project
  */
 ProjectSchema.statics.isUserOwner = async function isUserOwner(projectId, userId) {
-	const project = await this.find({ _id: projectId, users: { $elemMatch: { userId, role: 'Owner' } } });
-	return project ? true : false;
+	try {
+		const project = await this.find({ _id: projectId, users: { $elemMatch: { userId, role: 'Owner' } } });
+
+		if (project) return true;
+
+		return false;
+
+	} catch (err) {
+		throw err;
+	}
 };
 
 // TODO: check if needed (why was it implemented?):

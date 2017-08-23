@@ -4,6 +4,9 @@ import mongoose from 'mongoose';
 import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
 
+// models
+import Project from './project';
+
 const Schema = mongoose.Schema;
 
 /**
@@ -56,13 +59,14 @@ CollectionSchema.statics.findByProjectId = function findByProjectId(projectId) {
  * @return {Promise}              (Promise) True if user is owner of the collection
  */
 CollectionSchema.statics.isUserOwner = async function isUserOwner(collectionId, userId) {
+
 	try {
-		const collection = await this.findById(collectionId).populate('projectId');
-		if (collection && collection.projectId && collection.projectId.users && collection.projectId.users.length) {
-			const projectUser = collection.projectId.users.find(user => user.userId.toString() === userId.toString());
-			return projectUser ? true : false;
-		}
-		return null;
+
+		// get collection by id
+		const collection = await this.findById(collectionId);
+
+		return Project.isUserOwner(collection.projectId, userId);
+
 	} catch (err) {
 		throw err;
 	}

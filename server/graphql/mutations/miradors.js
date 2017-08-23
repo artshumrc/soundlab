@@ -4,7 +4,7 @@ import { GraphQLString, GraphQLNonNull } from 'graphql';
 import miradorType from '../types/models/mirador';
 
 // errors
-import { AuthenticationError } from '../../errors';
+import { AuthenticationError } from '../errors';
 
 const miradorMutationFileds = {
 

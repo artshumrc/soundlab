@@ -7,7 +7,7 @@ import ProjectType from '../types/models/project';
 import Project from '../../models/project';
 
 // errors
-import { AuthenticationError } from '../../errors';
+import { AuthenticationError } from '../errors';
 
 const projectMutationFileds = {
 

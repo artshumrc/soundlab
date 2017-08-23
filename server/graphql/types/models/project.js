@@ -15,7 +15,7 @@ const config = {
 	description: 'Project base query type',
 	class: 'GraphQLObjectType',
 	schema: Project.schema,
-	exclude: ['_id', 'users'],
+	exclude: ['_id'],
 	extend: {
 		collections: {
 			type: new GraphQLList(CollectionType),
@@ -24,25 +24,25 @@ const config = {
 				return Collection.findByProjectId(project._id);
 			}
 		},
-		users: {
-			type: new GraphQLObjectType({
-				name: 'ProjectUsersType',
-				fields: {
-					user: {
-						type: UserType,
-						resolve(projectUser, args, context) {
-							return User.findById(projectUser.userId);
-						}
-					},
-					role: {
-						type: GraphQLString,
-					}
-				}
-			}),
-			resolve(project, args, context) {
-				return project.users;
-			}
-		}
+		// users: {
+		// 	type: new GraphQLObjectType({
+		// 		name: 'ProjectUsersType',
+		// 		fields: {
+		// 			user: {
+		// 				type: UserType,
+		// 				resolve(projectUser, args, context) {
+		// 					return User.findById(projectUser.userId);
+		// 				}
+		// 			},
+		// 			role: {
+		// 				type: GraphQLString,
+		// 			}
+		// 		}
+		// 	}),
+		// 	resolve(project, args, context) {
+		// 		return project.users;
+		// 	}
+		// }
 	}
 };
 

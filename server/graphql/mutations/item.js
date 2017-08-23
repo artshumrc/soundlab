@@ -1,7 +1,7 @@
-import { GraphQLNonNull } from 'graphql';
+import { GraphQLNonNull, GraphQLID } from 'graphql';
 
 // types
-import ItemType, { ItemInputType } from '../types/models/item';
+import ItemType, { ItemCreateInputType, ItemUpdateInputType } from '../types/models/item';
 
 // models
 import Item from '../../models/item';
@@ -13,9 +13,11 @@ import {
 	PermissionError,
 	TenantError,
 	ArgumentError,
-	MongooseDuplicateKeyError,
-	MongooseValidationError
-} from '../../errors';
+	// MongooseGeneralError,
+	// MongooseDuplicateKeyError,
+	// MongooseValidationError,
+	handleMongooseError,
+} from '../errors';
 
 
 const itemMutationFileds = {
@@ -25,7 +27,7 @@ const itemMutationFileds = {
 		description: 'Create new item',
 		args: {
 			item: {
-				type: new GraphQLNonNull(ItemInputType),
+				type: new GraphQLNonNull(ItemCreateInputType),
 			},
 		},
 		async resolve(parent, { item }, { user, tenant }) {
@@ -44,55 +46,90 @@ const itemMutationFileds = {
 			/**
 			 * Validate resolver specific arguments
 			 */
-			
-			// collectionId is required
 			if (!item.collectionId) throw new ArgumentError({ data: { field: 'collectionId' } });
+
+
+			/**
+			 * Initiate item
+			 */
+			const NewItem = new Item(item);
 
 
 			/**
 			 * Validate permissions
 			 */
 			
-			// check if user is owner of the project to which collection an item is added
-			try {
-				const userIsOwner = await Collection.isUserOwner(item.collectionId, user._id);
-				if (!userIsOwner) throw new PermissionError();
-			} catch (err) {
-				throw err;
-			}
+			// check user permissions
+			const userIsOwner = await NewItem.validateUser(user._id);
+			if (!userIsOwner) throw new PermissionError();
 
 
 			/**
 			 * Perform action
 			 */
 			
-			// create new item
+			// save new item
 			try {
-				return await Item.create({ ...item });
+				return await NewItem.save();
 			} catch (err) {
-
-				/**
-				 * Mongoose errors
-				 */
-
-				// handle duplicate key error
-				if (err.name === 'MongoError' && err.code === 11000) {
-					throw new MongooseDuplicateKeyError({
-						data: {
-							errmsg: err.errmsg
-						}
-					});
-				}
-
-				// handle validation errors
-				if (err.errors) {
-					throw new MongooseValidationError({
-						data: err.errors,
-					});
-				}
+				handleMongooseError(err);
 			}
-			// TODO handling field validation
 		},
+	},
+
+	itemUpdate: {
+		type: ItemType,
+		description: 'Update item',
+		args: {
+			item: {
+				type: new GraphQLNonNull(ItemUpdateInputType),
+			},
+			itemId: {
+				type: new GraphQLNonNull(GraphQLID),
+			}
+		},
+		async resolve(parent, { item, itemId }, { user, tenant }) {
+
+			/**
+			 * Validate connection
+			 */
+
+			// if operation doesn't come from admin page
+			if (!tenant.adminPage) throw new TenantError();
+
+			// if user is not logged in
+			if (!user) throw new AuthenticationError();
+
+
+			/**
+			 * Initiate item
+			 */
+			const FoundItem = await Item.findById(itemId);
+
+
+			/**
+			 * Validate permissions
+			 */
+			const userIsOwner = await FoundItem.validateUser(user._id);
+			if (!userIsOwner) throw new PermissionError();
+			
+			
+			/**
+			 * Perform action
+			 */
+			
+			// update item
+			Object.keys(item).forEach((key) => {
+				FoundItem[key] = item[key];
+			});
+
+			// Save new item
+			try {
+				return await FoundItem.save();
+			} catch (err) {
+				handleMongooseError(err);
+			}
+		}
 	},
 };
 

@@ -14,7 +14,7 @@ const config = {
 	description: 'Collection base query type',
 	class: 'GraphQLObjectType',
 	schema: Collection.schema,
-	exclude: ['_id', 'projectId'],
+	exclude: [],
 	extend: {
 		items: {
 			type: new GraphQLList(ItemType),

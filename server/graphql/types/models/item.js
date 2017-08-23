@@ -16,7 +16,7 @@ const config = {
 	description: 'Item Schema base query type',
 	class: 'GraphQLObjectType',
 	schema: Item.schema,
-	exclude: ['_id'],
+	exclude: [],
 	extend: {
 		files: {
 			type: new GraphQLList(FileType),
@@ -42,19 +42,29 @@ const config = {
 	}
 };
 
-const configInput = {
-	name: 'ItemInputType',
-	description: 'Item Schema base input type',
+const configCreate = {
+	name: 'ItemCreateInputType',
+	description: 'Item Schema base create input type',
 	class: 'GraphQLInputObjectType',
 	schema: Item.schema,
 	exclude: ['_id', 'slug', 'createdAt', 'updatedAt'],
 	extend: {
-		// title: {
-		// 	type: new GraphQLNonNull(GraphQLString),
-		// },
-		// files: {
-		// 	type: new GraphQLList(FileInputType),
-		// },
+		tags: {
+			type: new GraphQLList(TagInputType),
+		},
+		metadata: {
+			type: new GraphQLList(MetadataInputType)
+		},
+	}
+};
+
+const configUpdate = {
+	name: 'ItemUpdateInputType',
+	description: 'Item Schema base update input type',
+	class: 'GraphQLInputObjectType',
+	schema: Item.schema,
+	exclude: ['_id', 'slug', 'collectionId', 'createdAt', 'updatedAt'],
+	extend: {
 		tags: {
 			type: new GraphQLList(TagInputType),
 		},
@@ -65,7 +75,8 @@ const configInput = {
 };
 
 const ItemType = createType(config);
-const ItemInputType = createType(configInput);
+const ItemCreateInputType = createType(configCreate);
+const ItemUpdateInputType = createType(configUpdate);
 
 export default ItemType;
-export { ItemInputType };
+export { ItemCreateInputType, ItemUpdateInputType };
