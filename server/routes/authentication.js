@@ -15,14 +15,12 @@ router.post('/login', async (req, res) => {
 	const { username, password } = req.body;
 
 	const user = await User.findByUsername(username);
-	console.log('user', user);
 	if (user) {
 		user.authenticate(password, (_, isValid, message) => {
 			if (isValid) {
 				const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
 					expiresIn: 10080 // in seconds
 				});
-				console.log('token', token);
 				return res.json({ success: true, token: `JWT ${token}`, username: user.username, userId: user._id });
 			}
 			return res.status(401).send(message);
@@ -33,8 +31,6 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/verify-token', jwtAuthenticate, async (req, res) => {
-
-	console.log(req.user);
 
 	if (req.user) {
 		return res.json(req.user);

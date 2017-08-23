@@ -8,7 +8,15 @@ import Item from '../../models/item';
 import Collection from '../../models/collection';
 
 // errors
-import { AuthenticationError } from '../../errors';
+import {
+	AuthenticationError,
+	PermissionError,
+	TenantError,
+	ArgumentError,
+	MongooseDuplicateKeyError,
+	MongooseValidationError
+} from '../../errors';
+
 
 const itemMutationFileds = {
 
@@ -22,31 +30,70 @@ const itemMutationFileds = {
 		},
 		async resolve(parent, { item }, { user, tenant }) {
 
-			// 1. Validate connection
-			// 
-			// 2. Validate args? - done in grpahql and mongoose?
-			// 
-			// 3. Validate user permissions
-			// 
-			// 4. Run action
+			/**
+			 * Validate connection
+			 */
 
-			// only a logged in user and coming from the admin page, can create new item
-			if (user && tenant.adminPage) {
+			// if operation doesn't come from admin page
+			if (!tenant.adminPage) throw new TenantError();
 
-				try {
-					// TODO validate collectionId
-					const userIsOwner = await Collection.isUserOwner(item.collectionId, user._id);
+			// if user is not logged in
+			if (!user) throw new AuthenticationError();
 
-					if (userIsOwner) return Item.create({ ...item });
 
-				} catch (err) {
-					throw err;
+			/**
+			 * Validate resolver specific arguments
+			 */
+			
+			// collectionId is required
+			if (!item.collectionId) throw new ArgumentError({ data: { field: 'collectionId' } });
+
+
+			/**
+			 * Validate permissions
+			 */
+			
+			// check if user is owner of the project to which collection an item is added
+			try {
+				const userIsOwner = await Collection.isUserOwner(item.collectionId, user._id);
+				if (!userIsOwner) throw new PermissionError();
+			} catch (err) {
+				throw err;
+			}
+
+
+			/**
+			 * Perform action
+			 */
+			
+			// create new item
+			try {
+				return await Item.create({ ...item });
+			} catch (err) {
+
+				/**
+				 * Mongoose errors
+				 */
+
+				// handle duplicate key error
+				if (err.name === 'MongoError' && err.code === 11000) {
+					throw new MongooseDuplicateKeyError({
+						data: {
+							errmsg: err.errmsg
+						}
+					});
 				}
 
+				// handle validation errors
+				if (err.errors) {
+					throw new MongooseValidationError({
+						data: err.errors,
+					});
+				}
 			}
-			throw new AuthenticationError();
-		}
-	}
+			// TODO handling field validation
+		},
+	},
 };
 
 export default itemMutationFileds;

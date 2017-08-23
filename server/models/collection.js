@@ -59,7 +59,7 @@ CollectionSchema.statics.isUserOwner = async function isUserOwner(collectionId, 
 	try {
 		const collection = await this.findById(collectionId).populate('projectId');
 		if (collection && collection.projectId && collection.projectId.users && collection.projectId.users.length) {
-			const projectUser = collection.projectId.users.find(user => user.userId === userId);
+			const projectUser = collection.projectId.users.find(user => user.userId.toString() === userId.toString());
 			return projectUser ? true : false;
 		}
 		return null;

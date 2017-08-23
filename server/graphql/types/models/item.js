@@ -1,4 +1,4 @@
-import { GraphQLList, GraphQLID } from 'graphql';
+import { GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
 import createType from 'mongoose-schema-to-graphql';
 
 // models
@@ -49,6 +49,9 @@ const configInput = {
 	schema: Item.schema,
 	exclude: ['_id', 'slug', 'createdAt', 'updatedAt'],
 	extend: {
+		// title: {
+		// 	type: new GraphQLNonNull(GraphQLString),
+		// },
 		// files: {
 		// 	type: new GraphQLList(FileInputType),
 		// },

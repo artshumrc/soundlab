@@ -11,18 +11,22 @@ const Schema = mongoose.Schema;
 export const TagSchema = new Schema({
 	value: {
 		type: String,
+		required: true,
 	},
 	label: {
 		type: String,
+		required: true,
 	}
 });
 
 export const MetadataSchema = new Schema({
 	value: {
 		type: String,
+		required: true,
 	},
 	label: {
 		type: String,
+		required: true,
 	}
 });
 
@@ -67,7 +71,7 @@ ItemSchema.plugin(URLSlugs('title'));
 ItemSchema.statics.collectionCount = function collectionCount(collectionId) {
 	return this.count({ collectionId });
 };
-ItemSchema.statics.findByCollectionId = function collectionCount(collectionId) {
+ItemSchema.statics.findByCollectionId = function findByCollectionId(collectionId) {
 	return this.find({ collectionId }).select({ _id: 1 });
 };
 
