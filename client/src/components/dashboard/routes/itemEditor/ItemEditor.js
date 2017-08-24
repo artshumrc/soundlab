@@ -1,6 +1,7 @@
 import React from 'react';
 import {Field, FieldArray} from 'redux-form';
 import Textarea from 'react-textarea-autosize';
+import { gql, graphql } from 'react-apollo';
 import ItemEditorUploader from '../../components/fileUploader/ItemEditorUploader';
 import PrimaryImage from '../../../items/ItemImageViewer/PrimaryImage';
 import PrimaryFile from './PrimaryFile';
@@ -9,9 +10,10 @@ import TagEditor from './TagEditor';
 import MetaEditor from './MetaEditor';
 import './ItemEditor.css';
 
-export default class ItemEditor extends React.Component {
+class _ItemEditor extends React.Component {
 	constructor(props) {
 		super(props);
+		console.log('props', props)
     // this.state = {
     //   files: [{title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '48.jpg'},
     //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '16.jpg'},
@@ -29,8 +31,12 @@ export default class ItemEditor extends React.Component {
 		this.isImage = this.isImage.bind(this);
 	}
 
-	handleSubmit(values) {
-		console.log('values LOG', values);
+	async handleSubmit(values) {
+		try {
+			await this.props.createNewItem({ /* TODO */ });
+		} catch (err) {
+			console.log('err', err.graphQLErrors);
+		}
 	}
 
 	showError(error) {
@@ -64,12 +70,12 @@ export default class ItemEditor extends React.Component {
 						<Field
 							name="files"
 							component={files => (files.input.value[0] && files.input.value[0].path ?
-                this.isImage(files.input.value[0].type) ?
-	<PrimaryImage
-		alt={files.input.value[0].name}
-		src={`//iiif.orphe.us/${files.input.value[0].name}/full/600,/0/default.jpg`}
-	/> :
-	<PrimaryFile file={files.input.value[0]} /> : null)}
+								this.isImage(files.input.value[0].type) ?
+								<PrimaryImage
+									alt={files.input.value[0].name}
+									src={`//iiif.orphe.us/${files.input.value[0].name}/full/600,/0/default.jpg`}
+								/> :
+								<PrimaryFile file={files.input.value[0]} /> : null)}
 						/>
 						<FieldArray
 							name="files"
@@ -108,3 +114,18 @@ export default class ItemEditor extends React.Component {
 		);
 	}
 }
+
+const addNewItem = gql`
+mutation itemCreate($item: ItemCreateInputType!) {
+	itemCreate(item: $item) {
+		_id
+		title
+	}
+}
+`;
+
+export default graphql(addNewItem, {
+	props: ({ mutate }) => ({
+		createNewItem: item => mutate({ variables: { item } }),
+	}),
+})(_ItemEditor);

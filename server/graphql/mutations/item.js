@@ -61,8 +61,12 @@ const itemMutationFileds = {
 			 */
 			
 			// check user permissions
-			const userIsOwner = await NewItem.validateUser(user._id);
-			if (!userIsOwner) throw new PermissionError();
+			try {
+				const userIsOwner = await NewItem.validateUser(user._id);
+				if (!userIsOwner) throw new PermissionError();
+			} catch (err) {
+				throw new PermissionError();
+			}
 
 
 			/**
@@ -112,8 +116,13 @@ const itemMutationFileds = {
 			/**
 			 * Validate permissions
 			 */
-			const userIsOwner = await FoundItem.validateUser(user._id);
-			if (!userIsOwner) throw new PermissionError();
+			try {
+				const userIsOwner = await FoundItem.validateUser(user._id);
+				if (!userIsOwner) throw new PermissionError();
+			} catch (err) {
+				throw new PermissionError();
+			}
+			
 			
 			
 			/**
@@ -165,8 +174,12 @@ const itemMutationFileds = {
 			/**
 			 * Validate permissions
 			 */
-			const userIsOwner = await FoundItem.validateUser(user._id);
-			if (!userIsOwner) throw new PermissionError();
+			try {
+				const userIsOwner = await FoundItem.validateUser(user._id);
+				if (!userIsOwner) throw new PermissionError();
+			} catch (err) {
+				throw new PermissionError();
+			}
 			
 			
 			/**

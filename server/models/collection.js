@@ -65,7 +65,8 @@ CollectionSchema.statics.isUserOwner = async function isUserOwner(collectionId, 
 		// get collection by id
 		const collection = await this.findById(collectionId);
 
-		return Project.isUserOwner(collection.projectId, userId);
+		if (collection) return Project.isUserOwner(collection.projectId, userId);
+		throw new Error('Incorrect collection id');
 
 	} catch (err) {
 		throw err;
