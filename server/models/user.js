@@ -11,6 +11,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
 	username: String,
 	password: String,
+	facebookId: String,
 });
 
 // add password hash and salt
@@ -20,8 +21,17 @@ UserSchema.plugin(passportLocalMongoose);
 UserSchema.plugin(timestamp);
 
 // Statics
+// // this method is needed for dataloader to work
 UserSchema.statics.findById = function findById(_id, cb) {
 	return User.findOne({ _id }, cb);
+};
+
+UserSchema.statics.findByFacebookId = function findByFacebookId(facebookId, cb) {
+	return User.findOne({ facebookId }, cb);
+};
+
+UserSchema.statics.createFacebook = function createFacebook(facebookId, cb) {
+	return User.create({ facebookId }, cb);
 };
 
 /**

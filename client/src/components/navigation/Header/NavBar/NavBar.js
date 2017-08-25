@@ -29,11 +29,11 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 			</li>
 			<li>
 				{userId ? 
-					<a href="#" className="login-button" onClick={logout}>
+					<a href="" className="login-button" onClick={logout}>
 						LogOUt
 					</a>
 					:
-					<a href="#" className="login-button" onClick={toggleAuthModal}>
+					<a href="" className="login-button" onClick={toggleAuthModal}>
 						Sign Up / In
 					</a>
 				}

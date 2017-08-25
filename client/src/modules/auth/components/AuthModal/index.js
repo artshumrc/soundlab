@@ -47,7 +47,6 @@ class _AuthModal extends React.Component {
 
 		this._initiateUser();
 	}
-
 	componentWillUnmount() {
 		document.removeEventListener('keydown', this._handleKeyDown);
 	}
