@@ -1,8 +1,11 @@
 import React from 'react';
-import Modal from '../../common/modal/Modal';
+import PropTypes from 'prop-types';
+
 import OAuthButtons from '../OAuthButtons';
 import PWDLoginForm from '../PWDLoginForm';
 import './ModalLogin.css';
+
+import { login } from '../../../lib/auth';
 
 
 const ESCAPE_KEY = 27;
@@ -11,43 +14,18 @@ const ESCAPE_KEY = 27;
 class ModalLogin extends React.Component {
 
 	static propTypes = {
-		lowered: React.PropTypes.bool,
-		closeModal: React.PropTypes.func,
-	};
-
-	static defaultProps = {
-		lowered: false,
-	};
+		onRegisterClick: PropTypes.func.isRequired,
+		setUser: PropTypes.func.isRequired,
+	}
 
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			errorMsg: '',
-			errorSocial: '',
-		};
-
 		// methods:
-		this._handleKeyDown = this._handleKeyDown.bind(this);
 		this.handleLogin = this.handleLogin.bind(this);
 		this.handleLoginFacebook = this.handleLoginFacebook.bind(this);
 		this.handleLoginGoogle = this.handleLoginGoogle.bind(this);
 		this.handleLoginTwitter = this.handleLoginTwitter.bind(this);
-	}
-
-	componentWillMount() {
-		document.addEventListener('keydown', this._handleKeyDown);
-	}
-
-	componentWillUnmount() {
-		document.removeEventListener('keydown', this._handleKeyDown);
-	}
-
-	_handleKeyDown(event) {
-
-		const { closeModal } = this.props;
-
-		if (event.keyCode === ESCAPE_KEY) closeModal();
 	}
 
 	handleLogin(email, password) {
@@ -63,46 +41,50 @@ class ModalLogin extends React.Component {
 	}
 
 	render() {
-		const { errorSocial, errorMsg } = this.state;
+		const { onRegisterClick, setUser } = this.props;
 
 		return (
-			<Modal>
-				<div className="at-form">
-					<div className="at-title">
-						<h3>Sign In</h3>
-					</div>
+			<div className="at-form">
+				<h3 style={{color: '#000'}}>Sign In</h3>
 
-					<span className="error-text">
-						{errorSocial}
-					</span>
+				{/* <span className="error-text">
+					{errorSocial}
+				</span>
 
-					<OAuthButtons
-						handleFacebook={this.handleLoginFacebook}
-						handleGoogle={this.handleLoginGoogle}
-						handleTwitter={this.handleLoginTwitter}
-					/>
+				<OAuthButtons
+					handleFacebook={this.handleLoginFacebook}
+					handleGoogle={this.handleLoginGoogle}
+					handleTwitter={this.handleLoginTwitter}
+				/>
 
-					<div className="at-sep">
-						<strong>OR</strong>
-					</div>
+				<div className="at-sep">
+					<strong>OR</strong>
+				</div> */}
 
-					<PWDLoginForm
-						login={this.handleLogin}
-						errorMsg={errorMsg}
-					/>
+				<PWDLoginForm
+					submitMethod={login}
+					setUser={setUser}
+				/>
 
-					<div className="at-signup-link">
-						<p>
-							Don't have an account? <a href="/sign-up" id="at-signUp" className="at-link at-signup">Register.</a>
-						</p>
-					</div>
-					<div className="at-resend-verification-email-link at-wrap">
-						<p>
-							Verification email lost? <a href="/send-again" id="at-resend-verification-email" className="at-link at-resend-verification-email">Send again.</a>
-						</p>
-					</div>
+				<div className="at-signup-link">
+					<p>
+						Don't have an account?
+						<a
+							href="#"
+							id="at-signUp"
+							className="at-link at-signup"
+							onClick={onRegisterClick}
+						>
+							Register.
+						</a>
+					</p>
 				</div>
-			</Modal>
+				<div className="at-resend-verification-email-link at-wrap">
+					<p>
+						Verification email lost? <a href="/send-again" id="at-resend-verification-email" className="at-link at-resend-verification-email">Send again.</a>
+					</p>
+				</div>
+			</div>
 		);
 	}
 }

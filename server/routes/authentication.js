@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user';
 
 // authentication
-import { authenticationMiddleware, checkPasswordStrength } from '../authentication';
+import { jwtAuthenticate, checkPasswordStrength } from '../authentication';
 
 const router = express.Router();
 
@@ -21,13 +21,21 @@ router.post('/login', async (req, res) => {
 				const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
 					expiresIn: 10080 // in seconds
 				});
-				console.log('token', token);
-				res.json({ success: true, token: `JWT ${token}` });
-			} else {
-				res.status(401).send(message);
+				return res.json({ success: true, token: `JWT ${token}`, username: user.username, userId: user._id });
 			}
+			return res.status(401).send(message);
 		});
+	} else {
+		return res.status(401).send({error: 'User not found'});
 	}
+});
+
+router.post('/verify-token', jwtAuthenticate, async (req, res) => {
+
+	if (req.user) {
+		return res.json(req.user);
+	}
+	return res.status(401).send({error: 'User not found'});
 });
 
 router.post('/register', checkPasswordStrength(), (req, res) => {
@@ -41,7 +49,7 @@ router.post('/register', checkPasswordStrength(), (req, res) => {
 		const token = jwt.sign(user, process.env.JWT_SECRET, {
 			expiresIn: 10080 // in seconds
 		});
-		res.json({ success: true, username: account.username, token: `JWT ${token}` });
+		return res.json({ success: true, token: `JWT ${token}`, username: account.username, userId: account._id });
 	});
 });
 

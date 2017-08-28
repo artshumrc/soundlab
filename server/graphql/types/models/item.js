@@ -1,41 +1,82 @@
-import { GraphQLList, GraphQLID } from 'graphql';
+import { GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
 import createType from 'mongoose-schema-to-graphql';
 
 // models
 import Item from '../../../models/item';
-import ItemValue from '../../../models/itemValue';
+import File from '../../../models/file';
 
 // types
-import ItemValueType from './itemValue';
+import FileType, { FileInputType } from './file';
+import TagType, { TagInputType } from './tag';
+import MetadataType, { MetadataInputType } from './metadata';
+
 
 const config = {
 	name: 'ItemType',
-	description: 'Item Schema base schema',
+	description: 'Item Schema base query type',
 	class: 'GraphQLObjectType',
 	schema: Item.schema,
-	exclude: ['_id'],
+	exclude: [],
 	extend: {
-		values: {
-			type: new GraphQLList(ItemValueType),
+		files: {
+			type: new GraphQLList(FileType),
+			description: 'Get all item files',
 			resolve(item, args, context) {
-				return ItemValue.findByItemId(item._id);
-			},
+				return File.getByItemId(item._id);
+			}
 		},
-		value: {
-			type: ItemValueType,
-			args: {
-				_id: {
-					type: GraphQLID,
-				},
-			},
-			resolve(item, { _id }, context) {
-				return ItemValue.findById(_id);
-			},
+		tags: {
+			type: new GraphQLList(TagType),
+			description: 'Get all tags',
+			resolve(item, args, context) {
+				return item.tags;
+			}
+		},
+		metadata: {
+			type: new GraphQLList(MetadataType),
+			description: 'Get all metadata',
+			resolve(item, args, context) {
+				return item.metadata;
+			}
+		},
+	}
+};
+
+const configCreate = {
+	name: 'ItemCreateInputType',
+	description: 'Item Schema base create input type',
+	class: 'GraphQLInputObjectType',
+	schema: Item.schema,
+	exclude: ['_id', 'slug', 'createdAt', 'updatedAt'],
+	extend: {
+		tags: {
+			type: new GraphQLList(TagInputType),
+		},
+		metadata: {
+			type: new GraphQLList(MetadataInputType)
+		},
+	}
+};
+
+const configUpdate = {
+	name: 'ItemUpdateInputType',
+	description: 'Item Schema base update input type',
+	class: 'GraphQLInputObjectType',
+	schema: Item.schema,
+	exclude: ['_id', 'slug', 'collectionId', 'createdAt', 'updatedAt'],
+	extend: {
+		tags: {
+			type: new GraphQLList(TagInputType),
+		},
+		metadata: {
+			type: new GraphQLList(MetadataInputType)
 		},
 	}
 };
 
 const ItemType = createType(config);
+const ItemCreateInputType = createType(configCreate);
+const ItemUpdateInputType = createType(configUpdate);
 
 export default ItemType;
-
+export { ItemCreateInputType, ItemUpdateInputType };

@@ -3,41 +3,31 @@ import createType from 'mongoose-schema-to-graphql';
 
 // models
 import Collection from '../../../models/collection';
-import ItemSchema from '../../../models/itemSchema';
 import Item from '../../../models/item';
-import CollectionDetail from '../../../models/collectionDetail';
 
 // types
-import ItemSchemaType from './itemSchema';
 import ItemType from './item';
-import CollectionDetailType from './collectionDetail';
 
 
 const config = {
 	name: 'CollectionType',
-	description: 'Collection base schema',
+	description: 'Collection base query type',
 	class: 'GraphQLObjectType',
 	schema: Collection.schema,
-	exclude: ['_id', 'projectId', 'itemSchemaId'],
+	exclude: [],
 	extend: {
-		itemSchema: {
-			type: ItemSchemaType,
-			resolve(collection, arg, context) {
-				return ItemSchema.findById(collection.itemSchemaId);
-			}
-		},
 		items: {
 			type: new GraphQLList(ItemType),
 			args: {
-				offset: {
+				skip: {
 					type: GraphQLInt,
 				},
 				limit: {
 					type: GraphQLInt,
 				}
 			},
-			resolve(collection, { offset = 0, limit = 10 }) {
-				return Item.paginate({}, { offset, limit });
+			resolve(collection, { skip = 0, limit = 10 }) {
+				return Item.find({}).skip(skip).limit(limit);
 			}
 		},
 		item: {
@@ -50,21 +40,20 @@ const config = {
 			resolve(collection, { _id }) {
 				return Item.findById(_id);
 			}
-		},
-		detail: {
-			type: CollectionDetailType,
-			args: {
-				language: {
-					type: GraphQLString,
-				},
-			},
-			resolve(collection, { language = process.env.DEFAULT_LANGUAGE }, context) {
-				return CollectionDetail.findByCollectionId(collection._id).byLanguage(language);
-			}
 		}
 	}
 };
 
+const configInput = {
+	name: 'CollectionInputType',
+	description: 'Collection base input type',
+	class: 'GraphQLInputObjectType',
+	schema: Collection.schema,
+	exclude: ['_id', 'slug', 'createdAt', 'updatedAt'],
+};
+
 const CollectionType = createType(config);
+const CollectionInputType = createType(configInput);
 
 export default CollectionType;
+export { CollectionInputType };

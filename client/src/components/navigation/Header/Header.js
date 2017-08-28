@@ -1,47 +1,49 @@
 import React from 'react';
-import Headroom from 'react-headroom';
-import './Header.css';
-import scrollToElement from '../../../lib/scrollToElement';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export default class Header extends React.Component {
+// components
+import NavBar from './NavBar';
 
-	render() {
-		return (
-			<Headroom className="header">
-				<div className="nav-header">
-					<i className="mdi mdi-bars left-menu-toggle-icon" />
-					<h2 className="site-title">
-						orphe.us
-					</h2>
-				</div>
-				<ul className="nav">
-					<li>
-						<a href="#services" onClick={scrollToElement} >
-							Services
-						</a>
-					</li>
-					<li>
-						<a href="/community" >
-							Community
-						</a>
-					</li>
-					<li>
-						<a href="#about" onClick={scrollToElement} >
-							About
-						</a>
-					</li>
-					<li>
-						<a href="/" className="login-button">
-							Sign Up / In
-						</a>
-					</li>
-					<li>
-						<a href="/search">
-							<i className="mdi mdi-magnify search-icon" />
-						</a>
-					</li>
-				</ul>
-			</Headroom>
-		);
+// actions
+import { authActions } from '../../../modules/auth';
+
+const _Header = ({ toggleAuthModal, logout, userId }) => (
+	<div>
+		<NavBar
+			toggleAuthModal={toggleAuthModal}
+			userId={userId}
+			logout={logout}
+		/>
+	</div>
+);
+
+_Header.propTypes = {
+	toggleAuthModal: PropTypes.func.isRequired,
+	logout: PropTypes.func.isRequired,
+
+	userId: React.PropTypes.string,
+};
+
+_Header.defaultProps = {
+	userId : null
+};
+
+const mapStateToProps = state => ({
+	userId: state.auth.userId,
+});
+
+const mapDispatchToProps = dispatch => ({
+	toggleAuthModal: () => {
+		dispatch(authActions.toggleAuthModal());
+	},
+	logout: () => {
+		dispatch(authActions.toggleAuthModal());
+		dispatch(authActions.changeAuthMode('logout'));
 	}
-}
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(_Header);

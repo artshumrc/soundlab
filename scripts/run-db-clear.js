@@ -17,7 +17,9 @@ db.on('error', console.error)
 
 			await Promise.all(models.map(async (model) => {
 				try {
-					await db.db.dropCollection(model.name);
+					if (model.name.indexOf('system') !== 0) {
+						await db.db.dropCollection(model.name);
+					}
 				} catch (err) {
 					console.error(err);
 				}

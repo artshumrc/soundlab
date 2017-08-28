@@ -5,7 +5,32 @@ import timestamp from 'mongoose-timestamp';
 import URLSlugs from 'mongoose-url-slugs';
 import mongoosePaginate from 'mongoose-paginate';
 
+// models
+import Collection from './collection';
+
 const Schema = mongoose.Schema;
+
+export const TagSchema = new Schema({
+	value: {
+		type: String,
+		required: true,
+	},
+	label: {
+		type: String,
+		required: true,
+	}
+});
+
+export const MetadataSchema = new Schema({
+	value: {
+		type: String,
+		required: true,
+	},
+	label: {
+		type: String,
+		required: true,
+	}
+});
 
 /**
  * Item base schema
@@ -22,8 +47,14 @@ const ItemSchema = new Schema({
 	collectionId: {
 		type: Schema.Types.ObjectId,
 		ref: 'Collection',
+		required: true,
 		index: true
 	},
+	description: {
+		type: String,
+	},
+	tags: [TagSchema],
+	metadata: [MetadataSchema],
 	private: {
 		type: Boolean,
 		default: false,
@@ -37,17 +68,42 @@ ItemSchema.plugin(timestamp);
 // add slug (slug)
 ItemSchema.plugin(URLSlugs('title'));
 
-// add pagination (slug)
-ItemSchema.plugin(mongoosePaginate);
 
-// Statics
-ItemSchema.statics.collectionCount = function collectionCount(collectionId, cb) {
-	return this.count({ collectionId }, cb);
-};
-ItemSchema.statics.findByCollectionId = function collectionCount(collectionId, cb) {
-	return this.find({ collectionId }, cb).select({ _id: 1 });
+
+/**
+ * Statics
+ */
+
+/**
+ * Find all items belonging to a collection
+ * @param  {String} collectionId 	Collection id
+ * @return {Promise}              	(Promise) Array of found items
+ */
+
+ItemSchema.statics.findByCollectionId = function findByCollectionId(collectionId) {
+	return this.find({ collectionId }).select({ _id: 1 });
 };
 
+
+/**
+ * Methods
+ */
+
+ItemSchema.methods.validateUser = function validateUser(userId) {
+	return Collection.isUserOwner(this.collectionId, userId);
+};
+
+// ItemSchema.statics.createByUser = async function createByUser(newItem, userId) {
+
+// 	try {
+// 		const userIsOwner = await Collection.isUserOwner(item.collectionId, user._id);
+// 		if (!userIsOwner) throw new PermissionError();
+// 	} catch (err) {
+// 		console.error(err);
+// 		throw new MongooseGeneralError();
+// 	}
+
+// };
 
 /**
  * Item mongoose model
@@ -57,4 +113,3 @@ const Item = mongoose.model('Item', ItemSchema);
 
 export default Item;
 export { ItemSchema };
-

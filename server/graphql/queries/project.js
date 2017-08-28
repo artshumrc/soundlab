@@ -6,7 +6,7 @@ import ProjectType from '../types/models/project';
 // models
 import Project from '../../models/project';
 
-const projectQueryFileds = {
+const projectQueryFields = {
 	project: {
 		type: ProjectType,
 		description: 'Get project document',
@@ -16,10 +16,9 @@ const projectQueryFileds = {
 			},
 		},
 		resolve(tenant, { _id }, context) {
-			console.log('context', context)
 			return Project.findById(_id);
 		}
 	},
 };
 
-export default projectQueryFileds;
+export default projectQueryFields;

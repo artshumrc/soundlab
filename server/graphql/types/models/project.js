@@ -4,69 +4,58 @@ import createType from 'mongoose-schema-to-graphql';
 // models
 import Project from '../../../models/project';
 import Collection from '../../../models/collection';
-import ProjectDetail from '../../../models/projectDetail';
 
 // types
 import TenantType from './tenant';
 import CollectionType from './collection';
-import ProjectDetailType from './projectDetail';
 import UserType from './user';
 
 const config = {
 	name: 'ProjectType',
-	description: 'Project base type',
+	description: 'Project base query type',
 	class: 'GraphQLObjectType',
 	schema: Project.schema,
-	exclude: ['_id', 'users'],
+	exclude: ['_id'],
 	extend: {
 		collections: {
 			type: new GraphQLList(CollectionType),
 			description: 'Get all project collection',
 			resolve(project, args, context) {
-				return Collection.findByProjectId(project.projectId);
+				return Collection.findByProjectId(project._id);
 			}
 		},
-		tenants: {
-			type: TenantType,
-			description: 'Get all project tenants',
-			resolve(project, args, context) {
-				return Tenant.findByProjectId(project.projectId);
-			}
-		},
-		users: {
-			type: new GraphQLObjectType({
-				name: 'ProjectUsersType',
-				fields: {
-					user: {
-						type: UserType,
-						resolve(projectUser, args, context) {
-							return User.findById(projectUser.userId);
-						}
-					},
-					role: {
-						type: GraphQLString,
-					}
-				}
-			}),
-			resolve(project, args, context) {
-				return project.users;
-			}
-		},
-		detail: {
-			type: ProjectDetailType,
-			description: 'Get project details by language',
-			args: {
-				language: {
-					type: GraphQLString,
-				},
-			},
-			resolve(project, { language = process.env.DEFAULT_LANGUAGE }, context) {
-				return ProjectDetail.findByProjectId(project._id, language);
-			}
-		}
+		// users: {
+		// 	type: new GraphQLObjectType({
+		// 		name: 'ProjectUsersType',
+		// 		fields: {
+		// 			user: {
+		// 				type: UserType,
+		// 				resolve(projectUser, args, context) {
+		// 					return User.findById(projectUser.userId);
+		// 				}
+		// 			},
+		// 			role: {
+		// 				type: GraphQLString,
+		// 			}
+		// 		}
+		// 	}),
+		// 	resolve(project, args, context) {
+		// 		return project.users;
+		// 	}
+		// }
 	}
 };
 
+const configInput = {
+	name: 'ProjectInputType',
+	description: 'Project base input type',
+	class: 'GraphQLInputObjectType',
+	schema: Project.schema,
+	exclude: ['_id', 'slug', 'users', 'createdAt', 'updatedAt'],
+};
+
 const ProjectType = createType(config);
+const ProjectInputType = createType(configInput);
 
 export default ProjectType;
+export { ProjectInputType };

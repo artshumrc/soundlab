@@ -1,7 +1,10 @@
-import { setLocalStorageItem, removeLocalStorageItem } from './storage';
+import { setLocalStorageItem, removeLocalStorageItem, getLocalStorageItem } from './storage';
 
 const userLoggedIn = () => {
-	// TODO
+	const token = getLocalStorageItem('token');
+
+	if (token) return true;
+	return false;
 };
 
 const login = async (username, password) => {
@@ -20,9 +23,13 @@ const login = async (username, password) => {
 				password,
 			})
 		});
+		if (!res.ok) {
+			throw new Error(res.statusText);
+		}
 		const resJson = await res.json();
 		if (resJson.token) {
-			return setLocalStorageItem('token', resJson.token);
+			setLocalStorageItem('token', resJson.token);
+			return resJson;
 		}
 	} catch (err) {
 		throw err;
@@ -32,6 +39,8 @@ const login = async (username, password) => {
 const logout = async () => removeLocalStorageItem('token');
 
 const register = async (username, password) => {
+	if (userLoggedIn()) return null;
+
 	try {
 		const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_REGISTER_URI}`, {
 			method: 'POST',
@@ -45,13 +54,47 @@ const register = async (username, password) => {
 				password,
 			})
 		});
+		if (!res.ok) {
+			throw new Error(res.statusText);
+		}
 		const resJson = await res.json();
 		if (resJson.token) {
-			return setLocalStorageItem('token', resJson.token);
+			setLocalStorageItem('token', resJson.token);
+			return resJson;
+		}
+		if (resJson.passwordStrength) {
+			throw {
+				passwordError: true,
+				suggestion: resJson.passwordStrength.feedback.suggestions[0],
+			};
 		}
 	} catch (err) {
 		throw err;
 	}
 };
 
-export { login, logout, register };
+const verifyToken = async () => {
+	const token = getLocalStorageItem('token');
+	if (token) {
+		try {
+			const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_VERIFY_TOKEN_URI}`, {
+				method: 'POST',
+				credentials: 'include',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					'authorization': token,
+				}
+			});
+			if (!res.ok) {
+				throw new Error(res.statusText);
+			}
+			return res.json();
+		} catch (err) {
+			throw err;
+		}
+	}
+	return null;
+};
+
+export { login, logout, register, verifyToken };
