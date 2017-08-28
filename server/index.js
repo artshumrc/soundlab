@@ -31,9 +31,13 @@ import s3Setup from './s3';
 // Redis
 import redisSetup from './redis';
 
+// OAuth setup
+import oauthSetup from './oauth';
+
 // Routes
 import authenticationRouter from './routes/authentication';
 import manifestRouter from './routes/manifest';
+
 
 // environment variables setup
 dotenvSetup();
@@ -75,10 +79,12 @@ setupGraphql(app);
 // S3 setup
 s3Setup(app);
 
+// OAuth setup
+oauthSetup(app);
+
 // Routes
 app.use('/auth', authenticationRouter);
 app.use('/', manifestRouter);
-
 
 function listen() {
 	app.listen(app.get('port'), () => {

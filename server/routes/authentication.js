@@ -9,8 +9,23 @@ import User from '../models/user';
 import { jwtAuthenticate, checkPasswordStrength } from '../authentication';
 
 // strategies
-import validateFacebookToken from '../authentication/strategies/facebook';
+import validateToken from '../authentication/strategies/oauth';
 
+
+const providers = {
+	facebook: {
+		url: 'https://graph.facebook.com/me',
+		userIdField: 'id',
+	},
+	google: {
+		url: 'https://www.googleapis.com/oauth2/v3/tokeninfo',
+		userIdField: 'sub',
+	},
+	twitter: {
+		url: 'https://api.twitter.com/1.1/account/verify_credentials.json',
+		userIdField: 'id',
+	}
+};
 
 const router = express.Router();
 
@@ -31,16 +46,24 @@ const loginPWD = async (res, username, password) => {
 	}
 };
 
-const loginFacebook = async (res, facebookToken) => {
+const loginOAuth = async (res, accessToken, network) => {
 
 	try {
-		const facebookProfile = await validateFacebookToken(facebookToken);
-		const user = await User.findByFacebookId(facebookProfile.id);
-		const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-			expiresIn: 10080 // in seconds
-		});
-		return res.json({ success: true, token: `JWT ${token}`, username: user.username, userId: user._id });
+		const { url, userIdField } = providers[network];
+		console.log('accessToken', accessToken)
+		const profile = await validateToken(accessToken, url);
+		console.log('profile', profile)
+		const user = await User.findByOAuth(profile[userIdField], network);
+		console.log('user', user)
+		if (user) {
+			const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+				expiresIn: 10080 // in seconds
+			});
+			return res.json({ success: true, token: `JWT ${token}`, username: user.username, userId: user._id });
+		}
+		return res.status(401).send({error: 'User not found'});
 	} catch (err) {
+		console.log('err', err);
 		res.status(500);
 	}
 
@@ -48,11 +71,11 @@ const loginFacebook = async (res, facebookToken) => {
 
 router.post('/login', (req, res) => {
 
-	const { username, password, facebookToken } = req.body;
+	const { username, password, network, accessToken } = req.body;
 
 	if (username && password) return loginPWD(res, username, password);
 
-	if (facebookToken) return loginFacebook(res, facebookToken);
+	return loginOAuth(res, accessToken, network);
 
 });
 
@@ -101,5 +124,7 @@ router.post('/verify-token', jwtAuthenticate, async (req, res) => {
 	}
 	return res.status(401).send({error: 'User not found'});
 });
+
+
 
 export default router;

@@ -28,6 +28,16 @@ export const removeUser = () => ({
 	type: REMOVE_USER,
 });
 
+export const login = (loginMethod, data) => async (dispatch) => {
+	try {
+		const userObj = await loginMethod(data);
+		dispatch(setUser(userObj));
+		dispatch(toggleAuthModal(false));
+	} catch (err) {
+		throw err;
+	}
+};
+
 export const logout = logoutMethod => async (dispatch) => {
 	try {
 		await logoutMethod();

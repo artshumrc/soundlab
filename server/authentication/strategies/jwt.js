@@ -3,6 +3,10 @@ import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import DataLoader from 'dataloader';
 import createRedisDataLoader from 'redis-dataloader';
 
+// models
+import User from '../../models/user';
+
+
 const setupJWTStrategy = (app, redisClient) => {
 	const RedisDataLoader = createRedisDataLoader({ redis: redisClient });
 

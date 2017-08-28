@@ -41,7 +41,7 @@ const generateItem = async (count, collectionIds) => {
 		const data = await generateData(count, async() => ({
 			title: faker.commerce.productName(),
 			description: faker.lorem.sentences(),
-			collectionIds: getRandom(collectionIds),
+			collectionId: getRandom(collectionIds),
 			tags: generateTags(),
 			metadata: generateMetadata(),
 		}));

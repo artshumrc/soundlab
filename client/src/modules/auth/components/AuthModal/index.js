@@ -10,7 +10,7 @@ import Signup from '../Signup';
 import Logout from '../Logout';
 
 // actions
-import { toggleAuthModal, changeAuthMode, setUser, logout } from '../../redux/actions';
+import { toggleAuthModal, changeAuthMode, setUser, login, logout } from '../../redux/actions';
 
 
 const ESCAPE_KEY = 27;
@@ -19,7 +19,7 @@ const ESCAPE_KEY = 27;
 class _AuthModal extends React.Component {
 
 	static propTypes = {
-		loginMethod: PropTypes.func.isRequired,
+		dispatchLogin: PropTypes.func.isRequired,
 		signupMethod: PropTypes.func.isRequired,
 
 		showAuthModal: PropTypes.bool,
@@ -70,7 +70,7 @@ class _AuthModal extends React.Component {
 	}
 
 	render() {
-		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, loginMethod, dispatchLogout, signupMethod } = this.props;
+		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, dispatchLogin, dispatchLogout, signupMethod } = this.props;
 
 		return (
 			<Modal
@@ -81,7 +81,7 @@ class _AuthModal extends React.Component {
 					{authMode === 'login' ? 
 						<Login
 							onRegisterClick={dispachChangeAuthMode.bind(null, 'signup')}
-							loginMethod={loginMethod}
+							login={dispatchLogin}
 						/>
 					: null}
 
@@ -119,9 +119,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 		dispatch(setUser(userObject));
 		dispatch(toggleAuthModal(false));
 	},
+	dispatchLogin: data => dispatch(login(ownProps.loginMethod, data)),
 	dispatchLogout: () => {
 		dispatch(logout(ownProps.logoutMethod));
-	}
+	},
 });
 
 export default connect(

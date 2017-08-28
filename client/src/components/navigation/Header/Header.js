@@ -38,7 +38,8 @@ const mapDispatchToProps = dispatch => ({
 		e.preventDefault();
 		dispatch(authActions.toggleAuthModal());
 	},
-	logout: () => {
+	logout: (e) => {
+		e.preventDefault();
 		dispatch(authActions.toggleAuthModal());
 		dispatch(authActions.changeAuthMode('logout'));
 	}

@@ -30,7 +30,7 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 			<li>
 				{userId ? 
 					<a href="" className="login-button" onClick={logout}>
-						LogOUt
+						LogOot
 					</a>
 					:
 					<a href="" className="login-button" onClick={toggleAuthModal}>

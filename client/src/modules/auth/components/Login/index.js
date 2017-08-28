@@ -7,64 +7,50 @@ import PWDLoginForm from '../PWDLoginForm';
 import './Login.css';
 
 hello.init({
-	facebook: process.env.REACT_APP_FACBOOK_APP_ID,
-	twitter: 'XZlvAaYHhJhfegrU8WVZjhjas',
-	google: '875421757036-r7efbv6lkn037e9hc4p8udjjimovjr0k.apps.googleusercontent.com'
+	facebook: process.env.REACT_APP_FACBOOK_CLIENT_ID,
+	twitter: process.env.REACT_APP_TWITTER_CLIENT_ID,
+	google: process.env.REACT_APP_GOOGLE_CLIENT_ID
 }, {
-	// redirect_uri: '/'
+	// redirect_uri: '/',
+	oauth_proxy: `${process.env.REACT_APP_SERVER}/oauthproxy`,
 });
 
-const _initHelloEventListeners = () => {
-
-	hello.on('auth.login', (auth) => {
-
-		console.log('auth.network', auth.network)
-
-		switch(auth.network) {
-			case 'facebook': {
-				const facebookToken = auth.authResponse.access_token;
-
-				console.log('facebookToken', facebookToken);
-
-			}
-			case 'google': {
-				const googleToken = auth.authResponse.access_token;
-
-				console.log('googleToken', googleToken);
-
-			}
-			case 'twitter': {
-				const twitterToken = auth.authResponse.access_token;
-
-				console.log('twitterToken', twitterToken);
-
-			}
-		}
-
-	});
-
-};
 
 
 class Login extends React.Component {
 
 	static propTypes = {
 		onRegisterClick: PropTypes.func.isRequired,
-		loginMethod: PropTypes.func.isRequired,
+		login: PropTypes.func.isRequired,
 	}
 
 	constructor(props) {
 		super(props);
-
-		_initHelloEventListeners();
 		
 		this.handleLoginFacebook = this.handleLoginFacebook.bind(this);
 		this.handleLoginGoogle = this.handleLoginGoogle.bind(this);
 		this.handleLoginTwitter = this.handleLoginTwitter.bind(this);
 	}
 
-	handleLoginFacebook () {
-		hello('facebook').login();
+	async handleLoginFacebook () {
+		try {
+			const auth = await hello('facebook').login();
+
+			console.log('auth.network', auth.network);
+
+			console.log('auth.authResponse.access_token', auth.authResponse.access_token);
+
+			// try {
+			// 	const userObj = await login(values);
+			// 	dispatch(setUser(userObj));
+			// 	dispatch(toggleAuthModal(false));
+			// 	return {};
+			// } catch (err) {
+			// 	throw new SubmissionError({ _error: 'Login failed!' });
+			// }
+		} catch (err) {
+			console.log(err);
+		}
 	}
 
 	handleLoginGoogle () {
@@ -72,12 +58,12 @@ class Login extends React.Component {
 	}
 
 	handleLoginTwitter () {
-		hello('twitter').login().then(console.log.bind(console),console.error.bind(console));;
+		hello('twitter').login();
 	}
 
 
 	render() {
-		const { onRegisterClick, loginMethod } = this.props;
+		const { onRegisterClick, login } = this.props;
 
 		return (
 			<div className="at-form">
@@ -88,9 +74,7 @@ class Login extends React.Component {
 				</span> */}
 
 				<OAuthButtons
-					handleFacebook={this.handleLoginFacebook}
-					handleGoogle={this.handleLoginGoogle}
-					handleTwitter={this.handleLoginTwitter}
+					login={login}
 				/>
 
 				<div className="at-sep">
@@ -98,7 +82,7 @@ class Login extends React.Component {
 				</div>
 
 				<PWDLoginForm
-					loginMethod={loginMethod}
+					login={login}
 				/>
 
 				<div className="at-signup-link">

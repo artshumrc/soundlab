@@ -11,7 +11,10 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
 	username: String,
 	password: String,
-	facebookId: String,
+	oauthIds: [{
+		network: String,
+		id: String,
+	}],
 });
 
 // add password hash and salt
@@ -26,8 +29,8 @@ UserSchema.statics.findById = function findById(_id, cb) {
 	return User.findOne({ _id }, cb);
 };
 
-UserSchema.statics.findByFacebookId = function findByFacebookId(facebookId, cb) {
-	return User.findOne({ facebookId }, cb);
+UserSchema.statics.findByOAuth = function findByOAuth(id, network, cb) {
+	return User.findOne({ oauthIds: { $elemMatch: { network, id } } }, cb);
 };
 
 UserSchema.statics.createFacebook = function createFacebook(facebookId, cb) {
