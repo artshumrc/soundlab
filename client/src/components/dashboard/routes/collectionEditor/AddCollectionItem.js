@@ -7,7 +7,6 @@ export default class AddCollectionItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      autocompleteValue: '',
       showInput: false
     };
     this.shouldItemRender = this.shouldItemRender.bind(this);
@@ -22,9 +21,9 @@ export default class AddCollectionItem extends React.Component {
   }
 
   addItem(value) {
-    this.setState({autocompleteValue: value});
-    console.log("value LOG", value);
+    console.log("value addItem LOG", value);
     this.props.addItem(value);
+    this.toggleInput();
   }
 
   toggleInput() {
@@ -51,13 +50,12 @@ export default class AddCollectionItem extends React.Component {
     };
 
     return (
-      <div className="addItem" onClick={this.toggleInput}>
+      <div className="addItem">
         {this.state.showInput ?
           <Autocomplete
             inputProps={{autoFocus: true, placeholder: 'Choose item', onBlur: this.toggleInput}}
-            getItemValue={item => item.title}
-            value={this.state.autocompleteValue}
-            onSelect={value => this.addItem(value)}
+            getItemValue={item => item}
+            onSelect={(value, item) => this.addItem(item)}
             onChange={(event) => {
               this.setState({autocompleteValue: event.target.value});
             }}
@@ -69,9 +67,8 @@ export default class AddCollectionItem extends React.Component {
                 {item.title}
               </div>)
             }
-          /> : <FontAwesome name="plus" size="2x"/>
+          /> : <div className="newItem" onClick={this.toggleInput}><FontAwesome name="plus" size="2x" /></div>
         }
-
       </div>
     );
   }
