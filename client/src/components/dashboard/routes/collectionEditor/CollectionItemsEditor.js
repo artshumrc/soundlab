@@ -14,12 +14,10 @@ export default class CollectionItemsEditor extends React.Component {
   }
 
   addItem(item) {
-    console.log('item LOG', item);
-    this.props.items.fields.push(item);
+    this.props.items.fields.unshift(item);
   }
 
   render() {
-    console.log("this.props CollectionItemsEditor LOG", this.props);
     const listItems = [];
     const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
       83, 87, 90, 92, 93, 95, 102, 103, 104, 87, 77, 92, 56, 49, 43, 38, 44, 3,
@@ -35,7 +33,8 @@ export default class CollectionItemsEditor extends React.Component {
       });
     });
 
-    const pickedItems = listItems.slice(1, 6);
+    const fields = this.props.items.fields;
+    const pickedItems = fields.length ? fields.getAll() : [];
     return (
       <div>
         CollectionItemsEditor
