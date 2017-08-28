@@ -16,15 +16,20 @@ export default class CollectionEditor extends React.Component {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.addItem = this.addItem.bind(this);
+		this.updateImage = this.updateImage.bind(this);
 		this.state = {
 			autocompleteValue: '',
-			pickedItems: []
+			pickedItems: [],
+      image: null
 		};
 	}
 
-	componentWillMount() {
-
-	}
+	updateImage(newImage) {
+	  console.log("newImage LOG", newImage);
+	  this.setState({
+      image: newImage
+    })
+  }
 
 	handleSubmit() {
 
@@ -71,7 +76,7 @@ export default class CollectionEditor extends React.Component {
 					form="itemEditor"
 					initialValues={this.state}
 				>
-					<CoverImageUploader />
+					<CoverImageUploader updateImageCb={this.updateImage} image={this.state.image} />
 					<Field
 						name="title"
 						component={inputComponent}
