@@ -15,7 +15,7 @@ export default class ProjectAbout extends React.Component {
 					apibus quanta experientia parcis hinc canere incipiam
 				</p>
 				<Button
-					href={`/articles/example-article`}
+					href={'/articles/example-article'}
 					light
 					outline
 				>

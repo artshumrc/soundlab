@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Button from '../../../common/buttons/Button';
 import Cover from '../../../common/cover/Cover';
 import Bricks from '../../../common/cover/Bricks';
@@ -42,7 +42,7 @@ class HomeCover extends React.Component {
 					</div>
 				</div>
 			</Cover>
-		)
+		);
 	}
 }
 

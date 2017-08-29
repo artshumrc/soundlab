@@ -15,7 +15,7 @@ const login = async (username, password) => {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
-				'Accept': 'application/json',
+				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
@@ -46,7 +46,7 @@ const register = async (username, password) => {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
-				'Accept': 'application/json',
+				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
@@ -81,9 +81,9 @@ const verifyToken = async () => {
 				method: 'POST',
 				credentials: 'include',
 				headers: {
-					'Accept': 'application/json',
+					Accept: 'application/json',
 					'Content-Type': 'application/json',
-					'authorization': token,
+					authorization: token,
 				}
 			});
 			if (!res.ok) {

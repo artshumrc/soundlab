@@ -29,9 +29,9 @@ class Page extends React.Component {
 			<div className={`page page-${slug} content primary`}>
 
 				<section className="block header header-page cover parallax">
-					{/*<BackgroundImageHolder*/}
-						{/*imgSrc="/images/apotheosis_homer.jpg"*/}
-					{/*/>*/}
+					{/* <BackgroundImageHolder*/}
+					{/* imgSrc="/images/apotheosis_homer.jpg"*/}
+					{/* />*/}
 
 					<div className="container v-align-transform">
 						<div className="grid inner">

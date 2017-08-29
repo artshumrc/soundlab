@@ -34,9 +34,8 @@ export default class TextArea extends React.Component {
 				<textarea
 					rows={this.props.rows} disabled={this.props.disabled} onKeyUp={this.countCharacters}
 					className={style} placeholder={this.props.placeholder} value={this.props.value}
-          onChange={this.props.changeCb}
-				>
-        </textarea>
+					onChange={this.props.changeCb}
+				/>
 				{required}
 			</div>
 		);

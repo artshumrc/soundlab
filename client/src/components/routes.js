@@ -26,44 +26,44 @@ import userProjects from './dashboard/userProjects';
 import GraphiQL from './graphiql';
 
 export default (
-  <div>
+	<div>
 		{/* Normal home landing page */}
-    <Route exact path="/" component={Home} />
+		<Route exact path="/" component={Home} />
 
 		{/* Project home landing page (for tenant *.orphe.us instead of main orphe.us) */}
-    <Route exact path="/project" component={ProjectHome} />
+		<Route exact path="/project" component={ProjectHome} />
 
-    <Route path="/page/new" component={Page} />
-    <Route path="/page" component={Page} />
+		<Route path="/page/new" component={Page} />
+		<Route path="/page" component={Page} />
 
-    <Route path="/collections" component={ProjectLayout}>
-      <IndexRoute component={CollectionsListPage} />
-      <Route path="/collections/:slug" component={CollectionDetail} />
+		<Route path="/collections" component={ProjectLayout}>
+			<IndexRoute component={CollectionsListPage} />
+			<Route path="/collections/:slug" component={CollectionDetail} />
 		</Route>
 
-    <Route path="/items" component={ProjectLayout}>
-      <IndexRoute component={ItemsListPage} />
-      <Route path="/items/:slug" component={ItemDetail} />
+		<Route path="/items" component={ProjectLayout}>
+			<IndexRoute component={ItemsListPage} />
+			<Route path="/items/:slug" component={ItemDetail} />
 		</Route>
 
-    <Route path="/dashboard" component={Dashboard}>
-      <IndexRoute component={MainPanel} />
-      <Route path="/dashboard/articles" component={Articles} />
-      <Route path="/dashboard/articles2" component={Articles2} />
-      <Route path="/dashboard/articles3" component={Articles3} />
-      <Route path="/dashboard/user" component={UserProfile} />
-      <Route path="/dashboard/user2" component={UserProfileTimeline} />
-      <Route path="/dashboard/form" component={ExampleForms} />
-      <Route path="/dashboard/mirador" component={MiradorUploader} />
-      <Route path="/dashboard/itemEditor" component={ItemEditor} />
-      <Route path="/dashboard/collectionEditor" component={CollectionEditor} />
-      <Route path="/dashboard/projects" component={userProjects}/>
+		<Route path="/dashboard" component={Dashboard}>
+			<IndexRoute component={MainPanel} />
+			<Route path="/dashboard/articles" component={Articles} />
+			<Route path="/dashboard/articles2" component={Articles2} />
+			<Route path="/dashboard/articles3" component={Articles3} />
+			<Route path="/dashboard/user" component={UserProfile} />
+			<Route path="/dashboard/user2" component={UserProfileTimeline} />
+			<Route path="/dashboard/form" component={ExampleForms} />
+			<Route path="/dashboard/mirador" component={MiradorUploader} />
+			<Route path="/dashboard/itemEditor" component={ItemEditor} />
+			<Route path="/dashboard/collectionEditor" component={CollectionEditor} />
+			<Route path="/dashboard/projects" component={userProjects} />
 
-    </Route>
+		</Route>
 
-    {process.env.NODE_ENV === 'development' &&
-      <Route exact path="/graphiql" component={GraphiQL} />
+		{process.env.NODE_ENV === 'development' &&
+		<Route exact path="/graphiql" component={GraphiQL} />
     }
 
-  </div>
+	</div>
 );

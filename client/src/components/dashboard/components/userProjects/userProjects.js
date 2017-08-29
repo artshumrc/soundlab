@@ -7,9 +7,9 @@ import React from 'react';
 
 
 const userProjects = () => {
-  <div>
-    <h1>Projects list</h1>
-  </div>
-}
+	<div>
+		<h1>Projects list</h1>
+	</div>;
+};
 
 export default userProjects;

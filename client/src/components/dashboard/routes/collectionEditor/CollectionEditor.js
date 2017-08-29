@@ -59,12 +59,12 @@ export default class CollectionEditor extends React.Component {
 						placeholder="Article..."
 						className="collectionArticleEdit"
 					/>
-          <FieldArray
-            name="items"
-            component={items => (
-              <CollectionItemsEditor items={items} />
+					<FieldArray
+						name="items"
+						component={items => (
+							<CollectionItemsEditor items={items} />
             )}
-          />
+					/>
 					<Pagination
 						total={90}
 						limit={18}

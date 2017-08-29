@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import _ from 'underscore';
 import Cover from '../../common/cover/Cover';
 import CoverTitle from '../../common/cover/CoverTitle';

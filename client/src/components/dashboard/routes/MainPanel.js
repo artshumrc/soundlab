@@ -17,7 +17,7 @@ export default class MainPanel extends React.Component {
       {name: '90', pv: 90},
       {name: '80', pv: 60},
 		];
-    const data2 = [
+		const data2 = [
       {name: '80', pv: 60, uv: 90},
       {name: '60', pv: 80, uv: 60},
       {name: '90', pv: 90, uv: 30},
@@ -25,7 +25,7 @@ export default class MainPanel extends React.Component {
       {name: '80', pv: 80, uv: 60},
       {name: '90', pv: 90, uv: 120},
       {name: '80', pv: 60, uv: 90},
-    ];
+		];
 		const timelineData = [
       {message: 'Mark wrote a message', date: ' 2 min ago'},
       {message: 'Anna created a new website ', date: '1 hour ago'},
@@ -175,22 +175,24 @@ export default class MainPanel extends React.Component {
 							</div>
 						</Col>
 					</Row>
-          <Row>
-            <Col lg={12}>
-              <Panel header="Article reach">
-                <ResponsiveContainer height={300} width="100%">
-                  <AreaChart data={data2}
-                             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <Area type="monotone" dataKey="pv" stroke="#a4d882" fillOpacity={1} fill="#a4d882" />
-                    <Area type="monotone" dataKey="uv" stroke="#547df9" fillOpacity={1} fill="#547df9" />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </Panel>
-            </Col>
-          </Row>
+					<Row>
+						<Col lg={12}>
+							<Panel header="Article reach">
+								<ResponsiveContainer height={300} width="100%">
+									<AreaChart
+										data={data2}
+										margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+									>
+										<XAxis dataKey="name" />
+										<YAxis />
+										<CartesianGrid strokeDasharray="3 3" />
+										<Area type="monotone" dataKey="pv" stroke="#a4d882" fillOpacity={1} fill="#a4d882" />
+										<Area type="monotone" dataKey="uv" stroke="#547df9" fillOpacity={1} fill="#547df9" />
+									</AreaChart>
+								</ResponsiveContainer>
+							</Panel>
+						</Col>
+					</Row>
 				</div>
 			</div>);
 	}

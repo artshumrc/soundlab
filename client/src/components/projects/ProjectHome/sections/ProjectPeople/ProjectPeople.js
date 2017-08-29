@@ -9,31 +9,31 @@ export default class ProjectPeople extends React.Component {
 			imageName: 'aden.png',
 			name: 'Aden Brown',
 			role: 'Museum Administrator',
-		},{
+		}, {
 			imageName: 'ashiful.png',
 			name: 'Md. Ashiful Haque',
 			role: 'Museum Administrator',
-		},{
+		}, {
 			imageName: 'elliott.png',
 			name: 'Elliott Mitchell',
 			role: 'Museum Administrator',
-		},{
+		}, {
 			imageName: 'igor.png',
 			name: 'Igor Pasieczny',
 			role: 'Museum Administrator',
-		},{
+		}, {
 			imageName: 'michal.png',
 			name: 'Michał Pierzchlewicz',
 			role: 'Museum Administrator',
-		},{
+		}, {
 			imageName: 'paul.png',
 			name: 'Paul Pickering',
 			role: 'Museum Administrator',
-		},{
+		}, {
 			imageName: 'robinson.png',
 			name: 'Robinson Greig',
 			role: 'Museum Administrator',
-		},{
+		}, {
 			imageName: 'tyler.png',
 			name: 'Tyler Kirby',
 			role: 'Museum Administrator',

@@ -4,7 +4,7 @@ import PrimaryImage from './PrimaryImage';
 import ThumbnailImages from './ThumbnailImages';
 import './ItemImageViewer.css';
 
-const ItemImageViewer = props => {
+const ItemImageViewer = (props) => {
 
 	const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
 		83, 87, 90, 92, 93, 95, 102, 103];
@@ -21,6 +21,6 @@ const ItemImageViewer = props => {
 			/>
 		</div>
 	);
-}
+};
 
 export default ItemImageViewer;

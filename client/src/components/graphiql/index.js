@@ -10,7 +10,7 @@ function graphQLFetcher(graphQLParams) {
 		method: 'post',
 		headers: {
 			'Content-Type': 'application/json',
-			'authorization': localStorage.getItem('token') ? localStorage.getItem('token') : null,
+			authorization: localStorage.getItem('token') ? localStorage.getItem('token') : null,
 		},
 		body: JSON.stringify(graphQLParams),
 	}).then(response => response.json());
@@ -18,6 +18,6 @@ function graphQLFetcher(graphQLParams) {
 
 
 export default () => 
-	<div style={{ height: '100vh'}}>
+	(<div style={{ height: '100vh'}}>
 		<GraphiQL fetcher={graphQLFetcher} />
-	</div>;
+	</div>);

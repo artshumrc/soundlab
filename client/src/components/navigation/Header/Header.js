@@ -26,7 +26,7 @@ _Header.propTypes = {
 };
 
 _Header.defaultProps = {
-	userId : null
+	userId: null
 };
 
 const mapStateToProps = state => ({

@@ -47,5 +47,5 @@ TextInput.propTypes = {
 	icon: PropTypes.string,
 	iconRight: PropTypes.string,
 	label: PropTypes.string,
-  input: PropTypes.object,
+	input: PropTypes.object,
 };

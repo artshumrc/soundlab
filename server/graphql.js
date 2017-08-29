@@ -1,4 +1,4 @@
-import { graphqlExpress, graphiqlExpress  } from 'graphql-server-express';
+import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import { formatError } from 'apollo-errors';
 import { GraphQLSchema, execute, subscribe } from 'graphql';
 import { maskErrors } from 'graphql-errors';
