@@ -12,7 +12,8 @@ class OAuthButtons extends React.Component {
 		this.socialTypes = ['facebook', 'google', 'twitter'];
 		
 		this.state = {
-			disabledButton: null,
+			disabledButtons: false,
+			errorSocial: null,
 		};
 
 		this.OAuthButton = this.OAuthButton.bind(this);
@@ -21,33 +22,30 @@ class OAuthButtons extends React.Component {
 	async handleLogin(type) {
 		const { login } = this.props;
 
+
+		this.setState({
+			disabledButtons: true,
+		});
+
 		try {
 			const auth = await hello(type).login();
 
+			if (type === 'twitter') {
+				await login({ network: auth.network, oauthToken: auth.authResponse.oauth_token, oauthTokenSecret: auth.authResponse.oauth_token_secret });
+			} else {
+				await login({ network: auth.network, accessToken: auth.authResponse.access_token });
+			}
 
-			console.log('auth', auth)
-
-			console.log('auth.network', auth.network);
-
-			console.log('auth.authResponse.access_token', auth.authResponse.access_token);
-
-			const odp = await login({ network: auth.network, accessToken: auth.authResponse.access_token });
-
-			// try {
-			// 	const userObj = await login(values);
-			// 	dispatch(setUser(userObj));
-			// 	dispatch(toggleAuthModal(false));
-			// 	return {};
-			// } catch (err) {
-			// 	throw new SubmissionError({ _error: 'Login failed!' });
-			// }
 		} catch (err) {
-			console.log(err);
+			this.setState({
+				errorSocial: err.message,
+				disabledButtons: false,
+			});
 		}
 	}
 
 	OAuthButton({ type }) {
-		const { disabledButton } = this.state;
+		const { disabledButtons } = this.state;
 
 		return (
 			<button
@@ -55,7 +53,7 @@ class OAuthButtons extends React.Component {
 				id={`at-${type}`}
 				name={type}
 				onClick={this.handleLogin.bind(this, type)}
-				disabled={disabledButton === type}
+				disabled={disabledButtons}
 			>
 				<i className={`fa fa-${type}`} /> Sign In with {type}
 			</button>);
@@ -63,9 +61,15 @@ class OAuthButtons extends React.Component {
 
 	render() {
 
+		const { errorSocial } = this.state;
+
 		return (
 			<div className="at-oauth">
 				{this.socialTypes.map(social => <this.OAuthButton key={social} type={social} />)}
+				<span className="error-text">
+					{errorSocial}
+				</span>
+
 			</div>);
 	}
 }

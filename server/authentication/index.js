@@ -29,11 +29,14 @@ export default function authSetup(app, redisClient) {
 // check password strength
 export function checkPasswordStrength() {
 	return function (req, res, next) {
-		const passwordStrength = zxcvbn(req.body.password, [req.body.username, 'orpheus', 'orphe']);
-		if (passwordStrength.score > 3) {
-			return next();
+		if (req.body.password) {
+			const passwordStrength = zxcvbn(req.body.password, [req.body.username, 'orpheus', 'orphe']);
+			if (passwordStrength.score > 3) {
+				return next();
+			}
+			res.send(JSON.stringify({ passwordStrength: passwordStrength }));
 		}
-		res.send(JSON.stringify({ passwordStrength: passwordStrength }));
+		return next();
 	};
 }
 

@@ -9,7 +9,8 @@ import User from '../models/user';
 import { jwtAuthenticate, checkPasswordStrength } from '../authentication';
 
 // strategies
-import validateToken from '../authentication/strategies/oauth';
+import validateTokenOAuth1 from '../authentication/strategies/oauth1';
+import validateTokenOAuth2 from '../authentication/strategies/oauth2';
 
 
 const providers = {
@@ -46,15 +47,32 @@ const loginPWD = async (res, username, password) => {
 	}
 };
 
-const loginOAuth = async (res, accessToken, network) => {
+const loginOAuth2 = async (res, accessToken, network) => {
 
 	try {
 		const { url, userIdField } = providers[network];
-		console.log('accessToken', accessToken)
-		const profile = await validateToken(accessToken, url);
-		console.log('profile', profile)
+		const profile = await validateTokenOAuth2(accessToken, url);
 		const user = await User.findByOAuth(profile[userIdField], network);
-		console.log('user', user)
+		if (user) {
+			const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+				expiresIn: 10080 // in seconds
+			});
+			return res.json({ success: true, token: `JWT ${token}`, username: user.username, userId: user._id });
+		}
+		return res.status(401).send({error: 'User not found'});
+	} catch (err) {
+		console.log('err', err);
+		res.status(500);
+	}
+
+};
+
+const loginOAuth1 = async (res, oauthToken, oauthTokenSecret, network) => {
+
+	try {
+		const { url, userIdField } = providers[network];
+		const profile = await validateTokenOAuth1(network, oauthToken, oauthTokenSecret, url);
+		const user = await User.findByOAuth(profile[userIdField], network);
 		if (user) {
 			const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
 				expiresIn: 10080 // in seconds
@@ -71,11 +89,13 @@ const loginOAuth = async (res, accessToken, network) => {
 
 router.post('/login', (req, res) => {
 
-	const { username, password, network, accessToken } = req.body;
+	const { username, password, network, accessToken, oauthToken, oauthTokenSecret } = req.body;
 
 	if (username && password) return loginPWD(res, username, password);
 
-	return loginOAuth(res, accessToken, network);
+	if (accessToken) return loginOAuth2(res, accessToken, network);
+
+	return loginOAuth1(res, oauthToken, oauthTokenSecret, network);
 
 });
 

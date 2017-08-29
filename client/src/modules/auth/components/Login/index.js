@@ -24,54 +24,12 @@ class Login extends React.Component {
 		login: PropTypes.func.isRequired,
 	}
 
-	constructor(props) {
-		super(props);
-		
-		this.handleLoginFacebook = this.handleLoginFacebook.bind(this);
-		this.handleLoginGoogle = this.handleLoginGoogle.bind(this);
-		this.handleLoginTwitter = this.handleLoginTwitter.bind(this);
-	}
-
-	async handleLoginFacebook () {
-		try {
-			const auth = await hello('facebook').login();
-
-			console.log('auth.network', auth.network);
-
-			console.log('auth.authResponse.access_token', auth.authResponse.access_token);
-
-			// try {
-			// 	const userObj = await login(values);
-			// 	dispatch(setUser(userObj));
-			// 	dispatch(toggleAuthModal(false));
-			// 	return {};
-			// } catch (err) {
-			// 	throw new SubmissionError({ _error: 'Login failed!' });
-			// }
-		} catch (err) {
-			console.log(err);
-		}
-	}
-
-	handleLoginGoogle () {
-		hello('google').login();
-	}
-
-	handleLoginTwitter () {
-		hello('twitter').login();
-	}
-
-
 	render() {
 		const { onRegisterClick, login } = this.props;
 
 		return (
 			<div className="at-form">
 				<h3 style={{color: '#000'}}>Sign In</h3>
-
-				{/* <span className="error-text">
-					{errorSocial}
-				</span> */}
 
 				<OAuthButtons
 					login={login}

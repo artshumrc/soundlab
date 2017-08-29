@@ -1,9 +1,8 @@
 import https from 'https';
 
-const validateToken = (accessToken, url) => new Promise((resolve, reject) => {
+const validateTokenOAuth2 = (accessToken, url) => new Promise((resolve, reject) => {
 
-	// https.get(`${process.env.FACEBOOK_LOGIN_ENDPOINT}?access_token=${accessToken}`, (res) => {
-	https.get(`${url}`, (res) => {
+	https.get(`${url}?access_token=${accessToken}`, (res) => {
 		const {
 			statusCode
 		} = res;
@@ -42,4 +41,4 @@ const validateToken = (accessToken, url) => new Promise((resolve, reject) => {
 	});
 });
 
-export default validateToken;
+export default validateTokenOAuth2;
