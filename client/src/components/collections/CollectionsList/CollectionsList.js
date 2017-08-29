@@ -4,7 +4,7 @@ import CollectionListItem from '../CollectionListItem';
 
 import './CollectionsList.css';
 
-const CollectionsList = props => {
+const CollectionsList = (props) => {
 	const listItems = [{
 		imageUrl: '//iiif.orphe.us/orpheus/art/64.jpg/full/400,/0/default.jpg',
 		title: 'Example Collection',
@@ -47,7 +47,6 @@ const CollectionsList = props => {
 			))}
 		</div>
 	);
-}
-
+};
 
 export default CollectionsList;
