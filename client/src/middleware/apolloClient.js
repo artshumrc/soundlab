@@ -23,19 +23,19 @@ const connectionParams = () => {
 	return { authToken: localStorage.getItem('token') ? localStorage.getItem('token') : null };
 };
 
-const wsClient = new SubscriptionClient(`${process.env.REACT_APP_WS_SERVER}/${process.env.REACT_APP_WS_SERVER_URI}`, {
-	reconnect: true,
-	connectionParams,
-});
+// const wsClient = new SubscriptionClient(`${process.env.REACT_APP_WS_SERVER}/${process.env.REACT_APP_WS_SERVER_URI}`, {
+// 	reconnect: true,
+// 	connectionParams,
+// });
 
-const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
-	networkInterface,
-	wsClient
-);
+// const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
+// 	networkInterface,
+// 	wsClient
+// );
 
 const client = new ApolloClient({
-	networkInterface: networkInterfaceWithSubscriptions,
+	networkInterface
 });
 
 export default client;
-export { wsClient };
+// export { wsClient };
