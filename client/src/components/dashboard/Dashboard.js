@@ -37,7 +37,6 @@ export default class Dashboard extends React.Component {
 							<ListItem currentLocation={currentLocation} fa="file" name="Example Forms" url="/dashboard/form" />
 							<ListItem currentLocation={currentLocation} fa="file" name="Item Editor" url="/dashboard/itemEditor" />
 							<ListItem currentLocation={currentLocation} fa="file" name="Collection Editor" url="/dashboard/collectionEditor" />
-
 						</ul>
 					</div>
 				</div>
