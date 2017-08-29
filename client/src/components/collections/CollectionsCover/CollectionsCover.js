@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'underscore';
 import Cover from '../../common/cover/Cover';
 import CoverTitle from '../../common/cover/CoverTitle';
