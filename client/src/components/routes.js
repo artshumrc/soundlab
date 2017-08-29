@@ -20,7 +20,7 @@ import ExampleForms from './dashboard/routes/ExampleForms';
 import MiradorUploader from './dashboard/routes/MiradorUploader';
 import ItemEditor from './dashboard/routes/itemEditor/ItemEditor';
 import CollectionEditor from './dashboard/routes/collectionEditor/CollectionEditor';
-import userProjects from './dashboard/userProjects';
+import userProjects from './dashboard/components/userProjects';
 
 
 import GraphiQL from './graphiql';
