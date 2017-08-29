@@ -20,6 +20,8 @@ import ExampleForms from './dashboard/routes/ExampleForms';
 import MiradorUploader from './dashboard/routes/MiradorUploader';
 import ItemEditor from './dashboard/routes/itemEditor/ItemEditor';
 import CollectionEditor from './dashboard/routes/collectionEditor/CollectionEditor';
+import userProjects from './dashboard/userProjects';
+
 
 import GraphiQL from './graphiql';
 
@@ -55,6 +57,7 @@ export default (
       <Route path="/dashboard/mirador" component={MiradorUploader} />
       <Route path="/dashboard/itemEditor" component={ItemEditor} />
       <Route path="/dashboard/collectionEditor" component={CollectionEditor} />
+      <Route path="/dashboard/projects" component={userProjects}/>
 
     </Route>
 

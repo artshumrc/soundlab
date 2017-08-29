@@ -30,6 +30,11 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 				</Link>
 			</li>
 			<li>
+				<Link to={'/dashboard'}>
+					Dashboard
+				</Link>
+			</li>
+			<li>
 				{userId ? 
 					<Link to={'/'} className="login-button" onClick={logout}>
 						Logout
