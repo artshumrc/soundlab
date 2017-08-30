@@ -1,14 +1,14 @@
 {
   "public": {
-    "uploads": "localhost:8888/cassandra_repo/www/wp-content/uploads",
+    "uploads": "localhost:8888/soundlab/wp-content/uploads",
     "amazonS3": false
   },
   "private": {
     "wp_prefix": "wp_",
     "database": {
-      "name": "cassandra",
+      "name": "soundlab",
       "username": "root",
-      "password": "root",
+      "password": "",
       "host": "localhost",
       "port": "8889"
     }
