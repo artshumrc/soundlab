@@ -41,8 +41,8 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login 
 		<form onSubmit={handleSubmit(wrapSubmit(login))}>
 			<Field
 				name="username"
-				label="Username"
-				type="username"
+				label="Username / Email"
+				type="email"
 				component={renderField}
 			/>
 			<Field

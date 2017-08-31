@@ -8,9 +8,9 @@ import '../PWDLoginForm/PWDLoginForm.css';
 import { toggleAuthModal, setUser } from '../../redux/actions';
 
 
-const wrapSubmit = signupMethod => async (values, dispatch) => {
+const wrapSubmit = signup => async (values, dispatch) => {
 	try {
-		const userObj = await signupMethod(values.username, values.password);
+		const userObj = await signup(values);
 		dispatch(setUser(userObj));
 		dispatch(toggleAuthModal(false));
 		return {};
@@ -44,13 +44,13 @@ function renderField({ input, label, type, meta }) {
 	);
 }
 
-const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signupMethod }) => (
+const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signup }) => (
 	<div className="at-pwd-form">
-		<form onSubmit={handleSubmit(wrapSubmit(signupMethod))}>
+		<form onSubmit={handleSubmit(wrapSubmit(signup))}>
 			<Field
 				name="username"
-				label="Username"
-				type="username"
+				label="Username / Email"
+				type="email"
 				component={renderField}
 			/>
 			<Field
@@ -81,7 +81,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signu
 );
 
 PWDSignupForm.propTypes = {
-	signupMethod: PropTypes.func.isRequired,
+	signup: PropTypes.func.isRequired,
 };
 
 const validate = (values) => {

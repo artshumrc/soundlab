@@ -149,7 +149,7 @@ const registerOAuth1 = async (res, oauthToken, oauthTokenSecret, network) => {
 	}
 };
 
-router.post('/register', checkPasswordStrength(), (req, res) => {
+router.post('/register', (req, res) => {
 
 	const { username, password, network, accessToken, oauthToken, oauthTokenSecret } = req.body;
 
