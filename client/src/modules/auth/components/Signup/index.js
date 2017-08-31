@@ -1,38 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import OAuthButtons from '../OAuthButtons';
+import OAuthButtons from '../OAuthButtons';
 import PWDSignupForm from '../PWDSignupForm';
 
 class Signup extends React.Component {
 
 	static propTypes = {
 		onSigninClick: PropTypes.func.isRequired,
-		signupMethod: PropTypes.func.isRequired,
+		signup: PropTypes.func.isRequired,
 	}
 
 	render() {
-		const { signupMethod, onSigninClick } = this.props;
+		const { signup, onSigninClick } = this.props;
 
 		return (
 			<div className="at-form">
 				<div className="at-title">
 					<h3>Create an Account</h3>
 				</div>
-				{/* <span className="error-text">
-					{errorSocial}
-				</span>
+				
 				<OAuthButtons
-					handleFacebook={this.handleSignupFacebook}
-					handleGoogle={this.handleSignupGoogle}
-					handleTwitter={this.handleSignupTwitter}
+					login={signup}
+					register
 				/>
+
 				<div className="at-sep">
 					<strong>OR</strong>
-				</div> */}
+				</div>
 
 				<PWDSignupForm
-					signupMethod={signupMethod}
+					signup={signup}
 				/>
 
 				<div className="at-signup-link">

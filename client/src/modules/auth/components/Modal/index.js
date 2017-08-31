@@ -7,6 +7,9 @@ import './Modal.css';
 const Modal = ({ children, classes, show, closeModal }) => {
 
 	if (show) {
+
+		document.body.style.overflow = 'hidden';
+
 		return (
 			<div
 				className={`orpheusModal ${classes.join(' ')}`}
@@ -23,6 +26,7 @@ const Modal = ({ children, classes, show, closeModal }) => {
 			</div>
 		);
 	}
+	document.body.style.overflow = null;
 	return null;
 };
 

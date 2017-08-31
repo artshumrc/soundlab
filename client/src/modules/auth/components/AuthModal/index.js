@@ -20,7 +20,7 @@ class _AuthModal extends React.Component {
 
 	static propTypes = {
 		dispatchLogin: PropTypes.func.isRequired,
-		signupMethod: PropTypes.func.isRequired,
+		dispatchSignup: PropTypes.func.isRequired,
 
 		showAuthModal: PropTypes.bool,
 		authMode: PropTypes.string,
@@ -47,6 +47,7 @@ class _AuthModal extends React.Component {
 
 		this._initiateUser();
 	}
+
 	componentWillUnmount() {
 		document.removeEventListener('keydown', this._handleKeyDown);
 	}
@@ -70,7 +71,7 @@ class _AuthModal extends React.Component {
 	}
 
 	render() {
-		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, dispatchLogin, dispatchLogout, signupMethod } = this.props;
+		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, dispatchLogin, dispatchLogout, dispatchSignup } = this.props;
 
 		return (
 			<Modal
@@ -88,7 +89,7 @@ class _AuthModal extends React.Component {
 					{authMode === 'signup' ? 
 						<Signup
 							onSigninClick={dispachChangeAuthMode.bind(null, 'login')}
-							signupMethod={signupMethod}
+							signup={dispatchSignup}
 						/>
 					: null}
 
@@ -120,6 +121,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 		dispatch(toggleAuthModal(false));
 	},
 	dispatchLogin: data => dispatch(login(ownProps.loginMethod, data)),
+	dispatchSignup: data => dispatch(login(ownProps.signupMethod, data)),
 	dispatchLogout: () => {
 		dispatch(logout(ownProps.logoutMethod));
 	},

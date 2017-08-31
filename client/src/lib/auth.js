@@ -39,7 +39,7 @@ const login = async (data) => {
 const logout = async () => {
 	removeLocalStorageItem('token');
 	removeLocalStorageItem('hello');
-}
+};
 
 const register = async (data) => {
 	if (userLoggedIn()) return null;

@@ -30,15 +30,19 @@ const providers = {
 
 const router = express.Router();
 
+const _generateJWT = (user) => {
+	const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+		expiresIn: 10080 // in seconds
+	});
+	return { success: true, token: `JWT ${token}`, username: user.username, userId: user._id };
+};
+
 const loginPWD = async (res, username, password) => {
 	const user = await User.findByUsername(username);
 	if (user) {
 		user.authenticate(password, (_, isValid, message) => {
 			if (isValid) {
-				const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-					expiresIn: 10080 // in seconds
-				});
-				return res.json({ success: true, token: `JWT ${token}`, username: user.username, userId: user._id });
+				return res.json(_generateJWT(user));
 			}
 			return res.status(401).send(message);
 		});
@@ -54,10 +58,7 @@ const loginOAuth2 = async (res, accessToken, network) => {
 		const profile = await validateTokenOAuth2(accessToken, url);
 		const user = await User.findByOAuth(profile[userIdField], network);
 		if (user) {
-			const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-				expiresIn: 10080 // in seconds
-			});
-			return res.json({ success: true, token: `JWT ${token}`, username: user.username, userId: user._id });
+			return res.json(_generateJWT(user));
 		}
 		return res.status(401).send({error: 'User not found'});
 	} catch (err) {
@@ -74,10 +75,7 @@ const loginOAuth1 = async (res, oauthToken, oauthTokenSecret, network) => {
 		const profile = await validateTokenOAuth1(network, oauthToken, oauthTokenSecret, url);
 		const user = await User.findByOAuth(profile[userIdField], network);
 		if (user) {
-			const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-				expiresIn: 10080 // in seconds
-			});
-			return res.json({ success: true, token: `JWT ${token}`, username: user.username, userId: user._id });
+			return res.json(_generateJWT(user));
 		}
 		return res.status(401).send({error: 'User not found'});
 	} catch (err) {
@@ -107,21 +105,45 @@ const registerPWD = (res, username, password) => {
 			return res.status(200).send(err);
 		}
 		const user = { _id: account._id };
-		const token = jwt.sign(user, process.env.JWT_SECRET, {
-			expiresIn: 10080 // in seconds
-		});
-		return res.json({ success: true, token: `JWT ${token}`, username: account.username, userId: account._id });
+		return res.json(_generateJWT(user));
 	});
 };
 
-const registerFacebook = async (res, facebookToken) => {
+const registerOAuth2 = async (res, accessToken, network) => {
 	try {
-		const facebookProfile = await validateFacebookToken(facebookToken);
-		const user = await User.createFacebook(facebookProfile.id);
-		const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-			expiresIn: 10080 // in seconds
-		});
-		return res.json({ success: true, token: `JWT ${token}`, username: user.username, userId: user._id });
+		const { url, userIdField } = providers[network];
+		const profile = await validateTokenOAuth2(accessToken, url);
+		if (profile) {
+			const newUser = await User.createOAuth({ network, id: profile[userIdField] });
+			if (newUser) {
+				return res.json(_generateJWT(newUser));
+			}
+			const user = await User.findByOAuth(profile[userIdField], network);
+			if (user) {
+				return res.json(_generateJWT(user));
+			}
+		}
+		return res.status(401).send({error: 'User not found'});
+	} catch (err) {
+		res.status(500);
+	}
+};
+
+const registerOAuth1 = async (res, oauthToken, oauthTokenSecret, network) => {
+	try {
+		const { url, userIdField } = providers[network];
+		const profile = await validateTokenOAuth1(network, oauthToken, oauthTokenSecret, url);
+		if (profile) {
+			const newUser = await User.createOAuth({ network, id: profile[userIdField] });
+			if (newUser) {
+				return res.json(_generateJWT(newUser));
+			}
+			const user = await User.findByOAuth(profile[userIdField], network);
+			if (user) {
+				return res.json(_generateJWT(user));
+			}
+		}
+		return res.status(401).send({error: 'User not found'});
 	} catch (err) {
 		res.status(500);
 	}
@@ -129,11 +151,13 @@ const registerFacebook = async (res, facebookToken) => {
 
 router.post('/register', checkPasswordStrength(), (req, res) => {
 
-	const { username, password, facebookToken } = req.body;
+	const { username, password, network, accessToken, oauthToken, oauthTokenSecret } = req.body;
 
 	if (username && password) return registerPWD(res, username, password);
 
-	if (facebookToken) return registerFacebook(res, facebookToken);
+	if (accessToken) return registerOAuth2(res, accessToken, network);
+
+	return registerOAuth1(res, oauthToken, oauthTokenSecret, network);
 	
 });
 

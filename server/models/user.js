@@ -33,8 +33,10 @@ UserSchema.statics.findByOAuth = function findByOAuth(id, network, cb) {
 	return User.findOne({ oauthIds: { $elemMatch: { network, id } } }, cb);
 };
 
-UserSchema.statics.createFacebook = function createFacebook(facebookId, cb) {
-	return User.create({ facebookId }, cb);
+UserSchema.statics.createOAuth = async function createOAuth({ id, network }, cb) {
+	const user = await User.findByOAuth(id, network);
+	if (user) return null;
+	return User.create({ oauthIds: [{ id, network }] }, cb);
 };
 
 /**

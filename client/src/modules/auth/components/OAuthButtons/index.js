@@ -44,6 +44,12 @@ class OAuthButtons extends React.Component {
 		}
 	}
 
+	_getButtonText(type) {
+		const { register } = this.props;
+		if (register) return `Sign Up with ${type}`;
+		return `Sign In with ${type}`;
+	}
+
 	OAuthButton({ type }) {
 		const { disabledButtons } = this.state;
 
@@ -55,7 +61,7 @@ class OAuthButtons extends React.Component {
 				onClick={this.handleLogin.bind(this, type)}
 				disabled={disabledButtons}
 			>
-				<i className={`fa fa-${type}`} /> Sign In with {type}
+				<i className={`fa fa-${type}`} /> {this._getButtonText(type)}
 			</button>);
 	}
 
@@ -76,6 +82,11 @@ class OAuthButtons extends React.Component {
 
 OAuthButtons.propTypes = {
 	login: React.PropTypes.func.isRequired,
+	register: React.PropTypes.bool,
+};
+
+OAuthButtons.defaultProps = {
+	register: false,
 };
 
 export default OAuthButtons;
