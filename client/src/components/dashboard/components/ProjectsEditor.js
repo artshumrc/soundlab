@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, FieldArray } from 'redux-form';
+import { Field, FieldArray, formValueSelector, reduxForm } from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import { gql, graphql } from 'react-apollo';
 import { Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 import Form from '../components/Form';
 import TagEditor from '../routes/itemEditor/TagEditor';
@@ -15,7 +16,7 @@ import MetaEditor from '../routes/itemEditor/MetaEditor';
 // TODO: Remove autofocus for accessibility reasons
 
 
-class ProjectEditor extends React.Component {
+class ProjectsEditor extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -31,17 +32,6 @@ class ProjectEditor extends React.Component {
 	}
 
 	render() {
-		const inputComponent = props => (<input
-			{...props.input}
-			placeholder={props.placeholder}
-			className={props.className}
-			autoFocus
-		/>);
-		const textComponent = props => (<Textarea
-			{...props.input}
-			placeholder={props.placeholder}
-			className={props.className}
-		/>);
 		return (
 			<div className="content">
 				<div className="itemEditor">
@@ -52,7 +42,7 @@ class ProjectEditor extends React.Component {
 					>
 						<Field
 							name="title"
-							component={inputComponent}
+							component="input"
 							type="text"
 							placeholder="Title..."
 							className="itemTitleEdit detailInput"
@@ -61,7 +51,7 @@ class ProjectEditor extends React.Component {
 							name="description"
 							className="itemDescriptionEdit detailInput"
 							placeholder="Description..."
-							component={textComponent}
+							component="input"
 						/>
 						<FieldArray
 							name="tags"
@@ -76,9 +66,9 @@ class ProjectEditor extends React.Component {
 	}
 }
 
-ProjectEditor.propTypes = {
-	createNewProject: PropTypes.function
-};
+// ProjectEditor.propTypes = {
+// 	createNewProject: PropTypes.function
+// };
 
 // const addNewProject = gql`
 // mutation projectCreate($title: String!, description: String) {
@@ -98,4 +88,19 @@ ProjectEditor.propTypes = {
 // 	})
 // });
 
-export default ProjectEditor;
+ProjectsEditor = reduxForm({
+	form: 'projectsEditor'
+})(ProjectsEditor);
+
+const selector = formValueSelector('projectsEditor');
+ProjectsEditor = connect(
+	(state) => {
+		const { title, description } = selector(state, 'title', 'description');
+		return {
+			title,
+			description
+		};
+	}
+)(ProjectsEditor);
+
+export default ProjectsEditor;
