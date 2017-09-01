@@ -43,32 +43,34 @@ class ProjectEditor extends React.Component {
 			className={props.className}
 		/>);
 		return (
-			<div>
-				<Form
-					onSubmit={this.handleSubmit}
-					form="projectEditor"
-					initialValues={this.state}
-				>
-					<Field
-						name="title"
-						component={inputComponent}
-						type="text"
-						placeholder="Title..."
-						className="itemTitleEdit detailInput"
-					/>
-					<Field
-						name="description"
-						className="itemDescriptionEdit detailInput"
-						placeholder="Description..."
-						component={textComponent}
-					/>
-					<FieldArray
-						name="tags"
-						component={tags => (
-							<TagEditor tags={tags} />
-						)}
-					/>
-				</Form>
+			<div className="content">
+				<div className="itemEditor">
+					<Form
+						onSubmit={this.handleSubmit}
+						form="projectEditor"
+						initialValues={this.state}
+					>
+						<Field
+							name="title"
+							component={inputComponent}
+							type="text"
+							placeholder="Title..."
+							className="itemTitleEdit detailInput"
+						/>
+						<Field
+							name="description"
+							className="itemDescriptionEdit detailInput"
+							placeholder="Description..."
+							component={textComponent}
+						/>
+						<FieldArray
+							name="tags"
+							component={tags => (
+								<TagEditor tags={tags} />
+							)}
+						/>
+					</Form>
+				</div>
 			</div>
 		);
 	}
