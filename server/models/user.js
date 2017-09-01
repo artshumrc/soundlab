@@ -18,6 +18,10 @@ const UserSchema = new Schema({
 		network: String,
 		id: String,
 	}],
+	verified: {
+		type: Boolean,
+		defualt: false,
+	},
 	resetPasswordToken: String,
 	resetPasswordExpires: Date
 });
@@ -52,8 +56,9 @@ UserSchema.statics.createOAuth = async function createOAuth({ id, network }, cb)
 
 UserSchema.statics.generatePasswordResetToken = async function generatePasswordResetToken(username) {
 	try {
-		const token = await crypto.randomBytes(48);
-		User.update({ username }, {
+		const buf = await crypto.randomBytes(48);
+		const token = buf.toString('hex');
+		return User.findOneAndUpdate({ username }, {
 			resetPasswordToken: token,
 			resetPasswordExpires: Date.now() + 3600000, // 1 hour
 		});
@@ -64,12 +69,20 @@ UserSchema.statics.generatePasswordResetToken = async function generatePasswordR
 
 UserSchema.statics.resetPassword = async function resetPassword(resetPasswordToken, newPassword) {
 	try {
-		const user = User.find({ resetPasswordToken, resetPasswordExpires: { $gt: Date.now() } });
+		const user = await User.findOne({ resetPasswordToken, resetPasswordExpires: { $gt: Date.now() } });
 		if (user) {
-			await user.setPassword(newPassword);
-			return user.save();
+			// second value must be passed - workaround for model bug
+			return new Promise((resolve, reject) => {
+				user.setPassword(newPassword, (err, userWithNewPassword) => {
+					if (err) reject(err);
+					userWithNewPassword.save((saveErr) => {
+						if (saveErr) reject(saveErr);
+						resolve(userWithNewPassword);
+					});
+				});
+			});
 		}
-		throw new Error('Invalid token');
+		return null;
 
 	} catch (err) {
 		throw err;

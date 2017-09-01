@@ -10,6 +10,8 @@ import User from '../models/user';
 
 // strategies
 import setupJWTStrategy from './strategies/jwt';
+import validateTokenOAuth1 from './strategies/oauth1';
+import validateTokenOAuth2 from './strategies/oauth2';
 
 
 export default function authSetup(app, redisClient) {
@@ -23,28 +25,12 @@ export default function authSetup(app, redisClient) {
 	passport.deserializeUser(User.deserializeUser());
 
 	app.use(passport.initialize());
-	// app.use(passport.session());
-}
-
-// check password strength
-export function checkPasswordStrength(passwordField = 'password') {
-	return function checkPasswordStrengthMiddleware(req, res, next) {
-		if (req.body[passwordField]) {
-			const passwordStrength = zxcvbn(req.body[passwordField], [req.body.username, 'orpheus', 'orphe']);
-			if (passwordStrength.score > 3) {
-				return next();
-			}
-			res.send(JSON.stringify({ passwordStrength: passwordStrength }));
-		}
-		return next();
-	};
 }
 
 
 /**
- * AUthentication Middleware
+ * Authentication Middleware
  */
-
 export function jwtAuthenticate(req, res, next) {
 	passport.authenticate(['jwt'], {
 		session: false
@@ -56,3 +42,6 @@ export function jwtAuthenticate(req, res, next) {
 		next();
 	})(req, res, next);
 }
+
+// export strategies
+export { validateTokenOAuth1, validateTokenOAuth2 };

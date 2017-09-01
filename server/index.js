@@ -34,8 +34,11 @@ import redisSetup from './redis';
 // OAuth setup
 import oauthSetup from './oauth';
 
+// email
+import OrpheusEmail from './email';
+
 // Routes
-import authenticationRouter from './routes/authentication';
+import authenticationRouter from './routes/auth';
 import manifestRouter from './routes/manifest';
 
 
@@ -81,6 +84,9 @@ s3Setup(app);
 
 // OAuth setup
 oauthSetup(app);
+
+// Email setup
+OrpheusEmail.setupTransport();
 
 // Routes
 app.use('/auth', authenticationRouter);
