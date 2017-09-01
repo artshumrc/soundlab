@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import { gql, graphql } from 'react-apollo';
+import { Row } from 'react-bootstrap';
 
 import Form from '../components/Form';
 import TagEditor from '../routes/itemEditor/TagEditor';
@@ -11,6 +12,7 @@ import MetaEditor from '../routes/itemEditor/MetaEditor';
 // TODO: Format Form
 // TODO: Check post method
 // TODO: Ensure new project has an associated user
+// TODO: Remove autofocus for accessibility reasons
 
 
 class ProjectEditor extends React.Component {
@@ -73,23 +75,25 @@ class ProjectEditor extends React.Component {
 }
 
 ProjectEditor.propTypes = {
-	createNewProject: PropTypes.node.isRequired
+	createNewProject: PropTypes.function
 };
 
-const addNewProject = gql`
-mutation projectCreate($title: String!, description: String) {
-	projectCreate(title: $title, description: $description) {
-		_id
-		title
-		description
-		users
-		createdAt
-	}
-}
-`;
+// const addNewProject = gql`
+// mutation projectCreate($title: String!, description: String) {
+// 	projectCreate(title: $title, description: $description) {
+// 		_id
+// 		title
+// 		description
+// 		users
+// 		createdAt
+// 	}
+// }
+// `;
 
-export default graphql(addNewProject, {
-	props: ({ mutate }) => ({
-		createNewProject: (title, description) => mutate({ variables: title, description }),
-	})
-});
+// export default graphql(addNewProject, {
+// 	props: ({ mutate }) => ({
+// 		createNewProject: (title, description) => mutate({ variables: title, description }),
+// 	})
+// });
+
+export default ProjectEditor;

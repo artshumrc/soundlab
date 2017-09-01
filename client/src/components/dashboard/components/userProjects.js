@@ -11,15 +11,41 @@ import ProjectsEditor from '../components/ProjectsEditor';
 class userProjects extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			openAddNewProjectForm: false
+		};
+
+		this.toggleAddNewProjectForm = this.toggleAddNewProjectForm.bind(this);
 	}
+
+	toggleAddNewProjectForm() {
+		const { openAddNewProjectForm } = this.state;
+
+		this.setState({
+			openAddNewProjectForm: !openAddNewProjectForm
+		});
+	}
+
 	render() {
+		const { openAddNewProjectForm } = this.state;
+
 		return (
 			<div>
 				<div>
 					<h3 style={{color: 'black'}}>Your projects: </h3>
 				</div>
-				<Button bsStyle="primary">Add a project!</Button>
-				<ProjectsEditor />
+				<Button 
+					bsStyle="primary"
+					onClick={() => this.toggleAddNewProjectForm}
+				>
+					Add a project!
+				</Button>
+				{openAddNewProjectForm ?
+					<ProjectsEditor />
+					:
+					''
+				}
 			</div>
 		);
 	}
