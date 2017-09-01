@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, FieldArray, formValueSelector, reduxForm } from 'redux-form';
+import { Field, FieldArray, SubmissionError, reduxForm } from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import { gql, graphql } from 'react-apollo';
 import { Row } from 'react-bootstrap';
@@ -23,15 +23,18 @@ class ProjectsEditor extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	async handleSubmit(values) {
+	async handleSubmit(values, dispatch) {
 		try {
-			await this.props.createNewProject;
+			console.log(values);
+			await this.props.createNewProject(values);
+			return {};
 		} catch (err) {
-			console.log('err', err.graphQLErrors);
+			throw new SubmissionError({ _error: 'your error' });
 		}
 	}
 
 	render() {
+
 		return (
 			<div className="content">
 				<div className="itemEditor">
@@ -66,41 +69,31 @@ class ProjectsEditor extends React.Component {
 	}
 }
 
-// ProjectEditor.propTypes = {
-// 	createNewProject: PropTypes.function
-// };
+ProjectsEditor.propTypes = {
+	createNewProject: PropTypes.func.isRequired
+};
 
-// const addNewProject = gql`
-// mutation projectCreate($title: String!, description: String) {
-// 	projectCreate(title: $title, description: $description) {
-// 		_id
-// 		title
-// 		description
-// 		users
-// 		createdAt
-// 	}
-// }
-// `;
+// $project: projectInputType
 
-// export default graphql(addNewProject, {
-// 	props: ({ mutate }) => ({
-// 		createNewProject: (title, description) => mutate({ variables: title, description }),
-// 	})
-// });
+const addNewProject = gql`
+mutation projectCreate($title: String!, $description: String) { 
+	projectCreate(title: $title, description: $description) {
+		_id
+		title
+		description
+		users
+		createdAt
+	}
+}
+`;
+
 
 ProjectsEditor = reduxForm({
 	form: 'projectsEditor'
 })(ProjectsEditor);
 
-const selector = formValueSelector('projectsEditor');
-ProjectsEditor = connect(
-	(state) => {
-		const { title, description } = selector(state, 'title', 'description');
-		return {
-			title,
-			description
-		};
-	}
-)(ProjectsEditor);
-
-export default ProjectsEditor;
+export default graphql(addNewProject, {
+	props: ({ mutate }) => ({
+		createNewProject: (title, description) => mutate({ variables: title, description }),
+	})
+})(ProjectsEditor);
