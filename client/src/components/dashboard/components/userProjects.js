@@ -37,7 +37,7 @@ class userProjects extends React.Component {
 				</div>
 				<Button 
 					bsStyle="primary"
-					onClick={() => this.toggleAddNewProjectForm}
+					onClick={() => this.toggleAddNewProjectForm()}
 				>
 					Add a project!
 				</Button>
