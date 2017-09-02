@@ -22,9 +22,10 @@ class ProjectsEditor extends React.Component {
 	}
 
 	async handleSubmit(values, dispatch) {
+		const { createNewProject } = this.props;
 		try {
 			console.log(values);
-			await this.props.createNewProject(values);
+			await createNewProject(values);
 			return {};
 		} catch (err) {
 			throw new SubmissionError({ _error: 'your error' });
@@ -70,18 +71,17 @@ ProjectsEditor.propTypes = {
 	createNewProject: PropTypes.func.isRequired
 };
 
+ProjectsEditor = reduxForm({
+	form: 'projectsEditor'
+})(ProjectsEditor);
+
 const addNewProject = gql`
 mutation projectCreate($project: ProjectCreateInputType!) {
 	projectCreate(project: $project) {
-		_id,
 		title
 	}
 }
 `;
-
-ProjectsEditor = reduxForm({
-	form: 'projectsEditor'
-})(ProjectsEditor);
 
 export default graphql(addNewProject, {
 	props: ({ mutate }) => ({
