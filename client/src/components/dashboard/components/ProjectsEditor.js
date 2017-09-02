@@ -32,7 +32,6 @@ class ProjectsEditor extends React.Component {
 	}
 
 	render() {
-
 		return (
 			<div className="content">
 				<div className="itemEditor">
@@ -71,20 +70,14 @@ ProjectsEditor.propTypes = {
 	createNewProject: PropTypes.func.isRequired
 };
 
-// $project: projectInputType
-
 const addNewProject = gql`
-mutation projectCreate($title: String!, $description: String) { 
-	projectCreate(title: $title, description: $description) {
-		_id
+mutation projectCreate($project: ProjectCreateInputType!) {
+	projectCreate(project: $project) {
+		_id,
 		title
-		description
-		users
-		createdAt
 	}
 }
 `;
-
 
 ProjectsEditor = reduxForm({
 	form: 'projectsEditor'
@@ -92,6 +85,6 @@ ProjectsEditor = reduxForm({
 
 export default graphql(addNewProject, {
 	props: ({ mutate }) => ({
-		createNewProject: (title, description) => mutate({ variables: title, description }),
+		createNewProject: project => mutate({ variables: project }),
 	})
 })(ProjectsEditor);
