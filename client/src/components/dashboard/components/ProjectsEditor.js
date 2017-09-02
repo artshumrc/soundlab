@@ -9,8 +9,7 @@ import Form from '../components/Form';
 import TagEditor from '../routes/itemEditor/TagEditor';
 import MetaEditor from '../routes/itemEditor/MetaEditor';
 
-// TODO: Check post method
-// TODO: Ensure new project has an associated user (this is done in mutation)
+// TODO:
 // TODO: Remove autofocus for accessibility reasons
 
 
