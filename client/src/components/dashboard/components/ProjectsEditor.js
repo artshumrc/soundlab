@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import { Field, FieldArray, SubmissionError, reduxForm } from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import { gql, graphql } from 'react-apollo';
-import { Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import Form from '../components/Form';
 import TagEditor from '../routes/itemEditor/TagEditor';
 import MetaEditor from '../routes/itemEditor/MetaEditor';
 
-// TODO: Format Form
 // TODO: Check post method
-// TODO: Ensure new project has an associated user
+// TODO: Ensure new project has an associated user (this is done in mutation)
 // TODO: Remove autofocus for accessibility reasons
 
 
