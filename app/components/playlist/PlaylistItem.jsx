@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router'
+import { SinglePlaylistItem } from './SinglePlaylistItem'
 import { browserHistory } from 'react-router'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
@@ -26,7 +27,7 @@ class PlaylistItem extends React.Component {
 
   render() {
     const { post_title: title, post_name: name } = this.props.post
-
+    console.log('queue: ' + this.props.post.queue.meta_value)
     return(
 
       <div>
@@ -35,6 +36,7 @@ class PlaylistItem extends React.Component {
           <Link onClick={this.handleClick.bind(this)}>
           <CardTitle title={title} subtitle={this.props.post.post_title} />
           <CardText>
+
             {this.props.post.queue.meta_value}
           </CardText>
           </Link>

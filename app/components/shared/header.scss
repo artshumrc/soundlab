@@ -1,15 +1,33 @@
 .header {
-  background:#757575;
-  height:60px;
+  height:90px;
+  display: flex;
+  align-items: flex-end;
+
+
 }
+
+.siteLogoHeader {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 50%;
+}
+
 .linkContainer {
-  display:flex;
-  justify-content:center;
-  a {
-    padding:0 20px;
-    color:#fff;
-  }
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
 }
+
 .navLink {
   justify-content:space-around;
+}
+
+.linkContainer, .siteLogoHeader {
+  a {
+    padding:0 20px;
+    color:#222222;
+    font-weight: bold; 
+  }
 }

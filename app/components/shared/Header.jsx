@@ -11,16 +11,21 @@ class Header extends Component {
   render() {
     return (
       <header styleName="header">
+        <div styleName="siteLogoHeader">
+          <Link to="/">Sound Lab</Link>
+        </div>
         <div styleName="linkContainer">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+          <Link to="/uploads">Waves</Link>
+          <Link to="/information">Resources</Link>
+          <Link to="/about">About</Link>
+          <Link to="/login">Join / Login</Link>
+      {/*
         <Link to="/contact">Contact</Link>
         <Link to="/privacy">Privacy</Link>
         <Link to="/profile">Profile</Link>
-        <Link to="/information">Information</Link>
-        <Link to="/uploads">Audio Uploads</Link>
         <Link to="/submissions">User Submissions</Link>
         <Link to="/search">Search</Link>
+        */}
         </div>
       </header>
     )
