@@ -1,7 +1,8 @@
-import { GraphQLString, GraphQLNonNull } from 'graphql';
+import { GraphQLString, GraphQLNonNull, GraphQLID } from 'graphql';
 
 // types
-import ProjectType from '../types/models/project';
+import ProjectType, { ProjectCreateInputType, ProjectUpdateInputType } from '../types/models/project';
+import { RemoveType } from '../types';
 
 // models
 import Project from '../../models/project';
@@ -85,7 +86,7 @@ const projectMutationFileds = {
 			// update project
 			Object.keys(item).forEach((key) => {
 				FoundProject[key] = item[key];
-			})
+			});
 
 			// Save new project
 			try {
@@ -95,45 +96,45 @@ const projectMutationFileds = {
 			}
 		}
 	},
-
-	itemRemove: {
+	
+	projectRemove: {
 		type: RemoveType,
 		description: 'Remove project',
 		args: {
 			projectId: {
 				type: new GraphQLNonNull(GraphQLID),
 			}
-		}
-	},
-	async resolve (parent, { projectId }, { user, tenant }) {
-		// validate connection
-		// if operation doesn't come from the admin page
-		if (!tenant.adminPage) throw new TenantError();
+		},
+		async resolve (parent, { projectId }, { user, tenant }) {
+			// validate connection
+			// if operation doesn't come from the admin page
+			if (!tenant.adminPage) throw new TenantError();
 
-		// if user is not logged in
-		if (!user) throw new AuthenticationError();
+			// if user is not logged in
+			if (!user) throw new AuthenticationError();
 
-		// initiate project
-		const FoundProject = await Project.findById(projectId);
-		if (!FoundProject) throw new ArgumentError({ data: { field: 'projectId' } });
+			// initiate project
+			const FoundProject = await Project.findById(projectId);
+			if (!FoundProject) throw new ArgumentError({ data: { field: 'projectId' } });
 
-		// validate permissions
-		try {
-			const userIsOwner = await FoundProject.validateUser(user._id);
-			if (!userIsOwner) throw new PermissionError();
-		} catch (err) {
-			throw new PermissionError();
-		}
+			// validate permissions
+			try {
+				const userIsOwner = await FoundProject.validateUser(user._id);
+				if (!userIsOwner) throw new PermissionError();
+			} catch (err) {
+				throw new PermissionError();
+			}
 
-		// perform action
-		// save new project
-		try {
-			await FoundProject.remove();
-			return {
-				_id: projectId,
-			};
-		} catch (err) {
-			handleMongooseError(err);
+			// perform action
+			// save new project
+			try {
+				await FoundProject.remove();
+				return {
+					_id: projectId,
+				};
+			} catch (err) {
+				handleMongooseError(err);
+			}
 		}
 	}
 };
