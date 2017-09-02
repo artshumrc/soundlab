@@ -15,10 +15,10 @@ class Header extends Component {
           <Link to="/">Sound Lab</Link>
         </div>
         <div styleName="linkContainer">
-          <Link to="/uploads">Waves</Link>
-          <Link to="/information">Resources</Link>
-          <Link to="/about">About</Link>
-          <Link to="/login">Join / Login</Link>
+          <Link to="/uploads" styleName="nav-link">Waves</Link>
+          <Link to="/information" styleName="nav-link">Resources</Link>
+          <Link to="/about" styleName="nav-link">About</Link>
+          <Link to="/login" styleName="nav-link-join">Join / Login</Link>
       {/*
         <Link to="/contact">Contact</Link>
         <Link to="/privacy">Privacy</Link>

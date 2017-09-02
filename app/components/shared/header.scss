@@ -2,8 +2,7 @@
   height:90px;
   display: flex;
   align-items: flex-end;
-
-
+  padding: 0 3%;
 }
 
 .siteLogoHeader {
@@ -26,8 +25,15 @@
 
 .linkContainer, .siteLogoHeader {
   a {
-    padding:0 20px;
     color:#222222;
-    font-weight: bold; 
+    font-weight: bold;
   }
+}
+
+.nav-link {
+  padding:0 20px;
+}
+
+.nav-link-join {
+  padding: 0 0 0 20px;
 }

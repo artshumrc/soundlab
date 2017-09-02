@@ -20,9 +20,16 @@ class Home extends React.Component {
 
         <div>
 
-          <div>
-            <ShowcaseList />
+
+          <div styleName="site-tag-container">
+            <div styleName="tag-container">
+              <span styleName="site-tag">We hear you</span>
+            </div>
+            <div styleName="subtitle-container">
+              <span styleName="site-tag-subtitle">The Sound Lab at Harvard University</span>
+            </div>
           </div>
+
           <div>
             <AudioPlayer />
           </div>

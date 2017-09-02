@@ -4,3 +4,22 @@
   bottom: 0;
 
 }
+
+.tag-container, .subtitle-container {
+  display: block;
+}
+
+.site-tag {
+  font-size: 52px;
+  color: #353131;
+}
+
+.site-tag-subtitle {
+  font-size: 36px;
+  color: #bdbab9;
+}
+
+.site-tag-container {
+  position: absolute;
+  top: 25%;
+}
