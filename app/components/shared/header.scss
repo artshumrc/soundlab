@@ -1,5 +1,7 @@
+@import "../../styles/vars";
+
 .header {
-  height:90px;
+  height: 90px;
   display: flex;
   align-items: flex-end;
   padding: 0 3%;
@@ -20,12 +22,12 @@
 }
 
 .navLink {
-  justify-content:space-around;
+  justify-content: space-around;
 }
 
 .linkContainer, .siteLogoHeader {
   a {
-    color:#222222;
+    color: $dark;
     font-weight: bold;
   }
 }
