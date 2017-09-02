@@ -18,12 +18,9 @@ const projectMutationFileds = {
 		type: ProjectType,
 		description: 'Create new project',
 		args: {
-			title: {
-				type: new GraphQLNonNull(GraphQLString),
-			},
-			description: {
-				type: GraphQLString,
-			},
+			project: {
+				type: new GraphQLNonNull(ProjectCreateInputType)
+			}
 		},
 		async resolve(parent, { project }, { user, tenant }) {
 
