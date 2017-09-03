@@ -1,18 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import Project from './project';
 
-const ProjectsView = ({ projects }) => (
+const ProjectsView = ({ data }) => (
 	<div />
 );
 
-ProjectsView.defaultProps = {
-	projects: []
-};
-
 ProjectsView.propTypes = {
-	projects: PropTypes.arrayOf(PropTypes.object)
+	data: PropTypes.shape({
+		projects: PropTypes.arrayOf(PropTypes.object)
+	}).isRequired
 };
 
-export default ProjectsView;
+const queryProjectsByCurrentUser = gql`
+query queryProjectsByCurrentUser {
+	projects {
+		title,
+		description
+	}
+}
+`;
+
+export default graphql(queryProjectsByCurrentUser)(ProjectsView);
