@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, FieldArray, SubmissionError, reduxForm } from 'redux-form';
 import Textarea from 'react-textarea-autosize';
-import { gql, graphql } from 'react-apollo';
+import { gql, graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 
 import Form from '../../components/Form';
 import TagEditor from '../itemEditor/TagEditor';
@@ -64,10 +63,10 @@ mutation projectCreate($project: ProjectCreateInputType!) {
 `;
 
 export default compose(
-	reduxForm({ form: 'projectsEditor' }),
 	graphql(addNewProject, {
 		props: ({ mutate }) => ({
 			submit: project => mutate({ variables: project }),
 		})
-	})
+	}),
+	reduxForm({ form: 'projectsEditor' }),
 )(ProjectEditor);

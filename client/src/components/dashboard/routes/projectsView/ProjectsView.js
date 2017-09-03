@@ -33,15 +33,8 @@ ProjectsView.defaultProps = {
 	data: {}
 };
 
-// const queryProjectsByCurrentUser = gql`
-// query queryProjectsByCurrentUser {
-// 	projects {
-// 		title,
-// 		description
-// 	}
-// }
-// `;
+// const currentUser = gql`
 
-// export default graphql(queryProjectsByCurrentUser)(ProjectsView);
+// `
 
 export default ProjectsView;
