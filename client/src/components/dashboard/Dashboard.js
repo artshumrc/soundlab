@@ -28,16 +28,12 @@ export default class Dashboard extends React.Component {
 					<h3 className="invert">Orpheus</h3>
 					<div className="sidebarMenu">
 						<ul>
-							<ListItem currentLocation={currentLocation} fa="file-text-o" name="Main Panel" url="/dashboard" />
-							<ListItem currentLocation={currentLocation} fa="file" name="Articles" url="/dashboard/articles" />
-							<ListItem currentLocation={currentLocation} fa="user" name="User Profile" url="/dashboard/user" />
-							<ListItem currentLocation={currentLocation} fa="window-maximize" name="Data Entry" url="/dashboard/data" />
 							<ListItem currentLocation={currentLocation} fa="folder-open-o" name="Projects" url="/dashboard/projects" />
-							<ListItem currentLocation={currentLocation} fa="cog" name="Settings" url="/dashboard/settings" />
-							<ListItem currentLocation={currentLocation} fa="file" name="Example Forms" url="/dashboard/form" />
-							<ListItem currentLocation={currentLocation} fa="file" name="Item Editor" url="/dashboard/itemEditor" />
-							<ListItem currentLocation={currentLocation} fa="file" name="Collection Editor" url="/dashboard/collectionEditor" />
 							<ListItem currentLocation={currentLocation} fa="file" name="Project Editor" url="/dashboard/projectEditor" />
+							<ListItem currentLocation={currentLocation} fa="file" name="Collection Editor" url="/dashboard/collectionEditor" />
+							<ListItem currentLocation={currentLocation} fa="file" name="Item Editor" url="/dashboard/itemEditor" />
+							<ListItem currentLocation={currentLocation} fa="user" name="User Profile" url="/dashboard/user" />
+							<ListItem currentLocation={currentLocation} fa="cog" name="Settings" url="/dashboard/settings" />
 						</ul>
 					</div>
 				</div>

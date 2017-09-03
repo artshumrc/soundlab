@@ -48,7 +48,7 @@ export default (
 		</Route>
 
 		<Route path="/dashboard" component={Dashboard}>
-			<IndexRoute component={MainPanel} />
+			<IndexRoute component={ProjectsView} />
 			<Route path="/dashboard/articles" component={Articles} />
 			<Route path="/dashboard/articles2" component={Articles2} />
 			<Route path="/dashboard/articles3" component={Articles3} />
