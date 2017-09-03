@@ -5,15 +5,15 @@ import Textarea from 'react-textarea-autosize';
 import { gql, graphql } from 'react-apollo';
 import { connect } from 'react-redux';
 
-import Form from '../components/Form';
-import TagEditor from '../routes/itemEditor/TagEditor';
-import MetaEditor from '../routes/itemEditor/MetaEditor';
+import Form from '../../components/Form';
+import TagEditor from '../itemEditor/TagEditor';
+import MetaEditor from '../itemEditor/MetaEditor';
 
-// TODO:
+// TODO: Fix post method
 // TODO: Remove autofocus for accessibility reasons
 
 
-class ProjectsEditor extends React.Component {
+class ProjectEditor extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -66,13 +66,13 @@ class ProjectsEditor extends React.Component {
 	}
 }
 
-ProjectsEditor.propTypes = {
+ProjectEditor.propTypes = {
 	createNewProject: PropTypes.func.isRequired
 };
 
-ProjectsEditor = reduxForm({
+ProjectEditor = reduxForm({
 	form: 'projectsEditor'
-})(ProjectsEditor);
+})(ProjectEditor);
 
 const addNewProject = gql`
 mutation projectCreate($project: ProjectCreateInputType!) {
@@ -86,4 +86,4 @@ export default graphql(addNewProject, {
 	props: ({ mutate }) => ({
 		createNewProject: project => mutate({ variables: project }),
 	})
-})(ProjectsEditor);
+})(ProjectEditor);
