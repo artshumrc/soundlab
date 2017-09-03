@@ -14,35 +14,41 @@ import MetaEditor from '../itemEditor/MetaEditor';
 // TODO: Remove autofocus for accessibility reasons
 
 const ProjectEditor = ({ submit }) => (
-	<div className="content">
-		<div className="itemEditor">
-			<Form
-				onSubmit={() => submit}
-				form="projectEditor"
-				initialValues={this.state}
-			>
-				<Field
-					name="title"
-					component="input"
-					type="text"
-					placeholder="Title..."
-					className="itemTitleEdit detailInput"
-				/>
-				<Field
-					name="description"
-					className="itemDescriptionEdit detailInput"
-					placeholder="Description..."
-					component="input"
-				/>
-				<FieldArray
-					name="tags"
-					component={tags => (
-						<TagEditor tags={tags} />
-					)}
-				/>
-			</Form>
+	<div>
+		<div className="topBar">
+			<span className="title">Create New Projects</span>
+		</div>
+		<div className="content">
+			<div className="itemEditor">
+				<Form
+					onSubmit={() => submit}
+					form="projectEditor"
+					initialValues={this.state}
+				>
+					<Field
+						name="title"
+						component="input"
+						type="text"
+						placeholder="Title..."
+						className="itemTitleEdit detailInput"
+					/>
+					<Field
+						name="description"
+						className="itemDescriptionEdit detailInput"
+						placeholder="Description..."
+						component="input"
+					/>
+					<FieldArray
+						name="tags"
+						component={tags => (
+							<TagEditor tags={tags} />
+						)}
+					/>
+				</Form>
+			</div>
 		</div>
 	</div>
+	
 );
 
 ProjectEditor.propTypes = {

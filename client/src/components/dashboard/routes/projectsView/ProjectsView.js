@@ -2,11 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import _ from 'lodash';
 
 import Project from './project';
 
 const ProjectsView = ({ data }) => (
-	<div />
+	<div>
+		<div className="topBar">
+			<span className="title">My Projects</span>
+		</div>
+		<div>
+			{ data.projects ?
+				<p>you have projects!</p>
+				:
+				<div>
+					<p>You do not have any projects.</p>
+				</div>
+			}
+		</div>
+	</div>
 );
 
 ProjectsView.propTypes = {
@@ -15,13 +29,19 @@ ProjectsView.propTypes = {
 	}).isRequired
 };
 
-const queryProjectsByCurrentUser = gql`
-query queryProjectsByCurrentUser {
-	projects {
-		title,
-		description
-	}
-}
-`;
+ProjectsView.defaultProps = {
+	data: {}
+};
 
-export default graphql(queryProjectsByCurrentUser)(ProjectsView);
+// const queryProjectsByCurrentUser = gql`
+// query queryProjectsByCurrentUser {
+// 	projects {
+// 		title,
+// 		description
+// 	}
+// }
+// `;
+
+// export default graphql(queryProjectsByCurrentUser)(ProjectsView);
+
+export default ProjectsView;

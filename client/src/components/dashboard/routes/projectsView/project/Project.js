@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Project = ({ project }) => (
-	<div />
+	<div>
+	</div>
 );
 
 Project.propTypes = {
