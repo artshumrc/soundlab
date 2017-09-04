@@ -1,6 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import {Image} from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
+import { Link } from 'react-router';
 import './Dashboard.css';
 
 import ListItem from './components/ListItem';
@@ -25,7 +26,10 @@ export default class Dashboard extends React.Component {
 		return (
 			<div id="dashboard">
 				<div className={sidebarClass}>
-					<h3 className="invert">Orpheus</h3>
+
+					<Link to={'/'}>
+						<h3 className="invert">Orpheus</h3>
+					</Link>
 					<div className="sidebarMenu">
 						<ul>
 							<ListItem currentLocation={currentLocation} fa="folder-open-o" name="Projects" url="/dashboard/projects" />
