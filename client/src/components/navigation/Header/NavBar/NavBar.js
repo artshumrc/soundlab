@@ -15,17 +15,17 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 		</div>
 		<ul className="nav">
 			<li>
-				<Link to={'/services'} onClick={scrollToElement}>
+				<Link to={'/services'}>
 					Services
 				</Link>
 			</li>
 			<li>
-				<Link to={'/community'} onClick={scrollToElement}>
+				<Link to={'/community'}>
 					Community
 				</Link>
 			</li>
 			<li>
-				<Link to={'/about'} onClick={scrollToElement}>
+				<Link to={'/about'}>
 					About
 				</Link>
 			</li>
