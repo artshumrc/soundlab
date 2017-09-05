@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import OAuthButtons from '../OAuthButtons';
+import OAuthButtons from '../OAuthButtons';
 import PWDSignupForm from '../PWDSignupForm';
 
 class Signup extends React.Component {
@@ -9,17 +9,22 @@ class Signup extends React.Component {
 	static propTypes = {
 		onSigninClick: PropTypes.func.isRequired,
 		signupMethod: PropTypes.func.isRequired,
+		errorSocial: PropTypes.string,
+	}
+
+	static defaultProps = {
+		errorSocial: '',
 	}
 
 	render() {
-		const { signupMethod, onSigninClick } = this.props;
+		const { signupMethod, onSigninClick, errorSocial } = this.props;
 
 		return (
 			<div className="at-form">
 				<div className="at-title">
 					<h3>Create an Account</h3>
 				</div>
-				{/* <span className="error-text">
+				<span className="error-text">
 					{errorSocial}
 				</span>
 				<OAuthButtons
@@ -29,7 +34,7 @@ class Signup extends React.Component {
 				/>
 				<div className="at-sep">
 					<strong>OR</strong>
-				</div> */}
+				</div>
 
 				<PWDSignupForm
 					signupMethod={signupMethod}

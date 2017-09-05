@@ -37,10 +37,13 @@ export const pubsub = new RedisPubSub({
 	},
 });
 
-const getGraphglContext = req => ({
-	user: req.user,
-	tenant: req.tenant,
-});
+const getGraphQLContext = req => {
+	console.log(req);
+	return ({
+		user: req.user,
+		tenant: req.tenant,
+	});
+};
 
 /**
  * Set up the graphQL HTTP endpoint
@@ -50,7 +53,7 @@ export default function setupGraphql(app) {
 
 	app.use('/graphql', jwtAuthenticate, graphqlExpress(req => ({
 		schema: RootSchema,
-		context: getGraphglContext(req),
+		context: getGraphQLContext(req),
 		formatError,
 	})));
 

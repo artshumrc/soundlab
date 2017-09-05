@@ -23,10 +23,8 @@ const projectMutationFileds = {
 			}
 		},
 		async resolve(parent, { project }, { user, tenant }) {
-			console.log('parent', parent);
 			console.log('project', project);
 			console.log('user', user);
-			console.log('tenant', tenant);
 
 			// Validate connection
 			// if the operation doesn't come from the admin page:

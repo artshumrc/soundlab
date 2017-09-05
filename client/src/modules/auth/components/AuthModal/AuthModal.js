@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Modal from '../Modal';
+import Modal from '../../../../components/common/modal/Modal';
 
 // auth types:
 import Login from '../Login';
@@ -53,8 +53,8 @@ class _AuthModal extends React.Component {
 	}
 
 	_handleKeyDown(event) {
-		const { dispatchToggleAuthModal } = this.props;
-		if (event.keyCode === ESCAPE_KEY) dispatchToggleAuthModal();
+		const { dispatchToggleAuthModal, showAuthModal } = this.props;
+		if (event.keyCode === ESCAPE_KEY && showAuthModal) dispatchToggleAuthModal();
 	}
 
 	async _initiateUser() {
@@ -79,21 +79,21 @@ class _AuthModal extends React.Component {
 				closeModal={dispatchToggleAuthModal}
 			>
 				<div>
-					{authMode === 'login' ? 
+					{authMode === 'login' ?
 						<Login
 							onRegisterClick={dispachChangeAuthMode.bind(null, 'signup')}
 							loginMethod={loginMethod}
 						/>
 					: null}
 
-					{authMode === 'signup' ? 
+					{authMode === 'signup' ?
 						<Signup
 							onSigninClick={dispachChangeAuthMode.bind(null, 'login')}
 							signupMethod={signupMethod}
 						/>
 					: null}
 
-					{authMode === 'logout' ? 
+					{authMode === 'logout' ?
 						<Logout
 							logoutMethod={dispatchLogout}
 						/>

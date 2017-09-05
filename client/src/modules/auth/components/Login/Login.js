@@ -3,51 +3,28 @@ import PropTypes from 'prop-types';
 
 import OAuthButtons from '../OAuthButtons';
 import PWDLoginForm from '../PWDLoginForm';
-import './ModalLogin.css';
+import './Login.css';
 
-import { login } from '../../../lib/auth';
-
-
-const ESCAPE_KEY = 27;
-
-
-class ModalLogin extends React.Component {
+class Login extends React.Component {
 
 	static propTypes = {
 		onRegisterClick: PropTypes.func.isRequired,
-		setUser: PropTypes.func.isRequired,
+		loginMethod: PropTypes.func.isRequired,
+		errorSocial: PropTypes.string,
 	}
 
-	constructor(props) {
-		super(props);
-
-		// methods:
-		this.handleLogin = this.handleLogin.bind(this);
-		this.handleLoginFacebook = this.handleLoginFacebook.bind(this);
-		this.handleLoginGoogle = this.handleLoginGoogle.bind(this);
-		this.handleLoginTwitter = this.handleLoginTwitter.bind(this);
-	}
-
-	handleLogin(email, password) {
-	}
-
-	handleLoginFacebook() {
-	}
-
-	handleLoginGoogle() {
-	}
-
-	handleLoginTwitter() {
+	static defaultProps = {
+		errorSocial: '',
 	}
 
 	render() {
-		const { onRegisterClick, setUser } = this.props;
+		const { onRegisterClick, loginMethod, errorSocial } = this.props;
 
 		return (
 			<div className="at-form">
-				<h3 style={{color: '#000'}}>Sign In</h3>
+				<h3>Sign In</h3>
 
-				{/* <span className="error-text">
+				<span className="error-text">
 					{errorSocial}
 				</span>
 
@@ -59,11 +36,10 @@ class ModalLogin extends React.Component {
 
 				<div className="at-sep">
 					<strong>OR</strong>
-				</div> */}
+				</div>
 
 				<PWDLoginForm
-					submitMethod={login}
-					setUser={setUser}
+					loginMethod={loginMethod}
 				/>
 
 				<div className="at-signup-link">
@@ -89,4 +65,4 @@ class ModalLogin extends React.Component {
 	}
 }
 
-export default ModalLogin;
+export default Login;

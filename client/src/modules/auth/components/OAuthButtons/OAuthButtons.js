@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './OAuthButtons.css';
 
 const OAuthButtons = ({ handleFacebook, handleGoogle, handleTwitter }) => (
@@ -34,11 +36,13 @@ const OAuthButtons = ({ handleFacebook, handleGoogle, handleTwitter }) => (
 			</button>}
 	</div>
 );
+
 OAuthButtons.propTypes = {
 	handleFacebook: PropTypes.func,
 	handleGoogle: PropTypes.func,
 	handleTwitter: PropTypes.func,
 };
+
 OAuthButtons.defaultProps = {
 	handleFacebook: null,
 	handleGoogle: null,

@@ -28,8 +28,10 @@ class ProjectEditor extends React.Component {
 					...values
 				},
 			},
+			context: {
+				user: '',
+			},
 		});
-		console.log('form submit values', values);
 	}
 
 	render() {
@@ -91,7 +93,3 @@ const ProjectEditorForm = reduxForm({
 })(ProjectEditor);
 
 export default graphql(addNewProject)(ProjectEditorForm);
-
-/*
-export default ProjectEditorForm;
-*/

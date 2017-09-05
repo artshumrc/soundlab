@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user';
 
 // authentication
-import { jwtAuthenticate, checkPasswordStrength } from '../authentication';
+import { jwtAuthenticate } from '../authentication';
 
 const router = express.Router();
 
@@ -38,7 +38,7 @@ router.post('/verify-token', jwtAuthenticate, async (req, res) => {
 	return res.status(401).send({error: 'User not found'});
 });
 
-router.post('/register', checkPasswordStrength(), (req, res) => {
+router.post('/register', (req, res) => {
 	User.register(new User({
 		username: req.body.username
 	}), req.body.password, (err, account) => {
