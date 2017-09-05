@@ -1,6 +1,5 @@
 import passport from 'passport';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
-import zxcvbn from 'zxcvbn';
 
 import DataLoader from 'dataloader';
 import createRedisDataLoader from 'redis-dataloader';

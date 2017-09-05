@@ -21,24 +21,15 @@ class Login extends React.Component {
 
 	static propTypes = {
 		onRegisterClick: PropTypes.func.isRequired,
-		loginMethod: PropTypes.func.isRequired,
-		errorSocial: PropTypes.string,
-	}
-
-	static defaultProps = {
-		errorSocial: '',
+		login: PropTypes.func.isRequired,
 	}
 
 	render() {
-		const { onRegisterClick, loginMethod, errorSocial } = this.props;
+		const { login, onRegisterClick } = this.props;
 
 		return (
 			<div className="at-form">
 				<h3>Sign In</h3>
-
-				<span className="error-text">
-					{errorSocial}
-				</span>
 
 				<OAuthButtons
 					login={login}

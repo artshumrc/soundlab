@@ -1,5 +1,4 @@
 import crypto from 'crypto';
-import zxcvbn from 'zxcvbn';
 import mongoose from 'mongoose';
 import timestamp from 'mongoose-timestamp';
 import passportLocalMongoose from 'passport-local-mongoose';
@@ -27,13 +26,7 @@ const UserSchema = new Schema({
 });
 
 // add password hash and salt
-UserSchema.plugin(passportLocalMongoose, {
-	passwordValidator(password, cb) {
-		const passwordStrength = zxcvbn(password, ['orpheus', 'orphe']);
-		if (passwordStrength.score <= 3) return cb({passwordStrength: passwordStrength});
-		return cb();
-	},
-});
+UserSchema.plugin(passportLocalMongoose);
 
 // add timestamp (createdAt, updatedAt)
 UserSchema.plugin(timestamp);

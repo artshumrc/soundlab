@@ -4,29 +4,23 @@ import PropTypes from 'prop-types';
 import OAuthButtons from '../OAuthButtons';
 import PWDSignupForm from '../PWDSignupForm';
 
+
 class Signup extends React.Component {
 
 	static propTypes = {
 		onSigninClick: PropTypes.func.isRequired,
 		signupMethod: PropTypes.func.isRequired,
-		errorSocial: PropTypes.string,
-	}
-
-	static defaultProps = {
-		errorSocial: '',
 	}
 
 	render() {
-		const { signupMethod, onSigninClick, errorSocial } = this.props;
+		const { signup, signupMethod, onSigninClick } = this.props;
 
 		return (
 			<div className="at-form">
 				<div className="at-title">
 					<h3>Create an Account</h3>
 				</div>
-				<span className="error-text">
-					{errorSocial}
-				</span>
+
 				<OAuthButtons
 					login={signup}
 					register
