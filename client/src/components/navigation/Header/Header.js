@@ -22,7 +22,7 @@ _Header.propTypes = {
 	toggleAuthModal: PropTypes.func.isRequired,
 	logout: PropTypes.func.isRequired,
 
-	userId: React.PropTypes.string,
+	userId: PropTypes.string,
 };
 
 _Header.defaultProps = {
