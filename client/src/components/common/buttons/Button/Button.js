@@ -38,11 +38,11 @@ const Button = (props) => {
 Button.propTypes = {
 	to: PropTypes.string,
 	onClick: PropTypes.func,
-	light: PropTypes.string,
-	transparentLight: PropTypes.string,
-	primary: PropTypes.string,
-	accent: PropTypes.string,
-	outline: PropTypes.string,
+	light: PropTypes.bool,
+	transparentLight: PropTypes.bool,
+	primary: PropTypes.bool,
+	accent: PropTypes.bool,
+	outline: PropTypes.bool,
 	children: PropTypes.node,
 };
 
