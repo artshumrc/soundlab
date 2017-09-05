@@ -22,7 +22,10 @@ const LifetimeData = props => {
 					const active = false;
 
 					return (
-						<div className="lifetimeDataStep">
+						<div
+							key={marker.label}
+							className="lifetimeDataStep"
+						>
 							<div className="lifetimeDataMarker" />
 							<span className="lifetimeDataLabel">
 								{marker.label}
