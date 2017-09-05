@@ -1,26 +1,6 @@
 @import '../../../../variables.scss';
+
 .showcaseCollections {
-  .react-simple-parallax-bg {
-    height: 550px;
-  }
-  .parallax {
-		background: #f6f6f6;
-    height: 800px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .parallax-content {
-    position: relative;
-    padding-top: 70px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    display: block;
-    color: #fff;
-    text-align: center;
-  }
+	background: #f6f6f6;
+	margin: 0 auto;
 }

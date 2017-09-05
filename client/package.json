@@ -5,6 +5,7 @@
   "dependencies": {
     "bricks.js": "^1.8.0",
     "classnames": "^2.2.5",
+    "d3": "^4.10.2",
     "draft-js": "^0.10.1",
     "es6-shim": "^0.35.3",
     "eslint-import-resolver-node": "^0.3.0",
