@@ -6,64 +6,57 @@ import _ from 'lodash';
 
 import Project from './project';
 
-// class ProjectsView extends React.Component {
-// 	componentWillRecieveProps(nextProps) {
-// 		if (this.props !== nextProps) {
-// 			console.log()
-// 		}
-// 	}
-// 	render() {
-// 		const { data } = this.props;
-// 		return (
-// 			<div>
-// 				<div className="topBar">
-// 					<span className="title">My Projects</span>
-// 				</div>
-// 				<div>
-// 					{ data.userProjects ?
-// 						<div>
-// 							<Project
-// 								title={data.userProjects.title}
-// 								description={data.userProjects.description}
-// 								createdAt={data.userProjects.createdAt} 
-// 							/>
-// 						</div>
-// 						:
-// 						<div>
-// 							<h1>You do not have any projects.</h1>
-// 						</div>
-// 					}
-// 				</div>
-// 			</div>
-// 		);
-// 	}
-// }
+class ProjectsView extends React.Component {
+	constructor(props) {
+		super(props);
 
+		this.state = {
+			loading: true
+		};
+	}
 
+	componentWillReceiveProps(nextProps) {
+		const { loading } = this.state;
+		if (nextProps.data.loading !== loading) {
+			this.setState({
+				loading: !loading
+			});
+		}
+	}
 
-
-const ProjectsView = ({ data }) => (
-	<div>
-		<div className="topBar">
-			<span className="title">My Projects</span>
-		</div>
-		<div>
-			{ data.userProjects ?
-				<div>
-					<Project
-						title={data.userProjects.title}
-						description={data.userProjects.description}
-						createdAt={data.userProjects.createdAt} 
-					/>
-				</div>
-				:
-				<div>
-					<h1>You do not have any projects.</h1>
-				</div>
-			}
-		</div>
-	</div>
-);
+	render() {
+		const { data } = this.props;
+		return (
+			<div>
+				{
+					!data.loading ?
+						<div>
+							<div className="topBar">
+								<span className="title">My Projects</span>
+							</div>
+							<div>
+								{ data.userProjects ?
+									<div>
+										<Project
+											projectData={data.userProjects}
+										/>
+									</div>
+									:
+									<div className="loading">
+										<h1>You do not have any projects.</h1>
+									</div>
+								}
+							</div>
+						</div>
+					:
+						<div>
+							<h2>loading</h2>
+						</div>
+				}
+			</div>
+		);
+	}
+}
 
 ProjectsView.propTypes = {
 	data: PropTypes.shape({
@@ -74,6 +67,8 @@ ProjectsView.propTypes = {
 ProjectsView.defaultProps = {
 	data: {}
 };
+
+// userId: "59a86618a93a2c37840d4b38"
 
 const userProjects = gql`
 query {
