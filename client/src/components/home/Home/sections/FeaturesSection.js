@@ -9,25 +9,40 @@ export default class FeaturesSection extends React.Component {
 			<section id="features">
 				<Grid>
 					<Row>
-						<Col lg={4}>
-							<Image src="/images/book.png" />
-							<h4>Digital Collections</h4>
-							<hr />
-							<p>Manage multimedia data records and publish articles related to your items</p>
+						<Col md={4}>
+							<div className="feature">
+								<Image src="/images/book.png" />
+								<div className="feature-title">
+									<i className="mdi mdi-view-quilt" />
+									<h4>Digital Collections</h4>
+								</div>
+								<hr />
+								<p>Manage multimedia data records and publish articles related to your items</p>
+							</div>
 						</Col>
-						<Col lg={4}>
-							<Image src="/images/bulb.png" />
-							<h4>Linked Data</h4>
-							<hr />
-							<p>Leverage existing ontologies and create your own schemata for your item records</p>
+						<Col md={4}>
+							<div className="feature">
+								<Image src="/images/bulb.png" />
+								<div className="feature-title">
+									<i className="mdi mdi-link" />
+									<h4>Linked Data</h4>
+								</div>
+								<hr />
+								<p>Leverage existing ontologies and create your own schemata for your item records</p>
+							</div>
 						</Col>
-						<Col lg={4}>
-							<Image src="/images/notes.png" />
-							<h4>Cross-platform Access</h4>
-							<hr />
-							<p>
-								Access your data on web, mobile, and in augmented and virtual reality
-							</p>
+						<Col md={4}>
+							<div className="feature">
+								<Image src="/images/notes.png" />
+								<div className="feature-title">
+									<i className="mdi mdi-laptop-chromebook" />
+									<h4>Cross-platform Access</h4>
+								</div>
+								<hr />
+								<p>
+									Access your data on web, mobile, and in augmented and virtual reality
+								</p>
+							</div>
 						</Col>
 					</Row>
 				</Grid>
