@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Card, CardActions, CardTitle, CardText, FlatButton, MuiThemeProvider } from 'material-ui'; 
 
 import './Project.css';
 
@@ -7,17 +8,20 @@ class Project extends React.Component {
 	render() {
 		const { projectData } = this.props;
 		return (
-			<div className="project">
-				<h1>
-					{projectData.title}
-				</h1>
-				<h2>
-					{projectData.description}
-				</h2>
-				<h3>
-					{projectData.createdAt}
-				</h3>
-			</div>
+			<MuiThemeProvider>
+				<div className="project">
+					<Card>
+						<CardTitle title={projectData.title} subtitle={projectData.createdAt} />
+						<CardText>
+							{ projectData.description }
+						</CardText>
+						<CardActions>
+							<FlatButton label="Remove" />
+							<FlatButton label="Edit" />
+						</CardActions>
+					</Card>
+				</div>
+			</MuiThemeProvider>
 		);
 	}
 }
