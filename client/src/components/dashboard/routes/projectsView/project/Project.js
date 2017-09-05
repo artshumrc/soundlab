@@ -25,4 +25,13 @@ class Project extends React.Component {
 		);
 	}
 }
+
+Project.propTypes = {
+	projectData: PropTypes.shape({
+		title: PropTypes.string,
+		description: PropTypes.string,
+		createdAt: PropTypes.string,
+	}).isRequired
+};
+
 export default Project;
