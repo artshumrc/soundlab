@@ -6,6 +6,42 @@ import _ from 'lodash';
 
 import Project from './project';
 
+// class ProjectsView extends React.Component {
+// 	componentWillRecieveProps(nextProps) {
+// 		if (this.props !== nextProps) {
+// 			console.log()
+// 		}
+// 	}
+// 	render() {
+// 		const { data } = this.props;
+// 		return (
+// 			<div>
+// 				<div className="topBar">
+// 					<span className="title">My Projects</span>
+// 				</div>
+// 				<div>
+// 					{ data.userProjects ?
+// 						<div>
+// 							<Project
+// 								title={data.userProjects.title}
+// 								description={data.userProjects.description}
+// 								createdAt={data.userProjects.createdAt} 
+// 							/>
+// 						</div>
+// 						:
+// 						<div>
+// 							<h1>You do not have any projects.</h1>
+// 						</div>
+// 					}
+// 				</div>
+// 			</div>
+// 		);
+// 	}
+// }
+
+
+
+
 const ProjectsView = ({ data }) => (
 	<div>
 		<div className="topBar">
@@ -13,10 +49,16 @@ const ProjectsView = ({ data }) => (
 		</div>
 		<div>
 			{ data.userProjects ?
-				<p>you have projects!</p>
+				<div>
+					<Project
+						title={data.userProjects.title}
+						description={data.userProjects.description}
+						createdAt={data.userProjects.createdAt} 
+					/>
+				</div>
 				:
 				<div>
-					<p>You do not have any projects.</p>
+					<h1>You do not have any projects.</h1>
 				</div>
 			}
 		</div>
@@ -25,7 +67,7 @@ const ProjectsView = ({ data }) => (
 
 ProjectsView.propTypes = {
 	data: PropTypes.shape({
-		projects: PropTypes.arrayOf(PropTypes.object)
+		userProjects: PropTypes.arrayOf(PropTypes.object)
 	}).isRequired
 };
 

@@ -18,11 +18,13 @@ const Project = ({ title, description, createdAt }) => (
 Project.propTypes = {
 	title: PropTypes.string.isRequired,
 	description: PropTypes.string,
-	createdAt: PropTypes.instanceOf(Date).isRequired
+	createdAt: PropTypes.string.isRequired
 };
 
 Project.defaultProps = {
-	description: ''
+	description: '',
+	title: '',
+	createdAt: ''
 };
 
 export default Project;
