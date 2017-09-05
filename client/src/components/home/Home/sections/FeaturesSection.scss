@@ -1,6 +1,57 @@
+@import '../../../../variables.scss';
+
 #features {
   text-align: center;
+}
+
+.feature {
+	text-align: center;
+
+	img {
+		display: none;
+	}
+
   hr {
+		display: none;
     width: 50px;
+
   }
+
+	.feature-title {
+		border: 1px solid $divider-light-grey;
+		padding: 10px 20px;
+		margin: 10px auto;
+		text-align: center;
+		display: inline-block;
+		@include transition(all 100ms ease-in-out);
+
+		&:hover {
+			border: 1px solid $dark;
+		}
+	}
+
+	i {
+		color: $dark;
+		display: inline-block;
+		vertical-align: top;
+		&:before {
+			font-size: 32px;
+		}
+	}
+
+	h4 {
+		color: $dark;
+		display: inline-block;
+		vertical-align: top;
+		padding: 0px 10px;
+	}
+
+	p {
+		padding: 20px 30px;
+		#home & {
+			font-size: 16px;
+			line-height: 1.6em;
+
+		}
+	}
 }

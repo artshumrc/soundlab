@@ -1,5 +1,6 @@
 @import '../../../variables.scss';
 #home {
+	text-align: center;
 
   h1 {
     font-size: 50px;
@@ -13,24 +14,24 @@
 
 	.home-cover-content {
 		margin: 0 auto;
-		display: inline-block;
-		display: block;
-		max-width: 90%;
-		width: 720px;
-		padding-bottom: 90px;
+		max-width: 600px;
+		width: 90%;
 
 		h1 {
+			display: block;
 			color: $dark;
-			padding: 20px 0;
-			text-shadow: 0px 0px 20px #fff;
+			padding: 0 0 20px;
+			text-shadow: 2px 2px 0px #fff;
 		}
 
 		.lead {
+			display: block;
 			color: $dark;
 			padding: 20px 0 40px;
 			text-transform: uppercase;
-			text-shadow: 0px 0px 20px #fff;
+			text-shadow: 1px 1px 6px #fff;
 			font-size: 20px;
+			line-height: 1.7em;
 		}
 
 	}

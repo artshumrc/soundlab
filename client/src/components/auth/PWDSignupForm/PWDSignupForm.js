@@ -93,8 +93,8 @@ const PWDSignupForm = ({ signup, errorMsg }) => {
 	);
 };
 PWDSignupForm.propTypes = {
-	errorMsg: React.PropTypes.string,
-	signup: React.PropTypes.func,
+	errorMsg: PropTypes.string,
+	signup: PropTypes.func,
 };
 PWDSignupForm.defaultProps = {
 	errorMsg: null,

@@ -7,12 +7,12 @@ import muiTheme from '../../../lib/muiTheme';
 const ModalChangePwd = React.createClass({
 
 	propTypes: {
-		lowered: React.PropTypes.bool,
-		closeModal: React.PropTypes.func,
+		lowered: PropTypes.bool,
+		closeModal: PropTypes.func,
 	},
 
 	childContextTypes: {
-		muiTheme: React.PropTypes.object.isRequired,
+		muiTheme: PropTypes.object.isRequired,
 	},
 
 	getChildContext() {

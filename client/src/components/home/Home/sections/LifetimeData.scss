@@ -1,13 +1,14 @@
 @import '../../../../variables.scss';
 
 .lifetimeData {
-	background: #eee;
-	min-height: 420px;
+	background: #222;
+	min-height: 600px;
+
 	h2 {
-		color: $text-primary;
+		color: $light;
 		margin: 0 auto;
 		text-align: center;
-		font-size: 42px;
+		font-size: 32px;
 		padding: 60px 0 30px;
 	}
 }

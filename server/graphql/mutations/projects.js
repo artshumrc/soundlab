@@ -23,6 +23,10 @@ const projectMutationFileds = {
 			}
 		},
 		async resolve(parent, { project }, { user, tenant }) {
+			console.log('parent', parent);
+			console.log('project', project);
+			console.log('user', user);
+			console.log('tenant', tenant);
 
 			// Validate connection
 			// if the operation doesn't come from the admin page:
@@ -33,7 +37,7 @@ const projectMutationFileds = {
 
 			// Validate resolver-specifc arguments
 			if (!project.collectionId) throw new ArgumentError({ data: { field: 'project.collectionId' } });
-			
+
 			// Initiate new project
 			const NewProject = new Project(project);
 
@@ -59,7 +63,7 @@ const projectMutationFileds = {
 			}
 		},
 		async resolve(parent, { project, projectId }, { user, tenant }) {
-			
+
 			// Validate connection
 			// if operation doesn't come from the admin page
 			if (!tenant.adminPage) throw new TenantError();
@@ -93,7 +97,7 @@ const projectMutationFileds = {
 			}
 		}
 	},
-	
+
 	projectRemove: {
 		type: RemoveType,
 		description: 'Remove project',

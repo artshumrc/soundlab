@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardActions, CardTitle, CardText, FlatButton, MuiThemeProvider } from 'material-ui'; 
 
-import './Project.css';
+// import './Project.css';
 
 class Project extends React.Component {
 	render() {

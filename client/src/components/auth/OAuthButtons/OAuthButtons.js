@@ -35,9 +35,9 @@ const OAuthButtons = ({ handleFacebook, handleGoogle, handleTwitter }) => (
 	</div>
 );
 OAuthButtons.propTypes = {
-	handleFacebook: React.PropTypes.func,
-	handleGoogle: React.PropTypes.func,
-	handleTwitter: React.PropTypes.func,
+	handleFacebook: PropTypes.func,
+	handleGoogle: PropTypes.func,
+	handleTwitter: PropTypes.func,
 };
 OAuthButtons.defaultProps = {
 	handleFacebook: null,

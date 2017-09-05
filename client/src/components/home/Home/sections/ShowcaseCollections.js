@@ -1,24 +1,22 @@
 import React from 'react';
 import CollectionListItem from '../../../collections/CollectionListItem';
+import _ from 'underscore';
 import './ShowcaseCollections.css';
 
 const ShowcaseCollections = (props) => {
-	const listItems = [{
-		imageUrl: '//iiif.orphe.us/orpheus/art/64.jpg/full/400,/0/default.jpg',
-		title: 'Example Collection',
-		tags: ['Manuscripts', '12th Century'],
-		slug: 'example-collection',
-	}, {
-		imageUrl: '//iiif.orphe.us/orpheus/art/77.jpg/full/400,/0/default.jpg',
-		title: 'Example Collection',
-		tags: ['Manuscripts', '12th Century'],
-		slug: 'example-collection',
-	}, {
-		imageUrl: '//iiif.orphe.us/orpheus/art/22.jpg/full/400,/0/default.jpg',
-		title: 'Example Collection',
-		tags: ['Manuscripts', '12th Century'],
-		slug: 'example-collection',
-	}];
+
+	const listItems = [];
+
+	_.range(1, 4).forEach(i => {
+		const imageNumber = _.random(0, 106);
+
+		listItems.push({
+			imageUrl: `//iiif.orphe.us/orpheus/art/${imageNumber}.jpg/full/400,/0/default.jpg`,
+			title: `Example Collection ${i}`,
+			tags: ['Manuscripts', '12th Century'],
+			slug: 'example-collection',
+		});
+	});
 
 	return (
 		<section className="showcaseCollections">
