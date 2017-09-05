@@ -1,10 +1,13 @@
 @import "../../styles/vars";
 
+.cover-section {
+  height: 100vh;
+}
+
 .reactAudioPlayer {
   width: 100%;
   position: fixed;
   bottom: 0;
-
 }
 
 .tag-container, .subtitle-container {
@@ -22,11 +25,53 @@
 }
 
 .site-tag-container {
-  position: absolute;
-  top: 25%;
+  //position: absolute;
+  margin-top: 20%;
 }
 
 .cover-lines {
   margin-top: -11%;
   margin-left: -5%;
+}
+
+.featured-track-component {
+  margin-top: 20%;
+  height: 50%;
+  background: black;
+}
+
+.featured-track-player-container {
+  height: 80%;
+  background: #e7e6e6;
+}
+
+.featured-track-meta-container {
+  height: 20%;
+  background: #e7e6e6;
+}
+
+.featured-track-title {
+  display: flex;
+  justify-content: center;
+  h6 {
+    color: #fff;
+    text-align: center;
+    background-color: #aa95f7;
+    padding: 0 6px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+}
+
+.featured-track-meta-item-title {
+  display: flex;
+  justify-content: center;
+  color: $dark;
+  font-weight: bold;
+}
+
+.featured-track-meta-item-author {
+  display: flex;
+  justify-content: center;
+  color: $lightGrey;
 }
