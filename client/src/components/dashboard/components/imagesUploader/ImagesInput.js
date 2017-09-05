@@ -67,7 +67,7 @@ export default class ImagesInput extends React.Component {
 				return `${this._id}-${secureFilename}`;
 			},
 			signingUrlMethod: 'GET',
-      signingUrlWithCredentials: true
+			signingUrlWithCredentials: true
 		});
 	}
 

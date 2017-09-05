@@ -6,7 +6,7 @@ class CoverBackground extends React.Component {
 		super(props);
 
 		this.state = {
-			transform: `translate(-1%, -2%)`,
+			transform: 'translate(-1%, -2%)',
 		};
 	}
 
@@ -15,12 +15,12 @@ class CoverBackground extends React.Component {
 
 		if (reactsToMouse) {
 			let x = e.pageX / window.innerHeight;
-			x = x * -2;
+			x *= -2;
 			let y = e.pageY / window.innerHeight;
-			y = y * -4;
+			y *= -4;
 
 			this.setState({
-				transform:  `translate(${x}%, ${y}%)`,
+				transform: `translate(${x}%, ${y}%)`,
 			});
 		}
 	}
@@ -38,7 +38,7 @@ class CoverBackground extends React.Component {
 			>
 				{this.props.children}
 			</div>
-		)
+		);
 	}
 }
 

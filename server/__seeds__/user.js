@@ -13,16 +13,14 @@ const users = [{
 }];
 
 
-const _registerUserPromiseWrapper = ({ username, password }) => {
-	return new Promise((resolve, reject) => {
-		User.register(new User({
-			username: username,
-		}), password, (err, account) => {
-			if (err) reject(err);
-			if (account) resolve(account);
-		});
+const _registerUserPromiseWrapper = ({ username, password }) => new Promise((resolve, reject) => {
+	User.register(new User({
+		username: username,
+	}), password, (err, account) => {
+		if (err) reject(err);
+		if (account) resolve(account);
 	});
-};
+});
 
 const _insertData = async data => Promise.all(
 	data.map(async (item) => {

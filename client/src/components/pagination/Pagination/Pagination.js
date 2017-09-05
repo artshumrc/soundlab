@@ -6,7 +6,7 @@ import PaginationButton from '../PaginationButton';
 import './Pagination.css';
 
 const Pagination = ({ limit, total }) => {
-	const numPages = Math.ceil(total/limit);
+	const numPages = Math.ceil(total / limit);
 
 	if (numPages <= 1) {
 		return null;
@@ -22,10 +22,10 @@ const Pagination = ({ limit, total }) => {
 					prev
 				/>
 			: ''}
-			{_.range(1, numPages).map(page => {
+			{_.range(1, numPages).map((page) => {
 				let isActive = false;
 
-				if (activePage === page ) {
+				if (activePage === page) {
 					isActive = true;
 				}
 
@@ -44,7 +44,7 @@ const Pagination = ({ limit, total }) => {
 			: ''}
 		</div>
 	);
-}
+};
 
 
 export default Pagination;

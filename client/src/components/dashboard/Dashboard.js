@@ -1,6 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import {Image} from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
+import { Link } from 'react-router';
 import './Dashboard.css';
 
 import ListItem from './components/ListItem';
@@ -21,22 +22,23 @@ export default class Dashboard extends React.Component {
 	render() {
 		const sidebarClass = this.state.sidebarVisible ? 'sidebar' : 'sidebar sidebarWrapped';
 		const contentWrapperClass = this.state.sidebarVisible ? 'contentWrapper' : 'contentWrapper contentWrapperExpand';
-    const currentLocation = this.props.location.pathname;
+		const currentLocation = this.props.location.pathname;
 		return (
 			<div id="dashboard">
 				<div className={sidebarClass}>
-					<h3 className="invert">Orpheus</h3>
+
+					<Link to={'/'}>
+						<h3 className="invert">Orpheus</h3>
+					</Link>
 					<div className="sidebarMenu">
 						<ul>
-							<ListItem currentLocation={currentLocation} fa="file-text-o" name="Main Panel" url="/dashboard" />
-							<ListItem currentLocation={currentLocation} fa="file" name="Articles" url="/dashboard/articles" />
-							<ListItem currentLocation={currentLocation} fa="user" name="User Profile" url="/dashboard/user" />
-							<ListItem currentLocation={currentLocation} fa="window-maximize" name="Data Entry" url="/dashboard/data" />
 							<ListItem currentLocation={currentLocation} fa="folder-open-o" name="Projects" url="/dashboard/projects" />
+							<ListItem currentLocation={currentLocation} fa="file" name="Project Editor" url="/dashboard/projectEditor" />
+							<ListItem currentLocation={currentLocation} fa="file" name="Collection Editor" url="/dashboard/collectionEditor" />
+							<ListItem currentLocation={currentLocation} fa="file" name="Item Editor" url="/dashboard/itemEditor" />
+							<ListItem currentLocation={currentLocation} fa="user" name="User Profile" url="/dashboard/user" />
 							<ListItem currentLocation={currentLocation} fa="cog" name="Settings" url="/dashboard/settings" />
-							<ListItem currentLocation={currentLocation} fa="file" name="Example Forms" url="/dashboard/form" />
-              <ListItem currentLocation={currentLocation} fa="file" name="Item Editor" url="/dashboard/itemEditor" />
-            </ul>
+						</ul>
 					</div>
 				</div>
 				<div className={contentWrapperClass}>
@@ -72,7 +74,7 @@ export default class Dashboard extends React.Component {
 						</div>
 					</div>
 					<div className="dashboardContent">
-            {this.props.children}
+						{this.props.children}
 					</div>
 				</div>
 			</div>

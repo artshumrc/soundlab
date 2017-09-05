@@ -11,7 +11,7 @@ import './ItemDetail.css';
 
 const ItemDetail = props => (
 	<div className="itemDetail">
-		<div className='itemDetailColumn'>
+		<div className="itemDetailColumn">
 			<ItemImageViewer
 				title="Example Item"
 			/>
@@ -19,7 +19,7 @@ const ItemDetail = props => (
 			<ItemDescription />
 			<Tags
 				tags={[
-				'Example Tag', 'Manuscripts', 'Psalters', 'Illuminated Manuscripts',
+					'Example Tag', 'Manuscripts', 'Psalters', 'Illuminated Manuscripts',
 				]}
 			/>
 			<ItemMetaFields

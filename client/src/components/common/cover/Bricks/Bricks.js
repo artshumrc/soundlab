@@ -1,6 +1,6 @@
 import React from 'react';
-import Bricks from 'bricks.js'
-import _ from 'underscore'
+import Bricks from 'bricks.js';
+import _ from 'underscore';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as bricksActions from '../../../../actions/bricks';
@@ -10,7 +10,7 @@ import './Bricks.css';
 
 class _Bricks extends React.Component {
 
-	constructor(props){
+	constructor(props) {
 		super(props);
 		const windowWidth = window.innerWidth;
 		let nImages = 105;
@@ -51,9 +51,9 @@ class _Bricks extends React.Component {
 				{ mq: '1600px', columns: 17, gutter: 20 },
 			],
 			position: true,
-		})
-		this.instance.resize(true)
-		this.instance.pack()
+		});
+		this.instance.resize(true);
+		this.instance.pack();
 	}
 
 
@@ -71,12 +71,12 @@ class _Bricks extends React.Component {
 
 	handleAllImagesLoaded() {
 		this.props.actions.imagesLoaded();
-		setTimeout(() => { this.instance.pack() }, 100);
+		setTimeout(() => { this.instance.pack(); }, 100);
 	}
 
 	makeDefaultBricks() {
 		const imagesUpperRange = 106;
-		let images = _.shuffle(_.range(1, imagesUpperRange));
+		const images = _.shuffle(_.range(1, imagesUpperRange));
 		images.splice(this.nImages + 1, imagesUpperRange - this.nImages);
 
 
@@ -88,7 +88,7 @@ class _Bricks extends React.Component {
 				src={`//iiif.orphe.us/orpheus/art/${image}.jpg/full/90,/0/default.jpg`}
 				onLoad={this.handleImageLoad.bind(this)}
 			/>
-		))
+		));
 	}
 
 	render() {
@@ -108,20 +108,16 @@ class _Bricks extends React.Component {
 					{bricks}
 				</div>
 			</div>
-		)
+		);
 	}
 }
 
-const mapStateToProps = (state, props) => {
-	return {
-		loaded: state.bricks.loaded,
-	};
-}
+const mapStateToProps = (state, props) => ({
+	loaded: state.bricks.loaded,
+});
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		actions: bindActionCreators(bricksActions, dispatch),
-	};
-}
+const mapDispatchToProps = dispatch => ({
+	actions: bindActionCreators(bricksActions, dispatch),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(_Bricks);

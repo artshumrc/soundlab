@@ -13,7 +13,7 @@ import './ItemEditor.css';
 class _ItemEditor extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log('props', props)
+		console.log('props', props);
     // this.state = {
     //   files: [{title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '48.jpg'},
     //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '16.jpg'},
@@ -71,11 +71,11 @@ class _ItemEditor extends React.Component {
 							name="files"
 							component={files => (files.input.value[0] && files.input.value[0].path ?
 								this.isImage(files.input.value[0].type) ?
-								<PrimaryImage
-									alt={files.input.value[0].name}
-									src={`//iiif.orphe.us/${files.input.value[0].name}/full/600,/0/default.jpg`}
-								/> :
-								<PrimaryFile file={files.input.value[0]} /> : null)}
+									<PrimaryImage
+										alt={files.input.value[0].name}
+										src={`//iiif.orphe.us/${files.input.value[0].name}/full/600,/0/default.jpg`}
+									/> :
+									<PrimaryFile file={files.input.value[0]} /> : null)}
 						/>
 						<FieldArray
 							name="files"

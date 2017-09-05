@@ -36,7 +36,7 @@ export default class Articles extends React.Component {
 							<div className="sectionTitle">Text inputs</div>
 							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" {...meta} />
 							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" {...meta} />
-							<TextInput changeCb={this.handleFormChange} placeholder="Error"  {...metaError} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Error" {...metaError} />
 							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid {...meta} />
 							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled {...meta} />
 						</Col>
@@ -44,7 +44,7 @@ export default class Articles extends React.Component {
 							<div className="sectionTitle">With icon</div>
 							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" icon="calendar" {...meta} />
 							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" icon="user-o" {...meta} />
-							<TextInput changeCb={this.handleFormChange} placeholder="Error"  icon="calendar" {...metaError} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Error" icon="calendar" {...metaError} />
 							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid icon="user-o" {...meta} />
 							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled icon="calendar" {...meta} />
 						</Col>
@@ -53,7 +53,7 @@ export default class Articles extends React.Component {
 
 							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" iconRight="calendar" {...meta} />
 							<TextInput changeCb={this.handleFormChange} placeholder="Placeholder" value="value" iconRight="user-o" {...meta} />
-							<TextInput changeCb={this.handleFormChange} placeholder="Error"  iconRight="calendar" {...metaError} />
+							<TextInput changeCb={this.handleFormChange} placeholder="Error" iconRight="calendar" {...metaError} />
 							<TextInput changeCb={this.handleFormChange} placeholder="Success" valid iconRight="user-o" {...meta} />
 							<TextInput changeCb={this.handleFormChange} placeholder="Disabled" disabled iconRight="calendar" {...meta} />
 

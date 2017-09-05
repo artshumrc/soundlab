@@ -5,7 +5,7 @@ import './ItemsList.css';
 
 import ItemListItem from '../ItemListItem';
 
-const ItemsList = props => {
+const ItemsList = (props) => {
 	const listItems = [];
 	const classes = [];
 	const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
@@ -19,12 +19,12 @@ const ItemsList = props => {
 			title: 'Example Item',
 			tags: ['Photography', 'Bauhaus', 'De Stijl'],
 			slug: 'example-item',
-		})
+		});
 	});
 
 
 	if (props.horizontal) {
-		classes.push('itemsListHorizontal')
+		classes.push('itemsListHorizontal');
 	}
 
 	return (
@@ -37,7 +37,7 @@ const ItemsList = props => {
 			))}
 		</div>
 	);
-}
+};
 
 
 export default ItemsList;

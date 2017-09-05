@@ -10,12 +10,12 @@ class PaginationButton extends React.Component {
 		const { prev, next, page } = this.props;
 
 		if (prev) {
-			return <PaginationPrev />
+			return <PaginationPrev />;
 		} else if (next) {
-			return <PaginationNext />
+			return <PaginationNext />;
 		}
 
-		return <PaginationPage page={page} />
+		return <PaginationPage page={page} />;
 	}
 
 

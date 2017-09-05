@@ -70,6 +70,9 @@
         "extensions": [".js", ".jsx"],
         "moduleDirectory": ["node_modules", "./client/src"]
       }
+		},
+		"flowtype": {
+      "onlyFilesWithFlowAnnotation": true
     }
   }
 }

@@ -25,6 +25,6 @@ export const removeLocalStorageItem = (key) => {
 
 export const setCookie = () => {
 
-}
+};
 
 // export const removeCookie

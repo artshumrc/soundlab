@@ -13,23 +13,21 @@ export default class PricingSection extends React.Component {
 					<Row>
 						<Col lg={4}>
 							<Panel header="Standard" bsStyle="primary" className="simple">
-                <span className="price">Free</span>
-                <hr />
-                <ul>
-                </ul>
-                <Button bsStyle="primary"></Button>
-              </Panel>
+								<span className="price">Free</span>
+								<hr />
+								<ul />
+								<Button bsStyle="primary" />
+							</Panel>
 						</Col>
-            <Col lg={4}>
-              <Panel header="Standard" bsStyle="primary" className="ultimate">
-                <span className="price">Contact Us</span>
-                <div>University Data Services</div>
-                <hr />
-                <ul>
-                </ul>
-                <Button bsStyle="primary">Get started now</Button>
-              </Panel>
-            </Col>
+						<Col lg={4}>
+							<Panel header="Standard" bsStyle="primary" className="ultimate">
+								<span className="price">Contact Us</span>
+								<div>University Data Services</div>
+								<hr />
+								<ul />
+								<Button bsStyle="primary">Get started now</Button>
+							</Panel>
+						</Col>
 					</Row>
 				</Grid>
 			</section>

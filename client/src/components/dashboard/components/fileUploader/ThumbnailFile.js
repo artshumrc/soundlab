@@ -90,9 +90,9 @@ export default class ThumbnailFile extends React.Component {
 			alt={this.props.file.title}
 			src={`//iiif.orphe.us/${this.props.file.name}/square/90,/0/default.jpg`}
 			onClick={this.toggleTitleInput}
-    /></div>) : <div className="fileThumbnail"><div className="fileIcon"><FontAwesome name="file-pdf-o" /></div></div>;
+		/></div>) : <div className="fileThumbnail"><div className="fileIcon"><FontAwesome name="file-pdf-o" /></div></div>;
 
-    //add more conditions if needed
+    // add more conditions if needed
 
 		return (
 			<div className="singleImage">

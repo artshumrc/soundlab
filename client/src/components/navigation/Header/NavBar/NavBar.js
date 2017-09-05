@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Headroom from 'react-headroom';
+import { Link } from 'react-router';
 import './NavBar.css';
 import scrollToElement from '../../../../lib/scrollToElement';
 
@@ -13,38 +15,56 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 		</div>
 		<ul className="nav">
 			<li>
-				<a href="#services" onClick={scrollToElement} >
+				<Link to={'/services'}>
 					Services
-				</a>
+				</Link>
 			</li>
 			<li>
-				<a href="/community" >
+				<Link to={'/community'}>
 					Community
-				</a>
+				</Link>
 			</li>
 			<li>
-				<a href="#about" onClick={scrollToElement} >
+				<Link to={'/about'}>
 					About
-				</a>
+				</Link>
 			</li>
 			<li>
-				{userId ? 
+				<Link to={'/project'}>
+					Projects
+				</Link>
+			</li>
+			<li>
+				{ userId ? 
+					<Link to={'/dashboard'}>
+						Dashboard
+					</Link>
+					:
+					''
+				}
+			</li>
+			<li>
+				{userId ?
 					<a href="" className="login-button" onClick={logout}>
 						LogOot
 					</a>
 					:
-					<a href="" className="login-button" onClick={toggleAuthModal}>
-						Sign Up / In
-					</a>
+					<a href="" className="login-button" onClick={toggleAuthModal} />
 				}
 			</li>
 			<li>
-				<a href="/search">
+				<Link to={'/search'}>
 					<i className="mdi mdi-magnify search-icon" />
-				</a>
+				</Link>
 			</li>
 		</ul>
 	</Headroom>
 );
+
+NavBar.propTypes = {
+	toggleAuthModal: PropTypes.func.isRequired,
+	userId: PropTypes.string.isRequired,
+	logout: PropTypes.func.isRequired
+};
 
 export default NavBar;

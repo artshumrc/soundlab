@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import Tags from '../../tags/Tags';
 import './ItemListItem.css';
 
-const ItemListItem = props => {
+const ItemListItem = (props) => {
 	const itemUrl = `/items/${props.slug}`;
 
 	return (
@@ -21,6 +21,6 @@ const ItemListItem = props => {
 			</p>
 		</div>
 	);
-}
+};
 
 export default ItemListItem;

@@ -11,7 +11,7 @@ const CollectionAbout = props => (
 			apibus quanta experientia parcis hinc canere incipiam
 		</p>
 		<Button
-			href={`/articles/example-article`}
+			href={'/articles/example-article'}
 			light
 			outline
 		>
