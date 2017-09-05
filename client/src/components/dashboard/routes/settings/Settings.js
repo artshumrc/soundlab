@@ -5,6 +5,8 @@ import Textarea from 'react-textarea-autosize';
 import { gql, graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 
+import './Settings.css';
+
 import Form from '../../components/Form';
 import TagEditor from '../itemEditor/TagEditor';
 import MetaEditor from '../itemEditor/MetaEditor';
