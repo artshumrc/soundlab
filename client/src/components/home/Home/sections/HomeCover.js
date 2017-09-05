@@ -26,18 +26,19 @@ class HomeCover extends React.Component {
 					<p className="lead">Create and share digital collections across platforms when, where, and how you want</p>
 					<div>
 						<Button
+							href="#getStarted"
+							onClick={Util.scrollToElement}
+							dark
+						>
+							Get Started
+						</Button>
+						<Button
 							href="#learn"
 							onClick={Util.scrollToElement}
 							transparentLight
+							outline
 						>
 							Learn More
-						</Button>
-						<Button
-							href="#getStarted"
-							onClick={Util.scrollToElement}
-							primary
-						>
-							Get Started
 						</Button>
 					</div>
 				</div>

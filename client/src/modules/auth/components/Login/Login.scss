@@ -1,9 +1,31 @@
 @import '../../../../variables.scss';
 
+.at-form {
+	h3 {
+		padding: 10px 0 20px;
+	}
+}
+
 .at-sep {
 	font-size: 14px;
 	margin: 15px auto;
 	font-family: $font-label;
 	font-weight: 100;
 	color: $text-primary;
+}
+
+#at-forgotPwd {
+	text-align: left;
+	font-size: 16px;
+	padding: 2px 0 14px;
+	display: block;
+}
+
+#at-signUp, #at-resend-verification-email {
+	padding: 0 4px;
+
+}
+
+.at-signup-link, .at-resend-verification-email-link {
+	font-size: 16px;
 }

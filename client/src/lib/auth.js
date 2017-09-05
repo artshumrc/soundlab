@@ -1,5 +1,6 @@
 import { setLocalStorageItem, removeLocalStorageItem, getLocalStorageItem } from './storage';
 
+
 const userLoggedIn = () => {
 	const token = getLocalStorageItem('token');
 
@@ -7,7 +8,7 @@ const userLoggedIn = () => {
 	return false;
 };
 
-const login = async (username, password) => {
+const login = async (data) => {
 	if (userLoggedIn()) return null;
 
 	try {
@@ -19,8 +20,7 @@ const login = async (username, password) => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username,
-				password,
+				...data
 			})
 		});
 		if (!res.ok) {
@@ -36,9 +36,12 @@ const login = async (username, password) => {
 	}
 };
 
-const logout = async () => removeLocalStorageItem('token');
+const logout = async () => {
+	removeLocalStorageItem('token');
+	removeLocalStorageItem('hello');
+};
 
-const register = async (username, password) => {
+const register = async (data) => {
 	if (userLoggedIn()) return null;
 
 	try {
@@ -50,8 +53,7 @@ const register = async (username, password) => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username,
-				password,
+				...data
 			})
 		});
 		if (!res.ok) {

@@ -3,7 +3,7 @@
 .navbar {
 	width: 100%;
 
-	.nav-navbar, .nav {
+	.nav-header, .nav {
 		display: inline-block;
 		vertical-align: top;
 	}
@@ -41,18 +41,6 @@
   transform: translateY(0%);
 }
 
-.nav-navbar {
-
-}
-
-.site-title {
-	font-family: $font-logo;
-	padding: 10px 15px;
-	line-height: 1.2em;
-	margin: 0;
-	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6);
-}
-
 .nav {
 	li {
 		display: inline-block;
@@ -62,18 +50,27 @@
 		a {
 			padding: 15px 20px;
 			font-weight: bold;
-			background: rgba(255, 255, 255, 0.4);
 			text-transform: uppercase;
-
-			&.login-button  {
-				background: $primary;
-				color: $light;
-			}
+			cursor: pointer;
+			border: 2px solid transparent;
+			@include transition(all 100ms linear);
 
 			&:hover {
-				background: #eee;
-
+				background: rgba(255, 255, 255, 0.9);
+				color: $dark;
 			}
+
+			&.login-button  {
+				background: $dark;
+				border: 2px solid $dark;
+				color: $light;
+
+				&:hover {
+					background: $primary;
+					border: 2px solid $primary;
+				}
+			}
+
 		}
 
 	}

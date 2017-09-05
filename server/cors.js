@@ -25,6 +25,7 @@ export default function corsSetup(app, redisClient) {
 
 	if (process.env.NODE_ENV === 'development') {
 		whitelist.push(process.env.CLIENT_SERVER);
+		whitelist.push('http://orpheus.dev.michalpierzchlewicz.pl');
 	}
 
 	// Check if tenant is white listed or in a database

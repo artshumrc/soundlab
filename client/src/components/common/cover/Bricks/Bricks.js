@@ -85,7 +85,7 @@ class _Bricks extends React.Component {
 				alt={image}
 				key={`${image}-${i}`}
 				className="brick"
-				src={`//iiif.orphe.us/orpheus/art/${image}.jpg/full/90,/0/default.jpg`}
+				src={`//iiif.orphe.us/orpheus/art/${image}.jpg/full/210,/0/default.jpg`}
 				onLoad={this.handleImageLoad.bind(this)}
 			/>
 		));
@@ -97,9 +97,6 @@ class _Bricks extends React.Component {
 
 		if (!bricks) {
 			bricks = this.makeDefaultBricks();
-		}
-
-		if (loaded) {
 		}
 
 		return (

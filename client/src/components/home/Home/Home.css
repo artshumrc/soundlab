@@ -116,28 +116,28 @@ font-family: "Material Design Icons";
  @https://github.com/Upstatement/ups-mixin-lib
 
 ******************************************************************************/
-#home h1 {
-  font-size: 50px;
-  letter-spacing: 2px; }
-
-#home p {
-  font-weight: 300;
-  font-size: 15px; }
-
-#home .home-cover-content {
-  margin: 0 auto;
-  display: inline-block;
-  display: block;
-  max-width: 90%;
-  width: 720px;
-  padding-bottom: 90px; }
-  #home .home-cover-content h1 {
-    color: #222;
-    padding: 20px 0;
-    text-shadow: 0px 0px 20px #fff; }
-  #home .home-cover-content .lead {
-    color: #222;
-    padding: 20px 0 40px;
-    text-transform: uppercase;
-    text-shadow: 0px 0px 20px #fff;
-    font-size: 20px; }
+#home {
+  text-align: center; }
+  #home h1 {
+    font-size: 50px;
+    letter-spacing: 2px; }
+  #home p {
+    font-weight: 300;
+    font-size: 15px; }
+  #home .home-cover-content {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 90%; }
+    #home .home-cover-content h1 {
+      display: block;
+      color: #222;
+      padding: 0 0 20px;
+      text-shadow: 2px 2px 0px #fff; }
+    #home .home-cover-content .lead {
+      display: block;
+      color: #222;
+      padding: 20px 0 40px;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 6px #fff;
+      font-size: 20px;
+      line-height: 1.7em; }

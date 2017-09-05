@@ -38,7 +38,7 @@
 .brick {
 	border: 6px solid transparent;
 	outline: 1px solid transparent;
-	opacity: 0.3;
+	opacity: 0.1;
 	@include transition(all 100ms linear);
 
 	&:hover {
