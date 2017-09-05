@@ -1,9 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import hello from 'hellojs';
 
 import OAuthButtons from '../OAuthButtons';
 import PWDLoginForm from '../PWDLoginForm';
 import './Login.css';
+
+hello.init({
+	facebook: process.env.REACT_APP_FACBOOK_CLIENT_ID,
+	twitter: process.env.REACT_APP_TWITTER_CLIENT_ID,
+	google: process.env.REACT_APP_GOOGLE_CLIENT_ID
+}, {
+	// redirect_uri: '/',
+	oauth_proxy: `${process.env.REACT_APP_SERVER}/oauthproxy`,
+});
+
+
 
 class Login extends React.Component {
 
@@ -29,9 +41,7 @@ class Login extends React.Component {
 				</span>
 
 				<OAuthButtons
-					handleFacebook={this.handleLoginFacebook}
-					handleGoogle={this.handleLoginGoogle}
-					handleTwitter={this.handleLoginTwitter}
+					login={login}
 				/>
 
 				<div className="at-sep">
@@ -39,7 +49,7 @@ class Login extends React.Component {
 				</div>
 
 				<PWDLoginForm
-					loginMethod={loginMethod}
+					login={login}
 				/>
 
 				<div className="at-signup-link">

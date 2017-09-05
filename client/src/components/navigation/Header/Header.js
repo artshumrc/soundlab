@@ -34,10 +34,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	toggleAuthModal: () => {
+	toggleAuthModal: (e) => {
+		e.preventDefault();
 		dispatch(authActions.toggleAuthModal());
 	},
-	logout: () => {
+	logout: (e) => {
+		e.preventDefault();
 		dispatch(authActions.toggleAuthModal());
 		dispatch(authActions.changeAuthMode('logout'));
 	}

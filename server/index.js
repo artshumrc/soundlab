@@ -31,9 +31,16 @@ import s3Setup from './s3';
 // Redis
 import redisSetup from './redis';
 
+// OAuth setup
+import oauthSetup from './oauth';
+
+// email
+import OrpheusEmail from './email';
+
 // Routes
-import authenticationRouter from './routes/authentication';
+import authenticationRouter from './routes/auth';
 import manifestRouter from './routes/manifest';
+
 
 // environment variables setup
 dotenvSetup();
@@ -75,10 +82,15 @@ setupGraphql(app);
 // S3 setup
 s3Setup(app);
 
+// OAuth setup
+oauthSetup(app);
+
+// Email setup
+OrpheusEmail.setupTransport();
+
 // Routes
 app.use('/auth', authenticationRouter);
 app.use('/', manifestRouter);
-
 
 function listen() {
 	app.listen(app.get('port'), () => {

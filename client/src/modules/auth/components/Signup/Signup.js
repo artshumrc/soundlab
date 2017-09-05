@@ -28,16 +28,16 @@ class Signup extends React.Component {
 					{errorSocial}
 				</span>
 				<OAuthButtons
-					handleFacebook={this.handleSignupFacebook}
-					handleGoogle={this.handleSignupGoogle}
-					handleTwitter={this.handleSignupTwitter}
+					login={signup}
+					register
 				/>
+
 				<div className="at-sep">
 					<strong>OR</strong>
 				</div>
 
 				<PWDSignupForm
-					signupMethod={signupMethod}
+					signup={signup}
 				/>
 
 				<div className="at-signup-link">
