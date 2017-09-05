@@ -1,30 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Project = ({ title, description, createdAt }) => (
-	<div>
-		<div>
-			<h2>{{ title }}</h2>
-		</div>
-		<div>
-			<h3>{{ description }}</h3>
-		</div>
-		<div>
-			<h4>{{ createdAt }}</h4>
-		</div>
-	</div>
-);
+import './Project.css';
 
-Project.propTypes = {
-	title: PropTypes.string.isRequired,
-	description: PropTypes.string,
-	createdAt: PropTypes.string.isRequired
-};
-
-Project.defaultProps = {
-	description: '',
-	title: '',
-	createdAt: ''
-};
-
+class Project extends React.Component {
+	render() {
+		const { projectData } = this.props;
+		return (
+			<div className="project">
+				<h1>
+					{projectData.title}
+				</h1>
+				<h2>
+					{projectData.description}
+				</h2>
+				<h3>
+					{projectData.createdAt}
+				</h3>
+			</div>
+		);
+	}
+}
 export default Project;
