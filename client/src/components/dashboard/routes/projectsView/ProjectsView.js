@@ -12,7 +12,7 @@ const ProjectsView = ({ data }) => (
 			<span className="title">My Projects</span>
 		</div>
 		<div>
-			{ data.projects ?
+			{ data.userProjects ?
 				<p>you have projects!</p>
 				:
 				<div>
@@ -33,8 +33,15 @@ ProjectsView.defaultProps = {
 	data: {}
 };
 
-// const currentUser = gql`
+const userProjects = gql`
+query {
+  userProjects(userId: "59a86618a93a2c37840d4b38") {
+    title,
+    description,
+    createdAt
+  }
+}
+`;
 
-// `
 
-export default ProjectsView;
+export default graphql(userProjects)(ProjectsView);
