@@ -8,6 +8,7 @@ import FeaturesSection from './sections/FeaturesSection';
 import LifetimeData from './sections/LifetimeData';
 import PermissionsSection from './sections/PermissionsSection';
 import ExploreOrDemo from './sections/ExploreOrDemo';
+import ReadyToStart from './sections/ReadyToStart';
 
 class Home extends React.Component {
 	render() {
@@ -20,6 +21,7 @@ class Home extends React.Component {
 				<LifetimeData />
 				<PermissionsSection />
 				<ExploreOrDemo />
+				<ReadyToStart />
 				<Footer />
 			</div>
 		);

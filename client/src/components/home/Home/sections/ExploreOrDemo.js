@@ -4,7 +4,7 @@ import {Grid, Row, Col} from 'react-bootstrap';
 import './ExploreOrDemo.css';
 
 const ExploreOrDemo = props => (
-	<div className="exploreOrDemo">
+	<section className="exploreOrDemo">
 		<Grid>
 			<Row>
 				<Col md={6}>
@@ -49,7 +49,7 @@ const ExploreOrDemo = props => (
 				</Col>
 			</Row>
 		</Grid>
-	</div>
+	</section>
 );
 
 export default ExploreOrDemo;

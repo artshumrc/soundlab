@@ -1,14 +1,14 @@
 import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import './PermissionsSection.css';
 
 export default class PermissionsSection extends React.Component {
 	render() {
 		return (
-			<section id="permissions" className="text-center">
+			<section id="permissions">
 				<Grid>
 					<Row>
-						<Col md={3}>
+						<Col md={4}>
 							<div className="permissionsHeader">
 								<h3>To share or not to share</h3>
 								<p>
@@ -16,7 +16,7 @@ export default class PermissionsSection extends React.Component {
 								</p>
 							</div>
 						</Col>
-						<Col md={9}>
+						<Col md={8}>
 							<Row>
 								<Col lg={6}>
 									<div className="permissionsInfoBlock">

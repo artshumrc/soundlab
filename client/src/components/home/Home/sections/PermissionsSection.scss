@@ -1,13 +1,17 @@
 @import '../../../../variables.scss';
 
+#permissions {
+	min-height: 350px;
+}
+
 .permissionsHeader, .permissionsInfoBlock {
 	text-align: left;
 	vertical-align: top;
 }
 
 .permissionsHeader {
-	border: 1px solid $dark;
-	padding: 15px 30px;
+	border: 2px solid $dark;
+	padding: 30px;
 
 	h3 {
 		font-size: 24px;
