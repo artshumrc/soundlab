@@ -1,4 +1,4 @@
-@import '../../../variables.scss';
+@import '../../../../variables.scss';
 
 .thumbnailImage {
 	margin: 0px 4px;
@@ -6,7 +6,7 @@
 	outline: 2px solid transparent;
 	cursor: pointer;
 	@include transition(all 100ms ease-in-out);
-	
+
 	&:hover {
 		outline: 2px solid $dark;
 	}
