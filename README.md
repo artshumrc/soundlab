@@ -119,7 +119,7 @@ JSON Web Tokens (JWT):
 
 3. When using the `fetch` method in the client app, remember to set `authorization' header to the token value`. Otherwise the request will not be authenticated.
 
-4. `apollo-client` has a middleware attached to the `networkInterface`, which reads the token value from the `localStorage`.
+4. `apollo-client` has a middleware attached to the `networkInterface`, which reads the token value from the a cookie set with `react-cookie`.
 
 ### Auth on Client
 
@@ -127,15 +127,15 @@ JSON Web Tokens (JWT):
 
 **1. login**
 
-	Runs fetch method to the login route and on success sets `token` value in `localStorage`.
+	Runs fetch method to the login route and on success sets `token` value in a cookie.
 
 **2. logout**
 
-	Deletes `token` value in `localStorage`.
+	Deletes `token` cookie.
 
 **3. register**
 
-	Runs fetch method to the register route and on success sets `token` value in `localStorage`.
+	Runs fetch method to the register route and on success sets `token` value in a cookie.
 
 #### Auth redux:
 
@@ -143,7 +143,7 @@ There is a `AuthModal` component placed in the `Root` component, which handles a
 
 **Q: Where is user data stored in Redx Store?**
 
-A: `userId` and `username` are stored in `store.auth`. 
+A: `userId` and `username` are stored in `store.auth`.
 
 
 ## Environment variables

@@ -10,13 +10,12 @@ class OrpheusEmailClass {
 	}
 
 	setupTransport() {
-
 		this.from = process.env.EMAIL_FROM;
 
 		const smtpConfig = {
 			host: process.env.EMAIL_SMTP_HOST,
 			port: process.env.EMAIL_SMTP_PORT,
-			secure: false,
+			secure: process.env.EMAIL_SMTP_SECURE,
 			auth: {
 				user: process.env.EMAIL_SMTP_USER,
 				pass: process.env.EMAIL_SMTP_PASSWORD
@@ -53,20 +52,17 @@ class OrpheusEmailClass {
 			text: 'results.text',
 		};
 
+		/*
 		transporter.sendMail(email, (error, info) => {
 			console.log('error', error);
 			console.log('info', info);
-
-			// Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@blurdybloop.com>
-			// Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 		});
+		*/
 
 	}
 
 	sendVerificationEmail(username) {
-
 		const templateDir = path.resolve(__dirname, 'templates', 'emailVerification');
-
 		const template = new EmailTemplate(templateDir);
 
 		template.render({})
@@ -78,12 +74,9 @@ class OrpheusEmailClass {
 					// html: results.html,
 					text: results.text,
 				};
-
 				console.log('email', email);
-
 				this.transporter.sendMail(email);
 			});
-
 	}
 }
 

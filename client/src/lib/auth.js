@@ -1,8 +1,10 @@
-import { setLocalStorageItem, removeLocalStorageItem, getLocalStorageItem } from './storage';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 
 const userLoggedIn = () => {
-	const token = getLocalStorageItem('token');
+	const token = cookies.get('token');
 
 	if (token) return true;
 	return false;
@@ -28,7 +30,7 @@ const login = async (data) => {
 		}
 		const resJson = await res.json();
 		if (resJson.token) {
-			setLocalStorageItem('token', resJson.token);
+			cookies.set('token', resJson.token);
 			return resJson;
 		}
 	} catch (err) {
@@ -37,8 +39,8 @@ const login = async (data) => {
 };
 
 const logout = async () => {
-	removeLocalStorageItem('token');
-	removeLocalStorageItem('hello');
+	cookies.remove('token');
+	cookies.remove('hello');
 };
 
 const register = async (data) => {
@@ -61,7 +63,8 @@ const register = async (data) => {
 		}
 		const resJson = await res.json();
 		if (resJson.token) {
-			setLocalStorageItem('token', resJson.token);
+			// TODO: Add domain: 'orphe.us' options to cookie for cross subdomain auth
+			cookies.set('token', resJson.token);
 			return resJson;
 		}
 		if (resJson.passwordStrength) {
@@ -76,7 +79,7 @@ const register = async (data) => {
 };
 
 const verifyToken = async () => {
-	const token = getLocalStorageItem('token');
+	const token = cookies.get('token');
 	if (token) {
 		try {
 			const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_VERIFY_TOKEN_URI}`, {

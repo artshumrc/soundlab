@@ -3,7 +3,7 @@ import {Field, FieldArray} from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import { gql, graphql } from 'react-apollo';
 import ItemEditorUploader from '../../components/fileUploader/ItemEditorUploader';
-import PrimaryImage from '../../../items/ItemImageViewer/PrimaryImage';
+import PrimaryImage from '../../../../modules/items/components/ItemImageViewer/PrimaryImage';
 import PrimaryFile from './PrimaryFile';
 import Form from '../../components/Form';
 import TagEditor from './TagEditor';

@@ -38,7 +38,6 @@ export const pubsub = new RedisPubSub({
 });
 
 const getGraphQLContext = req => {
-	console.log(req);
 	return ({
 		user: req.user,
 		tenant: req.tenant,

@@ -8,20 +8,17 @@ import NavBar from './NavBar';
 // actions
 import { authActions } from '../../../modules/auth';
 
-const _Header = ({ toggleAuthModal, logout, userId }) => (
+const _Header = ({ toggleAuthModal, userId }) => (
 	<div>
 		<NavBar
 			toggleAuthModal={toggleAuthModal}
 			userId={userId}
-			logout={logout}
 		/>
 	</div>
 );
 
 _Header.propTypes = {
 	toggleAuthModal: PropTypes.func.isRequired,
-	logout: PropTypes.func.isRequired,
-
 	userId: PropTypes.string,
 };
 
@@ -38,11 +35,6 @@ const mapDispatchToProps = dispatch => ({
 		e.preventDefault();
 		dispatch(authActions.toggleAuthModal());
 	},
-	logout: (e) => {
-		e.preventDefault();
-		dispatch(authActions.toggleAuthModal());
-		dispatch(authActions.changeAuthMode('logout'));
-	}
 });
 
 export default connect(

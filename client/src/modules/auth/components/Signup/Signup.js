@@ -9,11 +9,11 @@ class Signup extends React.Component {
 
 	static propTypes = {
 		onSigninClick: PropTypes.func.isRequired,
-		signupMethod: PropTypes.func.isRequired,
+		signup: PropTypes.func.isRequired,
 	}
 
 	render() {
-		const { signup, signupMethod, onSigninClick } = this.props;
+		const { signup, onSigninClick } = this.props;
 
 		return (
 			<div className="at-form">

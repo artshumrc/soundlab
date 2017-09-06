@@ -1,0 +1,31 @@
+@import '../../../../variables.scss';
+
+.itemListItem {
+	display: inline-block;
+	position: relative;
+	text-align: left;
+	vertical-align: top;
+	margin: 25px 5%;
+	width: 90%;
+	max-width: 280px;
+
+
+	img {
+		@include transition(all 100ms ease-in-out);
+		width: 110%;
+		margin-left: -10px;
+		border: 10px solid transparent;
+		outline: 2px solid transparent;
+		cursor:pointer;
+
+		&:hover {
+			outline: 2px solid $grey;
+		}
+	}
+
+	h3 {
+		font-family: $font-title-variant;
+		color: $text-primary;
+		cursor:pointer;
+	}
+}

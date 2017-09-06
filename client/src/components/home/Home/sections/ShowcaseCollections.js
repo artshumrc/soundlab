@@ -1,5 +1,5 @@
 import React from 'react';
-import CollectionListItem from '../../../collections/CollectionListItem';
+import CollectionListItem from '../../../../modules/collections/components/CollectionListItem';
 import _ from 'underscore';
 import './ShowcaseCollections.css';
 
