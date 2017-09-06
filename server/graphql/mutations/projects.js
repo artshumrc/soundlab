@@ -36,14 +36,23 @@ const projectMutationFileds = {
 			// Initiate new project
 			const NewProject = new Project(project);
 
+			// project user
+			const projectUser = {
+				_id: user._id,
+				role: 'owner',
+				username: user.username
+			};
+
+			NewProject.users.push(projectUser);
+
 			// Validte permissions
 			// check user permissions
-			try {
-				const userIsOwner = await NewItem.validateUser(user._id);
-				// if (!userIsOwner) throw new PermissionError();
-			} catch (err) {
-				// throw new PermissionError();
-			}
+			// try {
+			// 	const userIsOwner = await NewItem.validateUser(user._id);
+			// 	if (!userIsOwner) throw new PermissionError();
+			// } catch (err) {
+			// 	throw new PermissionError();
+			// }
 
 			return NewProject.save();
 		}
