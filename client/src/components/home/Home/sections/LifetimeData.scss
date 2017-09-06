@@ -41,10 +41,10 @@
 	cursor: pointer;
 	padding: 60px 30px;
 	min-height: 320px;
-	@include transition(all 100ms ease-in-out);
+	@include transition(all 300ms ease-in-out);
 
 	&.lifetimeDataStepActive {
-		background: rgba(255, 255, 255, 0.05);
+		background: rgba(255, 255, 255, 0.02);
 		opacity: 1;
 
 		.lifetimeDataMarker {
