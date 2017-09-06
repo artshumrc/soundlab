@@ -74,7 +74,7 @@ ProjectsView.defaultProps = {
 
 const userProjects = gql`
 query {
-  userProjects(userId: "59a86618a93a2c37840d4b38") {
+  userProjects {
     title,
     description,
     createdAt

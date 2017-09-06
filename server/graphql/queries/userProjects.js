@@ -12,19 +12,15 @@ const userProjectsQueryFields = {
 	userProjects: {
 		type: ProjectType,
 		description: 'Get projects associated with user',
-		args: {
-			userId: {
-				type: new GraphQLNonNull(GraphQLID),
-			},
-		},
-		resolve(tenant, { userId }, context) {
+		resolve(parent, { user, tenant }) {
+			console.log('user: ', user);
 			return Project.findOne(
 				{ users: 
-					{ $elemMatch: { userId: userId } } 
+					{ $elemMatch: { userId: user._id } } 
 				}
 			);
 		}
-	},
+	}
 };
 
 export default userProjectsQueryFields;
