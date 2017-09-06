@@ -44,14 +44,16 @@ class RecentUploadItem extends Component{
           <div styleName="thumbnail-container">
             <div style={thumbnailListImage}></div>
           </div>
-        </Link>
 
-        <div>
-          <span>{title}</span>
-        </div>
-        <div>
-          <span>{this.props.post.byline.meta_value}</span>
-        </div>
+          <div styleName="recent-track-meta-container">
+            <div>
+              <span styleName="recent-track-title">{title}</span>
+            </div>
+            <div>
+              <span styleName="recent-track-author">{this.props.post.byline.meta_value}</span>
+            </div>
+          </div>
+        </Link>
       </div>
 
     )
