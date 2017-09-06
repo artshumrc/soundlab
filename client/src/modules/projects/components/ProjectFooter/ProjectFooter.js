@@ -9,12 +9,15 @@ import {
   Nav
 } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
-import './Footer.css';
+
+import '../../../../components/navigation/Footer/Footer.css';
+import './ProjectFooter.css';
 
 export default class Footer extends React.Component {
 	render() {
 		const now = new Date();
 		const year = now.getFullYear();
+
 		return (
 			<section id="footer">
 				<div className="footerContent">

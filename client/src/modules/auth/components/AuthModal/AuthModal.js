@@ -21,12 +21,10 @@ class _AuthModal extends React.Component {
 	static propTypes = {
 		dispatchLogin: PropTypes.func.isRequired,
 		dispatchSignup: PropTypes.func.isRequired,
-
-		showAuthModal: PropTypes.bool,
-		authMode: PropTypes.string,
 		dispatchToggleAuthModal: PropTypes.func.isRequired,
 		dispachChangeAuthMode: PropTypes.func.isRequired,
-		dispatchLogout: PropTypes.func.isRequired,
+		showAuthModal: PropTypes.bool,
+		authMode: PropTypes.string,
 	};
 
 	static defaultProps = {
@@ -58,20 +56,22 @@ class _AuthModal extends React.Component {
 	}
 
 	async _initiateUser() {
-		const { getUserFromServer, dispachSetUser, dispatchLogout } = this.props;
+		const { getUserFromServer, dispachSetUser } = this.props;
 		if (getUserFromServer) {
 			try {
 				const user = await getUserFromServer();
 				user.userId = user._id;
 				dispachSetUser(user);
 			} catch (err) {
-				dispatchLogout();
+				console.log(err);
+				// TODO: Determine why dispatchLogout always called on page load
+				// dispatchLogout();
 			}
 		}
 	}
 
 	render() {
-		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, dispatchLogin, dispatchLogout, dispatchSignup } = this.props;
+		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, dispatchLogin, dispatchSignup } = this.props;
 
 		return (
 			<Modal
@@ -85,17 +85,10 @@ class _AuthModal extends React.Component {
 							login={dispatchLogin}
 						/>
 					: null}
-
 					{authMode === 'signup' ?
 						<Signup
 							onSigninClick={dispachChangeAuthMode.bind(null, 'login')}
 							signup={dispatchSignup}
-						/>
-					: null}
-
-					{authMode === 'logout' ?
-						<Logout
-							logoutMethod={dispatchLogout}
 						/>
 					: null}
 				</div>

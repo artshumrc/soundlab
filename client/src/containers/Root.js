@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ApolloProvider } from 'react-apollo';
 import { Router } from 'react-router';
-import Routes from '../components/routes';
+import { CookiesProvider } from 'react-cookie';
+import routes from '../routes';
 import client from '../middleware/apolloClient';
 
 // auth
@@ -14,15 +15,17 @@ const Root = ({store, history}) => (
 		client={client}
 		store={store}
 	>
-		<div>
-			<Router history={history} routes={Routes} />
-			<AuthModal
-				loginMethod={login}
-				signupMethod={register}
-				logoutMethod={logout}
-				getUserFromServer={verifyToken}
-			/>
-		</div>
+		<CookiesProvider>
+			<div>
+				<Router history={history} routes={routes} />
+				<AuthModal
+					loginMethod={login}
+					signupMethod={register}
+					logoutMethod={logout}
+					getUserFromServer={verifyToken}
+				/>
+			</div>
+		</CookiesProvider>
 	</ApolloProvider>
 );
 
