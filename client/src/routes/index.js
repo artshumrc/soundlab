@@ -1,59 +1,41 @@
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
-// import MainLayout from './layouts/MainLayout';
-import ProjectLayout from './layouts/ProjectLayout';
-import Home from './home/Home';
-import CollectionsListPage from './collections/CollectionsListPage';
-import CollectionDetail from './collections/CollectionDetail';
-import ItemsListPage from './items/ItemsListPage';
-import ItemDetail from './items/ItemDetail';
-import ProjectHome from './projects/ProjectHome';
-import Page from './pages/Page/Page';
-import Dashboard from './dashboard/Dashboard';
-import Articles from './dashboard/routes/Articles';
-import Articles2 from './dashboard/routes/Articles2';
-import Articles3 from './dashboard/routes/Articles3';
-import MainPanel from './dashboard/routes/MainPanel';
-import UserProfile from './dashboard/routes/userProfile/UserProfile';
-import UserProfileTimeline from './dashboard/routes/userProfile/UserProfileTimeline';
-import ExampleForms from './dashboard/routes/ExampleForms';
-import MiradorUploader from './dashboard/routes/MiradorUploader';
-import ItemEditor from './dashboard/routes/itemEditor/ItemEditor';
-import CollectionEditor from './dashboard/routes/collectionEditor/CollectionEditor';
-import ProjectEditor from './dashboard/routes/projectEditor/ProjectEditor';
-import ProjectsView from './dashboard/routes/projectsView/ProjectsView';
-import Settings from './dashboard/routes/settings/Settings';
-import About from './about/About';
-import Services from './services/Services';
+import { Route, IndexRoute } from 'react-router';
 
+// Basic routes
+import Home from '../components/home/Home';
+import Page from '../components/pages/Page/Page';
 
-import GraphiQL from './graphiql';
+// Projects
+import ProjectRoutes from '../modules/projects/routes';
+
+// Dashboard
+import Dashboard from '../components/dashboard/Dashboard';
+import Articles from '../components/dashboard/routes/Articles';
+import Articles2 from '../components/dashboard/routes/Articles2';
+import Articles3 from '../components/dashboard/routes/Articles3';
+import MainPanel from '../components/dashboard/routes/MainPanel';
+import UserProfile from '../components/dashboard/routes/userProfile/UserProfile';
+import UserProfileTimeline from '../components/dashboard/routes/userProfile/UserProfileTimeline';
+import ExampleForms from '../components/dashboard/routes/ExampleForms';
+import MiradorUploader from '../components/dashboard/routes/MiradorUploader';
+import ItemEditor from '../components/dashboard/routes/itemEditor/ItemEditor';
+import CollectionEditor from '../components/dashboard/routes/collectionEditor/CollectionEditor';
+import ProjectEditor from '../components/dashboard/routes/projectEditor/ProjectEditor';
+import ProjectsView from '../components/dashboard/routes/projectsView/ProjectsView';
+import Settings from '../components/dashboard/routes/settings/Settings';
+
+// GraphiQL
+import GraphiQLRoutes from '../modules/graphiql/routes';
 
 export default (
 	<div>
 		{/* Normal home landing page */}
 		<Route exact path="/" component={Home} />
 
-		<Route exact path="/about" component={About} />
+		{/* Routes specific to projects (and collections and items) */}
+		<ProjectRoutes />
 
-		<Route exact path="/services" component={Services} />
-
-		{/* Project home landing page (for tenant *.orphe.us instead of main orphe.us) */}
-		<Route exact path="/project" component={ProjectHome} />
-
-		<Route path="/page/new" component={Page} />
-		<Route path="/page" component={Page} />
-
-		<Route path="/collections" component={ProjectLayout}>
-			<IndexRoute component={CollectionsListPage} />
-			<Route path="/collections/:slug" component={CollectionDetail} />
-		</Route>
-
-		<Route path="/items" component={ProjectLayout}>
-			<IndexRoute component={ItemsListPage} />
-			<Route path="/items/:slug" component={ItemDetail} />
-		</Route>
-
+		{/* Routes for dashboard */}
 		<Route path="/dashboard" component={Dashboard}>
 			<IndexRoute component={ProjectsView} />
 			<Route path="/dashboard/articles" component={Articles} />
@@ -70,9 +52,7 @@ export default (
 			<Route path="/dashboard/settings" component={Settings} />
 		</Route>
 
-		{process.env.NODE_ENV === 'development' &&
-			<Route exact path="/graphiql" component={GraphiQL} />
-    }
-
+		{/* GraphiQL browser UI for testing API */}
+		<GraphiQLRoutes />
 	</div>
 );

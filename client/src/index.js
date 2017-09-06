@@ -14,16 +14,6 @@ import './index.css';
 import { loginJWT } from './lib/auth'; // eslint-disable-line
 import { wsClient } from './middleware/apolloClient';  // eslint-disable-line
 
-// const testAuthToke = () => {
-// 	setTimeout(() => loginJWT('test01@test.com', 'XqcyR**UrmQ&MrQ*KH7w'), 50000);
-// };
-// testAuthToke();
-
-// const testAuthToke2 = () => {
-// 	setTimeout(() => wsClient.close(), 7000);
-// };
-// testAuthToke2();
-
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 injectTapEventPlugin();

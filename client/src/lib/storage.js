@@ -1,4 +1,3 @@
-
 export const setLocalStorageItem = (key, value) => {
 	if (typeof Storage !== 'undefined') {
 		localStorage.setItem(key, value);
@@ -22,9 +21,3 @@ export const removeLocalStorageItem = (key) => {
 	}
 	throw new Error('Storage not available');
 };
-
-export const setCookie = () => {
-
-};
-
-// export const removeCookie
