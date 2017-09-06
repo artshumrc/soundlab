@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'underscore';
 import AddCollectionItem from './AddCollectionItem';
-import ItemListItem from '../../../items/ItemListItem';
+import ItemListItem from '../../../../modules/items/components/ItemListItem';
 
 export default class CollectionItemsEditor extends React.Component {
 	constructor(props) {

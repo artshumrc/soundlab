@@ -14,7 +14,7 @@ import ItemsListPage from '../../items/components/ItemsListPage';
 import ItemDetail from '../../items/components/ItemDetail';
 
 
-const ProjectRoutes = () => (
+export default (
 	<div>
 		{/* Project home landing page (for tenant *.orphe.us instead of main orphe.us) */}
 		<Route exact path="/project" component={ProjectHome} />
@@ -30,5 +30,3 @@ const ProjectRoutes = () => (
 		</Route>
 	</div>
 );
-
-export default ProjectRoutes;

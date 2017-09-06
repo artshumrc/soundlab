@@ -6,7 +6,7 @@ import Home from '../components/home/Home';
 import Page from '../components/pages/Page/Page';
 
 // Projects
-import ProjectRoutes from '../modules/projects/routes';
+import projectRoutes from '../modules/projects/routes';
 
 // Dashboard
 import Dashboard from '../components/dashboard/Dashboard';
@@ -25,7 +25,7 @@ import ProjectsView from '../components/dashboard/routes/projectsView/ProjectsVi
 import Settings from '../components/dashboard/routes/settings/Settings';
 
 // GraphiQL
-import GraphiQLRoutes from '../modules/graphiql/routes';
+import graphiQLRoutes from '../modules/graphiql/routes';
 
 export default (
 	<div>
@@ -33,7 +33,7 @@ export default (
 		<Route exact path="/" component={Home} />
 
 		{/* Routes specific to projects (and collections and items) */}
-		<ProjectRoutes />
+		{projectRoutes}
 
 		{/* Routes for dashboard */}
 		<Route path="/dashboard" component={Dashboard}>
@@ -53,6 +53,6 @@ export default (
 		</Route>
 
 		{/* GraphiQL browser UI for testing API */}
-		<GraphiQLRoutes />
+		{graphiQLRoutes}
 	</div>
 );

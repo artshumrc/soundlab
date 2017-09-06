@@ -60,8 +60,10 @@ class _AuthModal extends React.Component {
 		if (getUserFromServer) {
 			try {
 				const user = await getUserFromServer();
-				user.userId = user._id;
-				dispachSetUser(user);
+				if (user) {
+					user.userId = user._id;
+					dispachSetUser(user);
+				}
 			} catch (err) {
 				console.log(err);
 				// TODO: Determine why dispatchLogout always called on page load
