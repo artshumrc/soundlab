@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ShowcaseList from '../showcase/ShowcaseList'
 import PlaylistList from '../playlist/PlaylistList'
+import FeaturedTrack from './FeaturedTrack'
 import AudioPlayer from '../audioPlayer/AudioPlayer'
 import Intro from './Intro'
 import Learn from './Learn'
@@ -70,18 +71,7 @@ class Home extends React.Component {
               </div>
             </Col>
             <Col xs={12} sm={6} md={6} lg={6}>
-              <div styleName="featured-track-component" xs={12} sm={6} md={6} lg={6}>
-                <div styleName="featured-track-player-container">
-
-                </div>
-                <div styleName="featured-track-meta-container">
-                  <span styleName="featured-track-title">
-                    <h6>Featured Track</h6>
-                  </span>
-                  <span styleName="featured-track-meta-item-title">Mozart / Funk</span>
-                  <span styleName="featured-track-meta-item-author">Dollie Keller</span>
-                </div>
-              </div>
+              <FeaturedTrack />
             </Col>
           </Row>
 
