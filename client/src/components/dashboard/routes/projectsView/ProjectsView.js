@@ -4,6 +4,8 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import _ from 'lodash';
 
+import './ProjectView.css';
+
 import Project from './project';
 
 class ProjectsView extends React.Component {
@@ -42,14 +44,14 @@ class ProjectsView extends React.Component {
 										/>
 									</div>
 									:
-									<div className="loading">
+									<div>
 										<h1>You do not have any projects.</h1>
 									</div>
 								}
 							</div>
 						</div>
 					:
-						<div>
+						<div className="loading">
 							<h2>loading</h2>
 						</div>
 				}
