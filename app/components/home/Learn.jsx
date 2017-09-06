@@ -25,8 +25,17 @@ class Learn extends React.Component {
 
           <Col xs={12} sm={12} md={12} lg={12}>
           <div styleName="fullscreen-learn">
-            <div styleName="subtitle-container learn">
-              <span styleName="site-tag-subtitle">The Sound Lab is a place for students to experiment with sound.</span>
+            <div styleName="learn-inlay">
+              <div>
+                <span styleName="featured-learn-item-title">Intro to Ableton</span>
+              </div>
+              <div>
+                <span styleName="featured-learn-item-date">Every Wednesday, 8pm</span>
+              </div>
+              <div styleName="featured-learn-item-description-container">
+                <span styleName="featured-learn-item-description">Stop by the lab any Wednesday evening for an introduction to Ableton, a powerful starter tool for any sound production project.</span>
+              </div>
+
             </div>
             <div style={thumbnailListImage}></div>
           </div>
