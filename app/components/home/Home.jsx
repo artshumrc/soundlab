@@ -4,6 +4,9 @@ import gql from 'graphql-tag'
 import ShowcaseList from '../showcase/ShowcaseList'
 import PlaylistList from '../playlist/PlaylistList'
 import AudioPlayer from '../audioPlayer/AudioPlayer'
+import Intro from './Intro'
+import Learn from './Learn'
+import Recent from './Recent'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import styles from './home.scss'
@@ -17,10 +20,9 @@ class Home extends React.Component {
 
   render() {
 
-
     return (
       <MuiThemeProvider>
-
+      <div>
 
         {/*  <svg width="1600px" height="1400px" styleName="cover-lines">
             <path d="M0,56 C400,300 500,895 1494,950" stroke="#fadbd2" fill="transparent"/>
@@ -83,12 +85,14 @@ class Home extends React.Component {
             </Col>
           </Row>
 
+          <Intro />
 
+          <Learn />
 
+          <Recent />
 
-
-
-      </MuiThemeProvider>
+          </div>
+        </MuiThemeProvider>
 
     )
   }

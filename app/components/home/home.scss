@@ -21,6 +21,7 @@
 
 .site-tag-subtitle {
   font-size: 36px;
+  line-height: 1.3em;
   color: $lightGrey;
 }
 
@@ -74,4 +75,95 @@
   display: flex;
   justify-content: center;
   color: $lightGrey;
+}
+
+/*
+*
+Intro section
+*
+*/
+
+.intro-section {
+  display: flex;
+  min-height: 400px;
+  width: 100%;
+  //background: #e7e6e6;
+}
+
+.site-tag-container.intro-tag {
+    margin-top: 0%;
+}
+
+.intro-text {
+  font-size: 20px;
+  color: $dark;
+}
+
+.intro-text-container {
+  padding-left: 20%;
+}
+
+/*
+*
+Learn section
+*
+*/
+
+.learn-section {
+  display: flex;
+}
+
+.learn-intro-section {
+  padding-top: 20px;
+}
+
+.fullscreen-learn {
+  width: 100%;
+}
+
+.subtitle-container.learn {
+  position: absolute;
+  width: 500px;
+  margin-top: 530px;
+  right: 100px;
+  height: 240px;
+  background: #eee;
+}
+
+.learn-section-container {
+  padding-bottom: 200px;
+}
+
+.site-tag.learn-tag {
+  font-size: 36px;
+}
+
+/*
+*
+Recent section
+*
+*/
+
+.recent-section {
+  //min-height: 500px;
+  padding-top: 20px;
+}
+
+.recent-track-container {
+  padding-top: 20px;
+  justify-content: space-between;
+}
+
+.recent-track {
+  width: 32%;
+}
+
+.recent-track-item {
+  height: 350px;
+}
+
+.thumbnail-container {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
 }
