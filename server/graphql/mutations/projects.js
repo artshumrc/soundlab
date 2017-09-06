@@ -8,7 +8,7 @@ import { RemoveType } from '../types';
 import Project from '../../models/project';
 
 // errors
-import { AuthenticationError } from '../errors';
+import { AuthenticationError, TenantError, ArgumentError, PermissionError } from '../errors';
 
 // TODO: Creat ProjectUpdateInputType
 
@@ -25,13 +25,13 @@ const projectMutationFileds = {
 		async resolve(parent, { project }, { user, tenant }) {
 			// Validate connection
 			// if the operation doesn't come from the admin page:
-			if (!tenant.adminPage) throw new TenantError();
+			// if (!tenant.adminPage) throw new TenantError();
 
 			// if user is not logged in:
 			if (!user) throw new AuthenticationError();
 
 			// Validate resolver-specifc arguments
-			if (!project.collectionId) throw new ArgumentError({ data: { field: 'project.collectionId' } });
+			// if (!project.collectionId) throw new ArgumentError({ data: { field: 'project.collectionId' } });
 
 			// Initiate new project
 			const NewProject = new Project(project);
@@ -40,10 +40,12 @@ const projectMutationFileds = {
 			// check user permissions
 			try {
 				const userIsOwner = await NewItem.validateUser(user._id);
-				if (!userIsOwner) throw new PermissionError();
+				// if (!userIsOwner) throw new PermissionError();
 			} catch (err) {
-				throw new PermissionError();
+				// throw new PermissionError();
 			}
+
+			return NewProject.save();
 		}
 	},
 	projectUpdate: {
