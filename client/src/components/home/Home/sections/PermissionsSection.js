@@ -5,7 +5,7 @@ import './PermissionsSection.css';
 export default class PermissionsSection extends React.Component {
 	render() {
 		return (
-			<section id="Permissions" className="text-center">
+			<section id="permissions" className="text-center">
 				<Grid>
 					<Row>
 						<Col md={3}>
