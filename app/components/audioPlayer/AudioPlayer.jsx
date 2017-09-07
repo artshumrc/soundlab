@@ -67,8 +67,8 @@ class AudioPlayer extends Component {
                 <img src={playlistItem.image} alt={playlistItem.title}/>
               </div>
               <div styleName="playerMeta">
-                <h6 styleName="playerMetaCreator">{playlistItem.creator}</h6>
                 <h6 styleName="playerMetaTitle">{playlistItem.title}</h6>
+                <h6 styleName="playerMetaCreator">{playlistItem.creator}</h6>
               </div>
             </div>
 
@@ -84,9 +84,14 @@ class AudioPlayer extends Component {
     const playlist = []
       // Array of files you'd like played
 
+    const buttonStyles = {
+      height:22,
+      width:22
+    }
+
     const playButtonStyles = {
-      height:36,
-      width:36
+      height:26,
+      width:26
     }
 
     function playAudio(playlistId){
@@ -138,28 +143,28 @@ class AudioPlayer extends Component {
                   <div styleName="playerMetaContainer">
                     {this.createListItems()}
                   </div>
-                  <div styleName="playerTimeline">
+                  {/*<div styleName="playerTimeline">
                     <div styleName="currentTrack">
                       <div styleName="progressBar" ref={this.progressBar}></div>
                     </div>
 
-                  </div>
+                  </div>*/}
                   <div styleName="playerControls">
-                    <RaisedButton
+                  {/*  <RaisedButton
                       label="Playlist"
                       onClick={this.togglePlaylistDrawer.bind(this)}
                       styleName="playlistButton"
                     />
                     <Drawer width={400} openSecondary={true} open={this.state.open} containerClassName="playlistDrawer" >
                       <PlaylistList />
-                    </Drawer>
+                    </Drawer> */}
                     <div styleName="buttonWrapper">
                       <SkipPrevious
-                        style={playButtonStyles}
+                        style={buttonStyles}
                         onClick={this.playPrevious.bind(this, playlist)} />
                       {this.props.ui.isPlaying === true ?
                       <Pause
-                        style={playButtonStyles}
+                        style={buttonStyles}
                         onClick={this.pauseTheSound.bind(this)} />
                       :
                       <PlayArrow
@@ -167,8 +172,11 @@ class AudioPlayer extends Component {
                         onClick={this.resumeTheSound.bind(this)} />
                       }
                       <SkipNext
-                        style={playButtonStyles}
+                        style={buttonStyles}
                         onClick={this.playNext.bind(this, playlist)} />
+                    </div>
+                    <div styleName="playTimeWrapper">
+                      <span styleName="playTime">2:02 / 4:28</span>
                     </div>
 
                   </div>

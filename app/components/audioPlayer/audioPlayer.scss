@@ -1,3 +1,5 @@
+@import "../../styles/vars";
+
 .soundlabPlayer {
   width: 100%;
   max-width: 1650px;
@@ -24,7 +26,7 @@
   display:flex;
   justify-content:flex-end;
   width:20%;
-  background:#CFD8DC;//cyan;
+  background:#fcfadf;
 
   img {
     display:flex;
@@ -37,24 +39,23 @@
 .playerMetaContainer {
   display:flex;
   align-items:center;
-  width:30%;
-  background:#CFD8DC;//red;
+  width:45%;
+  background:#fcfadf;
 
   .playerMeta {
-    padding-left:20px;
+    padding-left:10px;
   }
 
   .playerMetaCreator {
-    font-size:16px;
-    font-weight:bold;
-    color:#222;
-  }
-
-  .playerMetaTitle {
-    font-size:16px;
+    font-size:12px;
     color:#757575;
   }
 
+  .playerMetaTitle {
+    font-size:14px;
+    font-weight:bold;
+    color:#222;
+  }
 }
 
 .playerTimeline {
@@ -86,24 +87,27 @@
 .playerControls {
   display:flex;
   align-items:center;
-  justify-content:flex-end;
-  width:30%;
-  background:#CFD8DC;//green;
+  justify-content:inherit;
+  width:55%;
+  background:#fff;
 }
 
 .buttonWrapper {
   display:flex;
+  align-items:center;
   padding-right:20px;
+  margin-left:-24px;
 }
 
 .playButton {
-  height:36px;
-  width:36px;
+  height:22px;
+  width:22px;
 }
 
 .currentPlayMeta {
   display:flex;
   width:100%;
+  align-items: flex-end;
 }
 
 .playlistButton {
@@ -113,6 +117,21 @@
 .playlistDrawer {
   height:93% !important;
 }
+
+.playTimeWrapper {
+  display:flex;
+  padding-right:50px;
+}
+
+.playTime {
+  color:$dark;
+  font-size:14px;
+}
+
+
+
+
+
 
 //////////
 
