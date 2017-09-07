@@ -25,6 +25,9 @@
           height: 65px;
           line-height: 65px;
           color: black;
+          font-family: "Slate W04 Bold";
+          font-weight: 100;
+          letter-spacing: 2px;
           border-left: 2px solid #333d56;
         }
         li:hover, li.active {
@@ -180,15 +183,16 @@
     background-color: #03A9F4;
     height: 64px;
     line-height: 64px;
+    
     .title {
       color: #fff;
       margin: 0;
       margin-left: 20px;
       font-size: 18px;
-      font-weight: bold;
-      text-transform: uppercase;
       display: inline;
-      letter-spacing: 1px;
+      font-family: "Slate W04 Bold" !important;
+      font-weight: 100;
+      letter-spacing: 3px;
     }
     .buttonWrapper {
       vertical-align: middle;
