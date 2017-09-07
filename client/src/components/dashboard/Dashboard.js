@@ -28,7 +28,7 @@ export default class Dashboard extends React.Component {
 				<div className={sidebarClass}>
 
 					<Link to={'/'}>
-						<h3 className="invert">Orpheus</h3>
+						<h3 className="invert logo">orphe.us</h3>
 					</Link>
 					<div className="sidebarMenu">
 						<ul>
@@ -47,7 +47,7 @@ export default class Dashboard extends React.Component {
 							<FontAwesome name="caret-left" />
 							<FontAwesome name="bars" size="2x" />
 						</a>
-						<input type="text" className="searchInput" placeholder="Search..." />
+						<input type="text" className="searchInput searchBar" placeholder="Search..." />
 						<div className="navigation pull-right">
 							<a href="#profile">
 								<div className="userPanel">
