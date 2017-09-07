@@ -8,7 +8,7 @@ import {
   Navbar,
   Nav
 } from 'react-bootstrap';
-import FontAwesome from 'react-fontawesome';
+
 import './Footer.css';
 
 export default class Footer extends React.Component {
@@ -17,18 +17,6 @@ export default class Footer extends React.Component {
 		const year = now.getFullYear();
 		return (
 			<section id="footer">
-				<div className="footerContent">
-					<Grid>
-						<Row>
-							<Col lg={4}>
-							</Col>
-							<Col lg={4}>
-							</Col>
-							<Col lg={4}>
-							</Col>
-						</Row>
-					</Grid>
-				</div>
 				<Navbar className="footerNav">
 					<Grid>
 						<Row>
@@ -41,11 +29,10 @@ export default class Footer extends React.Component {
 							</Col>
 							<Col lg={8}>
 								<Nav>
-									<NavItem eventKey={1} href="#">Home</NavItem>
 									<NavItem eventKey={2} href="#">About</NavItem>
 									<NavItem eventKey={3} href="#">Community</NavItem>
 									<NavItem eventKey={4} href="#">Services</NavItem>
-									<NavItem eventKey={7} href="#">Contact</NavItem>
+									<NavItem eventKey={7} href="mailto:contact@orphe.us">Contact</NavItem>
 								</Nav>
 							</Col>
 						</Row>
