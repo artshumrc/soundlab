@@ -42,8 +42,8 @@ class Recent extends React.Component {
 
 		if (this.props.data.posts) {
 			return (
-        <div>
-          <Row styleName="recent-section">
+        <div styleName="recent-section">
+          <Row styleName="recent-section-title">
             <div styleName="tag-container">
               <span styleName="site-tag learn-tag">Recent tracks</span>
             </div>

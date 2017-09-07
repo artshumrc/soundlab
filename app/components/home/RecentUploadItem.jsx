@@ -34,6 +34,7 @@ class RecentUploadItem extends Component{
           height: '100%',
           objectFit: 'cover',
           backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center'
         }
 

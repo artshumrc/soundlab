@@ -1,5 +1,46 @@
+@import "../../styles/vars";
+
 .footer {
-  background:#757575;
-  height:160px;
-  margin-top:200px;
+  background:$dark;
+  height:220px;
+}
+
+.footer-left {
+  width: 40%;
+  padding: 5% 0 0 5%;
+}
+
+.footer-site-title {
+  font-size: 16px;
+  color: $lightGrey;
+  font-weight: bold;
+}
+
+.footer-nav-container {
+  padding-top: 30px;
+}
+
+.footer-site-nav {
+  color: #e7e6e6;
+  font-size: 16px;
+}
+
+.contact-nav {
+  padding-right: 20px;
+}
+
+.footer-social-links {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding: 7% 3% 0% 40%;;
+}
+
+.footer-social-link {
+  color: #e7e6e6;
+  font-size: 16px;
+}
+
+.footer-social-links-container {
+  display: flex;
 }
