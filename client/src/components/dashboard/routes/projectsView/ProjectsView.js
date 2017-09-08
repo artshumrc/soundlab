@@ -62,15 +62,10 @@ class ProjectsView extends React.Component {
 
 ProjectsView.propTypes = {
 	data: PropTypes.shape({
-		userProjects: PropTypes.arrayOf(PropTypes.object)
+		userProjects: PropTypes.arrayOf(PropTypes.object),
+		loading: PropTypes.bool
 	}).isRequired
 };
-
-ProjectsView.defaultProps = {
-	data: {}
-};
-
-// userId: "59a86618a93a2c37840d4b38"
 
 const userProjects = gql`
 query {
@@ -81,6 +76,5 @@ query {
   }
 }
 `;
-
 
 export default graphql(userProjects)(ProjectsView);

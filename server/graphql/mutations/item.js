@@ -31,23 +31,23 @@ const itemMutationFileds = {
 				type: new GraphQLNonNull(ItemCreateInputType),
 			},
 		},
-		async resolve(parent, { item }, { user, tenant }) {
+		async resolve(obj, { item }, { user, tenant }) {
 
 			/**
 			 * Validate connection
 			 */
 
 			// if operation doesn't come from admin page
-			if (!tenant.adminPage) throw new TenantError();
+			// if (!tenant.adminPage) throw new TenantError();
 
 			// if user is not logged in
-			if (!user) throw new AuthenticationError();
+			// if (!user) throw new AuthenticationError();
 
 
 			/**
 			 * Validate resolver specific arguments
 			 */
-			if (!item.collectionId) throw new ArgumentError({ data: { field: 'item.collectionId' } });
+			// if (!item.collectionId) throw new ArgumentError({ data: { field: 'item.collectionId' } });
 
 
 			/**
@@ -61,12 +61,12 @@ const itemMutationFileds = {
 			 */
 			
 			// check user permissions
-			try {
-				const userIsOwner = await NewItem.validateUser(user._id);
-				if (!userIsOwner) throw new PermissionError();
-			} catch (err) {
-				throw new PermissionError();
-			}
+			// try {
+			// 	const userIsOwner = await NewItem.validateUser(user._id);
+			// 	if (!userIsOwner) throw new PermissionError();
+			// } catch (err) {
+			// 	throw new PermissionError();
+			// }
 
 
 			/**

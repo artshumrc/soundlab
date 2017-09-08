@@ -8,35 +8,33 @@ import PrimaryFile from './PrimaryFile';
 import Form from '../../components/Form';
 import TagEditor from './TagEditor';
 import MetaEditor from './MetaEditor';
+import autoBind from 'react-autobind';
+
 import './ItemEditor.css';
 
-class _ItemEditor extends React.Component {
+class ItemEditor extends React.Component {
 	constructor(props) {
 		super(props);
 		console.log('props', props);
-    // this.state = {
-    //   files: [{title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '48.jpg'},
-    //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/48.jpg/full/600,/0/default.jpg', fileName: '16.jpg'},
-    //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/38.jpg/full/600,/0/default.jpg', fileName: '38.jpg'},
-    //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/47.jpg/full/600,/0/default.jpg', fileName: '47.jpg'},
-    //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/3.jpg/full/600,/0/default.jpg', fileName: '3.jpg'},
-    //     {title: 'Image title', url: '//iiif.orphe.us/orpheus/art/95.jpg/full/600,/0/default.jpg', fileName: '95.jpg'},
-    //   ]
-    // };
+
 		this.state = {
 			files: []
 		};
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.showError = this.showError.bind(this);
-		this.isImage = this.isImage.bind(this);
+		
+		autoBind(this);
 	}
 
-	async handleSubmit(values) {
-		try {
-			await this.props.createNewItem({ /* TODO */ });
-		} catch (err) {
-			console.log('err', err.graphQLErrors);
-		}
+	submit(values) {
+		this.props.mutate({
+			variables: {
+				item: {
+					...values
+				},
+			},
+			context: {
+				user: ''
+			}
+		});
 	}
 
 	showError(error) {
@@ -63,7 +61,7 @@ class _ItemEditor extends React.Component {
 			<div className="content">
 				<div className="itemImageViewer itemEditor">
 					<Form
-						onSubmit={this.handleSubmit}
+						onSubmit={this.submit}
 						form="itemEditor"
 						initialValues={this.state}
 					>
@@ -124,8 +122,4 @@ mutation itemCreate($item: ItemCreateInputType!) {
 }
 `;
 
-export default graphql(addNewItem, {
-	props: ({ mutate }) => ({
-		createNewItem: item => mutate({ variables: { item } }),
-	}),
-})(_ItemEditor);
+export default graphql(addNewItem)(ItemEditor);
