@@ -77,8 +77,18 @@ class AudioUploadList extends React.Component {
 							</Col>
 						</Row>
 
-						<Row>
-							<Col xsOffset={3} xs={6}>
+						<Row styleName="wave-audio-posts-section">
+							<Col xs={12} sm={12} md={8} lg={8} mdOffset={2} lgOffset={2}>
+								<div styleName="posts-column-section-titles">
+									<div styleName="section-titles-left">
+										<span styleName="section-title-number">#</span>
+										<span>Track</span>
+									</div>
+									<div styleName="section-titles-right">
+										<span styleName="section-title-duration">Duration</span>
+									</div>
+
+								</div>
 								{this.props.data.posts.map((post) =>
 									<AudioUploadItem key={post.id} post={post} />
 								)}
