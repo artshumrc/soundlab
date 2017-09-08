@@ -12,11 +12,11 @@ const userProjectsQueryFields = {
 	userProjects: {
 		type: ProjectType,
 		description: 'Get projects associated with user',
-		resolve(parent, { user, tenant }) {
-			console.log('user: ', user);
+		resolve(obj, arg, context) {
+			console.log('user: ', context);
 			return Project.findOne(
 				{ users: 
-					{ $elemMatch: { userId: user._id } } 
+					{ $elemMatch: { _id: context.user._id } } 
 				}
 			);
 		}
