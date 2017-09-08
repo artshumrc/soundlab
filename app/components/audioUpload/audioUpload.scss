@@ -1,1 +1,51 @@
 @import "../../styles/global";
+@import "../../styles/vars";
+
+.wave-cover-section {
+  height: 100vh;
+}
+
+.featured-track-player {
+  height: 500px;
+  width: 400px;
+  background: cyan;
+}
+
+.featured-track-player-container {
+  display: flex;
+  justify-content: center;
+}
+
+.wave-search-filter-section {
+  height: 400px;
+}
+
+.lets-listen {
+  font-size: 36px;
+  color: $lightGrey;
+  vertical-align: inherit;
+}
+
+.filter-title {
+  font-size: 44px;
+  color: $dark;
+  border-bottom: 3px solid $dark;
+}
+
+.filter-container {
+  padding-top: 80px;
+}
+
+.filter-row-one {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
+
+.filter-row-two {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
