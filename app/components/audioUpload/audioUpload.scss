@@ -1,6 +1,12 @@
 @import "../../styles/global";
 @import "../../styles/vars";
 
+.list-container {
+  background: #fafafa !important;
+  box-shadow: 0px 0px 0px #fafafa !important;
+}
+
+
 .wave-cover-section {
   height: 100vh;
 }
@@ -59,6 +65,7 @@
   display: flex;
   border-bottom: 1px solid $lightGrey;
   justify-content: space-between;
+  margin-bottom: 16px;
 }
 
 .section-titles-left {
@@ -75,4 +82,38 @@
 
 .section-title-duration {
   padding-right: 10px;
+}
+
+.wave-audio-posts {
+  padding: 0px !important;
+
+  img {
+    height: 50px !important;
+    width: 50px !important;
+    border-radius: 0px !important;
+  }
+
+}
+
+.track-number-container {
+  display: inline-block;
+  vertical-align: top;
+  padding: 26px 0px 0px 10px;
+}
+
+.track-number {
+  font-size: 22px;
+  font-weight: bold;
+  color: $dark;
+}
+
+.track-duration-container {
+  display: inline-block;
+  float: right;
+  padding: 26px 10px 0 0;
+}
+
+.track-duration {
+  color: $lightGrey;
+  font-size: 14px;
 }
