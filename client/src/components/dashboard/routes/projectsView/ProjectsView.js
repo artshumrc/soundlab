@@ -40,7 +40,13 @@ class ProjectsView extends React.Component {
 							<div>
 								{ data.userProjects ?
 									<div>
-										<p>You have projects!</p>
+										{
+											data.userProjects.map(project => (
+												<Project
+													projectData={project} 
+												/>
+											))
+										}
 									</div>
 									:
 									<div>
