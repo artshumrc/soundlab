@@ -2,7 +2,6 @@ import crypto from 'crypto';
 import mongoose from 'mongoose';
 import timestamp from 'mongoose-timestamp';
 import passportLocalMongoose from 'passport-local-mongoose';
-import 'mongoose-type-email';
 
 const Schema = mongoose.Schema;
 
@@ -11,7 +10,7 @@ const Schema = mongoose.Schema;
  * @type {Schema}
  */
 const UserSchema = new Schema({
-	username: mongoose.SchemaTypes.Email,
+	username: String,
 	password: String,
 	oauthIds: [{
 		network: String,
