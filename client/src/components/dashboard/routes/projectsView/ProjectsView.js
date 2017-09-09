@@ -38,7 +38,7 @@ class ProjectsView extends React.Component {
 								<span className="title">My Projects</span>
 							</div>
 							<div>
-								{ data.userProjects ?
+								{ data.userProjects && data.userProjects.length > 0 ?
 									<div>
 										{
 											data.userProjects.map(project => (
