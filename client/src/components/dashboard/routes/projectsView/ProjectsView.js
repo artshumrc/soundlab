@@ -4,7 +4,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import _ from 'lodash';
 
-import './ProjectView.css';
+import './ProjectsView.css';
 
 import Project from './project';
 
