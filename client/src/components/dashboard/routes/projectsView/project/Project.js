@@ -61,10 +61,9 @@ Project.propTypes = {
 };
 
 const removeProject = gql`
-	mutation projectRemove($projectId: projectId!) {
-		projectRemove(project: $project) {
+	mutation projectRemove($projectId: ID!) {
+		projectRemove(projectId: $projectId) {
 			_id,
-			title
 		}
 	}
 `;
