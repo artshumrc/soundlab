@@ -1,4 +1,4 @@
-import { GraphQLID, GraphQLNonNull } from 'graphql';
+import { GraphQLID, GraphQLNonNull, GraphQLList } from 'graphql';
 
 // types
 import ProjectType from '../types/models/project';
@@ -10,19 +10,15 @@ import Project from '../../models/project';
 
 const userProjectsQueryFields = {
 	userProjects: {
-		type: ProjectType,
+		type: new GraphQLList(ProjectType),
 		description: 'Get projects associated with user',
 		resolve(obj, arg, context) {
-			console.log('user: ', context);
 			return Project.find(
 				{ users: 
 					{ $elemMatch: { userId: context.user._id } } 
 				},
 				function callback(err, project) {
-					if (err) console.log(err);
-					console.log('project: ', project);
-					console.log('project.title: ', project[0].title);
-					console.log('project.users: ', project[0].users);
+					if (err) throw err;
 				}
 			);
 		}
