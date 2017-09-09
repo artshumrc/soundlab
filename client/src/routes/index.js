@@ -25,7 +25,10 @@ import ProjectsView from '../components/dashboard/routes/projectsView/ProjectsVi
 import Settings from '../components/dashboard/routes/settings/Settings';
 
 // GraphiQL
-import graphiQLRoutes from '../modules/graphiql/routes';
+// import graphiQLRoutes from '../modules/graphiql/routes';
+// GraphiQL browser UI for testing API
+// {graphiQLRoutes}
+import GraphiQL from '../modules/graphiql/components/graphiql';
 
 export default (
 	<div>
@@ -52,7 +55,8 @@ export default (
 			<Route path="/dashboard/settings" component={Settings} />
 		</Route>
 
-		{/* GraphiQL browser UI for testing API */}
-		{graphiQLRoutes}
+		<Route path="/graphiql" component={GraphiQL} />
+
+		
 	</div>
 );

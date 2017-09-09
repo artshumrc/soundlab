@@ -21,16 +21,21 @@ const ProjectSchema = new Schema({
 		type: String,
 	},
 	users: [{
-		userId: {
-			type: Schema.Types.ObjectId,
-			ref: 'User',
-			index: true
-		},
-		role: {
-			type: String,
-			enum: ['Owner']
+		_id: {
+			type: Schema.Types.ObjectId
 		}
-	}],
+	}]
+	// users: [{
+	// 	userId: {
+	// 		type: Schema.Types.ObjectId,
+	// 		ref: 'User',
+	// 		index: true
+	// 	},
+	// 	role: {
+	// 		type: String,
+	// 		enum: ['Owner']
+	// 	}
+	// }],
 });
 
 
