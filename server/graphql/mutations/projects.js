@@ -36,7 +36,7 @@ const projectMutationFileds = {
 			// Initiate new project
 			const NewProject = new Project(project);
 
-			NewProject.users = [...NewProject.users, user];
+			NewProject.users.push(user);
 
 			// Validte permissions
 			// check user permissions

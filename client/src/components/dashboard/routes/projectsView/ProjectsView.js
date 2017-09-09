@@ -28,6 +28,7 @@ class ProjectsView extends React.Component {
 
 	render() {
 		const { data } = this.props;
+		console.log('user projects: ', data.userProjects);
 		return (
 			<div>
 				{
@@ -39,9 +40,7 @@ class ProjectsView extends React.Component {
 							<div>
 								{ data.userProjects ?
 									<div>
-										<Project
-											projectData={data.userProjects}
-										/>
+										<p>You have projects!</p>
 									</div>
 									:
 									<div>

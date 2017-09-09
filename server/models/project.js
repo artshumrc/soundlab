@@ -20,22 +20,24 @@ const ProjectSchema = new Schema({
 	description: {
 		type: String,
 	},
-	users: [{
-		_id: {
-			type: Schema.Types.ObjectId
-		}
-	}]
 	// users: [{
-	// 	userId: {
+	// 	_id: {
 	// 		type: Schema.Types.ObjectId,
 	// 		ref: 'User',
 	// 		index: true
-	// 	},
-	// 	role: {
-	// 		type: String,
-	// 		enum: ['Owner']
 	// 	}
-	// }],
+	// }]
+	users: [{
+		userId: {
+			type: Schema.Types.ObjectId,
+			ref: 'User',
+			index: true
+		},
+		role: {
+			type: String,
+			enum: ['Owner']
+		}
+	}],
 });
 
 

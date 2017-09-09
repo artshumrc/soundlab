@@ -14,10 +14,16 @@ const userProjectsQueryFields = {
 		description: 'Get projects associated with user',
 		resolve(obj, arg, context) {
 			console.log('user: ', context);
-			return Project.find({}
-				// { users: 
-				// 	{ $elemMatch: { _id: context.user._id } } 
-				// }
+			return Project.find(
+				{ users: 
+					{ $elemMatch: { userId: context.user._id } } 
+				},
+				function callback(err, project) {
+					if (err) console.log(err);
+					console.log('project: ', project);
+					console.log('project.title: ', project[0].title);
+					console.log('project.users: ', project[0].users);
+				}
 			);
 		}
 	}
