@@ -49,7 +49,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signu
 		<form onSubmit={handleSubmit(wrapSubmit(signup))}>
 			<Field
 				name="username"
-				label="Username / Email"
+				label="Email"
 				type="email"
 				component={renderField}
 			/>
