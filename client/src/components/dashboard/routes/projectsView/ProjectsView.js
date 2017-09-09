@@ -43,6 +43,7 @@ class ProjectsView extends React.Component {
 										{
 											data.userProjects.map(project => (
 												<Project
+													key={project._id}
 													projectData={project} 
 												/>
 											))
@@ -77,7 +78,8 @@ query {
   userProjects {
     title,
     description,
-    createdAt
+		createdAt,
+		_id
   }
 }
 `;

@@ -108,7 +108,7 @@ const projectMutationFileds = {
 		async resolve (parent, { projectId }, { user, tenant }) {
 			// validate connection
 			// if operation doesn't come from the admin page
-			if (!tenant.adminPage) throw new TenantError();
+			// if (!tenant.adminPage) throw new TenantError();
 
 			// if user is not logged in
 			if (!user) throw new AuthenticationError();
@@ -118,12 +118,12 @@ const projectMutationFileds = {
 			if (!FoundProject) throw new ArgumentError({ data: { field: 'projectId' } });
 
 			// validate permissions
-			try {
-				const userIsOwner = await FoundProject.validateUser(user._id);
-				if (!userIsOwner) throw new PermissionError();
-			} catch (err) {
-				throw new PermissionError();
-			}
+			// try {
+			// 	const userIsOwner = await FoundProject.validateUser(user._id);
+			// 	if (!userIsOwner) throw new PermissionError();
+			// } catch (err) {
+			// 	throw new PermissionError();
+			// }
 
 			// perform action
 			// save new project
