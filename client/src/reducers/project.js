@@ -11,6 +11,5 @@ export default (state = [], action) => {
 		return state.filter(project => project._id !== action.projectId);
 	default:
 		return state;
-	
 	}
 };

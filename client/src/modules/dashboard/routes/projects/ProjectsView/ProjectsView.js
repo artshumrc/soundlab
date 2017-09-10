@@ -11,54 +11,42 @@ class ProjectsView extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			loading: true
-		};
-	}
-
-	componentWillReceiveProps(nextProps) {
-		const { loading } = this.state;
-		if (nextProps.data.loading !== loading) {
-			this.setState({
-				loading: !loading
-			});
-		}
 	}
 
 	render() {
 		const { data } = this.props;
+
+		if (data.loading) {
+			return (
+				<div style={{ color: 'black' }}>
+					<h2>loading</h2>
+				</div>
+			);
+		}
+
 		return (
-			<div>
-				{
-					!data.loading ?
-						<div id="projects-view">
-							<div>
-								<span>My Projects</span>
-							</div>
-							<div>
-								{ data.userProjects && data.userProjects.length > 0 ?
-									<div>
-										{
-											data.userProjects.map(project => (
-												<Project
-													key={project._id}
-													projectData={project}
-												/>
-											))
-										}
-									</div>
-									:
-									<div>
-										<h1>You do not have any projects.</h1>
-									</div>
-								}
-							</div>
-						</div>
-					:
+			<div id="projects-view">
+				<div>
+					<span>My Projects</span>
+				</div>
+				<div>
+					{ data.userProjects && data.userProjects.length > 0 ?
 						<div>
-							<h2>loading</h2>
+							{
+								data.userProjects.map(project => (
+									<Project
+										key={project._id}
+										projectData={project}
+									/>
+								))
+							}
 						</div>
-				}
+						:
+						<div>
+							<h1>You do not have any projects.</h1>
+						</div>
+					}
+				</div>
 			</div>
 		);
 	}
