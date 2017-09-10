@@ -1,16 +1,20 @@
 import React from 'react';
 import _ from 'underscore';
+import autoBind from 'react-autobind';
+
 import AddCollectionItem from './AddCollectionItem';
 import ItemListItem from '../../../../modules/items/components/ItemListItem';
 
 export default class CollectionItemsEditor extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			autocompleteValue: '',
-			pickedItems: []
+			selectedItems: [],
 		};
-		this.addItem = this.addItem.bind(this);
+
+		autoBind(this);
 	}
 
 	addItem(item) {
@@ -18,6 +22,7 @@ export default class CollectionItemsEditor extends React.Component {
 	}
 
 	render() {
+		const { selectedItems } = this.state;
 		const listItems = [];
 		const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
 			83, 87, 90, 92, 93, 95, 102, 103, 104, 87, 77, 92, 56, 49, 43, 38, 44, 3,
@@ -33,20 +38,17 @@ export default class CollectionItemsEditor extends React.Component {
 			});
 		});
 
-		const fields = this.props.items.fields;
-		const pickedItems = fields.length ? fields.getAll() : [];
 		return (
 			<div>
-        CollectionItemsEditor
-        <div className="itemsList">
-	<AddCollectionItem addItem={this.addItem} items={listItems} />
-	{pickedItems.map((listItem, i) => (
-		<ItemListItem
-			key={`${listItem.slug}-${i}`}
-			{...listItem}
-		/>
-          ))}
-        </div>
+				<div className="itemsList">
+					<AddCollectionItem addItem={this.addItem} items={listItems} />
+					{selectedItems.map((listItem, i) => (
+						<ItemListItem
+							key={`${listItem.slug}-${i}`}
+							{...listItem}
+						/>
+				  ))}
+				</div>
 			</div>
 		);
 	}

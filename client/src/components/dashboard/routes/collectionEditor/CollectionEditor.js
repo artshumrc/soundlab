@@ -1,76 +1,105 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Field, FieldArray} from 'redux-form';
+import { Field, FieldArray, SubmissionError, reduxForm } from 'redux-form';
 import Textarea from 'react-textarea-autosize';
+import { gql, graphql, compose } from 'react-apollo';
+import { connect } from 'react-redux';
+import autoBind from 'react-autobind';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import CoverImageUploader from '../../components/imagesUploader/CoverImageUploader';
 import Form from '../../components/Form';
-import './CollectionEditor.css';
-import Pagination from '../../../../components/pagination/Pagination/Pagination.js';
 import CollectionItemsEditor from './CollectionItemsEditor';
 
-export default class CollectionEditor extends React.Component {
+import './CollectionEditor.css';
+
+
+const TitleInput = props => (
+	<Textarea
+		{...props.input}
+		placeholder={props.placeholder}
+		className={props.className}
+	/>
+);
+
+const AboutInput = props => (
+	<Textarea
+		{...props.input}
+		placeholder={props.placeholder}
+		className={props.className}
+	/>
+);
+
+class CollectionEditor extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleSubmit = this.handleSubmit.bind(this);
+		autoBind(this);
 	}
 
-	handleSubmit(values) {
-		console.log('values LOG', values);
+	submit(values) {
+		this.props.mutate({
+			variables: {
+				collection: {
+					...values
+				},
+			},
+		});
 	}
 
 	render() {
-		const inputComponent = props => (<input
-			{...props.input}
-			placeholder={props.placeholder}
-			className={props.className}
-			autoFocus
-		/>);
-		const textComponent = props => (<div className="center"><Textarea
-			{...props.input}
-			placeholder={props.placeholder}
-			className={props.className}
-		/></div>);
 		return (
 			<div className="collectionEditor">
-				<Form
-					onSubmit={this.handleSubmit}
-					form="itemEditor"
-					initialValues={this.state}
-				>
-					<Field
-						name="coverImage"
-						component={image => (
-							<CoverImageUploader image={image} />
-            )}
-					/>
-
-					<Field
-						name="title"
-						component={inputComponent}
-						type="text"
-						placeholder="Title..."
-						className="collectionTitleEdit"
-					/>
-					<Field
-						name="article"
-						component={textComponent}
-						type="text"
-						placeholder="Article..."
-						className="collectionArticleEdit"
-					/>
-					<FieldArray
-						name="items"
-						component={items => (
-							<CollectionItemsEditor items={items} />
-            )}
-					/>
-					<Pagination
-						total={90}
-						limit={18}
-					/>
-				</Form>
+				<Grid>
+					<Form
+						onSubmit={this.submit}
+						form="itemEditor"
+						initialValues={this.state}
+					>
+						<Field
+							name="coverImage"
+							component={image => (
+								<CoverImageUploader
+									image={image}
+								/>
+	            )}
+						/>
+						<Field
+							className="collectionTitleEdit"
+							name="title"
+							component={TitleInput}
+							type="text"
+							placeholder="Title..."
+						/>
+						<Field
+							className="collectionAboutEdit"
+							name="about"
+							component={AboutInput}
+							type="text"
+							placeholder="About the collection..."
+						/>
+						<FieldArray
+							name="items"
+							component={items => (
+								<CollectionItemsEditor items={items} />
+	            )}
+						/>
+					</Form>
+				</Grid>
 			</div>
 		);
 	}
 }
+
+const addNewCollection = gql`
+	mutation collectionCreate($collection: CollectionCreateInputType!) {
+		collectionCreate(collection: $collection) {
+			title
+		}
+	}
+`;
+
+const CollectionEditorForm = reduxForm({
+	form: 'collectionsEditor',
+})(CollectionEditor);
+
+export default graphql(addNewCollection)(CollectionEditorForm);
