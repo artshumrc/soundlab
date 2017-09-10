@@ -28,9 +28,6 @@ class ProjectEditor extends React.Component {
 					...values
 				},
 			},
-			context: {
-				user: '',
-			},
 		});
 	}
 
@@ -75,10 +72,6 @@ class ProjectEditor extends React.Component {
 		);
 	}
 }
-
-ProjectEditor.propTypes = {
-	submit: PropTypes.func.isRequired
-};
 
 const addNewProject = gql`
 	mutation projectCreate($project: ProjectCreateInputType!) {
