@@ -4,6 +4,7 @@ import Drawer from 'material-ui/Drawer';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import Divider from 'material-ui/Divider';
 
 import './DashboardSidebar.css';
 
@@ -18,37 +19,52 @@ class DashboardSidebar extends React.Component {
 				<Menu>
 					<MenuItem
 						primaryText="Projects"
-						url="/dashboard/projects"
-					/>
-					<MenuItem
-						primaryText="Project Editor"
-						url="/dashboard/projectEditor"
-					/>
-					<MenuItem
-						primaryText="Collections"
-						url="/dashboard/collections"
 						menuItems={[
 							<MenuItem
 								primaryText="New"
-								url="/dashboard/collections/create"
+								containerElement={<Link to="/dashboard/projects/create" />}
 							/>,
 							<MenuItem
 								primaryText="Edit"
-								url="/dashboard/collections/edit"
+								containerElement={<Link to="/dashboard/projects/edit" />}
 							/>,
 						]}
 					/>
 					<MenuItem
-						primaryText="Item Editor"
-						url="/dashboard/itemEditor"
+						primaryText="Collections"
+						menuItems={[
+							<MenuItem
+								primaryText="New"
+								containerElement={<Link to="/dashboard/collections/create" />}
+							/>,
+							<MenuItem
+								primaryText="Edit"
+								containerElement={<Link to="/dashboard/collections/edit" />}
+							/>,
+						]}
 					/>
 					<MenuItem
-						primaryText="User Profile"
-						url="/dashboard/user"
+						primaryText="Items"
+						menuItems={[
+							<MenuItem
+								primaryText="New"
+								containerElement={<Link to="/dashboard/items/create" />}
+							/>,
+							<MenuItem
+								primaryText="Edit"
+								containerElement={<Link to="/dashboard/items/edit" />}
+							/>,
+						]}
 					/>
+					<Divider />
+					<MenuItem
+						primaryText="Profile"
+						containerElement={<Link to="/dashboard/user" />}
+					/>
+					<Divider />
 					<MenuItem
 						primaryText="Settings"
-						url="/dashboard/settings"
+						containerElement={<Link to="/dashboard/settings" />}
 					/>
 				</Menu>
 			</Drawer>
