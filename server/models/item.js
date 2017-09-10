@@ -93,14 +93,14 @@ ItemSchema.statics.findByCollectionId = function findByCollectionId(collectionId
  */
 
 ItemSchema.methods.validateUser = function validateUser(userId) {
-	return Collection.isUserOwner(this.collectionId, userId);
+	return Collection.isUserAdmin(this.collectionId, userId);
 };
 
 // ItemSchema.statics.createByUser = async function createByUser(newItem, userId) {
 
 // 	try {
-// 		const userIsOwner = await Collection.isUserOwner(item.collectionId, user._id);
-// 		if (!userIsOwner) throw new PermissionError();
+// 		const userIsAdmin = await Collection.isUserAdmin(item.collectionId, user._id);
+// 		if (!userIsAdmin) throw new PermissionError();
 // 	} catch (err) {
 // 		console.error(err);
 // 		throw new MongooseGeneralError();
