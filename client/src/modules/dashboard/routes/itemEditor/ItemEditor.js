@@ -1,10 +1,10 @@
 import React from 'react';
-import { Field, FieldArray } from 'redux-form';
+import { Field, FieldArray, SubmissionError, reduxForm } from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import { gql, graphql } from 'react-apollo';
 
 import ItemEditorUploader from '../../components/FileUploader/ItemEditorUploader';
-import PrimaryImage from '../../../../modules/items/components/ItemImageViewer/PrimaryImage';
+import PrimaryImage from '../../../items/components/ItemImageViewer/PrimaryImage';
 import PrimaryFile from './PrimaryFile';
 import TagEditor from './TagEditor';
 import MetaEditor from './MetaEditor';
@@ -68,7 +68,6 @@ class ItemEditor extends React.Component {
 					<form
 						form="itemEditor"
 						onSubmit={this.submit}
-						initialValues={this.state}
 					>
 						<Field
 							name="files"
@@ -82,8 +81,11 @@ class ItemEditor extends React.Component {
 						/>
 						<FieldArray
 							name="files"
-							component={files => (
-								<ItemEditorUploader files={files} showError={this.showError} />
+							component={({ files }) => (
+								<ItemEditorUploader
+									files={files}
+									showError={this.showError}
+								/>
               )}
 						/>
 						<Field
@@ -127,4 +129,10 @@ mutation itemCreate($item: ItemCreateInputType!) {
 }
 `;
 
-export default graphql(addNewItem)(ItemEditor);
+
+const ItemEditorForm = reduxForm({
+	form: 'itemsEditor',
+})(ItemEditor);
+
+
+export default graphql(addNewItem)(ItemEditorForm);

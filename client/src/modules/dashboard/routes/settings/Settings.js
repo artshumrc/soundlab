@@ -29,7 +29,6 @@ class Settings extends React.Component {
 				},
 			},
 		});
-		console.log('form submit values: ', values);
 	}
 
 	render() {
@@ -42,12 +41,12 @@ class Settings extends React.Component {
 					<form
 						onSubmit={() => this.submit}
 						form="userSettingsForm"
-						initialValues={this.state}
 					>
 						<Row>
 							<Field
 								name="username"
 								type="text"
+								component="input"
 								placeholder="username"
 								className="input"
 							/>
@@ -56,6 +55,7 @@ class Settings extends React.Component {
 							<Field
 								name="name"
 								type="text"
+								component="input"
 								placeholder="name"
 								className="input"
 							/>
@@ -64,6 +64,7 @@ class Settings extends React.Component {
 							<Field
 								name="bio"
 								type="text"
+								component="input"
 								placeholder="bio"
 								className="input"
 							/>
@@ -72,6 +73,7 @@ class Settings extends React.Component {
 							<Field
 								name="email"
 								type="email"
+								component="input"
 								placeholder="email"
 								className="input"
 							/>
@@ -81,14 +83,15 @@ class Settings extends React.Component {
 								name="facebook"
 								placeholder="facebook"
 								type="text"
+								component="input"
 								className="input"
-								iconRight="rocket"
 							/>
 						</Row>
 						<Row>
 							<Field
 								name="google"
 								placeholder="google"
+								component="input"
 								type="text"
 								className="input"
 							/>
@@ -97,6 +100,7 @@ class Settings extends React.Component {
 							<Field
 								name="twitter"
 								placeholder="twitter"
+								component="input"
 								type="text"
 								className="input"
 							/>

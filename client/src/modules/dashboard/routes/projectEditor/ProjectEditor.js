@@ -41,7 +41,6 @@ class ProjectEditor extends React.Component {
 						<form
 							onSubmit={this.submit}
 							form="projectEditor"
-							initialValues={this.state}
 						>
 							<Field
 								name="title"

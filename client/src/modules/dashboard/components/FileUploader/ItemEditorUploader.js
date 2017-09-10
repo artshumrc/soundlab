@@ -3,15 +3,22 @@ import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc'
 import FileUploader from './FileUploader';
 import ThumbnailFile from './ThumbnailFile';
 
-export default class ItemEditorUploader extends React.Component {
+class ItemEditorUploader extends React.Component {
 	constructor(props) {
 		super(props);
 		this.addFile = this.addFile.bind(this);
 		this.updateFile = this.updateFile.bind(this);
 		this.moveField = this.moveField.bind(this);
 		this.removeFile = this.removeFile.bind(this);
+
+		let files = [];
+
+		if (this.props.files) {
+			files = this.props.fields.getAll();
+		}
+
 		this.state = {
-			files: this.props.files.fields.getAll()
+			files,
 		};
 	}
 
@@ -62,17 +69,18 @@ export default class ItemEditorUploader extends React.Component {
 		);
 	}
 }
+
 const generateKey = () => Math.random().toString(36).substring(2);
-const SortableItem = SortableElement(({file, fileIndex, removeFile, updateFileCb, showError}) =>
-  (<ThumbnailFile
-	file={file}
-	fileIndex={fileIndex}
-	key={generateKey()}
-	updateFileCb={updateFileCb}
-	deleteFile={removeFile}
-	showError={showError}
-  />)
-);
+const SortableItem = SortableElement(({file, fileIndex, removeFile, updateFileCb, showError}) => (
+	<ThumbnailFile
+		file={file}
+		fileIndex={fileIndex}
+		key={generateKey()}
+		updateFileCb={updateFileCb}
+		deleteFile={removeFile}
+		showError={showError}
+  />
+));
 
 const SortableList = SortableContainer(({files, updateFile, showError, removeFile}) => (
 	<div>
@@ -88,3 +96,6 @@ const SortableList = SortableContainer(({files, updateFile, showError, removeFil
     ))}
 	</div>
 ));
+
+
+export default ItemEditorUploader;

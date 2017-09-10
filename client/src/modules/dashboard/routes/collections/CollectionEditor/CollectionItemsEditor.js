@@ -3,7 +3,7 @@ import _ from 'underscore';
 import autoBind from 'react-autobind';
 
 import AddCollectionItem from './AddCollectionItem';
-import ItemListItem from '../../../../modules/items/components/ItemListItem';
+import ItemListItem from '../../../../items/components/ItemListItem';
 
 export default class CollectionItemsEditor extends React.Component {
 	constructor(props) {

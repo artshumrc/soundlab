@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import autoBind from 'react-autobind';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-import CoverImageUploader from '../../components/ImagesUploader/CoverImageUploader';
+import CoverImageUploader from '../../../components/ImagesUploader/CoverImageUploader';
 import CollectionItemsEditor from './CollectionItemsEditor';
 
 import './CollectionEditor.css';
@@ -48,42 +48,39 @@ class CollectionEditor extends React.Component {
 	render() {
 		return (
 			<div className="collectionEditor">
-				<Grid>
-					<form
-						onSubmit={this.submit}
-						form="itemEditor"
-						initialValues={this.state}
-					>
-						<Field
-							name="coverImage"
-							component={image => (
-								<CoverImageUploader
-									image={image}
-								/>
-	            )}
-						/>
-						<Field
-							className="collectionTitleEdit"
-							name="title"
-							component={TitleInput}
-							type="text"
-							placeholder="Title..."
-						/>
-						<Field
-							className="collectionAboutEdit"
-							name="about"
-							component={AboutInput}
-							type="text"
-							placeholder="About the collection..."
-						/>
-						<FieldArray
-							name="items"
-							component={items => (
-								<CollectionItemsEditor items={items} />
-	            )}
-						/>
-					</form>
-				</Grid>
+				<form
+					onSubmit={this.submit}
+					form="itemEditor"
+				>
+					<Field
+						name="coverImage"
+						component={image => (
+							<CoverImageUploader
+								image={image}
+							/>
+            )}
+					/>
+					<Field
+						className="collectionTitleEdit"
+						name="title"
+						component={TitleInput}
+						type="text"
+						placeholder="Title..."
+					/>
+					<Field
+						className="collectionAboutEdit"
+						name="about"
+						component={AboutInput}
+						type="text"
+						placeholder="About the collection..."
+					/>
+					<FieldArray
+						name="items"
+						component={items => (
+							<CollectionItemsEditor items={items} />
+            )}
+					/>
+				</form>
 			</div>
 		);
 	}

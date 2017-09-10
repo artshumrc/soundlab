@@ -53,7 +53,11 @@ class ExampleForms extends React.Component {
 		return (
 			<div className="content">
 				<div className="container">
-					<form onSubmit={this.handleSubmit} validate={validate} form="exampleForm" initialValues={this.props.initialValues}>
+					<form
+						onSubmit={this.handleSubmit}
+						validate={validate}
+						form="exampleForm"
+					>
 						<div>
 							<label htmlFor="email">E-mail</label>
 							<Field name="email" component={this.inputComponent} type="email" placeholder="e-mail" />

@@ -1,9 +1,9 @@
 import React from 'react';
-import {Field, FieldArray} from 'redux-form';
+import { Field, FieldArray, SubmissionError, reduxForm } from 'redux-form';
 import AlertContainer from 'react-alert';
 // import mongoose from 'mongoose';
 import TextInput from '../components/TextInput';
-import {createManifest} from '../../../lib/createManifest';
+import { createManifest } from '../../../lib/createManifest';
 import FormImagesUploader from '../components/FormImagesUploader';
 
 const validate = (values) => {
@@ -29,7 +29,7 @@ const validate = (values) => {
 	return errors;
 };
 
-export default class Test extends React.Component {
+class MiradorManifestEditor extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -70,8 +70,9 @@ export default class Test extends React.Component {
 				<AlertContainer ref={a => !this.state.alert && this.setState({alert: a})} {...alertOptions} />
 				<div className="container">
 					<form
-						onSubmit={this.handleSubmit} validate={validate} form="exampleForm"
-						initialValues={this.state}
+						onSubmit={this.handleSubmit}
+						validate={validate}
+						form="exampleForm"
 					>
 						<div>
 							<label htmlFor="title">Title</label>
@@ -109,3 +110,18 @@ export default class Test extends React.Component {
 		);
 	}
 }
+
+
+const addNewMiradorManifest = gql`
+	mutation miradorCreate($miradorManifest: MiradorManifestCreateInputType!) {
+		miradorManifestCreate(miradorManifest: $miradorManifest) {
+			title
+		}
+	}
+`;
+
+const MiradorManifestEditorForm = reduxForm({
+	form: 'miradorManifestsEditor',
+})(MiradorManifestEditor);
+
+export default MiradorManifestEditorForm;
