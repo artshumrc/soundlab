@@ -1,10 +1,88 @@
 @import "../../styles/global";
+@import "../../styles/vars";
 
 .postAuthor {
   margin-left:1em;
   font-size:2em;
 }
 
-.informationListContainer {
-  min-height:1000px;
+.resource-list-container{
+  padding-top: 100px;
+}
+
+.resources-cover-image {
+  padding-top: 60px;
+}
+
+.cover-inlay {
+  position: absolute;
+  width: 560px;
+  bottom: -125px;
+  right: 100px;
+  height: 260px;
+  padding: 20px 30px 20px 20px;
+  background: #eee;
+}
+
+.cover-inlay-title {
+  color: $dark;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.cover-inlay-date {
+  color: $lightGrey;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.cover-inlay-description-container {
+  padding-top: 10px;
+}
+
+.cover-inlay-item-description {
+  color: $dark;
+  font-size: 20px;
+}
+
+.tutorials-list-title {
+  font-size: 40px;
+  padding-bottom: 60px;
+}
+
+.events-list-title {
+  font-size: 40px;
+  padding-bottom: 60px;
+}
+
+/*
+*
+ResourceItem
+*
+*/
+
+.resource-item {
+  width: 80%;
+  margin-bottom: 40px;
+  background: #fafafa !important;
+  box-shadow: 0px 0px 0px #fafafa !important;
+}
+
+.resource-card-item-title {
+  padding-left: 0px !important;
+}
+
+.resource-content-text {
+  font-size: 20px;
+  color: $lightGrey;
+}
+
+.read-more {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: $dark;
+  margin-left:-8px;
 }

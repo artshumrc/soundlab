@@ -30,6 +30,14 @@ class InformationList extends React.Component {
   }
 
   render () {
+    const thumbnailListImage = {
+        backgroundImage: `url("http://localhost:8888/soundlab/wp-content/uploads/2017/09/mitchel-lensink-236502.jpg")`,
+        width: '100%',
+        height: '800px',
+        objectFit: 'cover',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }
     if (this.props.data.loading) {
       return (<div>Loading</div>)
     }
@@ -43,14 +51,35 @@ class InformationList extends React.Component {
       return (
       <MuiThemeProvider>
       <div>
+        <Row styleName="resources-cover-image">
+          <Col xs={12} sm={12} md={12} lg={12}>
+            <div style={thumbnailListImage}></div>
+            <div styleName="cover-inlay">
+              <div>
+                <span styleName="cover-inlay-title">Intro to Ableton</span>
+              </div>
+              <div>
+                <span styleName="cover-inlay-date">Every Wednesday, 8pm</span>
+              </div>
+              <div styleName="cover-inlay-description-container">
+                <span styleName="cover-inlay-item-description">Stop by the lab any Wednesday evening for an introduction to Ableton, a powerful starter tool for any sound production project.</span>
+              </div>
 
-        <row >
-          <Col xsOffset={3} xs={6} styleName="informationListContainer">
+            </div>
+          </Col>
+        </Row>
+        <Row styleName="resource-list-container">
+          <Col xs={12} sm={12} md={8} lg={8}>
+            <h4 styleName="tutorials-list-title">Tutorials</h4>
             {this.props.data.posts.map((post) =>
               <InformationItem key={post.id} post={post} />
             )}
           </Col>
-        </row>
+          <Col xs={12} sm={12} md={4} lg={4}>
+            <h4 styleName="events-list-title">Upcoming Events</h4>
+
+          </Col>
+      </Row>
       </div>
       </MuiThemeProvider>
 
