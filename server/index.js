@@ -38,7 +38,7 @@ import oauthSetup from './oauth';
 import OrpheusEmail from './email';
 
 // Routes
-import authenticationRouter from './routes/auth';
+import authenticationRouter from './authentication/routes';
 
 
 // environment variables setup
