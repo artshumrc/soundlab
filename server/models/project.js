@@ -15,28 +15,33 @@ const ProjectSchema = new Schema({
 		unique: true,
 		required: true,
 		trim: true,
-		index: true
+		index: true,
+	},
+	hostname: {
+		unique: true,
+		required: true,
+		type: String,
+		trim: true,
+		index: true,
 	},
 	description: {
 		type: String,
 	},
-	// users: [{
-	// 	_id: {
-	// 		type: Schema.Types.ObjectId,
-	// 		ref: 'User',
-	// 		index: true
-	// 	}
-	// }]
+	tenantId: {
+		type: Schema.Types.ObjectId,
+		ref: 'Tenant',
+		index: true,
+	},
 	users: [{
 		userId: {
 			type: Schema.Types.ObjectId,
 			ref: 'User',
-			index: true
+			index: true,
 		},
 		role: {
 			type: String,
-			enum: ['Owner']
-		}
+			enum: ['admin', 'editor'],
+		},
 	}],
 });
 
@@ -54,8 +59,8 @@ ProjectSchema.plugin(URLSlugs('title'));
 
 /**
  * Find project by user id
- * @param  {String}   userId 	User id
- * @return {Promise}          	(Promise) Array of projects
+ * @param  {String} userId User id
+ * @return {Promise} (Promise) Array of projects
  */
 ProjectSchema.statics.findByUserId = function findByUserId(userId) {
 	return this.find({ users: { $elemMatch: { userId } } });
@@ -67,9 +72,9 @@ ProjectSchema.statics.findByUserId = function findByUserId(userId) {
  * @param  {String}   userId    	User id
  * @return {Promise}            	(Promise) True if user has the role of owner for this project
  */
-ProjectSchema.statics.isUserOwner = async function isUserOwner(projectId, userId) {
+ProjectSchema.statics.isUserAdmin = async function isUserAdmin(projectId, userId) {
 	try {
-		const project = await this.find({ _id: projectId, users: { $elemMatch: { userId, role: 'Owner' } } });
+		const project = await this.find({ _id: projectId, users: { $elemMatch: { userId, role: 'admin' } } });
 
 		if (project) return true;
 
@@ -80,10 +85,21 @@ ProjectSchema.statics.isUserOwner = async function isUserOwner(projectId, userId
 	}
 };
 
-// TODO: check if needed (why was it implemented?):
-// ProjectSchema.statics.findById = function findById(projectId) {
-// 	return this.findOne({ _id: projectId });
-// };
+/**
+ * Create a new project by user
+ * @param  {String}   userId    	User id
+ * @param  {Object}   newProject 	Object with new project values
+ * @return {Promise}               	(Promise) The new Project
+ */
+ProjectSchema.statics.createByAdmin = function createByAdmin(userId, newProject) {
+	return this.create({
+		users: [{
+			userId,
+			role: 'admin',
+		}],
+		...newProject,
+	});
+};
 
 /**
  * Create a new project by user
@@ -91,14 +107,8 @@ ProjectSchema.statics.isUserOwner = async function isUserOwner(projectId, userId
  * @param  {Object}   newProject 	Object with new project values
  * @return {Promise}               	(Promise) The new Project
  */
-ProjectSchema.statics.createByOwner = function createByOwner(userId, newProject) {
-	return this.create({
-		users: [{
-			userId,
-			role: 'Owner',
-		}],
-		...newProject,
-	});
+ProjectSchema.statics.findByHost = function findByHost(host, cb) {
+	return Project.findOne({ domain }, cb);
 };
 
 /**

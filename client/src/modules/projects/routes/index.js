@@ -16,7 +16,7 @@ import ItemDetail from '../../items/components/ItemDetail';
 
 export default (
 	<div>
-		{/* Project home landing page (for tenant *.orphe.us instead of main orphe.us) */}
+		{/* Project home landing page (for project *.orphe.us instead of main orphe.us) */}
 		<Route exact path="/project" component={ProjectHome} />
 
 		<Route path="/collections" component={ProjectLayout}>

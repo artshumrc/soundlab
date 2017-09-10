@@ -15,7 +15,7 @@ const generateProjects = async (count, userIds) => {
 			description: faker.lorem.sentences(),
 			users: [{
 				userId: getRandom(userIds),
-				role: 'Owner',
+				role: 'admin',
 			}],
 		}));
 

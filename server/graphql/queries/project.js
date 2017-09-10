@@ -6,6 +6,7 @@ import ProjectType from '../types/models/project';
 // models
 import Project from '../../models/project';
 
+
 const projectQueryFields = {
 	project: {
 		type: ProjectType,

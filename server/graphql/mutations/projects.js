@@ -1,34 +1,23 @@
 import { GraphQLString, GraphQLNonNull, GraphQLID } from 'graphql';
 
 // types
-import ProjectType, { ProjectCreateInputType, ProjectUpdateInputType } from '../types/models/project';
+import ProjectType, { ProjectInputType } from '../types/models/project';
 import { RemoveType } from '../types';
 
 // models
 import Project from '../../models/project';
 
-// errors
-import { AuthenticationError, TenantError, ArgumentError, PermissionError } from '../errors';
 
-// TODO: Creat ProjectUpdateInputType
-
-const projectMutationFileds = {
-
+const projectMutationFields = {
 	projectCreate: {
 		type: ProjectType,
-		description: 'Create new project',
+		description: 'Create a new project',
 		args: {
 			project: {
-				type: new GraphQLNonNull(ProjectCreateInputType)
+				type: new GraphQLNonNull(ProjectInputType)
 			}
 		},
 		async resolve(parent, { project }, { user, tenant }) {
-			// Validate connection
-			// if the operation doesn't come from the admin page:
-			// if (!tenant.adminPage) throw new TenantError();
-
-			// if user is not logged in:
-			if (!user) throw new AuthenticationError();
 
 			// Validate resolver-specifc arguments
 			// if (!project.collectionId) throw new ArgumentError({ data: { field: 'project.collectionId' } });
@@ -38,7 +27,7 @@ const projectMutationFileds = {
 
 			const projectUser = {
 				userId: user._id,
-				role: 'Owner'
+				role: 'admin'
 			};
 
 			NewProject.users.push(projectUser);
@@ -46,8 +35,8 @@ const projectMutationFileds = {
 			// Validte permissions
 			// check user permissions
 			try {
-				const userIsOwner = await NewItem.validateUser(user._id);
-				// if (!userIsOwner) throw new PermissionError();
+				const userIsAdmin = await NewItem.validateUser(user._id);
+				// if (!userIsAdmin) throw new PermissionError();
 			} catch (err) {
 				// throw new PermissionError();
 			}
@@ -60,7 +49,7 @@ const projectMutationFileds = {
 		description: 'Update project',
 		args: {
 			project: {
-				type: new GraphQLNonNull(ProjectUpdateInputType),
+				type: new GraphQLNonNull(ProjectInputType),
 			},
 			projectId: {
 				type: new GraphQLNonNull(GraphQLID),
@@ -81,8 +70,8 @@ const projectMutationFileds = {
 
 			// validate permissions
 			try {
-				const userIsOwner = await FoundProject.validateUser(user._id);
-				if (!userIsOwner) throw new PermissionsError();
+				const userIsAdmin = await FoundProject.validateUser(user._id);
+				if (!userIsAdmin) throw new PermissionsError();
 			} catch (err) {
 				throw new PermissionError();
 			}
@@ -124,8 +113,8 @@ const projectMutationFileds = {
 
 			// validate permissions
 			// try {
-			// 	const userIsOwner = await FoundProject.validateUser(user._id);
-			// 	if (!userIsOwner) throw new PermissionError();
+			// 	const userIsAdmin = await FoundProject.validateUser(user._id);
+			// 	if (!userIsAdmin) throw new PermissionError();
 			// } catch (err) {
 			// 	throw new PermissionError();
 			// }
@@ -144,4 +133,4 @@ const projectMutationFileds = {
 	}
 };
 
-export default projectMutationFileds;
+export default projectMutationFields;

@@ -9,7 +9,6 @@ import Collection from '../../../models/collection';
 import TenantType from './tenant';
 import CollectionType from './collection';
 import UserType from './user';
-import TagType, { TagInputType } from './tag';
 
 const config = {
 	name: 'ProjectType',
@@ -46,43 +45,16 @@ const config = {
 	}
 };
 
-// const configInput = {
-// 	name: 'ProjectInputType',
-// 	description: 'Project base input type',
-// 	class: 'GraphQLInputObjectType',
-// 	schema: Project.schema,
-// 	exclude: ['_id', 'slug', 'users', 'createdAt', 'updatedAt'],
-// };
-
-const configCreate = {
-	name: 'ProjectCreateInputType',
+const configInput = {
+	name: 'ProjectInputType',
 	description: 'Project Schema base create input type',
 	class: 'GraphQLInputObjectType',
 	schema: Project.schema,
 	exclude: ['_id', 'slug', 'createdAt', 'updatedAt'],
-	exted: {
-		tags: {
-			type: new GraphQLList(TagInputType),
-		},
-	}
-};
-
-const configUpdate = {
-	name: 'ProjectUpdateInputType',
-	description: 'Project Schema base update input type',
-	class: 'GraphQLInputObjectType',
-	schema: Project.schema,
-	exclude: ['_id', 'slug', 'collectionId', 'createdAt', 'updatedAt'],
-	extend: {
-		tags: {
-			type: new GraphQLList(TagInputType),
-		},
-	}
 };
 
 const ProjectType = createType(config);
-const ProjectCreateInputType = createType(configCreate);
-const ProjectUpdateInputType = createType(configUpdate);
+const ProjectInputType = createType(configInput);
 
 export default ProjectType;
-export { ProjectCreateInputType, ProjectUpdateInputType };
+export { ProjectInputType };
