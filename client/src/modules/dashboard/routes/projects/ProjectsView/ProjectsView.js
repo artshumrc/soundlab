@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import _ from 'lodash';
 
 import './ProjectsView.css';
 
@@ -32,9 +31,9 @@ class ProjectsView extends React.Component {
 			<div>
 				{
 					!data.loading ?
-						<div>
-							<div className="topBar">
-								<span className="title">My Projects</span>
+						<div id="projects-view">
+							<div>
+								<span>My Projects</span>
 							</div>
 							<div>
 								{ data.userProjects && data.userProjects.length > 0 ?
@@ -56,7 +55,7 @@ class ProjectsView extends React.Component {
 							</div>
 						</div>
 					:
-						<div className="loading">
+						<div>
 							<h2>loading</h2>
 						</div>
 				}

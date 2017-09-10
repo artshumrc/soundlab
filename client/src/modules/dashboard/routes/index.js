@@ -32,7 +32,7 @@ export default (
 			{/* projects */}
 			<Route path="/dashboard/projects" component={ProjectsView} />
 			<Route path="/dashboard/projects/create" component={ProjectEditor} />
-			<Route path="/dashboard/projects/edit" component={ProjectEditor} />
+			<Route path="/dashboard/projects/edit" component={ProjectsView} />
 
 			{/* user profile */}
 			<Route path="/dashboard/user" component={UserProfile} />
