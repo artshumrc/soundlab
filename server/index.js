@@ -39,7 +39,6 @@ import OrpheusEmail from './email';
 
 // Routes
 import authenticationRouter from './routes/auth';
-import manifestRouter from './routes/manifest';
 
 
 // environment variables setup
@@ -90,7 +89,6 @@ OrpheusEmail.setupTransport();
 
 // Routes
 app.use('/auth', authenticationRouter);
-app.use('/', manifestRouter);
 
 function listen() {
 	app.listen(app.get('port'), () => {
