@@ -6,7 +6,7 @@ import Collection from '../../../models/collection';
 import Item from '../../../models/item';
 
 // types
-import ItemType from './item';
+import ItemType, { ItemInputType } from './item';
 
 
 const config = {
@@ -46,10 +46,15 @@ const config = {
 
 const configInput = {
 	name: 'CollectionInputType',
-	description: 'Collection base input type',
+	description: 'Collection Schema base create input type',
 	class: 'GraphQLInputObjectType',
 	schema: Collection.schema,
 	exclude: ['_id', 'slug', 'createdAt', 'updatedAt'],
+	extend: {
+		items: {
+			type: new GraphQLList(ItemInputType),
+		},
+	}
 };
 
 const CollectionType = createType(config);

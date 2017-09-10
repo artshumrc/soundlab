@@ -42,8 +42,8 @@ const config = {
 	}
 };
 
-const configCreate = {
-	name: 'ItemCreateInputType',
+const configInput = {
+	name: 'ItemInputType',
 	description: 'Item Schema base create input type',
 	class: 'GraphQLInputObjectType',
 	schema: Item.schema,
@@ -58,25 +58,8 @@ const configCreate = {
 	}
 };
 
-const configUpdate = {
-	name: 'ItemUpdateInputType',
-	description: 'Item Schema base update input type',
-	class: 'GraphQLInputObjectType',
-	schema: Item.schema,
-	exclude: ['_id', 'slug', 'collectionId', 'createdAt', 'updatedAt'],
-	extend: {
-		tags: {
-			type: new GraphQLList(TagInputType),
-		},
-		metadata: {
-			type: new GraphQLList(MetadataInputType)
-		},
-	}
-};
-
 const ItemType = createType(config);
-const ItemCreateInputType = createType(configCreate);
-const ItemUpdateInputType = createType(configUpdate);
+const ItemInputType = createType(configInput);
 
 export default ItemType;
-export { ItemCreateInputType, ItemUpdateInputType };
+export { ItemInputType };
