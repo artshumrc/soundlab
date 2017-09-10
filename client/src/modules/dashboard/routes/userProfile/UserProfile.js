@@ -40,31 +40,21 @@ class UserProfile extends React.Component {
 							<h3>Username: {data.userProfile.username}
 							</h3>
 							<h3>Name: 
-								{ 
-									data.userProfile.name ?  
-										data.userProfile.name 
-									: 
-										'Update your profile in the settings tab to include your bname.'
-										}
+								{data.userProfile.name || 'Update your profile in the settings tab to include your name.'}
 							</h3>
 							<div className="socialIcons">
-								<a href={data.userProfile.twitter ? data.userProfile.twitter : '#twitter'}>
+								<a href={data.userProfile.twitter || '#twitter'}>
 									<FontAwesome name="twitter" />
 								</a>
-								<a href={data.userProfile.linkedIn ? data.userProfile.twitter : '#twitter'}>
+								<a href={data.userProfile.linkedIn || '#linkedin'}>
 									<FontAwesome name="linkedin-square" />
 								</a>
-								<a href={data.userProfile.facebook ? data.userProfile.twitter : '#twitter'}>
+								<a href={data.userProfile.facebook || '#facebook'}>
 									<FontAwesome name="facebook-official" />
 								</a>
 							</div>
 							<p>
-								{
-									data.userProfile.bio ?
-										data.userProfile.bio
-									:
-										'Update your profile in the settings tab to include a bio.'
-								}
+								{data.userProfile.bio || 'Update your profile in the settings tab to include a bio.'}
 							</p>
 							<ListGroup className="contactDetails">
 								<ListGroupItem>
@@ -72,12 +62,7 @@ class UserProfile extends React.Component {
 									<div className="details">
 										<h5>Email:</h5>
 										<span className="value">
-											{
-												data.userProfile.email ?
-													data.userProfile.email
-												:
-													'Update your profile in the settings tab to include an email address.'
-											}
+											{data.userProfile.email || 'Update your profile in the settings tab to include an email address.'}
 										</span>
 									</div>
 								</ListGroupItem>
