@@ -4,16 +4,16 @@ import DataLoader from 'dataloader';
 import createRedisDataLoader from 'redis-dataloader';
 
 // model
-import Tenant from './models/tenant';
+import Project from './models/project';
 
 
 export default function corsSetup(app, redisClient) {
 
 	const RedisDataLoader = createRedisDataLoader({ redis: redisClient });
 
-	const tenantLoader = new RedisDataLoader(
-		'tenant',
-		new DataLoader(hosts => Promise.all(hosts.map(Tenant.findByHost)), {
+	const projectLoader = new RedisDataLoader(
+		'project',
+		new DataLoader(hosts => Promise.all(hosts.map(Project.findByHostname)), {
 			cache: false
 		}), {
 			cache: false,
@@ -25,7 +25,6 @@ export default function corsSetup(app, redisClient) {
 
 	if (process.env.NODE_ENV === 'development') {
 		whitelist.push(process.env.CLIENT_SERVER);
-		whitelist.push('http://orpheus.dev.michalpierzchlewicz.pl');
 	}
 
 	// Check if tenant is white listed or in a database

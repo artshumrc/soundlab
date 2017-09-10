@@ -46,7 +46,7 @@ class OrpheusEmailClass {
 
 		const email = {
 			from: this.from,
-			to: 'michalpierzchlewicz92@gmail.com',
+			to: 'test@archimedes.digital',
 			subject: 'Test',
 			html: '<b>Hello</b>',
 			text: 'results.text',
@@ -58,7 +58,6 @@ class OrpheusEmailClass {
 			console.log('info', info);
 		});
 		*/
-
 	}
 
 	sendVerificationEmail(username) {
