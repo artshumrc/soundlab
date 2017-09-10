@@ -1,13 +1,15 @@
 import { GraphQLString, GraphQLNonNull } from 'graphql';
 
 // types
-import miradorType from '../types/models/mirador';
+import miradorManifestType from '../types/models/miradorManifest';
+
+// models
+import MiradorManifest from '../models/miradorManifest';
 
 // errors
 import { AuthenticationError } from '../errors';
 
 const miradorMutationFileds = {
-
 	mutationCreate: {
 		type: miradorType,
 		args: {
@@ -22,7 +24,7 @@ const miradorMutationFileds = {
 					title
 				};
 
-				return Mirador(mirador).save();
+				return MiradorManifest(mirador).save();
 			}
 			throw new AuthenticationError();
 		}
