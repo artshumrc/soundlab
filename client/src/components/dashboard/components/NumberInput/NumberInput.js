@@ -1,6 +1,7 @@
 import React from 'react';
-import './stylesheets/NumberInput.css';
 import PropTypes from 'prop-types';
+
+import './NumberInput.css';
 
 export default class NumberInput extends React.Component {
 	render() {

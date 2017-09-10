@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {reduxForm} from 'redux-form';
-import './stylesheets/Form.css';
+import './Form.css';
 
 class Form extends React.Component {
 	render() {
 		const childrenWithProps = React.Children.map(this.props.children,
       child => React.cloneElement(child, {
-	changeValue: this.props.change
-})
+				changeValue: this.props.change
+			}),
     );
+
 		return (
 			<form onSubmit={this.props.handleSubmit}>
 				{childrenWithProps}

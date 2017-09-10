@@ -2,7 +2,7 @@ import React from 'react';
 import {Field, FieldArray} from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import { gql, graphql } from 'react-apollo';
-import ItemEditorUploader from '../../components/fileUploader/ItemEditorUploader';
+import ItemEditorUploader from '../../components/FileUploader/ItemEditorUploader';
 import PrimaryImage from '../../../../modules/items/components/ItemImageViewer/PrimaryImage';
 import PrimaryFile from './PrimaryFile';
 import Form from '../../components/Form';
@@ -20,7 +20,7 @@ class ItemEditor extends React.Component {
 		this.state = {
 			files: []
 		};
-		
+
 		autoBind(this);
 	}
 

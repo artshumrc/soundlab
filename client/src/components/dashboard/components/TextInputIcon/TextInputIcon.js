@@ -2,7 +2,7 @@ import React from 'react';
 import {FormGroup, InputGroup, FormControl} from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 import PropTypes from 'prop-types';
-import './stylesheets/TextInputIcon.css';
+import './TextInputIcon.css';
 
 export default class TextInputIcon extends React.Component {
 	render() {

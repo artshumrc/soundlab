@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import './stylesheets/TextInput.css';
+import './TextInput.css';
 
 export default class TextInput extends React.Component {
 	render() {
@@ -27,8 +27,8 @@ export default class TextInput extends React.Component {
 				<div className={style}>
 					{icon}
 					<input
-						placeholder={this.props.placeholder} 
-						disabled={this.props.disabled} 
+						placeholder={this.props.placeholder}
+						disabled={this.props.disabled}
 						{...this.props.input}
 					/>
 					{iconRight}

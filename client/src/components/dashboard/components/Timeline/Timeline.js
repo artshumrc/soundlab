@@ -9,6 +9,7 @@ export class Timeline extends React.Component {
 		);
 	}
 }
+
 export class TimelineItem extends React.Component {
 	render() {
 		return (

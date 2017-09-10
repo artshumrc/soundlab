@@ -5,7 +5,7 @@ import AlertContainer from 'react-alert';
 import Form from '../components/Form';
 import TextInput from '../components/TextInput';
 import {createManifest} from '../../../lib/createManifest';
-import FormImagesUploader from '../components/imagesUploader/FormImagesUploader';
+import FormImagesUploader from '../components/FormImagesUploader';
 
 const validate = (values) => {
 	const errors = {};

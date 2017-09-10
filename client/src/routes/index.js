@@ -17,7 +17,6 @@ import MainPanel from '../components/dashboard/routes/MainPanel';
 import UserProfile from '../components/dashboard/routes/userProfile/UserProfile';
 import UserProfileTimeline from '../components/dashboard/routes/userProfile/UserProfileTimeline';
 import ExampleForms from '../components/dashboard/routes/ExampleForms';
-import MiradorUploader from '../components/dashboard/routes/MiradorUploader';
 import ItemEditor from '../components/dashboard/routes/itemEditor/ItemEditor';
 import CollectionEditor from '../components/dashboard/routes/collectionEditor/CollectionEditor';
 import ProjectEditor from '../components/dashboard/routes/projectEditor/ProjectEditor';
@@ -42,14 +41,9 @@ export default (
 		<Route path="/dashboard" component={Dashboard}>
 			<IndexRoute component={ProjectsView} />
 			<Route path="/dashboard/articles" component={Articles} />
-			<Route path="/dashboard/articles2" component={Articles2} />
-			<Route path="/dashboard/articles3" component={Articles3} />
 			<Route path="/dashboard/user" component={UserProfile} />
-			<Route path="/dashboard/user2" component={UserProfileTimeline} />
-			<Route path="/dashboard/form" component={ExampleForms} />
-			<Route path="/dashboard/mirador" component={MiradorUploader} />
 			<Route path="/dashboard/itemEditor" component={ItemEditor} />
-			<Route path="/dashboard/collectionEditor" component={CollectionEditor} />
+			<Route path="/dashboard/collections/edit" component={CollectionEditor} />
 			<Route path="/dashboard/projectEditor" component={ProjectEditor} />
 			<Route path="/dashboard/projects" component={ProjectsView} />
 			<Route path="/dashboard/settings" component={Settings} />
@@ -57,6 +51,6 @@ export default (
 
 		<Route path="/graphiql" component={GraphiQL} />
 
-		
+
 	</div>
 );

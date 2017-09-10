@@ -1,6 +1,6 @@
 import React from 'react';
 import {FormGroup, InputGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
-import './stylesheets/InputAction.css';
+import './InputAction.css';
 
 export default class InputAction extends React.Component {
 	render() {

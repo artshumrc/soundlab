@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import autoBind from 'react-autobind';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-import CoverImageUploader from '../../components/imagesUploader/CoverImageUploader';
+import CoverImageUploader from '../../components/ImagesUploader/CoverImageUploader';
 import Form from '../../components/Form';
 import CollectionItemsEditor from './CollectionItemsEditor';
 

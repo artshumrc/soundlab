@@ -1,6 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import './stylesheets/SelectInput.css';
+
+import './SelectInput.css';
 
 export default class SelectInput extends React.Component {
 	render() {

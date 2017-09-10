@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Col} from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 import PropTypes from 'prop-types';
-import './stylesheets/ArticlePreview.css';
+import './ArticlePreview.css';
 
 export default class ArticlePreview extends React.Component {
 	render() {

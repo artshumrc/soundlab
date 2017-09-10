@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import './stylesheets/TextArea.css';
+import './TextArea.css';
 
 export default class TextArea extends React.Component {
 	constructor(props) {
