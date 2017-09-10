@@ -1,0 +1,49 @@
+@import '../../../../variables.scss';
+
+.itemImageViewer {
+  margin: 20px auto;
+  max-width: 600px;
+  width: 95%;
+}
+.itemEditor {
+  .detailInput {
+    font-family: "Proxima Nova W08 Reg", sans-serif;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.5s ease;
+    color: #212121;
+  }
+  .detailInput:focus {
+    outline: none;
+    border-bottom: 1px solid #62baf0;
+    transition: border-color 0.5s ease;
+  }
+  .itemTitleEdit {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 36px;
+    width: 100%;
+  }
+  .itemDescriptionEdit {
+    border: 0;
+    background-color: transparent;
+    font-family: "Merriweather", serif;
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 1.7em;
+    padding: 30px 0;
+    text-align: left;
+    max-width: 720px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-bottom: 1px solid transparent;
+    resize: none;
+    width: 100%;
+  }
+  .itemDescriptionEdit:focus {
+    outline: none;
+    border-bottom: 1px solid #62baf0;
+    transition: border-color 0.5s ease;
+  }
+}
