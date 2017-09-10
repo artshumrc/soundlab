@@ -6,11 +6,12 @@ import DashboardLayout from '../layouts/DashboardLayout';
 import MainPanel from './mainPanel/MainPanel';
 import UserProfile from './userProfile/UserProfile';
 import UserProfileTimeline from './userProfile/UserProfileTimeline';
-import ItemEditor from './itemEditor/ItemEditor';
+import ItemsList from './items/ItemsList';
+import ItemEditor from './items/ItemEditor';
 import CollectionsList from './collections/CollectionsList';
 import CollectionEditor from './collections/CollectionEditor';
-import ProjectEditor from './projectEditor/ProjectEditor';
-import ProjectsView from './projectsView/ProjectsView';
+import ProjectEditor from './projects/ProjectEditor';
+import ProjectsView from './projects/ProjectsView';
 import Settings from './settings/Settings';
 
 export default (
@@ -19,7 +20,7 @@ export default (
 			<IndexRoute component={ProjectsView} />
 
 			{/* items */}
-			<Route path="/dashboard/items" component={ItemEditor} />
+			<Route path="/dashboard/items" component={ItemsList} />
 			<Route path="/dashboard/items/create" component={ItemEditor} />
 			<Route path="/dashboard/items/edit" component={ItemEditor} />
 
@@ -30,6 +31,7 @@ export default (
 
 			{/* projects */}
 			<Route path="/dashboard/projects" component={ProjectsView} />
+			<Route path="/dashboard/projects/create" component={ProjectEditor} />
 			<Route path="/dashboard/projects/edit" component={ProjectEditor} />
 
 			{/* user profile */}

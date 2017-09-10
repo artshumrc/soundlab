@@ -3,8 +3,8 @@ import { Field, FieldArray, SubmissionError, reduxForm } from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import { gql, graphql } from 'react-apollo';
 
-import ItemEditorUploader from '../../components/FileUploader/ItemEditorUploader';
-import PrimaryImage from '../../../items/components/ItemImageViewer/PrimaryImage';
+import ItemEditorUploader from '../../../components/FileUploader/ItemEditorUploader';
+import PrimaryImage from '../../../../items/components/ItemImageViewer/PrimaryImage';
 import PrimaryFile from './PrimaryFile';
 import TagEditor from './TagEditor';
 import MetaEditor from './MetaEditor';

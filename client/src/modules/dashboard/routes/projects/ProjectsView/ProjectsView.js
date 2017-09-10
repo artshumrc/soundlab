@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 import './ProjectsView.css';
 
-import Project from './project';
+import Project from './Project';
 
 class ProjectsView extends React.Component {
 	constructor(props) {
@@ -44,7 +44,7 @@ class ProjectsView extends React.Component {
 											data.userProjects.map(project => (
 												<Project
 													key={project._id}
-													projectData={project} 
+													projectData={project}
 												/>
 											))
 										}

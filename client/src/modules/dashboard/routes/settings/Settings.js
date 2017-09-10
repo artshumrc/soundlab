@@ -9,8 +9,8 @@ import autoBind from 'react-autobind';
 
 import './Settings.css';
 
-import TagEditor from '../itemEditor/TagEditor';
-import MetaEditor from '../itemEditor/MetaEditor';
+import TagEditor from '../items/ItemEditor/TagEditor';
+import MetaEditor from '../items/ItemEditor/MetaEditor';
 
 class Settings extends React.Component {
 

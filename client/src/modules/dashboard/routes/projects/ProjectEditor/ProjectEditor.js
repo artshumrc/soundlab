@@ -6,8 +6,8 @@ import { gql, graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import autoBind from 'react-autobind';
 
-import TagEditor from '../itemEditor/TagEditor';
-import MetaEditor from '../itemEditor/MetaEditor';
+import TagEditor from '../../items/ItemEditor/TagEditor';
+import MetaEditor from '../../items/ItemEditor/MetaEditor';
 
 // TODO: Fix post method
 // TODO: Remove autofocus for accessibility reasons
