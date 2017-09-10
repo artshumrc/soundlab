@@ -28,7 +28,6 @@ class ProjectsView extends React.Component {
 
 	render() {
 		const { data } = this.props;
-		console.log('user projects: ', data.userProjects);
 		return (
 			<div>
 				{
