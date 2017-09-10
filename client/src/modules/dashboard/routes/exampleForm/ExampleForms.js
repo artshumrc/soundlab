@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Field} from 'redux-form';
 import validator from 'validator';
-import Form from '../components/Form';
 import TextInput from '../components/TextInput';
 import SelectInput from '../components/SelectInput';
 
@@ -54,7 +53,7 @@ class ExampleForms extends React.Component {
 		return (
 			<div className="content">
 				<div className="container">
-					<Form onSubmit={this.handleSubmit} validate={validate} form="exampleForm" initialValues={this.props.initialValues}>
+					<form onSubmit={this.handleSubmit} validate={validate} form="exampleForm" initialValues={this.props.initialValues}>
 						<div>
 							<label htmlFor="email">E-mail</label>
 							<Field name="email" component={this.inputComponent} type="email" placeholder="e-mail" />
@@ -74,7 +73,7 @@ class ExampleForms extends React.Component {
 								<option value="female">Female</option>
 							</Field>
 						</div>
-					</Form>
+					</form>
 				</div>
 			</div>
 		);
@@ -83,4 +82,3 @@ class ExampleForms extends React.Component {
 
 
 export default connect(mapStateToProps)(ExampleForms);
-

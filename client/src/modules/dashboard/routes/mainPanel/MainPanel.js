@@ -1,8 +1,8 @@
 import React from 'react';
-import {Image, Col, Row, Panel} from 'react-bootstrap';
+import { Image, Col, Row, Panel } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
-import {AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer} from 'recharts';
-import {Timeline, TimelineItem} from '../components/Timeline';
+import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
+import { Timeline, TimelineItem } from '../../components/Timeline';
 
 import './MainPanel.css';
 

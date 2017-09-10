@@ -2,7 +2,6 @@ import React from 'react';
 import {Field, FieldArray} from 'redux-form';
 import AlertContainer from 'react-alert';
 // import mongoose from 'mongoose';
-import Form from '../components/Form';
 import TextInput from '../components/TextInput';
 import {createManifest} from '../../../lib/createManifest';
 import FormImagesUploader from '../components/FormImagesUploader';
@@ -70,7 +69,7 @@ export default class Test extends React.Component {
 			<div className="content">
 				<AlertContainer ref={a => !this.state.alert && this.setState({alert: a})} {...alertOptions} />
 				<div className="container">
-					<Form
+					<form
 						onSubmit={this.handleSubmit} validate={validate} form="exampleForm"
 						initialValues={this.state}
 					>
@@ -104,7 +103,7 @@ export default class Test extends React.Component {
 								<FormImagesUploader imagesFormState={images} showError={this.showError} />
             )}
 						/>
-					</Form>
+					</form>
 				</div>
 			</div>
 		);

@@ -9,10 +9,6 @@ import autoBind from 'react-autobind';
 
 import './Settings.css';
 
-import Form from '../../components/Form';
-import TextInput from '../../components/TextInput';
-import TextArea from '../../components/TextArea';
-import TextInputIcon from '../../components/TextInputIcon';
 import TagEditor from '../itemEditor/TagEditor';
 import MetaEditor from '../itemEditor/MetaEditor';
 
@@ -43,7 +39,7 @@ class Settings extends React.Component {
 					<span className="title">Settings</span>
 				</div>
 				<div className="content settings">
-					<Form
+					<form
 						onSubmit={() => this.submit}
 						form="userSettingsForm"
 						initialValues={this.state}
@@ -51,16 +47,14 @@ class Settings extends React.Component {
 						<Row>
 							<Field
 								name="username"
-								component={TextInput}
 								type="text"
 								placeholder="username"
 								className="input"
 							/>
 						</Row>
 						<Row>
-							<Field 
+							<Field
 								name="name"
-								component={TextInput}
 								type="text"
 								placeholder="name"
 								className="input"
@@ -69,7 +63,6 @@ class Settings extends React.Component {
 						<Row>
 							<Field
 								name="bio"
-								component={TextArea}
 								type="text"
 								placeholder="bio"
 								className="input"
@@ -78,16 +71,14 @@ class Settings extends React.Component {
 						<Row>
 							<Field
 								name="email"
-								component={TextInput}
 								type="email"
 								placeholder="email"
-								className="input" 
+								className="input"
 							/>
 						</Row>
 						<Row>
 							<Field
 								name="facebook"
-								component={TextInput}
 								placeholder="facebook"
 								type="text"
 								className="input"
@@ -95,9 +86,8 @@ class Settings extends React.Component {
 							/>
 						</Row>
 						<Row>
-							<Field 
+							<Field
 								name="google"
-								component={TextInput}
 								placeholder="google"
 								type="text"
 								className="input"
@@ -106,13 +96,12 @@ class Settings extends React.Component {
 						<Row>
 							<Field
 								name="twitter"
-								component={TextInput}
 								placeholder="twitter"
 								type="text"
 								className="input"
 							/>
 						</Row>
-					</Form>
+					</form>
 				</div>
 			</div>
 		);

@@ -8,7 +8,6 @@ import autoBind from 'react-autobind';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 import CoverImageUploader from '../../components/ImagesUploader/CoverImageUploader';
-import Form from '../../components/Form';
 import CollectionItemsEditor from './CollectionItemsEditor';
 
 import './CollectionEditor.css';
@@ -50,7 +49,7 @@ class CollectionEditor extends React.Component {
 		return (
 			<div className="collectionEditor">
 				<Grid>
-					<Form
+					<form
 						onSubmit={this.submit}
 						form="itemEditor"
 						initialValues={this.state}
@@ -83,7 +82,7 @@ class CollectionEditor extends React.Component {
 								<CollectionItemsEditor items={items} />
 	            )}
 						/>
-					</Form>
+					</form>
 				</Grid>
 			</div>
 		);

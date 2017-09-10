@@ -6,7 +6,6 @@ import { gql, graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import autoBind from 'react-autobind';
 
-import Form from '../../components/Form';
 import TagEditor from '../itemEditor/TagEditor';
 import MetaEditor from '../itemEditor/MetaEditor';
 
@@ -39,7 +38,7 @@ class ProjectEditor extends React.Component {
 				</div>
 				<div className="content">
 					<div className="itemEditor">
-						<Form
+						<form
 							onSubmit={this.submit}
 							form="projectEditor"
 							initialValues={this.state}
@@ -65,7 +64,7 @@ class ProjectEditor extends React.Component {
 							)}
 							/>
 							*/}
-						</Form>
+						</form>
 					</div>
 				</div>
 			</div>

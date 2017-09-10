@@ -1,21 +1,36 @@
 import React from 'react';
-import {Field, FieldArray} from 'redux-form';
+import { Field, FieldArray } from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import { gql, graphql } from 'react-apollo';
+
 import ItemEditorUploader from '../../components/FileUploader/ItemEditorUploader';
 import PrimaryImage from '../../../../modules/items/components/ItemImageViewer/PrimaryImage';
 import PrimaryFile from './PrimaryFile';
-import Form from '../../components/Form';
 import TagEditor from './TagEditor';
 import MetaEditor from './MetaEditor';
 import autoBind from 'react-autobind';
 
 import './ItemEditor.css';
 
+const inputComponent = props => (
+	<input
+		{...props.input}
+		placeholder={props.placeholder}
+		className={props.className}
+	/>
+);
+
+const textComponent = props => (
+	<Textarea
+		{...props.input}
+		placeholder={props.placeholder}
+		className={props.className}
+	/>
+);
+
 class ItemEditor extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log('props', props);
 
 		this.state = {
 			files: []
@@ -46,23 +61,13 @@ class ItemEditor extends React.Component {
 	}
 
 	render() {
-		const inputComponent = props => (<input
-			{...props.input}
-			placeholder={props.placeholder}
-			className={props.className}
-			autoFocus
-		/>);
-		const textComponent = props => (<Textarea
-			{...props.input}
-			placeholder={props.placeholder}
-			className={props.className}
-		/>);
+
 		return (
 			<div className="content">
 				<div className="itemImageViewer itemEditor">
-					<Form
-						onSubmit={this.submit}
+					<form
 						form="itemEditor"
+						onSubmit={this.submit}
 						initialValues={this.state}
 					>
 						<Field
@@ -106,7 +111,7 @@ class ItemEditor extends React.Component {
 								<MetaEditor meta={meta} />
               )}
 						/>
-					</Form>
+					</form>
 				</div>
 			</div>
 		);
