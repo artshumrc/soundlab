@@ -117,7 +117,15 @@ class UserProfile extends React.Component {
 
 UserProfile.propTypes = {
 	data: PropTypes.shape({
-		userProjects: PropTypes.arrayOf(PropTypes.object),
+		userProfile: PropTypes.shape({
+			username: PropTypes.string,
+			name: PropTypes.string,
+			email: PropTypes.string,
+			bio: PropTypes.string,
+			twitter: PropTypes.string,
+			linkedIn: PropTypes.string,
+			facebook: PropTypes.string
+		}),
 		loading: PropTypes.bool
 	}).isRequired
 };
