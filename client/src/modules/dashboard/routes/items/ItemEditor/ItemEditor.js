@@ -113,6 +113,7 @@ class ItemEditor extends React.Component {
 								<MetaEditor meta={meta} />
               )}
 						/>
+						<button type="submit">Submit</button>
 					</form>
 				</div>
 			</div>

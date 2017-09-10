@@ -104,6 +104,7 @@ class MiradorManifestEditor extends React.Component {
 								<FormImagesUploader imagesFormState={images} showError={this.showError} />
             )}
 						/>
+						<button type="submit">Submit</button>
 					</form>
 				</div>
 			</div>

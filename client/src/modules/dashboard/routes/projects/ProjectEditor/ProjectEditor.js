@@ -55,14 +55,7 @@ class ProjectEditor extends React.Component {
 								placeholder="Description..."
 								component="input"
 							/>
-							{/*
-							<FieldArray
-								name="tags"
-								component={tags => (
-								<TagEditor tags={tags} />
-							)}
-							/>
-							*/}
+							<button type="submit">Submit</button>
 						</form>
 					</div>
 				</div>

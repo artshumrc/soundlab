@@ -80,6 +80,7 @@ class CollectionEditor extends React.Component {
 							<CollectionItemsEditor items={items} />
             )}
 					/>
+					<button type="submit">Submit</button>
 				</form>
 			</div>
 		);

@@ -105,6 +105,7 @@ class Settings extends React.Component {
 								className="input"
 							/>
 						</Row>
+						<button type="submit">Submit</button>
 					</form>
 				</div>
 			</div>

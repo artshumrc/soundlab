@@ -77,6 +77,7 @@ class ExampleForms extends React.Component {
 								<option value="female">Female</option>
 							</Field>
 						</div>
+						<button type="submit">Submit</button>
 					</form>
 				</div>
 			</div>
