@@ -6,8 +6,8 @@ import DashboardLayout from '../layouts/DashboardLayout';
 import MainPanel from './mainPanel/MainPanel';
 import UserProfile from './userProfile/UserProfile';
 import UserProfileTimeline from './userProfile/UserProfileTimeline';
-import ItemsList from './items/ItemsList';
-import ItemEditor from './items/ItemEditor';
+import ItemsList from '../components/items/ItemsList';
+import ItemEditorContainer from '../containers/ItemEditorContainer';
 import CollectionsList from '../components/collections/CollectionsList';
 import CollectionEditorContainer from '../containers/CollectionEditorContainer';
 import ProjectEditorContainer from '../containers/ProjectEditorContainer';
@@ -19,20 +19,20 @@ export default (
 		<Route path="/dashboard" component={DashboardLayout}>
 			<IndexRoute component={ProjectsView} />
 
-			{/* items */}
-			<Route path="/dashboard/items" component={ItemsList} />
-			<Route path="/dashboard/items/create" component={ItemEditor} />
-			<Route path="/dashboard/items/edit" component={ItemEditor} />
+			{/* projects */}
+			<Route path="/dashboard/projects" component={ProjectsView} />
+			<Route path="/dashboard/projects/create" component={ProjectEditorContainer} />
+			<Route path="/dashboard/projects/edit" component={ProjectEditorContainer} />
 
 			{/* collections */}
 			<Route path="/dashboard/collections" component={CollectionsList} />
 			<Route path="/dashboard/collections/create" component={CollectionEditorContainer} />
 			<Route path="/dashboard/collections/edit" component={CollectionEditorContainer} />
 
-			{/* projects */}
-			<Route path="/dashboard/projects" component={ProjectsView} />
-			<Route path="/dashboard/projects/create" component={ProjectEditorContainer} />
-			<Route path="/dashboard/projects/edit" component={ProjectEditorContainer} />
+			{/* items */}
+			<Route path="/dashboard/items" component={ItemsList} />
+			<Route path="/dashboard/items/create" component={ItemEditorContainer} />
+			<Route path="/dashboard/items/edit" component={ItemEditorContainer} />
 
 			{/* user profile */}
 			<Route path="/dashboard/user" component={UserProfile} />

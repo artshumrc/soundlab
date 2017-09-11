@@ -36,7 +36,7 @@ const ItemSchema = new Schema({
 	collectionId: {
 		type: Schema.Types.ObjectId,
 		ref: 'Collection',
-		required: true,
+		// required: true,
 		index: true
 	},
 	description: {

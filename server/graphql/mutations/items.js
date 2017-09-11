@@ -31,46 +31,10 @@ const itemMutationFields = {
 			},
 		},
 		async resolve(obj, { item }, { user, project }) {
-
-			/**
-			 * Validate connection
-			 */
-
-			// if operation doesn't come from admin page
-			// if (!project.adminPage) throw new ProjectError();
-
-			// if user is not logged in
-			// if (!user) throw new AuthenticationError();
-
-
-			/**
-			 * Validate resolver specific arguments
-			 */
-			// if (!item.collectionId) throw new ArgumentError({ data: { field: 'item.collectionId' } });
-
-
 			/**
 			 * Initiate item
 			 */
 			const NewItem = new Item(item);
-
-
-			/**
-			 * Validate permissions
-			 */
-
-			// check user permissions
-			// try {
-			// 	const userIsAdmin = await NewItem.validateUser(user._id);
-			// 	if (!userIsAdmin) throw new PermissionError();
-			// } catch (err) {
-			// 	throw new PermissionError();
-			// }
-
-
-			/**
-			 * Perform action
-			 */
 
 			// save new item
 			try {

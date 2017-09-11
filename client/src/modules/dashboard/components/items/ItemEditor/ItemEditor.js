@@ -39,19 +39,6 @@ class ItemEditor extends React.Component {
 		autoBind(this);
 	}
 
-	submit(values) {
-		this.props.mutate({
-			variables: {
-				item: {
-					...values
-				},
-			},
-			context: {
-				user: ''
-			}
-		});
-	}
-
 	showError(error) {
 		console.error(error);
 	}
@@ -67,7 +54,7 @@ class ItemEditor extends React.Component {
 				<div className="itemImageViewer itemEditor">
 					<form
 						form="itemEditor"
-						onSubmit={this.submit}
+						onSubmit={this.props.handleSubmit}
 					>
 						<Field
 							name="files"
@@ -121,19 +108,6 @@ class ItemEditor extends React.Component {
 	}
 }
 
-const addNewItem = gql`
-mutation itemCreate($item: ItemInputType!) {
-	itemCreate(item: $item) {
-		_id
-		title
-	}
-}
-`;
-
-
-const ItemEditorForm = reduxForm({
+export default reduxForm({
 	form: 'itemsEditor',
 })(ItemEditor);
-
-
-export default graphql(addNewItem)(ItemEditorForm);
