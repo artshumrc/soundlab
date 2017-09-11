@@ -122,7 +122,7 @@ class ItemEditor extends React.Component {
 }
 
 const addNewItem = gql`
-mutation itemCreate($item: ItemCreateInputType!) {
+mutation itemCreate($item: ItemInputType!) {
 	itemCreate(item: $item) {
 		_id
 		title

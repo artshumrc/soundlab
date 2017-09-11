@@ -88,7 +88,7 @@ class CollectionEditor extends React.Component {
 }
 
 const addNewCollection = gql`
-	mutation collectionCreate($collection: CollectionCreateInputType!) {
+	mutation collectionCreate($collection: CollectionInputType!) {
 		collectionCreate(collection: $collection) {
 			title
 		}

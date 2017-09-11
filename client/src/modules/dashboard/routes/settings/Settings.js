@@ -118,7 +118,7 @@ Settings.propTypes = {
 };
 
 const updateUserInfo = gql`
-mutation userUpdate($user: UserUpdateInputType!) {
+mutation userUpdate($user: UserInputType!) {
 	userUpdate(user: $user) {
 		username
 	}

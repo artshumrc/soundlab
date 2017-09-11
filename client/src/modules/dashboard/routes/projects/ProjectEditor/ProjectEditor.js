@@ -9,9 +9,6 @@ import autoBind from 'react-autobind';
 import TagEditor from '../../items/ItemEditor/TagEditor';
 import MetaEditor from '../../items/ItemEditor/MetaEditor';
 
-// TODO: Fix post method
-// TODO: Remove autofocus for accessibility reasons
-
 class ProjectEditor extends React.Component {
 
 	constructor(props) {
@@ -20,7 +17,10 @@ class ProjectEditor extends React.Component {
 		autoBind(this);
 	}
 
-	submit(values) {
+	submit(values, e) {
+		console.log('new project', values);
+		e.preventDefault();
+		/*
 		this.props.mutate({
 			variables: {
 				project: {
@@ -28,6 +28,7 @@ class ProjectEditor extends React.Component {
 				},
 			},
 		});
+		*/
 	}
 
 	render() {
@@ -40,8 +41,14 @@ class ProjectEditor extends React.Component {
 					<div className="itemEditor">
 						<form
 							onSubmit={this.submit}
-							form="projectEditor"
 						>
+							<Field
+								name="hostname"
+								component="input"
+								type="text"
+								placeholder="myapp.orphe.us"
+								className="itemHostnameEdit detailInput"
+							/>
 							<Field
 								name="title"
 								component="input"
@@ -65,7 +72,7 @@ class ProjectEditor extends React.Component {
 }
 
 const addNewProject = gql`
-	mutation projectCreate($project: ProjectCreateInputType!) {
+	mutation projectCreate($project: ProjectInputType!) {
 		projectCreate(project: $project) {
 			title
 		}
