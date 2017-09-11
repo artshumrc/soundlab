@@ -4,7 +4,6 @@ import { Field, FieldArray, SubmissionError, reduxForm } from 'redux-form';
 import Textarea from 'react-textarea-autosize';
 import { connect } from 'react-redux';
 import autoBind from 'react-autobind';
-import MetaEditor from '../../../routes/items/ItemEditor/MetaEditor';
 
 const ProjectEditor = ({ handleSubmit }) => (
 	<div>
