@@ -4,7 +4,7 @@ import createType from 'mongoose-schema-to-graphql';
 import MiradorManifest from '../../../models/miradorManifest';
 
 const config = {
-	name: 'miradorType',
+	name: 'miradorManifestType',
 	description: 'Mirador Manifest base schema',
 	class: 'GraphQLObjectType',
 	schema: MiradorManifest.schema,

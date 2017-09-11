@@ -6,7 +6,6 @@ import Project from '../../../models/project';
 import Collection from '../../../models/collection';
 
 // types
-import TenantType from './tenant';
 import CollectionType from './collection';
 import UserType from './user';
 

@@ -6,7 +6,7 @@ import { MetadataSchema } from '../../../models/item';
 
 const config = {
 	name: 'MetadataType',
-	description: 'Tag Schema base query type',
+	description: 'Metadata schema base query type',
 	class: 'GraphQLObjectType',
 	schema: MetadataSchema,
 	exclude: ['_id'],
@@ -14,7 +14,7 @@ const config = {
 
 const configInput = {
 	name: 'MetadataInputType',
-	description: 'Tag Schema base input type',
+	description: 'Metadata schema base input type',
 	class: 'GraphQLInputObjectType',
 	schema: MetadataSchema,
 	exclude: ['_id'],

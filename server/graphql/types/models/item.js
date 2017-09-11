@@ -7,7 +7,6 @@ import File from '../../../models/file';
 
 // types
 import FileType, { FileInputType } from './file';
-import TagType, { TagInputType } from './tag';
 import MetadataType, { MetadataInputType } from './metadata';
 
 
@@ -23,13 +22,6 @@ const config = {
 			description: 'Get all item files',
 			resolve(item, args, context) {
 				return File.getByItemId(item._id);
-			}
-		},
-		tags: {
-			type: new GraphQLList(TagType),
-			description: 'Get all tags',
-			resolve(item, args, context) {
-				return item.tags;
 			}
 		},
 		metadata: {
@@ -49,9 +41,6 @@ const configInput = {
 	schema: Item.schema,
 	exclude: ['_id', 'slug', 'createdAt', 'updatedAt'],
 	extend: {
-		tags: {
-			type: new GraphQLList(TagInputType),
-		},
 		metadata: {
 			type: new GraphQLList(MetadataInputType)
 		},
