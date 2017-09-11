@@ -57,5 +57,5 @@ MiradorManifestSchema.plugin(URLSlugs('title'));
 
 const MiradorManifest = mongoose.model('miradorManifest', MiradorManifestSchema);
 
-export default Mirador;
+export default MiradorManifest;
 export { MiradorManifestSchema };

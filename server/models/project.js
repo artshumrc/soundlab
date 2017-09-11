@@ -27,11 +27,6 @@ const ProjectSchema = new Schema({
 	description: {
 		type: String,
 	},
-	tenantId: {
-		type: Schema.Types.ObjectId,
-		ref: 'Tenant',
-		index: true,
-	},
 	users: [{
 		userId: {
 			type: Schema.Types.ObjectId,
@@ -65,6 +60,15 @@ ProjectSchema.plugin(URLSlugs('title'));
 ProjectSchema.statics.findByUserId = function findByUserId(userId) {
 	return this.find({ users: { $elemMatch: { userId } } });
 };
+
+/**
+ * Find project by hostname of request
+ * @param  {String} hostname The hostname that generated the request, such as myproject.orphe.us
+ * @return {Promise} (Promise) The Project
+ */
+ProjectSchema.statics.findByHostname = (hostname, cb) => (
+	Project.findOne({ hostname }, cb)
+);
 
 /**
  * Check if user is an owner of a project by project id
@@ -101,15 +105,6 @@ ProjectSchema.statics.createByAdmin = function createByAdmin(userId, newProject)
 	});
 };
 
-/**
- * Create a new project by user
- * @param  {String}   userId    	User id
- * @param  {Object}   newProject 	Object with new project values
- * @return {Promise}               	(Promise) The new Project
- */
-ProjectSchema.statics.findByHost = function findByHost(host, cb) {
-	return Project.findOne({ domain }, cb);
-};
 
 /**
  * Project mongoose model

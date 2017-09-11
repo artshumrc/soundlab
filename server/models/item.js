@@ -10,17 +10,6 @@ import Collection from './collection';
 
 const Schema = mongoose.Schema;
 
-export const TagSchema = new Schema({
-	value: {
-		type: String,
-		required: true,
-	},
-	label: {
-		type: String,
-		required: true,
-	}
-});
-
 export const MetadataSchema = new Schema({
 	value: {
 		type: String,
@@ -53,7 +42,6 @@ const ItemSchema = new Schema({
 	description: {
 		type: String,
 	},
-	tags: [TagSchema],
 	metadata: [MetadataSchema],
 	private: {
 		type: Boolean,
