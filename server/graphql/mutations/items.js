@@ -21,7 +21,7 @@ import {
 } from '../errors';
 
 
-const itemMutationFileds = {
+const itemMutationFields = {
 	itemCreate: {
 		type: ItemType,
 		description: 'Create new item',
@@ -198,4 +198,4 @@ const itemMutationFileds = {
 	},
 };
 
-export default itemMutationFileds;
+export default itemMutationFields;

@@ -1,6 +1,6 @@
 import React from 'react';
 import CollectionsCover from '../CollectionsCover';
-import CollectionAbout from '../CollectionAbout';
+import CollectionDescription from '../CollectionDescription';
 import ItemsList from '../../../items/components/ItemsList';
 import Pagination from '../../../../components/pagination/Pagination';
 
@@ -11,7 +11,7 @@ const CollectionDetail = props => (
 		<CollectionsCover
 			title="Example Collection: Quid faciat laetas segetes"
 		/>
-		<CollectionAbout />
+		<CollectionDescription />
 		<ItemsList />
 		<Pagination
 			total={90}

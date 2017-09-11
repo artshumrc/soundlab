@@ -9,7 +9,7 @@ import MiradorManifest from '../../models/miradorManifest';
 // errors
 import { AuthenticationError } from '../errors';
 
-const miradorMutationFileds = {
+const miradorMutationFields = {
 	mutationCreate: {
 		type: miradorManifestType,
 		args: {
@@ -31,7 +31,7 @@ const miradorMutationFileds = {
 	}
 };
 
-export default miradorMutationFileds;
+export default miradorMutationFields;
 
 
 

@@ -8,8 +8,8 @@ import UserProfile from './userProfile/UserProfile';
 import UserProfileTimeline from './userProfile/UserProfileTimeline';
 import ItemsList from './items/ItemsList';
 import ItemEditor from './items/ItemEditor';
-import CollectionsList from './collections/CollectionsList';
-import CollectionEditor from './collections/CollectionEditor';
+import CollectionsList from '../components/collections/CollectionsList';
+import CollectionEditorContainer from '../containers/CollectionEditorContainer';
 import ProjectEditorContainer from '../containers/ProjectEditorContainer';
 import ProjectsView from '../components/projects/ProjectsView';
 import Settings from './settings/Settings';
@@ -26,8 +26,8 @@ export default (
 
 			{/* collections */}
 			<Route path="/dashboard/collections" component={CollectionsList} />
-			<Route path="/dashboard/collections/create" component={CollectionEditor} />
-			<Route path="/dashboard/collections/edit" component={CollectionEditor} />
+			<Route path="/dashboard/collections/create" component={CollectionEditorContainer} />
+			<Route path="/dashboard/collections/edit" component={CollectionEditorContainer} />
 
 			{/* projects */}
 			<Route path="/dashboard/projects" component={ProjectsView} />
