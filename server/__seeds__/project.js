@@ -12,6 +12,7 @@ const generateProjects = async (count, userIds) => {
 
 		const data = await generateData(count, async () => ({
 			title: faker.commerce.productName(),
+			hostname: 'localhost', 
 			description: faker.lorem.sentences(),
 			users: [{
 				userId: getRandom(userIds),

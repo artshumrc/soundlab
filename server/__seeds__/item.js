@@ -7,20 +7,6 @@ import Item from '../models/item';
 // utils
 import { canSeed, generateData, insertData, notEmptyError, getRandom } from './utils';
 
-const generateTags = () => {
-	const count = Math.floor(Math.random() * 5);
-	const tags = [];
-	for (let i = 0; i < count; i += 1) {
-		const label = faker.lorem.word();
-		const value = faker.helpers.slugify(label);
-		tags.push({
-			value,
-			label,
-		});
-	}
-	return tags;
-};
-
 const generateMetadata = () => {
 	const count = Math.floor(Math.random() * 5);
 	const metadata = [];
@@ -42,7 +28,6 @@ const generateItem = async (count, collectionIds) => {
 			title: faker.commerce.productName(),
 			description: faker.lorem.sentences(),
 			collectionId: getRandom(collectionIds),
-			tags: generateTags(),
 			metadata: generateMetadata(),
 		}));
 
