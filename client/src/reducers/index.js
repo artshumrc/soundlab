@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import bricks from './bricks';
 import authReducers from '../modules/auth/reducers';
+import dashboardReducers from '../modules/dashboard/reducers';
 import client from '../middleware/apolloClient';
 
 
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
 	routing: routerReducer,
 	bricks,
 	auth: authReducers,
+	dashboard: dashboardReducers,
 });
 
 export default rootReducer;

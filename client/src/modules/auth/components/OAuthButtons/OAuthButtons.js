@@ -62,7 +62,7 @@ class OAuthButtons extends React.Component {
 				onClick={this.handleLogin.bind(this, type)}
 				disabled={disabledButtons}
 			>
-				<i className={`fa fa-${type}`} /> {this._getButtonText(type)}
+				<i className={`mdi mdi-${type}`} /> {this._getButtonText(type)}
 			</button>);
 	}
 
@@ -76,8 +76,8 @@ class OAuthButtons extends React.Component {
 				<span className="error-text">
 					{errorOauth}
 				</span>
-
-			</div>);
+			</div>
+		);
 	}
 }
 

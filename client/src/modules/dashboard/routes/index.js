@@ -10,8 +10,8 @@ import ItemsList from './items/ItemsList';
 import ItemEditor from './items/ItemEditor';
 import CollectionsList from './collections/CollectionsList';
 import CollectionEditor from './collections/CollectionEditor';
-import ProjectEditor from './projects/ProjectEditor';
-import ProjectsView from './projects/ProjectsView';
+import ProjectEditorContainer from '../containers/ProjectEditorContainer';
+import ProjectsView from '../components/projects/ProjectsView';
 import Settings from './settings/Settings';
 
 export default (
@@ -31,8 +31,8 @@ export default (
 
 			{/* projects */}
 			<Route path="/dashboard/projects" component={ProjectsView} />
-			<Route path="/dashboard/projects/create" component={ProjectEditor} />
-			<Route path="/dashboard/projects/edit" component={ProjectEditor} />
+			<Route path="/dashboard/projects/create" component={ProjectEditorContainer} />
+			<Route path="/dashboard/projects/edit" component={ProjectEditorContainer} />
 
 			{/* user profile */}
 			<Route path="/dashboard/user" component={UserProfile} />

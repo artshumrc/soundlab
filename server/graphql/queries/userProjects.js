@@ -14,7 +14,7 @@ const userProjectsQueryFields = {
 		description: 'Get projects associated with user',
 		resolve(obj, arg, context) {
 			return Project.find(
-				{ users: 
+				{ users:
 					{ $elemMatch: { userId: context.user._id } } 
 				},
 				function callback(err, project) {

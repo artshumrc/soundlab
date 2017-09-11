@@ -17,14 +17,13 @@ const projectMutationFields = {
 				type: new GraphQLNonNull(ProjectInputType)
 			}
 		},
-		async resolve(parent, { projectCandidate }, { user, project }) {
-			console.log('projectCandidate', projectCandidate);
+		async resolve(parent, { project }, context) {
 
 			// Initiate new project
-			const NewProject = new Project(projectCandidate);
+			const NewProject = new Project(project);
 
 			const projectUser = {
-				userId: user._id,
+				userId: context.user._id,
 				role: 'admin'
 			};
 
@@ -33,7 +32,7 @@ const projectMutationFields = {
 			// Validte permissions
 			// check user permissions
 			try {
-				const userIsAdmin = await NewItem.validateUser(user._id);
+				const userIsAdmin = await NewItem.validateUser(context.user._id);
 				// if (!userIsAdmin) throw new PermissionError();
 			} catch (err) {
 				// throw new PermissionError();
@@ -53,9 +52,9 @@ const projectMutationFields = {
 				type: new GraphQLNonNull(GraphQLID),
 			}
 		},
-		async resolve(parent, { projectUpdate, projectId }, { user, project }) {
+		async resolve(parent, { project, projectId }, context) {
 			// if user is not logged in
-			if (!user) throw new AuthenticationError();
+			if (!context.user) throw new AuthenticationError();
 
 			// Initiate project
 			const FoundProject = await Project.findById(projectId);
@@ -63,7 +62,7 @@ const projectMutationFields = {
 
 			// validate permissions
 			try {
-				const userIsAdmin = await FoundProject.validateUser(user._id);
+				const userIsAdmin = await FoundProject.validateUser(context.user._id);
 				if (!userIsAdmin) throw new PermissionsError();
 			} catch (err) {
 				throw new PermissionError();
@@ -71,7 +70,7 @@ const projectMutationFields = {
 
 			// Perform action
 			// update project
-			Object.keys(projectUpdate).forEach((key) => {
+			Object.keys(project).forEach((key) => {
 				FoundProject[key] = item[key];
 			});
 

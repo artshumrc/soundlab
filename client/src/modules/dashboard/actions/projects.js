@@ -1,12 +1,12 @@
 export const ADD_PROJECT = 'ADD_PROJECT';
 export const REMOVE_PROJECT = 'REMOVE_PROJECT';
-export const UPDATE_PROJECT_DESCRIPTION = 'UPDATE_PROJECT_DESCRIPTION';
+export const UPDATE_PROJECT = 'UPDATE_PROJECT';
 
 export const addProject = (projectDetails: object) => ({
 	type: ADD_PROJECT
 });
 
-export const RemoveProject = () => ({
+export const removeProject = () => ({
 	type: REMOVE_PROJECT
 });
 
