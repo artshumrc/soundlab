@@ -29,4 +29,3 @@ export const resetPassword = async (res, resetPasswordToken, newPassword) => {
 		return res.status(500).send();
 	}
 };
-

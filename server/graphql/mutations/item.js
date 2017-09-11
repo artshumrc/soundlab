@@ -1,7 +1,7 @@
 import { GraphQLNonNull, GraphQLID } from 'graphql';
 
 // types
-import ItemType, { ItemCreateInputType, ItemUpdateInputType } from '../types/models/item';
+import ItemType, { ItemInputType } from '../types/models/item';
 import { RemoveType } from '../types';
 
 // models
@@ -12,7 +12,7 @@ import Collection from '../../models/collection';
 import {
 	AuthenticationError,
 	PermissionError,
-	TenantError,
+	ProjectError,
 	ArgumentError,
 	// MongooseGeneralError,
 	// MongooseDuplicateKeyError,
@@ -22,23 +22,22 @@ import {
 
 
 const itemMutationFileds = {
-
 	itemCreate: {
 		type: ItemType,
 		description: 'Create new item',
 		args: {
 			item: {
-				type: new GraphQLNonNull(ItemCreateInputType),
+				type: new GraphQLNonNull(ItemInputType),
 			},
 		},
-		async resolve(obj, { item }, { user, tenant }) {
+		async resolve(obj, { item }, { user, project }) {
 
 			/**
 			 * Validate connection
 			 */
 
 			// if operation doesn't come from admin page
-			// if (!tenant.adminPage) throw new TenantError();
+			// if (!project.adminPage) throw new ProjectError();
 
 			// if user is not logged in
 			// if (!user) throw new AuthenticationError();
@@ -59,11 +58,11 @@ const itemMutationFileds = {
 			/**
 			 * Validate permissions
 			 */
-			
+
 			// check user permissions
 			// try {
-			// 	const userIsOwner = await NewItem.validateUser(user._id);
-			// 	if (!userIsOwner) throw new PermissionError();
+			// 	const userIsAdmin = await NewItem.validateUser(user._id);
+			// 	if (!userIsAdmin) throw new PermissionError();
 			// } catch (err) {
 			// 	throw new PermissionError();
 			// }
@@ -72,7 +71,7 @@ const itemMutationFileds = {
 			/**
 			 * Perform action
 			 */
-			
+
 			// save new item
 			try {
 				return await NewItem.save();
@@ -87,20 +86,20 @@ const itemMutationFileds = {
 		description: 'Update item',
 		args: {
 			item: {
-				type: new GraphQLNonNull(ItemUpdateInputType),
+				type: new GraphQLNonNull(ItemInputType),
 			},
 			itemId: {
 				type: new GraphQLNonNull(GraphQLID),
 			}
 		},
-		async resolve(parent, { item, itemId }, { user, tenant }) {
+		async resolve(parent, { item, itemId }, { user, project }) {
 
 			/**
 			 * Validate connection
 			 */
 
 			// if operation doesn't come from admin page
-			if (!tenant.adminPage) throw new TenantError();
+			if (!project.adminPage) throw new ProjectError();
 
 			// if user is not logged in
 			if (!user) throw new AuthenticationError();
@@ -117,18 +116,18 @@ const itemMutationFileds = {
 			 * Validate permissions
 			 */
 			try {
-				const userIsOwner = await FoundItem.validateUser(user._id);
-				if (!userIsOwner) throw new PermissionError();
+				const userIsAdmin = await FoundItem.validateUser(user._id);
+				if (!userIsAdmin) throw new PermissionError();
 			} catch (err) {
 				throw new PermissionError();
 			}
-			
-			
-			
+
+
+
 			/**
 			 * Perform action
 			 */
-			
+
 			// update item
 			Object.keys(item).forEach((key) => {
 				FoundItem[key] = item[key];
@@ -151,14 +150,14 @@ const itemMutationFileds = {
 				type: new GraphQLNonNull(GraphQLID),
 			}
 		},
-		async resolve(parent, { itemId }, { user, tenant }) {
+		async resolve(parent, { itemId }, { user, project }) {
 
 			/**
 			 * Validate connection
 			 */
 
 			// if operation doesn't come from admin page
-			if (!tenant.adminPage) throw new TenantError();
+			if (!project.adminPage) throw new ProjectError();
 
 			// if user is not logged in
 			if (!user) throw new AuthenticationError();
@@ -175,13 +174,13 @@ const itemMutationFileds = {
 			 * Validate permissions
 			 */
 			try {
-				const userIsOwner = await FoundItem.validateUser(user._id);
-				if (!userIsOwner) throw new PermissionError();
+				const userIsAdmin = await FoundItem.validateUser(user._id);
+				if (!userIsAdmin) throw new PermissionError();
 			} catch (err) {
 				throw new PermissionError();
 			}
-			
-			
+
+
 			/**
 			 * Perform action
 			 */

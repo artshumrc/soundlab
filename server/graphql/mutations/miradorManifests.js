@@ -4,22 +4,22 @@ import { GraphQLString, GraphQLNonNull } from 'graphql';
 import miradorManifestType from '../types/models/miradorManifest';
 
 // models
-import MiradorManifest from '../models/miradorManifest';
+import MiradorManifest from '../../models/miradorManifest';
 
 // errors
 import { AuthenticationError } from '../errors';
 
 const miradorMutationFileds = {
 	mutationCreate: {
-		type: miradorType,
+		type: miradorManifestType,
 		args: {
 			title: {
 				type: new GraphQLNonNull(GraphQLString)
 			},
 		},
-		async resolve(parent, { title }, { user, tenant }) {
+		async resolve(parent, { title }, { user, project }) {
 
-			if (user && tenant.adminPage) {
+			if (user && project.adminPage) {
 				const mirador = {
 					title
 				};

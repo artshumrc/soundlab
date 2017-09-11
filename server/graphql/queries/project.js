@@ -16,7 +16,7 @@ const projectQueryFields = {
 				type: new GraphQLNonNull(GraphQLID),
 			},
 		},
-		resolve(tenant, { _id }, context) {
+		resolve(project, { _id }, context) {
 			return Project.findById(_id);
 		}
 	},

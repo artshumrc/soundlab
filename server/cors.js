@@ -13,7 +13,7 @@ export default function corsSetup(app, redisClient) {
 
 	const projectLoader = new RedisDataLoader(
 		'project',
-		new DataLoader(hosts => Promise.all(hosts.map(Project.findByHostname)), {
+		new DataLoader(hostnames => Promise.all(hostnames.map(Project.findByHostname)), {
 			cache: false
 		}), {
 			cache: false,
@@ -27,32 +27,33 @@ export default function corsSetup(app, redisClient) {
 		whitelist.push(process.env.CLIENT_SERVER);
 	}
 
-	// Check if tenant is white listed or in a database
-	// Set the req.tenant value
+	// Check if project is white listed or in a database
+	// Set the req.project value
 	async function corsOptionsDelegate(req, callback) {
 		const corsOptions = {
 			origin: false,
 			credentials: true,
 		};
 
-		const host = req.get('host');
-		const tenant = await tenantLoader.load(host);
+		const hostname = req.hostname;
+		const project = await projectLoader.load(hostname);
 
-		if (tenant) {
+		if (project) {
 			corsOptions.origin = true;
-
-			req.tenant = tenant;
+			req.project = project;
 		} else if (whitelist.indexOf(req.header('Origin')) !== -1) {
 			corsOptions.origin = true;
-			console.error('Tenant white listed but not in the database! Graphql may have limited functionality.');
-			req.tenant = null;
+			req.project = null;
+
+			console.error('Project white listed but not in the database! Graphql may have limited functionality.');
 
 			if (process.env.NODE_ENV === 'development') {
-				// TODO - delete this and rewrite to generate a tenant on development and on start of server
-				req.tenant = {
-					homePage: true,
-					adminPage: true,
-					projectPage: true,
+				// TODO - delete this and rewrite to generate a project on development and on start of server
+				req.project = {
+					title: 'Test Project',
+					hostname: 'localhost',
+					description: 'Test project description quid faciat laetas segetes',
+					users: [],
 				};
 			}
 		}

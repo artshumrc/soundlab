@@ -17,11 +17,11 @@ export const PermissionError = createError('PermissionError', {
 });
 
 /**
- * Tenant Error
+ * Project Error
  * @type {Error}
  */
-export const TenantError = createError('TenantError', {
-	message: 'Tenant not authorized - permission denied',
+export const ProjectError = createError('ProjectError', {
+	message: 'Project not authorized - permission denied',
 });
 
 /**

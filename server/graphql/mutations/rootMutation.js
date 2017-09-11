@@ -1,7 +1,7 @@
 import { GraphQLObjectType } from 'graphql';
 
 import projectMutationFileds from './projects';
-import miradorMutationFileds from './miradors';
+import miradorMutationFileds from './miradorManifests';
 import itemMutationFileds from './item';
 
 /**

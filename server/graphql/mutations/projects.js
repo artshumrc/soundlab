@@ -17,13 +17,11 @@ const projectMutationFields = {
 				type: new GraphQLNonNull(ProjectInputType)
 			}
 		},
-		async resolve(parent, { project }, { user, tenant }) {
-
-			// Validate resolver-specifc arguments
-			// if (!project.collectionId) throw new ArgumentError({ data: { field: 'project.collectionId' } });
+		async resolve(parent, { projectCandidate }, { user, project }) {
+			console.log('projectCandidate', projectCandidate);
 
 			// Initiate new project
-			const NewProject = new Project(project);
+			const NewProject = new Project(projectCandidate);
 
 			const projectUser = {
 				userId: user._id,
@@ -55,12 +53,7 @@ const projectMutationFields = {
 				type: new GraphQLNonNull(GraphQLID),
 			}
 		},
-		async resolve(parent, { project, projectId }, { user, tenant }) {
-
-			// Validate connection
-			// if operation doesn't come from the admin page
-			if (!tenant.adminPage) throw new TenantError();
-
+		async resolve(parent, { projectUpdate, projectId }, { user, project }) {
 			// if user is not logged in
 			if (!user) throw new AuthenticationError();
 
@@ -78,7 +71,7 @@ const projectMutationFields = {
 
 			// Perform action
 			// update project
-			Object.keys(item).forEach((key) => {
+			Object.keys(projectUpdate).forEach((key) => {
 				FoundProject[key] = item[key];
 			});
 
@@ -99,11 +92,7 @@ const projectMutationFields = {
 				type: new GraphQLNonNull(GraphQLID),
 			}
 		},
-		async resolve (parent, { projectId }, { user, tenant }) {
-			// validate connection
-			// if operation doesn't come from the admin page
-			// if (!tenant.adminPage) throw new TenantError();
-
+		async resolve (parent, { projectId }, { user, project }) {
 			// if user is not logged in
 			if (!user) throw new AuthenticationError();
 
