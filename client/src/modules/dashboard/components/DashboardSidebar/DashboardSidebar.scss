@@ -1,3 +1,7 @@
-.dashboardSidebar {
-	
+@import '../../../../variables.scss';
+
+.dashboardSidebarLogo {
+	font-family: $font-logo;
+	margin: 0 auto;
+	padding: 15px;
 }

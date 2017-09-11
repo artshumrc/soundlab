@@ -14,7 +14,7 @@ class DashboardSidebar extends React.Component {
 		return (
 			 <Drawer open>
 				<Link to={'/'}>
-					<h3 className="invert logo">orphe.us</h3>
+					<h3 className="dashboardSidebarLogo">orphe.us</h3>
 				</Link>
 				<Menu>
 					<MenuItem
