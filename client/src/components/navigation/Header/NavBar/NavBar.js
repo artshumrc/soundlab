@@ -39,7 +39,7 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 						className="login-button"
 						onClick={toggleAuthModal}
 					>
-						Sign Up / In
+						Sign Up / Sign In
 					</Link>
 				: '' }
 			</li>

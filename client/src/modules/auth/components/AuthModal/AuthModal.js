@@ -10,7 +10,7 @@ import Signup from '../Signup';
 import Logout from '../Logout';
 
 // actions
-import { toggleAuthModal, changeAuthMode, setUser, login, logout } from '../../redux/actions';
+import { toggleAuthModal, changeAuthMode, setUser, login, logout } from '../../actions';
 
 
 const ESCAPE_KEY = 27;

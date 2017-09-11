@@ -1,4 +1,4 @@
-@import '../../../../variables.scss';
+@import '../../../../../variables.scss';
 
 .tagList {
   vertical-align: top;
@@ -9,7 +9,7 @@
   transition: all 100ms ease-in-out;
   cursor: pointer;
   .Select-placeholder {
-    font-family: "Courier W07 Regular", sans-serif;
+    font-family: $font-body, sans-serif;
     font-size: 14px;
     color: #727272;
     display: inline-block;
@@ -21,7 +21,7 @@
     display: inline-block;
   }
   .Select-value-label {
-    font-family: "Courier W07 Regular", sans-serif;
+    font-family: $font-body, sans-serif;
     font-size: 14px;
     color: #727272;
     padding: 3px 10px;
@@ -66,7 +66,7 @@
     width: 200px;
     input {
       padding: 0 10px;
-      font-family: "Courier W07 Regular", sans-serif;
+      font-family: $font-body, sans-serif;
       font-size: 14px;
       color: #727272;
       background-color: transparent;

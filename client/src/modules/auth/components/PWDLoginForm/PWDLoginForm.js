@@ -48,10 +48,10 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login 
 				type="password"
 				component={renderField}
 			/>
-			<span className="error-text">
-				{error && <strong>{error}</strong>}
-			</span>
 			<div className="at-pwd-link">
+				<p className="error-text">
+					{error}
+				</p>
 				<p>
 					<a href="/forgot-password" id="at-forgotPwd" className="at-link at-pwd">Forgot your password?</a>
 				</p>

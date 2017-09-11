@@ -5,7 +5,7 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 import '../PWDLoginForm/PWDLoginForm.css';
 
 // actions
-import { toggleAuthModal, setUser } from '../../redux/actions';
+import { toggleAuthModal, setUser } from '../../actions';
 
 
 const wrapSubmit = signup => async (values, dispatch) => {
@@ -95,6 +95,6 @@ const validate = (values) => {
 };
 
 export default reduxForm({
-	form: 'PWDSignupForm',  // a unique identifier for this form
+	form: 'PWDSignupForm',
 	validate,
 })(PWDSignupForm);
