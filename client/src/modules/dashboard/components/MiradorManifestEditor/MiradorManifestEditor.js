@@ -114,7 +114,7 @@ class MiradorManifestEditor extends React.Component {
 
 
 const addNewMiradorManifest = gql`
-	mutation miradorCreate($miradorManifest: MiradorManifestCreateInputType!) {
+	mutation miradorCreate($miradorManifest: MiradorManifestInputType!) {
 		miradorManifestCreate(miradorManifest: $miradorManifest) {
 			title
 		}
