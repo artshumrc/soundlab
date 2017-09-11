@@ -32,6 +32,16 @@ class Settings extends React.Component {
 	}
 
 	render() {
+		const { data } = this.props;
+
+		if (data.loading) {
+			return (
+				<div style={{ color: 'black' }}>
+					<h2>loading</h2>
+				</div>
+			);
+		}
+
 		return (
 			<div>
 				<div className="topBar">
@@ -47,7 +57,7 @@ class Settings extends React.Component {
 								name="username"
 								type="text"
 								component="input"
-								placeholder="username"
+								placeholder={data.userProfile.username}
 								className="input"
 							/>
 						</Row>
@@ -56,7 +66,7 @@ class Settings extends React.Component {
 								name="name"
 								type="text"
 								component="input"
-								placeholder="name"
+								placeholder={data.userProfile.name || 'name'}
 								className="input"
 							/>
 						</Row>
@@ -65,7 +75,7 @@ class Settings extends React.Component {
 								name="bio"
 								type="text"
 								component="input"
-								placeholder="bio"
+								placeholder={data.userProfile.bio || 'bio'}
 								className="input"
 							/>
 						</Row>
@@ -74,32 +84,23 @@ class Settings extends React.Component {
 								name="email"
 								type="email"
 								component="input"
-								placeholder="email"
+								placeholder={data.userProfile.email || 'email'}
 								className="input"
 							/>
 						</Row>
 						<Row>
 							<Field
 								name="facebook"
-								placeholder="facebook"
+								placeholder={data.userProfile.facebook || 'facebook'}
 								type="text"
 								component="input"
-								className="input"
-							/>
-						</Row>
-						<Row>
-							<Field
-								name="google"
-								placeholder="google"
-								component="input"
-								type="text"
 								className="input"
 							/>
 						</Row>
 						<Row>
 							<Field
 								name="twitter"
-								placeholder="twitter"
+								placeholder={data.userProfile.twitter || 'twitter'}
 								component="input"
 								type="text"
 								className="input"
@@ -114,8 +115,34 @@ class Settings extends React.Component {
 }
 
 Settings.propTypes = {
-	mutate: PropTypes.func.isRequired
+	mutate: PropTypes.func.isRequired,
+	data: PropTypes.shape({
+		loading: PropTypes.bool,
+		userProfile: PropTypes.shape({
+			username: PropTypes.string,
+			name: PropTypes.string,
+			email: PropTypes.string,
+			bio: PropTypes.string,
+			twitter: PropTypes.string,
+			linkedIn: PropTypes.string,
+			facebook: PropTypes.string
+		})
+	}).isRequired
 };
+
+const userProfile = gql`
+query {
+	userProfile {
+		username,
+		name,
+		email,
+		bio,
+		twitter,
+		linkedIn,
+		facebook
+	}
+}
+`;
 
 const updateUserInfo = gql`
 mutation userUpdate($user: UserInputType!) {
@@ -129,4 +156,7 @@ const UserSettingsForm = reduxForm({
 	form: 'userSettingsForm',
 })(Settings);
 
-export default graphql(updateUserInfo)(UserSettingsForm);
+export default compose(
+	graphql(userProfile),
+	graphql(updateUserInfo)
+)(UserSettingsForm);

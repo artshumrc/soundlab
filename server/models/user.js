@@ -11,6 +11,12 @@ const Schema = mongoose.Schema;
  */
 const UserSchema = new Schema({
 	username: String,
+	name: String,
+	email: String,
+	bio: String,
+	twitter: String,
+	linkedIn: String,
+	facebook: String,
 	password: String,
 	oauthIds: [{
 		network: String,
