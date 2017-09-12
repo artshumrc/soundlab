@@ -74,7 +74,7 @@ ResourceItem
 
 .resource-content-text {
   font-size: 20px;
-  color: $lightGrey;
+  color: $grey;
 }
 
 .read-more {
@@ -85,4 +85,59 @@ ResourceItem
   font-weight: bold;
   color: $dark;
   margin-left:-8px;
+}
+
+.event-container {
+  width: 100%;
+  display: flex;
+}
+
+.event-section-wrapper {
+  display: inline-block;
+
+}
+
+.date-wrapper {
+  height: 90px;
+  width: 90px;
+  background: #eee;
+  border-radius: 15px;
+}
+
+.event-section-wrapper.event-meta-wrapper {
+  height: 90px;
+  width: 75%;
+  padding: 18px 0 0 20px;
+}
+
+.date-container {
+  display: flex;
+  justify-content: center;
+  height: 0px;
+
+  &.month-container {
+    padding:15px 0 8px 0;
+  }
+}
+
+.month {
+  font-size: 18px;
+  font-family: serif;
+  text-transform: uppercase;
+}
+
+.date {
+  font-size: 44px;
+}
+
+.event-name {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: $dark;
+}
+
+.event-time {
+  font-size: 20px;
+  color: $lightGrey;
 }
