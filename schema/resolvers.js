@@ -76,6 +76,18 @@ function WordExpressResolvers(Connectors, publicSettings) {
       queue: function queue(post) {
         return Connectors.getPlaylist(post.id);
       },
+      event_month: function event_month(post) {
+        return Connectors.getEventMonth(post.id);
+      },
+      event_date: function event_date(post) {
+        return Connectors.getEventDate(post.id);
+      },
+      event_start_time: function event_start_time(post) {
+        return Connectors.getEventStartTime(post.id);
+      },
+      event_end_time: function event_end_time(post) {
+        return Connectors.getEventEndTime(post.id);
+      },
       post_meta: function post_meta(post, keys) {
         return Connectors.getPostmeta(post.id, keys);
       },

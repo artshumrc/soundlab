@@ -12,7 +12,7 @@ import styles from './information.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 
-class InformationItem extends Component{
+class EventItem extends Component{
 
   componentDidMount() {
     const { index } = this.props
@@ -28,42 +28,26 @@ class InformationItem extends Component{
   render() {
     const { post_content: content, post_title: title, post_name: name } = this.props.post
 
-    const resourceItemTitle = {
-      fontSize: '28px',
-      lineHeight: '22px',
-      fontFamily: 'serif'
-    }
-
-    const postCardTitleSection = {
-      display: 'inline-block',
-      verticalAlign: 'super'
-    }
-
-    const resourceContentText = {
-      fontSize: '18px',
-      color: '#353131',
-      fontWeight: '100',
-      padding: '0px 0px 20px 0px'
-    }
-
     return(
 
-      <div>
+      <div styleName="event-container">
+        <div styleName="event-section-wrapper date-wrapper">
+          <div styleName="date-container month-container">
+            <span styleName="month">{this.props.post.event_month.meta_value}</span>
+          </div>
+          <div styleName="date-container">
+            <span styleName="date">{this.props.post.event_date.meta_value}</span>
+          </div>
 
-        <Card styleName="resource-item">
-          <Link to={"information/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
-          <CardTitle
-            styleName="resource-card-item-title"
-            title={title}
-            titleStyle={resourceItemTitle}
-          />
-          <CardText style={resourceContentText}>
-            {content}
-          </CardText>
-          {/*<a styleName="read-more" href=""><KeyboardArrowRight />Read more</a> */}
-          </Link>
-
-        </Card>
+        </div>
+        <div styleName="event-section-wrapper event-meta-wrapper">
+          <div>
+            <span styleName="event-name">{title}</span>
+          </div>
+          <div>
+            <span styleName="event-time">{this.props.post.event_start_time.meta_value} - {this.props.post.event_end_time.meta_value}</span>
+          </div>
+        </div>
 
       </div>
 
@@ -71,10 +55,10 @@ class InformationItem extends Component{
   }
 }
 
-InformationItem.propTypes = {
+EventItem.propTypes = {
   index: PropTypes.number,
   styles: PropTypes.object,
   post: PropTypes.object,
 }
 
-export default InformationItem
+export default EventItem

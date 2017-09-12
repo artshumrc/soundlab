@@ -329,6 +329,38 @@ var WordExpressDatabase = function () {
             }
           });
         },
+        getEventMonth: function getEventMonth(postId) {
+          return Postmeta.findOne({
+            where: {
+              post_id: postId,
+              meta_key: 'event_month',
+            }
+          });
+        },
+        getEventDate: function getEventDate(postId) {
+          return Postmeta.findOne({
+            where: {
+              post_id: postId,
+              meta_key: 'event_date',
+            }
+          });
+        },
+        getEventStartTime: function getEventStartTime(postId) {
+          return Postmeta.findOne({
+            where: {
+              post_id: postId,
+              meta_key: 'event_start_time',
+            }
+          });
+        },
+        getEventEndTime: function getEventEndTime(postId) {
+          return Postmeta.findOne({
+            where: {
+              post_id: postId,
+              meta_key: 'event_end_time',
+            }
+          });
+        },
         getPostSubmissionDate: function getPostSubmissionDate(postId) {
           return Postmeta.findOne({
             where: {

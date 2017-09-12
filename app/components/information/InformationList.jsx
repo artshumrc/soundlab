@@ -4,6 +4,7 @@ import gql from 'graphql-tag'
 import Header from '../shared/header'
 import Footer from '../shared/footer'
 import InformationItem from './InformationItem'
+import EventList from './EventList'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import styles from './information.scss'
@@ -77,26 +78,7 @@ class InformationList extends React.Component {
           </Col>
           <Col xs={12} sm={12} md={4} lg={4}>
             <h4 styleName="events-list-title">Upcoming Events</h4>
-            <div styleName="event-container">
-              <div styleName="event-section-wrapper date-wrapper">
-                <div styleName="date-container month-container">
-                  <span styleName="month">Aug</span>
-                </div>
-                <div styleName="date-container">
-                  <span styleName="date">12</span>
-                </div>
-
-              </div>
-              <div styleName="event-section-wrapper event-meta-wrapper">
-                <div>
-                  <span styleName="event-name">Intro to Ableton</span>
-                </div>
-                <div>
-                  <span styleName="event-time">8pm - 10pm</span>
-                </div>
-              </div>
-
-            </div>
+            <EventList/>
 
           </Col>
       </Row>
@@ -111,10 +93,10 @@ class InformationList extends React.Component {
 const InformationQuery = gql`
   query InformationQuery {
     posts(post_type: "information") {
-      id,
+      id
       post_title
       post_name
-      post_content,
+      post_content
       info_byline {
         meta_value
       }
