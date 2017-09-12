@@ -15,10 +15,14 @@
 }
 
 .cover-inlay {
-  position: absolute;
+  position: relative;
+  display: block;
+  float: right;
+  margin-right: 30px;
+  margin-top: -290px;
   width: 560px;
-  bottom: -125px;
-  right: 100px;
+  //bottom: -125px;
+  //right: 100px;
   height: 260px;
   padding: 20px 30px 20px 20px;
   background: #eee;
