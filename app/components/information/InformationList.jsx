@@ -5,6 +5,7 @@ import Header from '../shared/header'
 import Footer from '../shared/footer'
 import InformationItem from './InformationItem'
 import EventList from './EventList'
+import AdditionalResourceItem from './AdditionalResourceItem'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import styles from './information.scss'
@@ -71,16 +72,24 @@ class InformationList extends React.Component {
         </Row>
         <Row styleName="resource-list-container">
           <Col xs={12} sm={12} md={8} lg={8}>
-            <h4 styleName="tutorials-list-title">Tutorials</h4>
+            <h4 styleName="resource-section-title">Tutorials</h4>
             {this.props.data.posts.map((post) =>
               <InformationItem key={post.id} post={post} />
             )}
           </Col>
           <Col xs={12} sm={12} md={4} lg={4}>
-            <h4 styleName="events-list-title">Upcoming Events</h4>
+            <h4 styleName="resource-section-title">Upcoming Events</h4>
             <EventList/>
 
           </Col>
+      </Row>
+      <Row styleName="additional-resources-container">
+        <Col xs={12} sm={12} md={12} lg={12}>
+          <h4 styleName="resource-section-title">Additional resources</h4>
+          {this.props.data.posts.map((post) =>
+            <AdditionalResourceItem key={post.id} post={post} />
+          )}
+        </Col>
       </Row>
       </div>
       </MuiThemeProvider>

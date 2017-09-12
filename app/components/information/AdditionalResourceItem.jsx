@@ -12,7 +12,7 @@ import styles from './information.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 
-class InformationItem extends Component{
+class AdditionalResourceItem extends Component{
 
   componentDidMount() {
     const { index } = this.props
@@ -28,42 +28,13 @@ class InformationItem extends Component{
   render() {
     const { post_content: content, post_title: title, post_name: name } = this.props.post
 
-    const resourceItemTitle = {
-      fontSize: '28px',
-      lineHeight: '22px',
-      fontFamily: 'serif'
-    }
-
-    const postCardTitleSection = {
-      display: 'inline-block',
-      verticalAlign: 'super'
-    }
-
-    const resourceContentText = {
-      fontSize: '18px',
-      color: '#353131',
-      fontWeight: '100',
-      padding: '0px 0px 20px 0px'
-    }
-
     return(
 
-      <div>
+      <div styleName="additional-resources-title-container">
 
-        <Card styleName="resource-item">
-          <Link to={"information/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
-          <CardTitle
-            styleName="resource-card-item-title"
-            title={title}
-            titleStyle={resourceItemTitle}
-          />
-          <CardText style={resourceContentText}>
-            {content}
-          </CardText>
-          <a styleName="read-more" href=""><KeyboardArrowRight />Read more</a>
-          </Link>
-
-        </Card>
+        <Link to={"information/" + encodeURIComponent(name)}>
+          <span styleName="read-more"><KeyboardArrowRight />{title}</span>
+        </Link>
 
       </div>
 
@@ -71,10 +42,10 @@ class InformationItem extends Component{
   }
 }
 
-InformationItem.propTypes = {
+AdditionalResourceItem.propTypes = {
   index: PropTypes.number,
   styles: PropTypes.object,
   post: PropTypes.object,
 }
 
-export default InformationItem
+export default AdditionalResourceItem
