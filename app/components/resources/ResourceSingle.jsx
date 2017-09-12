@@ -8,7 +8,7 @@ import styles from '../posts/post.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})
-class InformationSingle extends Component {
+class ResourceSingle extends Component {
 
   handleNewComment(comment) {
     console.log(comment.text)
@@ -24,7 +24,7 @@ class InformationSingle extends Component {
       return (
 
           <div styleName="main">
-          
+
             <div styleName="wrapper">
               <h3 styleName="title">{title}</h3>
               <h6 className={styles.postAuthor}>{this.props.data.post.info_byline.meta_value}</h6>
@@ -49,11 +49,11 @@ class InformationSingle extends Component {
   }
 }
 
-InformationSingle.propTypes = {
+ResourceSingle.propTypes = {
   data: PropTypes.object
 }
 
-const InformationSingleQuery = gql`
+const ResourceSingleQuery = gql`
   query getPost($post: String){
     post(name:$post){
       id
@@ -68,12 +68,12 @@ const InformationSingleQuery = gql`
   }
 `
 
-const InformationSingleWithData = graphql(InformationSingleQuery, {
+const ResourceSingleWithData = graphql(ResourceSingleQuery, {
   options: ({params}) => ({
     variables: {
       post: params.post
     }
   })
-})(InformationSingle)
+})(ResourceSingle)
 
-export default InformationSingleWithData
+export default ResourceSingleWithData

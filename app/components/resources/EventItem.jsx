@@ -7,7 +7,7 @@ import CSSModules from 'react-css-modules'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 //import styles from '../posts/post_excerpt.scss'
 import KeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
-import styles from './information.scss'
+import styles from './resources.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})

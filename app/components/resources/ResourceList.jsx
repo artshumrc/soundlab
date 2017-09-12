@@ -3,17 +3,17 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import Header from '../shared/header'
 import Footer from '../shared/footer'
-import InformationItem from './InformationItem'
+import ResourceItem from './ResourceItem'
 import EventList from './EventList'
 import AdditionalResourceItem from './AdditionalResourceItem'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import styles from './information.scss'
+import styles from './resources.scss'
 import CSSModules from 'react-css-modules'
 
 @CSSModules(styles, {allowMultiple: true})
 
-class InformationList extends React.Component {
+class ResourceList extends React.Component {
 
   constructor(props) {
     super(props)
@@ -74,7 +74,7 @@ class InformationList extends React.Component {
           <Col xs={12} sm={12} md={8} lg={8}>
             <h4 styleName="resource-section-title">Tutorials</h4>
             {this.props.data.posts.map((post) =>
-              <InformationItem key={post.id} post={post} />
+              <ResourceItem key={post.id} post={post} />
             )}
           </Col>
           <Col xs={12} sm={12} md={4} lg={4}>
@@ -99,8 +99,8 @@ class InformationList extends React.Component {
   }
 }
 
-const InformationQuery = gql`
-  query InformationQuery {
+const ResourceQuery = gql`
+  query ResourceQuery {
     posts(post_type: "information") {
       id
       post_title
@@ -113,6 +113,6 @@ const InformationQuery = gql`
   }
 `
 
-const InformationListWithData = graphql(InformationQuery)(InformationList)
+const ResourceListWithData = graphql(ResourceQuery)(ResourceList)
 
-export default InformationListWithData
+export default ResourceListWithData

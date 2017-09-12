@@ -7,12 +7,12 @@ import CSSModules from 'react-css-modules'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 //import styles from '../posts/post_excerpt.scss'
 import KeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
-import styles from './information.scss'
+import styles from './resources.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})
 
-class InformationItem extends Component{
+class ResourceItem extends Component{
 
   componentDidMount() {
     const { index } = this.props
@@ -51,7 +51,7 @@ class InformationItem extends Component{
       <div>
 
         <Card styleName="resource-item">
-          <Link to={"information/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
+          <Link to={"resources/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
           <CardTitle
             styleName="resource-card-item-title"
             title={title}
@@ -71,10 +71,10 @@ class InformationItem extends Component{
   }
 }
 
-InformationItem.propTypes = {
+ResourceItem.propTypes = {
   index: PropTypes.number,
   styles: PropTypes.object,
   post: PropTypes.object,
 }
 
-export default InformationItem
+export default ResourceItem

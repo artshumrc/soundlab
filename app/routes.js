@@ -8,8 +8,8 @@ import About from './components/singlePage/About'
 import Contact from './components/singlePage/Contact'
 import Privacy from './components/singlePage/Privacy'
 import Profile from './components/profile/Profile'
-import InformationList from './components/information/InformationList'
-import InformationSingle from './components/information/InformationSingle'
+import ResourceList from './components/resources/ResourceList'
+import ResourceSingle from './components/resources/ResourceSingle'
 import AudioUploadList from './components/audioUpload/AudioUploadList'
 import AudioUploadSingle from './components/audioUpload/AudioUploadSingle'
 import SubmissionList from './components/submission/SubmissionList'
@@ -26,12 +26,12 @@ const routes = (
       <Route path="contact" component={Contact}/>
       <Route path="privacy" component={Privacy}/>
       <Route path="profile" component={Profile}/>
-      <Route path="information" component={InformationList}/>
+      <Route path="resources" component={ResourceList}/>
       <Route path="search" component={Search}/>
       <Route path="submissions" component={SubmissionList}/>
       <Route path="uploads" component={AudioUploadList}/>
       <Route path="uploads/:post" component={AudioUploadSingle}/>
-      <Route path="information/:post" component={InformationSingle}/>
+      <Route path="resources/:post" component={ResourceSingle}/>
       <Route path="submissions/:post" component={SubmissionSingle}/>
     </Route>
   </Route>

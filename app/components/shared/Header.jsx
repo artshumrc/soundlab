@@ -16,7 +16,7 @@ class Header extends Component {
         </div>
         <div styleName="linkContainer">
           <Link to="/uploads" styleName="nav-link">Waves</Link>
-          <Link to="/information" styleName="nav-link">Resources</Link>
+          <Link to="/resources" styleName="nav-link">Resources</Link>
           <Link to="/about" styleName="nav-link">About</Link>
           <Link to="/login" styleName="nav-link-join">Join / Login</Link>
       {/*
