@@ -50,14 +50,19 @@ class AudioUploadItem extends Component{
       verticalAlign: 'super'
     }
 
-    return(
 
+
+    return(
       <div>
         <Col styleName="wave-audio-posts" xs={12} sm={12} md={12} lg={12}>
         <Card styleName="list-container">
           <Link to={"uploads/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
           <div styleName="track-number-container">
-            <span styleName="track-number">1</span>
+            { this.props.track === 0 ?
+              <span styleName="track-number">1</span>
+            :
+              <span styleName="track-number">{this.props.track + 1}</span>
+            }
           </div>
           <CardHeader
              avatar="images/maple_leaf.jpg"

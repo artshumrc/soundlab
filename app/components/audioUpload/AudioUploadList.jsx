@@ -89,8 +89,8 @@ class AudioUploadList extends React.Component {
 									</div>
 
 								</div>
-								{this.props.data.posts.map((post) =>
-									<AudioUploadItem key={post.id} post={post} />
+								{this.props.data.posts.map((post, index) =>
+									<AudioUploadItem key={post.id} post={post} track={index} />
 								)}
 							</Col>
 						</Row>

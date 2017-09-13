@@ -1,9 +1,10 @@
 import React from 'react'
-import { IndexRoute, Route } from 'react-router'
+import { Router, browserHistory, IndexRoute, Route } from 'react-router'
 
 import App from './App'
 import Home from './components/home/Home'
 import HomeLayout from './components/layouts/HomeLayout'
+import SinglePageLayout from './components/layouts/SinglePageLayout'
 import About from './components/singlePage/About'
 import Contact from './components/singlePage/Contact'
 import Privacy from './components/singlePage/Privacy'
@@ -17,25 +18,31 @@ import SubmissionSingle from './components/submission/SubmissionSingle'
 import Search from './components/search/Search'
 
 const routes = (
-  <Route component={HomeLayout}>
-    <Route path="/" component={App} >
-      <IndexRoute component={Home}/>
-      {/*<Route path=":page" component={WordExpressPage}/>*/}
+  <Router history={browserHistory}>
+    <Route component={HomeLayout}>
+      <Route path="/" component={App} >
+        <IndexRoute component={Home}/>
+        {/*<Route path=":page" component={WordExpressPage}/>*/}
 
-      <Route path="about" component={About}/>
-      <Route path="contact" component={Contact}/>
-      <Route path="privacy" component={Privacy}/>
-      <Route path="profile" component={Profile}/>
-      <Route path="resources" component={ResourceList}/>
-      <Route path="search" component={Search}/>
-      <Route path="submissions" component={SubmissionList}/>
-      <Route path="uploads" component={AudioUploadList}/>
-      <Route path="uploads/:post" component={AudioUploadSingle}/>
-      <Route path="resources/:post" component={ResourceSingle}/>
-      <Route path="submissions/:post" component={SubmissionSingle}/>
+
+        <Route path="contact" component={Contact}/>
+        <Route path="privacy" component={Privacy}/>
+        <Route path="profile" component={Profile}/>
+        <Route path="resources" component={ResourceList}/>
+        <Route path="search" component={Search}/>
+        <Route path="submissions" component={SubmissionList}/>
+        <Route path="uploads" component={AudioUploadList}/>
+        <Route path="uploads/:post" component={AudioUploadSingle}/>
+        <Route path="resources/:post" component={ResourceSingle}/>
+        <Route path="submissions/:post" component={SubmissionSingle}/>
+      </Route>
     </Route>
-  </Route>
+    <Route component={SinglePageLayout}>
+      <Route path="/about" component={About}/>
+    </Route>
+  </Router>
 
 )
+
 
 export default routes
