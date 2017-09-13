@@ -1,8 +1,33 @@
 @import "../../styles/global";
 @import "../../styles/vars";
 
-.about-section {
-  height: 500px;
+.about-cover-section {
+  height: 400px;
   width: 100%;
   background: #fcfadf;
+}
+
+.about-content-section {
+  min-height: 500px;
+  padding: 0 5%;
+  padding-bottom: 60px;
+}
+
+.about-cover-image {
+  margin-top: -340px;
+  margin-bottom: 60px;
+}
+
+.about-section-title {
+  font-size: 38px;
+  font-family: serif;
+}
+
+.about-text {
+  color: $darkGrey;
+  padding: 20px 0px;
+}
+
+.team-section-title {
+  font-size: 30px;
 }
