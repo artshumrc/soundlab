@@ -25,9 +25,55 @@
 
 .about-text {
   color: $darkGrey;
-  padding: 20px 0px;
 }
 
-.team-section-title {
+.team-title {
   font-size: 30px;
+}
+
+.about-team-section {
+  padding-top: 40px;
+}
+
+.team-member {
+  position: relative;
+  min-height: 200px;
+  margin-bottom: 30px;
+  &.top {
+    margin-top: 40px;
+  }
+}
+
+.team-member-pic-container {
+  height: 200px;
+  width: 25%;
+  display: inline-block;
+}
+
+.team-member-meta {
+  display: inline-block;
+  width: 75%;
+  vertical-align: top;
+  padding: 10px 20px;
+  h3, p {
+    font-family: sans-serif;
+  }
+}
+
+.member-name {
+  color: $dark;
+  font-weight: bold;
+
+}
+
+.member-position {
+  color: $lightGrey;
+  font-size: 14px;
+}
+
+.member-about-text {
+  color: $darkestGrey;
+  font-size: 18px;
+  font-weight: 100;
+  padding-top: 20px;
 }
