@@ -1,4 +1,4 @@
-import * as settings from '../settings/settings'
+import * as settings from '../settings/index'
 import WordExpressDefinitions from './definitions'
 import WordExpressDatabase from './db.js'
 import WordExpressResolvers from './resolvers'

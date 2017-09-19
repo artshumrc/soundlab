@@ -1,0 +1,88 @@
+@import '../../../../styles';
+
+.navbar {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+  z-index: 100;
+	padding: 60px;
+
+
+	.headroom {
+		background: #fff;
+	}
+
+	.headroom--unfixed {
+	  transform: translateY(0);
+	}
+	.headroom--scrolled {
+	  transition: transform 200ms ease-in-out;
+		background: #fff;
+	}
+	.headroom--unpinned {
+	  transform: translateY(-100%);
+	}
+	.headroom--pinned {
+	  transform: translateY(0%);
+	}
+}
+
+.nav {
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+
+	li {
+		display: inline-block;
+		vertical-align: top;
+		font-family: $font-label;
+
+	}
+}
+
+.navLink {
+	margin: 10px 0;
+	padding: 5px 20px;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	font-size: 12px;
+	font-family: $font-label;
+	font-weight: 100;
+	border: 2px solid transparent;
+	@include transition(all 100ms linear);
+	display: inline-block;
+	vertical-align: top;
+
+	&:hover {
+		background: rgba(255, 255, 255, 0.9);
+		color: $dark;
+	}
+}
+
+.navLinkSelected {
+	border: 2px solid #222;
+}
+
+.navLinkLogin {
+	padding: 15px 20px;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	font-size: 12px;
+	font-family: $font-label;
+	font-weight: 100;
+	border: 2px solid transparent;
+	background: $dark;
+	border: 2px solid $dark;
+	color: $light;
+	display: inline-block;
+	vertical-align: top;
+
+	&:hover {
+		background: $primary;
+		color:$light;
+		border: 2px solid $primary;
+	}
+}

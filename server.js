@@ -1,7 +1,7 @@
 /* eslint no-console: 0 */
 import path from 'path';
 import express from 'express';
-import { privateSettings } from './settings/settings';
+import { privateSettings } from './settings/index';
 import bodyParser from 'body-parser';
 import { graphqlExpress } from 'graphql-server-express';
 import { executableSchema } from './schema/schema';
@@ -15,6 +15,7 @@ app.use('/graphql', bodyParser.json(), graphqlExpress({
 
 app.use(require('prerender-node').set('prerenderToken', privateSettings.prerenderToken ));
 app.use(express.static('./dist'));
+app.use(express.static('./public'));
 app.get('*', function response(req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));
 });

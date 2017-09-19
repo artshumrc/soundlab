@@ -1,22 +1,34 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
+import 'es6-shim';
+import 'babel-polyfill';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import { browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import { AppContainer } from 'react-hot-loader';
 
-import Root from './root'
+import Root from './containers/Root';
+import configureStore from './store/configureStore';
+import { loginJWT } from './lib/auth'; // eslint-disable-line
 
-render(
+const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
+injectTapEventPlugin();
+
+
+ReactDOM.render(
   <AppContainer>
-    <Root/>
+		<Root store={store} history={history} />
   </AppContainer>,
   document.getElementById('root')
 )
 
 if (module.hot) {
-  module.hot.accept('./root', () => {
-    const NextRoot = require('./root').default
-    render(
+  module.hot.accept('./containers/Root', () => {
+    const NextRoot = require('./containers/Root').default
+		ReactDOM.render(
       <AppContainer>
-        <NextRoot/>
+				<NextRoot store={store} history={history} />
       </AppContainer>,
       document.getElementById('root')
     )

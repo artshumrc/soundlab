@@ -1,0 +1,21 @@
+@import '../../../../styles';
+
+.navHeader {
+	float: left;
+	vertical-align: top;
+	cursor: pointer;
+}
+
+.siteTitle {
+	display:inline-block;
+	vertical-align: top;
+	font-family: $font-logo;
+	font-weight: 100;
+	padding: 10px 15px;
+	color: $dark;
+	line-height: 1.2em;
+	margin: 5px 10px;
+	text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.6);
+	font-size: 22px;
+	letter-spacing: 2px;
+}

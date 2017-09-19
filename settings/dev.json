@@ -1,6 +1,6 @@
 {
   "public": {
-    "uploads": "localhost:8888/soundlab/wp-content/uploads",
+    "uploads": "localhost:8888/soundlab/wp-content/uploads/",
     "amazonS3": false
   },
   "private": {
@@ -8,7 +8,7 @@
     "database": {
       "name": "soundlab",
       "username": "root",
-      "password": "",
+      "password": "root",
       "host": "localhost",
       "port": "8889"
     }
