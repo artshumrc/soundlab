@@ -1,6 +1,7 @@
 {
   "public": {
     "uploads": "localhost:8888/soundlab/wp-content/uploads/",
+    "apiURI": "http://localhost:3000",
     "amazonS3": false
   },
   "private": {

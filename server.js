@@ -1,7 +1,7 @@
 /* eslint no-console: 0 */
 import path from 'path';
 import express from 'express';
-import { privateSettings } from './settings/index';
+import { privateSettings } from './settings';
 import bodyParser from 'body-parser';
 import { graphqlExpress } from 'graphql-server-express';
 import { executableSchema } from './schema/schema';

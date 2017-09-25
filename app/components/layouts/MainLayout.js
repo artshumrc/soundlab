@@ -7,7 +7,7 @@ import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeP
 import CSSModules from 'react-css-modules'
 
 @CSSModules(styles, {allowMultiple: true})
-class HomeLayout extends Component {
+class MainLayout extends Component {
   render() {
     return (
       <MuiThemeProvider>
@@ -19,7 +19,7 @@ class HomeLayout extends Component {
           {this.props.children}
         </div>
         <div>
-        
+
         </div>
         <div>
 
@@ -29,4 +29,4 @@ class HomeLayout extends Component {
     )
   }
 }
-export default HomeLayout
+export default MainLayout

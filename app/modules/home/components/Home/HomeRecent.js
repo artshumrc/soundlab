@@ -9,20 +9,12 @@ import CSSModules from 'react-css-modules'
 @CSSModules(styles, {allowMultiple: true})
 
 
-class HomeRecent extends React.Component {
+class HomeRecent extends Component {
 
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			open: true
-		};
-	}
 
 	render () {
-    const items = [];
-		console.log('items are ' + items);
-		console.log('props are ' + this.props);
+    const items = this.props.items || [];
+	
 		return (
       <div styleName="recent-section">
         <Row styleName="recent-section-title">
@@ -33,15 +25,15 @@ class HomeRecent extends React.Component {
         </Row>
         <Row styleName="recent-track-container">
           {items.map((item, i) => (
-            <Col
-              lg={4}
-              key={item.id}
-            >
+
             <RecentUploadItem
+							key={item.id}
               {...item}
+							index={i}
+
             />
-            </Col>
-          ))}
+
+          )).splice(0,3)}
 
 
 

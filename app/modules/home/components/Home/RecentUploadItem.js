@@ -26,7 +26,7 @@ class RecentUploadItem extends Component{
 
 
   render() {
-    const { post_content: content, post_title: title, post_name: name, thumbnail: thumbnail } = this.props.post
+    const { post_content: content, post_title: title, post_name: name, thumbnail, byline } = this.props
 
     const thumbnailListImage = {
           backgroundImage: `url("${thumbnail}")`,
@@ -51,7 +51,7 @@ class RecentUploadItem extends Component{
               <span styleName="recent-track-title">{title}</span>
             </div>
             <div>
-              <span styleName="recent-track-author">{this.props.post.byline.meta_value}</span>
+              <span styleName="recent-track-author">{byline.meta_value}</span>
             </div>
           </div>
         </Link>

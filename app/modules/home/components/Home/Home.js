@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
 //import ShowcaseList from '../showcase/ShowcaseList'
 //import PlaylistList from '../playlist/PlaylistList'
 //import FeaturedTrack from './FeaturedTrack'
@@ -8,7 +6,7 @@ import gql from 'graphql-tag'
 import HomeIntro from './HomeIntro'
 import HomeLearn from './HomeLearn'
 import HomeRecentContainer from '../../containers/HomeRecentContainer/HomeRecentContainer'
-import MuiThemeProvider from '../../../../../node_modules/material-ui/styles/MuiThemeProvider'
+//import MuiThemeProvider from '../../../../../node_modules/material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import styles from './Home.scss'
 import CSSModules from 'react-css-modules'
@@ -22,7 +20,7 @@ class Home extends React.Component {
   render() {
 
     return (
-      <MuiThemeProvider>
+
         <div>
           <Row styleName="cover-section">
             <Col xs={12} sm={6} md={6} lg={6}>
@@ -47,7 +45,7 @@ class Home extends React.Component {
           <HomeRecentContainer />
 
           </div>
-        </MuiThemeProvider>
+  
 
     )
   }

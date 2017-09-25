@@ -6,7 +6,7 @@ import { publicSettings } from '../../settings';
 const cookies = new Cookies();
 
 const networkInterface = createNetworkInterface({
-	uri: `${publicSettings.apiURI}/graphql`,
+	uri: '/graphql',
 	opts: {
 	 	credentials: 'include',
 	}
