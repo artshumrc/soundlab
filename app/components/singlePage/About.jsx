@@ -28,15 +28,6 @@ export default class About extends Component {
           backgroundPosition: 'center'
         }
 
-      const teamPickleImage = {
-          backgroundImage: `url("http://localhost:8888/soundlab/wp-content/uploads/2017/09/picklerick.jpg")`,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }
-
     return (
         <div>
 
@@ -59,20 +50,11 @@ export default class About extends Component {
                     </div>
                     <div styleName="team-member-meta">
                       <h3 styleName="member-name">Archimedes Digital</h3>
-                      <h3 styleName="member-position">Nero d'Avola Enthusiasts</h3>
+                      <h3 styleName="member-position">Developers</h3>
                       <p styleName="member-about-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                     </div>
                   </div>
-                  <div styleName="team-member">
-                    <div styleName="team-member-pic-container">
-                      <div style={teamMemberImage}></div>
-                    </div>
-                    <div styleName="team-member-meta">
-                      <h3 styleName="member-name">Pickle Rick</h3>
-                      <h3 styleName="member-position">Intergalatic Pickle</h3>
-                      <p styleName="member-about-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                    </div>
-                  </div>
+
 
                 </div>
               </div>
