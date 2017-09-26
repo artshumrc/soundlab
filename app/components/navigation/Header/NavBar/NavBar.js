@@ -12,13 +12,13 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 		<NavBarHeader />
 		<ul className={styles.nav}>
 			<li>
-				<Link className={styles.navLink} to={'/'}>
-					Events
+				<Link className={styles.navLink} to={'/audio'}>
+					Waves
 				</Link>
 			</li>
 			<li>
 				<Link className={styles.navLink} to={'/'}>
-					Library
+					Resources
 				</Link>
 			</li>
 			<li>
@@ -39,7 +39,7 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 						className={styles.navLinkLogin}
 						onClick={toggleAuthModal}
 					>
-						Login / Signup
+						Join / Signup
 					</Link>
 				</li>
 			}
