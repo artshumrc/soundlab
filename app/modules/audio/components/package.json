@@ -1,6 +1,6 @@
 {
-  "name": "AudioUploadItem",
+  "name": "AudioUploadList",
   "version": "0.0.1",
   "private": true,
-  "main": "./AudioUploadItem.js"
+  "main": "./AudioUploadList.js"
 }
