@@ -1,4 +1,4 @@
-import { store } from '../apollo'
+import { store } from '../middleware/apolloClient'
 
 export const RESUME_PLAYER = 'RESUME_PLAYER'
 export const PAUSE_PLAYER = 'PAUSE_PLAYER'

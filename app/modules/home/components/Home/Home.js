@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 //import ShowcaseList from '../showcase/ShowcaseList'
 //import PlaylistList from '../playlist/PlaylistList'
 //import FeaturedTrack from './FeaturedTrack'
-//import AudioPlayer from '../audioPlayer/AudioPlayer'
+import Player from '../../../player/components/Player/Player'
 import HomeIntro from './HomeIntro'
 import HomeLearn from './HomeLearn'
 import HomeRecentContainer from '../../containers/HomeRecentContainer/HomeRecentContainer'
@@ -45,7 +45,7 @@ class Home extends React.Component {
           <HomeRecentContainer />
 
           </div>
-  
+
 
     )
   }
