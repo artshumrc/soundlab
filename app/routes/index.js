@@ -1,18 +1,24 @@
 import React from 'react';
-import { IndexRoute, Route } from 'react-router';
-
+import { Router, browserHistory, IndexRoute, Route } from 'react-router';
+import SinglePageLayout from '../components/layouts/SinglePageLayout'
 import MainLayout from '../components/layouts/MainLayout';
 import homeRoute from '../modules/home/routes';
 import audioRoutes from '../modules/audio/routes';
 import resourceRoutes from '../modules/resources/routes';
+import singlePageRoutes from '../modules/single/routes';
 //import userRoutes from '../modules/users/routes';
 
 const routes = (
-  <Route path="/" component={MainLayout}>
-		{homeRoute}
-    {audioRoutes}
-    {resourceRoutes}
-  </Route>
+  <Router history={browserHistory}>
+    <Route path="/" component={MainLayout}>
+  		{homeRoute}
+      {audioRoutes}
+      {resourceRoutes}
+    </Route>
+    <Route path="/" component={SinglePageLayout}>
+      {singlePageRoutes}
+    </Route>
+  </Router>
 );
 
 export default routes;

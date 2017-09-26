@@ -22,7 +22,7 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 				</Link>
 			</li>
 			<li>
-				<Link className={styles.navLink} to={'/'}>
+				<Link className={styles.navLink} to={'/about'}>
 					About
 				</Link>
 			</li>
