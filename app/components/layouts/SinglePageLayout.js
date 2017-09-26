@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Header from '../shared/header'
-import Footer from '../shared/footer'
+import Header from '../shared/Header'
+import Footer from '../shared/Footer'
 import styles from './layout.scss'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import CSSModules from 'react-css-modules'
