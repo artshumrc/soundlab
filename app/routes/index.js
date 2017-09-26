@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, browserHistory, IndexRoute, Route } from 'react-router';
-import SinglePageLayout from '../components/layouts/SinglePageLayout'
-import MainLayout from '../components/layouts/MainLayout';
+import SinglePageLayout from '../modules/layouts/SinglePageLayout'
+import MainLayout from '../modules/layouts/MainLayout';
 import homeRoute from '../modules/home/routes';
 import audioRoutes from '../modules/audio/routes';
 import resourceRoutes from '../modules/resources/routes';
