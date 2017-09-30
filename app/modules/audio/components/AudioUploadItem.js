@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
+import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+import { setPlayerTrack } from '../../../actions/actions'
 import styles from './audioUpload.scss'
 import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
@@ -18,10 +21,20 @@ class AudioUploadItem extends Component{
     const { index } = this.props
   }
 
+
+  setPlayerTrack() {
+    this.props.dispatch(setPlayerTrack(this.props.post.post_title, this.props.post.thumbnail, this.props.post.byline.meta_value, this.props.post.sound_cloud_link.meta_value, this.props.post.id, this.props.track))
+    console.log(this.props);
+  }
+
+
+
+
   handleClick(e) {
     e.preventDefault()
-    const target = e.currentTarget.href
-    browserHistory.push(target)
+  //  const target = e.currentTarget.href
+    //browserHistory.push(target)
+    console.log('click seen');
   }
 
 
@@ -53,34 +66,40 @@ class AudioUploadItem extends Component{
 
 
     return(
-      <div>
+      <div onClick={this.setPlayerTrack.bind(this)}>
+
         <Col styleName="wave-audio-posts" xs={12} sm={12} md={12} lg={12}>
-        <Card styleName="list-container">
-          <Link to={"uploads/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
-          <div styleName="track-number-container">
-            { this.props.track === 0 ?
-              <span styleName="track-number">1</span>
-            :
-              <span styleName="track-number">{this.props.track + 1}</span>
-            }
-          </div>
-          <CardHeader
-             avatar="images/maple_leaf.jpg"
-             style={postTrack}
-          />
-          <CardTitle
-            title={title}
-            titleStyle={postCardTitle}
-            subtitle={this.props.post.byline.meta_value}
-            subtitleStyle={postCardSubtitle}
-            style={postCardTitleSection} />
-            <div styleName="track-duration-container">
-              <span styleName="track-duration">3:37</span>
+
+          <Card
+            styleName="list-container"
+
+          >
+
+            <div styleName="track-number-container">
+              { this.props.track === 0 ?
+                <span styleName="track-number">1</span>
+              :
+                <span styleName="track-number">{this.props.track + 1}</span>
+              }
             </div>
 
-          </Link>
+            <CardHeader
+               avatar="images/maple_leaf.jpg"
+               style={postTrack}
+            />
 
-        </Card>
+            <CardTitle
+              title={title}
+              titleStyle={postCardTitle}
+              subtitle={this.props.post.byline.meta_value}
+              subtitleStyle={postCardSubtitle}
+              style={postCardTitleSection} />
+              <div styleName="track-duration-container">
+                <span styleName="track-duration">3:37</span>
+              </div>
+
+          </Card>
+
         </Col>
 
       </div>
@@ -95,4 +114,12 @@ AudioUploadItem.propTypes = {
   post: PropTypes.object,
 }
 
-export default AudioUploadItem
+
+function mapStateToProps(state){
+  return {
+    player: state.player
+  }
+
+}
+
+export default connect(mapStateToProps)(AudioUploadItem)

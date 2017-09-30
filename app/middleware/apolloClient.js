@@ -1,4 +1,5 @@
 import { ApolloClient, createNetworkInterface } from 'react-apollo';
+//import { store } from '../store/configureStore';
 import Cookies from 'universal-cookie';
 
 import { publicSettings } from '../../settings';
@@ -14,6 +15,7 @@ const networkInterface = createNetworkInterface({
 
 networkInterface.use([{
 	applyMiddleware(req, next) {
+
 		if (!req.options.headers) {
 			req.options.headers = {}; // Create the header object if needed.
 		}

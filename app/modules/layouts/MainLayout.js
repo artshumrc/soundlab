@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from '../navigation/Header'
 //import Footer from '../navigation/Footer/Footer'
 import styles from './layout.scss'
-import Player from '../../modules/player/components/Player/Player'
+import PlayerContainer from '../../modules/player/containers/PlayerContainer'
 import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
 import CSSModules from 'react-css-modules'
 
@@ -19,7 +19,7 @@ class MainLayout extends Component {
           {this.props.children}
         </div>
         <div>
-          <Player />
+          <PlayerContainer />
         </div>
         <div>
 
