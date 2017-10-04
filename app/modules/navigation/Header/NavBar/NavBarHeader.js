@@ -6,7 +6,7 @@ const NavBarHeader = props => (
 	<div className={styles.navHeader}>
 		<Link to="/">
 			<h2 className={styles.siteTitle}>
-				Cultures of Protest
+				Sound Lab
 			</h2>
 		</Link>
 	</div>

@@ -1,4 +1,4 @@
-import * as soundManager from '../../../node_modules/soundmanager2'
+import * as soundManager from 'soundmanager2'
 
 
 (function(window) {

@@ -3,7 +3,7 @@ import Header from '../navigation/Header'
 //import Footer from '../navigation/Footer/Footer'
 import styles from './layout.scss'
 import PlayerContainer from '../../modules/player/containers/PlayerContainer'
-import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import CSSModules from 'react-css-modules'
 
 @CSSModules(styles, {allowMultiple: true})

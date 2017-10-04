@@ -10,7 +10,7 @@ export default class About extends Component {
 
   render() {
     const aboutCoverImage = {
-        backgroundImage: `url("http://localhost:8888/soundlab/wp-content/uploads/2017/09/lee-campbell-123238.jpg")`,
+        backgroundImage: `url("http://soundlab.local:8888/wp-content/uploads/2017/09/lee-campbell-123238.jpg")`,
         width: '100%',
         height: '500px',
         objectFit: 'cover',
@@ -19,7 +19,7 @@ export default class About extends Component {
       }
 
     const teamMemberImage = {
-        backgroundImage: `url("http://localhost:8888/soundlab/wp-content/uploads/2017/09/20170810_182646.jpg")`,
+        backgroundImage: `url("http://soundlab.local:8888/wp-content/uploads/2017/09/20170810_182646.jpg")`,
         width: '100%',
         height: '100%',
         objectFit: 'cover',

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import TimeItem from './TimeItem'
-import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import styles from './search.scss'
 import CSSModules from 'react-css-modules'
 

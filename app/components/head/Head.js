@@ -5,17 +5,16 @@ class Head extends React.Component {
   render() {
     return (
       <Helmet
-          title="WordExpress"
-          titleTemplate="WordExpress - %s"
+          title="Sound Lab | Harvard University Department of Music"
+          titleTemplate="%s | Sound Lab"
           meta={[
-              {'name': 'description', 'content': 'Replacing PHP with Javascript in WordPress development'},
-              {'property': 'og:title', 'content': 'WordExpress'},
+              {'name': 'description', 'content': 'Sound Lab at the Harvard University Department of Music'},
+              {'property': 'og:title', 'content': 'Sound Lab'},
               {'property': 'og:type', 'content': 'website'},
-              {'property': 'og:description', 'content': 'Replacing PHP with Javascript in WordPress development'},
-              {'property': 'og:image', 'content': 'http://wordexpress.s3.amazonaws.com/wp-content/uploads/2016/01/24195552/logowithtype.png'}
+              {'property': 'og:description', 'content': 'Sound Lab at the Harvard University Department of Music'},
           ]}
           link={[
-              {'rel': 'canonical', 'href': 'http://wordexpress.io'},
+              {'rel': 'canonical', 'href': 'http://soundlab.archimedes.digital'},
           ]}
           onChangeClientState={(newState) => console.log(newState)}
       />

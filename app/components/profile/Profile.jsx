@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import styles from './profile.scss'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
-import MuiThemeProvider from '../../../node_modules/material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import CSSModules from 'react-css-modules'
 
 

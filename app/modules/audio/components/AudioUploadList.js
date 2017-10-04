@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import AudioUploadItem from './AudioUploadItem'
-import MuiThemeProvider from '../../../../node_modules/material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import styles from './audioUpload.scss'
 import FlatButton from 'material-ui/FlatButton';
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
