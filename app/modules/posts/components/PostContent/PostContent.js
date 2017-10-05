@@ -1,18 +1,15 @@
-import React, {Component, PropTypes} from 'react'
-import {map} from 'lodash'
+import React, { Component, PropTypes } from 'react'
+import { map } from 'lodash'
 import { browserHistory } from 'react-router'
 import CSSModules from 'react-css-modules'
-import styles from './post.scss'
-import Shortcodes  from '../shortcodes/shortcodes'
-import {TweenMax, Power4} from 'gsap'
+import { TweenMax, Power4 } from 'gsap'
 import hljs from 'highlightjs'
+
+import Shortcodes from '../../../../components/shortcodes/shortcodes'
+import styles from '../post.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 class PostContent extends Component {
-
-  componentDidUpdate() {
-
-  }
 
   componentDidMount() {
     const content = this._content

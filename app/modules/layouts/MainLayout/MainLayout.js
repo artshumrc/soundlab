@@ -1,29 +1,33 @@
 import React, { Component } from 'react'
-import Header from '../navigation/Header'
-import Footer from '../navigation/Footer'
-import styles from './layout.scss'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import CSSModules from 'react-css-modules'
 
+import Header from '../../navigation/Header'
+import Footer from '../../navigation/Footer'
+import styles from '../Layout.scss'
+import PlayerContainer from '../../player/containers/PlayerContainer'
 
 @CSSModules(styles, {allowMultiple: true})
-class SinglePageLayout extends Component {
+class MainLayout extends Component {
   render() {
     return (
       <MuiThemeProvider>
       <div>
-        <div styleName="singlePageHeader">
+        <div>
           <Header />
         </div>
-        <div styleName="singlePageLayoutContainer">
+        <div styleName="homeLayoutContainer">
           {this.props.children}
         </div>
         <div>
-          <Footer />
+          <PlayerContainer />
+        </div>
+        <div>
+
         </div>
       </div>
       </MuiThemeProvider>
     )
   }
 }
-export default SinglePageLayout
+export default MainLayout

@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import ResourceItem from './ResourceItem'
-import ResourceEventList from './ResourceEventList'
-import AdditionalResourceItem from './AdditionalResourceItem'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import styles from './resources.scss'
 import CSSModules from 'react-css-modules'
+
+import ResourceItem from '../ResourceItem'
+import ResourceEventList from '../ResourceEventList'
+import AdditionalResourceItem from '../AdditionalResourceItem'
+import styles from '../resources.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import styles from './showcase.scss'
-import PostContent from '../posts/PostContent.js'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import CSSModules from 'react-css-modules'
+
+import PostContent from '../../../posts/components/PostContent'
+import styles from '../showcase.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})

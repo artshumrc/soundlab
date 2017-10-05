@@ -1,6 +1,6 @@
 {
-  "name": "ResourceList",
+  "name": "AdditionalResourceItem",
   "version": "0.0.1",
   "private": true,
-  "main": "./ResourceList.js"
+  "main": "./AdditionalResourceItem.js"
 }

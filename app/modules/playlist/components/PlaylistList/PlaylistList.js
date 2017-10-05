@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import PlaylistItem from './PlaylistItem'
-import styles from './Playlist.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
+
+import PlaylistItem from '../PlaylistItem'
+import styles from './PlaylistList.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 

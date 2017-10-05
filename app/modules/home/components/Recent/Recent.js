@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import RecentUploadItem from './RecentUploadItem'
-import styles from './home.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
 
+import RecentUploadItem from '../RecentUploadItem'
+import styles from './Recent.scss'
+
+
 @CSSModules(styles, {allowMultiple: true})
-
-
 class Recent extends React.Component {
 
 	constructor(props) {

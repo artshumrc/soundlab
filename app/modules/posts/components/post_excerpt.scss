@@ -1,8 +1,6 @@
-@import "../../styles/vars";
-@import "../../styles/global";
+@import "../../../../styles";
 
 .base{
-  composes: container from "../../styles.scss";
   position: relative;
   margin-bottom: 1rem;
 

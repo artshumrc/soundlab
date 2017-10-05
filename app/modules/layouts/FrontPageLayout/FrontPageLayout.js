@@ -15,8 +15,8 @@ class FrontPageLayout extends Component {
         <Page>
           <div styleName={heroClass} style={bg}>
             <div styleName="wrapper tight">
-              <h1 styleName="title">WordExpress</h1>
-              <h4 styleName="subtitle">WordPress using Node, Express, and React.</h4>
+              <h1 styleName="title">Sound Lab</h1>
+              <h4 styleName="subtitle">We hear you.</h4>
             </div>
           </div>
 

@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-import styles from './singlePage.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
 
-@CSSModules(styles, {allowMultiple: true})
+import styles from '../singlePage.scss'
 
+@CSSModules(styles, {allowMultiple: true})
 export default class About extends Component {
 
   render() {

@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom'
 import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
 import CSSModules from 'react-css-modules'
-//import PostContent from '../posts/PostContent.js'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
-//import styles from '../posts/post_excerpt.scss'
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card'
 import KeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
-import styles from './resources.scss'
+
+import styles from '../resources.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})

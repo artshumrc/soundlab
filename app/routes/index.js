@@ -5,7 +5,7 @@ import MainLayout from '../modules/layouts/MainLayout';
 import homeRoute from '../modules/home/routes';
 import audioRoutes from '../modules/audio/routes';
 import resourceRoutes from '../modules/resources/routes';
-import singlePageRoutes from '../modules/single/routes';
+import singlePageRoutes from '../modules/pages/routes';
 //import userRoutes from '../modules/users/routes';
 
 const routes = (

@@ -2,19 +2,18 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ReactDOM from 'react-dom'
-import ResourceEventItem from './ResourceEventItem'
 import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
 import CSSModules from 'react-css-modules'
-//import PostContent from '../posts/PostContent.js'
+//import PostContent from '../posts/PostContent'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 //import styles from '../posts/post_excerpt.scss'
 import KeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
-import styles from './resources.scss'
 
+import ResourceEventItem from '../ResourceEventItem'
+import styles from '../resources.scss'
 
 @CSSModules(styles, {allowMultiple: true})
-
 class ResourceEventList extends Component{
 
   constructor(props) {

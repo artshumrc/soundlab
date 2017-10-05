@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import styles from './search.scss'
-import PostContent from '../posts/PostContent.js'
+import PostContent from '../posts/PostContent'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import CSSModules from 'react-css-modules'
 

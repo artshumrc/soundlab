@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import { gql, graphql } from 'react-apollo'
-import PostContent from '../posts/PostContent.js'
+import PostContent from '../posts/PostContent'
 import ReactDisqusThread from 'react-disqus-thread'
 import CSSModules from 'react-css-modules'
 import styles from '../posts/post.scss'

@@ -1,17 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import ShowcaseList from '../showcase/ShowcaseList'
-import PlaylistList from '../playlist/PlaylistList'
-import FeaturedTrack from './FeaturedTrack'
-import AudioPlayer from '../audioPlayer/AudioPlayer'
-import Intro from './Intro'
-import Learn from './Learn'
-import Recent from './Recent'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import styles from './home.scss'
 import CSSModules from 'react-css-modules'
+
+import ShowcaseList from '../../../showcase/components/ShowcaseList'
+import PlaylistList from '../../../playlist/components/PlaylistList'
+import AudioPlayer from '../../../audio/components/AudioPlayer'
+import FeaturedTrack from '../FeaturedTrack'
+import Intro from '../Intro'
+import Learn from '../Learn'
+import Recent from '../Recent'
+import styles from './Home.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 

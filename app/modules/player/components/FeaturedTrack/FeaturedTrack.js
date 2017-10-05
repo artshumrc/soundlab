@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux'
-import styles from './Player.scss'
+import { bindActionCreators } from 'redux'
 import CSSModules from 'react-css-modules'
 
-@CSSModules(styles, {allowMultiple: true})
+import styles from './FeaturedTrack.scss'
 
+
+@CSSModules(styles, {allowMultiple: true})
 class FeaturedTrack extends Component {
 
 
@@ -35,7 +36,6 @@ function mapStateToProps(state){
   return {
     player: state.player
   }
-
 }
 
 export default connect(mapStateToProps)(FeaturedTrack)

@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import ShowcaseItem from './ShowcaseItem'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import styles from './showcase.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
+
+import ShowcaseItem from '../ShowcaseItem'
+import styles from '../showcase.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})

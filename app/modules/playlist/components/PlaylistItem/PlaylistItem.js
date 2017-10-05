@@ -2,13 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router'
-import { SinglePlaylistItem } from './SinglePlaylistItem'
 import { browserHistory } from 'react-router'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import styles from './Playlist.scss'
 import CSSModules from 'react-css-modules'
+
+import styles from './PlaylistItem.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})

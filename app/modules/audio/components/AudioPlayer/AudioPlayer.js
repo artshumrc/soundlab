@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-//import { resumePlayer, pausePlayer, nextTrack, previousTrack } from '../../actions/actions'
 import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux'
-import PlaylistList from '../playlist/PlaylistList'
+import { bindActionCreators } from 'redux'
 import PlayArrow from 'material-ui/svg-icons/av/play-arrow'
 import Pause from 'material-ui/svg-icons/av/pause'
 import SkipPrevious from 'material-ui/svg-icons/av/skip-previous'
@@ -13,11 +11,13 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Drawer from 'material-ui/Drawer'
 import soundmanager from 'soundmanager2'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import styles from './audioPlayer.scss'
 import CSSModules from 'react-css-modules'
 
-@CSSModules(styles, {allowMultiple: true})
+import PlaylistList from '../../../playlist/components/PlaylistList'
+import styles from './AudioPlayer.scss'
 
+
+@CSSModules(styles, {allowMultiple: true})
 class AudioPlayer extends Component {
 
   constructor(props) {

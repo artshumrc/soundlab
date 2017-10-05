@@ -1,10 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-import { resumePlayer, pausePlayer, nextTrack, previousTrack } from '../../../../actions/actions'
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux'
-import FeaturedTrack from './FeaturedTrack'
-import PlaylistList from '../../../playlist/components/Playlist/PlaylistList'
 import PlayArrow from 'material-ui/svg-icons/av/play-arrow'
 import Pause from 'material-ui/svg-icons/av/pause'
 import SkipPrevious from 'material-ui/svg-icons/av/skip-previous'
@@ -13,8 +10,12 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Drawer from 'material-ui/Drawer'
 import soundmanager from 'soundmanager2'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import styles from './Player.scss'
 import CSSModules from 'react-css-modules'
+
+import { resumePlayer, pausePlayer, nextTrack, previousTrack } from '../../../../actions/actions'
+import FeaturedTrack from '../FeaturedTrack'
+import PlaylistList from '../../../playlist/components/PlaylistList'
+import styles from './Player.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 

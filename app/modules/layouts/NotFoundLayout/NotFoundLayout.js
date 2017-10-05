@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Page from '../pages/page.js';
-
 import CSSModules from 'react-css-modules';
+
+import Page from '../pages/page';
 import styles from '../pages/page.scss';
 
 @CSSModules(styles, {allowMultiple: true})

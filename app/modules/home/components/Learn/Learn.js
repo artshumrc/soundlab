@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import styles from './home.scss'
 import CSSModules from 'react-css-modules'
+
+import styles from './Learn.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 

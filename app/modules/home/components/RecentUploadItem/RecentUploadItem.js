@@ -1,18 +1,16 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-//import styles from '../posts/post_excerpt.scss'
 import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
-import PostContent from '../posts/PostContent.js'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
-import styles from './home.scss'
 import CSSModules from 'react-css-modules'
 
+import PostContent from '../../../posts/components/PostContent'
+import styles from './RecentUploadItem.scss'
+
 @CSSModules(styles, {allowMultiple: true})
-
 class RecentUploadItem extends Component{
-
 
   componentDidMount() {
     const { index } = this.props

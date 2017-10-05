@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import styles from './footer.scss'
 import CSSModules from 'react-css-modules'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+
+import styles from './Footer.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})
