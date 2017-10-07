@@ -1,51 +1,60 @@
 import React, {PropTypes} from 'react';
 import Headroom from 'react-headroom';
 import { Link } from 'react-router';
-import NavBarHeader from './NavBarHeader';
+import CSSModules from 'react-css-modules'
 
+import NavBarHeader from './NavBarHeader';
 import styles from './NavBar.scss';
 
-const NavBar = ({ toggleAuthModal, userId, logout }) => (
-	<Headroom
-		className={styles.navbar}
-	>
-		<NavBarHeader />
-		<ul className={styles.nav}>
-			<li>
-				<Link className={styles.navLink} to={'/audio'}>
-					Waves
-				</Link>
-			</li>
-			<li>
-				<Link className={styles.navLink} to={'/resources'}>
-					Resources
-				</Link>
-			</li>
-			<li>
-				<Link className={styles.navLink} to={'/about'}>
-					About
-				</Link>
-			</li>
-			{ userId ?
-				<li>
-					<Link className={styles.navLink} to={'/'}>
-						Profile
-					</Link>
-				</li>
-			:
-				<li>
-					<Link
-						to={'/'}
-						className={styles.navLinkLogin}
-						onClick={toggleAuthModal}
-					>
-						Join / Signup
-					</Link>
-				</li>
-			}
-		</ul>
-	</Headroom>
-);
+
+@CSSModules(styles, {allowMultiple: true})
+class NavBar extends React.Component {
+	render() {
+		const { toggleAuthModal, userId, logout } = this.props;
+		
+		return (
+			<Headroom
+				styleName="navbar"
+			>
+				<NavBarHeader />
+				<ul styleName="nav">
+					<li>
+						<Link styleName="navLink" to={'/audio'}>
+							Waves
+						</Link>
+					</li>
+					<li>
+						<Link styleName="navLink" to={'/resources'}>
+							Resources
+						</Link>
+					</li>
+					<li>
+						<Link styleName="navLink" to={'/about'}>
+							About
+						</Link>
+					</li>
+					{ userId ?
+						<li>
+							<Link styleName="navLink" to={'/'}>
+								Profile
+							</Link>
+						</li>
+					:
+						<li>
+							<Link
+								to={'/'}
+								styleName="navLink"
+								onClick={toggleAuthModal}
+							>
+								Join / Login
+							</Link>
+						</li>
+					}
+				</ul>
+			</Headroom>
+		);
+	}
+}
 
 NavBar.propTypes = {
 	toggleAuthModal: PropTypes.func.isRequired,

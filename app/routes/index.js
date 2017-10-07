@@ -1,6 +1,5 @@
 import React from 'react';
 import { Router, browserHistory, IndexRoute, Route } from 'react-router';
-import SinglePageLayout from '../modules/layouts/SinglePageLayout'
 import MainLayout from '../modules/layouts/MainLayout';
 import homeRoute from '../modules/home/routes';
 import audioRoutes from '../modules/audio/routes';
@@ -14,8 +13,6 @@ const routes = (
   		{homeRoute}
       {audioRoutes}
       {resourceRoutes}
-    </Route>
-    <Route path="/" component={SinglePageLayout}>
       {singlePageRoutes}
     </Route>
   </Router>

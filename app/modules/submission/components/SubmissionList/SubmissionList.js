@@ -40,7 +40,7 @@ class SubmissionList extends React.Component {
     if (this.props.data.posts) {
       return (
         <Row>
-          <Col xsOffset={3} xs={6}>
+          <Col>
             {this.props.data.posts.map((post) =>
               <SubmissionItem key={post.id} post={post} />
             )}
