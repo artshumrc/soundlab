@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import styles from './search.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import SubmissionItem from '../submission/SubmissionItem'
@@ -18,14 +17,6 @@ import CSSModules from 'react-css-modules'
 
 
 class Search extends React.Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-
-    }
-  }
 
   static propTypes = {
     data: PropTypes.shape({
@@ -48,8 +39,6 @@ class Search extends React.Component {
   }
 
   render() {
-  //  const audioUploadChecked = this.state.audioUploadChecked
-
     if (this.props.data.loading) {
       return (<div>Loading</div>)
     }
@@ -58,33 +47,21 @@ class Search extends React.Component {
       console.log(this.props.data.error)
       return (<div>An unexpected error occurred</div>)
     }
-    console.log(this.props.data.posts)
+
     if (this.props.data.posts) {
       return (
-        <MuiThemeProvider>
-
-          <div>
-
-            <SearchTools
-              filterBeing={this.filterBeing.bind(this)}
-              filterTime={this.filterTime.bind(this)}
-            />
-
-            {this.props.ui.displayTime === true ?
-              <TimeCategory />
-            : '' }
-
-            {this.props.ui.displayBeing === true ?
-              <BeingCategory />
-            : '' }
-
-
-
-
-          </div>
-
-        </MuiThemeProvider>
-
+        <div>
+          <SearchTools
+            filterBeing={this.filterBeing.bind(this)}
+            filterTime={this.filterTime.bind(this)}
+          />
+          {this.props.ui.displayTime === true ?
+            <TimeCategory />
+          : ''}
+          {this.props.ui.displayBeing === true ?
+            <BeingCategory />
+          : ''}
+        </div>
       )
     }
   }
@@ -92,7 +69,7 @@ class Search extends React.Component {
 
 function mapStateToProps(state){
   return {
-    ui:state.ui,
+    ui: state.ui,
   }
 }
 

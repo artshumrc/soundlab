@@ -11,9 +11,7 @@ import client from '../../middleware/apolloClient';
 import AuthModal from '../../modules/auth';
 import { login, register, logout, verifyToken } from '../../lib/auth';
 
-const Root = ({store, history}) => {
-	console.log(client);
-	return (
+const Root = ({ store, history }) => (
 	<ApolloProvider
 		client={client}
 		store={store}
@@ -33,7 +31,6 @@ const Root = ({store, history}) => {
 		</MuiThemeProvider>
 	</ApolloProvider>
 );
-}
 
 Root.propTypes = {
 	store: PropTypes.shape({/* TODO: update */}).isRequired,

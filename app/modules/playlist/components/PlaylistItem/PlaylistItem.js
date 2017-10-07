@@ -4,7 +4,6 @@ import gql from 'graphql-tag'
 import { Link } from 'react-router'
 import { browserHistory } from 'react-router'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
 
@@ -27,24 +26,16 @@ class PlaylistItem extends React.Component {
 
   render() {
     const { post_title: title, post_name: name } = this.props.post
-    console.log('queue: ' + this.props.post.queue.meta_value)
+
     return(
-
-      <div>
-
-        <Card className={styles.listContainer}>
-          <Link onClick={this.handleClick.bind(this)}>
-          <CardTitle title={title} subtitle={this.props.post.post_title} />
-          <CardText>
-
-            {this.props.post.queue.meta_value}
-          </CardText>
-          </Link>
-
-        </Card>
-
-      </div>
-
+      <Card className={styles.listContainer}>
+        <Link onClick={this.handleClick.bind(this)}>
+        <CardTitle title={title} subtitle={this.props.post.post_title} />
+        <CardText>
+          {this.props.post.queue.meta_value}
+        </CardText>
+        </Link>
+      </Card>
     )
   }
 }

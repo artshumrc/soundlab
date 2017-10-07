@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
 
@@ -47,52 +46,48 @@ class ResourceList extends React.Component {
       console.log(this.props.data.error)
       return (<div>An unexpected error occurred</div>)
     }
-    console.log(this.props.data.posts)
+
     if (this.props.data.posts) {
       return (
-      <MuiThemeProvider>
-      <div>
-        <Row styleName="resources-cover-image">
-          <Col xs={12} sm={12} md={12} lg={12}>
-            <div style={thumbnailListImage}></div>
-            <div styleName="cover-inlay">
-              <div>
-                <span styleName="cover-inlay-title">Intro to Ableton</span>
-              </div>
-              <div>
-                <span styleName="cover-inlay-date">Every Wednesday, 8pm</span>
-              </div>
-              <div styleName="cover-inlay-description-container">
-                <span styleName="cover-inlay-item-description">Stop by the lab any Wednesday evening for an introduction to Ableton, a powerful starter tool for any sound production project.</span>
-              </div>
+	      <div>
+	        <Row styleName="resources-cover-image">
+	          <Col>
+	            <div style={thumbnailListImage}></div>
+	            <div styleName="cover-inlay">
+	              <div>
+	                <span styleName="cover-inlay-title">Intro to Ableton</span>
+	              </div>
+	              <div>
+	                <span styleName="cover-inlay-date">Every Wednesday, 8pm</span>
+	              </div>
+	              <div styleName="cover-inlay-description-container">
+	                <span styleName="cover-inlay-item-description">Stop by the lab any Wednesday evening for an introduction to Ableton, a powerful starter tool for any sound production project.</span>
+	              </div>
+	            </div>
+	          </Col>
+	        </Row>
+	        <Row styleName="resource-list-container">
+	          <Col>
+	            <h4 styleName="resource-section-title">Tutorials</h4>
+	            {this.props.data.posts.map((post) =>
+	              <ResourceItem key={post.id} post={post} />
+	            )}
+	          </Col>
+	          <Col>
+	            <h4 styleName="resource-section-title">Upcoming Events</h4>
+	            <ResourceEventList/>
 
-            </div>
-          </Col>
-        </Row>
-        <Row styleName="resource-list-container">
-          <Col xs={12} sm={12} md={8} lg={8}>
-            <h4 styleName="resource-section-title">Tutorials</h4>
-            {this.props.data.posts.map((post) =>
-              <ResourceItem key={post.id} post={post} />
-            )}
-          </Col>
-          <Col xs={12} sm={12} md={4} lg={4}>
-            <h4 styleName="resource-section-title">Upcoming Events</h4>
-            <ResourceEventList/>
-
-          </Col>
-      </Row>
-      <Row styleName="additional-resources-container">
-        <Col xs={12} sm={12} md={12} lg={12}>
-          <h4 styleName="resource-section-title">Additional resources</h4>
-          {this.props.data.posts.map((post) =>
-            <AdditionalResourceItem key={post.id} post={post} />
-          )}
-        </Col>
-      </Row>
+	          </Col>
+	      </Row>
+	      <Row styleName="additional-resources-container">
+	        <Col>
+	          <h4 styleName="resource-section-title">Additional resources</h4>
+	          {this.props.data.posts.map((post) =>
+	            <AdditionalResourceItem key={post.id} post={post} />
+	          )}
+	        </Col>
+	      </Row>
       </div>
-      </MuiThemeProvider>
-
       )
     }
   }

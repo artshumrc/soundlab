@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import SubmissionItem from './SubmissionItem'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import styles from './submission.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
@@ -37,23 +36,16 @@ class SubmissionList extends React.Component {
       console.log(this.props.data.error)
       return (<div>An unexpected error occurred</div>)
     }
-    console.log(this.props.data.posts)
+
     if (this.props.data.posts) {
       return (
-      <MuiThemeProvider>
-      <div>
-
-        <row>
+        <Row>
           <Col xsOffset={3} xs={6}>
             {this.props.data.posts.map((post) =>
               <SubmissionItem key={post.id} post={post} />
             )}
           </Col>
-        </row>
-
-      </div>
-      </MuiThemeProvider>
-
+        </Row>
       )
     }
   }

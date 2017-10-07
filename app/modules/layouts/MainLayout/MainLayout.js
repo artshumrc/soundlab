@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import CSSModules from 'react-css-modules'
 
 import Header from '../../navigation/Header'
@@ -11,22 +10,13 @@ import PlayerContainer from '../../player/containers/PlayerContainer'
 class MainLayout extends Component {
   render() {
     return (
-      <MuiThemeProvider>
       <div>
-        <div>
-          <Header />
-        </div>
-        <div styleName="homeLayoutContainer">
+        <Header />
+        <div styleName="mainContainer">
           {this.props.children}
         </div>
-        <div>
-          <PlayerContainer />
-        </div>
-        <div>
-
-        </div>
+        <PlayerContainer />
       </div>
-      </MuiThemeProvider>
     )
   }
 }

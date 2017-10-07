@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom'
 import styles from './profile.scss'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import CSSModules from 'react-css-modules'
 
 
@@ -53,28 +52,24 @@ class Profile extends Component{
   render() {
 
     return(
-      <MuiThemeProvider>
-        <div styleName="profileWrapper">
-          <TextField
-            fullWidth={true}
-            floatingLabelText="Username"
-            value={this.state.name}
-            onChange={this.updateName.bind(this)}
-          />
-          <TextField
-            fullWidth={true}
-            floatingLabelText="Email"
-            value={this.state.email}
-            onChange={this.updateEmail.bind(this)}
-          />
-          <RaisedButton
-            label="Save"
-            onTouchTap={this.handleSave.bind(this)}
-           />
-        </div>
-
-      </MuiThemeProvider>
-
+      <div styleName="profileWrapper">
+        <TextField
+          fullWidth={true}
+          floatingLabelText="Username"
+          value={this.state.name}
+          onChange={this.updateName.bind(this)}
+        />
+        <TextField
+          fullWidth={true}
+          floatingLabelText="Email"
+          value={this.state.email}
+          onChange={this.updateEmail.bind(this)}
+        />
+        <RaisedButton
+          label="Save"
+          onTouchTap={this.handleSave.bind(this)}
+         />
+      </div>
     )
   }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import CSSModules from 'react-css-modules'
 
 import Header from '../../navigation/Header'
@@ -11,7 +10,6 @@ import styles from '../Layout.scss'
 class SinglePageLayout extends Component {
   render() {
     return (
-      <MuiThemeProvider>
       <div>
         <div styleName="singlePageHeader">
           <Header />
@@ -19,11 +17,8 @@ class SinglePageLayout extends Component {
         <div styleName="singlePageLayoutContainer">
           {this.props.children}
         </div>
-        <div>
-          <Footer />
-        </div>
+        <Footer />
       </div>
-      </MuiThemeProvider>
     )
   }
 }

@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import BeingItem from './BeingItem'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import styles from './search.scss'
 import CSSModules from 'react-css-modules'
+import BeingItem from './BeingItem'
+import styles from './search.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})
@@ -35,21 +34,14 @@ class BeingCategory extends React.Component {
       console.log(this.props.data.error)
       return (<div>An unexpected error occurred</div>)
     }
-    console.log(this.props.data.posts)
+
     if (this.props.data.category.posts) {
       return (
-        <MuiThemeProvider>
-
-          <div>
-
-            {this.props.data.category.posts.map((post) =>
-              <BeingItem key={post.id} post={post} />
-            )}
-
-          </div>
-
-        </MuiThemeProvider>
-
+        <div>
+          {this.props.data.category.posts.map((post) =>
+            <BeingItem key={post.id} post={post} />
+          )}
+        </div>
       )
     }
   }
