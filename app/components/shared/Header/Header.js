@@ -19,13 +19,6 @@ class Header extends Component {
           <Link to="/resources" styleName="nav-link">Resources</Link>
           <Link to="/about" styleName="nav-link">About</Link>
           <Link to="/login" styleName="nav-link-join">Join / Login</Link>
-      {/*
-        <Link to="/contact">Contact</Link>
-        <Link to="/privacy">Privacy</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/submissions">User Submissions</Link>
-        <Link to="/search">Search</Link>
-        */}
         </div>
       </header>
     )

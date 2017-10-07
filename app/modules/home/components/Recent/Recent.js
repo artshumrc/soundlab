@@ -37,8 +37,6 @@ class Recent extends React.Component {
 			return (<div>An unexpected error occurred</div>);
 		}
 
-		console.log(this.props.data.posts);
-
 		if (this.props.data.posts) {
 			return (
         <div styleName="recent-section">

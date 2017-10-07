@@ -10,12 +10,67 @@
 	display:inline-block;
 	vertical-align: top;
 	font-family: $font-logo;
-	font-weight: 100;
+	font-weight: bold;
 	padding: 10px 15px;
 	color: $dark;
-	line-height: 1.2em;
+	line-height: 1.7em;
 	margin: 5px 10px;
 	text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.6);
-	font-size: 22px;
-	letter-spacing: 2px;
+	font-size: 18px;
+	letter-spacing: 0.6px;
+	position: relative;
+	z-index: 10;
+}
+
+.siteLogo {
+	position: relative;
+
+}
+
+.siteLogo1 {
+	height: 30px;
+	width: 30px;
+	border-radius: 100%;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	z-index: 4;
+	@include gradient-vertical($primary-500, $accent-500);
+	opacity: 0.9;
+}
+
+.siteLogo2 {
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 3;
+	@include gradient-vertical($primary-500, $accent-500);
+	opacity: 0.6;
+}
+
+.siteLogo3 {
+	height: 50px;
+	width: 50px;
+	border-radius: 100%;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index: 2;
+	@include gradient-vertical($primary-500, $accent-500);
+	opacity: 0.3;
+}
+
+.siteLogo4 {
+	height: 60px;
+	width: 60px;
+	border-radius: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	@include gradient-vertical($primary-500, $accent-500);
+	opacity: 0.1;
 }
