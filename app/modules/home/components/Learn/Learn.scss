@@ -1,1 +1,77 @@
+@import "../../../../styles";
 
+.tag-container, .subtitle-container {
+  display: block;
+}
+
+.site-tag {
+  font-size: 52px;
+  color: $dark;
+}
+
+.site-tag-subtitle {
+  font-size: 36px;
+  line-height: 1.3em;
+  color: $lightGrey;
+}
+
+.site-tag-container {
+  //position: absolute;
+  margin-top: 20%;
+}
+
+/*
+*
+Learn section
+*
+*/
+
+.learn-section {
+  display: flex;
+}
+
+.learn-intro-section {
+  padding-top: 20px;
+}
+
+.fullscreen-learn {
+  width: 100%;
+}
+
+.learn-inlay {
+  position: absolute;
+  width: 500px;
+  margin-top: 530px;
+  right: 100px;
+  height: 240px;
+  padding: 20px 30px 20px 20px;
+  background: #eee;
+}
+
+.learn-section-container {
+  padding-bottom: 200px;
+}
+
+.site-tag.learn-tag {
+  font-size: 36px;
+}
+
+.featured-learn-item-title {
+  color: $dark;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.featured-learn-item-date {
+  color: $lightGrey;
+  font-size: 16px;
+}
+
+.featured-learn-item-description {
+  color: $dark;
+  font-size: 18px;
+}
+
+.featured-learn-item-description-container {
+  padding-top: 10px;
+}

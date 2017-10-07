@@ -44,7 +44,7 @@ class Recent extends React.Component {
         <div styleName="recent-section">
           <Row styleName="recent-section-title">
             <div styleName="tag-container">
-              <span styleName="site-tag learn-tag">Recent tracks</span>
+              <span styleName="site-tag recent-tag">Recent tracks</span>
             </div>
 
           </Row>

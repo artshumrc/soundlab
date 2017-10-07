@@ -1,1 +1,47 @@
+@import "../../../../styles";
 
+.tag-container, .subtitle-container {
+  display: block;
+}
+
+.site-tag {
+  font-size: 52px;
+  color: $dark;
+}
+
+.site-tag-subtitle {
+  font-size: 36px;
+  line-height: 1.3em;
+  color: $lightGrey;
+}
+
+.site-tag-container {
+  //position: absolute;
+  margin-top: 20%;
+}
+
+/*
+*
+Intro section
+*
+*/
+
+.intro-section {
+  display: flex;
+  min-height: 400px;
+  width: 100%;
+  //background: #e7e6e6;
+}
+
+.site-tag-container.intro-tag {
+    margin-top: 0%;
+}
+
+.intro-text {
+  font-size: 20px;
+  color: $dark;
+}
+
+.intro-text-container {
+  padding-left: 20%;
+}
