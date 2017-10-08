@@ -66,11 +66,13 @@
 	display: inline-block;
 	vertical-align: top;
 	border: 1px solid transparent;
+	color: #424242;
 
 	&:hover {
-		// background: rgba(255, 255, 255, 0.9);
-		// color: $primary-700;
+		background: rgba(255, 255, 255, 0.3);
+		color: $dark;
 		border: 1px solid $primary-300;
+		text-decoration: none;
 	}
 }
 
@@ -115,7 +117,7 @@
 }
 
 .siteLogo1Hover {
-  animation: circle-outer-circle 300ms 1 ease-out;
+  animation: circle-outer-circle 500ms 1 ease-out;
 }
 
 .siteLogo2 {
@@ -131,7 +133,7 @@
 }
 
 .siteLogo2Hover {
-  animation: circle-outer-circle 300ms 1 ease-out;
+  animation: circle-outer-circle 500ms 1 ease-out;
 }
 
 .siteLogo3 {
@@ -147,7 +149,7 @@
 }
 
 .siteLogo3Hover {
-  animation: circle-outer-circle 300ms 1 ease-out;
+  animation: circle-outer-circle 500ms 1 ease-out;
 }
 
 .siteLogo4 {
@@ -163,7 +165,7 @@
 }
 
 .siteLogo4Hover {
-  animation: circle-outer-circle 1000ms 1 ease-out;
+  animation: circle-outer-circle 500ms 1 ease-out;
 }
 
 .siteLogo5 {
@@ -180,5 +182,5 @@
 }
 
 .siteLogo5Hover {
-  animation: circle-outer-circle 300ms 1 ease-out;
+  animation: circle-outer-circle 500ms 1 ease-out;
 }

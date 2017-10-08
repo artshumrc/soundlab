@@ -1,35 +1,21 @@
 @import "../../../../styles";
 
-.cover-section {
-  height: 100vh;
+.cover {
+	height: 100vh;
+	width: 100vw;
 }
 
-.reactAudioPlayer {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
+.coverText {
+	margin-top: 200px;
 }
 
-.tag-container, .subtitle-container {
-  display: block;
-}
-
-.site-tag {
+.siteTag {
   font-size: 52px;
   color: $dark;
 }
 
-.site-tag-subtitle {
+.siteTagSubtitle {
   font-size: 36px;
   line-height: 1.3em;
   color: $lightGrey;
-}
-
-.site-tag-container {
-  padding-top: 20%;
-}
-
-.cover-lines {
-  margin-top: -11%;
-  margin-left: -5%;
 }
