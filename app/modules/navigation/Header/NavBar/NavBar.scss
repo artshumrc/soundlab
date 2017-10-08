@@ -6,8 +6,8 @@
 	top: 0;
 	left: 0;
   z-index: 100;
+	height: 60px !important;
 	@include transition(all 100ms ease-in-out);
-
 }
 
 :global {
@@ -21,7 +21,7 @@
 	.headroom--unfixed {
 	  transform: translateY(0);
 		padding: 10px 20px;
-		box-shadow: none; 
+		box-shadow: none;
 	}
 
 	.headroom--scrolled {
@@ -54,8 +54,8 @@
 }
 
 .navLink {
-	margin: 10px 0;
-	padding: 5px 15px;
+	margin: 14px 2px 8px;
+	padding: 5px 12px;
 	cursor: pointer;
 	font-size: 14px;
 	font-family: $font-label;
@@ -65,9 +65,120 @@
 	@include transition(all 100ms linear);
 	display: inline-block;
 	vertical-align: top;
+	border: 1px solid transparent;
 
 	&:hover {
-		background: rgba(255, 255, 255, 0.9);
-		color: $dark;
+		// background: rgba(255, 255, 255, 0.9);
+		// color: $primary-700;
+		border: 1px solid $primary-300;
 	}
+}
+
+.navHeader {
+	float: left;
+	vertical-align: top;
+	cursor: pointer;
+
+}
+
+.siteTitle {
+	display:inline-block;
+	vertical-align: top;
+	font-family: $font-logo;
+	font-weight: bold;
+	padding: 10px 15px;
+	color: $dark;
+	line-height: 1.7em;
+	margin: 5px 10px;
+	text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.6);
+	font-size: 18px;
+	letter-spacing: 0.6px;
+	position: relative;
+	z-index: 10;
+}
+
+.siteLogo {
+	position: relative;
+
+}
+
+.siteLogo1 {
+	height: 30px;
+	width: 30px;
+	border-radius: 100%;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	z-index: 4;
+	@include gradient-vertical($primary-500, $accent-500);
+	opacity: 0.9;
+}
+
+.siteLogo1Hover {
+  animation: circle-outer-circle 300ms 1 ease-out;
+}
+
+.siteLogo2 {
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 3;
+	@include gradient-vertical($primary-500, $accent-500);
+	opacity: 0.6;
+}
+
+.siteLogo2Hover {
+  animation: circle-outer-circle 300ms 1 ease-out;
+}
+
+.siteLogo3 {
+	height: 50px;
+	width: 50px;
+	border-radius: 100%;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index: 2;
+	@include gradient-vertical($primary-500, $accent-500);
+	opacity: 0.3;
+}
+
+.siteLogo3Hover {
+  animation: circle-outer-circle 300ms 1 ease-out;
+}
+
+.siteLogo4 {
+	height: 60px;
+	width: 60px;
+	border-radius: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	@include gradient-vertical($primary-500, $accent-500);
+	opacity: 0.1;
+}
+
+.siteLogo4Hover {
+  animation: circle-outer-circle 1000ms 1 ease-out;
+}
+
+.siteLogo5 {
+	height: 60px;
+	width: 60px;
+	border-radius: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background: transparent;
+	opacity: 0;
+	border: 1px solid #ddd;
+}
+
+.siteLogo5Hover {
+  animation: circle-outer-circle 300ms 1 ease-out;
 }

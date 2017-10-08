@@ -179,3 +179,27 @@ $mobile-landscape: 	"only screen and (min-device-width: 320px) and (max-device-w
 $tablet:      		"only screen and (min-width: 569px) and (max-width: 980px)";
 $desktop:     		"only screen and (min-width: 981px) and (max-width: 1200px)";
 $desktop-xl:  		"only screen and (min-width: 1201px)";
+
+
+:global {
+
+	@keyframes circle-inner-circle {
+	  from {
+	    transform: scale(1.1);
+	  }
+	  to {
+	    transform: scale(1.05);
+	  }
+	}
+
+	@keyframes circle-outer-circle {
+	  from {
+	    transform: scale(1);
+	    opacity: 0.5;
+	  }
+	  to {
+	    transform: scale(2);
+	    opacity: 0;
+	  }
+	}
+}
