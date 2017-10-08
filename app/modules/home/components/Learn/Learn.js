@@ -12,7 +12,6 @@ class Learn extends React.Component {
 
   render() {
     const thumbnailListImage = {
-        backgroundImage: `url("http://soundlab.local:8888/wp-content/uploads/2017/09/mitchel-lensink-236502.jpg")`,
         width: '100%',
         height: '800px',
         objectFit: 'cover',

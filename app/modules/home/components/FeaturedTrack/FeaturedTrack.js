@@ -61,13 +61,17 @@ class FeaturedTrack extends React.Component {
 					styleName="featured-track-player-container"
 				>
 					<div styleName="player-container">
-						<div styleName={`player-row-1 ${status === 'hover' ? 'player-row-1-hover' : ''}`} />
+						<div styleName={`player-row-1 ${status.length ? 'player-row-1-hover' : ''}`} />
 						<div styleName="player-row-2" />
 						<div styleName="player-row-3" />
 						<div styleName="player-row-4" />
-						<div styleName={`player-row-5 ${status === 'hover' ? 'player-row-5-hover' : ''}`} />
+						<div styleName={`player-row-5 ${status.length ? 'player-row-5-hover' : ''}`} />
 						<div styleName="play-button-container">
-							<i className="mdi mdi-play" />
+							{status === 'play' ?
+								<i className="mdi mdi-pause" />
+							:
+								<i className="mdi mdi-play" />
+							}
 						</div>
 					</div>
         </div>
