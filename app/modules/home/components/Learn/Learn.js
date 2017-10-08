@@ -58,6 +58,14 @@ class Learn extends React.Component {
 									We host weekly workshops covering topics ranging from beginner microphone use to advanced full studio sessions. All students are welcome!
 								</p>
 							</div>
+							<Link to="/">
+								<div styleName="learn-more">
+									<i className="mdi mdi-chevron-right" />
+									<span>
+										View the full calendar of events
+									</span>
+								</div>
+							</Link>
 		        </Col>
 		        <Col md={6}>
 						</Col>
