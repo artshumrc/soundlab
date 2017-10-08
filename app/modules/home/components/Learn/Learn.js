@@ -1,15 +1,12 @@
-import React, { Component, PropTypes } from 'react'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import CSSModules from 'react-css-modules'
+import React, { Component, PropTypes } from 'react';
+import { Grid, Row, Col } from 'react-bootstrap';
+import CSSModules from 'react-css-modules';
+import { Link } from 'react-router';
 
 import styles from './Learn.scss'
 
 @CSSModules(styles, {allowMultiple: true})
-
 class Learn extends React.Component {
-
-
-
   render() {
     const thumbnailListImage = {
         width: '100%',
@@ -17,46 +14,58 @@ class Learn extends React.Component {
         objectFit: 'cover',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
-      }
+    };
 
     return (
-        <div styleName="learn-section-container">
-        <Row styleName="learn-section">
-
-          <Col xs={12} sm={12} md={12} lg={12}>
-          <div styleName="fullscreen-learn">
-            <div styleName="learn-inlay">
-              <div>
-                <span styleName="featured-learn-item-title">Intro to Ableton</span>
-              </div>
-              <div>
-                <span styleName="featured-learn-item-date">Every Wednesday, 8pm</span>
-              </div>
-              <div styleName="featured-learn-item-description-container">
-                <span styleName="featured-learn-item-description">Stop by the lab any Wednesday evening for an introduction to Ableton, a powerful starter tool for any sound production project.</span>
-              </div>
-
-            </div>
-            <div style={thumbnailListImage}></div>
-          </div>
-          </Col>
-        </Row>
-        <Row styleName="learn-intro-section">
-          <Col xs={12} sm={6} md={6} lg={6}>
-
-            <div styleName="tag-container">
-              <span styleName="site-tag learn-tag">Learn through creation.</span>
-            </div>
-            <div styleName="subtitle-container ">
-              <span styleName="site-tag-subtitle">We host weekly workshops covering topics ranging from beginner microphone use to advanced full studio sessions. All students are welcome!</span>
-            </div>
-
-          </Col>
-        </Row>
-        </div>
-
-    )
+			<section styleName="learn">
+				<Grid>
+		      <Row>
+		        <Col>
+							<div styleName="learn-upper">
+			          <div
+									styleName="learn-background"
+									style={thumbnailListImage}
+								/>
+			          <div styleName="learn-inlay">
+			            <h3 styleName="learn-title">
+										Intro to Ableton
+									</h3>
+			            <span styleName="learn-date">
+										Every Wednesday, 8pm
+									</span>
+			            <p styleName="learn-description">
+										Stop by the lab any Wednesday evening for an introduction to Ableton, a powerful starter tool for any sound production project.
+									</p>
+									<Link to="/">
+										<div styleName="learn-more">
+											<i className="mdi mdi-chevron-right" />
+											<span>
+												Register for the workshop
+											</span>
+										</div>
+									</Link>
+			          </div>
+							</div>
+		        </Col>
+		      </Row>
+		      <Row>
+		        <Col md={6}>
+							<div styleName="learn-lower">
+			          <h3 styleName="site-tag">
+									Learn through creation.
+								</h3>
+			          <p styleName="site-tag-subtitle">
+									We host weekly workshops covering topics ranging from beginner microphone use to advanced full studio sessions. All students are welcome!
+								</p>
+							</div>
+		        </Col>
+		        <Col md={6}>
+						</Col>
+		      </Row>
+				</Grid>
+			</section>
+    );
   }
 }
 
-export default Learn
+export default Learn;

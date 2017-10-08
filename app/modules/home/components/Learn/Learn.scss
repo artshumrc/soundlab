@@ -1,77 +1,105 @@
 @import "../../../../styles";
 
-.tag-container, .subtitle-container {
-  display: block;
+.learn {
+	padding: 90px 0;
+	position: relative;
+}
+
+.learn-upper {
+	position: relative;
 }
 
 .site-tag {
-  font-size: 52px;
+  font-size: 34px;
   color: $dark;
 }
 
 .site-tag-subtitle {
-  font-size: 36px;
+  font-size: 34px;
   line-height: 1.3em;
   color: $lightGrey;
 }
 
-.site-tag-container {
-  //position: absolute;
-  padding-top: 20%;
-}
-
-/*
-*
-Learn section
-*
-*/
-
-.learn-section {
-  display: flex;
-}
-
-.learn-intro-section {
-  padding-top: 20px;
-}
-
-.fullscreen-learn {
-  width: 100%;
+.learn-background {
+	width: 100%;
+	height: 500px;
+	background-color: #eee;
 }
 
 .learn-inlay {
-  position: absolute;
-  width: 500px;
-  margin-top: 530px;
-  right: 100px;
-  height: 240px;
-  padding: 20px 30px 20px 20px;
-  background: #eee;
+	position: absolute;
+	bottom: -60px;
+	right: 12%;
+	background: #fff;
+	width: 90%;
+	margin: 0 auto;
+	max-width: 520px;
+	padding: 20px 30px;
 }
 
-.learn-section-container {
-  padding-bottom: 200px;
+.learn-lower {
+	padding: 60px 0 0;
 }
 
-.site-tag.learn-tag {
-  font-size: 36px;
+.learn-title {
+	font-size: 22px;
+	color: $dark;
+	padding: 5px 0;
+	font-family: $font-reading;
+	font-weight: 100;
 }
 
-.featured-learn-item-title {
-  color: $dark;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.featured-learn-item-date {
+.learn-date {
+	font-size: 18px;
+	font-family: $font-body;
+	font-weight: 100;
   color: $lightGrey;
-  font-size: 16px;
 }
 
-.featured-learn-item-description {
-  color: $dark;
-  font-size: 18px;
+.learn-description {
+	padding: 10px 0;
+	font-size: 18px;
+	font-family: $font-body;
+	font-weight: 100;
+	color: $text-secondary;
 }
 
-.featured-learn-item-description-container {
-  padding-top: 10px;
+.learn-more {
+	color: $dark;
+
+	&:hover {
+		text-decoration: none;
+		i {
+			margin-left: 2px;
+		}
+		i, span {
+			color: $primary-500;
+		}
+	}
+
+	i {
+		display: inline-block;
+		vertical-align: top;
+		margin-top: -3px;
+		margin-left: 0;
+		color: $dark;
+		@include transition(all 100ms ease-in-out);
+
+		&:before {
+			font-size: 24px;
+		}
+	}
+
+	span {
+		font-size: 18px;
+		font-weight: bold;
+		font-family: $font-body;
+		display: inline-block;
+		vertical-align: top;
+		color: $dark;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
 }

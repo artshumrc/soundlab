@@ -26,7 +26,7 @@ class Intro extends React.Component {
 	            <p styleName="intro-text">
 		            Our vibrant community of students and faculty regularly produce and share new work, ranging from music production to podcasts to experimental methods of capturing sound.
 							</p>
-							<Link href="/latest">
+							<Link to="/latest">
 								<div styleName="listen-latest">
 									<i className="mdi mdi-chevron-right" />
 									<span>
