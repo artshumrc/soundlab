@@ -1,0 +1,153 @@
+@import "../../../styles";
+
+.postAuthor {
+  margin-left:1em;
+  font-size:2em;
+}
+
+.resource-list-container{
+  padding-top: 100px;
+}
+
+.resources-cover-image {
+  padding-top: 60px;
+}
+
+.cover-inlay {
+  position: relative;
+  display: block;
+  float: right;
+  margin-right: 30px;
+  margin-top: -290px;
+  width: 560px;
+  //bottom: -125px;
+  //right: 100px;
+  height: 260px;
+  padding: 20px 30px 20px 20px;
+  background: #eee;
+}
+
+.cover-inlay-title {
+  color: $dark;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.cover-inlay-date {
+  color: $lightGrey;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.cover-inlay-description-container {
+  padding-top: 10px;
+}
+
+.cover-inlay-item-description {
+  color: $dark;
+  font-size: 20px;
+}
+
+.resource-section-title {
+  font-size: 40px;
+  padding-bottom: 60px;
+}
+
+.additional-resources-container {
+  display: flex;
+  padding: 60px 0;
+}
+
+.additional-resources-title-container {
+  display: inline-flex;
+  width:33%;
+}
+
+/*
+ResourceItem
+*/
+
+.resource-item {
+  width: 80%;
+  margin-bottom: 40px;
+  background: #fafafa !important;
+  box-shadow: 0px 0px 0px #fafafa !important;
+}
+
+.resource-card-item-title {
+  padding-left: 0px !important;
+}
+
+.resource-content-text {
+  font-size: 20px;
+  color: $grey;
+}
+
+.read-more {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: $dark;
+  margin-left:-8px;
+}
+
+/*
+Resource event
+*/
+.event-container {
+  width: 100%;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.event-section-wrapper {
+  display: inline-block;
+
+}
+
+.date-wrapper {
+  height: 90px;
+  width: 90px;
+  background: #eee;
+  border-radius: 15px;
+}
+
+.event-section-wrapper.event-meta-wrapper {
+  height: 90px;
+  width: 75%;
+  padding: 18px 0 0 20px;
+}
+
+.date-container {
+  display: flex;
+  justify-content: center;
+  height: 0px;
+
+  &.month-container {
+    padding:15px 0 8px 0;
+  }
+}
+
+.month {
+  font-size: 18px;
+  font-family: serif;
+  text-transform: uppercase;
+}
+
+.date {
+  font-size: 44px;
+}
+
+.event-name {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: $dark;
+}
+
+.event-time {
+  font-size: 20px;
+  color: $lightGrey;
+}

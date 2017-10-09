@@ -1,0 +1,21 @@
+@import "../../../../styles";
+
+.cover {
+	height: 100vh;
+	width: 100vw;
+}
+
+.coverText {
+	margin-top: 200px;
+}
+
+.siteTag {
+  font-size: 52px;
+  color: $dark;
+}
+
+.siteTagSubtitle {
+  font-size: 36px;
+  line-height: 1.3em;
+  color: $lightGrey;
+}

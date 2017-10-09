@@ -1,0 +1,6 @@
+{
+  "name": "SinglePlaylistItem",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./SinglePlaylistItem.js"
+}

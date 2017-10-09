@@ -1,6 +1,8 @@
-import * as settings from '../settings/settings'
-import {WordExpressDefinitions, WordExpressDatabase, WordExpressResolvers} from 'wordexpress-schema'
-import {makeExecutableSchema} from 'graphql-tools'
+import * as settings from '../settings/index'
+import WordExpressDefinitions from './definitions'
+import WordExpressDatabase from './db.js'
+import WordExpressResolvers from './resolvers'
+import { makeExecutableSchema } from 'graphql-tools'
 
 // returns WordExpressDatabase object that has provides connectors to the database
 const Database = new WordExpressDatabase(settings)

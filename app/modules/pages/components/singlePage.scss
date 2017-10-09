@@ -1,0 +1,78 @@
+@import "../../../styles";
+
+.about-cover-section {
+  height: 400px;
+  width: 100%;
+  background: #fcfadf;
+}
+
+.about-content-section {
+  min-height: 500px;
+  padding: 0 5%;
+  padding-bottom: 60px;
+}
+
+.about-cover-image {
+  margin-top: -340px;
+  margin-bottom: 60px;
+}
+
+.about-section-title {
+  font-size: 38px;
+  font-family: serif;
+}
+
+.about-text {
+  color: $darkGrey;
+}
+
+.team-title {
+  font-size: 30px;
+}
+
+.about-team-section {
+  padding-top: 40px;
+}
+
+.team-member {
+  position: relative;
+  min-height: 200px;
+  margin-bottom: 30px;
+  &.top {
+    margin-top: 40px;
+  }
+}
+
+.team-member-pic-container {
+  height: 200px;
+  width: 25%;
+  display: inline-block;
+}
+
+.team-member-meta {
+  display: inline-block;
+  width: 75%;
+  vertical-align: top;
+  padding: 10px 20px;
+  h3, p {
+    font-family: sans-serif;
+  }
+}
+
+.member-name {
+  color: $dark;
+  font-weight: bold;
+
+}
+
+.member-position {
+  color: $lightGrey;
+  font-size: 14px;
+}
+
+.member-about-text {
+  color: $darkestGrey;
+  font-size: 18px;
+  font-weight: 100;
+  padding-top: 20px;
+}

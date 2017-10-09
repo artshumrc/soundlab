@@ -1,12 +1,13 @@
 {
   "public": {
-    "uploads": "localhost:8888/cassandra_repo/www/wp-content/uploads",
+    "uploads": "soundlab.local:8888/wp-content/uploads/",
+    "apiURI": "http://localhost:3000",
     "amazonS3": false
   },
   "private": {
     "wp_prefix": "wp_",
     "database": {
-      "name": "cassandra",
+      "name": "soundlab",
       "username": "root",
       "password": "root",
       "host": "localhost",
