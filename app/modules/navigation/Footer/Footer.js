@@ -1,19 +1,16 @@
-import React, {Component} from 'react'
-import CSSModules from 'react-css-modules'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
+import { Grid, Row, Col } from 'react-bootstrap';
 
-import styles from './Footer.scss'
+import styles from './Footer.scss';
 
-
-@CSSModules(styles, {allowMultiple: true})
-
-
+@CSSModules(styles, { allowMultiple: true })
 class Footer extends Component {
   render() {
     return (
-      <header styleName="footer">
+      <footer>
         <Row>
-          <Col xs={12} sm={6} md={6} lg={6}>
+          <Col md={6}>
             <div styleName="footer-left">
               <div>
                 <span styleName="footer-site-title">The Sound Lab</span>
@@ -28,22 +25,18 @@ class Footer extends Component {
 
             </div>
           </Col>
-          <Col styleName="footer-social-links-container" xs={12} sm={6} md={6} lg={6}>
-
-              <div styleName="footer-social-links">
-                <span styleName="footer-social-link">Facebook</span>
-                <span styleName="footer-social-link">Twiter</span>
-                <span styleName="footer-social-link">Youtube</span>
-                <span styleName="footer-social-link">Soundcloud</span>
-              </div>
-
+          <Col styleName="footer-social-links-container" md={6}>
+            <div styleName="footer-social-links">
+              <span styleName="footer-social-link">Facebook</span>
+              <span styleName="footer-social-link">Twiter</span>
+              <span styleName="footer-social-link">Youtube</span>
+              <span styleName="footer-social-link">Soundcloud</span>
+            </div>
           </Col>
-
         </Row>
-
-      </header>
-    )
+      </footer>
+    );
   }
 }
 
-export default Footer
+export default Footer;
