@@ -37,38 +37,40 @@ class Footer extends Component {
             </div>
           </Col>
           <Col md={6}>
-						<a
-							href="https://facebook.com"
-							target="_blank"
-							rel="noreferrer noopener"
-							styleName="footer-social-link"
-						>
-              Facebook
-						</a>
-						<a
-							href="https://twitter.com"
-							target="_blank"
-							rel="noreferrer noopener"
-							styleName="footer-social-link"
-						>
-              Twitter
-						</a>
-						<a
-							href="https://youtube.com"
-							target="_blank"
-							rel="noreferrer noopener"
-							styleName="footer-social-link"
-						>
-              YouTube
-						</a>
-						<a
-							href="https://soundcloud.com"
-							target="_blank"
-							rel="noreferrer noopener"
-							styleName="footer-social-link"
-						>
-              Soundcloud
-						</a>
+						<div styleName="footer-social-links">
+							<a
+								href="https://facebook.com"
+								target="_blank"
+								rel="noreferrer noopener"
+								styleName="footer-social-link"
+							>
+	              Facebook
+							</a>
+							<a
+								href="https://twitter.com"
+								target="_blank"
+								rel="noreferrer noopener"
+								styleName="footer-social-link"
+							>
+	              Twitter
+							</a>
+							<a
+								href="https://youtube.com"
+								target="_blank"
+								rel="noreferrer noopener"
+								styleName="footer-social-link"
+							>
+	              YouTube
+							</a>
+							<a
+								href="https://soundcloud.com"
+								target="_blank"
+								rel="noreferrer noopener"
+								styleName="footer-social-link"
+							>
+	              Soundcloud
+							</a>
+						</div>
           </Col>
         </Row>
       </footer>
