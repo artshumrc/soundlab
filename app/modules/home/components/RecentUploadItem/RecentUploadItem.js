@@ -6,63 +6,48 @@ import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import CSSModules from 'react-css-modules'
 
-import PostContent from '../../../posts/components/PostContent'
-import styles from './RecentUploadItem.scss'
+import PostContent from '../../../posts/components/PostContent';
+import styles from './RecentUploadItem.scss';
 
 @CSSModules(styles, {allowMultiple: true})
 class RecentUploadItem extends Component{
-
-  componentDidMount() {
-    const { index } = this.props
-  }
-
-  handleClick(e) {
-    e.preventDefault()
-    const target = e.currentTarget.href
-    browserHistory.push(target)
-  }
-
-
   render() {
-    const { post_content: content, post_title: title, post_name: name, thumbnail: thumbnail } = this.props.post
+    const {
+			post_content: content,
+			post_title: title,
+			post_name: name,
+			thumbnail
+		} = this.props.post;
 
     const thumbnailListImage = {
-          backgroundImage: `url("${thumbnail}")`,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center'
-        }
+      backgroundImage: `url("${thumbnail}")`,
+      width: '100%',
+      height: '300px',
+      objectFit: 'cover',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center'
+    };
 
     return(
-
-      <div styleName="recent-track">
-        <Link to={"uploads/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
+      <Link to="/">
+	      <div styleName="recent-track">
           <div styleName="thumbnail-container">
             <div style={thumbnailListImage}></div>
           </div>
 
           <div styleName="recent-track-meta-container">
-            <div>
-              <span styleName="recent-track-title">{title}</span>
-            </div>
-            <div>
-              <span styleName="recent-track-author">{this.props.post.byline.meta_value}</span>
-            </div>
+            <h4 styleName="recent-track-title">
+							{title}
+						</h4>
+            <span styleName="recent-track-author">
+							{this.props.post.byline.meta_value}
+						</span>
           </div>
-        </Link>
-      </div>
-
-    )
+	      </div>
+      </Link>
+    );
   }
 }
 
-RecentUploadItem.propTypes = {
-  index: PropTypes.number,
-  styles: PropTypes.object,
-  post: PropTypes.object,
-}
-
-export default RecentUploadItem
+export default RecentUploadItem;

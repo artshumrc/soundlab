@@ -24,11 +24,17 @@
 	width: 100%;
 	height: 500px;
 	background-color: #eee;
+	@include transition(all 300ms ease-in-out);
+
+	&:hover {
+		opacity: 0.9;
+		box-shadow: inset 0 0 0 30px  rgba(230, 154, 156, 0.2);
+	}
 }
 
 .learn-inlay {
 	position: absolute;
-	bottom: -60px;
+	bottom: 30px;
 	right: 12%;
 	background: #fff;
 	width: 90%;
@@ -38,7 +44,7 @@
 }
 
 .learn-lower {
-	padding: 60px 0 0;
+	padding: 120px 0 0;
 }
 
 .learn-title {
@@ -47,6 +53,11 @@
 	padding: 5px 0;
 	font-family: $font-reading;
 	font-weight: 100;
+	
+	&:hover {
+		text-decoration: none;
+		color: $primary-500;
+	}
 }
 
 .learn-date {

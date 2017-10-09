@@ -1,1 +1,46 @@
 @import "../../../../styles";
+
+.recent-track {
+	display: block;
+	color: $dark;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.thumbnail-container {
+	display: block;
+	box-shadow: 0 0 10px rgba(100, 100, 100, 0.2);
+	@include transition(all 100ms ease-in-out);
+
+	&:hover {
+		box-shadow: 0 0 20px rgba(100, 100, 100, 0.8);
+	}
+}
+
+.recent-track-meta-container {
+	display: block;
+}
+
+.recent-track-title {
+	display: block;
+	color: $dark;
+	font-family: $font-body;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 20px 0 10px;
+	@include transition(all 100ms ease-in-out);
+
+	&:hover {
+		color: $primary-500;
+	}
+}
+
+.recent-track-author {
+	display: block;
+	color: $dark;
+	font-family: $font-body;
+	font-weight: 100;
+	font-size: 16px;
+	color: $text-secondary;
+}
