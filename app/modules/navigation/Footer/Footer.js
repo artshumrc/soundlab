@@ -19,19 +19,56 @@ class Footer extends Component {
                 <span styleName="footer-site-title">at Harvard University</span>
               </div>
               <div styleName="footer-nav-container">
-                <span styleName="footer-site-nav contact-nav">Contact</span>
-                <span styleName="footer-site-nav">Privacy</span>
+								<a
+									href="mailto:soundlab@g.harvard.edu"
+									target="_blank"
+									rel="noreferrer noopener"
+									styleName="footer-social-link"
+								>
+	                Contact
+								</a>
+								<a
+									href="/terms"
+									styleName="footer-social-link"
+								>
+									Privacy
+								</a>
               </div>
-
             </div>
           </Col>
-          <Col styleName="footer-social-links-container" md={6}>
-            <div styleName="footer-social-links">
-              <span styleName="footer-social-link">Facebook</span>
-              <span styleName="footer-social-link">Twiter</span>
-              <span styleName="footer-social-link">Youtube</span>
-              <span styleName="footer-social-link">Soundcloud</span>
-            </div>
+          <Col md={6}>
+						<a
+							href="https://facebook.com"
+							target="_blank"
+							rel="noreferrer noopener"
+							styleName="footer-social-link"
+						>
+              Facebook
+						</a>
+						<a
+							href="https://twitter.com"
+							target="_blank"
+							rel="noreferrer noopener"
+							styleName="footer-social-link"
+						>
+              Twitter
+						</a>
+						<a
+							href="https://youtube.com"
+							target="_blank"
+							rel="noreferrer noopener"
+							styleName="footer-social-link"
+						>
+              YouTube
+						</a>
+						<a
+							href="https://soundcloud.com"
+							target="_blank"
+							rel="noreferrer noopener"
+							styleName="footer-social-link"
+						>
+              Soundcloud
+						</a>
           </Col>
         </Row>
       </footer>

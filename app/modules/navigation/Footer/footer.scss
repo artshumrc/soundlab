@@ -25,25 +25,28 @@ footer {
   color: #e7e6e6;
   font-size: 16px;
   font-family: sans-serif;
+	display: inline-block;
+	vertical-align: top;
+	padding: 10px;
+	&:hover {
+		text-decoration: none;
+		color: $primary-500;
+	}
 }
 
 .contact-nav {
   padding-right: 20px;
 }
 
-.footer-social-links {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  padding: 7% 3% 0% 40%;;
-}
-
 .footer-social-link {
   color: #e7e6e6;
   font-size: 16px;
   font-family: sans-serif;
-}
-
-.footer-social-links-container {
-  display: flex;
+	display: inline-block;
+	vertical-align: top;
+	padding: 2px 5px;
+	&:hover {
+		text-decoration: none;
+		color: $primary-500;
+	}
 }
