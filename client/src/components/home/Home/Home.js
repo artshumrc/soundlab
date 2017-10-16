@@ -1,10 +1,28 @@
 import React from 'react';
+import './Home.css';
+import Header from '../../navigation/Header';
+import Footer from '../../navigation/Footer';
+import HomeCover from './sections/HomeCover';
+import ShowcaseCollections from './sections/ShowcaseCollections';
+import FeaturesSection from './sections/FeaturesSection';
+import LifetimeData from './sections/LifetimeData';
+import PermissionsSection from './sections/PermissionsSection';
+import ExploreOrDemo from './sections/ExploreOrDemo';
+import ReadyToStart from './sections/ReadyToStart';
 
 class Home extends React.Component {
 	render() {
 		return (
-			<div className="home">
-				Home view
+			<div id="home">
+				<Header />
+				<HomeCover />
+				<FeaturesSection />
+				<ShowcaseCollections />
+				<LifetimeData />
+				<PermissionsSection />
+				<ExploreOrDemo />
+				<ReadyToStart />
+				<Footer />
 			</div>
 		);
 	}

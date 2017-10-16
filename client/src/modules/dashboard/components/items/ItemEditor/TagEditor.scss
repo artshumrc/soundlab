@@ -1,0 +1,79 @@
+@import '../../../../../variables.scss';
+
+.tagList {
+  vertical-align: top;
+  padding: 3px 0;
+  margin: 2px 5px;
+  -o-transition: all 100ms ease-in-out;
+  -webkit-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+  .Select-placeholder {
+    font-family: $font-body, sans-serif;
+    font-size: 14px;
+    color: #727272;
+    display: inline-block;
+  }
+  .Select-control {
+    width: 100%;
+  }
+  .Select-value {
+    display: inline-block;
+  }
+  .Select-value-label {
+    font-family: $font-body, sans-serif;
+    font-size: 14px;
+    color: #727272;
+    padding: 3px 10px;
+
+  }
+  .Select-menu-outer {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #dfe3e9;
+    z-index: 1000;
+    width: 250px;
+    -webkit-box-shadow: 3px 3px 20px 0px rgba(163,163,163,1);
+    -moz-box-shadow: 3px 3px 20px 0px rgba(163,163,163,1);
+    box-shadow: 3px 3px 20px 0px rgba(163,163,163,1);
+    .Select-option {
+      box-sizing: border-box;
+      background-color: #fff;
+      color: #666666;
+      cursor: pointer;
+      display: block;
+      padding: 8px 10px;
+    }
+    .Select-option:last-child {
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    .Select-option.is-selected {
+      background-color: #62baf0;
+      color: #333;
+    }
+    .Select-option.is-focused {
+      background-color: #62baf0;
+      color: #333;
+    }
+    .Select-option.is-disabled {
+      color: #cccccc;
+      cursor: default;
+    }
+  }
+  .Select-input {
+    width: 200px;
+    input {
+      padding: 0 10px;
+      font-family: $font-body, sans-serif;
+      font-size: 14px;
+      color: #727272;
+      background-color: transparent;
+      border: 0;
+    }
+    input:focus {
+      outline: 0;
+    }
+  }
+}

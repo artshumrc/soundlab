@@ -1,25 +1,40 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
+import { Router } from 'react-router';
+import { CookiesProvider } from 'react-cookie';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import routes from '../routes';
+import client from '../middleware/apolloClient';
 
-import App from './App/App';
-import DevTools from './DevTools';
+// auth
+import AuthModal from '../modules/auth';
+import { login, register, logout, verifyToken } from '../lib/auth';
 
-const Root = ({ store, history }) => (
-	<MuiThemeProvider>
-		<Provider store={store}>
-			<div>
-				<App />
-				<DevTools />
-			</div>
-		</Provider>
-	</MuiThemeProvider>
+const Root = ({store, history}) => (
+	<ApolloProvider
+		client={client}
+		store={store}
+	>
+		<MuiThemeProvider>
+			<CookiesProvider>
+				<div>
+					<Router history={history} routes={routes} />
+					<AuthModal
+						loginMethod={login}
+						signupMethod={register}
+						logoutMethod={logout}
+						getUserFromServer={verifyToken}
+					/>
+				</div>
+			</CookiesProvider>
+		</MuiThemeProvider>
+	</ApolloProvider>
 );
 
 Root.propTypes = {
-	store: PropTypes.shape({ /* TODO: update */ }).isRequired,
-	history: PropTypes.shape({ /* TODO: update */ }).isRequired,
+	store: PropTypes.shape({/* TODO: update */}).isRequired,
+	history: PropTypes.shape({/* TODO: update */}).isRequired,
 };
 
 export default Root;

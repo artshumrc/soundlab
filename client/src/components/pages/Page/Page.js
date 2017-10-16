@@ -1,29 +1,27 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 class Page extends React.Component {
 
 	render() {
-		const { page, settings, slug, loading } = this.props;
+		const { page, slug, loading } = this.props;
 		const headerImageUrl = '/images/apotheosis_homer.jpg';
 
 		if (loading) {
 			return (
-				<LoadingPage />
+				<div>Loading</div>
 			);
 		} else if (!loading && !page) {
 			return (
-				<NotFound
-					isTest={slug === '__test__'}
-				/>
+				<div>Not found</div>
 			);
 		}
 
 		if (page && page.title) {
-			Utils.setTitle(`${page.title} | ${settings.title}`);
+			// Utils.setTitle(`${page.title} | ${settings.title}`);
 		}
 		if (headerImageUrl) {
-			Utils.setMetaImage(headerImageUrl);
+			// Utils.setMetaImage(headerImageUrl);
 		}
 
 		return (
@@ -31,9 +29,9 @@ class Page extends React.Component {
 			<div className={`page page-${slug} content primary`}>
 
 				<section className="block header header-page cover parallax">
-					<BackgroundImageHolder
-						imgSrc="/images/apotheosis_homer.jpg"
-					/>
+					{/* <BackgroundImageHolder*/}
+					{/* imgSrc="/images/apotheosis_homer.jpg"*/}
+					{/* />*/}
 
 					<div className="container v-align-transform">
 						<div className="grid inner">
@@ -67,13 +65,13 @@ class Page extends React.Component {
 }
 
 Page.propTypes = {
-	slug: React.PropTypes.string,
-	page: React.PropTypes.object,
-	ready: React.PropTypes.bool,
-	images: React.PropTypes.array,
-	thumbnails: React.PropTypes.array,
-	loading: React.PropTypes.bool,
-	settings: React.PropTypes.object,
+	slug: PropTypes.string,
+	page: PropTypes.object,
+	ready: PropTypes.bool,
+	images: PropTypes.array,
+	thumbnails: PropTypes.array,
+	loading: PropTypes.bool,
+	settings: PropTypes.object,
 };
 
 export default Page;

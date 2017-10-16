@@ -1,0 +1,39 @@
+@import '../../../variables.scss';
+#home {
+	text-align: center;
+	overflow-x: hidden;
+  h1 {
+    font-size: 50px;
+    letter-spacing: 2px;
+  }
+
+  p {
+    font-weight: 300;
+    font-size: 15px;
+  }
+
+	.home-cover-content {
+		margin: 0 auto;
+		max-width: 600px;
+		width: 90%;
+
+		h1 {
+			display: block;
+			color: $dark;
+			padding: 0 0 20px;
+			text-shadow: 2px 2px 0px #fff;
+		}
+
+		.lead {
+			display: block;
+			color: $dark;
+			padding: 20px 0 40px;
+			text-transform: uppercase;
+			text-shadow: 1px 1px 6px #fff;
+			font-size: 20px;
+			line-height: 1.7em;
+		}
+
+	}
+
+}

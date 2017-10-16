@@ -1,0 +1,56 @@
+@import '../../../../variables.scss';
+
+#permissions {
+	min-height: 350px;
+}
+
+.permissionsHeader, .permissionsInfoBlock {
+	text-align: left;
+	vertical-align: top;
+}
+
+.permissionsHeader {
+	border: 2px solid $dark;
+	padding: 30px;
+
+	h3 {
+		font-size: 24px;
+		font-family: $font-title;
+		color: $dark;
+		margin: 0;
+		padding: 0 0 10px 0;
+	}
+
+	p {
+		font-size: 18px;
+		font-family: $font-body;
+		color: $text-secondary;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.permissionsInfoBlock {
+	padding: 6px 10px 20px;
+
+	h4 {
+		font-size: 16px;
+		font-family: $font-title;
+		color: $dark;
+		margin: 0;
+		display: inline;
+		vertical-align: top;
+		padding: 0 10px 0 0;
+		line-height: 1.6em;
+	}
+	p {
+		font-size: 16px;
+		font-family: $font-body;
+		color: $text-gray;
+		margin: 0;
+		padding: 0;
+		display: inline;
+		vertical-align: top;
+		line-height: 1.6em;
+	}
+}

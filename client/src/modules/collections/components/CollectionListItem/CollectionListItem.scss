@@ -1,0 +1,54 @@
+@import '../../../../variables.scss';
+
+.collectionListItem {
+	display: inline-block;
+	position: relative;
+	text-align: left;
+	vertical-align: top;
+	margin: 25px 5%;
+	width: 90%;
+	max-width: 280px;
+
+
+	.collectionListItemImage {
+		position: relative;
+		z-index: 1;
+
+		img {
+			@include transition(all 100ms ease-in-out);
+			width: 110%;
+			margin-left: -10px;
+			border: 10px solid transparent;
+			outline: 2px solid transparent;
+			cursor:pointer;
+
+			&:hover {
+				outline: 2px solid $grey;
+			}
+		}
+	}
+
+	.collectionCount {
+		color: #999;
+		font-size: 14px;
+		font-family: $font-body;
+		padding: 10px 0;
+	}
+
+	.collectionListItemBackground {
+		background: #eee;
+		position: relative;
+		padding: 210px 20px 20px;
+		margin: -210px -12% 0 -8%;
+		width: 120%;
+		box-shadow: 0px 0px 2px #ccc;
+	}
+
+	h3 {
+		font-family: $font-title-variant;
+		color: $text-primary;
+		cursor: pointer;
+		margin: 0;
+		padding: 5px 0 15px;
+	}
+}
