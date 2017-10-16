@@ -1,11 +1,16 @@
 @import '../../../../variables.scss';
+@import '../ItemMetaField/ItemMetaField.scss';
 
 .itemTitleOuter {
-	padding: 20px 0;
+	padding: 20px 0 0 0;
 	text-align: left;
-
 }
 
 .itemTitle {
 	color: $text-primary;
+}
+
+.itemMetaField.aboutMetaField {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
 }
