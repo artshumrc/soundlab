@@ -44,6 +44,7 @@ const MiradorManifestSchema = new Schema({
 	},
 	remoteUri: {
 		type: String,
+		required: false,
 	},
 	images: [ImageSchema],
 });
