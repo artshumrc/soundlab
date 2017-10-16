@@ -1,9 +1,9 @@
 @import '../../../variables.scss';
 
 .tag {
-	font-family: $font-label-mono;
-	font-size: 14px;
-	color: $text-secondary;
+	font-family: $font-body;
+	font-size: 20px;
+	color: $text-primary;
 	display: inline-block;
 	vertical-align: top;
 	padding: 3px 0;
@@ -14,5 +14,11 @@
 
 	&:hover {
 		border-bottom: 1px solid transparent;
+	}
+}
+
+.tags {
+	a:first-child .tag {
+		margin: 2px 5px 2px 0px;
 	}
 }

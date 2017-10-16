@@ -14,7 +14,7 @@ const ItemImageViewer = (props) => {
 		<div className="itemImageViewer">
 			<PrimaryImage
 				alt={props.title}
-				src={`//iiif.orphe.us/orpheus/art/${selImage}.jpg/full/600,/0/default.jpg`}
+				src={`//iiif.orphe.us/orpheus/art/${selImage}.jpg/full/750,/0/default.jpg`}
 			/>
 			<ThumbnailImages
 				images={_.range(0, 4)}

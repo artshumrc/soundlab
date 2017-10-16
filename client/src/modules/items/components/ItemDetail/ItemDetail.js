@@ -6,6 +6,7 @@ import ItemDescription from '../ItemDescription';
 import ItemMetaFields from '../ItemMetaFields';
 import ItemCollection from '../ItemCollection';
 import ItemProject from '../ItemProject';
+import ItemDiscussion from '../ItemDiscussion/ItemDiscussion.js';
 
 import './ItemDetail.css';
 
@@ -43,9 +44,9 @@ const ItemDetail = props => (
 					value: 'Illumination on r17, v29, r30, v30.',
 				}]}
 			/>
+			<ItemDiscussion />
 		</div>
-		<ItemCollection />
-		<ItemProject />
+
 	</div>
 );
 

@@ -31,7 +31,7 @@ k8s-deploy:
     - gcloud auth activate-service-account --key-file key.json
     - gcloud config set compute/zone us-east1-b
     - gcloud config set project archimedes-01201
-    - gcloud config set container/use_client_certificate True
+#    - gcloud config set container/use_client_certificate True
     - gcloud container clusters get-credentials orpheus-cluster
     # - gcloud docker -- push us.gcr.io/archimedes-01201/orpheus-app:test
     # - kubectl apply -f k8s/
