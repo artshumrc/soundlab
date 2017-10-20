@@ -16,13 +16,16 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/dist/'),
     filename: '[name].js',
-    publicPath: '/'
+    publicPath: '/',
+    sourcePrefix: ''
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     modules: [path.resolve('./src'), 'node_modules']
   },
   module: {
+    unknownContextCritical: false,
+    unknownContextRegExp: /^.\/.*$/,
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -55,7 +58,17 @@ module.exports = {
           ]
         }),
         exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|jpeg)$/,
+        loader: 'url-loader'
+      },
+      {
+        test: /Cesium\.js$/,
+        loader: 'script'
       }
+
+
     ],
   },
   plugins: [
