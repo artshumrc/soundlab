@@ -6,7 +6,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './webpack.config.js';
 import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
-import { executableSchema } from './schema/schema';
+import { executableSchema } from './graphql/schema';
 import path from 'path';
 
 const APP_PORT = 3000;
