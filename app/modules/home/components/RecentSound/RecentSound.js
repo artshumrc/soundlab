@@ -7,10 +7,10 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import CSSModules from 'react-css-modules'
 
 import PostContent from '../../../posts/components/PostContent';
-import styles from './RecentUploadItem.scss';
+import styles from './RecentSound.scss';
 
 @CSSModules(styles, {allowMultiple: true})
-class RecentUploadItem extends Component{
+class RecentSound extends Component{
   render() {
     const {
 			post_content: content,
@@ -50,4 +50,4 @@ class RecentUploadItem extends Component{
   }
 }
 
-export default RecentUploadItem;
+export default RecentSound;

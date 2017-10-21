@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { Grid, Row, Col } from 'react-bootstrap';
 import CSSModules from 'react-css-modules';
 
-import RecentUploadItem from '../RecentUploadItem';
+import RecentSound from '../RecentSound';
 import styles from './Recent.scss';
 
 
@@ -25,18 +25,16 @@ class Recent extends React.Component {
 						</Col>
 	        </Row>
 	        <Row>
-		        {items.map((item) => {
-
-							console.log('item', item);
-							return (
-								<Col md={4}>
-				          <RecentUploadItem
-										key={item.id}
-										post={item}
-									/>
-								</Col>
-			        );
-						})}
+		        {items.map((item, i) => (
+							<Col
+								md={4}
+								key={`${item.id}-${i}`}
+							>
+			          <RecentSound
+									post={item}
+								/>
+							</Col>
+						))}
 	        </Row>
 				</Grid>
       </section>
