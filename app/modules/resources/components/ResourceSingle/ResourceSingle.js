@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react'
-import { gql, graphql } from 'react-apollo'
-import PostContent from '../posts/PostContent'
 import ReactDisqusThread from 'react-disqus-thread'
 import CSSModules from 'react-css-modules'
+
+import PostContent from '../posts/PostContent'
 import styles from '../posts/post.scss'
 
 
@@ -53,27 +53,4 @@ ResourceSingle.propTypes = {
   data: PropTypes.object
 }
 
-const ResourceSingleQuery = gql`
-  query getPost($post: String){
-    post(name:$post){
-      id
-      post_title
-      post_content
-      info_byline {
-        meta_value
-      }
-
-    },
-
-  }
-`
-
-const ResourceSingleWithData = graphql(ResourceSingleQuery, {
-  options: ({params}) => ({
-    variables: {
-      post: params.post
-    }
-  })
-})(ResourceSingle)
-
-export default ResourceSingleWithData
+export default ResourceSingle;

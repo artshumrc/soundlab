@@ -2,6 +2,7 @@ import React from 'react'
 import { compose } from 'react-apollo';
 
 import Sound from '../../components/Sound';
+import { soundSingleQuery } from '../../graphql/queries/sounds';
 
 
 const SoundContainer = props => (
@@ -10,5 +11,5 @@ const SoundContainer = props => (
 
 
 export default compose(
-	soundQuery,
+	soundSingleQuery,
 )(SoundContainer);

@@ -51,27 +51,4 @@ class SubmissionList extends React.Component {
   }
 }
 
-const SubmissionQuery = gql`
-  query SubmissionQuery {
-    posts(post_type: "user_submission") {
-      id,
-      post_title
-      post_name
-      post_content
-      thumbnail
-      submission_byline {
-        meta_value
-      }
-      submission_link {
-        meta_value
-      }
-      submission_date {
-        meta_value
-      }
-    }
-  }
-`
-
-const SubmissionListWithData = graphql(SubmissionQuery)(SubmissionList)
-
-export default SubmissionListWithData
+export default SubmissionList;

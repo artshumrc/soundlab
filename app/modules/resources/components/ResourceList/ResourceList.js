@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
 
@@ -92,20 +90,4 @@ class ResourceList extends React.Component {
   }
 }
 
-const ResourceQuery = gql`
-  query ResourceQuery {
-    posts(post_type: "information") {
-      id
-      post_title
-      post_name
-      post_content
-      info_byline {
-        meta_value
-      }
-    }
-  }
-`
-
-const ResourceListWithData = graphql(ResourceQuery)(ResourceList)
-
-export default ResourceListWithData
+export default ResourceList;

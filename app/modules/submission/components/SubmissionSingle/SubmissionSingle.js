@@ -40,34 +40,5 @@ SubmissionSingle.propTypes = {
   data: PropTypes.object
 }
 
-const SubmissionSingleQuery = gql`
-  query getPost($post: String){
-    post(name:$post){
-      id
-      post_title
-      post_content
-      thumbnail
-      submission_byline {
-        meta_value
-      }
-      submission_link {
-        meta_value
-      }
-      submission_date {
-        meta_value
-      }
 
-    },
-
-  }
-`
-
-const SubmissionSingleWithData = graphql(SubmissionSingleQuery, {
-  options: ({params}) => ({
-    variables: {
-      post: params.post
-    }
-  })
-})(SubmissionSingle)
-
-export default SubmissionSingleWithData
+export default SubmissionSingle;

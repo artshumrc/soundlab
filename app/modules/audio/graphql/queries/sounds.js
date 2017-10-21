@@ -1,6 +1,6 @@
 import { gql, graphql } from 'react-apollo'
 
-const soundQuery = graphql(gql`
+const soundSingleQuery = graphql(gql`
   query sound($postname: String){
     post(name: $postname){
       id
@@ -58,4 +58,4 @@ const soundListQuery = gql`
 });
 
 
-export { soundQuery, soundListQuery };
+export { soundSingleQuery, soundListQuery };
