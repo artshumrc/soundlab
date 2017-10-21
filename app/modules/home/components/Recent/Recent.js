@@ -12,7 +12,7 @@ import styles from './Recent.scss';
 class Recent extends React.Component {
 
 	render () {
-		const { data } = this.props;
+		const { items } = this.props;
 
 		return (
       <section styleName="recent-section">
@@ -25,14 +25,18 @@ class Recent extends React.Component {
 						</Col>
 	        </Row>
 	        <Row>
-		        {data && data.posts && data.posts.map((post) =>
-							<Col md={4}>
-			          <RecentUploadItem
-									key={post.id}
-									post={post}
-								/>
-							</Col>
-		        ).slice(0,3)}
+		        {items.map((item) => {
+
+							console.log('item', item);
+							return (
+								<Col md={4}>
+				          <RecentUploadItem
+										key={item.id}
+										post={item}
+									/>
+								</Col>
+			        );
+						})}
 	        </Row>
 				</Grid>
       </section>
@@ -40,27 +44,12 @@ class Recent extends React.Component {
 	}
 }
 
-const RecentQuery = gql`
-	query RecentQuery {
-		posts(post_type: "audio_upload") {
-			id,
-			post_title
-			post_name
-			post_content
-			thumbnail
-			byline {
-				meta_value
-			}
-			date {
-				meta_value
-			}
-			sound_cloud_link {
-				meta_value
-			}
-		}
-	}
-`;
+Recent.PropTypes = {
+	items: PropTypes.array,
+};
 
-const RecentWithData = graphql(RecentQuery)(Recent);
+Recent.defaultProps = {
+	items: [],
+};
 
-export default RecentWithData;
+export default Recent;

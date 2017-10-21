@@ -1,9 +1,9 @@
 import { gql, graphql } from 'react-apollo';
 
 
-const homeRecentQuery = graphql(gql`
-	query homeRecentQuery {
-		posts(post_type: "audio_upload") {
+const recentQuery = graphql(gql`
+	query recentQuery {
+		posts(post_type: ["audio_upload"]) {
 			id,
 			post_title
 			post_name
@@ -21,12 +21,12 @@ const homeRecentQuery = graphql(gql`
 		}
 	}
 `, {
-  name: 'homeRecentQuery',
+  name: 'recentQuery',
   props: props => {
     return {
-      items: props.homeRecentQuery.posts,
+      items: props.recentQuery.posts,
     };
   },
 });
 
-export { homeRecentQuery };
+export { recentQuery };
