@@ -15,7 +15,7 @@ const tracksQuery = graphql(gql`
 			date {
 				meta_value
 			}
-			sound_cloud_link {
+			external_link {
 				meta_value
 			}
 		}
