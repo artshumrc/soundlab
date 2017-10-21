@@ -4,7 +4,7 @@ import gql from 'graphql-tag'
 import styles from './search.scss'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import SubmissionItem from '../submission/SubmissionItem'
-import AudioUploadItem from '../audioUpload/AudioUploadItem'
+import SoundItem from '../Sound/SoundItem'
 import BeingCategory from './BeingCategory'
 import TimeCategory from './TimeCategory'
 import SearchTools from './SearchTools'
@@ -88,7 +88,7 @@ const SearchQuery = gql`
       date {
         meta_value
       }
-      sound_cloud_link {
+      external_link {
         meta_value
       }
     }
