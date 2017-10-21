@@ -7,13 +7,11 @@ import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 
 import PostContent from '../../../posts/components/PostContent'
-import styles from './SoundItem.scss'
+import styles from './SoundListItem.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})
 class SoundItem extends Component{
-
-
 
   componentDidMount() {
     const { index } = this.props

@@ -1,15 +1,13 @@
-import React, { Component, PropTypes } from 'react'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
 
-import SoundItem from '../SoundItem'
+import SoundItem from '../SoundListItem'
 import styles from './SoundList.scss'
 
 @CSSModules(styles, {allowMultiple: true})
-
 
 class SoundList extends React.Component {
 
@@ -100,27 +98,4 @@ class SoundList extends React.Component {
 	}
 }
 
-const SoundQuery = gql`
-	query SoundQuery {
-		posts(post_type: "audio_upload") {
-			id,
-			post_title
-			post_name
-			post_content
-			thumbnail
-			byline {
-				meta_value
-			}
-			date {
-				meta_value
-			}
-			external_link {
-				meta_value
-			}
-		}
-	}
-`;
-
-const SoundListWithData = graphql(SoundQuery)(SoundList);
-
-export default SoundListWithData;
+export default SoundList;

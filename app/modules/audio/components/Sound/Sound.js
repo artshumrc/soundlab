@@ -1,12 +1,15 @@
-import React, {Component, PropTypes} from 'react'
-import { gql, graphql } from 'react-apollo'
-import PostContent from '../posts/PostContent'
-import CSSModules from 'react-css-modules'
-import styles from '../posts/post.scss'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { gql, graphql } from 'react-apollo';
+
+import CSSModules from 'react-css-modules';
+
+import PostContent from '../posts/PostContent';
+import styles from '../posts/post.scss';
 
 
 @CSSModules(styles, {allowMultiple: true})
-class SoundSingle extends Component {
+class Sound extends Component {
 
   render() {
     const { loading } = this.props.data
@@ -36,39 +39,8 @@ class SoundSingle extends Component {
   }
 }
 
-SoundSingle.propTypes = {
+Sound.propTypes = {
   data: PropTypes.object
 }
 
-const SoundSingleQuery = gql`
-  query getPost($post: String){
-    post(name:$post){
-      id
-      post_title
-      post_name
-      post_content
-      thumbnail
-      byline {
-        meta_value
-      }
-      date {
-        meta_value
-      }
-      external_link {
-        meta_value
-      }
-
-    },
-
-  }
-`
-
-const SoundSingleWithData = graphql(SoundSingleQuery, {
-  options: ({params}) => ({
-    variables: {
-      post: params.post
-    }
-  })
-})(SoundSingle)
-
-export default SoundSingleWithData
+export default Sound;

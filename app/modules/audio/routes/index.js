@@ -5,6 +5,7 @@ import SoundList from '../components/SoundList';
 
 export default (
   <div>
-    <Route path="audio" component={SoundList}></Route>
+    <Route path="sounds/:slug" component={SoundContainer}></Route>
+    <Route path="sounds" component={SoundListContainer}></Route>
   </div>
 );
