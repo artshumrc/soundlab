@@ -303,27 +303,11 @@ export default class WordExpressDatabase {
           }
         });
       },
-			getEventMonth(postId) {
-        return Postmeta.findOne({
-          where: {
-            post_id: postId,
-            meta_key: 'event_month',
-          }
-        });
-      },
-			getEventDate(postId) {
-        return Postmeta.findOne({
-          where: {
-            post_id: postId,
-            meta_key: 'event_date',
-          }
-        });
-      },
 			getEventStartTime(postId) {
         return Postmeta.findOne({
           where: {
             post_id: postId,
-            meta_key: 'event_start_time',
+            meta_key: 'event_start',
           }
         });
       },
@@ -331,7 +315,7 @@ export default class WordExpressDatabase {
         return Postmeta.findOne({
           where: {
             post_id: postId,
-            meta_key: 'event_end_time',
+            meta_key: 'event_end',
           }
         });
       },

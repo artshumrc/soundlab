@@ -72,26 +72,24 @@ const Definitions = `
     post_modified: String
     layout: Postmeta
 
+		sound_cloud_link: Postmeta
 		byline: Postmeta
-		agent: Postmeta
-		annotation: Postmeta
-		location: Postmeta
-		pdf: Postmeta
-		organizer: Postmeta
-		latitude: Postmeta
-		longitude: Postmeta
-		start_date:Postmeta
-		end_date:Postmeta
-		start_time:Postmeta
-		end_time:Postmeta
-		video:Postmeta
-		audio:Postmeta
-		image:Postmeta
+		info_byline: Postmeta
+		event_start: Postmeta
+		event_end: Postmeta
+		date: Postmeta
+		queue: Postmeta
+		gps: Postmeta
 		submission_date: Postmeta
 		submission_link: Postmeta
-		date: Postmeta
 		submission_byline: Postmeta
-		queue: Postmeta
+		affiliation: Postmeta
+		title: Postmeta
+		facebook_url: Postmeta
+		linkedin_url: Postmeta
+		twitter_url: Postmeta
+		google_url: Postmeta
+		hide_public_email: Postmeta
 
     thumbnail: String
     post_meta(keys: [MetaType], after: String, first: Int, before: String, last: Int): Postmeta

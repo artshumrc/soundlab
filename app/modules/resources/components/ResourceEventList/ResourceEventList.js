@@ -73,20 +73,12 @@ const ResourceEventQuery = gql`
       post_title
       post_name
       post_content
-      event_month {
+      event_start {
         meta_value
       }
-      event_date {
+      event_end {
         meta_value
       }
-      event_start_time {
-        meta_value
-      }
-      event_end_time {
-        meta_value
-      }
-
-
     }
   }
 `

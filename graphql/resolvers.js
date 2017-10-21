@@ -24,7 +24,7 @@ export default function WordExpressResolvers(Connectors, publicSettings) {
         if (name) {
           return Connectors.getPostByName(name, id);
         }
-				
+
         return Connectors.getPostById(id);
       },
       postmeta(_, _ref4) {
@@ -71,16 +71,10 @@ export default function WordExpressResolvers(Connectors, publicSettings) {
       queue(post) {
         return Connectors.getPlaylist(post.id);
       },
-      event_month(post) {
-        return Connectors.getEventMonth(post.id);
-      },
-      event_date(post) {
-        return Connectors.getEventDate(post.id);
-      },
-      event_start_time(post) {
+      event_start(post) {
         return Connectors.getEventStartTime(post.id);
       },
-      event_end_time(post) {
+      event_end(post) {
         return Connectors.getEventEndTime(post.id);
       },
       post_meta(post, keys) {
