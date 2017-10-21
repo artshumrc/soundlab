@@ -7,11 +7,11 @@ import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 
 import PostContent from '../../../posts/components/PostContent'
-import styles from './AudioUploadItem.scss'
+import styles from './SoundItem.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})
-class AudioUploadItem extends Component{
+class SoundItem extends Component{
 
 
 
@@ -90,10 +90,10 @@ class AudioUploadItem extends Component{
   }
 }
 
-AudioUploadItem.propTypes = {
+SoundItem.propTypes = {
   index: PropTypes.number,
   styles: PropTypes.object,
   post: PropTypes.object,
 }
 
-export default AudioUploadItem
+export default SoundItem

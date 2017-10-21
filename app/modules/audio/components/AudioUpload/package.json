@@ -1,6 +1,0 @@
-{
-  "name": "AudioUpload",
-  "version": "0.0.1",
-  "private": true,
-  "main": "./AudioUpload.js"
-}

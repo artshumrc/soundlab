@@ -6,7 +6,7 @@ import styles from '../posts/post.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})
-class AudioUploadSingle extends Component {
+class SoundSingle extends Component {
 
   render() {
     const { loading } = this.props.data
@@ -22,7 +22,7 @@ class AudioUploadSingle extends Component {
               <h1 styleName="title">{title}</h1>
               <h6>{this.props.data.post.byline.meta_value}</h6>
               <h6>{this.props.data.post.date.meta_value}</h6>
-              <h6>{this.props.data.post.sound_cloud_link.meta_value}</h6>
+              <h6>{this.props.data.post.external_link.meta_value}</h6>
               <PostContent content={content}/>
 
             </div>
@@ -36,11 +36,11 @@ class AudioUploadSingle extends Component {
   }
 }
 
-AudioUploadSingle.propTypes = {
+SoundSingle.propTypes = {
   data: PropTypes.object
 }
 
-const AudioUploadSingleQuery = gql`
+const SoundSingleQuery = gql`
   query getPost($post: String){
     post(name:$post){
       id
@@ -54,7 +54,7 @@ const AudioUploadSingleQuery = gql`
       date {
         meta_value
       }
-      sound_cloud_link {
+      external_link {
         meta_value
       }
 
@@ -63,12 +63,12 @@ const AudioUploadSingleQuery = gql`
   }
 `
 
-const AudioUploadSingleWithData = graphql(AudioUploadSingleQuery, {
+const SoundSingleWithData = graphql(SoundSingleQuery, {
   options: ({params}) => ({
     variables: {
       post: params.post
     }
   })
-})(AudioUploadSingle)
+})(SoundSingle)
 
-export default AudioUploadSingleWithData
+export default SoundSingleWithData

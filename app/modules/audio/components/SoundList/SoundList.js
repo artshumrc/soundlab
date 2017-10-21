@@ -5,13 +5,13 @@ import FlatButton from 'material-ui/FlatButton';
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
 
-import AudioUploadItem from '../AudioUploadItem'
-import styles from './AudioUploadList.scss'
+import SoundItem from '../SoundItem'
+import styles from './SoundList.scss'
 
 @CSSModules(styles, {allowMultiple: true})
 
 
-class AudioUploadList extends React.Component {
+class SoundList extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -88,7 +88,7 @@ class AudioUploadList extends React.Component {
 
 							</div>
 							{this.props.data.posts.map((post, index) =>
-								<AudioUploadItem key={post.id} post={post} track={index} />
+								<SoundItem key={post.id} post={post} track={index} />
 							)}
 						</Col>
 					</Row>
@@ -100,8 +100,8 @@ class AudioUploadList extends React.Component {
 	}
 }
 
-const AudioUploadQuery = gql`
-	query AudioUploadQuery {
+const SoundQuery = gql`
+	query SoundQuery {
 		posts(post_type: "audio_upload") {
 			id,
 			post_title
@@ -114,13 +114,13 @@ const AudioUploadQuery = gql`
 			date {
 				meta_value
 			}
-			sound_cloud_link {
+			external_link {
 				meta_value
 			}
 		}
 	}
 `;
 
-const AudioUploadListWithData = graphql(AudioUploadQuery)(AudioUploadList);
+const SoundListWithData = graphql(SoundQuery)(SoundList);
 
-export default AudioUploadListWithData;
+export default SoundListWithData;
