@@ -128,8 +128,13 @@ const Definitions = `
     user(id: Int): User
   }
 
+	type Mutation {
+		addUserInfo( ID: Int, display_name: String,  user_email: String): User
+	}
+
   schema {
     query: Query
+		mutation: Mutation
   }
 `
 
