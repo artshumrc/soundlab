@@ -4,7 +4,7 @@ import express from 'express';
 import { privateSettings } from './settings';
 import bodyParser from 'body-parser';
 import { graphqlExpress } from 'graphql-server-express';
-import { executableSchema } from './schema/schema';
+import { executableSchema } from './graphql/schema';
 
 const APP_PORT = process.env.PORT || 3000;
 const app = express();

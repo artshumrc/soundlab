@@ -134,56 +134,6 @@ export default class WordExpressDatabase {
         })
       },
 
-      getEvents({ limit = 10, skip = 0 }) {
-        return Post.findAll({
-          include: {
-            model: Postmeta,
-            where: {
-							post_id: Sequelize.literal('ID'),
-              meta_key: 'start_date',
-            },
-          },
-          where: {
-            post_type: 'event',
-            post_status: 'publish'
-          },
-          limit: limit,
-          offset: skip,
-					order: [
-						[ Postmeta, 'meta_value', 'DESC'],
-					],
-        })
-      },
-
-      getProtests({ limit = 10, skip = 0 }) {
-        return Post.findAll({
-          include: {
-            model: Postmeta,
-            where: {
-							post_id: Sequelize.literal('ID'),
-              meta_key: 'start_date',
-            },
-          },
-          where: {
-            post_type: 'protest',
-            post_status: 'publish'
-          },
-          limit: limit,
-          offset: skip
-        })
-      },
-
-      getLibrary({ limit = 10, skip = 0 }) {
-        return Post.findAll({
-          where: {
-            post_type: 'library',
-            post_status: 'publish'
-          },
-          limit: limit,
-          offset: skip
-        })
-      },
-
       getPostsInCategory(termId, { post_type, limit = 10, skip = 0 }) {
         return TermRelationships.findAll({
           attributes: [],
