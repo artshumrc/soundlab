@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import CSSModules from 'react-css-modules'
+import _ from 'underscore';
 
 import PostContent from '../../../posts/components/PostContent';
 import styles from './RecentSound.scss';
@@ -20,7 +21,6 @@ class RecentSound extends Component{
 		} = this.props.post;
 
     const thumbnailListImage = {
-      backgroundImage: `url("${thumbnail}")`,
       width: '100%',
       height: '300px',
       objectFit: 'cover',
@@ -28,6 +28,15 @@ class RecentSound extends Component{
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center'
     };
+
+		if (thumbnail) {
+			console.log(thumbnail);
+      thumbnailListImage.backgroundImage = `url("${thumbnail.meta_value}")`;
+		} else {
+      thumbnailListImage.backgroundImage = 'url("/images/default_sound.jpg")';
+		}
+
+		const byline = _.findWhere(this.props.post.post_meta, { meta_key: 'byline' });
 
     return(
       <Link to="/">
@@ -40,9 +49,11 @@ class RecentSound extends Component{
             <h4 styleName="recent-track-title">
 							{title}
 						</h4>
-            <span styleName="recent-track-author">
-							{this.props.post.byline.meta_value}
-						</span>
+						{byline &&
+	            <span styleName="recent-track-author">
+								{byline.meta_value}
+							</span>
+						}
           </div>
 	      </div>
       </Link>

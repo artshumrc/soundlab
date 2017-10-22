@@ -8,9 +8,7 @@ const recentQuery = graphql(gql`
 			post_title
 			post_name
 			post_content
-			thumbnail {
-				meta_value
-			}
+			thumbnail
 			post_meta(keys: ["byline", "date", "external_link"]) {
 				meta_key
 				meta_value

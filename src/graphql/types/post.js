@@ -84,7 +84,7 @@ const PostType = new GraphQLObjectType({
 		},
 
     thumbnail: {
-			type: PostmetaType,
+			type: GraphQLJSON,
 			resolve: async ( post, {}, { token } ) => {
 				const postService = new PostService({ token });
         return await postService.getPostThumbnail(post.id);
