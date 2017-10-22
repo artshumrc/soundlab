@@ -111,8 +111,10 @@ app.use('/auth', authenticationRouter);
 app.use(express.static('./public'));
 
 app.get('*', function response (req, res) {
-  res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')))
-  res.end()
+	// console.log(req);
+  // res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')))
+  // res.end()
+	res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
 
 // App server listen
