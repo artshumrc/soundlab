@@ -76,6 +76,28 @@ $accent-700:  darken($accent-500, 10%);
 $accent-800:  darken($accent-500, 15%);
 $accent-900:  darken($accent-500, 20%);
 
+$purple-500: rgb(120, 115, 245);
+$purple-50: lighten($purple-500, 25%);
+$purple-100: lighten($purple-500, 20%);
+$purple-200: lighten($purple-500, 15%);
+$purple-300: lighten($purple-500, 10%);
+$purple-400: lighten($purple-500, 5%);
+$purple-600:  darken($purple-500, 5%);
+$purple-700:  darken($purple-500, 10%);
+$purple-800:  darken($purple-500, 15%);
+$purple-900:  darken($purple-500, 20%);
+
+$pink-500: rgb(235, 119, 172);
+$pink-50: lighten($pink-500, 25%);
+$pink-100: lighten($pink-500, 20%);
+$pink-200: lighten($pink-500, 15%);
+$pink-300: lighten($pink-500, 10%);
+$pink-400: lighten($pink-500, 5%);
+$pink-600:  darken($pink-500, 5%);
+$pink-700:  darken($pink-500, 10%);
+$pink-800:  darken($pink-500, 15%);
+$pink-900:  darken($pink-500, 20%);
+
 $primary: $primary-500;
 $primary-light: $primary-300;
 $primary-dark: $primary-800;

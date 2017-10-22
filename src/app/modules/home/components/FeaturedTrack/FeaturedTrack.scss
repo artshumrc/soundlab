@@ -1,25 +1,25 @@
 @import "../../../../styles";
 
-.featured-track-component {
-  margin-top: 180px;
+.featuredTrackComponent {
+  margin-top: 90px;
 	cursor: pointer;
 }
 
-.featured-track-player-container {
+.featuredTrackPlayerContainer {
 	height: 390px;
 	width: 100%;
 	margin: 80px auto 20px;
 	text-align: center;
 }
 
-.player-container {
+.playerContainer {
 	margin: 0 auto;
 	position: relative;
 	width: 390px;
 	height: 390px;
 }
 
-.player-row-1 {
+.playerRow1 {
 	height: 50%;
 	width: 50%;
 	border-radius: 100%;
@@ -31,11 +31,11 @@
 	opacity: 0.9;
 }
 
-.player-row-1-hover {
+.playerRow1Hover {
   animation: play-button 1600ms infinite ease-out;
 }
 
-.player-row-2 {
+.playerRow2 {
 	height: 66%;
 	width: 66%;
 	border-radius: 100%;
@@ -45,13 +45,14 @@
 	z-index: 3;
 	@include gradient-vertical($primary-500, $accent-500);
 	opacity: 0.6;
+
 }
 
-.player-row-2-hover {
+.playerRow2Hover {
   animation: circle-outer-circle 800ms 1 ease-out;
 }
 
-.player-row-3 {
+.playerRow3 {
 	height: 82%;
 	width: 82%;
 	border-radius: 100%;
@@ -63,11 +64,11 @@
 	opacity: 0.3;
 }
 
-.player-row-3-hover {
+.playerRow3Hover {
   animation: circle-outer-circle 800ms 1 ease-out;
 }
 
-.player-row-4 {
+.playerRow4 {
 	height: 100%;
 	width: 100%;
 	border-radius: 100%;
@@ -79,11 +80,11 @@
 	opacity: 0.1;
 }
 
-.player-row-4-hover {
+.playerRow4Hover {
   animation: circle-outer-circle 800ms 1 ease-out;
 }
 
-.player-row-5 {
+.playerRow5 {
 	height: 100%;
 	width: 100%;
 	border-radius: 100%;
@@ -96,11 +97,15 @@
 	border: 1px solid #aaa;
 }
 
-.player-row-5-hover {
+.playerRow5Hover {
   animation: circle-outer-circle 800ms 1 ease-out;
 }
 
-.play-button-container {
+.playerRowPurple {
+	@include gradient-vertical($pink-500, $purple-500);
+}
+
+.playButtonContainer {
 	height: 100%;
 	width: 100%;
 	top: 0;
@@ -121,16 +126,16 @@
 	}
 }
 
-.featured-track-meta-container {
+.featuredTrackMetaContainer {
   height: 20%;
 	text-align: center;
 }
 
-.featured-track-title {
+.featuredTrackTitle {
 	display: inline-block;
   color: #fff;
   text-align: center;
-  background-color: #aa95f7;
+  background-color: $purple-500;
   padding: 4px 6px 2px;
   font-size: 10px;
   border-radius: 4px;
@@ -140,11 +145,11 @@
 	@include transition(all 300ms ease-in-out);
 }
 
-.featured-track-title-hover {
-  background-color: darken(#aa95f7, 10%);
+.featuredTrackTitleHover {
+  background-color: darken($purple-500, 10%);
 }
 
-.featured-track-meta-item-title {
+.featuredTrackMetaItemTitle {
 	display: block;
   color: $dark;
 	margin: 6px auto;
@@ -153,7 +158,7 @@
 	font-size: 22px;
 }
 
-.featured-track-meta-item-author {
+.featuredTrackMetaItemAuthor {
 	display: block;
   color: $lightGrey;
 	margin: 6px auto;

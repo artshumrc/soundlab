@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-bootstrap';
 import CSSModules from 'react-css-modules';
 import _ from 'underscore';
@@ -6,7 +7,6 @@ import _ from 'underscore';
 
 import styles from './FeaturedTrack.scss'
 
-@CSSModules(styles, {allowMultiple: true})
 class FeaturedTrack extends React.Component {
 	constructor(props) {
 		super(props);
@@ -49,7 +49,7 @@ class FeaturedTrack extends React.Component {
 
   render() {
 		const { status } = this.state;
-		const { track } = this.props;
+		const { track, purple } = this.props;
 
 		if (!track) {
 			return null;
@@ -59,21 +59,39 @@ class FeaturedTrack extends React.Component {
 
     return (
       <div
-				styleName="featured-track-component"
+				className={styles.featuredTrackComponent}
 				onMouseEnter={this.handleMouseEnter.bind(this)}
 				onMouseLeave={this.handleMouseLeave.bind(this)}
 				onClick={this.handleClick.bind(this)}
 			>
         <div
-					styleName="featured-track-player-container"
+					className={styles.featuredTrackPlayerContainer}
 				>
-					<div styleName="player-container">
-						<div styleName={`player-row-1 ${status.length ? 'player-row-1-hover' : ''}`} />
-						<div styleName="player-row-2" />
-						<div styleName="player-row-3" />
-						<div styleName="player-row-4" />
-						<div styleName={`player-row-5 ${status.length ? 'player-row-5-hover' : ''}`} />
-						<div styleName="play-button-container">
+					<div className={styles.playerContainer}>
+						<div
+							className={`${styles.playerRow1}
+								${purple ? styles.playerRowPurple : ''}
+								${status.length ? styles.playerRow1Hover : ''}
+							`}
+						/>
+						<div
+							className={`${styles.playerRow2}
+								${purple ? styles.playerRowPurple : ''}
+							`}
+						/>
+						<div className={`${styles.playerRow3}
+								${purple ? styles.playerRowPurple : ''}
+							`}
+						/>
+						<div className={`${styles.playerRow4}
+								${purple ? styles.playerRowPurple : ''}
+							`}
+						/>
+						<div className={`${styles.playerRow5}
+								${status.length ? styles.playerRow5Hover : ''}
+							`}
+						/>
+						<div className={styles.playButtonContainer}>
 							{status === 'play' ?
 								<i className="mdi mdi-pause" />
 							:
@@ -82,22 +100,34 @@ class FeaturedTrack extends React.Component {
 						</div>
 					</div>
         </div>
-        <div styleName="featured-track-meta-container">
+        <div className={styles.featuredTrackMetaContainer}>
 					<div>
 	          <h6
-							styleName={`featured-track-title ${status.length ? 'featured-track-title-hover' : ''}`}
+							className={`${styles.featuredTrackTitle}
+								${status.length ? styles.featuredTrackTitleHover : ''}
+							`}
 						>
 							Featured Track
 						</h6>
 					</div>
-          <span styleName="featured-track-meta-item-title">{track.post_title}</span>
+          <span className={styles.featuredTrackMetaItemTitle}>
+						{track.post_title}
+					</span>
 					{byline &&
-	          <span styleName="featured-track-meta-item-author">{byline.meta_value}</span>
+	          <span className={styles.featuredTrackMetaItemAuthor}>
+							{byline.meta_value}
+						</span>
 					}
         </div>
       </div>
     );
   }
 }
+
+FeaturedTrack.propTypes = {
+	track: PropTypes.object,
+	purple: PropTypes.bool,
+};
+
 
 export default FeaturedTrack

@@ -1,3 +1,78 @@
-.featured-track-player-container {
+@import "../../../../styles";
 
+.wave-cover-section {
+  height: 80vh;
+}
+
+.featured-track-player {
+	background: transparent;
+}
+
+.wave-search-filter-section {
+	background: transparent;
+}
+
+.lets-listen {
+  font-size: 36px;
+  color: $lightGrey;
+  vertical-align: inherit;
+}
+
+.filter-title {
+  font-size: 44px;
+  color: $dark;
+  border-bottom: 3px solid $dark;
+}
+
+.filter-container {
+  padding-top: 80px;
+}
+
+.filter-row-one {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
+
+.filter-row-two {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 80px;
+}
+
+.wave-audio-posts-section {
+  min-height: 300px;
+  padding-bottom: 80px;
+}
+
+.posts-column-section-titles {
+  display: flex;
+  border-bottom: 1px solid $lightGrey;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-titles-left {
+  display: inline-flex;
+}
+
+.section-titles-right {
+  display: inline-flex;
+}
+
+.section-title-number {
+  padding: 0 50px 0 10px;
+}
+
+.section-title-duration {
+  padding-right: 10px;
+}
+
+.wave-audio-posts {
+	background: transparent;
+  img {
+		background: transparent;
+  }
 }

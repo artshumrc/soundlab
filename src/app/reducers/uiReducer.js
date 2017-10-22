@@ -11,7 +11,6 @@ const initialUIState = {
 }
 
 export default function (state = initialUIState, action) {
-  console.log('reducer was called with state', state, 'and action', action)
   switch (action.type) {
   case 'RESUME_PLAYER':
     return Object.assign({}, state, {

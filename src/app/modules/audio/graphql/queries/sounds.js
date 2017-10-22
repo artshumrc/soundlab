@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo'
 
 const soundSingleQuery = graphql(gql`
-  query sound($postname: String){
+  query post($postname: String){
     post(name: $postname){
       id
       post_title
@@ -29,17 +29,18 @@ const soundListQuery = graphql(gql`
 			post_name
 			post_content
 			thumbnail
-			post_meta(keys: ["audio_file", "byline", "date", "external_link"]) {
+			post_meta(keys: ["audio_file", "byline", "date", "external_link", "location"]) {
 				meta_value
 			}
 		}
 	}
 `, {
-	options: ({params}) => ({
-		variables: {
-			sounds: params.sounds
-		}
-	})
+  name: 'soundListQuery',
+  props: props => {
+    return {
+      sounds: props.soundListQuery.posts,
+    };
+  },
 });
 
 
