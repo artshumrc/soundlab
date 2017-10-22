@@ -6,14 +6,9 @@ coverage
 settings/local.json
 settings/prod.json
 *.log
-/**/*.css
 dump.rdb
 doc/
 .env*
-
-# Fonts
-!client/public/css/materialdesignicons.css
-!client/public/css/materialdesignicons.min.css
 
 # Temp files
 tmp/
