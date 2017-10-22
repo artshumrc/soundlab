@@ -11,7 +11,7 @@ module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    path.join(__dirname, 'app/main.js')
+    path.join(__dirname, 'src/app/main.js')
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
@@ -63,12 +63,6 @@ module.exports = {
         test: /\.(png|jpg|jpeg)$/,
         loader: 'url-loader'
       },
-      {
-        test: /Cesium\.js$/,
-        loader: 'script'
-      }
-
-
     ],
   },
   plugins: [
@@ -76,7 +70,7 @@ module.exports = {
       debug: true
     }),
     new HtmlWebpackPlugin({
-      template: 'app/index.tpl.html',
+      template: 'src/app/index.tpl.html',
       inject: 'body',
       filename: 'index.html'
     }),

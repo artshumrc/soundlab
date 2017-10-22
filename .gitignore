@@ -1,9 +1,44 @@
+# Application
 node_modules
-.DS_Store
+build
 dist
-*.log
 coverage
-wordpress
 settings/local.json
 settings/prod.json
-scripts/deploy.sh
+*.log
+/**/*.css
+dump.rdb
+doc/
+.env*
+
+# Fonts
+!client/public/css/materialdesignicons.css
+!client/public/css/materialdesignicons.min.css
+
+# Temp files
+tmp/
+
+# Editors
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+*.sw[po]
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.sh

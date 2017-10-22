@@ -7,7 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
-    path.join(__dirname, 'app/main.js')
+    path.join(__dirname, 'src/app/main.js')
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
@@ -19,7 +19,7 @@ module.exports = {
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
-      template: 'app/index.tpl.html',
+      template: 'src/app/index.tpl.html',
       inject: 'body',
       filename: 'index.html'
     }),
