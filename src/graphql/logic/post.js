@@ -76,7 +76,10 @@ export default class PostService extends PermissionsService {
 				post_status: 'publish'
 			},
 			limit: limit,
-			offset: skip
+			offset: skip,
+			order: [
+				['post_modified', 'DESC']
+			]
 		})
 	}
 

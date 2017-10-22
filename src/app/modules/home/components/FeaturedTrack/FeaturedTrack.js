@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import CSSModules from 'react-css-modules';
+import _ from 'underscore';
 
 
 import styles from './FeaturedTrack.scss'
@@ -48,7 +49,13 @@ class FeaturedTrack extends React.Component {
 
   render() {
 		const { status } = this.state;
+		const { track } = this.props;
 
+		if (!track) {
+			return null;
+		}
+
+		const byline = _.findWhere(track.post_meta, { meta_key: 'byline' });
 
     return (
       <div
@@ -83,8 +90,10 @@ class FeaturedTrack extends React.Component {
 							Featured Track
 						</h6>
 					</div>
-          <span styleName="featured-track-meta-item-title">Mozart / Funk</span>
-          <span styleName="featured-track-meta-item-author">Dollie Keller</span>
+          <span styleName="featured-track-meta-item-title">{track.post_title}</span>
+					{byline &&
+	          <span styleName="featured-track-meta-item-author">{byline.meta_value}</span>
+					}
         </div>
       </div>
     );

@@ -9,8 +9,8 @@ import PlaylistList from '../../../playlist/components/PlaylistList';
 import AudioPlayer from '../../../audio/components/AudioPlayer';
 import Cover from '../Cover';
 import Intro from '../Intro';
-import Learn from '../Learn';
 import RecentContainer from '../../containers/RecentContainer';
+import LearnContainer from '../../containers/LearnContainer';
 
 import styles from './Home.scss';
 
@@ -23,7 +23,7 @@ class Home extends React.Component {
       <div>
 				<Cover />
         <Intro />
-        <Learn />
+        <LearnContainer />
         <RecentContainer />
       </div>
     );

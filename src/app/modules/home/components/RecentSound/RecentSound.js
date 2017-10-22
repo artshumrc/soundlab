@@ -42,7 +42,7 @@ class RecentSound extends Component{
 		const byline = _.findWhere(this.props.post.post_meta, { meta_key: 'byline' });
 
     return(
-      <Link to="/">
+      <Link to={`/sounds/${name}`}>
 	      <div styleName="recent-track">
           <div styleName="thumbnail-container">
             <div style={thumbnailListImage}></div>

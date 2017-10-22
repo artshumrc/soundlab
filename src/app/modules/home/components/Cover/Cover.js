@@ -3,7 +3,7 @@ import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import CSSModules from 'react-css-modules';
 
 import styles from './Cover.scss';
-import FeaturedTrack from '../FeaturedTrack';
+import FeaturedTrackContainer from '../../containers/FeaturedTrackContainer';
 
 @CSSModules(styles, {allowMultiple: true})
 class Cover extends React.Component {
@@ -20,7 +20,7 @@ class Cover extends React.Component {
 				        </div>
 				      </Col>
 				      <Col md={6}>
-				        <FeaturedTrack />
+				        <FeaturedTrackContainer />
 				      </Col>
 				    </Row>
 					</Grid>

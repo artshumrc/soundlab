@@ -1,9 +1,9 @@
 import { gql, graphql } from 'react-apollo';
 
 
-const recentQuery = graphql(gql`
-	query recentQuery {
-		posts(post_type: ["sound"], limit: 3, skip: 1, isFeatured: true) {
+const featuredTrackQuery = graphql(gql`
+	query featuredTrackQuery {
+		posts(post_type: ["sound"], limit: 1, isFeatured: true) {
 			id,
 			post_title
 			post_name
@@ -16,12 +16,12 @@ const recentQuery = graphql(gql`
 		}
 	}
 `, {
-  name: 'recentQuery',
+  name: 'featuredTrackQuery',
   props: props => {
     return {
-      items: props.recentQuery.posts,
+      tracks: props.featuredTrackQuery.posts,
     };
   },
 });
 
-export { recentQuery };
+export { featuredTrackQuery };
