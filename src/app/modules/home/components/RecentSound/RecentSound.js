@@ -6,9 +6,11 @@ import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import CSSModules from 'react-css-modules';
 import _ from 'underscore';
+import _s from 'underscore.string';
 
 import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 import PostContent from '../../../posts/components/PostContent';
+
 
 import styles from './RecentSound.scss';
 
@@ -52,7 +54,7 @@ class RecentSound extends Component{
 						</h4>
 						{byline &&
 	            <span styleName="recent-track-author">
-								{byline.meta_value}
+								{_s.prune(byline.meta_value, 60)}
 							</span>
 						}
           </div>
