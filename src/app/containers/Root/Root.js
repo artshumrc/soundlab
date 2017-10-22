@@ -12,8 +12,6 @@ import AuthModal from '../../modules/auth';
 import { login, register, logout, verifyToken } from '../../lib/auth';
 
 // components
-import Header from '../../modules/navigation/Header'
-import Footer from '../../modules/navigation/Footer'
 import PlayerContainer from '../../modules/player/containers/PlayerContainer'
 
 
@@ -25,9 +23,7 @@ const Root = ({ store, history }) => (
 		<MuiThemeProvider>
 			<CookiesProvider>
 				<div>
-					<Header />
 					<Router history={history} routes={routes} />
-					<Footer />
 					<PlayerContainer />
 					<AuthModal
 						loginMethod={login}

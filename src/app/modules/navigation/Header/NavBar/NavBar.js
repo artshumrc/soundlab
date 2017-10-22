@@ -56,7 +56,7 @@ class NavBar extends React.Component {
 				</div>
 				<ul styleName="nav">
 					<li>
-						<Link styleName="navLink" to={'/audio'}>
+						<Link styleName="navLink" to={'/waves'}>
 							Waves
 						</Link>
 					</li>
@@ -73,13 +73,12 @@ class NavBar extends React.Component {
 					{ userId ?
 						<li>
 							<Link styleName="navLink" to={'/'}>
-								Profile
+								My Tracks
 							</Link>
 						</li>
 					:
 						<li>
 							<Link
-								to={'/'}
 								styleName="navLink"
 								onClick={toggleAuthModal}
 							>

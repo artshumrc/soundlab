@@ -14,7 +14,7 @@ class Head extends React.Component {
               {'property': 'og:description', 'content': 'Sound Lab at the Harvard University Department of Music'},
           ]}
           link={[
-              {'rel': 'canonical', 'href': 'http://soundlab.archimedes.digital'},
+              {'rel': 'canonical', 'href': 'http://soundlab.fas.harvard.edu'},
           ]}
           onChangeClientState={(newState) => console.log(newState)}
       />
