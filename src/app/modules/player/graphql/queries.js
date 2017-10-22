@@ -9,13 +9,7 @@ const tracksQuery = graphql(gql`
 			post_name
 			post_content
 			thumbnail
-			byline {
-				meta_value
-			}
-			date {
-				meta_value
-			}
-			external_link {
+			post_meta(keys: ["byline", "date", "external_link"]) {
 				meta_value
 			}
 		}

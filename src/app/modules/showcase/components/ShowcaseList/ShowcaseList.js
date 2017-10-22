@@ -56,13 +56,14 @@ class ShowcaseList extends React.Component {
 
 const ShowcaseQuery = gql`
   query ShowcaseQuery {
-    posts(post_type: "sound") {
+    posts(post_type: ["sound"]) {
       id,
       post_title
       post_content,
-      byline {
-        meta_value
-      }
+			post_meta(keys: ["byline"]) {
+				meta_key
+				meta_value
+			}
     }
   }
 `

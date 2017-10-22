@@ -76,37 +76,27 @@ function mapStateToProps(state){
 
 const SearchQuery = gql`
   query SearchQuery {
-    posts(post_type: "sound") {
+    posts(post_type: ["sound"]) {
       id,
       post_title
       post_name
       post_content
       thumbnail
-      byline {
-        meta_value
-      }
-      date {
-        meta_value
-      }
-      external_link {
-        meta_value
-      }
+			post_meta(keys: ["byline", "date", "external_link"]) {
+				meta_key
+				meta_value
+			}
     }
-    submission:posts(post_type: "user_submission") {
+    submission:posts(post_type: ["user_submission") {
       id,
       post_title
       post_name
       post_content
       thumbnail
-      submission_byline {
-        meta_value
-      }
-      submission_link {
-        meta_value
-      }
-      submission_date {
-        meta_value
-      }
+			post_meta(keys: ["submission_byline", "submission_date", "submission_link"]) {
+				meta_key
+				meta_value
+			}
     }
   }
 `

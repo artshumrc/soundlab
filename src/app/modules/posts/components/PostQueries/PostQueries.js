@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo'
 
 const PostListQuery = gql`
-  query getPosts($post_type: String){
+  query getPosts($post_type: [String]){
     posts(post_type: $post_type){
       id
       post_title

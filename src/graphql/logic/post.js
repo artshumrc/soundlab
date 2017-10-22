@@ -122,7 +122,7 @@ export default class PostService extends PermissionsService {
 
 	/**
 	 * Get a post by the post name
-	 * @param {string} name - the string of the post_name slug 
+	 * @param {string} name - the string of the post_name slug
 	 * @returns {Object} post object records
 	 */
   getPostByName(name) {
@@ -147,7 +147,8 @@ export default class PostService extends PermissionsService {
       }
     }).then(res => {
       if (res) {
-        const metaKey = amazonS3 ? 'amazonS3_info' : '_wp_attached_file'
+        // const metaKey = amazonS3 ? 'amazonS3_info' : '_wp_attached_file'
+        const metaKey = '_wp_attached_file';
 
         return Post.findOne({
           where: {

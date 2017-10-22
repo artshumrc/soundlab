@@ -50,16 +50,13 @@ class BeingCategory extends React.Component {
 const BeingCategoryQuery = gql`
   query BeingCategoryQuery {
     category(term_id:3) {
-      posts(post_type: "sound") {
+      posts(post_type: ["sound"]) {
         id
         post_title
         post_content
-        byline {
-          meta_value
-        }
-        date {
-          meta_value
-        }
+				post_meta(keys: ["byline", "date"]) {
+					meta_value
+				}
       }
     }
   }

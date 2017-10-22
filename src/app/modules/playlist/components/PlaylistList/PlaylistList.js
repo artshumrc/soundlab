@@ -61,13 +61,12 @@ class PlaylistList extends React.Component {
 
 const PlaylistQuery = gql`
   query PlaylistQuery {
-    posts(post_type: "playlist") {
+    posts(post_type: ["playlist"]) {
       id,
       post_title
       queue {
         meta_value
       }
-
     }
   }
 `

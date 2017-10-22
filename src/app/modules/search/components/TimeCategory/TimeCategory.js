@@ -48,13 +48,14 @@ class TimeCategory extends React.Component {
 const TimeCategoryQuery = gql`
   query TimeCategoryQuery {
     category(term_id:4) {
-      posts(post_type: "information") {
+      posts(post_type: ["information"]) {
         id
         post_title
         post_content
-        info_byline {
-          meta_value
-        }
+				post_meta(keys: ["info_byline"]) {
+					meta_key
+					meta_value
+				}
       }
     }
   }

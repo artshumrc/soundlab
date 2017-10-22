@@ -68,7 +68,7 @@ class ResourceEventList extends Component{
 
 const ResourceEventQuery = gql`
   query ResourceEventQuery {
-    posts(post_type: "event") {
+    posts(post_type: ["event"]) {
       id,
       post_title
       post_name

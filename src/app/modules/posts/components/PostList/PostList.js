@@ -31,7 +31,7 @@ PostList.propTypes = {
 }
 
 const PostListQuery = gql`
-  query getPosts($postType: String, $limit: Int, $skip: Int){
+  query getPosts($postType: [String], $limit: Int, $skip: Int){
     posts(post_type: $postType, limit: $limit, skip: $skip ){
       id
       post_title
