@@ -145,7 +145,9 @@ export default class PostService extends PermissionsService {
         post_id: postId,
         meta_key: '_thumbnail_id'
       }
-    }).then(res => {
+    });
+		/*
+		.then(res => {
       if (res) {
         // const metaKey = amazonS3 ? 'amazonS3_info' : '_wp_attached_file'
         const metaKey = '_wp_attached_file';
@@ -175,5 +177,6 @@ export default class PostService extends PermissionsService {
       }
       return null
     })
+		*/
   }
 }

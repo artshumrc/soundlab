@@ -13,8 +13,8 @@ const Postmeta = db.define('wp_postmeta', {
 
 
 Postmeta.associate = models => {
-	Postmeta.belongsTo(models.TermRelationship, {foreignKey: 'post_id'});
 	Postmeta.belongsTo(models.Post, {foreignKey: 'post_id'});
+	Postmeta.belongsTo(models.TermRelationship, {foreignKey: 'post_id'});
 };
 
 
