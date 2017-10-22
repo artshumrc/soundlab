@@ -3,7 +3,7 @@ import { gql, graphql } from 'react-apollo';
 
 const recentQuery = graphql(gql`
 	query recentQuery {
-		posts(post_type: ["sound"]) {
+		posts(post_type: ["sound"], limit: 3, isFeatured: true) {
 			id,
 			post_title
 			post_name

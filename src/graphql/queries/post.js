@@ -25,10 +25,13 @@ const postQueryFields = {
 			skip: {
 				type: GraphQLInt,
 			},
+			isFeatured: {
+				type: GraphQLBoolean,
+			},
 		},
-		async resolve(parent, { post_type, limit, skip }, { token }) {
+		async resolve(parent, { post_type, limit, skip, isFeatured }, { token }) {
 			const postService = new PostService({ token });
-			return await postService.getPosts({ post_type, limit, skip });
+			return await postService.getPosts({ post_type, limit, skip, isFeatured });
 		}
 	},
 	post: {

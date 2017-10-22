@@ -22,14 +22,30 @@ export default class PostService extends PermissionsService {
 	 * @param {number} skip - the orm query skip
 	 * @returns {Object[]} post object records
 	 */
-	getPosts({ post_type=['sound'], limit = 10, skip = 0 }) {
+	getPosts({ post_type=['sound'], limit = 10, skip = 0, isFeatured = false }) {
+		let include: [];
+
+		if (isFeatured) {
+      include = [{
+        model: Postmeta,
+				where: {
+					meta_key: 'is_featured',
+					meta_value: 1,
+				},
+      }];
+		}
+
 		return Post.findAll({
+			include,
 			where: {
 				post_type,
-				post_status: 'publish'
+				post_status: 'publish',
 			},
 			limit: limit,
-			offset: skip
+			offset: skip,
+			order: [
+				['post_modified', 'DESC']
+			]
 		})
 	}
 
