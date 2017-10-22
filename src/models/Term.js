@@ -12,8 +12,8 @@ const Term = db.define('wp_terms', {
 });
 
 
-Term.associate = models => {
-	Term.hasMany(models.TermRelationship,  {foreignKey: 'term_taxonomy_id'});
+Term.associate = ({ models }) => {
+	Term.hasMany(models.wp_term_relationships,  {foreignKey: 'term_taxonomy_id'});
 }
 
 export default Term;

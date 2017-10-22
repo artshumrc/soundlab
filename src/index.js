@@ -15,7 +15,9 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 
 // db
-import db from './db';
+import db, { dbSetup } from './db';
+import Post from './models/Post';
+import Postmeta from './models/Postmeta';
 
 // webpack config
 import config from '../webpack.config.js';
@@ -84,6 +86,9 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false,
 }));
+
+// db setup
+dbSetup();
 
 // CORS setup
 corsSetup(app);

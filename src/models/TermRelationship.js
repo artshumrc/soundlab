@@ -12,10 +12,10 @@ const TermRelationship = db.define('wp_term_relationships', {
 });
 
 
-TermRelationship.associate = models => {
-	TermRelationship.belongsTo(models.Term, {foreignKey: 'term_taxonomy_id'})
-	TermRelationship.hasMany(models.Postmeta, {foreignKey: 'post_id'})
-	TermRelationship.belongsTo(models.Post, {foreignKey: 'object_id'})
+TermRelationship.associate = ({ models }) => {
+	TermRelationship.belongsTo(models.wp_terms, {foreignKey: 'term_taxonomy_id'})
+	TermRelationship.hasMany(models.wp_postmeta, {foreignKey: 'post_id'})
+	TermRelationship.belongsTo(models.wp_posts, {foreignKey: 'object_id'})
 };
 
 export default TermRelationship;

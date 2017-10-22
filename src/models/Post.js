@@ -18,8 +18,8 @@ const Post = db.define('wp_posts', {
 	post_modified: { type: Sequelize.DATE },
 });
 
-Post.associate = models => {
-	Post.hasMany(models.Postmeta, { foreignKey: 'post_id' });
-}
+Post.associate = ({ models }) => {
+	Post.hasMany(models.wp_postmeta, { foreignKey: 'post_id' });
+};
 
 export default Post;

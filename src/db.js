@@ -27,4 +27,14 @@ const db = new Sequelize(
   }
 );
 
+const dbSetup = () => {
+	// Setup associations for database
+	Object.keys(db.models).forEach((modelName) => {
+	  if (db.models[modelName].associate) {
+	    db.models[modelName].associate(db);
+	  }
+	});
+};
+
 export default db;
+export { dbSetup };
