@@ -1,6 +1,13 @@
 import { publicSettings } from '../../../settings';
 
 
+/**
+ * For an object of image sizes from wordpress, return the requested size
+ * @param {Object} image - image object from wordpressj
+ * @param {String} size - desired size 
+ * @returns {Object} full path to requested thumbnail size
+ */
+
 const getPostThumbnailBySize = (image, size) => {
 
 	const fullFilePath = image.file.split('/');
