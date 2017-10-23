@@ -4,7 +4,7 @@ import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import DataLoader from 'dataloader';
 
 // models
-import User from '../models/user';
+import User from '../models/User';
 
 // strategies
 import setupJWTStrategy from './strategies/jwt';

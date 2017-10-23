@@ -2,7 +2,7 @@ import generateJWT from './jwt';
 import providers from './providers';
 
 // models
-import User from '../../models/user';
+import User from '../../models/User';
 
 // authentication
 import { validateTokenOAuth1, validateTokenOAuth2 } from '../../authentication';

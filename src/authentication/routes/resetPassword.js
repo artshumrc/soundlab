@@ -1,5 +1,5 @@
 // models
-import User from '../../models/user';
+import User from '../../models/User';
 
 export const generateResetPassword = async (res, username) => {
 
