@@ -47,13 +47,10 @@ class Sound extends React.Component {
 
 		if (sound) {
 			soundTitle = sound.post_title;
-			soundContent = sound.post_content;
+			soundContent = sound.post_content.replace('\n', '<br /><br />');
 			soundDateMeta = _.findWhere(sound.post_meta, { meta_key: 'date' });
 			soundLocationMeta = _.findWhere(sound.post_meta, { meta_key: 'location' });
 		}
-
-		console.log('###########################################3', soundDateMeta);
-
 
 		return (
 			<Grid className={styles.sound}>
@@ -66,9 +63,10 @@ class Sound extends React.Component {
 					</Col>
 				</Row>
 				<div className={styles.soundBody}>
-					<p className={styles.content}>
-						{soundContent}
-					</p>
+					<p
+						className={styles.content}
+						dangerouslySetInnerHTML={{ __html: soundContent }}
+					/>
 				</div>
 			</Grid>
 		);

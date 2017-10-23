@@ -15,6 +15,7 @@ const FeaturedTrackContainer = props => {
 	return (
 		<FeaturedTrack
 			track={track}
+			showFeaturedTrackLabel
 		/>
 	)
 };

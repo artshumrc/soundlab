@@ -74,6 +74,7 @@ class SoundList extends React.Component {
 						<FeaturedTrack
 							track={sounds[0]}
 							purple
+							showFeaturedTrackLabel
 						/>
 					</Col>
 				</Row>

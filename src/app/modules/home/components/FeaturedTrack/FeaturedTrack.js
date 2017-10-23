@@ -49,7 +49,7 @@ class FeaturedTrack extends React.Component {
 
   render() {
 		const { status } = this.state;
-		const { track, purple } = this.props;
+		const { track, purple, showFeaturedTrackLabel } = this.props;
 		let postTitle = track ? track.post_title : '';
 		let byline = '';
 		let bylineMeta;
@@ -108,13 +108,15 @@ class FeaturedTrack extends React.Component {
         </div>
         <div className={styles.featuredTrackMetaContainer}>
 					<div>
-	          <h6
-							className={`${styles.featuredTrackTitle}
-								${status.length ? styles.featuredTrackTitleHover : ''}
-							`}
-						>
-							Featured Track
-						</h6>
+						{showFeaturedTrackLabel && 
+		          <h6
+								className={`${styles.featuredTrackTitle}
+									${status.length ? styles.featuredTrackTitleHover : ''}
+								`}
+							>
+								Featured Track
+							</h6>
+						}
 					</div>
           <span className={styles.featuredTrackMetaItemTitle}>
 						{postTitle}
