@@ -1,46 +1,89 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { gql, graphql } from 'react-apollo';
-
+import FlatButton from 'material-ui/FlatButton';
+import { Grid, Row, Col } from 'react-bootstrap';
 import CSSModules from 'react-css-modules';
+import autoBind from 'react-autobind';
+import { Link } from 'react-router';
+import _ from 'underscore';
+import moment from 'moment';
 
-import PostContent from '../../../posts/components/PostContent';
-import styles from '../../../posts/components/post.scss';
+import FeaturedTrack from '../../../home/components/FeaturedTrack';
+
+import styles from './Sound.scss';
+
+class Sound extends React.Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			open: false,
+		};
+		autoBind(this);
+	}
+
+	toggleSearchDropdown() {
+		this.setState({
+			open: !this.state.open,
+		});
+	}
+
+	render () {
+		const { loading, sound, error } = this.props;
+
+		if (loading) {
+			return (
+				<div>
+					{/* TODO: add loading component */}
+				</div>
+			);
+		}
+
+		let soundTitle = '';
+		let soundContent = '';
+		let soundDateMeta;
+		let soundLocationMeta;
+
+		if (sound) {
+			soundTitle = sound.post_title;
+			soundContent = sound.post_content;
+			soundDateMeta = _.findWhere(sound.post_meta, { meta_key: 'date' });
+			soundLocationMeta = _.findWhere(sound.post_meta, { meta_key: 'location' });
+		}
+
+		console.log('###########################################3', soundDateMeta);
 
 
-@CSSModules(styles, {allowMultiple: true})
-class Sound extends Component {
-
-  render() {
-    const { loading } = this.props.data
-
-    if (!loading) {
-      const { post_title: title, post_content: content} = this.props.data.post
-
-      return (
-
-          <div styleName="main">
-            <div styleName="wrapper">
-              <img src={this.props.data.post.thumbnail} alt=""/>
-              <h1 styleName="title">{title}</h1>
-              <h6>{this.props.data.post.byline.meta_value}</h6>
-              <h6>{this.props.data.post.date.meta_value}</h6>
-              <h6>{this.props.data.post.external_link.meta_value}</h6>
-              <PostContent content={content}/>
-
-            </div>
-
-          </div>
-
-      )
-    }
-
-    return <div></div>
-  }
+		return (
+			<Grid className={styles.sound}>
+				<Row className={styles.waveCoverSection}>
+					<Col >
+						<FeaturedTrack
+							track={sound}
+							purple
+						/>
+					</Col>
+				</Row>
+				<div className={styles.soundBody}>
+					<p className={styles.content}>
+						{soundContent}
+					</p>
+				</div>
+			</Grid>
+		);
+	}
 }
 
 Sound.propTypes = {
-  data: PropTypes.object
-}
+	sounds: PropTypes.array,
+	error: PropTypes.object,
+	loading: PropTypes.bool,
+};
+
+Sound.defaultProps = {
+	sounds: [],
+	activeCategory: 'everything',
+};
 
 export default Sound;

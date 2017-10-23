@@ -6,7 +6,9 @@ import { soundSingleQuery } from '../../graphql/queries/sounds';
 
 
 const SoundContainer = props => (
-	<Sound />
+	<Sound
+		sound={props.sound}
+	/>
 );
 
 

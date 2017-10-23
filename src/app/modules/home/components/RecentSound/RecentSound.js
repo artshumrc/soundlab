@@ -36,7 +36,7 @@ class RecentSound extends Component{
 		if (thumbnail) {
       thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(thumbnail, 'medium_large')}")`;
 		} else {
-      thumbnailListImage.backgroundImage = 'url("/images/default_sound.jpg")';
+      thumbnailListImage.backgroundImage = 'url("/images/default_sound.png")';
 		}
 
 		const byline = _.findWhere(this.props.post.post_meta, { meta_key: 'byline' });

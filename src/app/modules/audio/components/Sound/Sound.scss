@@ -1,25 +1,25 @@
 @import "../../../../styles";
 
-
-.track-number-container {
-  display: inline-block;
-  vertical-align: top;
-  padding: 26px 0px 0px 10px;
+.sound {
+	min-height: 600px;
+	padding: 0 0 120px;
 }
 
-.track-number {
-  font-size: 22px;
-  font-weight: bold;
-  color: $dark;
+.waveCoverSection {
+  // height: 80vh;
 }
 
-.track-duration-container {
-  display: inline-block;
-  float: right;
-  padding: 26px 10px 0 0;
+.soundBody {
+	max-width: 720px;
+	margin: 0 auto;
+	padding: 20px 0;
+	text-align: center;
 }
 
-.track-duration {
-  color: $lightGrey;
-  font-size: 14px;
+.content {
+	font-size: 22px;
+	font-family: $font-reading;
+	line-height: 1.5em;
+	padding: 15px 0;
+	color: #444;
 }

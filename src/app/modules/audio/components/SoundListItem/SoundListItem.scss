@@ -2,12 +2,12 @@
 
 .soundListItem {
 	width: 100%;
-	border-radius: 2px;
 	display: flex;
 	align-items: center;
+	padding: 5px 0;
 
 	&:hover {
-		background: #ddd;
+		background: #eee;
 	}
 }
 
@@ -15,6 +15,7 @@
 	display: block;
 	font-family: $font-reading;
 	font-size: 22px;
+	color: $dark;
 }
 
 
@@ -23,10 +24,15 @@
 	justify-content: left;
 	align-items: center;
 	width: 100%;
+	color: $dark;
 }
 
 .thumbnail {
 	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	width: 70px;
+	height: 70px;
 }
 
 .thumbnailImage {
@@ -41,10 +47,23 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	width: 70px;
+	height: 70px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	opacity: 0;
+
+	div {
+		width: 40px;
+		height: 40px;
+		opacity: 0.7;
+		@include gradient-vertical($primary-500, $accent-500);
+		border-radius: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
 	i {
 		color: $light;
@@ -58,4 +77,28 @@
 
 .playButtonHover {
 	opacity: 1;
+}
+
+.itemText {
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 20px;
+}
+
+.title {
+	font-size: 14px;
+	font-family: $font-title;
+	color: $dark;
+	margin: 0;
+	padding: 0;
+	line-height: 1.5em;
+	display: block;
+}
+
+.byline {
+	font-size: 12px;
+	font-family: $font-label;
+	color: $lightGrey;
+	line-height: 1.5em;
+	display: block;
 }

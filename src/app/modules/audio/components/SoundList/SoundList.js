@@ -6,7 +6,7 @@ import CSSModules from 'react-css-modules';
 import autoBind from 'react-autobind';
 import { Link } from 'react-router';
 
-import SoundItem from '../SoundListItem';
+import SoundListItem from '../SoundListItem';
 import FeaturedTrack from '../../../home/components/FeaturedTrack';
 
 import styles from './SoundList.scss';
@@ -29,7 +29,6 @@ class SoundList extends React.Component {
 	}
 
 	render () {
-		console.log(this.props);
 		const { loading, sounds, error, activeCategory } = this.props;
 		const { open } = this.state;
 
@@ -69,7 +68,7 @@ class SoundList extends React.Component {
 		});
 
 		return (
-			<Grid>
+			<Grid className={styles.soundList}>
 				<Row className={styles.waveCoverSection}>
 					<Col >
 						<FeaturedTrack
@@ -126,19 +125,19 @@ class SoundList extends React.Component {
 					</Col>
 				</Row>
 	      <Row className={styles.postsColumnSectionTitles}>
-          <Col sm={2}>
+          <Col sm={1}>
 						<span className={styles.sectionTitleNumber}>#</span>
 					</Col>
-          <Col sm={7}>
+          <Col sm={8}>
 						<span className={styles.sectionTrackLabel}>Track</span>
 					</Col>
 					<Col sm={3}>
-						<span className={styles.sectionTitleDuration}>Duration</span>
+						<span className={styles.sectionTitleDuration}></span>
 					</Col>
 				</Row>
 
 				{sounds.map((sound, i) => (
-					<SoundItem
+					<SoundListItem
 						key={`${sound.id}-${i}`}
 						sound={sound}
 						index={i}

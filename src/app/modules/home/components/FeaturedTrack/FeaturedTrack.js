@@ -121,7 +121,7 @@ class FeaturedTrack extends React.Component {
 					</span>
 					{byline &&
 	          <span className={styles.featuredTrackMetaItemAuthor}>
-							{byline.meta_value}
+							{byline}
 						</span>
 					}
         </div>

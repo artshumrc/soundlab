@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import _ from 'underscore';
+import autoBind from 'react-autobind';
 
 import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 import styles from './SoundListItem.scss'
@@ -14,13 +15,25 @@ class SoundListItem extends Component{
 		super(props);
 
 		this.state = {
-			mouseOver: '',
+			mouseOver: false,
 		};
 	}
 
 	handleClick() {
 		// Start item on player
 
+	}
+
+	handleMouseEnter(){
+		this.setState({
+			mouseOver: true,
+		});
+	}
+
+	handleMouseLeave(){
+		this.setState({
+			mouseOver: false,
+		});
 	}
 
   render() {
@@ -35,8 +48,8 @@ class SoundListItem extends Component{
 		const duration = "0:00";
 
     const thumbnailListImage = {
-      width: '90px',
-      height: '90px',
+      width: '70px',
+      height: '70px',
       objectFit: 'cover',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
@@ -44,23 +57,25 @@ class SoundListItem extends Component{
     };
 
 		if (sound.thumbnail) {
-      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(sound.thumbnail, 'small')}")`;
+      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(sound.thumbnail, 'thumbnail')}")`;
 		} else {
-      thumbnailListImage.backgroundImage = 'url("/images/default_sound.jpg")';
+      thumbnailListImage.backgroundImage = 'url("/images/default_sound_600w600h.png")';
 		}
 
     return (
-      <Link
-				className={styles.soundListItem}
-				to={`/sound/${sound.post_name}`}
-			>
-	      <Row >
-          <Col sm={2}>
+      <Row >
+	      <Link
+					className={styles.soundListItem}
+					to={`/waves/${sound.post_name}`}
+					onMouseEnter={this.handleMouseEnter.bind(this)}
+					onMouseLeave={this.handleMouseLeave.bind(this)}
+				>
+          <Col sm={1}>
             <span className={styles.index}>
 							{this.props.index + 1}
 						</span>
           </Col>
-          <Col sm={7}>
+          <Col sm={8}>
 						<div className={styles.itemContent}>
 	            <div className={styles.thumbnail}>
 		            <div
@@ -72,7 +87,9 @@ class SoundListItem extends Component{
 										${mouseOver ? styles.playButtonHover : ''}
 									`}
 								>
-									<i className="mdi mdi-play" />
+									<div>
+										<i className="mdi mdi-play" />
+									</div>
 								</div>
 							</div>
 							<div className={styles.itemText}>
@@ -81,19 +98,18 @@ class SoundListItem extends Component{
 								</h3>
 								{byline &&
 									<span className={styles.byline}>
-										{byline}
+										{byline.meta_value}
 									</span>
 								}
 							</div>
 						</div>
           </Col>
-          <Col sm={3}>
+          <Col sm={3} className={styles.durationColumn}>
             <span className={styles.duration}>
-							{duration}
 						</span>
 					</Col>
-	      </Row>
-			</Link>
+				</Link>
+	    </Row>
     );
   }
 }

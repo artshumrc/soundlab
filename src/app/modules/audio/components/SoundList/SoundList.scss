@@ -1,7 +1,12 @@
 @import "../../../../styles";
 
+.soundList {
+	min-height: 600px;
+	padding: 0 0 120px;
+}
+
 .waveCoverSection {
-  height: 80vh;
+  // height: 80vh;
 }
 
 .searchTitle {
@@ -47,7 +52,7 @@
 }
 
 .filterContainer {
-  padding: 20px 0 0;
+  padding: 0px 0 40px;
 	display: flex;
 	align-items: baseline;
 	justify-content: left;
@@ -64,7 +69,7 @@
 		font-family: $font-label;
 		color: $lightGrey;
 		font-size: 16px;
-		text-shadow: 0.04em 0 #fff, -0.04em 0 #fff, 0 0.04em #fff, 0 -0.04em #fff, 0.08em 0 #fff, -0.08em 0 #fff, 0.1em 0 #fff, -0.1em 0 #fff, 0.15em 0 #fff, -0.15em 0 #fff, 0.18em 0 #fff, -0.18em 0 #fff, 0.04em 0.1em #fff, -0.04em 0.1em #fff, 0.08em 0.1em #fff, -0.08em 0.1em #fff, 0.11em 0.1em #fff, -0.11em 0.1em #fff, 0.15em 0.1em #fff, -0.15em 0.1em #fff, 0.2em 0.1em #fff, -0.2em 0.1em #fff;
+		text-shadow: 0.04em 0 #fafafa, -0.04em 0 #fafafa, 0 0.04em #fafafa, 0 -0.04em #fafafa, 0.08em 0 #fafafa, -0.08em 0 #fafafa, 0.1em 0 #fafafa, -0.1em 0 #fafafa, 0.15em 0 #fafafa, -0.15em 0 #fafafa, 0.18em 0 #fafafa, -0.18em 0 #fafafa, 0.04em 0.1em #fafafa, -0.04em 0.1em #fafafa, 0.08em 0.1em #fafafa, -0.08em 0.1em #fafafa, 0.11em 0.1em #fafafa, -0.11em 0.1em #fafafa, 0.15em 0.1em #fafafa, -0.15em 0.1em #fafafa, 0.2em 0.1em #fafafa, -0.2em 0.1em #fafafa;
 	}
 }
 
@@ -83,4 +88,14 @@
 .postsColumnSectionTitles {
   border-bottom: 1px solid $lightGrey;
   margin-bottom: 16px;
+	font-family: $font-label;
+	font-size: 12px;
+	text-transform: uppercase;
+	display: block;
+	color: $lightGrey;
+	padding-bottom: 6px;
+}
+
+.durationColumn {
+	text-align: left;
 }
