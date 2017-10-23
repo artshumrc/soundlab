@@ -6,7 +6,9 @@ import { resourceSingleQuery } from '../../graphql/queries/resources';
 
 
 const ResourceSingleContainer = props => (
-	<ResourceSingle />
+	<ResourceSingle
+		resource={props.resource}
+	/>
 );
 
 

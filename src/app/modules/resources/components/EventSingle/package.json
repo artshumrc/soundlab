@@ -1,0 +1,6 @@
+{
+  "name": "EventSingle",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./EventSingle.js"
+}

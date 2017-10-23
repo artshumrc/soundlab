@@ -1,0 +1,34 @@
+@import "../../../../styles";
+
+.cover-section {
+  height: 400px;
+  width: 100%;
+  background: #fcfadf;
+}
+
+.content-section {
+  min-height: 500px;
+  padding: 0 5%;
+  padding-bottom: 60px;
+}
+
+.cover-image {
+  margin-top: -300px;
+  margin-bottom: 60px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+  font-size: 42px;
+	padding: 20px 0;
+  font-family: $font-reading;
+	font-weight: 100;
+  color: $darkGrey;
+}
+
+.text {
+  color: $dark;
+	font-weight: 100;
+  font-family: $font-body;
+	line-height: 1.6em;
+}

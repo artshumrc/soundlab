@@ -60,13 +60,39 @@ const resourceSingleQuery = graphql(gql`
 `, {
   options: ({params}) => ({
     variables: {
-      post: params.post
+      post: params.slug,
     }
   }),
   name: 'resourceSingleQuery',
   props: props => {
     return {
       resource: props.resourceSingleQuery.post,
+    };
+  },
+});
+
+const eventSingleQuery = graphql(gql`
+  query eventSingleQuery($post: String){
+    post(name:$post){
+      id
+      post_title
+      post_content
+			post_meta(keys: ["event_start", "event_end", "location"]) {
+				meta_key
+				meta_value
+			}
+    }
+  }
+`, {
+  options: ({params}) => ({
+    variables: {
+      post: params.slug,
+    }
+  }),
+  name: 'eventSingleQuery',
+  props: props => {
+    return {
+      event: props.eventSingleQuery.post,
     };
   },
 });
@@ -117,5 +143,5 @@ const resourceEventListQuery = graphql(gql`
 
 export {
 	resourceListQuery, additionalResourceListQuery, resourceSingleQuery,
-	resourceEventListQuery, featuredEventQuery
+	resourceEventListQuery, featuredEventQuery, eventSingleQuery
 };
