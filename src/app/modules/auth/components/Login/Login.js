@@ -31,20 +31,13 @@ class Login extends React.Component {
 		return (
 			<div className={styles.loginForm}>
 			<Row>
-				<Col smOffset={3} mdOffset={4} lgOffset={4} xs={12} sm={6} md={4} lg={4}>
+				<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
 					<h3>Login to an existing account</h3>
 				</Col>
 			</Row>
 
-				{/* <OAuthButtons
-					login={login}
-				/>
-
-				<div className={styles.loginSeparator}>
-					<strong>OR</strong>
-				</div> */}
 				<Row>
-					<Col smOffset={3} mdOffset={4} lgOffset={4} xs={12} sm={6} md={4} lg={4}>
+					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
 						<PWDLoginForm
 							login={login}
 						/>
@@ -52,25 +45,20 @@ class Login extends React.Component {
 				</Row>
 
 				<Row>
-					<Col smOffset={3} mdOffset={4} lgOffset={4} xs={12} sm={6} md={4} lg={4}>
-					<div className={styles.signupLink}>
-						<p>
-							Don't have an account?
+					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
+						<p className={styles.signupLink}>
 							<a
-								href="#"
-								id="at-signUp"
-								className="at-link at-signup"
+								onClick={() => {}}
+							>
+								Forgot Password?
+							</a>
+							<span>or</span>
+							<a
 								onClick={onRegisterClick}
 							>
-								Register.
+								Create Account
 							</a>
 						</p>
-					</div>
-					<div className={styles.verificationEmailLink}>
-						<p>
-							Verification email lost? <a href="/send-again" id="at-resend-verification-email" className="at-link at-resend-verification-email">Send again.</a>
-						</p>
-					</div>
 					</Col>
 				</Row>
 

@@ -34,30 +34,33 @@ function renderField({ input, label, type, meta }) {
 }
 
 const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login }) => (
-	<div className="at-pwd-form">
+	<div className={styles.loginForm}>
 		<form onSubmit={handleSubmit(wrapSubmit(login))}>
+			<label>Email Address</label>
 			<Field
 				name="username"
-				label="Email"
 				type="email"
+				placeholder=""
 				component={renderField}
 			/>
+			<label>Password</label>
 			<Field
 				name="password"
-				label="Password"
 				type="password"
+				placeholder=""
 				component={renderField}
 			/>
 			<div className="at-pwd-link">
 				<p className="error-text">
 					{error}
 				</p>
-				<p>
-					<a href="/forgot-password" id="at-forgotPwd" className="at-link at-pwd">Forgot your password?</a>
-				</p>
 			</div>
-			<button type="submit" className="at-btn submit btn btn-lg btn-block btn-default" id="at-btn" disabled={submitting}>
-				Sign In
+			<button
+				type="submit"
+				className={styles.signInButton}
+				disabled={submitting}
+			>
+				Login
 			</button>
 		</form>
 	</div>
@@ -72,5 +75,5 @@ PWDLoginForm.defaultProps = {
 
 
 export default reduxForm({
-	form: 'PWDLoginForm',  // a unique identifier for this form
+	form: 'PWDLoginForm',
 })(PWDLoginForm);
