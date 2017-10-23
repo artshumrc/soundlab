@@ -13,17 +13,24 @@
 }
 
 .about-cover-image {
-  margin-top: -340px;
+  margin-top: -300px;
   margin-bottom: 60px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 .about-section-title {
-  font-size: 38px;
-  font-family: serif;
+  font-size: 42px;
+	padding: 20px 0;
+  font-family: $font-reading;
+	font-weight: 100;
+  color: $darkGrey;
 }
 
 .about-text {
-  color: $darkGrey;
+  color: $dark;
+	font-weight: 100;
+  font-family: $font-body;
+	line-height: 1.6em;
 }
 
 .team-title {
