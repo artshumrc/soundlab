@@ -1,72 +1,34 @@
-import React, { Component, PropTypes } from 'react'
-import ReactDOM from 'react-dom'
-import { Link } from 'react-router'
-import { browserHistory } from 'react-router'
-import CSSModules from 'react-css-modules'
-//import PostContent from '../posts/PostContent'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
-//import styles from '../posts/post_excerpt.scss'
-import KeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
-import styles from '../resources.scss'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
+import _s from 'underscore.string';
+
+import styles from './ResourceItem.scss';
 
 
-@CSSModules(styles, {allowMultiple: true})
-
-class ResourceItem extends Component{
-
-  componentDidMount() {
-    const { index } = this.props
-  }
-
-  handleClick(e) {
-    e.preventDefault()
-    const target = e.currentTarget.href
-    browserHistory.push(target)
-  }
-
+class ResourceItem extends Component {
 
   render() {
-    const { post_content: content, post_title: title, post_name: name } = this.props.post
-
-    const resourceItemTitle = {
-      fontSize: '28px',
-      lineHeight: '22px',
-      fontFamily: 'serif'
-    }
-
-    const postCardTitleSection = {
-      display: 'inline-block',
-      verticalAlign: 'super'
-    }
-
-    const resourceContentText = {
-      fontSize: '18px',
-      color: '#353131',
-      fontWeight: '100',
-      padding: '0px 0px 20px 0px'
-    }
+		const { resource } = this.props;
 
     return(
-
-      <div>
-
-        <Card styleName="resource-item">
-          <Link to={"resources/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
-          <CardTitle
-            styleName="resource-card-item-title"
-            title={title}
-            titleStyle={resourceItemTitle}
-          />
-          <CardText style={resourceContentText}>
-            {content}
-          </CardText>
-          <a styleName="read-more" href=""><KeyboardArrowRight />Read more</a>
-          </Link>
-
-        </Card>
-
-      </div>
-
+			<div className={styles.resourceItem}>
+        <Link to={`/resources/${resource.post_name}`}>
+          <h3 className={styles.title}>
+						{resource.post_title}
+					</h3>
+        </Link>
+        <p className={styles.content}>
+          {_s.prune(resource.post_content, 120)}
+        </p>
+        <Link
+					to={`/resources/${resource.post_name}`}
+					className={styles.readMoreLink}
+				>
+					<i className="mdi mdi-chevron-right" />
+        	<span className={styles.readMoreLinkText}>Read more</span>
+        </Link>
+			</div>
     )
   }
 }

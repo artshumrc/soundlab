@@ -6,37 +6,29 @@ import CSSModules from 'react-css-modules'
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card'
 import KeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
 
-import styles from '../resources.scss'
+import styles from './AdditionalResourceItem.scss'
 
 
 @CSSModules(styles, {allowMultiple: true})
 
 class AdditionalResourceItem extends Component{
 
-  componentDidMount() {
-    const { index } = this.props
-  }
-
-  handleClick(e) {
-    e.preventDefault()
-    const target = e.currentTarget.href
-    browserHistory.push(target)
-  }
-
-
   render() {
-    const { post_content: content, post_title: title, post_name: name } = this.props.post
+		const { resource } = this.props;
 
     return(
 
-      <div styleName="additional-resources-title-container">
-
-        <Link to={"resources/" + encodeURIComponent(name)}>
-          <span styleName="read-more"><KeyboardArrowRight />{title}</span>
+      <div className={styles.additionalResourceItem}>
+        <Link
+					to={`/resources/${resource.post_name}`}
+					className={styles.link}
+				>
+					<i className="mdi mdi-chevron-right" />
+          <span className={styles.readMore}>
+						{resource.post_title}
+					</span>
         </Link>
-
       </div>
-
     )
   }
 }

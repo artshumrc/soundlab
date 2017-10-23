@@ -1,93 +1,127 @@
-import React, { Component, PropTypes } from 'react'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import CSSModules from 'react-css-modules'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Grid, Row, Col } from 'react-bootstrap';
+import CSSModules from 'react-css-modules';
+import { Link } from 'react-router';
+import _ from 'underscore';
 
-import ResourceItem from '../ResourceItem'
-import ResourceEventList from '../ResourceEventList'
-import AdditionalResourceItem from '../AdditionalResourceItem'
-import styles from '../resources.scss'
+import ResourceItem from '../ResourceItem';
+import AdditionalResourceListContainer from '../../containers/AdditionalResourceListContainer';
+import ResourceEventListContainer from '../../containers/ResourceEventListContainer';
 
-@CSSModules(styles, {allowMultiple: true})
+import styles from './ResourceList.scss';
 
 class ResourceList extends React.Component {
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      open: true
-    }
-  }
-
-  static propTypes = {
-    data: PropTypes.shape({
-      loading: React.PropTypes.bool,
-      error: React.PropTypes.object,
-      posts: React.PropTypes.array,
-    }).isRequired,
-  }
-
   render () {
-    const thumbnailListImage = {
-        width: '100%',
-        height: '800px',
-        objectFit: 'cover',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }
-    if (this.props.data.loading) {
+		const { loading, resources, events, error } = this.props;
+
+    if (loading) {
       return (<div>Loading</div>)
     }
 
-    if (this.props.data.error) {
-      console.log(this.props.data.error)
-      return (<div>An unexpected error occurred</div>)
-    }
+		let event;
+		let byline;
+		let dateDescription;
+		let excerpt;
+		let thumbnailListImage;
 
-    if (this.props.data.posts) {
-      return (
-	      <div>
-	        <Row styleName="resources-cover-image">
-	          <Col>
-	            <div style={thumbnailListImage}></div>
-	            <div styleName="cover-inlay">
-	              <div>
-	                <span styleName="cover-inlay-title">Intro to Ableton</span>
-	              </div>
-	              <div>
-	                <span styleName="cover-inlay-date">Every Wednesday, 8pm</span>
-	              </div>
-	              <div styleName="cover-inlay-description-container">
-	                <span styleName="cover-inlay-item-description">Stop by the lab any Wednesday evening for an introduction to Ableton, a powerful starter tool for any sound production project.</span>
-	              </div>
-	            </div>
-	          </Col>
-	        </Row>
-	        <Row styleName="resource-list-container">
-	          <Col>
-	            <h4 styleName="resource-section-title">Tutorials</h4>
-	            {this.props.data.posts.map((post) =>
-	              <ResourceItem key={post.id} post={post} />
+		if (events && events.length) {
+			event = events[0];
+	    thumbnailListImage = {
+	        width: '100%',
+	        height: '800px',
+	        objectFit: 'cover',
+	        backgroundSize: 'cover',
+	        backgroundPosition: 'center',
+					backgroundImage: 'url("/images/default_event.jpg")',
+	    };
+
+
+			if (event.thumbnail) {
+	      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(event.thumbnail, 'medium_large')}")`;
+			}
+
+			byline = _.findWhere(event.post_meta, { meta_key: 'byline' });
+			dateDescription = _.findWhere(event.post_meta, { meta_key: 'date_description' });
+			excerpt = _.findWhere(event.post_meta, { meta_key: 'excerpt' });
+		}
+
+    return (
+			<div className={styles.resourceList}>
+	      <Grid>
+					{event &&
+			      <Row>
+			        <Col>
+								<div className={styles.learnUpper}>
+									<Link to={`/events/${event.post_name}`}>
+					          <div
+											className={styles.learnBackground}
+											style={thumbnailListImage}
+										/>
+									</Link>
+				          <div className={styles.learnInlay}>
+										<Link to={`/events/${event.post_name}`}>
+					            <h3 className={styles.learnTitle}>
+												{event.post_title}
+											</h3>
+										</Link>
+										{dateDescription &&
+					            <span className={styles.learnDate}>
+												{dateDescription.meta_value}
+											</span>
+										}
+										{excerpt &&
+					            <p className={styles.learnDescription}>
+												{excerpt.meta_value}
+											</p>
+										}
+										<Link to={`/events/${event.post_name}`}>
+											<div className={styles.learnMore}>
+												<i className="mdi mdi-chevron-right" />
+												<span>
+													Learn more
+												</span>
+											</div>
+										</Link>
+				          </div>
+								</div>
+			        </Col>
+			      </Row>
+					}
+	        <Row className={styles.resourceListContainer}>
+	          <Col sm={8}>
+	            <h2 className={styles.resourceSectionTitle}>Tutorials</h2>
+	            {resources.map((resource) =>
+	              <ResourceItem
+									key={resource.id}
+									resource={resource}
+								/>
 	            )}
 	          </Col>
-	          <Col>
-	            <h4 styleName="resource-section-title">Upcoming Events</h4>
-	            <ResourceEventList/>
-
+	          <Col sm={4}>
+	            <h4 className={styles.resourceSectionTitle}>
+								Upcoming Events
+							</h4>
+	            <ResourceEventListContainer />
 	          </Col>
 	      </Row>
-	      <Row styleName="additional-resources-container">
+	      <Row className={styles.additionalResourcesContainer}>
 	        <Col>
-	          <h4 styleName="resource-section-title">Additional resources</h4>
-	          {this.props.data.posts.map((post) =>
-	            <AdditionalResourceItem key={post.id} post={post} />
-	          )}
+	          <h4 className={styles.resourceSectionTitle}>
+							Additional resources
+						</h4>
+						<AdditionalResourceListContainer />
 	        </Col>
 	      </Row>
-      </div>
-      )
-    }
+	    </Grid>
+		</div>
+		);
   }
 }
+
+ResourceList.defaultProps = {
+	resources: [],
+};
 
 export default ResourceList;

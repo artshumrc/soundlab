@@ -1,0 +1,60 @@
+@import "../../../../styles";
+
+.eventContainer {
+  width: 100%;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.eventSectionWrapper {
+  display: inline-block;
+
+}
+
+.dateWrapper {
+  height: 90px;
+  width: 90px;
+  background: #eee;
+  border-radius: 15px;
+}
+
+.eventSectionWrapper.eventMetaWrapper {
+  height: 90px;
+  width: 75%;
+  padding: 18px 0 0 20px;
+}
+
+.dateContainer {
+  display: flex;
+  justify-content: center;
+  height: 0px;
+
+  &.monthContainer {
+    padding: 16px 0 10px 0;
+  }
+}
+
+.month {
+  font-size: 14px;
+	color: $darkGrey;
+  font-family: $font-reading;
+  text-transform: uppercase;
+}
+
+.day {
+  font-size: 36px;
+  font-family: $font-reading;
+	color: $dark;
+}
+
+.eventName {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: $dark;
+}
+
+.eventTime {
+  font-size: 20px;
+  color: $lightGrey;
+}

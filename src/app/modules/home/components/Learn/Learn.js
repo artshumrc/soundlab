@@ -23,14 +23,12 @@ class Learn extends React.Component {
         objectFit: 'cover',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-				backgroundImage: `url("${publicSettings.uploads}/2017/07/rotate-3.jpg")`,
+				backgroundImage: 'url("/images/default_event.jpg")',
     };
 
 
 		if (event.thumbnail) {
       thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(event.thumbnail, 'medium_large')}")`;
-		} else {
-      thumbnailListImage.backgroundImage = 'url("/images/default_event.jpg")';
 		}
 
 		const byline = _.findWhere(event.post_meta, { meta_key: 'byline' });

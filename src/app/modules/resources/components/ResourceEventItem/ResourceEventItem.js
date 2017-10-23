@@ -1,63 +1,75 @@
-import React, { Component, PropTypes } from 'react'
-import ReactDOM from 'react-dom'
-import { Link } from 'react-router'
-import { browserHistory } from 'react-router'
-import CSSModules from 'react-css-modules'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
-import KeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
+import _ from 'underscore';
+import _s from 'underscore.string';
+import moment from 'moment';
 
-import styles from '../resources.scss'
+import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
+import styles from './ResourceEventItem.scss';
 
 
-@CSSModules(styles, {allowMultiple: true})
-
-class ResourceEventItem extends Component{
-
-  componentDidMount() {
-    const { index } = this.props
-  }
-
-  handleClick(e) {
-    e.preventDefault()
-    const target = e.currentTarget.href
-    browserHistory.push(target)
-  }
-
+class ResourceEventItem extends Component {
 
   render() {
-    const { post_content: content, post_title: title, post_name: name } = this.props.post
+    const { event } = this.props;
 
-    return(
+		if (!event) {
+			return null;
+		}
 
-      <div styleName="event-container">
-        <div styleName="event-section-wrapper date-wrapper">
-          <div styleName="date-container month-container">
-            <span styleName="month">{this.props.post.event_month.meta_value}</span>
+		const eventStart = _.findWhere(event.post_meta, { meta_key: 'event_start' });
+		const eventEnd = _.findWhere(event.post_meta, { meta_key: 'event_end' });
+		let eventMonth;
+		let eventDay;
+		let eventTimeStart;
+		let eventTimeEnd;
+
+		if (eventStart) {
+			eventMonth = moment(parseInt(eventStart.meta_value, 10) * 1000).format('MMM');
+			eventDay = moment(parseInt(eventStart.meta_value, 10) * 1000).format('DD');
+			eventTimeStart = moment(parseInt(eventStart.meta_value, 10) * 1000).format('h:mm');
+		}
+
+		if (eventEnd) {
+			eventTimeEnd = moment(parseInt(eventEnd.meta_value, 10) * 1000).format('h:mm');
+		}
+
+
+    return (
+      <div className={styles.eventContainer}>
+        <div className={`${styles.eventSectionWrapper} ${styles.dateWrapper}`}>
+          <div className={`${styles.dateContainer} ${styles.monthContainer}`}>
+            <span className={styles.month}>
+							{eventMonth}
+						</span>
           </div>
-          <div styleName="date-container">
-            <span styleName="date">{this.props.post.event_date.meta_value}</span>
+          <div className={styles.dateContainer}>
+            <span className={styles.day}>
+							{eventDay}
+						</span>
           </div>
 
         </div>
-        <div styleName="event-section-wrapper event-meta-wrapper">
+        <div className={`${styles.eventSectionWrapper} ${styles.eventMetaWrapper}`}>
           <div>
-            <span styleName="event-name">{title}</span>
+            <span className={styles.eventName}>
+							{event.post_title}
+						</span>
           </div>
           <div>
-            <span styleName="event-time">{this.props.post.event_start_time.meta_value} - {this.props.post.event_end_time.meta_value}</span>
+            <span className={styles.eventTime}>
+							{eventTimeStart}{eventTimeEnd ? `- ${eventTimeEnd}` : ''}
+						</span>
           </div>
         </div>
-
       </div>
-
-    )
+    );
   }
 }
 
 ResourceEventItem.propTypes = {
-  index: PropTypes.number,
-  styles: PropTypes.object,
-  post: PropTypes.object,
-}
+  event: PropTypes.object,
+};
 
-export default ResourceEventItem
+export default ResourceEventItem;

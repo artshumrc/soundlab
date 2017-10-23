@@ -1,88 +1,34 @@
-import React, { Component, PropTypes } from 'react'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
-import ReactDOM from 'react-dom'
-import { Link } from 'react-router'
-import { browserHistory } from 'react-router'
-import CSSModules from 'react-css-modules'
-//import PostContent from '../posts/PostContent'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
-//import styles from '../posts/post_excerpt.scss'
-import KeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
-
+import React, { Component } from 'react'
 import ResourceEventItem from '../ResourceEventItem'
-import styles from '../resources.scss'
+import styles from './ResourceEventList.scss'
 
-@CSSModules(styles, {allowMultiple: true})
 class ResourceEventList extends Component{
-
-  constructor(props) {
-    super(props)
-
-  }
-
-  componentDidMount() {
-    const { index } = this.props
-  }
-
-  handleClick(e) {
-    e.preventDefault()
-    const target = e.currentTarget.href
-    browserHistory.push(target)
-  }
-
-  static propTypes = {
-    data: PropTypes.shape({
-      loading: React.PropTypes.bool,
-      error: React.PropTypes.object,
-      posts: React.PropTypes.array,
-    }).isRequired,
-  }
-
   render() {
+		const { events, error, loading } = this.props;
 
-    if (this.props.data.loading) {
-      return (<div>Loading</div>)
+    if (loading) {
+      return (
+				<div>
+					Loading
+				</div>
+			);
     }
 
-    if (this.props.data.error) {
-      console.log(this.props.data.error)
-      return (<div>An unexpected error occurred</div>)
-    }
-    console.log(this.props.data.posts)
-    if (this.props.data.posts) {
-
-    return(
-        <div>
-        {this.props.data.posts.map((post) =>
-          <ResourceEventItem key={post.id} post={post} />
-        )}
-        </div>
-
-
-      )
-    }
+    return (
+      <div>
+	      {events.map((event) => (
+	        <ResourceEventItem
+						key={event.id}
+						event={event}
+					/>
+	      ))}
+      </div>
+    );
   }
 }
 
+ResourceEventList.defaultProps = {
+	events: [],
+};
 
-const ResourceEventQuery = gql`
-  query ResourceEventQuery {
-    posts(post_type: ["event"]) {
-      id,
-      post_title
-      post_name
-      post_content
-      event_start {
-        meta_value
-      }
-      event_end {
-        meta_value
-      }
-    }
-  }
-`
-
-const ResourceEventListWithData = graphql(ResourceEventQuery)(ResourceEventList)
-
-export default ResourceEventListWithData
+export default ResourceEventList;
