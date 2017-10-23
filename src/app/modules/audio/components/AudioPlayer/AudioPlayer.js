@@ -71,8 +71,7 @@ class AudioPlayer extends Component {
                 <h6 styleName="playerMetaCreator">{playlistItem.creator}</h6>
               </div>
             </div>
-
-        )
+        );
       }
     })
   }
@@ -161,33 +160,33 @@ class AudioPlayer extends Component {
                     <div styleName="buttonWrapper">
                       <SkipPrevious
                         style={buttonStyles}
-                        onClick={this.playPrevious.bind(this, playlist)} />
+                        onClick={this.playPrevious.bind(this, playlist)}
+											/>
                       {this.props.ui.isPlaying === true ?
-                      <Pause
-                        style={buttonStyles}
-                        onClick={this.pauseTheSound.bind(this)} />
+	                      <Pause
+	                        style={buttonStyles}
+	                        onClick={this.pauseTheSound.bind(this)}
+												/>
                       :
-                      <PlayArrow
-                        style={playButtonStyles}
-                        onClick={this.resumeTheSound.bind(this)} />
+	                      <PlayArrow
+	                        style={playButtonStyles}
+	                        onClick={this.resumeTheSound.bind(this)}
+												/>
                       }
                       <SkipNext
                         style={buttonStyles}
                         onClick={this.playNext.bind(this, playlist)} />
                     </div>
                     <div styleName="playTimeWrapper">
-                      <span styleName="playTime">2:02 / 4:28</span>
+                      <span styleName="playTime">0:00 / 0:00</span>
                     </div>
-
                   </div>
                 </div>
               </div>
-
           </Col>
         </row>
-
       </div>
-    )
+    );
   }
 }
 
@@ -199,8 +198,7 @@ function mapStateToProps(state){
   return {
     ui:state.ui,
     playlist:state.playlist
-  }
-
+  };
 }
 
 export default connect(mapStateToProps)(AudioPlayer)

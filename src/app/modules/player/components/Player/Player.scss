@@ -44,6 +44,8 @@
 
   .playerMeta {
     padding-left: 10px;
+		display: inline-block;
+		vertical-align: top;
   }
 
   .playerMetaCreator {
@@ -107,7 +109,7 @@
 .currentPlayMeta {
   display: flex;
   width: 100%;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .playlistButton {

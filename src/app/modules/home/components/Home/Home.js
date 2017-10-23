@@ -6,7 +6,6 @@ import CSSModules from 'react-css-modules';
 
 import ShowcaseList from '../../../showcase/components/ShowcaseList';
 import PlaylistList from '../../../playlist/components/PlaylistList';
-import AudioPlayer from '../../../audio/components/AudioPlayer';
 import Cover from '../Cover';
 import Intro from '../Intro';
 import RecentContainer from '../../containers/RecentContainer';
