@@ -43,5 +43,36 @@ const soundListQuery = graphql(gql`
   },
 });
 
+const soundListCategoryQuery = graphql(gql`
+	query soundListCategoryQuery($term_slug: String) {
+		category(term_slug: $term_slug) {
+			posts(post_type: ["sound"]) {
+				id,
+				post_title
+				post_name
+				post_content
+				thumbnail
+				post_meta(keys: ["audio_file", "byline", "date", "external_link", "location"]) {
+					meta_value
+				}
+			}
+		}
+	}
+`, {
+	options: ({ params }) => {
+		return {
+			variables: {
+				term_slug: params.category_slug,
+			}
+		};
+	},
+  name: 'soundListCategoryQuery',
+  props: props => {
+    return {
+      category: props.soundListCategoryQuery.category,
+    };
+  },
+});
 
-export { soundSingleQuery, soundListQuery };
+
+export { soundSingleQuery, soundListQuery, soundListCategoryQuery };

@@ -39,10 +39,10 @@ const CategoryType = new GraphQLObjectType({
 					type: GraphQLInt,
 				},
 			},
-			resolve: async ( _, { post_type, limit, skip }, { token }) => {
+			resolve: async ( category, { post_type, limit, skip }, { token }) => {
 
 				const postService = new PostService({ token });
-				return await postService.getPostsInCategory(category.term_id, post_type, );
+				return await postService.getPostsInCategory(category.term_id, { post_type, limit, skip });
 			},
 		},
 	}),

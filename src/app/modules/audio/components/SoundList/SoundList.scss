@@ -1,78 +1,86 @@
 @import "../../../../styles";
 
-.wave-cover-section {
+.waveCoverSection {
   height: 80vh;
 }
 
-.featured-track-player {
-	background: transparent;
+.searchTitle {
+	padding: 20px 0;
+
+	i {
+		display: inline-block;
+		vertical-align: top;
+	}
 }
 
-.wave-search-filter-section {
-	background: transparent;
-}
-
-.lets-listen {
-  font-size: 36px;
-  color: $lightGrey;
-  vertical-align: inherit;
-}
-
-.filter-title {
+.letsListen {
+	display: inline-block;
+	vertical-align: top;
   font-size: 44px;
+	line-height: 1.3em;
+  color: $lightGrey;
+}
+
+.searchDropdownToggle {
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 10px;
+
+	i {
+		display: inline-block;
+		vertical-align: center;
+		padding: 5px 5px 0;
+		&:before {
+			font-size: 36px;
+		}
+	}
+}
+
+.filterTitle {
+	display: inline-block;
+	vertical-align: top;
+  font-size: 44px;
+	line-height: 1.3em;
   color: $dark;
-  border-bottom: 3px solid $dark;
+  border-bottom: 2px solid $dark;
+	cursor: pointer;
 }
 
-.filter-container {
-  padding-top: 80px;
+.filterContainer {
+  padding: 20px 0 0;
+	display: flex;
+	align-items: baseline;
+	justify-content: left;
+	flex-wrap: wrap;
 }
 
-.filter-row-one {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding-bottom: 40px;
+.filterButton {
+	display: inline-block;
+	text-align: left;
+	width: 24%;
+	padding: 10px 0;
+
+	span {
+		font-family: $font-label;
+		color: $lightGrey;
+		font-size: 16px;
+		text-shadow: 0.04em 0 #fff, -0.04em 0 #fff, 0 0.04em #fff, 0 -0.04em #fff, 0.08em 0 #fff, -0.08em 0 #fff, 0.1em 0 #fff, -0.1em 0 #fff, 0.15em 0 #fff, -0.15em 0 #fff, 0.18em 0 #fff, -0.18em 0 #fff, 0.04em 0.1em #fff, -0.04em 0.1em #fff, 0.08em 0.1em #fff, -0.08em 0.1em #fff, 0.11em 0.1em #fff, -0.11em 0.1em #fff, 0.15em 0.1em #fff, -0.15em 0.1em #fff, 0.2em 0.1em #fff, -0.2em 0.1em #fff;
+	}
 }
 
-.filter-row-two {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding-bottom: 80px;
+.filterButtonActive {
+	span {
+		color: $dark;
+		border-bottom: 1px solid $dark;
+	}
 }
 
-.wave-audio-posts-section {
+.waveAudioPostsSection {
   min-height: 300px;
   padding-bottom: 80px;
 }
 
-.posts-column-section-titles {
-  display: flex;
+.postsColumnSectionTitles {
   border-bottom: 1px solid $lightGrey;
-  justify-content: space-between;
   margin-bottom: 16px;
-}
-
-.section-titles-left {
-  display: inline-flex;
-}
-
-.section-titles-right {
-  display: inline-flex;
-}
-
-.section-title-number {
-  padding: 0 50px 0 10px;
-}
-
-.section-title-duration {
-  padding-right: 10px;
-}
-
-.wave-audio-posts {
-	background: transparent;
-  img {
-		background: transparent;
-  }
 }

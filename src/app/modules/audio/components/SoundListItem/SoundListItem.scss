@@ -1,1 +1,61 @@
+@import "../../../../styles";
 
+.soundListItem {
+	width: 100%;
+	border-radius: 2px;
+	display: flex;
+	align-items: center;
+
+	&:hover {
+		background: #ddd;
+	}
+}
+
+.index {
+	display: block;
+	font-family: $font-reading;
+	font-size: 22px;
+}
+
+
+.itemContent {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	width: 100%;
+}
+
+.thumbnail {
+	position: relative;
+}
+
+.thumbnailImage {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+.playButton {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+
+	i {
+		color: $light;
+		display: block;
+
+		&:before {
+			font-size: 24px;
+		}
+	}
+}
+
+.playButtonHover {
+	opacity: 1;
+}

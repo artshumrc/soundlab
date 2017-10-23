@@ -45,7 +45,7 @@ class RecentSound extends Component{
       <Link to={`/sounds/${name}`}>
 	      <div styleName="recent-track">
           <div styleName="thumbnail-container">
-            <div style={thumbnailListImage}></div>
+            <div style={thumbnailListImage} />
           </div>
 
           <div styleName="recent-track-meta-container">

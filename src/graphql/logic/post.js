@@ -1,4 +1,5 @@
 import PHPUnserialize from 'php-unserialize';
+import _ from 'underscore';
 
 
 import PermissionsService from './PermissionsService';
@@ -91,21 +92,24 @@ export default class PostService extends PermissionsService {
 	 * @param {number} skip - the orm query skip
 	 * @returns {Object[]} post object records
 	 */
-	getPostsInCategory(termId, { post_type, limit = 10, skip = 0 }) {
+	getPostsInCategory(termId, { post_type = ['sound'], limit = 10, skip = 0 }) {
 		return TermRelationship.findAll({
 			attributes: [],
 			include: [{
 				model: Post,
 				where: {
-					post_type: post_type,
+					post_type,
 					post_status: 'publish'
-				}
+				},
+				order: [
+					['post_modified', 'DESC']
+				]
 			}],
 			where: {
 				term_taxonomy_id: termId
 			},
 			limit: limit,
-			offset: skip
+			offset: skip,
 		}).then(posts => _.map(posts, post => post.wp_post))
 	}
 

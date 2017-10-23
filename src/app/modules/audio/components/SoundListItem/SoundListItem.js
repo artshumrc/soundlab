@@ -1,97 +1,106 @@
-import React, { Component, PropTypes } from 'react'
-import ReactDOM from 'react-dom'
-import { Link } from 'react-router'
-import { browserHistory } from 'react-router'
-import CSSModules from 'react-css-modules'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
+import { Grid, Row, Col } from 'react-bootstrap';
+import _ from 'underscore';
 
-import PostContent from '../../../posts/components/PostContent'
+import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 import styles from './SoundListItem.scss'
 
 
-@CSSModules(styles, {allowMultiple: true})
-class SoundItem extends Component{
+class SoundListItem extends Component{
 
-  componentDidMount() {
-    const { index } = this.props
-  }
+	constructor(props) {
+		super(props);
 
-  handleClick(e) {
-    e.preventDefault()
-    const target = e.currentTarget.href
-    browserHistory.push(target)
-  }
+		this.state = {
+			mouseOver: '',
+		};
+	}
 
+	handleClick() {
+		// Start item on player
+
+	}
 
   render() {
-    const { post_content: content, post_title: title, post_name: name } = this.props.post
+    const { sound } = this.props;
+		const { mouseOver } = this.state;
 
-    const postCardTitle = {
-      fontSize: '18px',
-      fontWeight: 'bold',
-      lineHeight: '22px'
-    }
+		if (!sound) {
+			return null;
+		}
 
-    const postCardSubtitle = {
-      fontSize: '14px'
-    }
+		const byline = _.findWhere(sound.post_meta, { meta_key: 'byline' });
+		const duration = "0:00";
 
-    const postTrack = {
-      display: 'inline-block',
-      padding: '16px 0px 16px 48px',
-      width: '100px'
+    const thumbnailListImage = {
+      width: '90px',
+      height: '90px',
+      objectFit: 'cover',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center'
+    };
 
-    }
+		if (sound.thumbnail) {
+      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(sound.thumbnail, 'small')}")`;
+		} else {
+      thumbnailListImage.backgroundImage = 'url("/images/default_sound.jpg")';
+		}
 
-    const postCardTitleSection = {
-      display: 'inline-block',
-      verticalAlign: 'super'
-    }
-
-
-
-    return(
-      <div>
-        <Col styleName="wave-audio-posts" xs={12} sm={12} md={12} lg={12}>
-        <Card styleName="list-container">
-          <Link to={"uploads/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
-          <div styleName="track-number-container">
-            { this.props.track === 0 ?
-              <span styleName="track-number">1</span>
-            :
-              <span styleName="track-number">{this.props.track + 1}</span>
-            }
-          </div>
-          <CardHeader
-             avatar="images/maple_leaf.jpg"
-             style={postTrack}
-          />
-          <CardTitle
-            title={title}
-            titleStyle={postCardTitle}
-            subtitle={this.props.post.byline.meta_value}
-            subtitleStyle={postCardSubtitle}
-            style={postCardTitleSection} />
-            <div styleName="track-duration-container">
-              <span styleName="track-duration">3:37</span>
-            </div>
-
-          </Link>
-
-        </Card>
-        </Col>
-
-      </div>
-
-    )
+    return (
+      <Link
+				className={styles.soundListItem}
+				to={`/sound/${sound.post_name}`}
+			>
+	      <Row >
+          <Col sm={2}>
+            <span className={styles.index}>
+							{this.props.index + 1}
+						</span>
+          </Col>
+          <Col sm={7}>
+						<div className={styles.itemContent}>
+	            <div className={styles.thumbnail}>
+		            <div
+									className={styles.thumbnailImage}
+									style={thumbnailListImage}
+								/>
+								<div
+									className={`${styles.playButton}
+										${mouseOver ? styles.playButtonHover : ''}
+									`}
+								>
+									<i className="mdi mdi-play" />
+								</div>
+							</div>
+							<div className={styles.itemText}>
+								<h3 className={styles.title}>
+									{sound.post_title}
+								</h3>
+								{byline &&
+									<span className={styles.byline}>
+										{byline}
+									</span>
+								}
+							</div>
+						</div>
+          </Col>
+          <Col sm={3}>
+            <span className={styles.duration}>
+							{duration}
+						</span>
+					</Col>
+	      </Row>
+			</Link>
+    );
   }
 }
 
-SoundItem.propTypes = {
+SoundListItem.propTypes = {
   index: PropTypes.number,
-  styles: PropTypes.object,
   post: PropTypes.object,
-}
+};
 
-export default SoundItem
+export default SoundListItem;

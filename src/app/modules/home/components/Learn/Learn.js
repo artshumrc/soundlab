@@ -30,7 +30,7 @@ class Learn extends React.Component {
 		if (event.thumbnail) {
       thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(event.thumbnail, 'medium_large')}")`;
 		} else {
-      thumbnailListImage.backgroundImage = 'url("/images/default_sound.jpg")';
+      thumbnailListImage.backgroundImage = 'url("/images/default_event.jpg")';
 		}
 
 		const byline = _.findWhere(event.post_meta, { meta_key: 'byline' });

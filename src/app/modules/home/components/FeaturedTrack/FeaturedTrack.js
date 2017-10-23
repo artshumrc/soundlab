@@ -50,12 +50,18 @@ class FeaturedTrack extends React.Component {
   render() {
 		const { status } = this.state;
 		const { track, purple } = this.props;
+		let postTitle = track ? track.post_title : '';
+		let byline = '';
+		let bylineMeta;
 
-		if (!track) {
-			return null;
+		if (track) {
+			bylineMeta = _.findWhere(track.post_meta, { meta_key: 'byline' });
 		}
 
-		const byline = _.findWhere(track.post_meta, { meta_key: 'byline' });
+		if (bylineMeta) {
+			byline = bylineMeta.meta_value;
+		}
+
 
     return (
       <div
@@ -111,7 +117,7 @@ class FeaturedTrack extends React.Component {
 						</h6>
 					</div>
           <span className={styles.featuredTrackMetaItemTitle}>
-						{track.post_title}
+						{postTitle}
 					</span>
 					{byline &&
 	          <span className={styles.featuredTrackMetaItemAuthor}>
