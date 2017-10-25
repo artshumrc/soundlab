@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Modal from '../../../../components/common/modal/Modal';
+import ModalHead from '../ModalHead';
 
 // auth types:
 import Login from '../Login';
@@ -80,6 +81,7 @@ class _AuthModal extends React.Component {
 				show={showAuthModal}
 				closeModal={dispatchToggleAuthModal}
 			>
+				<ModalHead />
 				<div>
 					{authMode === 'login' ?
 						<Login

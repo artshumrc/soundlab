@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Row, Col } from 'react-bootstrap';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 
-import styles from '../PWDLoginForm/PWDLoginForm.scss';
+import styles from './PWDSignupForm.scss';
 
 // actions
 import { toggleAuthModal, setUser } from '../../actions';
@@ -25,9 +26,6 @@ const wrapSubmit = signup => async (values, dispatch) => {
 function renderField({ input, label, type, meta }) {
 	return (
 		<div className="at-input form-group has-feedback">
-			<label className="control-label">
-				{label}
-			</label>
 			<input
 				{...input}
 				type={type}
@@ -45,39 +43,75 @@ function renderField({ input, label, type, meta }) {
 }
 
 const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signup }) => (
-	<div className="at-pwd-form">
+	<Row className={styles.signupForm}>
 		<form onSubmit={handleSubmit(wrapSubmit(signup))}>
-			<Field
-				name="username"
-				label="Email"
-				type="email"
-				component={renderField}
-			/>
-			<Field
-				name="password"
-				label="Password"
-				type="password"
-				component={renderField}
-			/>
-			<Field
-				name="passwordRepeat"
-				label="Password (Again)"
-				type="password"
-				component={renderField}
-			/>
-			<span className="error-text">
-				{error && <strong>{error}</strong>}
-			</span>
-			<div className="at-pwd-link">
-				<p>
-					<a href="/forgot-password" id="at-forgotPwd" className="at-link at-pwd">Forgot your password?</a>
-				</p>
-			</div>
-			<button type="submit" className="at-btn submit btn btn-lg btn-block btn-default" id="at-btn" disabled={submitting}>
-				Register
-			</button>
+			<Row>
+				<Col md={6}>
+					<label>First Name</label>
+					<Field
+						name="first_name"
+						type="text"
+						placeholder=""
+						component={renderField}
+					/>
+					<label>Harvard Email Address</label>
+					<Field
+						name="email"
+						type="email"
+						placeholder=""
+						component={renderField}
+					/>
+					<label>Password</label>
+					<Field
+						name="password"
+						type="password"
+						placeholder=""
+						component={renderField}
+					/>
+				</Col>
+				<Col md={6}>
+					<label>Last Name</label>
+					<Field
+						name="last_name"
+						type="text"
+						placeholder=""
+						component={renderField}
+					/>
+					<label>Field of Study</label>
+					<Field
+						name="field"
+						type="text"
+						placeholder=""
+						component={renderField}
+					/>
+					<label>Confirm Password</label>
+					<Field
+						name="confirm_password"
+						type="password"
+						placeholder=""
+						component={renderField}
+					/>
+				</Col>
+			</Row>
+
+			<Row>
+				<Col>
+					<div className="at-pwd-link">
+						<p className="error-text">
+							{error}
+						</p>
+					</div>
+					<button
+						type="submit"
+						className={styles.signInButton}
+						disabled={submitting}
+					>
+						Create account
+					</button>
+				</Col>
+			</Row>
 		</form>
-	</div>
+	</Row>
 );
 
 PWDSignupForm.propTypes = {

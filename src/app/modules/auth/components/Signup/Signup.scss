@@ -1,6 +1,6 @@
 @import "../../../../styles";
 
-.loginForm {
+.signupForm {
 	h3 {
 		padding: 10px 0 20px;
 		font-family: $font-reading;
@@ -9,13 +9,13 @@
 	}
 }
 
-.loginSeparator {
+.signupSeparator {
 	font-size: 14px;
 	margin: 15px auto;
 	font-weight: 100;
 }
 
-.signupLink {
+.loginLink {
 	padding: 25px 0;
 	a, span {
 		font-size: 18px;
@@ -27,7 +27,7 @@
 		color: $primary;
 		font-weight: bold;
 		cursor: pointer;
-		
+
 		&:hover {
 			color: $primary-800;
 

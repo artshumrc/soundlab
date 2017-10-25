@@ -30,11 +30,11 @@ class Login extends React.Component {
 
 		return (
 			<div className={styles.loginForm}>
-			<Row>
-				<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
-					<h3>Login to an existing account</h3>
-				</Col>
-			</Row>
+				<Row>
+					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
+						<h3>Login to an existing account</h3>
+					</Col>
+				</Row>
 
 				<Row>
 					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
