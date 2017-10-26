@@ -55,7 +55,7 @@ class Player extends Component {
 				post_content: "Example sound from Archive.org: https://archive.org/details/Sitar96",
 				post_meta: [{
 					meta_key: "audio_file",
-					meta_value: "http://admin.soundlab.local:8888/wp-content/uploads/2017/10/Sitar96_64kb.mp3",
+					meta_value: "http://admin.soundlab.orphe.us/wp-content/uploads/2017/10/Sitar96_64kb.mp3",
 					__typename: "Postmeta",
 				}],
 			}];
