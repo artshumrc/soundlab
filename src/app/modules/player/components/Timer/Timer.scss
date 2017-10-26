@@ -1,0 +1,12 @@
+@import "../../../../styles";
+
+
+.playTimeWrapper {
+  display: flex;
+  padding-right: 50px;
+}
+
+.playTime {
+  color: $dark;
+  font-size: 14px;
+}
