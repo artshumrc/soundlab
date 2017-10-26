@@ -9,4 +9,8 @@ const User = db.define('wp_users', {
   display_name: { type: Sequelize.STRING }
 });
 
+User.associate = ({ models }) => {
+	User.hasMany(models.wp_postmeta, { foreignKey: 'post_id' });
+};
+
 export default User;

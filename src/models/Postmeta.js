@@ -18,7 +18,8 @@ const Postmeta = db.define('wp_postmeta', {
 });
 
 Postmeta.associate = ({ models }) => {
-	Postmeta.belongsTo(models.wp_postmeta, { foreignKey: 'post_id' });
+	Postmeta.belongsTo(models.wp_posts, { foreignKey: 'post_id' });
+	Postmeta.belongsTo(models.wp_users, { foreignKey: 'post_id' });
 	Postmeta.belongsTo(models.wp_term_relationships, { foreignKey: 'post_id' });
 };
 
