@@ -23,11 +23,17 @@ class LoginContainer extends React.Component {
 		console.log("user login container props");
 		console.log(this.props);
 		console.log("###########################################");
+		let token = '';
+
+		if (this.props.userCreateToken) {
+			token = this.props.userCreateToken.token;
+		}
 
 		return (
 			<Login
 				handleLogin={this.handleLogin}
 				onRegisterClick={this.props.onRegisterClick}
+				token={token}
 			/>
 		);
 	}

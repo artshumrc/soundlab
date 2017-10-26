@@ -34,21 +34,34 @@ const userCreateMutation = graphql(userCreate, {
 
 const userCreateToken = gql`
 mutation userCreateToken($username: String, $password: String) {
-	userCreateToken(username: $username, password: $password)
+	userCreateToken(username: $username, password: $password) {
+		response
+	}
 }
- `;
+`;
 
 
 const userCreateTokenMutation = graphql(userCreateToken, {
 	props: (params) => ({
-		userCreateToken: ({ username, password }) => params.userCreateMutation({
-			variables: {
-				username,
-				password,
-			}
-		}),
+		userCreateToken: ({ username, password }) => {
+			return params.userCreateTokenMutation({
+				variables: {
+					username,
+					password,
+				}
+			});
+		}
 	}),
 	name: 'userCreateTokenMutation',
+	options: {
+		/*
+		update: (dataStore, submittedData) => {
+			const data = dataStore.readQuery({ query });
+			data.token.push(submittedData.data.userCreateToken.response.token);
+			dataStore.writeQuery({ query, data });
+		}
+		*/
+	},
 });
 
 
