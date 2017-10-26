@@ -101,4 +101,4 @@ const PostType = new GraphQLObjectType({
 	}),
 });
 
- export default PostType;
+export default PostType;

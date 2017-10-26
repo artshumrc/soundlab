@@ -1,4 +1,9 @@
-import { GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString, GraphQLObjectType, GraphQLInputObjectType } from 'graphql';
+import { GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString, GraphQLObjectType, GraphQLInputObjectType, GraphQLInt } from 'graphql';
+
+
+import PostmetaService from '../logic/postmeta';
+import PostmetaType from './postmeta';
+
 
 /**
  * User type
@@ -23,6 +28,30 @@ const UserType = new GraphQLObjectType({
     display_name: {
 			type: GraphQLString,
 		},
+    post_meta: {
+			type: new GraphQLList(PostmetaType),
+			args: {
+				keys: {
+					type: new GraphQLList(GraphQLString),
+				},
+				before: {
+					type: GraphQLString,
+				},
+				after: {
+					type: GraphQLString,
+				},
+				first: {
+					type: GraphQLInt,
+				},
+				last: {
+					type: GraphQLInt,
+				},
+			},
+			resolve: async ( post, { keys, before, after, first, last }, { token } ) => {
+				const postmetaService = new PostmetaService({ token });
+        return await postmetaService.getPostmeta(post.id, keys);
+			},
+		},
 	}),
 });
 
@@ -43,10 +72,13 @@ const UserInputType = new GraphQLInputObjectType({
     user_email: {
 			type: GraphQLString,
 		},
-    user_registered: {
+    display_name: {
 			type: GraphQLString,
 		},
-    display_name: {
+    password: {
+			type: GraphQLString,
+		},
+    field: {
 			type: GraphQLString,
 		},
 	},
