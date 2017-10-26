@@ -39,10 +39,10 @@ function renderField({ input, label, type, meta }) {
 const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, handleLogin }) => (
 	<div className={styles.loginForm}>
 		<form onSubmit={handleSubmit(wrapSubmit(handleLogin))}>
-			<label>Email Address</label>
+			<label>Username</label>
 			<Field
-				name="user_email"
-				type="email"
+				name="username"
+				type="text"
 				placeholder=""
 				component={renderField}
 			/>

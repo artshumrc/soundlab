@@ -3,9 +3,11 @@
  */
 
 import { GraphQLString, GraphQLNonNull, GraphQLID } from 'graphql';
+import GraphQLJSON from 'graphql-type-json';
 
 // types
 import { UserType, UserInputType, PositionInputType } from '../types/user';
+import { JWTResponseType } from '../types/jwtResponse';
 import { RemoveType } from '../types/remove';
 
 // logic
@@ -16,8 +18,8 @@ const usersMutationFields = {
 		type: UserType,
 		description: 'Create a new user',
 		args: {
-			userEmail: {
-				type: GraphQLString,
+			user: {
+				type: UserInputType,
 			}
 		},
 		async resolve(parent, { user }, {token}) {
@@ -52,6 +54,22 @@ const usersMutationFields = {
 		async resolve(parent, { id }, { token }) {
 			const usersService = new UsersService({ token });
 			return await usersService.remove(id);
+		}
+	},
+	userCreateToken: {
+		type: JWTResponseType,
+		description: 'Login a user and return token',
+		args: {
+			username: {
+				type: GraphQLString,
+			},
+			password: {
+				type: GraphQLString,
+			},
+		},
+		async resolve(parent, { username, password }, { token }) {
+			const userService = new UsersService({ token });
+			return await userService.userCreateToken( username, password );
 		}
 	},
 };
