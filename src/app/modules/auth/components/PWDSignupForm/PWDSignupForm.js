@@ -9,10 +9,9 @@ import styles from './PWDSignupForm.scss';
 import { toggleAuthModal, setUser } from '../../actions';
 
 
-const wrapSubmit = signup => async (values, dispatch) => {
+const wrapSubmit = handleSignup => async (values, dispatch) => {
 	try {
-		const userObj = await signup(values);
-		dispatch(setUser(userObj));
+		const userObj = await handleSignup(values);
 		dispatch(toggleAuthModal(false));
 		return {};
 	} catch (err) {
@@ -42,29 +41,15 @@ function renderField({ input, label, type, meta }) {
 	);
 }
 
-const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signup }) => (
+const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handleSignup }) => (
 	<Row className={styles.signupForm}>
-		<form onSubmit={handleSubmit(wrapSubmit(signup))}>
+		<form onSubmit={handleSubmit(wrapSubmit(handleSignup))}>
 			<Row>
 				<Col md={6}>
 					<label>First Name</label>
 					<Field
 						name="first_name"
 						type="text"
-						placeholder=""
-						component={renderField}
-					/>
-					<label>Harvard Email Address</label>
-					<Field
-						name="email"
-						type="email"
-						placeholder=""
-						component={renderField}
-					/>
-					<label>Password</label>
-					<Field
-						name="password"
-						type="password"
 						placeholder=""
 						component={renderField}
 					/>
@@ -77,6 +62,19 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signu
 						placeholder=""
 						component={renderField}
 					/>
+				</Col>
+			</Row>
+			<Row>
+				<Col md={6}>
+					<label>Harvard Email Address</label>
+					<Field
+						name="email"
+						type="email"
+						placeholder=""
+						component={renderField}
+					/>
+				</Col>
+				<Col md={6}>
 					<label>Field of Study</label>
 					<Field
 						name="field"
@@ -84,6 +82,19 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signu
 						placeholder=""
 						component={renderField}
 					/>
+				</Col>
+			</Row>
+			<Row>
+				<Col md={6}>
+					<label>Password</label>
+					<Field
+						name="password"
+						type="password"
+						placeholder=""
+						component={renderField}
+					/>
+				</Col>
+				<Col md={6}>
 					<label>Confirm Password</label>
 					<Field
 						name="confirm_password"
@@ -115,7 +126,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signu
 );
 
 PWDSignupForm.propTypes = {
-	signup: PropTypes.func.isRequired,
+	handleSignup: PropTypes.func.isRequired,
 };
 
 const validate = (values) => {

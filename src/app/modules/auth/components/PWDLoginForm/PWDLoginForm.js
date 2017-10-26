@@ -4,10 +4,13 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import styles from './PWDLoginForm.scss';
 
+// actions
+import { toggleAuthModal, setUser } from '../../actions';
 
-const wrapSubmit = login => async (values, dispatch) => {
+const wrapSubmit = handleLogin => async (values, dispatch) => {
 	try {
-		await login(values);
+		await handleLogin(values);
+		dispatch(toggleAuthModal(false));
 		return {};
 	} catch (err) {
 		throw new SubmissionError({ _error: 'Login failed!' });
@@ -33,12 +36,12 @@ function renderField({ input, label, type, meta }) {
 	);
 }
 
-const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login }) => (
+const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, handleLogin }) => (
 	<div className={styles.loginForm}>
-		<form onSubmit={handleSubmit(wrapSubmit(login))}>
+		<form onSubmit={handleSubmit(wrapSubmit(handleLogin))}>
 			<label>Email Address</label>
 			<Field
-				name="username"
+				name="user_email"
 				type="email"
 				placeholder=""
 				component={renderField}
@@ -67,7 +70,7 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login 
 );
 
 PWDLoginForm.propTypes = {
-	login: PropTypes.func.isRequired,
+	handleLogin: PropTypes.func.isRequired,
 };
 PWDLoginForm.defaultProps = {
 	// errorMsg: null,

@@ -6,9 +6,8 @@ import Modal from '../../../../components/common/modal/Modal';
 import ModalHead from '../ModalHead';
 
 // auth types:
-import Login from '../Login';
-import Signup from '../Signup';
-import Logout from '../Logout';
+import LoginContainer from '../../containers/LoginContainer';
+import SignupContainer from '../../containers/SignupContainer';
 
 // actions
 import { toggleAuthModal, changeAuthMode, setUser, login, logout } from '../../actions';
@@ -81,18 +80,16 @@ class _AuthModal extends React.Component {
 				show={showAuthModal}
 				closeModal={dispatchToggleAuthModal}
 			>
-				<ModalHead />
 				<div>
+					<ModalHead />
 					{authMode === 'login' ?
-						<Login
+						<LoginContainer
 							onRegisterClick={dispachChangeAuthMode.bind(null, 'signup')}
-							login={dispatchLogin}
 						/>
 					: null}
 					{authMode === 'signup' ?
-						<Signup
+						<SignupContainer
 							onSigninClick={dispachChangeAuthMode.bind(null, 'login')}
-							signup={dispatchSignup}
 						/>
 					: null}
 				</div>

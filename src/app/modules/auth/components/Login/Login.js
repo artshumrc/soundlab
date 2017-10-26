@@ -7,26 +7,17 @@ import PWDLoginForm from '../PWDLoginForm';
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import styles from './Login.scss';
 
-hello.init({
-	facebook: process.env.REACT_APP_FACBOOK_CLIENT_ID,
-	twitter: process.env.REACT_APP_TWITTER_CLIENT_ID,
-	google: process.env.REACT_APP_GOOGLE_CLIENT_ID
-}, {
-	// redirect_uri: '/',
-	oauth_proxy: `${process.env.REACT_APP_SERVER}/oauthproxy`,
-});
-
 
 
 class Login extends React.Component {
 
 	static propTypes = {
 		onRegisterClick: PropTypes.func.isRequired,
-		login: PropTypes.func.isRequired,
+		handleLogin: PropTypes.func.isRequired,
 	}
 
 	render() {
-		const { login, onRegisterClick } = this.props;
+		const { handleLogin, onRegisterClick } = this.props;
 
 		return (
 			<div className={styles.loginForm}>
@@ -39,7 +30,7 @@ class Login extends React.Component {
 				<Row>
 					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
 						<PWDLoginForm
-							login={login}
+							handleLogin={handleLogin}
 						/>
 					</Col>
 				</Row>

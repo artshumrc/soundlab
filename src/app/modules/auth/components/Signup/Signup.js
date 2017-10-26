@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import OAuthButtons from '../OAuthButtons';
 import PWDSignupForm from '../PWDSignupForm';
@@ -12,11 +12,11 @@ class Signup extends React.Component {
 
 	static propTypes = {
 		onSigninClick: PropTypes.func.isRequired,
-		signup: PropTypes.func.isRequired,
+		handleSignup: PropTypes.func.isRequired,
 	}
 
 	render() {
-		const { signup, onSigninClick } = this.props;
+		const { handleSignup, onSigninClick } = this.props;
 
 		return (
 			<div className={styles.signupForm}>
@@ -29,7 +29,7 @@ class Signup extends React.Component {
 				<Row>
 					<Col>
 						<PWDSignupForm
-							signup={signup}
+							handleSignup={handleSignup}
 						/>
 					</Col>
 				</Row>
