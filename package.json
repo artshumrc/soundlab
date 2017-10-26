@@ -148,6 +148,7 @@
     "redux-thunk": "^2.2.0",
     "request-promise": "^3.0.0",
     "sequelize": "^4.15.0",
+    "slugify": "^1.2.1",
     "soundmanager2": "^2.97.20170602",
     "twitter": "^1.7.1",
     "underscore": "^1.8.3",
