@@ -156,7 +156,8 @@
     "universal-cookie": "^2.1.0",
     "video-react": "^0.8.5",
     "wordexpress-components": "^2.0.1",
-    "wordexpress-schema": "^2.0.0"
+    "wordexpress-schema": "^2.0.0",
+    "wpautop": "^0.2.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
