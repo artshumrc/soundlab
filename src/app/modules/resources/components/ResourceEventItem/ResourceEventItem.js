@@ -37,7 +37,10 @@ class ResourceEventItem extends Component {
 
 
     return (
-      <div className={styles.eventContainer}>
+      <Link
+				className={styles.eventContainer}
+				to={`/events/${event.post_name}`}
+			>
         <div className={`${styles.eventSectionWrapper} ${styles.dateWrapper}`}>
           <div className={`${styles.dateContainer} ${styles.monthContainer}`}>
             <span className={styles.month}>
@@ -63,7 +66,7 @@ class ResourceEventItem extends Component {
 						</span>
           </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }
