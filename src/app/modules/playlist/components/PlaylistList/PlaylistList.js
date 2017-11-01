@@ -16,38 +16,13 @@ class PlaylistList extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			open: false,
-		};
 		autoBind(this);
 	}
 
-	componentDidMount() {
-		if (this.props.activeCategory !== 'everything') {
-	    this.moveToTracklist();
-		}
-	}
-
-	componentDidUpdate() {
-		if (this.props.activeCategory !== 'everything') {
-	    this.moveToTracklist();
-		}
-  }
-
-	moveToTracklist() {
-		const element = document.getElementById('tracklist');
-    if (element) element.scrollIntoView();
-	}
-
-	toggleSearchDropdown() {
-		this.setState({
-			open: !this.state.open,
-		});
-	}
-
 	render () {
-		const { loading, playlists, error, activeCategory } = this.props;
-		const { open } = this.state;
+		const { loading, playlists, error } = this.props;
+
+		console.log("Playlists", playlists);
 
 		if (loading) {
 			return (
@@ -57,89 +32,13 @@ class PlaylistList extends React.Component {
 			);
 		}
 
-		const categories = [{
-			title: 'Jazz',
-			slug: 'jazz',
-		}, {
-			title: 'R&B',
-			slug: 'rb',
-		}, {
-			title: 'Podcasts',
-			slug: 'podcasts',
-		}, {
-			title: 'Classical',
-			slug: 'classical',
-		}, {
-			title: 'Electronic',
-			slug: 'electronic',
-		}, {
-			title: 'Acoustic',
-			slug: 'acoustic',
-		}];
-
-		let activeCategoryTitle = 'Everything';
-		categories.map(category => {
-			if (activeCategory === category.slug) {
-				activeCategoryTitle = category.title;
-			}
-		});
-
 		return (
 			<Grid className={styles.playlistList}>
-				<Row className={styles.waveCoverSection}>
-					<Col >
-						<FeaturedTrack
-							track={playlists[0]}
-							purple
-							showFeaturedTrackLabel
-						/>
-					</Col>
-				</Row>
 				<Row>
 					<Col >
-						<div id="tracklist" className={styles.searchTitle}>
-							<span className={styles.letsListen}>Let's listen to</span>
-							<div
-								onClick={this.toggleSearchDropdown.bind(this)}
-								className={styles.searchDropdownToggle}
-							>
-								<span className={styles.filterTitle}>{activeCategoryTitle}</span>
-								{open ?
-									<i className="mdi mdi-menu-up" />
-								:
-									<i className="mdi mdi-menu-down" />
-								}
-							</div>
-						</div>
-						{open ?
-							<div className={styles.filterContainer}>
-								<Link
-									to={`/playlists`}
-									className={`
-										${styles.filterButton}
-										${activeCategory === 'everything' ? styles.filterButtonActive : ''}
-									`}
-								>
-									<span>
-										Everything
-									</span>
-								</Link>
-								{categories.map(category => (
-									<Link
-										to={`/playlists/category/${category.slug}`}
-										key={category.slug}
-										className={`
-											${styles.filterButton}
-											${activeCategory === category.slug ? styles.filterButtonActive : ''}
-										`}
-									>
-										<span>
-											{category.title}
-										</span>
-									</Link>
-								))}
-							</div>
-						: ''}
+						<h1 className={styles.title}>
+							Playlists
+						</h1>
 					</Col>
 				</Row>
 	      <Row className={styles.postsColumnSectionTitles}>

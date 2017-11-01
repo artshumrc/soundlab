@@ -5,6 +5,7 @@ import homeRoute from '../modules/home/routes';
 import audioRoutes from '../modules/audio/routes';
 import resourceRoutes from '../modules/resources/routes';
 import singlePageRoutes from '../modules/pages/routes';
+import playlistRoutes from '../modules/playlist/routes';
 //import userRoutes from '../modules/users/routes';
 
 const routes = (
@@ -13,6 +14,7 @@ const routes = (
   		{homeRoute}
       {audioRoutes}
       {resourceRoutes}
+			{playlistRoutes}
       {singlePageRoutes}
     </Route>
   </Router>

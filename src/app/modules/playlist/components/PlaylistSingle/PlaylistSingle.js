@@ -6,140 +6,41 @@ import CSSModules from 'react-css-modules';
 import autoBind from 'react-autobind';
 import { Link } from 'react-router';
 
-import PlaylistListItem from '../PlaylistListItem';
+import SoundListItem from '../../../audio/components/SoundListItem';
 import FeaturedTrack from '../../../home/components/FeaturedTrack';
 
-import styles from './PlaylistList.scss';
+import styles from './PlaylistSingle.scss';
 
 class PlaylistList extends React.Component {
 
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			open: false,
-		};
 		autoBind(this);
 	}
 
-	componentDidMount() {
-		if (this.props.activeCategory !== 'everything') {
-	    this.moveToTracklist();
-		}
-	}
-
-	componentDidUpdate() {
-		if (this.props.activeCategory !== 'everything') {
-	    this.moveToTracklist();
-		}
-  }
-
-	moveToTracklist() {
-		const element = document.getElementById('tracklist');
-    if (element) element.scrollIntoView();
-	}
-
-	toggleSearchDropdown() {
-		this.setState({
-			open: !this.state.open,
-		});
-	}
-
 	render () {
-		const { loading, playlists, error, activeCategory } = this.props;
-		const { open } = this.state;
+		const { loading, playlist, error } = this.props;
 
-		if (loading) {
+		if (loading || !playlist) {
 			return (
 				<div>
 					{/* TODO: add loading component */}
 				</div>
 			);
 		}
+		console.log("playlist", playlist);
 
-		const categories = [{
-			title: 'Jazz',
-			slug: 'jazz',
-		}, {
-			title: 'R&B',
-			slug: 'rb',
-		}, {
-			title: 'Podcasts',
-			slug: 'podcasts',
-		}, {
-			title: 'Classical',
-			slug: 'classical',
-		}, {
-			title: 'Electronic',
-			slug: 'electronic',
-		}, {
-			title: 'Acoustic',
-			slug: 'acoustic',
-		}];
-
-		let activeCategoryTitle = 'Everything';
-		categories.map(category => {
-			if (activeCategory === category.slug) {
-				activeCategoryTitle = category.title;
-			}
-		});
+		const sounds = [];
 
 		return (
 			<Grid className={styles.playlistList}>
 				<Row className={styles.waveCoverSection}>
 					<Col >
 						<FeaturedTrack
-							track={playlists[0]}
+							track={sounds[0]}
 							purple
-							showFeaturedTrackLabel
 						/>
-					</Col>
-				</Row>
-				<Row>
-					<Col >
-						<div id="tracklist" className={styles.searchTitle}>
-							<span className={styles.letsListen}>Let's listen to</span>
-							<div
-								onClick={this.toggleSearchDropdown.bind(this)}
-								className={styles.searchDropdownToggle}
-							>
-								<span className={styles.filterTitle}>{activeCategoryTitle}</span>
-								{open ?
-									<i className="mdi mdi-menu-up" />
-								:
-									<i className="mdi mdi-menu-down" />
-								}
-							</div>
-						</div>
-						{open ?
-							<div className={styles.filterContainer}>
-								<Link
-									to={`/playlists`}
-									className={`
-										${styles.filterButton}
-										${activeCategory === 'everything' ? styles.filterButtonActive : ''}
-									`}
-								>
-									<span>
-										Everything
-									</span>
-								</Link>
-								{categories.map(category => (
-									<Link
-										to={`/playlists/category/${category.slug}`}
-										key={category.slug}
-										className={`
-											${styles.filterButton}
-											${activeCategory === category.slug ? styles.filterButtonActive : ''}
-										`}
-									>
-										<span>
-											{category.title}
-										</span>
-									</Link>
-								))}
-							</div>
-						: ''}
 					</Col>
 				</Row>
 	      <Row className={styles.postsColumnSectionTitles}>
@@ -154,10 +55,10 @@ class PlaylistList extends React.Component {
 					</Col>
 				</Row>
 
-				{playlists.map((playlist, i) => (
-					<PlaylistListItem
-						key={`${playlist.id}-${i}`}
-						playlist={playlist}
+				{sounds.map((sound, i) => (
+					<SoundListItem
+						key={`${track.id}-${i}`}
+						sound={sound}
 						index={i}
 					/>
 				))}
