@@ -5,9 +5,11 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import CSSModules from 'react-css-modules';
 import autoBind from 'react-autobind';
 import { Link } from 'react-router';
+import _ from 'underscore';
 
 import SoundListItem from '../../../audio/components/SoundListItem';
 import FeaturedTrack from '../../../home/components/FeaturedTrack';
+import PlaylistSoundsContainer from '../../containers/PlaylistSoundsContainer';
 
 import styles from './PlaylistSingle.scss';
 
@@ -29,18 +31,20 @@ class PlaylistList extends React.Component {
 				</div>
 			);
 		}
-		console.log("playlist", playlist);
 
-		const sounds = [];
+		console.log("################")
+		console.log(playlist);
+		console.log("################")
+		const queue = _.findWhere(playlist.post_meta, { meta_key: 'queue' });
+		console.log(queue);
 
 		return (
-			<Grid className={styles.playlistList}>
-				<Row className={styles.waveCoverSection}>
+			<Grid className={styles.playlistSingle}>
+				<Row>
 					<Col >
-						<FeaturedTrack
-							track={sounds[0]}
-							purple
-						/>
+						<h1 className={styles.title}>
+							{playlist.post_title}
+						</h1>
 					</Col>
 				</Row>
 	      <Row className={styles.postsColumnSectionTitles}>
@@ -54,14 +58,9 @@ class PlaylistList extends React.Component {
 						<span className={styles.sectionTitleDuration}></span>
 					</Col>
 				</Row>
-
-				{sounds.map((sound, i) => (
-					<SoundListItem
-						key={`${track.id}-${i}`}
-						sound={sound}
-						index={i}
-					/>
-				))}
+				{queue &&
+					<PlaylistSoundsContainer queue={queue} />
+				}
 			</Grid>
 		);
 	}

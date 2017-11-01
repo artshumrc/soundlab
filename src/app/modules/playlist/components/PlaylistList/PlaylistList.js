@@ -46,7 +46,7 @@ class PlaylistList extends React.Component {
 						<span className={styles.sectionTitleNumber}>#</span>
 					</Col>
           <Col sm={8}>
-						<span className={styles.sectionTrackLabel}>Track</span>
+						<span className={styles.sectionTrackLabel}>Title</span>
 					</Col>
 					<Col sm={3}>
 						<span className={styles.sectionTitleDuration}></span>

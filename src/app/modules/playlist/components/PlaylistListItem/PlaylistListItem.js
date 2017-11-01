@@ -59,7 +59,7 @@ class PlaylistListItem extends Component{
 		if (playlist.thumbnail) {
       thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(playlist.thumbnail, 'thumbnail')}")`;
 		} else {
-      thumbnailListImage.backgroundImage = 'url("/images/default_playlist_600w600h.png")';
+      thumbnailListImage.backgroundImage = 'url("/images/default_sound_600w600h.png")';
 		}
 
     return (

@@ -8,7 +8,8 @@ const soundSingleQuery = graphql(gql`
       post_name
       post_content
 			thumbnail
-			post_meta(keys: ["audio_file", "byline", "date", "external_link", "location"]) {
+			audio_file
+			post_meta(keys: ["byline", "date", "external_link", "location"]) {
 				meta_key
 				meta_value
 			}
@@ -36,7 +37,8 @@ const soundListQuery = graphql(gql`
 			post_name
 			post_content
 			thumbnail
-			post_meta(keys: ["audio_file", "byline", "date", "external_link", "location"]) {
+			audio_file
+			post_meta(keys: ["byline", "date", "external_link", "location"]) {
 				meta_key
 				meta_value
 			}
@@ -60,7 +62,8 @@ const soundListCategoryQuery = graphql(gql`
 				post_name
 				post_content
 				thumbnail
-				post_meta(keys: ["audio_file", "byline", "date", "external_link", "location"]) {
+				audio_file
+				post_meta(keys: ["byline", "date", "external_link", "location"]) {
 					meta_key
 					meta_value
 				}

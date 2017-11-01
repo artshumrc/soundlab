@@ -189,4 +189,73 @@ export default class PostService extends PermissionsService {
 			return null;
 		});
 	}
+
+	/**
+	 * Get a playlist queue
+	 * @param {number} postId - the id of the post to query the playlist for
+	 * @returns {Object[]} posts in post repeater relationship meta field
+	 */
+	getQueue(postId) {
+		console.log("###############")
+		console.log(postId);
+		return Postmeta.findOne({
+			where: {
+				post_id: postId,
+				meta_key: 'queue_0_sound'
+			}
+		}).then(res => {
+
+			if (res) {
+				const post_ids = [];
+				const meta_value = PHPUnserialize.unserialize(res.dataValues.meta_value);
+				for (let key in meta_value) {
+					post_ids.push(parseInt(meta_value[key], 10));
+				}
+
+				return Post.findAll({
+					where: {
+						ID: post_ids,
+					},
+				});
+			}
+			return null;
+		});
+	}
+
+	/**
+	 * Get a post audio_file
+	 * @param {number} postId - the id of the post
+	 * @returns {Object} the audio file attachment information
+	 */
+	getAudioFile(postId) {
+		return Postmeta.findOne({
+			where: {
+				post_id: postId,
+				meta_key: 'audio_file',
+			}
+		}).then(res => {
+			if (res) {
+				return Postmeta.findAll({
+					where: {
+						post_id: parseInt(res.dataValues.meta_value, 10),
+						meta_key: ['_wp_attached_file', '_wp_attachment_metadata']
+					}
+				}).then(_res => {
+					if (_res) {
+						const fileWithMetadata = {};
+
+						_res.forEach(row => {
+							if (row.dataValues.meta_key === '_wp_attached_file') {
+								fileWithMetadata.attached_file = row.dataValues.meta_value;
+							} else if (row.meta_key === '_wp_attachment_metadata') {
+								fileWithMetadata.metadata = PHPUnserialize.unserialize(row.dataValues.meta_value);
+							}
+						});
+
+						return fileWithMetadata;
+					}
+				});
+			}
+		});
+	}
 }

@@ -8,9 +8,11 @@ const playlistSingleQuery = graphql(gql`
       post_name
       post_content
 			thumbnail
-			post_meta(keys: ["audio_file", "byline", "date", "external_link", "location"]) {
-				meta_key
-				meta_value
+			queue {
+				id
+				post_title
+				thumbnail
+				audio_file
 			}
     }
   }
@@ -51,4 +53,29 @@ const playlistListQuery = graphql(gql`
   },
 });
 
-export { playlistSingleQuery, playlistListQuery };
+const playlistSoundsQuery = graphql(gql`
+	query playlistSoundsQuery($post_ids: [Int]) {
+		posts(post_ids: $post_ids) {
+			id,
+			post_title
+			post_name
+			post_content
+			thumbnail
+			audio_file
+		}
+	}
+`, {
+	options: props => ({
+		variables: {
+			post_ids: props.queue,
+		}
+	}),
+  name: 'playlistSoundsQuery',
+  props: props => {
+    return {
+      sounds: props.playlistSoundsQuery.posts,
+    };
+  },
+});
+
+export { playlistSingleQuery, playlistListQuery, playlistSoundsQuery };

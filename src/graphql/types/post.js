@@ -98,6 +98,22 @@ const PostType = new GraphQLObjectType({
         return await userService.getUser(post.post_author);
 			},
 		},
+
+    queue: {
+			type: new GraphQLList(PostType),
+			resolve: async ( post, {}, { token } ) => {
+				const postService = new PostService({ token });
+        return await postService.getQueue(post.id);
+			},
+		},
+
+    audio_file: {
+			type: GraphQLJSON,
+			resolve: async ( post, {}, { token } ) => {
+				const postService = new PostService({ token });
+        return await postService.getAudioFile(post.id);
+			},
+		},
 	}),
 });
 
