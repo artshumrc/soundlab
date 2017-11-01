@@ -7,9 +7,8 @@ import autoBind from 'react-autobind';
 import { Link } from 'react-router';
 import _ from 'underscore';
 
-import SoundListItem from '../../../audio/components/SoundListItem';
 import FeaturedTrack from '../../../home/components/FeaturedTrack';
-import PlaylistSoundsContainer from '../../containers/PlaylistSoundsContainer';
+import PlaylistSounds from '../PlaylistSounds';
 
 import styles from './PlaylistSingle.scss';
 
@@ -32,12 +31,6 @@ class PlaylistList extends React.Component {
 			);
 		}
 
-		console.log("################")
-		console.log(playlist);
-		console.log("################")
-		const queue = _.findWhere(playlist.post_meta, { meta_key: 'queue' });
-		console.log(queue);
-
 		return (
 			<Grid className={styles.playlistSingle}>
 				<Row>
@@ -58,9 +51,7 @@ class PlaylistList extends React.Component {
 						<span className={styles.sectionTitleDuration}></span>
 					</Col>
 				</Row>
-				{queue &&
-					<PlaylistSoundsContainer queue={queue} />
-				}
+				<PlaylistSounds sounds={playlist.queue} />
 			</Grid>
 		);
 	}
