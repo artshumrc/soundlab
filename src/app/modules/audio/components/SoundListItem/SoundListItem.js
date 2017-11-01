@@ -66,7 +66,7 @@ class SoundListItem extends Component{
       <Row >
 	      <Link
 					className={styles.soundListItem}
-					to={`/waves/${sound.post_name}`}
+					to={`/sounds/${sound.post_name}`}
 					onMouseEnter={this.handleMouseEnter.bind(this)}
 					onMouseLeave={this.handleMouseLeave.bind(this)}
 				>
