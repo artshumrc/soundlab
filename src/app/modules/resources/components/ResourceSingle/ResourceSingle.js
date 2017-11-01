@@ -6,6 +6,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
 import _ from 'underscore';
 import moment from 'moment';
 import wpautop from 'wpautop';
+import linkifyHtml from 'linkifyjs/html';
 
 import styles from './ResourceSingle.scss';
 
@@ -56,7 +57,7 @@ class ResourceSingle extends Component {
 									{byline.meta_value}
 								</h3>
 							}
-              <div styleName="text" dangerouslySetInnerHTML={{__html: wpautop(resource.post_content)}} />
+              <div styleName="content" dangerouslySetInnerHTML={{__html: linkifyHtml(wpautop(resource.post_content))}} />
 							{resourceDate &&
 								<Row styleName="metaItem">
 									<Col md={2}>

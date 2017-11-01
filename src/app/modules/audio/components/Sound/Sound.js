@@ -8,6 +8,7 @@ import { Link } from 'react-router';
 import _ from 'underscore';
 import moment from 'moment';
 import wpautop from 'wpautop';
+import linkifyHtml from 'linkifyjs/html';
 
 import FeaturedTrack from '../../../home/components/FeaturedTrack';
 
@@ -58,11 +59,11 @@ class Sound extends React.Component {
 				<div className={styles.soundBody}>
 					<div
 						className={styles.content}
-						dangerouslySetInnerHTML={{ __html: wpautop(soundContent) }}
+						dangerouslySetInnerHTML={{ __html: linkifyHtml(wpautop(soundContent)) }}
 					/>
 				</div>
-				{soundLocation &&
-					<Row styleName="metaItem">
+				{soundLocation && soundLocation.meta_value &&
+					<Row className={styles.metaItem}>
 						<Col md={2}>
 							<label>
 								Location
@@ -70,7 +71,7 @@ class Sound extends React.Component {
 						</Col>
 						<Col md={10}>
 							<p>
-								{soundLocation}
+								{soundLocation.meta_value}
 							</p>
 						</Col>
 					</Row>

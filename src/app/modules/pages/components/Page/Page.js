@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
 import wpautop from 'wpautop';
+import linkifyHtml from 'linkifyjs/html';
 
 import styles from './Page.scss'
 
@@ -12,7 +13,7 @@ export default class About extends Component {
 	renderPostContent() {
 		const { page } = this.props;
 
-		return { __html: wpautop(page.post_content) };
+		return { __html: linkifyHtml(wpautop(page.post_content)) };
 	}
 
   render() {
@@ -53,7 +54,7 @@ export default class About extends Component {
               <h1 styleName="page-section-title">
 								{page.post_title}
 							</h1>
-              <div styleName="page-text" dangerouslySetInnerHTML={this.renderPostContent()} />
+              <div styleName="content" dangerouslySetInnerHTML={this.renderPostContent()} />
             </div>
           </Col>
         </Row>
