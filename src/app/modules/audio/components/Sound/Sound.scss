@@ -3,6 +3,7 @@
 .sound {
 	min-height: 600px;
 	padding: 0 0 120px;
+	position: relative;
 }
 
 .waveCoverSection {
@@ -68,5 +69,30 @@
 	}
 	h5 {
 		font-size: 18px;
+	}
+}
+
+.backToPlaylist {
+	position: absolute;
+	top: 80px;
+	left: 0px;
+	color: $darkGrey;
+	font-size: 14px;
+	font-family: $font-label;
+	// text-transform: uppercase;
+	cursor: pointer;
+	padding: 10px 0;
+
+	&:hover {
+		color: $dark;
+	}
+
+	i {
+		padding-bottom: 3px;
+		display: inline-block;
+		vertical-align: middle;
+		&:before {
+			font-size: 20px;
+		}
 	}
 }

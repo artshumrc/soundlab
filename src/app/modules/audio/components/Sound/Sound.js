@@ -31,6 +31,11 @@ class Sound extends React.Component {
 		});
 	}
 
+	goBack() {
+		// TODO: use react router method for this
+		window.history.back();
+	}
+
 	render () {
 		const { loading, sound, error } = this.props;
 
@@ -48,6 +53,13 @@ class Sound extends React.Component {
 
 		return (
 			<Grid className={styles.sound}>
+				<span
+					className={styles.backToPlaylist}
+					onClick={this.goBack.bind(this)}
+				>
+					<i className="mdi mdi-chevron-left" />
+					Back to playlist
+				</span>
 				<Row className={styles.waveCoverSection}>
 					<Col >
 						<FeaturedTrack
