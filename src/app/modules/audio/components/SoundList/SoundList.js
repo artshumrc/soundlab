@@ -22,6 +22,23 @@ class SoundList extends React.Component {
 		autoBind(this);
 	}
 
+	componentDidMount() {
+		if (this.props.activeCategory !== 'everything') {
+	    this.moveToTracklist();
+		}
+	}
+
+	componentDidUpdate() {
+		if (this.props.activeCategory !== 'everything') {
+	    this.moveToTracklist();
+		}
+  }
+
+	moveToTracklist() {
+		const element = document.getElementById('tracklist');
+    if (element) element.scrollIntoView();
+	}
+
 	toggleSearchDropdown() {
 		this.setState({
 			open: !this.state.open,
@@ -97,7 +114,7 @@ class SoundList extends React.Component {
 						{open ?
 							<div className={styles.filterContainer}>
 								<Link
-									to={`/waves`}
+									to={`/sounds`}
 									className={`
 										${styles.filterButton}
 										${activeCategory === 'everything' ? styles.filterButtonActive : ''}
@@ -109,7 +126,7 @@ class SoundList extends React.Component {
 								</Link>
 								{categories.map(category => (
 									<Link
-										to={`/waves/category/${category.slug}`}
+										to={`/sounds/category/${category.slug}`}
 										key={category.slug}
 										className={`
 											${styles.filterButton}
