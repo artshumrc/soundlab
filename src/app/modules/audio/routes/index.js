@@ -8,8 +8,8 @@ import SoundContainer from '../containers/SoundContainer';
 
 export default (
   <div>
-    <Route path="waves/category/:category_slug" component={SoundListCategoryContainer}></Route>
-    <Route path="waves/:slug" component={SoundContainer}></Route>
-    <Route path="waves" component={SoundListContainer}></Route>
+    <Route path="sounds/category/:category_slug" component={SoundListCategoryContainer}></Route>
+    <Route path="sounds/:slug" component={SoundContainer}></Route>
+    <Route path="sounds" component={SoundListContainer}></Route>
   </div>
 );

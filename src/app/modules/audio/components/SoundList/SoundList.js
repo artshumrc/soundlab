@@ -80,7 +80,7 @@ class SoundList extends React.Component {
 				</Row>
 				<Row>
 					<Col >
-						<div className={styles.searchTitle}>
+						<div id="tracklist" className={styles.searchTitle}>
 							<span className={styles.letsListen}>Let's listen to</span>
 							<div
 								onClick={this.toggleSearchDropdown.bind(this)}

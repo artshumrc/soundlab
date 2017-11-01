@@ -23,7 +23,7 @@ export default class PostService extends PermissionsService {
 	 * @param {number} skip - the orm query skip
 	 * @returns {Object[]} post object records
 	 */
-	getPosts({ post_type=['sound'], limit = 10, skip = 0, isFeatured = false }) {
+	getPosts({ post_type=['sound'], limit = 200, skip = 0, isFeatured = false }) {
 		let include: [];
 
 		if (isFeatured) {
@@ -58,7 +58,7 @@ export default class PostService extends PermissionsService {
 	 * @param {string} searchText - the search text for the query to posts
 	 * @returns {Object[]} post object records
 	 */
-	getSearchResults({ post_type=['sound', 'resource', 'event', 'playlist', 'submission'], searchText='', limit = 10, skip = 0 }) {
+	getSearchResults({ post_type=['sound', 'resource', 'event', 'playlist', 'submission'], searchText='', limit = 200, skip = 0 }) {
 		if (!searchText.length) {
 			return [];
 		}
@@ -92,7 +92,7 @@ export default class PostService extends PermissionsService {
 	 * @param {number} skip - the orm query skip
 	 * @returns {Object[]} post object records
 	 */
-	getPostsInCategory(termId, { post_type = ['sound'], limit = 10, skip = 0 }) {
+	getPostsInCategory(termId, { post_type = ['sound'], limit = 200, skip = 0 }) {
 		return TermRelationship.findAll({
 			attributes: [],
 			include: [{
