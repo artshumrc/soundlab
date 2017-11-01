@@ -13,7 +13,7 @@ import soundmanager from 'soundmanager2'
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
 import CSSModules from 'react-css-modules'
 
-import PlaylistList from '../../../playlist/components/PlaylistList'
+import SoundList from '../../../playlist/components/SoundList'
 import styles from './AudioPlayer.scss'
 
 
@@ -47,7 +47,7 @@ class AudioPlayer extends Component {
     this.props.dispatch(previousTrack())
   }
 
-  togglePlaylistDrawer() {
+  toggleSoundDrawer() {
     this.setState({
       open:!this.state.open
     })
@@ -150,12 +150,12 @@ class AudioPlayer extends Component {
                   </div>*/}
                   <div styleName="playerControls">
                   {/*  <RaisedButton
-                      label="Playlist"
-                      onClick={this.togglePlaylistDrawer.bind(this)}
+                      label="Sound"
+                      onClick={this.toggleSoundDrawer.bind(this)}
                       styleName="playlistButton"
                     />
                     <Drawer width={400} openSecondary={true} open={this.state.open} containerClassName="playlistDrawer" >
-                      <PlaylistList />
+                      <SoundList />
                     </Drawer> */}
                     <div styleName="buttonWrapper">
                       <SkipPrevious

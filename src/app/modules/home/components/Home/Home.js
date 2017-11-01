@@ -5,7 +5,6 @@ import gql from 'graphql-tag';
 import CSSModules from 'react-css-modules';
 
 import ShowcaseList from '../../../showcase/components/ShowcaseList';
-import PlaylistList from '../../../playlist/components/PlaylistList';
 import Cover from '../Cover';
 import Intro from '../Intro';
 import RecentContainer from '../../containers/RecentContainer';

@@ -54,7 +54,7 @@ class Sound extends React.Component {
 		return (
 			<Grid className={styles.sound}>
 				<span
-					className={styles.backToPlaylist}
+					className={styles.backToSound}
 					onClick={this.goBack.bind(this)}
 				>
 					<i className="mdi mdi-chevron-left" />

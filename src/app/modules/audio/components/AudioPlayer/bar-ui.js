@@ -382,7 +382,7 @@ import * as soundManager from 'soundmanager2'
 
     }
 
-    function PlaylistController() {
+    function SoundController() {
 
       var data;
 
@@ -404,7 +404,7 @@ import * as soundManager from 'soundmanager2'
 
       };
 
-      function getPlaylist() {
+      function getSound() {
 
         return data.playlist;
 
@@ -422,7 +422,7 @@ import * as soundManager from 'soundmanager2'
           return offset;
         }
 
-        list = getPlaylist();
+        list = getSound();
 
         // use offset if provided, otherwise take default selected.
         offset = (offset !== undefined ? offset : data.selectedIndex);
@@ -446,7 +446,7 @@ import * as soundManager from 'soundmanager2'
 
         offset = -1;
 
-        list = getPlaylist();
+        list = getSound();
 
         if (list) {
 
@@ -627,7 +627,7 @@ import * as soundManager from 'soundmanager2'
 
       }
 
-      function initPlaylistController() {
+      function initSoundController() {
 
         // inherit the default SM2 volume
         defaultVolume = soundManager.defaultOptions.volume;
@@ -645,7 +645,7 @@ import * as soundManager from 'soundmanager2'
 
       }
 
-      initPlaylistController();
+      initSoundController();
 
       return {
         data: data,
@@ -930,7 +930,7 @@ import * as soundManager from 'soundmanager2'
 
       dom.time = utils.dom.get(dom.o, '.sm2-inline-time');
 
-      playlistController = new PlaylistController();
+      playlistController = new SoundController();
 
       defaultItem = playlistController.getItem(0);
 

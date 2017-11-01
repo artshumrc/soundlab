@@ -16,7 +16,6 @@ import _s from 'underscore.string';
 
 import { resumePlayer, pausePlayer, nextTrack, previousTrack } from '../../../../actions/actions'
 import FeaturedTrack from '../FeaturedTrack'
-import PlaylistList from '../../../playlist/components/PlaylistList'
 import Timer from '../Timer';
 
 import styles from './Player.scss'
@@ -126,7 +125,7 @@ class Player extends Component {
 		this.props.dispatch(previousTrack())
 	}
 
-	togglePlaylistDrawer() {
+	toggleSoundDrawer() {
 		this.setState({
 			open:!this.state.open
 		})
