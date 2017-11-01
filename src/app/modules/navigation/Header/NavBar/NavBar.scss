@@ -184,3 +184,50 @@
 .siteLogo5Hover {
   animation: circle-outer-circle 500ms 1 ease-out;
 }
+
+
+.hasDropdown {
+	position: relative;
+
+	&:hover {
+		> div {
+			display: block;
+		}
+	}
+	> div {
+		display: none;
+	}
+}
+
+.dropdown {
+	position: absolute;
+	top: 45px;
+	left: 2px;
+	width: 120px;
+
+	li {
+		width: 100%;
+	}
+}
+
+.navDropdownLink {
+	margin: 0;
+	padding: 10px 20px;
+	cursor: pointer;
+	font-size: 14px;
+	font-family: $font-label;
+	font-weight: bold;
+	letter-spacing: 1px;
+	@include transition(all 100ms linear);
+	border: 1px solid transparent;
+	color: $light;
+	background: $primary-600;
+	width: 100%;
+	display: block;
+
+	&:hover {
+		background: $primary-700;
+		color: $light;
+		text-decoration: none;
+	}
+}

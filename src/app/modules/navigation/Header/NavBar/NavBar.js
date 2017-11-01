@@ -55,15 +55,34 @@ class NavBar extends React.Component {
 					</Link>
 				</div>
 				<ul styleName="nav">
-					<li>
+					<li styleName="hasDropdown">
 						<Link styleName="navLink" to={'/sounds'}>
 							Sounds
 						</Link>
+						<div styleName="dropdown">
+							<li>
+								<Link styleName="navDropdownLink" to={'/playlists'}>
+									Playlists
+								</Link>
+							</li>
+						</div>
 					</li>
-					<li>
+					<li styleName="hasDropdown">
 						<Link styleName="navLink" to={'/resources'}>
 							Resources
 						</Link>
+						<div styleName="dropdown">
+							<li>
+								<Link styleName="navDropdownLink" to={'/events'}>
+									Events
+								</Link>
+							</li>
+							<li>
+								<Link styleName="navDropdownLink" to={'/equipment'}>
+									Equipment
+								</Link>
+							</li>
+						</div>
 					</li>
 					<li>
 						<Link styleName="navLink" to={'/about'}>
