@@ -4,6 +4,8 @@ import ReactDisqusThread from 'react-disqus-thread';
 import CSSModules from 'react-css-modules';
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
 import _ from 'underscore';
+import moment from 'moment';
+import wpautop from 'wpautop';
 
 import styles from './ResourceSingle.scss';
 
@@ -36,6 +38,7 @@ class ResourceSingle extends Component {
 		}
 
 		const byline = _.findWhere(resource.post_meta, { meta_key: 'byline' });
+		const resourceDate = _.findWhere(resource.post_meta, { meta_key: 'date' });
 
     return (
 			<div>
@@ -53,18 +56,22 @@ class ResourceSingle extends Component {
 									{byline.meta_value}
 								</h3>
 							}
-              <p styleName="text" dangerouslySetInnerHTML={{__html: resource.post_content}}>
-							</p>
-
+              <div styleName="text" dangerouslySetInnerHTML={{__html: wpautop(resource.post_content)}} />
+							{resourceDate &&
+								<Row styleName="metaItem">
+									<Col md={2}>
+										<label>
+											Date
+										</label>
+									</Col>
+									<Col md={10}>
+										<p>
+											{moment(parseInt(resourceDate.meta_value, 10) * 1000).format('MMMM Do YYYY, h:mm a')}
+										</p>
+									</Col>
+								</Row>
+							}
 						</div>
-						{/*
-	          <ReactDisqusThread
-	            shortname="soundlab-1"
-	            identifier="soundlab-information"
-	            title="Information Thread"
-	            onNewComment={this.handleNewComment}
-	          />
-						*/}
 					</Col>
 				</Row>
 			</div>

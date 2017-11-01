@@ -25,3 +25,22 @@
 	color: #444;
 	text-align: left;
 }
+
+.metaItem {
+	padding: 15px 0;
+
+	label {
+		font-family: $font-label;
+		font-size: 24px;
+		font-weight: bold;
+		text-align: right;
+		width: 100%;
+	}
+
+	p {
+		font-family: $font-body;
+		font-size: 18px;
+		font-weight: 100;
+		padding: 0 15px;
+	}
+}

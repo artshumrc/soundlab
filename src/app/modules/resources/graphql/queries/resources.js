@@ -51,7 +51,7 @@ const resourceSingleQuery = graphql(gql`
       id
       post_title
       post_content
-			post_meta(keys: ["info_byline"]) {
+			post_meta(keys: ["info_byline", "date"]) {
 				meta_key
 				meta_value
 			}

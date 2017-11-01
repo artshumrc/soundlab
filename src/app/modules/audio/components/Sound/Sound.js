@@ -33,7 +33,7 @@ class Sound extends React.Component {
 	render () {
 		const { loading, sound, error } = this.props;
 
-		if (loading) {
+		if (loading || !sound) {
 			return (
 				<div>
 					{/* TODO: add loading component */}
@@ -41,17 +41,9 @@ class Sound extends React.Component {
 			);
 		}
 
-		let soundTitle = '';
-		let soundContent = '';
-		let soundDateMeta;
-		let soundLocationMeta;
-
-		if (sound) {
-			soundTitle = sound.post_title;
-			soundContent = sound.post_content.replace('\n', '<br /><br />');
-			soundDateMeta = _.findWhere(sound.post_meta, { meta_key: 'date' });
-			soundLocationMeta = _.findWhere(sound.post_meta, { meta_key: 'location' });
-		}
+		const soundTitle = sound.post_title;
+		const soundContent = sound.post_content.replace('\n', '<br /><br />');
+		const soundLocation = _.findWhere(sound.post_meta, { meta_key: 'location' });
 
 		return (
 			<Grid className={styles.sound}>
@@ -69,6 +61,20 @@ class Sound extends React.Component {
 						dangerouslySetInnerHTML={{ __html: wpautop(soundContent) }}
 					/>
 				</div>
+				{soundLocation &&
+					<Row styleName="metaItem">
+						<Col md={2}>
+							<label>
+								Location
+							</label>
+						</Col>
+						<Col md={10}>
+							<p>
+								{soundLocation}
+							</p>
+						</Col>
+					</Row>
+				}
 			</Grid>
 		);
 	}
