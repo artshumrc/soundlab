@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import About from '../components/About';
+import PageContainer from '../containers/PageContainer';
 
 
 export default (
   <div>
-    <Route path="about" component={About}></Route>
+    <Route path=":slug" component={PageContainer}></Route>
   </div>
 );

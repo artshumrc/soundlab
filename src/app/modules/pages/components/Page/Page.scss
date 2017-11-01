@@ -1,68 +1,85 @@
 @import "../../../../styles";
 
-.base{
-	min-height: 100vh;
-	opacity: 0;
-	transition: opacity 300ms ease-out;
-	padding-top: 4rem;
+.page-cover-section {
+  height: 400px;
+  width: 100%;
+  background: #fcfadf;
 }
 
-.with-sidebar{
-  min-height: 100vh;
+.page-content-section {
+  min-height: 500px;
+  padding: 0 5%;
+  padding-bottom: 60px;
 }
 
-.wrapper{
-	composes: main from '../../styles.scss';
-	z-index: 2;
-
-	&.tight{
-		max-width: 750px;
-	}
+.page-cover-image {
+  margin-top: -300px;
+  margin-bottom: 60px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
-.hero{
-	composes: primary_background from '../../styles.scss';
-	composes: cover center from '../../styles.scss';
-	padding: 4rem 0rem;
+.page-section-title {
+  font-size: 42px;
+	padding: 20px 0;
+  font-family: $font-reading;
+	font-weight: 100;
+  color: $darkGrey;
+}
+
+.page-text {
+  color: $dark;
+	font-weight: 100;
+  font-family: $font-body;
+	line-height: 1.6em;
+}
+
+.team-title {
+  font-size: 30px;
+}
+
+.page-team-section {
+  padding-top: 40px;
+}
+
+.team-member {
   position: relative;
-
-	z-index: 1;
+  min-height: 200px;
+  margin-bottom: 30px;
+  &.top {
+    margin-top: 40px;
+  }
 }
 
-.hero_thumbnail{
-	composes: hero;
+.team-member-pic-container {
+  height: 200px;
+  width: 25%;
+  display: inline-block;
 }
 
-.hero_thumbnail::after{
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: fade-out($secondary, .1);
+.team-member-meta {
+  display: inline-block;
+  width: 75%;
+  vertical-align: top;
+  padding: 10px 20px;
+  h3, p {
+    font-family: sans-serif;
+  }
 }
 
-.title{
-	color: white;
-	margin: 0;
+.member-name {
+  color: $dark;
+  font-weight: bold;
+
 }
 
-.subtitle{
-	color: white;
-	margin: 0;
+.member-position {
+  color: $lightGrey;
+  font-size: 14px;
 }
 
-.thumbnail{
-	composes: cover from '../../styles.scss';
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-}
-
-.content{
-	background-color: white;
-	padding: 2rem 0rem;
+.member-page-text {
+  color: $darkestGrey;
+  font-size: 18px;
+  font-weight: 100;
+  padding-top: 20px;
 }
