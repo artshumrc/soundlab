@@ -57,7 +57,7 @@ class NavBar extends React.Component {
 				<ul styleName="nav">
 					<li>
 						<Link styleName="navLink" to={'/waves'}>
-							Waves
+							Sounds
 						</Link>
 					</li>
 					<li>

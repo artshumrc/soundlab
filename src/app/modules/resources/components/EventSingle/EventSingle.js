@@ -5,6 +5,7 @@ import CSSModules from 'react-css-modules';
 import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
 import _ from 'underscore';
 import moment from 'moment';
+import wpautop from 'wpautop';
 
 import styles from './EventSingle.scss';
 
@@ -58,8 +59,7 @@ class EventSingle extends Component {
 									{byline.meta_value}
 								</h3>
 							}
-              <p styleName="text" dangerouslySetInnerHTML={{__html: event.post_content}}>
-							</p>
+              <div styleName="text" dangerouslySetInnerHTML={{__html: wpautop(event.post_content) }} />
 							{eventStart &&
 								<Row styleName="metaItem">
 									<Col md={2}>

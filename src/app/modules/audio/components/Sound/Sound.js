@@ -7,6 +7,7 @@ import autoBind from 'react-autobind';
 import { Link } from 'react-router';
 import _ from 'underscore';
 import moment from 'moment';
+import wpautop from 'wpautop';
 
 import FeaturedTrack from '../../../home/components/FeaturedTrack';
 
@@ -63,9 +64,9 @@ class Sound extends React.Component {
 					</Col>
 				</Row>
 				<div className={styles.soundBody}>
-					<p
+					<div
 						className={styles.content}
-						dangerouslySetInnerHTML={{ __html: soundContent }}
+						dangerouslySetInnerHTML={{ __html: wpautop(soundContent) }}
 					/>
 				</div>
 			</Grid>
