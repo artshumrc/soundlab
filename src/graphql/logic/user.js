@@ -14,32 +14,32 @@ export default class UserService extends PermissionsService {
 
 	/**
 	 * Create a user
-	 * @param {string} nameFirst - the first name of the user
-	 * @param {string} nameLast - the last name of the user
-	 * @param {string} email - email of user
-	 * @param {string} password - password of user account
-	 * @param {string} field - the field that the user is studying
+	 * @param {Object} user - user candidate to create via wordpress api
 	 * @returns {Object} create response
 	 */
 
 	create(user) {
-		const uri = `${process.env.ADMIN_URL}/wp/v2/users`;
+		const uri = `${process.env.ADMIN_URL}/wp-admin/admin-ajax.php`;
 
 		const options = {
 			method: 'POST',
 			uri,
 			formData: {
+				action: 'soundlab_user_signup',
 				username: user.user_nicename,
 				email: user.user_email,
 				name: user.display_name,
 				password: user.password,
-				_wpnonce: "1382f65f4c",
+				field: user.field,
 			},
 			strictSSL: false,
+			json: true,
 		};
 		return rp(options)
 			.then(res => {
-				return JSON.parse(res);
+				// return JSON.parse(res);
+				console.log(res);
+				return res;
 			})
 			.catch(err => {
 				console.log(err);
