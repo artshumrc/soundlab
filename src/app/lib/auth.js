@@ -82,7 +82,8 @@ const verifyToken = async () => {
 	const token = cookies.get('token');
 	if (token) {
 		try {
-			const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_VERIFY_TOKEN_URI}`, {
+			/*
+			const res = await fetch(`http://admin.soundlab.local:8888/wp-json/jwt-auth/v1/token/validate`, {
 				method: 'POST',
 				credentials: 'include',
 				headers: {
@@ -95,6 +96,7 @@ const verifyToken = async () => {
 				throw new Error(res.statusText);
 			}
 			return res.json();
+			*/
 		} catch (err) {
 			throw err;
 		}

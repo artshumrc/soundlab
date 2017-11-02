@@ -10,7 +10,6 @@ import { toggleAuthModal, setUser } from '../../actions';
 const wrapSubmit = handleLogin => async (values, dispatch) => {
 	try {
 		await handleLogin(values);
-		dispatch(toggleAuthModal(false));
 		return {};
 	} catch (err) {
 		throw new SubmissionError({ _error: 'Login failed!' });

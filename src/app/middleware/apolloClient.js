@@ -21,8 +21,7 @@ networkInterface.use([{
 		if (!req.options.headers) {
 			req.options.headers = {}; // Create the header object if needed.
 		}
-		// req.options.headers.authorization = cookies.get('token') ? cookies.get('token') : null;
-		req.options.headers.Authorization = 'Basic c291bmRsYWI6MjAxMg==';
+		req.options.headers.authorization = cookies.get('token') ? cookies.get('token') : null;
 
 		next();
 	}

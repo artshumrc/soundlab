@@ -50,7 +50,7 @@ dotenvSetup();
 
 const app = express();
 
-app.use(basicAuth('soundlab', '2012'));
+// app.use(basicAuth('soundlab', '2012'));
 
 const compiler = webpack(config);
 const middleware = webpackMiddleware(compiler, {

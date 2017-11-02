@@ -2,8 +2,9 @@ import React from 'react';
 import autoBind from 'react-autobind';
 import { compose } from 'react-apollo';
 import { connect } from 'react-redux';
+import Cookies from 'js-cookie';
 
-import { setUser } from '../../actions';
+import { toggleAuthModal, setUser } from '../../actions';
 import { userCreateTokenMutation } from '../../graphql/auth';
 import Login from '../../components/Login';
 
@@ -21,7 +22,7 @@ class LoginContainer extends React.Component {
 	}
 
 	handleLogin(userData) {
-		const { dispatchSetUser } = this.props;
+		const { dispatchSetUser, dispatchToggleAuthModal } = this.props;
 
 		this.props.userCreateToken(userData)
 			.then(({ data }) => {
@@ -31,8 +32,13 @@ class LoginContainer extends React.Component {
 					username: user_display_name,
 					token,
 				});
+				dispatchToggleAuthModal(false);
+				Cookies.set('token', token);
       }).catch((error) => {
         console.log('there was an error sending the query', error);
+				this.setState({
+					error,
+				});
       });
 	}
 
@@ -58,6 +64,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchSetUser: (userObject) => {
 		dispatch(setUser(userObject));
+	},
+	dispatchToggleAuthModal: (onOff) => {
+		dispatch(toggleAuthModal(onOff));
 	},
 });
 
