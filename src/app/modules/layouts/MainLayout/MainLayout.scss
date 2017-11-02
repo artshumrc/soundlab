@@ -9,8 +9,16 @@
 	top: 0px;
 	left: 0px;
 	width: 100vw;
-	height: 100vh;
+	height: auto;
 	overflow:visible;
+	max-height: 100vh;
 	z-index: 0;
+	opacity: 0.7;
 
+}
+
+.containerContent {
+	min-height: 1200px;
+	position:relative;
+	z-index: 1;
 }

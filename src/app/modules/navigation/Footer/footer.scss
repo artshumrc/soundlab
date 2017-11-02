@@ -3,6 +3,8 @@
 footer {
   background:$dark;
   height:220px;
+	position:relative;
+	z-index: 1;
 }
 
 .footer-left {
