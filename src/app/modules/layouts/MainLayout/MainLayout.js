@@ -30,6 +30,9 @@ class MainLayout extends Component {
     return (
       <div styleName="mainContainer">
 				<Header />
+				<div className={styles.wavesContainer}>
+					<img src="/images/wave1.png" />
+				</div>
         {this.props.children}
 				<Footer />
       </div>
