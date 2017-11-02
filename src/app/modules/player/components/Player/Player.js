@@ -14,7 +14,9 @@ import CSSModules from 'react-css-modules'
 import _ from 'underscore';
 import _s from 'underscore.string';
 
-import { resumePlayer, pausePlayer, nextTrack, previousTrack } from '../../../../actions/actions'
+import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
+import { getAudioFileURL } from '../../../../lib/audioFiles';
+import { resumePlayer, pausePlayer, setPlayerTrack, setPlaylist } from '../../../../actions/actions';
 import FeaturedTrack from '../FeaturedTrack'
 import Timer from '../Timer';
 
@@ -27,10 +29,9 @@ class Player extends Component {
 
 	constructor(props) {
 		super(props)
+
 		this.state = {
 			open: false,
-			tracksWithSounds: [],
-			currentTrack: null,
 		}
 	}
 
@@ -47,29 +48,16 @@ class Player extends Component {
 			&& nextProps.tracks.length
 		) {
 
-			const tracks = [{
-				id: "63",
-				post_title: "Example Sound 4",
-				post_name: "example-sound-4",
-				post_content: "Example sound from Archive.org: https://archive.org/details/Sitar96",
-				post_meta: [{
-					meta_key: "audio_file",
-					meta_value: "http://admin.soundlab.orphe.us/wp-content/uploads/2017/10/Sitar96_64kb.mp3",
-					__typename: "Postmeta",
-				}],
-			}];
-
-
 			const tracksWithSounds = [];
 			soundManager.setup({
 				onready: () => {
-					tracks.forEach(track => {
-						const audioFile = _.findWhere(track.post_meta, { meta_key: 'audio_file' });
+					nextProps.tracks.forEach(track => {
+						const audioFile = getAudioFileURL(track.audio_file);
 						tracksWithSounds.push({
 							...track,
 							sound: soundManager.createSound({
 								id: track.post_name,
-								url: audioFile.meta_value,
+								url: audioFile,
 								autoPlay: false,
 								autoLoad: true,
 								whileplaying: () => {
@@ -83,11 +71,7 @@ class Player extends Component {
 						});
 					});
 
-					console.log(tracksWithSounds);
-
-					this.setState({
-						tracksWithSounds,
-					});
+					this.props.dispatchSetPlaylist(tracksWithSounds);
 				},
 				ontimeout: function() {
 					// Uh-oh. No HTML5 support, SWF missing, Flash blocked or other issue
@@ -97,32 +81,53 @@ class Player extends Component {
 	}
 
 	pause(){
-		this.props.dispatch(pausePlayer())
-		const track = this.state.tracksWithSounds[0];
-		soundManager.pause(track.sound.id)
-		this.setState({
-			currentTrack: null,
-		});
+		this.props.dispatchPausePlayer();
+		soundManager.pause(this.props.player.currentTrack.sound.id);
 	}
 
 	resume(props){
-		this.props.dispatch(resumePlayer())
-		const track = this.state.tracksWithSounds[0];
-
-		soundManager.play(track.sound.id);
-		this.setState({
-			currentTrack: track,
-		});
+		this.props.dispatchResumePlayer();
+		soundManager.play(this.props.player.currentTrack.sound.id);
 	}
 
-	playNext(props) {
-		soundManager.destroySound(this.props.player.id)
-		this.props.dispatch(nextTrack(this.props.player.track))
+	async playNext(props) {
+		const { tracks, currentTrack } = this.props.player;
+		const currentIndex = tracks.map((x) => {return x.id; }).indexOf(currentTrack.id);
+
+		// pause player
+		this.pause();
+
+		// loop through tracks
+		let nextIndex = currentIndex + 1;
+		if (nextIndex > tracks.length - 1) {
+			nextIndex = 0;
+		}
+
+		// set the new player track
+		await this.props.dispatchSetPlayerTrack(tracks[nextIndex]);
+
+		// resume player player
+		this.resume();
 	}
 
-	playPrevious() {
-		// soundManager.destroySound(this.props.playlist[this.props.ui.currentIndex].id)
-		this.props.dispatch(previousTrack())
+	async playPrevious() {
+		const { tracks, currentTrack } = this.props.player;
+		const currentIndex = tracks.map((x) => {return x.id; }).indexOf(currentTrack.id);
+
+		// pause player
+		this.pause();
+
+		// loop through tracks
+		let prevIndex = currentIndex - 1;
+		if (prevIndex < 0) {
+			prevIndex = tracks.length - 1;
+		}
+
+		// set the new player track
+		await this.props.dispatchSetPlayerTrack(tracks[prevIndex]);
+
+		// resume player player
+		this.resume();
 	}
 
 	toggleSoundDrawer() {
@@ -131,19 +136,17 @@ class Player extends Component {
 		})
 	}
 
-
 	render() {
+		const { player } = this.props;
+		let { tracks, currentTrack } = player;
 
-		// TODO: move these to redux in the future
-		let { tracksWithSounds, currentTrack } = this.state;
-
-		if (!tracksWithSounds || !tracksWithSounds.length) {
+		if (!tracks || !tracks.length) {
 			// TODO: just hide instead of not displaying
 			return null;
 		}
 
 		if (!currentTrack) {
-			currentTrack = tracksWithSounds[0];
+			currentTrack = tracks[0];
 		}
 
 		const thumbnailListImage = {
@@ -198,10 +201,10 @@ class Player extends Component {
 						<div styleName="buttonWrapper">
 							<SkipPrevious
 								style={buttonStyles}
-								onClick={this.playPrevious.bind(this, tracksWithSounds)}
+								onClick={this.playPrevious.bind(this, tracks)}
 							/>
 
-							{this.props.ui.isPlaying ?
+							{player.isPlaying ?
 								<Pause
 									style={buttonStyles}
 									onClick={this.pause.bind(this)}
@@ -215,7 +218,7 @@ class Player extends Component {
 
 							<SkipNext
 								style={buttonStyles}
-								onClick={this.playNext.bind(this, tracksWithSounds)}
+								onClick={this.playNext.bind(this, tracks)}
 							/>
 						</div>
 
@@ -235,12 +238,26 @@ Player.propTypes = {
 	tracks: PropTypes.array
 };
 
-function mapStateToProps(state){
-	return {
-		playlist: state.playlist,
-		player: state.player,
-		ui: state.ui
-	};
-}
+const mapStateToProps = state => ({
+	player: state.player,
+});
 
-export default connect(mapStateToProps)(Player)
+const mapDispatchToProps = (dispatch, ownProps) => ({
+	dispatchSetPlaylist: (tracks) => {
+		dispatch(setPlaylist(tracks));
+	},
+	dispatchSetPlayerTrack: (track) => {
+		dispatch(setPlayerTrack(track));
+	},
+	dispatchPausePlayer: () => {
+		dispatch(pausePlayer());
+	},
+	dispatchResumePlayer: () => {
+		dispatch(resumePlayer());
+	},
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(Player)

@@ -1,32 +1,30 @@
-import {SET_PLAYER_TRACK} from '../actions/actions';
-import { NEXT_TRACK } from '../actions/actions';
+import { SET_PLAYER_TRACK, SET_PLAYLIST, RESUME_PLAYER, PAUSE_PLAYER } from '../actions/actions';
 
-const initialState = {
-
-
-};
-
-
-export default function (state = initialState, action) {
+export default function (state = {}, action) {
 
   switch (action.type) {
   case 'SET_PLAYER_TRACK':
     return Object.assign({}, state, {
       ...state,
-      title: action.title,
-      thumbnail: action.thumbnail,
-      byline: action.byline,
-      soundCloudLink: action.soundCloudLink,
-      id: action.id,
-      track: action.track,
-
-    })
-  case 'NEXT_TRACK':
+      currentTrack: action.track,
+    });
+  case 'SET_PLAYLIST':
+    return Object.assign({}, state, {
+      ...state,
+      tracks: action.tracks,
+      currentTrack: action.tracks[0],
+    });
+  case 'RESUME_PLAYER':
     return Object.assign({}, state, {
       ...state,
       isPlaying: action.isPlaying
     })
-    default:
-      return state
+  case 'PAUSE_PLAYER':
+    return Object.assign({}, state, {
+      ...state,
+      isPlaying: action.isPlaying
+    })
+  default:
+    return state
   }
 }
