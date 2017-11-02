@@ -25,7 +25,8 @@ class FeaturedTrack extends React.Component {
 
 		// if there are tracks
 		if (
-			!this.state.trackWithSound
+				this.props.track
+			&& !this.state.trackWithSound
 		) {
 			const { track } = this.props;
 
