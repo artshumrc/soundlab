@@ -12,7 +12,6 @@ import { toggleAuthModal, setUser } from '../../actions';
 const wrapSubmit = handleSignup => async (values, dispatch) => {
 	try {
 		const userObj = await handleSignup(values);
-		dispatch(toggleAuthModal(false));
 		return {};
 	} catch (err) {
 		if (err.passwordError) {

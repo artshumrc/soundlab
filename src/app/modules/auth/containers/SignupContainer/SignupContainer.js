@@ -1,8 +1,10 @@
 import React from 'react';
 import autoBind from 'react-autobind';
 import { compose } from 'react-apollo';
+import { connect } from 'react-redux';
 import slugify from 'slugify';
 
+import { changeAuthMode } from '../../actions';
 import { userCreateMutation } from '../../graphql/auth';
 import Signup from '../../components/Signup';
 
@@ -13,16 +15,30 @@ class SignupContainer extends React.Component {
 		super(props);
 
 		autoBind(this);
+
+		this.state = {
+			error: '',
+		};
 	}
 
 	handleSignup(userData) {
+		const { dispatchChangeAuthMode } = this.props;
+
 		this.props.userCreate({
-			user_nicename: slugify(`${userData.first_name} ${userData.last_name}`),
-			display_name: `${userData.first_name} ${userData.last_name}`,
-			user_email: userData.email,
-			password: userData.password,
-			field: userData.field,
-		});
+				user_nicename: slugify(`${userData.first_name} ${userData.last_name}`).toLowerCase(),
+				display_name: `${userData.first_name} ${userData.last_name}`,
+				user_email: userData.email,
+				password: userData.password,
+				field: userData.field,
+			})
+			.then(({ data }) => {
+				dispatchChangeAuthMode('login');
+      }).catch((error) => {
+        console.log('there was an error sending the query', error);
+				this.setState({
+					error,
+				});
+      });
 	}
 
 	render() {
@@ -35,6 +51,23 @@ class SignupContainer extends React.Component {
 	}
 }
 
+const mapStateToProps = state => ({
+	username: state.auth.username,
+	userId: state.auth.userId,
+	token: state.auth.token,
+});
+
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+	dispatchChangeAuthMode: (mode) => {
+		dispatch(changeAuthMode(mode));
+	},
+});
+
 export default compose(
-	userCreateMutation
+	userCreateMutation,
+	connect(
+		mapStateToProps,
+		mapDispatchToProps,
+	),
 )(SignupContainer);

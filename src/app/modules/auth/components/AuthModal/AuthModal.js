@@ -22,7 +22,7 @@ class _AuthModal extends React.Component {
 		dispatchLogin: PropTypes.func.isRequired,
 		dispatchSignup: PropTypes.func.isRequired,
 		dispatchToggleAuthModal: PropTypes.func.isRequired,
-		dispachChangeAuthMode: PropTypes.func.isRequired,
+		dispatchChangeAuthMode: PropTypes.func.isRequired,
 		showAuthModal: PropTypes.bool,
 		authMode: PropTypes.string,
 	};
@@ -73,7 +73,7 @@ class _AuthModal extends React.Component {
 	}
 
 	render() {
-		const { showAuthModal, dispatchToggleAuthModal, authMode, dispachChangeAuthMode, dispatchLogin, dispatchSignup } = this.props;
+		const { showAuthModal, dispatchToggleAuthModal, authMode, dispatchChangeAuthMode, dispatchLogin, dispatchSignup } = this.props;
 
 		return (
 			<Modal
@@ -84,12 +84,12 @@ class _AuthModal extends React.Component {
 					<ModalHead />
 					{authMode === 'login' ?
 						<LoginContainer
-							onRegisterClick={dispachChangeAuthMode.bind(null, 'signup')}
+							onRegisterClick={dispatchChangeAuthMode.bind(null, 'signup')}
 						/>
 					: null}
 					{authMode === 'signup' ?
 						<SignupContainer
-							onSigninClick={dispachChangeAuthMode.bind(null, 'login')}
+							onSigninClick={dispatchChangeAuthMode.bind(null, 'login')}
 						/>
 					: null}
 				</div>
@@ -107,7 +107,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchToggleAuthModal: (value) => {
 		dispatch(toggleAuthModal(value));
 	},
-	dispachChangeAuthMode: (mode) => {
+	dispatchChangeAuthMode: (mode) => {
 		dispatch(changeAuthMode(mode));
 	},
 	dispatchSetUser: (userObject) => {
