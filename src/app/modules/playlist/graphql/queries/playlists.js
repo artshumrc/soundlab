@@ -11,6 +11,7 @@ const playlistSingleQuery = graphql(gql`
 			queue {
 				id
 				post_title
+				post_name
 				thumbnail
 				audio_file
 			}
@@ -33,7 +34,7 @@ const playlistSingleQuery = graphql(gql`
 const playlistListQuery = graphql(gql`
 	query playlistListQuery {
 		posts(post_type: ["playlist"]) {
-			id,
+			id
 			post_title
 			post_name
 			post_content
@@ -56,7 +57,7 @@ const playlistListQuery = graphql(gql`
 const playlistSoundsQuery = graphql(gql`
 	query playlistSoundsQuery($post_ids: [Int]) {
 		posts(post_ids: $post_ids) {
-			id,
+			id
 			post_title
 			post_name
 			post_content

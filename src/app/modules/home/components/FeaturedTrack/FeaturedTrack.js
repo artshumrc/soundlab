@@ -21,6 +21,46 @@ class FeaturedTrack extends React.Component {
 		};
 	}
 
+	componentDidMount() {
+
+		// if there are tracks
+		if (
+			!this.state.trackWithSound
+		) {
+			const { track } = this.props;
+
+			let trackWithSound;
+			soundManager.setup({
+				onready: () => {
+					const audioFile = getAudioFileURL(track.audio_file);
+					trackWithSound = {
+						...track,
+						sound: soundManager.createSound({
+							id: `featured-${track.post_name}`,
+							url: audioFile,
+							autoPlay: false,
+							autoLoad: true,
+							whileplaying: () => {
+								//document.getElementsBystyleName(('progressBar')[0].style.width =	25 + '%')
+							},
+							onfinish: function() {
+								// document.getElementById('progressBar').style.width = '0'
+								soundManager._writeDebug(this.id + ' finished playing')
+							}
+						})
+					};
+
+					this.setState({
+						trackWithSound,
+					})
+				},
+				ontimeout: function() {
+					// Uh-oh. No HTML5 support, SWF missing, Flash blocked or other issue
+				},
+			});
+		}
+	}
+
 	componentWillReceiveProps(nextProps) {
 
 		// if there are tracks
