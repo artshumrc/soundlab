@@ -1,7 +1,9 @@
 import React from 'react';
 import autoBind from 'react-autobind';
 import { compose } from 'react-apollo';
+import { connect } from 'react-redux';
 
+import { setUser } from '../../actions';
 import { userCreateTokenMutation } from '../../graphql/auth';
 import Login from '../../components/Login';
 
@@ -11,23 +13,31 @@ class LoginContainer extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.state = {
+			token: '',
+		};
+
 		autoBind(this);
 	}
 
 	handleLogin(userData) {
-		this.props.userCreateToken(userData);
+		const { dispatchSetUser } = this.props;
+
+		this.props.userCreateToken(userData)
+			.then(({ data }) => {
+        console.log('got data', data);
+				const { token, user_display_name }= data.userCreateToken.response;
+				dispatchSetUser({
+					username: user_display_name,
+					token,
+				});
+      }).catch((error) => {
+        console.log('there was an error sending the query', error);
+      });
 	}
 
 	render() {
-		console.log("###########################################");
-		console.log("user login container props");
-		console.log(this.props);
-		console.log("###########################################");
-		let token = '';
-
-		if (this.props.userCreateToken) {
-			token = this.props.userCreateToken.token;
-		}
+		const { token } = this.state;
 
 		return (
 			<Login
@@ -39,6 +49,22 @@ class LoginContainer extends React.Component {
 	}
 }
 
+const mapStateToProps = state => ({
+	username: state.auth.username,
+	userId: state.auth.userId,
+	token: state.auth.token,
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+	dispatchSetUser: (userObject) => {
+		dispatch(setUser(userObject));
+	},
+});
+
 export default compose(
-	userCreateTokenMutation
+	userCreateTokenMutation,
+	connect(
+		mapStateToProps,
+		mapDispatchToProps
+	),
 )(LoginContainer);

@@ -56,13 +56,13 @@ class _AuthModal extends React.Component {
 	}
 
 	async _initiateUser() {
-		const { getUserFromServer, dispachSetUser } = this.props;
+		const { getUserFromServer, dispatchSetUser } = this.props;
 		if (getUserFromServer) {
 			try {
 				const user = await getUserFromServer();
 				if (user) {
 					user.userId = user._id;
-					dispachSetUser(user);
+					dispatchSetUser(user);
 				}
 			} catch (err) {
 				console.log(err);
@@ -110,7 +110,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispachChangeAuthMode: (mode) => {
 		dispatch(changeAuthMode(mode));
 	},
-	dispachSetUser: (userObject) => {
+	dispatchSetUser: (userObject) => {
 		dispatch(setUser(userObject));
 		dispatch(toggleAuthModal(false));
 	},

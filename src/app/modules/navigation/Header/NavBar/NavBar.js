@@ -1,8 +1,9 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import Headroom from 'react-headroom';
 import { Link } from 'react-router';
 import CSSModules from 'react-css-modules'
 import autoBind from 'react-autobind';
+import { connect } from 'react-redux';
 
 import styles from './NavBar.scss';
 
@@ -31,7 +32,7 @@ class NavBar extends React.Component {
 	}
 
 	render() {
-		const { toggleAuthModal, userId, logout } = this.props;
+		const { toggleAuthModal, token, logout } = this.props;
 		const { hover } = this.state;
 
 		return (
@@ -89,9 +90,9 @@ class NavBar extends React.Component {
 							About
 						</Link>
 					</li>
-					{ userId ?
+					{ token ?
 						<li>
-							<Link styleName="navLink" to={'/'}>
+							<Link styleName="navLink" to={'/profile'}>
 								My Tracks
 							</Link>
 						</li>
@@ -113,7 +114,14 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {
 	toggleAuthModal: PropTypes.func.isRequired,
-	userId: PropTypes.string,
+	token: PropTypes.string,
 };
 
-export default NavBar;
+const mapStateToProps = state => ({
+	username: state.auth.username,
+	userId: state.auth.userId,
+	token: state.auth.token,
+});
+
+
+export default connect(mapStateToProps)(NavBar);

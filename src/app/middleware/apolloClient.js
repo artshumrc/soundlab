@@ -23,7 +23,7 @@ networkInterface.use([{
 		}
 		// req.options.headers.authorization = cookies.get('token') ? cookies.get('token') : null;
 		req.options.headers.Authorization = 'Basic c291bmRsYWI6MjAxMg==';
-		console.log(req.options.headers);
+
 		next();
 	}
 }]);

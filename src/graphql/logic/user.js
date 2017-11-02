@@ -90,7 +90,7 @@ export default class UserService extends PermissionsService {
 			})
 			.catch(err => {
 				return {
-					response: JSON.parse(err.response.body)
+					response: JSON.parse(err.response)
 				};
 			});
   }

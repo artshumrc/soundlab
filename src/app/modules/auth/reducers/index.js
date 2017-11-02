@@ -38,7 +38,7 @@ export default (state = initialState, action) => {
 		return {
 			...state,
 			username: action.username,
-			userId: action.userId,
+			token: action.token,
 		};
 	}
 	case types.REMOVE_USER: {
