@@ -9,6 +9,7 @@ const featuredTrackQuery = graphql(gql`
 			post_name
 			post_content
 			thumbnail
+			audio_file
 			post_meta(keys: ["byline", "date", "external_link"]) {
 				meta_key
 				meta_value

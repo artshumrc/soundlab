@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-bootstrap';
 import CSSModules from 'react-css-modules';
 import _ from 'underscore';
+import { connect } from 'react-redux';
 
+import { resumePlayer, pausePlayer, setPlayerTrack, setPlaylist } from '../../../../actions/actions';
+import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
+import { getAudioFileURL } from '../../../../lib/audioFiles';
 
 import styles from './FeaturedTrack.scss'
 
@@ -13,7 +17,48 @@ class FeaturedTrack extends React.Component {
 
 		this.state = {
 			status: '',
+			trackWithSound: null,
 		};
+	}
+
+	componentWillReceiveProps(nextProps) {
+
+		// if there are tracks
+		if (
+			!this.state.trackWithSound
+		) {
+			const { track } = nextProps;
+
+			let trackWithSound;
+			soundManager.setup({
+				onready: () => {
+					const audioFile = getAudioFileURL(track.audio_file);
+					trackWithSound = {
+						...track,
+						sound: soundManager.createSound({
+							id: `featured-${track.post_name}`,
+							url: audioFile,
+							autoPlay: false,
+							autoLoad: true,
+							whileplaying: () => {
+								//document.getElementsBystyleName(('progressBar')[0].style.width =	25 + '%')
+							},
+							onfinish: function() {
+								// document.getElementById('progressBar').style.width = '0'
+								soundManager._writeDebug(this.id + ' finished playing')
+							}
+						})
+					};
+
+					this.setState({
+						trackWithSound,
+					})
+				},
+				ontimeout: function() {
+					// Uh-oh. No HTML5 support, SWF missing, Flash blocked or other issue
+				},
+			});
+		}
 	}
 
 	handleMouseEnter(){
@@ -34,12 +79,24 @@ class FeaturedTrack extends React.Component {
 		}
 	}
 
-	handleClick(){
+	async handleClick(){
 		const { status } = this.state;
+		const { isPlaying } = this.props.player;
+
+		if (isPlaying) {
+			this.props.dispatchPausePlayer();
+			soundManager.pause(this.props.player.currentTrack.sound.id);
+		}
+
 		if (status !== 'play') {
+			await this.props.dispatchSetPlayerTrack(this.state.trackWithSound);
+
+			soundManager.play(this.props.player.currentTrack.sound.id);
+			this.props.dispatchResumePlayer();
 			this.setState({
 				status: 'play',
 			});
+
 		} else {
 			this.setState({
 				status: '',
@@ -108,7 +165,7 @@ class FeaturedTrack extends React.Component {
         </div>
         <div className={styles.featuredTrackMetaContainer}>
 					<div>
-						{showFeaturedTrackLabel && 
+						{showFeaturedTrackLabel &&
 		          <h6
 								className={`${styles.featuredTrackTitle}
 									${status.length ? styles.featuredTrackTitleHover : ''}
@@ -134,8 +191,27 @@ class FeaturedTrack extends React.Component {
 
 FeaturedTrack.propTypes = {
 	track: PropTypes.object,
+	player: PropTypes.object,
 	purple: PropTypes.bool,
 };
 
+const mapStateToProps = state => ({
+	player: state.player,
+});
 
-export default FeaturedTrack
+const mapDispatchToProps = (dispatch, ownProps) => ({
+	dispatchSetPlayerTrack: (track) => {
+		dispatch(setPlayerTrack(track));
+	},
+	dispatchPausePlayer: () => {
+		dispatch(pausePlayer());
+	},
+	dispatchResumePlayer: () => {
+		dispatch(resumePlayer());
+	},
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(FeaturedTrack);

@@ -17,7 +17,6 @@ import _s from 'underscore.string';
 import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 import { getAudioFileURL } from '../../../../lib/audioFiles';
 import { resumePlayer, pausePlayer, setPlayerTrack, setPlaylist } from '../../../../actions/actions';
-import FeaturedTrack from '../FeaturedTrack'
 import Timer from '../Timer';
 
 import styles from './Player.scss'
