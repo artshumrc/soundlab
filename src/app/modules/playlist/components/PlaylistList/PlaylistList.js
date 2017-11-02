@@ -20,9 +20,7 @@ class PlaylistList extends React.Component {
 	}
 
 	render () {
-		const { loading, playlists, error } = this.props;
-
-		console.log("Playlists", playlists);
+		const { loading, playlists, error, noPadding } = this.props;
 
 		if (loading) {
 			return (
@@ -33,7 +31,7 @@ class PlaylistList extends React.Component {
 		}
 
 		return (
-			<Grid className={styles.playlistList}>
+			<Grid className={`${styles.playlistList} ${noPadding ? styles.playlistListNoPadding : ''}`}>
 				<Row>
 					<Col >
 						<h1 className={styles.title}>

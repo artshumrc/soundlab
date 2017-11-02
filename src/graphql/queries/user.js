@@ -14,7 +14,7 @@ import UserService from '../logic/user';
 const userQueryFields = {
 	users: {
 		type: UserType,
-		description: 'Get a user by id',
+		description: 'Get a user optionally by id',
 		args: {
 			id: {
 				type: GraphQLID,

@@ -6,7 +6,7 @@ import audioRoutes from '../modules/audio/routes';
 import resourceRoutes from '../modules/resources/routes';
 import singlePageRoutes from '../modules/pages/routes';
 import playlistRoutes from '../modules/playlist/routes';
-//import userRoutes from '../modules/users/routes';
+import userRoutes from '../modules/users/routes';
 
 const routes = (
   <Router history={browserHistory}>
@@ -15,6 +15,7 @@ const routes = (
       {audioRoutes}
       {resourceRoutes}
 			{playlistRoutes}
+			{userRoutes}
       {singlePageRoutes}
     </Route>
   </Router>
