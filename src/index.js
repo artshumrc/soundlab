@@ -13,6 +13,7 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
+import basicAuth from 'basicauth-middleware';
 
 // db
 import db, { dbSetup } from './db';
@@ -48,6 +49,8 @@ import authenticationRouter from './authentication/routes';
 dotenvSetup();
 
 const app = express();
+
+app.use(basicAuth('soundlab', '2012'));
 
 const compiler = webpack(config);
 const middleware = webpackMiddleware(compiler, {

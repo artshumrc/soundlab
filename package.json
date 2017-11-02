@@ -79,6 +79,7 @@
     "apollo-errors": "^1.5.1",
     "aws-sdk": "^2.138.0",
     "babel-polyfill": "^6.3.14",
+    "basicauth-middleware": "^3.0.0",
     "body-parser": "^1.17.1",
     "cesium": "^1.36.0",
     "cookie-parser": "^1.4.3",

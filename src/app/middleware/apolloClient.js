@@ -9,7 +9,10 @@ const networkInterface = createNetworkInterface({
 	uri: '/graphql',
 	opts: {
 	 	credentials: 'include',
-	}
+	},
+	headers: {
+		Authorization: 'Basic c291bmRsYWI6MjAxMg==',
+	},
 });
 
 networkInterface.use([{
@@ -18,7 +21,9 @@ networkInterface.use([{
 		if (!req.options.headers) {
 			req.options.headers = {}; // Create the header object if needed.
 		}
-		req.options.headers.authorization = cookies.get('token') ? cookies.get('token') : null;
+		// req.options.headers.authorization = cookies.get('token') ? cookies.get('token') : null;
+		req.options.headers.Authorization = 'Basic c291bmRsYWI6MjAxMg==';
+		console.log(req.options.headers);
 		next();
 	}
 }]);
