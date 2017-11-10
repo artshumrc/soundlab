@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import SoundListItem from '../../../audio/components/SoundListItem';
+import PlayerSoundListItem from '../PlayerSoundListItem';
 
-import styles from './PlaylistSounds.scss';
+import styles from './PlayerSounds.scss';
 
 
 const PlaylistSounds = props => (
 	<div className={styles.playlistSounds}>
 		{props.sounds.map((sound, i) => (
-			<SoundListItem
+			<PlayerSoundListItem
 				key={`${sound.id}-${i}`}
 				sound={sound}
 				index={i}

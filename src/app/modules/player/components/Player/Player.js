@@ -15,7 +15,7 @@ import CSSModules from 'react-css-modules'
 import _ from 'underscore';
 import _s from 'underscore.string';
 
-import PlaylistSounds from '../../../playlist/components/PlaylistSounds';
+import PlayerSounds from '../PlayerSounds';
 import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 import { getAudioFileURL } from '../../../../lib/audioFiles';
 import { resumePlayer, pausePlayer, setPlayerTrack, setPlaylist } from '../../../../actions/actions';
@@ -32,7 +32,7 @@ class Player extends Component {
 		super(props)
 
 		this.state = {
-			playlistVisible: false,
+			playlistVisible: true,
 		}
 		autoBind(this);
 	}
@@ -181,6 +181,14 @@ class Player extends Component {
 			cursor: "pointer",
 		};
 
+		console.log('##############################');
+		console.log('##############################');
+		console.log('##############################');
+		console.log(player);
+		console.log('##############################');
+		console.log('##############################');
+		console.log('##############################');
+
 		return (
 			<div className={`
 				${styles.soundlabPlayer}
@@ -250,7 +258,7 @@ class Player extends Component {
 					</div>
 				</div>
 				<div styleName="playlistDrawer">
-					<PlaylistSounds sounds={tracks} />
+					<PlayerSounds sounds={player.tracks} />
 				</div>
 			</div>
 		);

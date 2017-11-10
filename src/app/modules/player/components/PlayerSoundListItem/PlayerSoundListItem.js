@@ -6,24 +6,135 @@ import _ from 'underscore';
 import autoBind from 'react-autobind';
 import { connect } from 'react-redux';
 
+import { resumePlayer, pausePlayer, setPlayerTrack, setPlaylist } from '../../../../actions/actions';
 import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
-import styles from './SoundListItem.scss'
+import { getAudioFileURL } from '../../../../lib/audioFiles';
+import styles from './PlayerSoundListItem.scss'
 
 
-class SoundListItem extends Component{
+class PlayerSoundListItem extends Component{
 
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			mouseOver: false,
+			status: '',
+			trackWithSound: null,
 		};
 	}
 
-	handleClick() {
-		// Start item on player
+	componentDidMount() {
+		const { sound } = this.props;
 
+		// if there are tracks
+		if (
+				sound
+			&& !this.state.trackWithSound
+		) {
+
+			// standardize naming for soundManager differentiation
+			const track = sound;
+			let trackWithSound;
+			soundManager.setup({
+				onready: () => {
+					const audioFile = getAudioFileURL(track.audio_file);
+					trackWithSound = {
+						...track,
+						sound: soundManager.createSound({
+							id: `featured-${track.post_name}`,
+							url: audioFile,
+							autoPlay: false,
+							autoLoad: true,
+							whileplaying: () => {
+								//document.getElementsBystyleName(('progressBar')[0].style.width =	25 + '%')
+							},
+							onfinish: function() {
+								// document.getElementById('progressBar').style.width = '0'
+								soundManager._writeDebug(this.id + ' finished playing')
+							}
+						})
+					};
+
+					this.setState({
+						trackWithSound,
+					})
+				},
+				ontimeout: function() {
+					// Uh-oh. No HTML5 support, SWF missing, Flash blocked or other issue
+				},
+			});
+		}
 	}
+
+	componentWillReceiveProps(nextProps) {
+		const { sound } = nextProps;
+
+		// if there are tracks
+		if (
+				sound
+			&& !this.state.trackWithSound
+		) {
+
+			// standardize naming for soundManager differentiation
+			const track = sound;
+			let trackWithSound;
+			soundManager.setup({
+				onready: () => {
+					const audioFile = getAudioFileURL(track.audio_file);
+					trackWithSound = {
+						...track,
+						sound: soundManager.createSound({
+							id: `featured-${track.post_name}`,
+							url: audioFile,
+							autoPlay: false,
+							autoLoad: true,
+							whileplaying: () => {
+								//document.getElementsBystyleName(('progressBar')[0].style.width =	25 + '%')
+							},
+							onfinish: function() {
+								// document.getElementById('progressBar').style.width = '0'
+								soundManager._writeDebug(this.id + ' finished playing')
+							}
+						})
+					};
+
+					this.setState({
+						trackWithSound,
+					})
+				},
+				ontimeout: function() {
+					// Uh-oh. No HTML5 support, SWF missing, Flash blocked or other issue
+				},
+			});
+		}
+	}
+
+	async handleClick(){
+		const { status } = this.state;
+		const { isPlaying } = this.props.player;
+
+		if (isPlaying) {
+			this.props.dispatchPausePlayer();
+			soundManager.pause(this.props.player.currentTrack.sound.id);
+		}
+
+		if (status !== 'play') {
+			await this.props.dispatchSetPlayerTrack(this.state.trackWithSound);
+
+			soundManager.play(this.props.player.currentTrack.sound.id);
+			this.props.dispatchResumePlayer();
+			this.setState({
+				status: 'play',
+			});
+
+		} else {
+			this.setState({
+				status: '',
+			});
+		}
+	}
+
 
 	handleMouseEnter(){
 		this.setState({
@@ -70,11 +181,12 @@ class SoundListItem extends Component{
 
     return (
       <Row >
-	      <Link
+	      <div
 					className={`${styles.soundListItem} ${isCurrentTrack ? styles.soundListItemIsCurrentTrack : ''}`}
 					to={`/sounds/${sound.post_name}`}
 					onMouseEnter={this.handleMouseEnter.bind(this)}
 					onMouseLeave={this.handleMouseLeave.bind(this)}
+					onClick={this.handleClick.bind(this)}
 				>
           <Col sm={1}>
             <span className={styles.index}>
@@ -114,13 +226,13 @@ class SoundListItem extends Component{
             <span className={styles.duration}>
 						</span>
 					</Col>
-				</Link>
+				</div>
 	    </Row>
     );
   }
 }
 
-SoundListItem.propTypes = {
+PlayerSoundListItem.propTypes = {
   index: PropTypes.number,
   post: PropTypes.object,
 };
@@ -144,4 +256,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps,
-)(SoundListItem);
+)(PlayerSoundListItem);

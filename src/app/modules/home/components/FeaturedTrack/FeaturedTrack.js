@@ -30,6 +30,10 @@ class FeaturedTrack extends React.Component {
 		) {
 			const { track } = this.props;
 
+			if (!track) {
+				return null;
+			}
+
 			let trackWithSound;
 			soundManager.setup({
 				onready: () => {
@@ -69,6 +73,10 @@ class FeaturedTrack extends React.Component {
 			!this.state.trackWithSound
 		) {
 			const { track } = nextProps;
+
+			if (!track) {
+				return null;
+			}
 
 			let trackWithSound;
 			soundManager.setup({
