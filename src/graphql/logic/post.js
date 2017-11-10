@@ -196,8 +196,6 @@ export default class PostService extends PermissionsService {
 	 * @returns {Object[]} posts in post repeater relationship meta field
 	 */
 	getQueue(postId) {
-		console.log("###############")
-		console.log(postId);
 		return Postmeta.findOne({
 			where: {
 				post_id: postId,

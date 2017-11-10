@@ -1,5 +1,7 @@
-import PermissionsService from './PermissionsService';
+import PHPUnserialize from 'php-unserialize';
 
+
+import PermissionsService from './PermissionsService';
 import Postmeta from '../../models/Postmeta';
 
 
@@ -33,7 +35,7 @@ export default class PostmetaService extends PermissionsService {
 	 * @returns {Object[]} array of postmeta object records
 	 */
   getPostmeta(postId, keys) {
-    return Postmeta.findAll({
+ 		return Postmeta.findAll({
       where: {
         post_id: postId,
         meta_key: {
