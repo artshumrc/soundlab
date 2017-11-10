@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
+import autoBind from 'react-autobind';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import PlayArrow from 'material-ui/svg-icons/av/play-arrow'
@@ -14,6 +15,7 @@ import CSSModules from 'react-css-modules'
 import _ from 'underscore';
 import _s from 'underscore.string';
 
+import PlaylistSounds from '../../../playlist/components/PlaylistSounds';
 import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 import { getAudioFileURL } from '../../../../lib/audioFiles';
 import { resumePlayer, pausePlayer, setPlayerTrack, setPlaylist } from '../../../../actions/actions';
@@ -30,8 +32,9 @@ class Player extends Component {
 		super(props)
 
 		this.state = {
-			open: false,
+			playlistVisible: false,
 		}
+		autoBind(this);
 	}
 
 	componentDidMount() {
@@ -129,14 +132,15 @@ class Player extends Component {
 		this.resume();
 	}
 
-	toggleSoundDrawer() {
+	togglePlaylistVisibility() {
 		this.setState({
-			open:!this.state.open
-		})
+			playlistVisible: !this.state.playlistVisible,
+		});
 	}
 
 	render() {
 		const { player } = this.props;
+		const { playlistVisible } = this.state;
 		let { tracks, currentTrack } = player;
 
 		if (!tracks || !tracks.length) {
@@ -178,7 +182,10 @@ class Player extends Component {
 		};
 
 		return (
-			<div styleName="soundlabPlayer">
+			<div className={`
+				${styles.soundlabPlayer}
+				${playlistVisible ? styles.soundlabPlayerPlaylistVisible : ''}
+			`}>
 				<div styleName="soundlabPlayerContainer">
 					<div styleName="playerProgressBar" />
 					<div styleName="playerMetaContainer">
@@ -221,12 +228,29 @@ class Player extends Component {
 							/>
 						</div>
 
-						{currentTrack && currentTrack.sound &&
-							<Timer
-								track={currentTrack}
-							/>
-						}
+						<div styleName="playerRight">
+							<div styleName="timerOuter">
+								{currentTrack && currentTrack.sound &&
+									<Timer
+										track={currentTrack}
+									/>
+								}
+							</div>
+							<div
+								styleName="playlistToggle"
+								onClick={this.togglePlaylistVisibility.bind(this)}
+							>
+								{playlistVisible ?
+									<i className="mdi mdi-chevron-down mdi-36px" />
+								:
+									<i className="mdi mdi-chevron-up mdi-36px" />
+								}
+							</div>
+						</div>
 					</div>
+				</div>
+				<div styleName="playlistDrawer">
+					<PlaylistSounds sounds={tracks} />
 				</div>
 			</div>
 		);

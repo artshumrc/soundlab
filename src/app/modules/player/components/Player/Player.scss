@@ -11,7 +11,13 @@
   font-family: "Gotham SSm A","Gotham SSm B","Gotham",sans-serif;
 	background: #fff;
 	border-top: 1px solid #eee;
+	@include transition(all 100ms ease-in-out);
+  transform: translateY(calc(100% - 61px));
 }
+
+.soundlabPlayerPlaylistVisible {
+  transform: translateY(0);
+};
 
 .soundlabPlayerContainer {
   display: -webkit-flex;
@@ -20,6 +26,7 @@
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   height: 60px;
+	border-bottom: 1px solid #eee;
 }
 
 .playerAvatar {
@@ -109,9 +116,42 @@
   height: 93% !important;
 }
 
+.playerRight {
+	display: flex;
+	align-items: center;
+  padding-right: 30px;
+}
+
+.timerOuter {
+	display: inline-block;
+	vertical-align: top;
+	padding-right: 30px;
+}
 
 
+.playlistToggle {
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: top;
 
+	&:hover {
+		margin-top: -2px;
+		i {
+			color: $primary-700;
+		}
+	}
+
+	i {
+		font-size: 36px;
+		color: $dark;
+	}
+}
+
+.playlistDrawer {
+	max-height: 60vh;
+	overflow-y: scroll;
+	padding: 20px 5%;
+}
 
 
 //////////
