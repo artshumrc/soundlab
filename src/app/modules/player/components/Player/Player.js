@@ -32,7 +32,7 @@ class Player extends Component {
 		super(props)
 
 		this.state = {
-			playlistVisible: true,
+			playlistVisible: false,
 		}
 		autoBind(this);
 	}
