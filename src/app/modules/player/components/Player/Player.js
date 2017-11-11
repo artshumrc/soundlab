@@ -69,7 +69,7 @@ class Player extends Component {
 								},
 								onfinish: function() {
 									soundManager._writeDebug(this.id + ' finished playing')
-									this.playNext();
+									self.playNext();
 								}
 							})
 						});
