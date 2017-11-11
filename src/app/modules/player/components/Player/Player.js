@@ -156,7 +156,7 @@ class Player extends Component {
 
 		const thumbnailListImage = {
 			width: '60px',
-			height: '60px',
+			height: '58px',
 			objectFit: 'cover',
 			backgroundSize: 'cover',
 			backgroundRepeat: 'no-repeat',
