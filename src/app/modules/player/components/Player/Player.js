@@ -18,7 +18,7 @@ import _s from 'underscore.string';
 import PlayerSounds from '../PlayerSounds';
 import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 import { getAudioFileURL } from '../../../../lib/audioFiles';
-import { resumePlayer, pausePlayer, setPlayerTrack, setPlaylist } from '../../../../actions/actions';
+import { resumePlayer, pausePlayer, setPlayerTrack, setPlayerProgress, setPlaylist } from '../../../../actions/actions';
 import Timer from '../Timer';
 
 import styles from './Player.scss'
@@ -42,6 +42,7 @@ class Player extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		const self = this;
 
 		// if there are tracks
 		if (
@@ -62,12 +63,13 @@ class Player extends Component {
 								url: audioFile,
 								autoPlay: false,
 								autoLoad: true,
-								whileplaying: () => {
-									//document.getElementsBystyleName(('progressBar')[0].style.width =	25 + '%')
+								playNext: true,
+								whileplaying: function() {
+									self.props.dispatchSetPlayerProgress((this.position/this.duration) * 100);
 								},
 								onfinish: function() {
-									// document.getElementById('progressBar').style.width = '0'
 									soundManager._writeDebug(this.id + ' finished playing')
+									this.playNext();
 								}
 							})
 						});
@@ -87,12 +89,12 @@ class Player extends Component {
 		soundManager.pause(this.props.player.currentTrack.sound.id);
 	}
 
-	resume(props){
+	resume(){
 		this.props.dispatchResumePlayer();
 		soundManager.play(this.props.player.currentTrack.sound.id);
 	}
 
-	async playNext(props) {
+	async playNext() {
 		const { tracks, currentTrack } = this.props.player;
 		const currentIndex = tracks.map((x) => {return x.id; }).indexOf(currentTrack.id);
 
@@ -181,78 +183,77 @@ class Player extends Component {
 			cursor: "pointer",
 		};
 
-		console.log('##############################');
-		console.log('##############################');
-		console.log('##############################');
-		console.log(player);
-		console.log('##############################');
-		console.log('##############################');
-		console.log('##############################');
-
 		return (
 			<div className={`
 				${styles.soundlabPlayer}
 				${playlistVisible ? styles.soundlabPlayerPlaylistVisible : ''}
 			`}>
 				<div styleName="soundlabPlayerContainer">
-					<div styleName="playerProgressBar" />
-					<div styleName="playerMetaContainer">
-						<div styleName="currentPlayMeta" >
-							<div styleName="playerAvatar" style={thumbnailListImage} />
-							<div styleName="playerMeta">
-								<h6 styleName="playerMetaTitle">
-									{currentTrack.post_title}
-								</h6>
-								{byline &&
-									<h6 styleName="playerMetaCreator">
-										{_s.prune(byline.meta_value, 120)}
+					<div
+						styleName="playerProgressBar"
+						style={{
+							width: `${player.progress}%`,
+						}}
+					/>
+					<div styleName="playerOverlay">
+						<div styleName="playerMetaContainer">
+							<div styleName="currentPlayMeta" >
+								<div styleName="playerAvatar" style={thumbnailListImage} />
+								<div styleName="playerMeta">
+									<h6 styleName="playerMetaTitle">
+										{currentTrack.post_title}
 									</h6>
-								}
+									{byline &&
+										<h6 styleName="playerMetaCreator">
+											{_s.prune(byline.meta_value, 60)}
+										</h6>
+									}
+								</div>
 							</div>
 						</div>
-					</div>
-					<div styleName="playerControls">
-						<div styleName="buttonWrapper">
-							<SkipPrevious
-								style={buttonStyles}
-								onClick={this.playPrevious.bind(this, tracks)}
-							/>
-
-							{player.isPlaying ?
-								<Pause
+						<div styleName="playerControls">
+							<div styleName="buttonWrapper">
+								<SkipPrevious
 									style={buttonStyles}
-									onClick={this.pause.bind(this)}
+									onClick={this.playPrevious.bind(this)}
 								/>
-							:
-								<PlayArrow
-									style={playButtonStyles}
-									onClick={this.resume.bind(this)}
-								/>
-							}
 
-							<SkipNext
-								style={buttonStyles}
-								onClick={this.playNext.bind(this, tracks)}
-							/>
-						</div>
-
-						<div styleName="playerRight">
-							<div styleName="timerOuter">
-								{currentTrack && currentTrack.sound &&
-									<Timer
-										track={currentTrack}
+								{player.isPlaying ?
+									<Pause
+										style={buttonStyles}
+										onClick={this.pause.bind(this)}
+									/>
+								:
+									<PlayArrow
+										style={playButtonStyles}
+										onClick={this.resume.bind(this)}
 									/>
 								}
+
+								<SkipNext
+									style={buttonStyles}
+									onClick={this.playNext.bind(this)}
+								/>
 							</div>
-							<div
-								styleName="playlistToggle"
-								onClick={this.togglePlaylistVisibility.bind(this)}
-							>
-								{playlistVisible ?
-									<i className="mdi mdi-chevron-down mdi-36px" />
-								:
-									<i className="mdi mdi-chevron-up mdi-36px" />
-								}
+
+							<div styleName="playerRight">
+								<div styleName="timerOuter">
+									{currentTrack && currentTrack.sound &&
+										<Timer
+											track={currentTrack}
+										/>
+									}
+								</div>
+								<div
+									styleName="playlistToggle"
+									onClick={this.togglePlaylistVisibility.bind(this)}
+								>
+									{playlistVisible ?
+										<i className="mdi mdi-chevron-down mdi-36px" />
+									:
+										<i className="mdi mdi-chevron-up mdi-36px" />
+									}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -276,6 +277,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchSetPlaylist: (tracks) => {
 		dispatch(setPlaylist(tracks));
+	},
+	dispatchSetPlayerProgress: (progress) => {
+		dispatch(setPlayerProgress(progress));
 	},
 	dispatchSetPlayerTrack: (track) => {
 		dispatch(setPlayerTrack(track));

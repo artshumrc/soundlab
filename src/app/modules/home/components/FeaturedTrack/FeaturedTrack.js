@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules';
 import _ from 'underscore';
 import { connect } from 'react-redux';
 
-import { resumePlayer, pausePlayer, setPlayerTrack, setPlaylist } from '../../../../actions/actions';
+import { resumePlayer, pausePlayer, setPlayerTrack, setPlayerProgress, setPlaylist } from '../../../../actions/actions';
 import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 import { getAudioFileURL } from '../../../../lib/audioFiles';
 
@@ -22,6 +22,7 @@ class FeaturedTrack extends React.Component {
 	}
 
 	componentDidMount() {
+		const self = this;
 
 		// if there are tracks
 		if (
@@ -45,12 +46,12 @@ class FeaturedTrack extends React.Component {
 							url: audioFile,
 							autoPlay: false,
 							autoLoad: true,
+							playNext: true,
 							whileplaying: () => {
-								//document.getElementsBystyleName(('progressBar')[0].style.width =	25 + '%')
+								self.props.dispatchSetPlayerProgress((this.position/this.duration) * 100);
 							},
-							onfinish: function() {
-								// document.getElementById('progressBar').style.width = '0'
-								soundManager._writeDebug(this.id + ' finished playing')
+							onfinish: () => {
+								self.playNext();
 							}
 						})
 					};
@@ -59,14 +60,47 @@ class FeaturedTrack extends React.Component {
 						trackWithSound,
 					})
 				},
-				ontimeout: function() {
+				ontimeout: () => {
 					// Uh-oh. No HTML5 support, SWF missing, Flash blocked or other issue
 				},
 			});
 		}
 	}
 
+	pause(){
+		this.props.dispatchPausePlayer();
+		soundManager.pause(this.props.player.currentTrack.sound.id);
+	}
+
+	resume(){
+		this.props.dispatchResumePlayer();
+		soundManager.play(this.props.player.currentTrack.sound.id);
+	}
+
+
+	async playNext() {
+		const { tracks, currentTrack } = this.props.player;
+		const currentIndex = tracks.map((x) => {return x.id; }).indexOf(currentTrack.id);
+
+		// pause player
+		this.pause();
+
+		// loop through tracks
+		let nextIndex = currentIndex + 1;
+		if (nextIndex > tracks.length - 1) {
+			nextIndex = 0;
+		}
+
+		// set the new player track
+		await this.props.dispatchSetPlayerTrack(tracks[nextIndex]);
+
+		// resume player player
+		this.resume();
+	}
+
+
 	componentWillReceiveProps(nextProps) {
+		const self = this;
 
 		// if there are tracks
 		if (
@@ -90,11 +124,10 @@ class FeaturedTrack extends React.Component {
 							autoPlay: false,
 							autoLoad: true,
 							whileplaying: () => {
-								//document.getElementsBystyleName(('progressBar')[0].style.width =	25 + '%')
+								self.props.dispatchSetPlayerProgress((this.position/this.duration) * 100);
 							},
-							onfinish: function() {
-								// document.getElementById('progressBar').style.width = '0'
-								soundManager._writeDebug(this.id + ' finished playing')
+							onfinish: () => {
+								self.playNext();
 							}
 						})
 					};
@@ -103,7 +136,7 @@ class FeaturedTrack extends React.Component {
 						trackWithSound,
 					})
 				},
-				ontimeout: function() {
+				ontimeout: () => {
 					// Uh-oh. No HTML5 support, SWF missing, Flash blocked or other issue
 				},
 			});
@@ -251,6 +284,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchSetPlayerTrack: (track) => {
 		dispatch(setPlayerTrack(track));
+	},
+	dispatchSetPlayerProgress: (progress) => {
+		dispatch(setPlayerProgress(progress));
 	},
 	dispatchPausePlayer: () => {
 		dispatch(pausePlayer());

@@ -8,6 +8,11 @@ export default function (state = {}, action) {
       ...state,
       currentTrack: action.track,
     });
+  case 'SET_PLAYER_PROGRESS':
+    return Object.assign({}, state, {
+      ...state,
+      progress: action.progress,
+    });
   case 'SET_PLAYLIST':
     return Object.assign({}, state, {
       ...state,
