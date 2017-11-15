@@ -100,7 +100,7 @@ class NavBar extends React.Component {
 						<li>
 							<Link
 								styleName="navLink"
-								onClick={toggleAuthModal}
+								to='/sign-in'
 							>
 								Join / Login
 							</Link>
