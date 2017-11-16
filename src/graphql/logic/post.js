@@ -282,4 +282,45 @@ export default class PostService extends PermissionsService {
 			}
 		});
 	}
+
+	/**
+	 * Create a post with draft status
+	 * @param {Object} post - the post candidate
+	 * @returns {Object} the api response
+	 */
+	async create(post) {
+		if (!this.userId) {
+			return null;
+		}
+
+		const title = validator.escape(post.title);
+		const newPost = {
+			post_title: title,
+			post_status: 'draft',
+			post_author: 1,
+			post_name: slugify(title),
+			post_type: 'submission',
+		};
+
+		let content = '';
+
+		if (post.link) {
+			content = `${content} Link: ${validator.escape(post.link)}<br />`;
+		}
+
+		if (post.description) {
+			content = `${content} Description: ${validator.escape(post.description)}<br />`;
+		}
+
+		if (post.location) {
+			content = `${content} Location: ${validator.escape(post.location)}<br />`;
+		}
+
+		newPost.post_content = content;
+
+		const emailManager = new EmailManager();
+		emailManager.sendNotificationEmail(content);
+
+		return await Post.create(newPost);
+	}
 }

@@ -139,6 +139,7 @@
     "react-map-gl": "^3.0.4",
     "react-moment": "^0.6.1",
     "react-player": "^0.24.5",
+    "react-recaptcha": "^2.3.5",
     "react-redux": "^5.0.3",
     "react-responsive-audio-player": "^1.1.4",
     "react-router": "^2.5.1",

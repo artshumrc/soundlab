@@ -1,5 +1,6 @@
 import { GraphQLObjectType } from 'graphql';
 
+import postMutationFields from './post';
 import userMutationFields from './user';
 
 /**
@@ -10,6 +11,7 @@ const RootMutations = new GraphQLObjectType({
 	name: 'RootMutationType',
 	description: 'Root mutation object type',
 	fields: {
+		...postMutationFields,
 		...userMutationFields,
 	},
 });

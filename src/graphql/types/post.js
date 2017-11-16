@@ -117,4 +117,24 @@ const PostType = new GraphQLObjectType({
 	}),
 });
 
+const PostInputType = new GraphQLInputObjectType({
+	name: 'PostInputType',
+	description: 'Wordpress post input type',
+	fields: () => ({
+    title: {
+			type: GraphQLString,
+		},
+    description: {
+			type: GraphQLString,
+		},
+    location: {
+			type: GraphQLString,
+		},
+    link: {
+			type: GraphQLString,
+		},
+	}),
+});
+
+export { PostInputType };
 export default PostType;
