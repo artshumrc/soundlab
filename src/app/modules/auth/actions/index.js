@@ -6,6 +6,7 @@ export const TOGGLE_AUTH_MODAL = 'TOGGLE_AUTH_MODAL';
 export const TOGGLE_LOGOUT = 'TOGGLE_LOGOUT';
 export const SET_USER = 'SET_USER';
 export const REMOVE_USER = '';
+export const SET_USER_CREATED_MESSAGE = 'SET_USER_CREATED_MESSAGE';
 
 
 /*
@@ -26,6 +27,11 @@ export const setUser = ({ username, userId, token }) => ({
 });
 export const removeUser = () => ({
 	type: REMOVE_USER,
+});
+
+export const setUserCreatedMessage = () => ({
+	type: SET_USER_CREATED_MESSAGE,
+	formMessage: 'Signup successful! Please log in',
 });
 
 export const login = (loginMethod, data) => async (dispatch) => {

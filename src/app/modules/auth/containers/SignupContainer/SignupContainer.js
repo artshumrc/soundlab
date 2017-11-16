@@ -4,7 +4,7 @@ import { compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import slugify from 'slugify';
 
-import { changeAuthMode } from '../../actions';
+import { changeAuthMode, setUserCreatedMessage } from '../../actions';
 import { userCreateMutation } from '../../graphql/auth';
 import Signup from '../../components/Signup';
 
@@ -22,7 +22,7 @@ class SignupContainer extends React.Component {
 	}
 
 	handleSignup(userData) {
-		const { dispatchChangeAuthMode } = this.props;
+		const { dispatchChangeAuthMode, dispatchSetUserCreatedMessage } = this.props;
 
 		this.props.userCreate({
 				user_nicename: slugify(`${userData.first_name} ${userData.last_name}`).toLowerCase(),
@@ -32,6 +32,7 @@ class SignupContainer extends React.Component {
 				field: userData.field,
 			})
 			.then(({ data }) => {
+				dispatchSetUserCreatedMessage();
 				dispatchChangeAuthMode('login');
       }).catch((error) => {
         console.log('there was an error sending the query', error);
@@ -61,6 +62,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchChangeAuthMode: (mode) => {
 		dispatch(changeAuthMode(mode));
+	},
+	dispatchSetUserCreatedMessage: (mode) => {
+		dispatch(setUserCreatedMessage(mode));
 	},
 });
 

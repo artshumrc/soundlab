@@ -48,6 +48,12 @@ export default (state = initialState, action) => {
 			userId: null,
 		};
 	}
+	case types.SET_USER_CREATED_MESSAGE: {
+		return {
+			...state,
+			formMessage: action.formMessage,
+		};
+	}
 	default:
 		return state;
 	}

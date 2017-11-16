@@ -11,6 +11,9 @@ import SignupContainer from '../../containers/SignupContainer';
 // actions
 import { toggleAuthModal, changeAuthMode, setUser, login, logout } from '../../actions';
 
+// login form
+import styles from './AuthForms.scss';
+
 
 const ESCAPE_KEY = 27;
 
@@ -75,8 +78,11 @@ class _AuthForms extends React.Component {
 		const { showAuthModal, dispatchToggleAuthModal, authMode, dispatchChangeAuthMode, dispatchLogin, dispatchSignup } = this.props;
 
 		return (
-			<div>
+			<div className={styles.authForms}>
 				<ModalHead />
+				<div className={styles.formMessage}>
+					{this.props.formMessage}
+				</div>
 				{authMode === 'login' ?
 					<LoginContainer
 						onRegisterClick={dispatchChangeAuthMode.bind(null, 'signup')}
@@ -95,6 +101,7 @@ class _AuthForms extends React.Component {
 const mapStateToProps = state => ({
 	authMode: state.auth.authMode,
 	showAuthModal: state.auth.showAuthModal,
+	formMessage: state.auth.formMessage,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
