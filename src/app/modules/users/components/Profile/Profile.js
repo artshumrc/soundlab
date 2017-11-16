@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import { Link } from 'react-router';
 
-import SoundListItem from '../../../audio/components/SoundListItem';
+import UserSubmissionListItem from '../UserSubmissionListItem';
 
 
 import styles from './Profile.scss'
@@ -46,7 +46,7 @@ class Profile extends Component {
 						</Row>
 						<div className={styles.playlistSounds}>
 							{this.props.sounds.map((sound, i) => (
-								<SoundListItem
+								<UserSubmissionListItem
 									key={`${sound.id}-${i}`}
 									sound={sound}
 									index={i}
