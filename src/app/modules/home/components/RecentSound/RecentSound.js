@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
+import { Grid, Row, Col } from 'react-bootstrap';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import CSSModules from 'react-css-modules';
 import _ from 'underscore';

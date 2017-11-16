@@ -10,7 +10,7 @@ import SkipNext from 'material-ui/svg-icons/av/skip-next'
 import RaisedButton from 'material-ui/RaisedButton'
 import Drawer from 'material-ui/Drawer'
 import soundmanager from 'soundmanager2'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import { Grid, Row, Col } from 'react-bootstrap'
 import CSSModules from 'react-css-modules'
 import _ from 'underscore';
 import _s from 'underscore.string';

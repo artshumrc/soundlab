@@ -166,3 +166,9 @@
 	font-family: $font-label;
 	font-size: 14px;
 }
+
+@media (max-width: 990px) {
+  .featuredTrackComponent {
+		// display: none;
+	}
+}

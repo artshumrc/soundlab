@@ -4,7 +4,7 @@ import hello from 'hellojs';
 
 import OAuthButtons from '../OAuthButtons';
 import PWDLoginForm from '../PWDLoginForm';
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import { Grid, Row, Col } from 'react-bootstrap'
 import styles from './Login.scss';
 
 

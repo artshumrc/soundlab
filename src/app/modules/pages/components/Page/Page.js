@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import { Grid, Row, Col } from 'react-bootstrap'
 import CSSModules from 'react-css-modules'
 import wpautop from 'wpautop';
 import linkifyHtml from 'linkifyjs/html';

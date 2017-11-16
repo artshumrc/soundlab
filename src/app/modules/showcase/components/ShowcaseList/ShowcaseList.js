@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import { Grid, Row, Col } from 'react-bootstrap'
 import CSSModules from 'react-css-modules'
 
 import ShowcaseItem from '../ShowcaseItem'

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import styles from './singlePage.scss'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import { Grid, Row, Col } from 'react-bootstrap'
 
 export default class Privacy extends Component {
 

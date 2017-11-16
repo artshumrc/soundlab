@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import SubmissionItem from './SubmissionItem'
 import styles from './submission.scss'
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite'
+import { Grid, Row, Col } from 'react-bootstrap'
 import CSSModules from 'react-css-modules'
 
 

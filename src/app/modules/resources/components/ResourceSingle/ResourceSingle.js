@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDisqusThread from 'react-disqus-thread';
 import CSSModules from 'react-css-modules';
-import { Grid, Row, Col } from 'react-flexbox-grid-aphrodite';
+import { Grid, Row, Col } from 'react-bootstrap';
 import _ from 'underscore';
 import moment from 'moment';
 import wpautop from 'wpautop';
