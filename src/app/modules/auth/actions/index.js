@@ -29,9 +29,9 @@ export const removeUser = () => ({
 	type: REMOVE_USER,
 });
 
-export const setUserCreatedMessage = () => ({
+export const setFormMessage = (formMessage) => ({
 	type: SET_USER_CREATED_MESSAGE,
-	formMessage: 'Signup successful! Please log in',
+	formMessage,
 });
 
 export const login = (loginMethod, data) => async (dispatch) => {

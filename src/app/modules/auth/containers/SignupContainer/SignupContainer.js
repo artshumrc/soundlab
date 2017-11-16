@@ -4,7 +4,7 @@ import { compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import slugify from 'slugify';
 
-import { changeAuthMode, setUserCreatedMessage } from '../../actions';
+import { changeAuthMode, setFormMessage } from '../../actions';
 import { userCreateMutation } from '../../graphql/auth';
 import Signup from '../../components/Signup';
 
@@ -15,14 +15,15 @@ class SignupContainer extends React.Component {
 		super(props);
 
 		autoBind(this);
-
-		this.state = {
-			error: '',
-		};
 	}
 
 	handleSignup(userData) {
-		const { dispatchChangeAuthMode, dispatchSetUserCreatedMessage } = this.props;
+		const { dispatchChangeAuthMode, dispatchSetFormMessage } = this.props;
+
+		if (userData.password !== userData.confirm_password) {
+			dispatchSetFormMessage('Password and confirm password fields do not match.');
+			return;
+		}
 
 		this.props.userCreate({
 				user_nicename: slugify(`${userData.first_name} ${userData.last_name}`).toLowerCase(),
@@ -32,13 +33,11 @@ class SignupContainer extends React.Component {
 				field: userData.field,
 			})
 			.then(({ data }) => {
-				dispatchSetUserCreatedMessage();
+				dispatchSetFormMessage('Signup successful! Please log in.');
 				dispatchChangeAuthMode('login');
       }).catch((error) => {
-        console.log('there was an error sending the query', error);
-				this.setState({
-					error,
-				});
+				dispatchSetFormMessage('There was an error creating your user account. Please check the signup form.');
+				// console.error(error);
       });
 	}
 
@@ -63,8 +62,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchChangeAuthMode: (mode) => {
 		dispatch(changeAuthMode(mode));
 	},
-	dispatchSetUserCreatedMessage: (mode) => {
-		dispatch(setUserCreatedMessage(mode));
+	dispatchSetFormMessage: (mode) => {
+		dispatch(setFormMessage(mode));
 	},
 });
 

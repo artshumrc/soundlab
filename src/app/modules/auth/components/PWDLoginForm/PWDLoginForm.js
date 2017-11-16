@@ -16,6 +16,11 @@ const wrapSubmit = handleLogin => async (values, dispatch) => {
 	}
 };
 
+const required = value => value ? undefined : 'Required';
+const maxLength = max => value =>
+  value && value.length > max ? `Must be ${max} characters or less` : undefined
+const maxLength100 = maxLength(100)
+
 function renderField({ input, label, type, meta }) {
 	return (
 		<div className="at-input form-group has-feedback">
@@ -44,6 +49,7 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, handle
 				type="text"
 				placeholder=""
 				component={renderField}
+				validate={[required, maxLength100]}
 			/>
 			<label>Password</label>
 			<Field
@@ -51,6 +57,7 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, handle
 				type="password"
 				placeholder=""
 				component={renderField}
+				validate={[required, maxLength100]}
 			/>
 			<div className="at-pwd-link">
 				<p className="error-text">

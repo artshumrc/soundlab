@@ -40,6 +40,11 @@ function renderField({ input, label, type, meta }) {
 	);
 }
 
+const required = value => value ? undefined : 'Required';
+const maxLength = max => value =>
+  value && value.length > max ? `Must be ${max} characters or less` : undefined
+const maxLength100 = maxLength(100)
+
 const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handleSignup }) => (
 	<Row className={styles.signupForm}>
 		<form onSubmit={handleSubmit(wrapSubmit(handleSignup))}>
@@ -51,6 +56,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="text"
 						placeholder=""
 						component={renderField}
+						validate={[required, maxLength100]}
 					/>
 				</Col>
 				<Col md={6}>
@@ -60,6 +66,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="text"
 						placeholder=""
 						component={renderField}
+						validate={[required, maxLength100]}
 					/>
 				</Col>
 			</Row>
@@ -71,6 +78,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="email"
 						placeholder=""
 						component={renderField}
+						validate={[required, maxLength100]}
 					/>
 				</Col>
 				<Col md={6}>
@@ -80,6 +88,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="text"
 						placeholder=""
 						component={renderField}
+						validate={[maxLength100]}
 					/>
 				</Col>
 			</Row>
@@ -91,6 +100,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="password"
 						placeholder=""
 						component={renderField}
+						validate={[required, maxLength100]}
 					/>
 				</Col>
 				<Col md={6}>
@@ -100,6 +110,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="password"
 						placeholder=""
 						component={renderField}
+						validate={[required, maxLength100]}
 					/>
 				</Col>
 			</Row>
