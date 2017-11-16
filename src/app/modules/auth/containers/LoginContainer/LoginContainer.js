@@ -3,6 +3,7 @@ import autoBind from 'react-autobind';
 import { compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
+import { push } from 'react-router-redux';
 
 import { toggleAuthModal, setUser, setFormMessage } from '../../actions';
 import { userCreateTokenMutation } from '../../graphql/auth';
@@ -22,7 +23,8 @@ class LoginContainer extends React.Component {
 	}
 
 	handleLogin(userData) {
-		const { dispatchSetUser, dispatchToggleAuthModal, dispatchSetFormMessage } = this.props;
+		const self = this;
+		const { dispatchSetUser, dispatchToggleAuthModal, dispatchSetFormMessage, dispatchNavigateToHome } = this.props;
 
 		this.props.userCreateToken(userData)
 			.then(({ data }) => {
@@ -33,6 +35,7 @@ class LoginContainer extends React.Component {
 				});
 				dispatchToggleAuthModal(false);
 				dispatchSetFormMessage('Login successful!');
+				dispatchNavigateToHome();
 				Cookies.set('token', token);
       }).catch((error) => {
 				dispatchSetFormMessage('Username or password incorrect.');
@@ -67,6 +70,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	},
 	dispatchSetFormMessage: (formMessage) => {
 		dispatch(setFormMessage(formMessage));
+	},
+	dispatchNavigateToHome: () => {
+		dispatch(push('/'));
 	},
 });
 
