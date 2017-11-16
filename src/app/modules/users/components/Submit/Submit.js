@@ -54,7 +54,7 @@ class Submit extends React.Component {
 							Thank you for submitting to Sound Lab.
 						</h1>
 						<p className={styles.submittedMessage}>
-							You may now <a onClick={dismissSubmitted}>submit another sound</a> or <Link to="/">return to the home page</Link>.
+							<Link to="/profile">Return to your tracks</Link>.
 						</p>
 					</div>
 				:

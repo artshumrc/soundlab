@@ -78,8 +78,8 @@
 }
 
 .submittedMessage {
-	font-family: $font-reading;
-	font-size: 26px;
+	font-family: $font-label;
+	font-size: 20px;
 	padding: 30px 0;
 	color: $text-secondary;
 	line-height: 1.7em;
@@ -87,6 +87,7 @@
 	a {
 		border-bottom: 3px solid #ddd;
 		cursor: pointer;
+		color: $primary-600;
 
 		&:hover {
 			color: #000;

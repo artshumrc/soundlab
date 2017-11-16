@@ -1,4 +1,4 @@
-import { GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString, GraphQLObjectType, GraphQLInt } from 'graphql';
+import { GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString, GraphQLObjectType, GraphQLInputObjectType, GraphQLInt } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
 
 import PostmetaService from '../logic/postmeta';

@@ -40,7 +40,7 @@ class SubmitContainer extends React.Component {
 
 		// create post
 		if (this.state.recaptcha) {
-			await this.props.postCreate(newPost)
+			await this.props.postCreate(newPost);
 
 			// set form state submitted
 			this.setState({
@@ -49,6 +49,8 @@ class SubmitContainer extends React.Component {
 
 			// scroll to top
 		  window.scrollTo(0, 0);
+		} else {
+			console.error('Recaptcha failed');
 		}
 	}
 

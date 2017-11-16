@@ -1,13 +1,17 @@
 import PHPUnserialize from 'php-unserialize';
 import _ from 'underscore';
-
+import Sequelize from 'sequelize';
+import moment from 'moment';
+import validator from 'validator';
+import slugify from 'slugify';
 
 import PermissionsService from './PermissionsService';
-
 import Term from '../../models/Term';
 import TermRelationship from '../../models/TermRelationship';
 import Post from '../../models/Post';
 import Postmeta from '../../models/Postmeta';
+
+import EmailManager from '../../email';
 
 
 /**
@@ -297,9 +301,9 @@ export default class PostService extends PermissionsService {
 		const newPost = {
 			post_title: title,
 			post_status: 'draft',
-			post_author: 1,
+			post_author: this.userId,
 			post_name: slugify(title),
-			post_type: 'submission',
+			post_type: 'user_submission',
 		};
 
 		let content = '';

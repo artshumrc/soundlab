@@ -23,8 +23,7 @@ maskErrors(RootSchema);
 
 // Set user and project in context
 const getGraphQLContext = req => ({
-	user: req.user,
-	project: req.project,
+	token: req.headers.authorization,
 });
 
 /**
