@@ -77,7 +77,7 @@ export default class UserService extends PermissionsService {
 			method: 'POST',
 			uri,
 			formData: {
-				email,
+				username: email,
 				password,
 			},
 			strictSSL: false,
@@ -89,8 +89,9 @@ export default class UserService extends PermissionsService {
 				};
 			})
 			.catch(err => {
+				console.log(err);
 				return {
-					response: JSON.parse(err.response)
+					response: JSON.parse(err)
 				};
 			});
   }
