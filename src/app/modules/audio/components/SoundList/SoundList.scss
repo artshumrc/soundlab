@@ -106,3 +106,9 @@
 .durationColumn {
 	text-align: left;
 }
+
+@media (max-width: 990px) {
+	.soundList {
+		padding-top: 120px;
+	}
+}

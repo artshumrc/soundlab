@@ -52,6 +52,7 @@
 	}
 }
 
+
 .navLink {
 	margin: 14px 2px 8px;
 	padding: 5px 12px;
@@ -228,5 +229,11 @@
 		background: $primary-700;
 		color: $light;
 		text-decoration: none;
+	}
+}
+
+@media (max-width: 520px) {
+	.nav {
+		display: none;
 	}
 }

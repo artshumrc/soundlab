@@ -166,6 +166,21 @@
 }
 
 
+@media (max-width: 990px) {
+	.playerMetaContainer {
+		.playerMeta {
+			display: none;
+		}
+	}
+
+}
+
+@media (max-width: 500px) {
+	.timerOuter {
+		display: none;
+	}
+}
+
 //////////
 
 /**
