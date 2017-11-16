@@ -22,7 +22,7 @@ class SignupContainer extends React.Component {
 
 		if (userData.password !== userData.confirm_password) {
 			dispatchSetFormMessage('Password and confirm password fields do not match.');
-			return;
+			return false;
 		}
 
 		this.props.userCreate({

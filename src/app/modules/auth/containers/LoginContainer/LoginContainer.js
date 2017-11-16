@@ -4,7 +4,7 @@ import { compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 
-import { toggleAuthModal, setUser } from '../../actions';
+import { toggleAuthModal, setUser, setFormMessage } from '../../actions';
 import { userCreateTokenMutation } from '../../graphql/auth';
 import Login from '../../components/Login';
 
@@ -22,23 +22,20 @@ class LoginContainer extends React.Component {
 	}
 
 	handleLogin(userData) {
-		const { dispatchSetUser, dispatchToggleAuthModal } = this.props;
+		const { dispatchSetUser, dispatchToggleAuthModal, dispatchSetFormMessage } = this.props;
 
 		this.props.userCreateToken(userData)
 			.then(({ data }) => {
-        console.log('got data', data);
-				const { token, user_display_name }= data.userCreateToken.response;
+				const { token, user_display_name } = data.userCreateToken.response;
 				dispatchSetUser({
 					username: user_display_name,
 					token,
 				});
 				dispatchToggleAuthModal(false);
+				dispatchSetFormMessage('Login successful!');
 				Cookies.set('token', token);
       }).catch((error) => {
-        console.log('there was an error sending the query', error);
-				this.setState({
-					error,
-				});
+				dispatchSetFormMessage('Username or password incorrect.');
       });
 	}
 
@@ -67,6 +64,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	},
 	dispatchToggleAuthModal: (onOff) => {
 		dispatch(toggleAuthModal(onOff));
+	},
+	dispatchSetFormMessage: (formMessage) => {
+		dispatch(setFormMessage(formMessage));
 	},
 });
 

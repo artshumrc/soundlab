@@ -69,7 +69,7 @@ export default class UserService extends PermissionsService {
 	 * @param {string} password - the user email
 	 * @returns {Object} login response
 	 */
-	userCreateToken(username, password) {
+	userCreateToken(email, password) {
 
 		const uri = `${process.env.ADMIN_URL}/wp-json/jwt-auth/v1/token`;
 
@@ -77,7 +77,7 @@ export default class UserService extends PermissionsService {
 			method: 'POST',
 			uri,
 			formData: {
-				username,
+				email,
 				password,
 			},
 			strictSSL: false,
