@@ -1,8 +1,8 @@
 import { gql, graphql } from 'react-apollo'
 
 const userSoundsQuery = graphql(gql`
-	query useSoundsQuery {
-		posts(post_type: ["sound"]) {
+	query userSoundsQuery {
+		userPosts(post_type: ["sound"]) {
 			id,
 			post_title
 			post_name

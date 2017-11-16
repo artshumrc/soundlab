@@ -24,7 +24,7 @@ export default class PostService extends PermissionsService {
 	 * @returns {Object[]} post object records
 	 */
 	getPosts({ post_type=['sound'], limit = 200, skip = 0, isFeatured = false }) {
-		let include: [];
+		let include = [];
 
 		if (isFeatured) {
       include = [{
@@ -41,6 +41,32 @@ export default class PostService extends PermissionsService {
 			where: {
 				post_type,
 				post_status: 'publish',
+			},
+			limit: limit,
+			offset: skip,
+			order: [
+				['post_modified', 'DESC']
+			]
+		})
+	}
+
+
+	/**
+	 * Get user posts
+	 * @param {string[]} post_type - post types
+	 * @param {number} limit - the orm query limit
+	 * @param {number} skip - the orm query skip
+	 * @returns {Object[]} post object records
+	 */
+	getUserPosts({ post_type=['sound'], limit = 200, skip = 0 }) {
+		if (!this.userId) {
+			return [];
+		}
+
+		return Post.findAll({
+			where: {
+				post_author: this.userId,
+				post_type,
 			},
 			limit: limit,
 			offset: skip,

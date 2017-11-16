@@ -1,13 +1,14 @@
+import jsonwebtoken from 'jsonwebtoken';
+
 export default class PermissionsService {
-	constructor(props) {
-		this.user = props.user ? props.user : null;
-
-		// console.log('Permissions Service user and project', this.user);
-		this.userRolesForProject = [];
-	}
-
-	hasExamplePermission() {
-		// console.log('Granted example permission for user: ', this.user);
-		return true;
+	constructor({ token }) {
+		this.token = token;
+		if (token) {
+			const decoded = jsonwebtoken.decode(token);
+			this.userId = decoded.user_id;
+			this.userName = decoded.name;
+			this.userAvatar = decoded.picture;
+			this.token = token;
+		}
 	}
 }

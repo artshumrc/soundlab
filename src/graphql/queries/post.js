@@ -34,6 +34,28 @@ const postQueryFields = {
 			return await postService.getPosts({ post_type, limit, skip, isFeatured });
 		}
 	},
+	userPosts: {
+		type: new GraphQLList(PostType),
+		description: 'Get posts',
+		args: {
+			post_type: {
+				type: new GraphQLList(GraphQLString),
+			},
+			limit: {
+				type: GraphQLInt,
+			},
+			skip: {
+				type: GraphQLInt,
+			},
+			isFeatured: {
+				type: GraphQLBoolean,
+			},
+		},
+		async resolve(parent, { post_type, limit, skip, isFeatured }, { token }) {
+			const postService = new PostService({ token });
+			return await postService.getUserPosts({ post_type, limit, skip, isFeatured });
+		}
+	},
 	post: {
 		type: PostType,
 		description: 'Get a post',
