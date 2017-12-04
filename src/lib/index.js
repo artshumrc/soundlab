@@ -1,13 +1,13 @@
 // @flow
 
-export const concatStartAndEnd = (
-	start: string,
-	startOffset: number,
-	end: string,
-	endOffset: number,
-) => (`${start}-${startOffset}-${end}-${endOffset}`);
+export const concatStartAndEnd = ({
+	start,
+	startOffset,
+	end,
+	endOffset,
+}) => (`${start}-${startOffset}-${end}-${endOffset}`);
 
-export const splitStartAndEnd = (startAndEnd: string) => {
+export const splitStartAndEnd = ({ startAndEnd }) => {
 	const split = startAndEnd.split('-');
 
 	return {

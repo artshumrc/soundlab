@@ -1,9 +1,9 @@
 // dotenv
-const dotenvSetup = require('./server/dotenv');
+const dotenvSetup = require('./src/dotenv');
 
 dotenvSetup();
 
 module.exports = {
 	collectCoverage: true,
-	collectCoverageFrom: ['server/api/**/*.js']
+	collectCoverageFrom: ['src/**/*.js']
 };
