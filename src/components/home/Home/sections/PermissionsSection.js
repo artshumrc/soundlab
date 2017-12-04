@@ -10,7 +10,7 @@ export default class PermissionsSection extends React.Component {
 					<Row>
 						<Col md={4}>
 							<div className="permissionsHeader">
-								<h3>To share or not to share</h3>
+								<h3>Sharing and Security</h3>
 								<p>
 									Participate in the community of linked data and scholarship or create private collections with fine grained access controls
 								</p>

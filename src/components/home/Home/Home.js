@@ -3,6 +3,7 @@ import './Home.css';
 import Header from '../../navigation/Header';
 import Footer from '../../navigation/Footer';
 import HomeCover from './sections/HomeCover';
+import AboutSection from './sections/AboutSection';
 import ShowcaseCollections from './sections/ShowcaseCollections';
 import FeaturesSection from './sections/FeaturesSection';
 import LifetimeData from './sections/LifetimeData';
@@ -16,6 +17,7 @@ class Home extends React.Component {
 			<div id="home">
 				<Header />
 				<HomeCover />
+				<AboutSection />
 				<FeaturesSection />
 				<ShowcaseCollections />
 				<LifetimeData />

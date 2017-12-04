@@ -9,6 +9,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import Root from './containers/Root';
 import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
+import './fonts.css';
 import './index.css';
 
 import { loginJWT } from './lib/auth'; // eslint-disable-line

@@ -34,7 +34,7 @@ const CollectionListItem = (props) => {
 					className="collectionLink"
 				>
 					<span className="collectionLinkLabel">
-						View the archive
+						View the collection
 					</span>
 					<i className="collectionLinkIcon mdi mdi-chevron-right" />
 				</Link>

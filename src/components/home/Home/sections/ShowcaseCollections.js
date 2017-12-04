@@ -20,15 +20,15 @@ const ShowcaseCollections = (props) => {
 
 	return (
 		<section className="showcaseCollections">
-			<div className="parallax">
-				<div className="parallax-content">
-					{listItems.map((listItem, i) => (
-						<CollectionListItem
-							key={`${listItem.slug}-${i}`}
-							{...listItem}
-						/>
-						))}
-				</div>
+			<h2>Explore Recent Collections</h2>
+			<hr />
+			<div className="showcaseCollectionsInner">
+				{listItems.map((listItem, i) => (
+					<CollectionListItem
+						key={`${listItem.slug}-${i}`}
+						{...listItem}
+					/>
+					))}
 			</div>
 		</section>
 	);

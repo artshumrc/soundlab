@@ -131,20 +131,20 @@ font-family: "Material Design Icons";
 2.1 Base Fonts
 
 ******************************************************************************/
-$font-body: 'Slate W04 Light';
+$font-body: 'Gotham';
 $font-accent: 'Proxima Nova W08 Light';
-$font-label: 'Proxima Nova W08 Reg';
+$font-label: 'Gotham Book';
 $font-label-mono: 'Courier W07 Regular';
-$font-logo: 'Slate W04 Bold';
+$font-logo: 'Gotham';
 
 /******************************************************************************
 
 2.2 Title Fonts
 
 ******************************************************************************/
-$font-title: 'Proxima Nova W08 Reg';
-$font-title-light: 'Proxima Nova W08 Light';
-$font-title-bold: 'Proxima Nova W08 Reg'; // Need to add bold
+$font-title: 'Gotham';
+$font-title-light: 'Gotham';
+$font-title-bold: 'Gotham Book';
 $font-title-variant: 'Freight Text W03 Book';
 
 /******************************************************************************
@@ -152,7 +152,7 @@ $font-title-variant: 'Freight Text W03 Book';
 2.3 Reading Environment Fonts
 
 ******************************************************************************/
-$font-reading: 'Merriweather', serif;
+$font-reading: 'Freight Text W03 Book', Georgia, serif;
 $font-lemma: 'Gentium Basic', 'Merriweather', serif;
 
 /******************************************************************************

@@ -38,12 +38,37 @@
 	}
 }
 
-.cover.cover--bottom {
+.cover.cover--left {
+	position:relative;
+	width: 100vw;
+	height: 100vh;
 	.cover-content {
 	  position: absolute;
-	  bottom: 0%;
 		width: 66%;
+		height: 50%;
+
+		top: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
 	  z-index: 2;
 		text-align: left;
+
+	}
+}
+
+.cover.cover--bottom {
+	position:relative;
+	width: 100vw;
+	height: 100vh;
+	.cover-content {
+	  position: absolute;
+		width: 66%;
+
+		bottom: 0;
+		left: 0;
+	  z-index: 2;
+		text-align: left;
+
 	}
 }

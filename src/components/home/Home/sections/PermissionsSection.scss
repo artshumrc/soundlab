@@ -22,7 +22,7 @@
 	}
 
 	p {
-		font-size: 18px;
+		font-size: 20px;
 		font-family: $font-body;
 		color: $text-secondary;
 		margin: 0;
@@ -31,7 +31,7 @@
 }
 
 .permissionsInfoBlock {
-	padding: 6px 10px 20px;
+	padding: 6px 10px 30px;
 
 	h4 {
 		font-size: 16px;
@@ -44,9 +44,9 @@
 		line-height: 1.6em;
 	}
 	p {
-		font-size: 16px;
+		font-size: 18px;
 		font-family: $font-body;
-		color: $text-gray;
+		color: $text-secondary;
 		margin: 0;
 		padding: 0;
 		display: inline;

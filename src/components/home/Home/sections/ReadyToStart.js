@@ -12,7 +12,7 @@ const ReadyToStart = props => (
 		<div className="readyToStartSplash" />
 		<Grid>
 			<Row>
-				<Col md={8}>
+				<Col md={7}>
 					<h2 className="readyToStartQuestion">
 						Ready to get started?
 					</h2>
@@ -20,7 +20,7 @@ const ReadyToStart = props => (
 						Get in touch, or start your archive.
 					</h3>
 				</Col>
-				<Col md={4}>
+				<Col md={5} className="startButtons">
 					<Button
 						href="#getStarted"
 						dark

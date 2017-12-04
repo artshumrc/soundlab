@@ -2,38 +2,80 @@
 
 #features {
   text-align: center;
+	background: #f6f6f6;
+	margin: 0;
+	padding: 0;
+}
+
+.featuresList {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	justify-content: center;
 }
 
 .feature {
 	text-align: center;
+	width: 33%;
+	padding: 60px 30px 50px;
 
-	img {
-		display: none;
+	border-top:1px solid rgba(255,255,255,0.1);
+	border-right:1px solid rgba(255,255,255,0.01);
+	// .transition(all 300ms ease-out);
+	box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 0.0);
+	-moz-box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 0.0);
+	-webkit-box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 0.0);
+	cursor:default;
+	@include transition(all 100ms ease-in-out);
+
+	&:hover {
+		background:rgba(10,10,10,0.02);
+		box-shadow: inset 0 0 0 15px rgba(10, 10, 10, 0.1);
+		-moz-box-shadow: inset 0 0 0 15px rgba(10, 10, 10, 0.1);
+		-webkit-box-shadow: inset 0 0 0 15px rgba(10, 10, 10, 0.1);
+		i, h4 {
+			color: $primary-600;
+		}
+		hr {
+			background: $divider;
+		}
 	}
 
   hr {
-		display: none;
     width: 50px;
-
+		height: 3px;
+		background: $divider-light-grey;
+		border: none;
+		outline: none;
+		@include transition(all 100ms ease-in-out);
   }
 
 	.feature-title {
-		border: 1px solid $divider-light-grey;
+		// border: 1px solid $divider-light-grey;
 		padding: 10px 20px;
-		margin: 10px auto;
+		margin: 0px auto;
 		text-align: center;
 		display: inline-block;
 		@include transition(all 100ms ease-in-out);
 
-		&:hover {
-			border: 1px solid $dark;
-		}
 	}
 
 	i {
 		color: $dark;
 		display: inline-block;
 		vertical-align: top;
+		@include transition(all 100ms ease-in-out);
 		&:before {
 			font-size: 32px;
 		}
@@ -43,11 +85,12 @@
 		color: $dark;
 		display: inline-block;
 		vertical-align: top;
-		padding: 0px 10px;
+		padding: 3px 10px 0;
+		@include transition(all 100ms ease-in-out);
 	}
 
 	p {
-		padding: 20px 30px;
+		padding: 10px 30px;
 		#home & {
 			font-size: 16px;
 			line-height: 1.6em;

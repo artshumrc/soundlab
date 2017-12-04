@@ -26,7 +26,7 @@ class Cover extends React.Component {
 	}
 
 	render() {
-		const { className, full, bottom, background, reactsToMouse, overlay } = this.props;
+		const { className, full, left, bottom, background, reactsToMouse, overlay } = this.props;
 		const classes = [className];
 		const { windowWidth } = this.state;
 
@@ -34,7 +34,9 @@ class Cover extends React.Component {
 			classes.push('cover--full');
 		}
 
-		if (bottom) {
+		if (left) {
+			classes.push('cover--left');
+		} else if (bottom) {
 			classes.push('cover--bottom');
 		} else {
 			classes.push('cover--center');
