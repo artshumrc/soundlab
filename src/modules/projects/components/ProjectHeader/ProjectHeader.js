@@ -1,5 +1,7 @@
 import React from 'react';
 import Headroom from 'react-headroom';
+import { Link } from 'react-router';
+
 import scrollToElement from '../../../../lib/scrollToElement';
 
 import '../../../../components/navigation/Header/NavBar/NavBar.css';
@@ -9,48 +11,60 @@ export default class ProjectHeader extends React.Component {
 
 	render() {
 		return (
-			<Headroom className="header">
+			<Headroom className="navbar">
 				<div className="nav-header">
-					<i className="mdi mdi-bars left-menu-toggle-icon" />
-					<h2 className="site-title">
-						Project Name
-					</h2>
+					<i className="mdi mdi-menu left-menu-toggle-icon" />
+					<Link
+						to="/"
+					>
+						<h2 className="site-title">
+							Example Project
+						</h2>
+					</Link>
 				</div>
 				<ul className="nav">
 					<li>
-						<a href="#featured" onClick={scrollToElement} >
-							Featured
-						</a>
-					</li>
-					<li>
-						<a href="/collections" >
+						<Link to="/collections" >
 							Collections
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="/articles" >
+						<Link to="/articles" >
 							Articles
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="#about" onClick={scrollToElement} >
+						<Link to="#about" onClick={scrollToElement} >
 							About
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="#visit" onClick={scrollToElement} >
+						<Link to="#visit" onClick={scrollToElement} >
 							Visit
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="/" className="login-button">
-							Sign Up / In
-						</a>
+						{ userId ?
+							<Link to={'/dashboard'}>
+								Dashboard
+							</Link>
+						: '' }
 					</li>
 					<li>
-						<a href="/search">
+						{!userId ?
+							<Link
+								to={'/'}
+								className="login-button"
+								onClick={toggleAuthModal}
+							>
+								Sign Up / In
+							</Link>
+						: '' }
+					</li>
+					<li>
+						<Link to="/search">
 							<i className="mdi mdi-magnify search-icon" />
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</Headroom>

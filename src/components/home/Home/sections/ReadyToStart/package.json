@@ -1,0 +1,6 @@
+{
+  "name": "ReadyToStart",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./ReadyToStart.js"
+}

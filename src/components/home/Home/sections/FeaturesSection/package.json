@@ -1,0 +1,6 @@
+{
+  "name": "FeaturesSection",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./FeaturesSection.js"
+}
