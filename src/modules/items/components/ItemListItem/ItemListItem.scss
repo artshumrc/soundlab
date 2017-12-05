@@ -28,4 +28,13 @@
 		color: $text-primary;
 		cursor:pointer;
 	}
+
+	.description {
+		font-size: 14px;
+		font-family: $font-body;
+		font-weight: 100;
+		color: $text-secondary;
+		padding: 10px 0;
+		line-height: 1.5em;
+	}
 }

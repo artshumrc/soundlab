@@ -22,7 +22,7 @@ export default class AboutSection extends React.Component {
 		};
 
 		return (
-			<section id="about">
+			<section id="learn">
 				<Grid>
 					<Row>
 						<Col>

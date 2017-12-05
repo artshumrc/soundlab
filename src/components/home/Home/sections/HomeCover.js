@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 import Button from '../../../common/buttons/Button';
 import Cover from '../../../common/cover/Cover';
 import Bricks from '../../../common/cover/Bricks';
@@ -29,21 +31,25 @@ class HomeCover extends React.Component {
 						Create and share digital records and collections when, where, and how you want
 					</p>
 					<div className="home-cover-buttons">
-						<Button
-							href="#getStarted"
-							onClick={Util.scrollToElement}
-							dark
+						<Link
+							to="/create"
 						>
-							Get Started
-						</Button>
-						<Button
-							href="#learn"
-							onClick={Util.scrollToElement}
-							transparentLight
-							outline
+							<Button
+								dark
+							>
+								Get Started
+							</Button>
+						</Link>
+						<Link
+							to="/#learn"
 						>
-							Learn More
-						</Button>
+							<Button
+								transparentLight
+								outline
+							>
+								Learn More
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</Cover>

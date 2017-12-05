@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 import Button from '../../../../../../components/common/buttons/Button';
 import Cover from '../../../../../../components/common/cover/Cover';
 import Bricks from '../../../../../../components/common/cover/Bricks';
@@ -12,33 +14,43 @@ class ProjectCover extends React.Component {
 
 		return (
 			<Cover
-				className="home-cover"
+				className="home-cover home-cover--project"
 				background={
 					<Bricks />
 				}
 				overlay={
 					<div className="home-overlay" />
 				}
+				left
 				full
 			>
 				<div className="home-cover-content">
 					<h1>Example Project Museum or Archive</h1>
-					<p className="lead">Quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisque adiungere vites</p>
-					<div>
-						<Button
-							href="#learn"
-							onClick={Util.scrollToElement}
-							transparentLight
+
+					<p className="lead">
+						Quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisque adiungere vites
+					</p>
+
+					<div className="home-cover-buttons">
+						<Link
+							to="/collections"
 						>
-							About
-						</Button>
-						<Button
-							href="#getStarted"
-							onClick={Util.scrollToElement}
-							primary
+							<Button
+								dark
+							>
+								Explore
+							</Button>
+						</Link>
+						<Link
+							to="/#learn"
 						>
-							Explore
-						</Button>
+							<Button
+								transparentLight
+								outline
+							>
+								About
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</Cover>

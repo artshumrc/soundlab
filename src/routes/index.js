@@ -11,9 +11,6 @@ import projectRoutes from '../modules/projects/routes';
 // Dashboard
 import dashboardRoutes from '../modules/dashboard/routes';
 
-// GraphiQL browser UI for testing API
-import graphiqlRoutes from '../modules/graphiql/routes';
-
 
 export default (
 	<div>
@@ -25,8 +22,5 @@ export default (
 
 		{/* Routes for dashboard */}
 		{dashboardRoutes}
-
-		{/* Routes for GraphiQL */}
-		{graphiqlRoutes}
 	</div>
 );

@@ -11,15 +11,17 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 		<NavBarHeader />
 		<ul className="nav">
 			<li>
-				<Link to={'/services'}>
+				<Link to={'/#features'}>
 					Services
 				</Link>
 			</li>
-			<li>
-				<Link to={'/community'}>
-					Community
-				</Link>
-			</li>
+			{/*
+				<li>
+					<Link to={'/community'}>
+						Community
+					</Link>
+				</li>
+			*/}
 			<li>
 				<Link to={'/about'}>
 					About
@@ -43,11 +45,13 @@ const NavBar = ({ toggleAuthModal, userId, logout }) => (
 					</Link>
 				: '' }
 			</li>
-			<li>
-				<Link to={'/search'}>
-					<i className="mdi mdi-magnify search-icon" />
-				</Link>
-			</li>
+			{/*
+				<li>
+					<Link to={'/search'}>
+						<i className="mdi mdi-magnify search-icon" />
+					</Link>
+				</li>
+			*/}
 		</ul>
 	</Headroom>
 );
