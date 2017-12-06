@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-import ReactMapGL from 'react-map-gl';
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 
 
 import './ProjectVisit.css';
@@ -8,28 +8,54 @@ import './ProjectVisit.css';
 export default class ProjectVisit extends React.Component {
 
 	render() {
+		const Map = ReactMapboxGl({
+			accessToken: "pk.eyJ1IjoibHVrZWhvbGxpcyIsImEiOiJ6Rk1vdjc0In0.jQDtXA8wqU_wYi5p1ClCyw",
+		});
+
 		return (
 			<section id="visit">
-				<Grid>
-					<Row>
-						<Col md={5}>
-							<ReactMapGL
-							  width={400}
-							  height={400}
-							  latitude={42.3741574}
-							  longitude={-71.1139213}
-							  zoom={8}
-							  onViewportChange={(viewport) => {
-							    const {width, height, latitude, longitude, zoom} = viewport;
-							    // Optionally call `setState` and use the state to update the map.
-							  }}
-							/>
-						</Col>
-						<Col md={7}>
-							<p>Quid faciat laetas segets quo sidere terram vertere mycenas ulmisque adiungere vites conveniat</p>
-						</Col>
-					</Row>
-				</Grid>
+				<Row>
+					<Col
+						md={5}
+						className="projectVisitCol"
+					>
+						<Map
+						  style="mapbox://styles/lukehollis/cj7dnh4fb11452smw1dj34x04"
+						  containerStyle={{
+						    height: "100vh",
+						    width: "100%"
+						  }}
+							center={[
+								-71.1139213,42.3741574
+							]}
+						  zoom={[13]}
+						>
+						</Map>
+					</Col>
+					<Col
+						md={7}
+						className="projectVisitCol"
+					>
+						<div className="projectVisitInfo">
+							<h2>Plan your visit</h2>
+							<hr />
+							<p>
+								Example Project Gallery
+							</p>
+							<p>
+								10 Ware Street, Cambridge, MA 02138
+							</p>
+							<p>
+								857.600.2681
+							</p>
+							<p>
+								<a href="https://archimedes.digital" target="_blank" rel="noopener noreferrer">
+									https://archimedes.digital/
+								</a>
+							</p>
+						</div>
+					</Col>
+				</Row>
 			</section>
 		);
 	}

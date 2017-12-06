@@ -2,10 +2,25 @@
 
 
 .projectPerson {
-	padding: 25px 5%;
+	padding: 25px 4%;
 	min-width: 180px;
-	max-width: 240px;
+	max-width: 260px;
 	display: inline-block;
 	vertical-align: top;
 	width: 100%;
+
+	h4 {
+		color: $dark;
+		font-size: 20px;
+	}
+
+	hr {
+		max-width: 66px;
+		height: 3px;
+		border: none;
+		outline: none;
+		margin: 20px auto;
+		background: #eee;
+
+	}
 }
