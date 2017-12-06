@@ -8,6 +8,7 @@ import {
   Navbar,
   Nav
 } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 import './Footer.css';
 
@@ -17,27 +18,33 @@ export default class Footer extends React.Component {
 		const year = now.getFullYear();
 		return (
 			<section id="footer">
-				<Navbar className="footerNav">
-					<Grid>
-						<Row>
-							<Col lg={4}>
-								<Navbar.Header>
-									<Navbar.Brand>
-                    © orphe.us, {year}
-                  </Navbar.Brand>
-								</Navbar.Header>
-							</Col>
-							<Col lg={8}>
-								<Nav>
-									<NavItem eventKey={2} href="#">About</NavItem>
-									<NavItem eventKey={3} href="#">Community</NavItem>
-									<NavItem eventKey={4} href="#">Services</NavItem>
-									<NavItem eventKey={7} href="mailto:contact@orphe.us">Contact</NavItem>
-								</Nav>
-							</Col>
-						</Row>
-					</Grid>
-				</Navbar>
+				<Grid>
+					<Row>
+						<Col lg={4}>
+              <span className="footerCopyright">
+                © orphe.us, {year}
+							</span>
+              <span className="footerBuiltBy">
+								Created by
+								<a
+									href="https://archimedes.digital"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+										Archimedes Digital
+								</a>
+								.
+							</span>
+						</Col>
+						<Col lg={8}>
+							<div className="footerLinks">
+								<Link href="mailto:contact@orphe.us">
+									Contact
+								</Link>
+							</div>
+						</Col>
+					</Row>
+				</Grid>
 			</section>
 		);
 	}
