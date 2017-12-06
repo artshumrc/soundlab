@@ -14,7 +14,11 @@ import { login, register, logout, verifyToken } from '../../lib/auth';
 
 const scrollToElemOrTop = () => {
 	if (window.location.hash.length) {
-		document.getElementById(window.location.hash.replace('#', '')).scrollIntoView();
+		const elem = window.location.hash.replace('#', '')
+
+		if (elem) {
+			document.getElementById(elem).scrollIntoView();
+		}
 	} else {
 		window.scrollTo(0, 0);
 	}
@@ -46,8 +50,8 @@ const Root = ({store, history}) => (
 );
 
 Root.propTypes = {
-	store: PropTypes.shape({/* TODO: update */}).isRequired,
-	history: PropTypes.shape({/* TODO: update */}).isRequired,
+	store: PropTypes.shape({}).isRequired,
+	history: PropTypes.shape({}).isRequired,
 };
 
 export default Root;

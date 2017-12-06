@@ -1,73 +1,98 @@
 import React from 'react';
 import Headroom from 'react-headroom';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import scrollToElement from '../../../../lib/scrollToElement';
-
-import '../../../../components/navigation/Header/NavBar/NavBar.css';
+// actions
+import { authActions } from '../../../auth';
 import './ProjectHeader.css';
 
-export default class ProjectHeader extends React.Component {
-
-	render() {
-		return (
-			<Headroom className="navbar">
-				<div className="nav-header">
-					<i className="mdi mdi-menu left-menu-toggle-icon" />
-					<Link
-						to="/"
-					>
-						<h2 className="site-title">
-							Example Project
-						</h2>
+const ProjectHeader = ({ toggleAuthModal, userId }) => (
+	<Headroom className="navbar">
+		<div className="nav-header">
+			<i className="mdi mdi-menu left-menu-toggle-icon" />
+			<Link
+				to="/"
+			>
+				<h2 className="site-title">
+					Example Project
+				</h2>
+			</Link>
+		</div>
+		<ul className="nav">
+			<li>
+				<Link to="/collections" >
+					Collections
+				</Link>
+			</li>
+			<li>
+				<Link to="/articles" >
+					Articles
+				</Link>
+			</li>
+			<li>
+				<Link
+					to="/#about"
+				>
+					About
+				</Link>
+			</li>
+			<li>
+				<Link
+					to="/#visit"
+				>
+					Visit
+				</Link>
+			</li>
+			<li>
+				{ userId ?
+					<Link to={'/dashboard'}>
+						Dashboard
 					</Link>
-				</div>
-				<ul className="nav">
-					<li>
-						<Link to="/collections" >
-							Collections
-						</Link>
-					</li>
-					<li>
-						<Link to="/articles" >
-							Articles
-						</Link>
-					</li>
-					<li>
-						<Link to="#about" onClick={scrollToElement} >
-							About
-						</Link>
-					</li>
-					<li>
-						<Link to="#visit" onClick={scrollToElement} >
-							Visit
-						</Link>
-					</li>
-					<li>
-						{ userId ?
-							<Link to={'/dashboard'}>
-								Dashboard
-							</Link>
-						: '' }
-					</li>
-					<li>
-						{!userId ?
-							<Link
-								to={'/'}
-								className="login-button"
-								onClick={toggleAuthModal}
-							>
-								Sign Up / In
-							</Link>
-						: '' }
-					</li>
-					<li>
-						<Link to="/search">
-							<i className="mdi mdi-magnify search-icon" />
-						</Link>
-					</li>
-				</ul>
-			</Headroom>
-		);
-	}
-}
+				: '' }
+			</li>
+			<li>
+				{!userId ?
+					<Link
+						to={'/'}
+						className="login-button"
+						onClick={toggleAuthModal}
+					>
+						Sign Up / In
+					</Link>
+				: '' }
+			</li>
+			<li>
+				<Link to="/search">
+					<i className="mdi mdi-magnify search-icon" />
+				</Link>
+			</li>
+		</ul>
+	</Headroom>
+);
+
+ProjectHeader.propTypes = {
+	toggleAuthModal: PropTypes.func.isRequired,
+	userId: PropTypes.string,
+};
+
+ProjectHeader.defaultProps = {
+	userId: null
+};
+
+const mapStateToProps = state => ({
+	userId: state.auth.userId,
+});
+
+const mapDispatchToProps = dispatch => ({
+	toggleAuthModal: (e) => {
+		e.preventDefault();
+		dispatch(authActions.toggleAuthModal());
+	},
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ProjectHeader);

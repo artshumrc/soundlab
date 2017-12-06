@@ -8,7 +8,7 @@ import NavBar from './NavBar';
 // actions
 import { authActions } from '../../../modules/auth';
 
-const _Header = ({ toggleAuthModal, userId }) => (
+const Header = ({ toggleAuthModal, userId }) => (
 	<div>
 		<NavBar
 			toggleAuthModal={toggleAuthModal}
@@ -17,12 +17,12 @@ const _Header = ({ toggleAuthModal, userId }) => (
 	</div>
 );
 
-_Header.propTypes = {
+Header.propTypes = {
 	toggleAuthModal: PropTypes.func.isRequired,
 	userId: PropTypes.string,
 };
 
-_Header.defaultProps = {
+Header.defaultProps = {
 	userId: null
 };
 
@@ -40,4 +40,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(_Header);
+)(Header);

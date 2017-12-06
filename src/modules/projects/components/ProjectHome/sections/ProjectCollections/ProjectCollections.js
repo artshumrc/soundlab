@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 import CollectionListItem from '../../../../../collections/components/CollectionListItem';
+import Button from '../../../../../../components/common/buttons/Button';
 
 import './ProjectCollections.css';
 
@@ -31,6 +34,15 @@ export default class ProjectCollections extends React.Component {
 						{...listItem}
 					/>
 				))}
+				<div className="projectCollectionsViewMoreOuter">
+					<Button
+						transparentLight
+						to="/collections"
+						outline
+					>
+						View All Collections
+					</Button>
+				</div>
 			</div>
 		);
 	}

@@ -25,9 +25,6 @@ const wrapSubmit = signup => async (values, dispatch) => {
 function renderField({ input, label, type, meta }) {
 	return (
 		<div className="at-input form-group has-feedback">
-			<label className="control-label">
-				{label}
-			</label>
 			<input
 				{...input}
 				type={type}

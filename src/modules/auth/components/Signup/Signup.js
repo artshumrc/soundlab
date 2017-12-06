@@ -18,7 +18,18 @@ class Signup extends React.Component {
 		return (
 			<div className="at-form">
 				<div className="at-title">
-					<h3>Create an Account</h3>
+					<h3>
+						Create an Account or
+						<a
+							href="#"
+							id="at-signUp"
+							className="at-link at-signup"
+							onClick={onSigninClick}
+						>
+							Sign in
+						</a>
+						.
+					</h3>
 				</div>
 
 				<OAuthButtons
@@ -40,17 +51,6 @@ class Signup extends React.Component {
 							By clicking register, you agree to our <a href="/terms" className="at-link at-link--terms at-resend-verification-email">Terms and Privacy Policy.</a>
 						</p>
 					</div>
-					<p>
-						Already have an account?
-						<a
-							href="#"
-							id="at-signUp"
-							className="at-link at-signup"
-							onClick={onSigninClick}
-						>
-							Sign in.
-						</a>
-					</p>
 				</div>
 			</div>
 		);

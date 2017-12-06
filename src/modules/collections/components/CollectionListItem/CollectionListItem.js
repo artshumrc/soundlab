@@ -5,7 +5,7 @@ import faker from 'faker';
 import _ from 'underscore';
 import { truncate } from 'underscore.string';
 
-import Tags from '../../../../components/tags/Tags';
+import Tags from '../../../tags/components/Tags';
 import './CollectionListItem.css';
 
 const CollectionListItem = (props) => {

@@ -3,6 +3,21 @@
 .at-form {
 	h3 {
 		padding: 10px 0 20px;
+		font-size: 28px;
+
+		a {
+			color: $primary-dark;
+			margin-left: 10px;
+			padding: 0 0px 2px;
+			// border-bottom: 2px solid $primary-dark;
+			@include transition(all 100ms ease-in-out);
+
+			&:hover {
+				color: $primary;
+				// border-bottom: 2px solid rgba(0,0,0,0);
+
+			}
+		}
 	}
 
 	form {
@@ -33,7 +48,7 @@
 	display: block;
 }
 
-#at-signUp, #at-resend-verification-email {
+#at-resend-verification-email {
 	padding: 0 4px;
 
 }

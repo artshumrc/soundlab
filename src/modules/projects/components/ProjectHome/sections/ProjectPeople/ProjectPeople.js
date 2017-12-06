@@ -22,7 +22,7 @@ export default class ProjectPeople extends React.Component {
 
 		return (
 			<section className="peopleList">
-				<h2>People</h2>
+				<h2>Staff</h2>
 				<div>
 					{people.map(person => (
 						<ProjectPerson

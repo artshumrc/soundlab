@@ -1,9 +1,20 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-// Basic routes
-import Home from '../components/home/Home';
-import Page from '../components/pages/Page/Page';
+// Home
+import homeRoute from '../modules/home/routes';
+
+// Articles
+import articleRoutes from '../modules/articles/routes';
+
+// Collections
+import collectionRoutes from '../modules/collections/routes';
+
+// Items
+import itemRoutes from '../modules/items/routes';
+
+// Pages
+import pageRoutes from '../modules/pages/routes';
 
 // Projects
 import projectRoutes from '../modules/projects/routes';
@@ -14,13 +25,25 @@ import dashboardRoutes from '../modules/dashboard/routes';
 
 export default (
 	<div>
-		{/* Normal home landing page */}
-		<Route exact path="/" component={Home} />
+		{/* Home Route for orphe.us */}
+		{homeRoute}
+
+		{/* Routes for articles */}
+		{articleRoutes}
+
+		{/* Routes for collections */}
+		{collectionRoutes}
+
+		{/* Routes for items */}
+		{itemRoutes}
+
+		{/* Routes for dashboard */}
+		{dashboardRoutes}
 
 		{/* Routes specific to projects (and collections and items) */}
 		{projectRoutes}
 
-		{/* Routes for dashboard */}
-		{dashboardRoutes}
+		{/* Routes for single pages */}
+		{pageRoutes}
 	</div>
 );

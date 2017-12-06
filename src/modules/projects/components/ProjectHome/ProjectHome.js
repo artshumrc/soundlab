@@ -11,11 +11,11 @@ import ProjectPeople from './sections/ProjectPeople';
 import ProjectVisit from './sections/ProjectVisit';
 
 import './ProjectHome.css';
-import '../../../../components/home/Home/Home.css';
+import '../../../home/components/Home/Home.css';
 
 class ProjectHome extends React.Component {
 	render() {
-		const visitEnabled = false;
+		const visitEnabled = true;
 		return (
 			<div id="home">
 				<ProjectHeader />

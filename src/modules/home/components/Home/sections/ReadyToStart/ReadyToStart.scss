@@ -1,0 +1,43 @@
+@import '../../../../../../variables.scss';
+
+.readyToStart {
+	width: 100%;
+	// overflow-x: hidden;
+	text-align: left;
+	background: #f6f6f6;
+	position: relative;
+
+	.orpheus-button {
+		display: inline-block;
+
+	}
+
+	.startButtons {
+		text-align: right;
+	}
+}
+
+.readyToStartSplash {
+	width: 200%;
+	margin: 0 -50%;
+	background: #f6f6f6;
+	height: 300px;
+	position:absolute;
+	top: -120px;
+	left: 0;
+	transform: rotate(-10deg);
+}
+
+.readyToStartQuestion {
+	color: $text-secondary;
+	font-family: $font-reading;
+	font-weight: 100;
+	font-size: 42px;
+}
+
+.readyToStartCallToAction {
+	color: $text-primary;
+	font-family: $font-reading;
+	font-weight: 100;
+	font-size: 46px;
+}

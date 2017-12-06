@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import Tags from '../../../../components/tags/Tags';
+import Tags from '../../../tags/components/Tags';
 
 import './ItemListItem.css';
 

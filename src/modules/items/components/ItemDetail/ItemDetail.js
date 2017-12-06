@@ -1,5 +1,5 @@
 import React from 'react';
-import Tags from '../../../../components/tags/Tags';
+import Tags from '../../../tags/components/Tags';
 import ItemImageViewer from '../ItemImageViewer';
 import ItemTitle from '../ItemTitle';
 import ItemDescription from '../ItemDescription';
