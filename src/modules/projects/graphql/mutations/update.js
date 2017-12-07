@@ -24,6 +24,4 @@ const projectUpdateMutation = graphql(projectUpdate, {
 });
 
 
-export {
-	projectUpdateMutation,
-};
+export default projectUpdateMutation;

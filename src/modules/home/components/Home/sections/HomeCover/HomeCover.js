@@ -31,25 +31,19 @@ class HomeCover extends React.Component {
 						Create and share digital records and collections when, where, and how you want
 					</p>
 					<div className="home-cover-buttons">
-						<Link
+						<Button
+							dark
 							to="/create"
 						>
-							<Button
-								dark
-							>
-								Get Started
-							</Button>
-						</Link>
-						<Link
+							Get Started
+						</Button>
+						<Button
+							transparentLight
+							outline
 							to="/#learn"
 						>
-							<Button
-								transparentLight
-								outline
-							>
-								Learn More
-							</Button>
-						</Link>
+							Learn More
+						</Button>
 					</div>
 				</div>
 			</Cover>

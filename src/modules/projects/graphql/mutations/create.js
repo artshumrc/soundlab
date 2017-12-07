@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo';
 
 const projectCreate = gql`
-mutation projectCreate($project: projectInputType!) {
+mutation projectCreate($project: ProjectInputType!) {
 	projectCreate(project: $project) {
     _id
 	}
@@ -17,11 +17,6 @@ const projectCreateMutation = graphql(projectCreate, {
 		}),
 	}),
 	name: 'projectCreateMutation',
-	options: {
-		refetchQueries: ['projectsQuery'],
-	},
 });
 
-export {
-	projectCreateMutation,
-};
+export default projectCreateMutation;

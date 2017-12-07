@@ -23,6 +23,4 @@ const projectRemoveMutation = graphql(projectRemove, {
 	},
 });
 
-export {
-	projectRemoveMutation,
-};
+export default projectRemoveMutation;
