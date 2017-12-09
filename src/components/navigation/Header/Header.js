@@ -8,7 +8,6 @@ import LeftMenu from '../LeftMenu';
 
 // actions
 import { authActions } from '../../../modules/auth';
-import { toggleLeftMenu } from '../../../actions/leftMenu';
 
 
 const Header = ({ toggleAuthModal, userId }) => (

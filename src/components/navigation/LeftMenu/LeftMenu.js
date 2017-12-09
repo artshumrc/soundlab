@@ -41,6 +41,12 @@ const LeftMenu =  ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject }) => (
 			>
 				Items
 			</MenuItem>
+			<MenuItem
+				to="/articles"
+				onClick={closeLeftMenu}
+			>
+				Articles
+			</MenuItem>
 			{userHasRoleForProject ?
 				<div>
 					<MenuItem
