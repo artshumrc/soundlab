@@ -1,7 +1,7 @@
 {
   "name": "orpheus",
   "version": "0.0.1",
-  "description": "React application for Orphe.us digital collections",
+  "description": "React application for orphe.us digital collections",
   "main": "src/index.js",
   "dependencies": {
     "babel-plugin-css-modules-transform": "^1.3.1",

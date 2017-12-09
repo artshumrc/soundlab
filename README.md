@@ -1,4 +1,4 @@
-# Orphe.us
+# orphe.us
 
 The project consists of 2 applications:
 1.	Client app (React / Redux) based on [`create-react-app`](https://github.com/facebookincubator/create-react-app)
