@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Headroom from 'react-headroom';
 import { Link } from 'react-router';
+
 import scrollToElement from '../../../../lib/scrollToElement';
 import NavBarHeader from './NavBarHeader';
+
 import './NavBar.css';
 
-const NavBar = ({ toggleAuthModal, userId, logout }) => (
+const NavBar = ({ toggleAuthModal, toggleLeftMenu, userId, logout }) => (
 	<Headroom className="navbar">
-		<NavBarHeader />
+		<NavBarHeader toggleLeftMenu={toggleLeftMenu} />
 		<ul className="nav">
 			<li>
 				<Link to={'/#features'}>

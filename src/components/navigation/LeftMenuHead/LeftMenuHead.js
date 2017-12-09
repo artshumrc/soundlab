@@ -8,7 +8,7 @@ import './LeftMenuHead.css';
 
 const LeftMenuHead = props => (
 	<div className="leftMenuHead">
-		<UserAvatarContainer />
+		<SidebarUserAvatarContainer />
 	</div>
 );
 

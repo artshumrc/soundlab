@@ -4,12 +4,16 @@ import PropTypes from 'prop-types';
 
 // components
 import NavBar from './NavBar';
+import LeftMenu from '../LeftMenu';
 
 // actions
 import { authActions } from '../../../modules/auth';
+import { toggleLeftMenu } from '../../../actions/leftMenu';
+
 
 const Header = ({ toggleAuthModal, userId }) => (
 	<div>
+		<LeftMenu />
 		<NavBar
 			toggleAuthModal={toggleAuthModal}
 			userId={userId}
