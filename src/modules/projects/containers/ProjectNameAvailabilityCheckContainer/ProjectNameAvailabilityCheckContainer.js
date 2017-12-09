@@ -16,10 +16,25 @@ class ProjectNameAvailabilityCheckContainer extends React.Component {
 	}
 
 	render() {
+		let projectFound = false;
+
+		if (
+			this.props.params.hostname
+			&& this.props.params.hostname.length
+			&& this.props.projectQuery
+			&& this.props.projectQuery.project
+		) {
+			projectFound = true;
+		}
+
+
 		return (
 			<ProjectNameAvailabilityCheck
+				projectFound={projectFound}
 				onChange={this.props.onChange}
-				projectFound={this.props.project}
+				onSubmit={this.props.onSubmit}
+				verifyCaptcha={this.props.verifyCaptcha}
+				captchaVerified={this.props.captchaVerified}
 			/>
 		)
 	}

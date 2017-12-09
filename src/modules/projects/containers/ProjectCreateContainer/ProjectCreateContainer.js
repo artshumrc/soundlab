@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
+import { connect } from 'react-redux';
 
 import ProjectCreate from '../../components/ProjectCreate';
 import projectDetailQuery from '../../graphql/queries/detail';
@@ -30,15 +31,17 @@ class ProjectCreateContainer extends React.Component {
 
 	async onSubmit(values) {
 		const newProject = {
-			slug: values.slug,
+			title: values.title,
+			hostname: values.hostname,
 		}
+		console.log('submitted');
+		console.log(newProject);
 
 		// create post
 		if (this.state.recaptcha) {
-			await this.props.postCreate(newProject);
+			const created = await this.props.projectCreate(newProject);
 
-			// scroll to top
-		  window.scrollTo(0, 0);
+			window.location = `//${newProject.hostname}.orphe.us/dashboard`;
 		} else {
 			console.error('Recaptcha failed');
 		}
@@ -46,21 +49,24 @@ class ProjectCreateContainer extends React.Component {
 
 	onChange(values) {
 		this.setState({
-			projectSlug: values.slug,
+			projectHostname: values.hostname || '',
 		});
 	}
 
 	render() {
 		return (
 			<ProjectCreate
-				projectSlug={this.state.projectSlug}
+				projectHostname={this.state.projectHostname}
 				onSubmit={this.onSubmit}
 				onChange={this.onChange}
 				verifyCaptcha={this.verifyCaptcha}
+				captchaVerified={this.state.recaptcha}
 			/>
 		)
 	}
 }
+
+
 
 export default compose(
 	projectCreateMutation,

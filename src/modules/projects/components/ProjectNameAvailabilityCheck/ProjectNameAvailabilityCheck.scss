@@ -6,7 +6,7 @@
 }
 
 .projectNameAvailabilityFormInputOuter {
-	margin: 60px 0;
+	margin: 50px 0;
 
 	label {
 		font-size: 14px;
@@ -40,6 +40,13 @@
 }
 
 .projectNameAvailabilityFormURLOuter {
+
+	&.projectNameUnavailable {
+		input {
+			color: $accent-400;
+		}
+	}
+
 	input {
 		padding: 15px 0px 5px 15px;
 		width: 260px;
@@ -75,5 +82,45 @@
 
 	&:hover {
 		color: $primary-dark;
+	}
+}
+
+.nameNotAvailable {
+	color: $accent-500;
+	opacity: 0;
+
+	&.nameNotAvailableVisible {
+		opacity: 1;
+	}
+}
+
+.projectNameAvaibilityButton {
+	display: inline-block;
+	margin: 60px 0 0;
+	color: $dark;
+	padding: 15px 25px;
+	background: transparent;
+	border: 2px solid $dark;
+	text-transform: uppercase;
+	font-family: $font-label;
+	cursor: pointer;
+	border-radius: 0;
+	outline: 0;
+	@include transition(all 100ms ease-in-out);
+
+	&.disabled {
+		opacity: 0.3;
+
+	}
+
+
+	&:hover {
+		background: $primary;
+		border: 2px solid $primary;
+		color: $light;
+	}
+
+	&:focus {
+		outline: none;
 	}
 }

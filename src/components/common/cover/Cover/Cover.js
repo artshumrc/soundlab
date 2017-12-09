@@ -48,7 +48,7 @@ class Cover extends React.Component {
 				className={`cover ${classes.join(' ')}`}
 				style={{
 					width: windowWidth,
-					height: full ? window.innerHeight : 400,
+					height: full ? window.innerHeight : window.innerHeight * 0.7,
 				}}
 			>
 				<div

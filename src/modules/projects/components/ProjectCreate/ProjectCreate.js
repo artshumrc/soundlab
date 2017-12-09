@@ -15,9 +15,12 @@ const ProjectCreate = props => (
 
 		<ProjectNameAvailabilityCheckContainer
 			params={{
-				slug: props.projectSlug
+				hostname: props.projectHostname
 			}}
+			onChange={props.onChange}
+			onSubmit={props.onSubmit}
 			verifyCaptcha={props.verifyCaptcha}
+			captchaVerified={props.captchaVerified}
 		/>
 	</div>
 );
