@@ -40,8 +40,9 @@ const login = async (data) => {
 };
 
 const logoutUser = async () => {
-	cookies.remove('token');
-	cookies.remove('hello');
+	const domain = process.env.REACT_APP_COOKIE_DOMAIN || 'orpheus.local';
+	cookies.remove('token', { domain });
+	cookies.remove('hello', { domain });
 };
 
 const register = async (data) => {
@@ -81,7 +82,7 @@ const register = async (data) => {
 };
 
 const verifyToken = async () => {
-	const token = cookies.get('token');
+	let token = cookies.get('token');
 	if (token) {
 		try {
 			const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_VERIFY_TOKEN_URI}`, {

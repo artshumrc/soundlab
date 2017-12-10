@@ -18,19 +18,19 @@ const SidebarUserAvatar = props => (
 				}}
 			/>
 			<div className="sidebarUserName">
-				{props.username}
+				{props.name}
 			</div>
 		</Link>
 	</div>
 );
 
 SidebarUserAvatar.propTypes = {
-	username: PropTypes.string,
+	name: PropTypes.string,
 	avatarUrl: PropTypes.string,
 };
 
 SidebarUserAvatar.defaultProps = {
-	username: 'Example User',
+	name: '',
 	avatarUrl: '/images/default_user.jpg',
 };
 

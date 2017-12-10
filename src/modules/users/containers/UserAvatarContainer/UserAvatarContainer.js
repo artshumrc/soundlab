@@ -11,8 +11,8 @@ const UserAvatarContainer = props => {
 	let user;
 	let avatarUrl = '/images/default_user.jpg';
 
-	if (props.userDetailQuery && props.userDetailQuery.user) {
-		user = props.userAvatarQuery.user;
+	if (props.userAvatarQuery && props.userAvatarQuery.userProfile) {
+		user = props.userAvatarQuery.userProfile;
 		if ('avatar' in user) {
 			avatarUrl = user.avatar;
 		}

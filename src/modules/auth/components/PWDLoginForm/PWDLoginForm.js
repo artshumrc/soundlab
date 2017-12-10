@@ -10,7 +10,8 @@ const wrapSubmit = login => async (values, dispatch) => {
 		await login(values);
 		return {};
 	} catch (err) {
-		throw new SubmissionError({ _error: 'Login failed!' });
+		console.log(err);
+		throw new SubmissionError({ _error: 'Username or password incorrect.' });
 	}
 };
 

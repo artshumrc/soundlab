@@ -4,6 +4,7 @@ const query = gql`
 	query userAvatarQuery {
 		userProfile {
 			avatar
+			name
 		}
 	}
 `;

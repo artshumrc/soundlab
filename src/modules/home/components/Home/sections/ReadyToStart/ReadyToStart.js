@@ -22,26 +22,19 @@ const ReadyToStart = props => (
 					</h3>
 				</Col>
 				<Col md={5} className="startButtons">
-					<Link
+					<Button
 						to="/create"
+						dark
 					>
-						<Button
-							href="#getStarted"
-							dark
-						>
-							Start your archive
-						</Button>
-					</Link>
-					<a
+						Start your archive
+					</Button>
+					<Button
+						transparentLight
+						outline
 						href="mailto:contact@orphe.us"
 					>
-						<Button
-							transparentLight
-							outline
-						>
-							Contact Us
-						</Button>
-					</a>
+						Contact Us
+					</Button>
 				</Col>
 			</Row>
 		</Grid>

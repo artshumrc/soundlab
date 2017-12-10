@@ -18,7 +18,7 @@ import { logoutUser } from '../../../lib/auth';
 import './LeftMenu.css';
 
 
-const LeftMenu =  ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId, dispatchToggleAuthModal }) => (
+const LeftMenu =  ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId, dispatchLogout, dispatchToggleAuthModal }) => (
 	<Drawer
 		open={leftMenuOpen}
 		docked={false}
@@ -87,7 +87,7 @@ const LeftMenu =  ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId,
 
 					<MenuItem
 						to="/"
-						onClick={logout}
+						onClick={dispatchLogout}
 					>
 						Sign out
 					</MenuItem>
@@ -126,6 +126,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	},
 	dispatchLogout: () => {
 		dispatch(logout(logoutUser));
+		dispatch(toggleLeftMenu(false));
 	},
 	dispatchToggleAuthModal: () => {
 		dispatch(toggleAuthModal());

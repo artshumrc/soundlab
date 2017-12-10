@@ -14,10 +14,12 @@
 	input {
 		border-radius: 0px;
 		border: 2px solid #ddd;
-		padding: 15px;
-		font-size: 16px;
+		padding: 20px;
+		font-size: 18px;
 		font-family: $font-body;
 		height: auto;
+		color: $dark;
+		font-weight: 100;
 
 		&:focus {
 			border: 2px solid $dark;
