@@ -34,8 +34,6 @@ class ProjectCreateContainer extends React.Component {
 			title: values.title,
 			hostname: values.hostname,
 		}
-		console.log('submitted');
-		console.log(newProject);
 
 		// create post
 		if (this.state.recaptcha) {

@@ -5,7 +5,9 @@ import Cover from '../../../../components/common/cover/Cover';
 import CoverTitle from '../../../../components/common/cover/CoverTitle';
 import BackgroundImage from '../../../../components/common/cover/BackgroundImage';
 
-const CollectionsCover = (props) => {
+import './CollectionsCover.css';
+
+const CollectionsCover = ({ title }) => {
 	const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
 		83, 87, 90, 92, 93, 95, 102, 103];
 	const selImage = _.sample(artImages);
@@ -21,7 +23,7 @@ const CollectionsCover = (props) => {
 			bottom
 		>
 			<CoverTitle
-				title={props.title}
+				title={title}
 			/>
 		</Cover>
 	);

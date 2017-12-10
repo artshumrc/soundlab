@@ -16,6 +16,7 @@ const CollectionDetail = props => (
 		<Pagination
 			total={90}
 			limit={18}
+			page={0}
 		/>
 	</div>
 );

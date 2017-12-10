@@ -4,7 +4,15 @@ const query = gql`
 	query projectActivityQuery($hostname: String) {
 		project(hostname: $hostname) {
 	    _id
-			activity
+			activity {
+				user {
+					username
+					name
+				}
+				type
+				excerpt
+				url
+			}
 		}
 	}
 `;
