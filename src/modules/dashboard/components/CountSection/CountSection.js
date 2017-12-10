@@ -1,21 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import './CountSection.css';
 
-const CountSection = ({ label, count, addLink })=> (
+const CountSection = ({ label, labelPlural, count, addLink, addLinkText })=> (
 	<div className="countSection">
-		<label>
-			{label}
-		</label>
 		<span className="count">
 			{count}
 		</span>
+
+		<label>
+			{labelPlural}
+		</label>
 
 		<Link
 			className="addLink"
 			to={addLink}
 		>
-			Add a new {label}
+			<i className="mdi mdi-plus" />
+			{addLinkText}
 		</Link>
 	</div>
 );

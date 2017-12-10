@@ -1,17 +1,49 @@
 @import '../../../../variables.scss';
 
 .countSection {
+	text-align: center;
+
 	label {
 		font-family: $font-title;
-		font-size: 18px;
+		font-size: 12px;
 		text-transform: uppercase;
-
+		display: block;
+		color: $text-secondary;
+		margin: 15px 0;
 	}
 
 	.count {
 		font-family: $font-reading;
-		font-size: 42px;
+		font-size: 60px;
 		font-weight: 100;
+		display: block;
+		color: $text-secondary;
+	}
 
+	.addLink {
+		display: inline-block;
+		font-size: 12px;
+		font-family: $font-body;
+		font-weight: 100;
+		margin: 10px 0;
+		padding: 10px 15px;
+		border: 1px solid transparent;
+		border-bottom: 1px solid $divider-light-grey;
+		color: $dark;
+		@include transition(100ms all ease-in-out);
+
+		&:hover {
+			border: 1px solid $divider;
+			color: $dark;
+			i {
+				color: $dark;
+			}
+		}
+
+		i {
+			margin-right: 10px;
+			color: $text-secondary;
+			@include transition(100ms all ease-in-out);
+		}
 	}
 }

@@ -4,5 +4,56 @@
 .dashboard {
 	color: $dark;
 	padding: 120px 0;
+	max-width: 990px;
+	margin: 0 auto;
 
+}
+
+.dashboardNav {
+	text-align: center;
+
+	a {
+		display: inline-block;
+		vertical-align: top;
+		text-transform: uppercase;
+		color: $dark;
+		margin: 5px;
+		border: 1px solid $divider;
+		@include transition(100ms all ease-in-out);
+		font-family: $font-body;
+		font-size: 12px;
+		padding: 10px 20px;
+
+		&:hover {
+			border: 1px solid $dark;
+			background: $divider-light-grey;
+		}
+
+		i {
+			margin-right: 10px;
+		}
+	}
+}
+
+.dashboardCounts {
+	padding: 60px 0;
+}
+
+
+.dashboardRecentActivity {
+	padding: 60px 0;
+
+	h2 {
+		font-size: 22px;
+	}
+
+	hr {
+		max-width: 120px;
+		height: 3px;
+		background: $divider-light-grey;
+		margin: 25px 0;
+		border: 0;
+		outline: 0;
+		display: block;
+	}
 }

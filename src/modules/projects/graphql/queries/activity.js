@@ -1,25 +1,22 @@
 import { gql, graphql } from 'react-apollo';
 
 const query = gql`
-	query projectQuery($hostname: String!) {
+	query projectActivityQuery($hostname: String) {
 		project(hostname: $hostname) {
 	    _id
-			title
-			slug
-			hostname
-			description
+			activity
 		}
 	}
 `;
 
-const projectQuery = graphql(query, {
-	name: 'projectQuery',
+const projectActivityQuery = graphql(query, {
+	name: 'projectActivityQuery',
   options: ({ params }) => {
 		return ({
     variables: {
       hostname: params.hostname,
-    }
+    },
   })},
 });
 
-export default projectQuery;
+export default projectActivityQuery;
