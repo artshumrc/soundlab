@@ -2,10 +2,18 @@ import React from 'react';
 import './Avatar.css';
 
 const Avatar = props => (
-	<img
+	<div
 		className="userAvatar"
-		alt={props.alt}
-		src={props.src}
+		style={{
+			backgroundImage: `url('${props.avatarUrl}')`,
+			backgroundSize: 'cover',
+			backgroundPosition: 'center',
+			backgroundRepeat: 'no-repeat',
+			borderRadius: '100%',
+			border: '1px solid #f6f6f6',
+			minHeight: '30px',
+			minWidth: '30px',
+		}}
 	/>
 );
 

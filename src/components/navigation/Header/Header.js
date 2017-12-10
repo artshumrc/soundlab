@@ -7,7 +7,7 @@ import NavBar from './NavBar';
 import LeftMenu from '../LeftMenu';
 
 // actions
-import { authActions } from '../../../modules/auth';
+import * as authActions from '../../../modules/auth/actions';
 
 
 const Header = ({ toggleAuthModal, userId }) => (

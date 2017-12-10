@@ -139,7 +139,7 @@ JSON Web Tokens (JWT):
 
 #### Auth redux:
 
-There is a `AuthModal` component placed in the `Root` component, which handles all user authentication operations.
+There is a `AuthModalContainer` component placed in the `Root` component, which handles all user authentication operations.
 
 **Q: Where is user data stored in Redx Store?**
 

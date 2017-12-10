@@ -30,7 +30,8 @@ const login = async (data) => {
 		}
 		const resJson = await res.json();
 		if (resJson.token) {
-			cookies.set('token', resJson.token);
+			const domain = process.env.REACT_APP_COOKIE_DOMAIN || 'orpheus.local';
+			cookies.set('token', resJson.token, { domain });
 			return resJson;
 		}
 	} catch (err) {
@@ -64,7 +65,8 @@ const register = async (data) => {
 		const resJson = await res.json();
 		if (resJson.token) {
 			// TODO: Add domain: 'orphe.us' options to cookie for cross subdomain auth
-			cookies.set('token', resJson.token);
+			const domain = process.env.REACT_APP_COOKIE_DOMAIN || 'orpheus.local';
+			cookies.set('token', resJson.token, { domain });
 			return resJson;
 		}
 		if (resJson.passwordStrength) {

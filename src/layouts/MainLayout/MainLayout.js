@@ -1,7 +1,8 @@
 import React from 'react';
+import Header from '../../components/navigation/Header';
+import Footer from '../../components/navigation/Footer';
+
 import './MainLayout.css';
-import Header from '../../navigation/Header';
-import Footer from '../../navigation/Footer';
 
 const MainLayout = props => (
 	<div>

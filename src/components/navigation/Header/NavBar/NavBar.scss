@@ -98,3 +98,16 @@
     line-height: 40px;
   }
 }
+
+.nav li a.userAvatarLink {
+	padding: 0 20px;
+	height: 60px;
+
+	&:hover {
+		background: #eee;
+	}
+
+	.userAvatar {
+		margin: 12px auto;
+	}
+}

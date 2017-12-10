@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo';
 
 const query = gql`
-	query projectQuery($hostname: String!) {
+	query projectQuery($hostname: String) {
 		project(hostname: $hostname) {
 	    _id
 			title

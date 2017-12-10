@@ -6,9 +6,10 @@ import PropTypes from 'prop-types';
 
 // components
 import LeftMenu from '../../../../components/navigation/LeftMenu';
+import UserAvatarContainer from '../../../users/containers/UserAvatarContainer';
 
 // actions
-import { authActions } from '../../../auth';
+import * as authActions from '../../../auth/actions';
 import { toggleLeftMenu } from '../../../../actions/leftMenu';
 
 
@@ -58,8 +59,11 @@ const ProjectHeader = ({ toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, 
 				</li>
 				<li>
 					{ userId ?
-						<Link to={'/dashboard'}>
-							Dashboard
+						<Link
+							to={'/profile'}
+							className="userAvatarLink"
+						>
+							<UserAvatarContainer />
 						</Link>
 					: '' }
 				</li>

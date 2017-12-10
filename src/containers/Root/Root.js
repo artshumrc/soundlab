@@ -8,7 +8,7 @@ import routes from '../../routes';
 import client from '../../middleware/apolloClient';
 
 // auth
-import AuthModal from '../../modules/auth';
+import AuthModalContainer from '../../modules/auth/containers/AuthModalContainer';
 import { login, register, logout, verifyToken } from '../../lib/auth';
 
 
@@ -37,7 +37,7 @@ const Root = ({store, history}) => (
 						history={history}
 						routes={routes}
 					/>
-					<AuthModal
+					<AuthModalContainer
 						loginMethod={login}
 						signupMethod={register}
 						logoutMethod={logout}

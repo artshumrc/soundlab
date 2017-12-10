@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import Headroom from 'react-headroom';
 import { Link } from 'react-router';
 
+// lib
 import scrollToElement from '../../../../lib/scrollToElement';
+
+// components
 import NavBarHeader from './NavBarHeader';
+import UserAvatarContainer from '../../../../modules/users/containers/UserAvatarContainer';
 
 import './NavBar.css';
 
@@ -17,13 +21,6 @@ const NavBar = ({ toggleAuthModal, toggleLeftMenu, userId, logout }) => (
 					Services
 				</Link>
 			</li>
-			{/*
-				<li>
-					<Link to={'/community'}>
-						Community
-					</Link>
-				</li>
-			*/}
 			<li>
 				<Link to={'/about'}>
 					About
@@ -31,8 +28,11 @@ const NavBar = ({ toggleAuthModal, toggleLeftMenu, userId, logout }) => (
 			</li>
 			<li>
 				{ userId ?
-					<Link to={'/dashboard'}>
-						Dashboard
+					<Link
+						to={'/profile'}
+						className="userAvatarLink"
+					>
+						<UserAvatarContainer />
 					</Link>
 				: '' }
 			</li>
@@ -47,13 +47,6 @@ const NavBar = ({ toggleAuthModal, toggleLeftMenu, userId, logout }) => (
 					</Link>
 				: '' }
 			</li>
-			{/*
-				<li>
-					<Link to={'/search'}>
-						<i className="mdi mdi-magnify search-icon" />
-					</Link>
-				</li>
-			*/}
 		</ul>
 	</Headroom>
 );

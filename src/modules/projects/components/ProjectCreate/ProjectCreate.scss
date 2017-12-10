@@ -22,4 +22,23 @@
 		outline: none;
 		display: none;
 	}
+
+	&.projectCreateDisabled {
+		h1 {
+			opacity: 0.3;
+		}
+		.projectNameAvailabilityCheck {
+			opacity: 0.3;
+		}
+	}
+
+}
+
+.projectCreateWarning {
+	span {
+		color: $accent-500;
+		font-size: 16px;
+		font-family: $font-body;
+		font-weight: bold;
+	}
 }
