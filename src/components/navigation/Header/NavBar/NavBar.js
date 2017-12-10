@@ -10,7 +10,9 @@ import scrollToElement from '../../../../lib/scrollToElement';
 import NavBarHeader from './NavBarHeader';
 import UserAvatarContainer from '../../../../modules/users/containers/UserAvatarContainer';
 
+// styles
 import './NavBar.css';
+
 
 const NavBar = ({ toggleAuthModal, toggleLeftMenu, userId, logout }) => (
 	<Headroom className="navbar">

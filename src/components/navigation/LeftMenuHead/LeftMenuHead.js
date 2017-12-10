@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 
 import SidebarUserAvatarContainer from '../../../modules/users/containers/SidebarUserAvatarContainer'
@@ -6,10 +7,19 @@ import SidebarUserAvatarContainer from '../../../modules/users/containers/Sideba
 import './LeftMenuHead.css';
 
 
-const LeftMenuHead = props => (
+const LeftMenuHead = ({ userId }) => (
 	<div className="leftMenuHead">
-		<SidebarUserAvatarContainer />
+		{userId ?
+			<SidebarUserAvatarContainer />
+		: ''}
 	</div>
 );
 
-export default LeftMenuHead;
+
+const mapStateToProps = (state, props) => ({
+	userId: state.auth.userId,
+});
+
+export default connect(
+	mapStateToProps,
+)(LeftMenuHead);

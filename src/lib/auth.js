@@ -39,7 +39,7 @@ const login = async (data) => {
 	}
 };
 
-const logout = async () => {
+const logoutUser = async () => {
 	cookies.remove('token');
 	cookies.remove('hello');
 };
@@ -104,4 +104,4 @@ const verifyToken = async () => {
 	return null;
 };
 
-export { login, logout, register, verifyToken };
+export { login, logoutUser, register, verifyToken };

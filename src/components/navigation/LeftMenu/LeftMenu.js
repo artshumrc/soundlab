@@ -10,11 +10,15 @@ import { toggleLeftMenu } from '../../../actions/leftMenu';
 import MenuItem from '../MenuItem';
 import LeftMenuHead from '../LeftMenuHead';
 
+// actions
+import { logout, toggleAuthModal } from '../../../modules/auth/actions';
+import { logoutUser } from '../../../lib/auth';
+
 
 import './LeftMenu.css';
 
 
-const LeftMenu =  ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject }) => (
+const LeftMenu =  ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId, dispatchToggleAuthModal }) => (
 	<Drawer
 		open={leftMenuOpen}
 		docked={false}
@@ -65,26 +69,36 @@ const LeftMenu =  ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject }) => (
 			: ''}
 			<Divider />
 
-			<MenuItem
-				to="/profile"
-				onClick={closeLeftMenu}
-			>
-				Profile
-			</MenuItem>
-			<MenuItem
-				to="/collections"
-				onClick={closeLeftMenu}
-			>
-				Projects
-			</MenuItem>
-			<Divider />
+			{userId ?
+				<div>
+					<MenuItem
+						to="/profile"
+						onClick={closeLeftMenu}
+					>
+						Profile
+					</MenuItem>
+					<MenuItem
+						to="/collections"
+						onClick={closeLeftMenu}
+					>
+						Projects
+					</MenuItem>
+					<Divider />
 
-			<MenuItem
-				to="/items"
-				onClick={closeLeftMenu}
-			>
-				Sign out
-			</MenuItem>
+					<MenuItem
+						to="/"
+						onClick={logout}
+					>
+						Sign out
+					</MenuItem>
+				</div>
+			:
+				<MenuItem
+					onClick={dispatchToggleAuthModal}
+				>
+					Sign up / in
+				</MenuItem>
+			}
 		</div>
 	</Drawer>
 
@@ -103,10 +117,18 @@ LeftMenu.defaultProps = {
 
 const mapStateToProps = (state, props) => ({
 	leftMenuOpen: state.leftMenu.open,
+	userId: state.auth.userId,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	closeLeftMenu: () => {
+		dispatch(toggleLeftMenu(false));
+	},
+	dispatchLogout: () => {
+		dispatch(logout(logoutUser));
+	},
+	dispatchToggleAuthModal: () => {
+		dispatch(toggleAuthModal());
 		dispatch(toggleLeftMenu(false));
 	},
 });
