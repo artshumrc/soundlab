@@ -8,6 +8,7 @@ import Drawer from 'material-ui/Drawer';
 
 import { toggleLeftMenu } from '../../../actions/leftMenu';
 import MenuItem from '../MenuItem';
+import MenuSubItem from '../MenuSubItem';
 import LeftMenuHead from '../LeftMenuHead';
 
 // actions
@@ -39,18 +40,57 @@ const LeftMenu =  ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId,
 			>
 				Collections
 			</MenuItem>
+			<MenuSubItem
+				to="/collections"
+				onClick={closeLeftMenu}
+			>
+				List
+			</MenuSubItem>
+			<MenuSubItem
+				to="/collections/create"
+				onClick={closeLeftMenu}
+				last
+			>
+				Create
+			</MenuSubItem>
 			<MenuItem
 				to="/items"
 				onClick={closeLeftMenu}
 			>
 				Items
 			</MenuItem>
+			<MenuSubItem
+				to="/items"
+				onClick={closeLeftMenu}
+			>
+				List
+			</MenuSubItem>
+			<MenuSubItem
+				to="/items/create"
+				onClick={closeLeftMenu}
+				last
+			>
+				Create
+			</MenuSubItem>
 			<MenuItem
 				to="/articles"
 				onClick={closeLeftMenu}
 			>
 				Articles
 			</MenuItem>
+			<MenuSubItem
+				to="/articles"
+				onClick={closeLeftMenu}
+			>
+				List
+			</MenuSubItem>
+			<MenuSubItem
+				to="/articles/create"
+				onClick={closeLeftMenu}
+				last
+			>
+				Create
+			</MenuSubItem>
 			{userHasRoleForProject ?
 				<div>
 					<MenuItem
@@ -78,7 +118,7 @@ const LeftMenu =  ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId,
 						Profile
 					</MenuItem>
 					<MenuItem
-						to="/collections"
+						to="/profile/projects"
 						onClick={closeLeftMenu}
 					>
 						Projects

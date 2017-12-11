@@ -11,6 +11,7 @@ const CoverTitle = ({ title, coverLink, coverLinkText })=> (
 		{coverLink && coverLinkText ?
 			<Link
 				to={coverLink}
+				className="coverLink"
 			>
 				{coverLinkText}
 			</Link>

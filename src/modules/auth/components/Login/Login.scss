@@ -4,18 +4,16 @@
 	h3 {
 		padding: 10px 0 20px;
 		font-size: 28px;
+		color: $text-secondary;
 
 		a {
-			color: $primary;
+			color: $dark;
 			margin-left: 10px;
 			padding: 0 0px 2px;
-			// border-bottom: 2px solid $primary;
 			@include transition(all 100ms ease-in-out);
 
 			&:hover {
-				color: $primary-dark;
-				// border-bottom: 2px solid rgba(0,0,0,0);
-
+				color: $primary;
 			}
 		}
 	}

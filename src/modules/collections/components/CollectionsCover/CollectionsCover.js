@@ -7,7 +7,7 @@ import BackgroundImage from '../../../../components/common/cover/BackgroundImage
 
 import './CollectionsCover.css';
 
-const CollectionsCover = ({ title }) => {
+const CollectionsCover = ({ title, createLink }) => {
 	const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
 		83, 87, 90, 92, 93, 95, 102, 103];
 	const selImage = _.sample(artImages);
@@ -24,6 +24,8 @@ const CollectionsCover = ({ title }) => {
 		>
 			<CoverTitle
 				title={title}
+				coverLink={createLink ? "/collections/create" : null}
+				coverLinkText={createLink ? "Create a new collection" : null}
 			/>
 		</Cover>
 	);

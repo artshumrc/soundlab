@@ -8,6 +8,7 @@ const CollectionsListPage = props => (
 	<div >
 		<CollectionsCover
 			title="Collections"
+			createLink={false}
 		/>
 		<CollectionsList />
 	</div>
