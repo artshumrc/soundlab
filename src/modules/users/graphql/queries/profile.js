@@ -1,8 +1,8 @@
 import { gql, graphql } from 'react-apollo';
 
 const query = gql`
-	query userProfileQuery($hostname: String) {
-		userProfile(hostname: $hostname) {
+	query userProfileQuery {
+		userProfile {
 	    _id
 			username
 			avatar

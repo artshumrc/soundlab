@@ -13,7 +13,7 @@ const UserAvatarContainer = props => {
 
 	if (props.userAvatarQuery && props.userAvatarQuery.userProfile) {
 		user = props.userAvatarQuery.userProfile;
-		if ('avatar' in user) {
+		if ('avatar' in user && user.avatar) {
 			avatarUrl = user.avatar;
 		}
 	}

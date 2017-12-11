@@ -14,9 +14,7 @@ const SidebarUserAvatarContainer = props => {
 
 	if (props.userAvatarQuery && props.userAvatarQuery.userProfile) {
 		user = props.userAvatarQuery.userProfile;
-		console.log('###########');
-		console.log(user);
-		if ('avatar' in user) {
+		if ('avatar' in user && user.avatar) {
 			avatarUrl = user.avatar;
 		}
 		if ('name' in user) {

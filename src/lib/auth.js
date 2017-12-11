@@ -99,7 +99,11 @@ const verifyToken = async () => {
 			}
 			return res.json();
 		} catch (err) {
-			throw err;
+			const domain = process.env.REACT_APP_COOKIE_DOMAIN || 'orpheus.local';
+			cookies.remove('token', { domain });
+			cookies.remove('hello', { domain });
+
+			console.error(err);
 		}
 	}
 	return null;

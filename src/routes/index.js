@@ -22,6 +22,9 @@ import projectRoutes from '../modules/projects/routes';
 // Dashboard
 import dashboardRoutes from '../modules/dashboard/routes';
 
+// users
+import userRoutes from '../modules/users/routes';
+
 
 export default (
 	<div>
@@ -39,6 +42,9 @@ export default (
 
 		{/* Routes for dashboard */}
 		{dashboardRoutes}
+
+		{/* Routes for dashboard */}
+		{userRoutes}
 
 		{/* Routes specific to projects (and collections and items) */}
 		{projectRoutes}
