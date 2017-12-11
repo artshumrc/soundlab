@@ -7,8 +7,8 @@ coverage
 dump.rdb
 
 # Fonts
-!client/public/css/materialdesignicons.css
-!client/public/css/materialdesignicons.min.css
+!public/css/materialdesignicons.css
+!public/css/materialdesignicons.min.css
 
 # Temp files
 tmp/
