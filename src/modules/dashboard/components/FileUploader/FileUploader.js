@@ -1,7 +1,9 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import PropTypes from 'prop-types';
+
 import './FileUploader.css';
+
 
 export default class FileUploader extends React.Component {
 	constructor(props) {

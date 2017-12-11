@@ -1,7 +1,8 @@
 import React from 'react';
-import {SortableContainer, SortableElement} from 'react-sortable-hoc';
-import ImagesUploader from './ImagesUploader';
-import ImagesInput from './ImagesInput';
+import { SortableContainer, SortableElement } from 'react-sortable-hoc';
+
+import ImagesUploader from '../ImagesUploader';
+import ImagesInput from '../ImagesInput';
 
 export default class FormImagesUploader extends React.Component {
 	constructor(props) {
@@ -13,7 +14,7 @@ export default class FormImagesUploader extends React.Component {
 	addImage(file) {
 		this.props.imagesFormState.fields.push(file);
 	}
-	
+
 	updateImage(index, image) {
 		this.props.imagesFormState.fields.remove(index);
 		this.props.imagesFormState.fields.insert(index, image);
@@ -46,7 +47,7 @@ const SortableItem = SortableElement(({image, imageIndex, removeImage, updateIma
 	image={image}
 	imageIndex={imageIndex}
 	key={`image-key-${image.name}`}
-	updateImageCb={updateImageCb} 
+	updateImageCb={updateImageCb}
 	deleteImage={removeImage}
 	showError={showError}
   />)

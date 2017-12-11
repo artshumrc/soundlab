@@ -4,6 +4,7 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
+import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader';
 
 import './ItemEditor.css';
 
@@ -12,7 +13,7 @@ const required = value => value ? undefined : 'Required';
 const maxLength = max => value =>
   value && value.length > max ? `Must be ${max} characters or less` : undefined
 const maxLength200 = maxLength(200)
-const maxLength2100 = maxLength(2100)
+const maxLength200000 = maxLength(200000)
 
 
 class ItemEditor extends React.Component {
@@ -27,23 +28,26 @@ class ItemEditor extends React.Component {
   }
 
 	render() {
+		const { item } = this.props;
+
 		return (
 			<div className="itemEditor">
-				<DashboardNav />
 
-				<h1>Item Settings</h1>
+				<h1>{item ? 'Edit' : 'Create'} Item</h1>
+
+				<ItemEditorUploader />
 
 				<form
 					className="itemEditorForm"
 					onSubmit={this.props.handleSubmit}
 				>
 					<div className="itemEditorFormInputOuter itemEditorFormTitleOuter">
-						<label>What is your Organization's or Item's title?</label>
+						<label>Title</label>
 						<Field
 							name="title"
 							type="text"
 							component="input"
-							placeholder="Your Organization or Item"
+							placeholder="Your item title"
 							validate={[required, maxLength200]}
 						/>
 						<span
@@ -54,54 +58,19 @@ class ItemEditor extends React.Component {
 					</div>
 
 					<div className="itemEditorFormInputOuter itemEditorFormDescriptionOuter">
-						<label>Enter a brief description of your item.</label>
+						<label>Enter a description of your item.</label>
 						<Field
 							name="description"
 							type="text"
 							component="textarea"
 							placeholder="Example description of item . . . "
-							validate={[required, maxLength2100]}
+							validate={[required, maxLength200000]}
 						/>
 						<span
 							className="itemEditorFormHelp"
 						>
 							?
 						</span>
-					</div>
-
-					<div
-						className="
-							itemNameAvailabilityFormInputOuter
-							itemNameAvailabilityFormURLOuter
-							itemNameAvailabilityFormURLOuterDisabled
-						"
-					>
-						<div>
-							<label>At what URL would you like users to access your item?</label>
-							<Field
-								name="hostname"
-								type="text"
-								component="input"
-								placeholder="example"
-								validate={[required, maxLength200]}
-								disabled
-							/>
-							<div className="itemNameAvailabilityFormURL">
-								<span>
-									.orphe.us
-								</span>
-							</div>
-							<span
-								className="itemEditorFormHelp"
-							>
-								?
-							</span>
-						</div>
-						<div>
-							<span className="">
-								Contact <a href="mailto:support@orphe.us">support</a> to change your item URL.
-							</span>
-						</div>
 					</div>
 
 					<button

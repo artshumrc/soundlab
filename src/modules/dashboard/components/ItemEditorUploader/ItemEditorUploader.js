@@ -1,7 +1,8 @@
 import React from 'react';
-import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
-import FileUploader from './FileUploader';
-import ThumbnailFile from './ThumbnailFile';
+import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
+
+import FileUploader from '../FileUploader';
+import ThumbnailFile from '../ThumbnailFile';
 
 class ItemEditorUploader extends React.Component {
 	constructor(props) {
@@ -13,7 +14,7 @@ class ItemEditorUploader extends React.Component {
 
 		let files = [];
 
-		if (this.props.files) {
+		if (this.props.files && this.props.fields) {
 			files = this.props.fields.getAll();
 		}
 
@@ -32,9 +33,11 @@ class ItemEditorUploader extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.setState({
-			files: nextProps.files.fields.getAll()
-		});
+		if (nextProps.files && nextProps.files.fields) {
+			this.setState({
+				files: nextProps.files.fields.getAll()
+			});
+		}
 	}
 
 	moveField({oldIndex, newIndex}) {
@@ -69,6 +72,10 @@ class ItemEditorUploader extends React.Component {
 		);
 	}
 }
+
+ItemEditorUploader.defaultProps = {
+	files: null,
+};
 
 const generateKey = () => Math.random().toString(36).substring(2);
 const SortableItem = SortableElement(({file, fileIndex, removeFile, updateFileCb, showError}) => (

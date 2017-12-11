@@ -4,6 +4,7 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
+import CoverImageUploader from '../../../dashboard/components/CoverImageUploader';
 
 import './CollectionEditor.css';
 
@@ -27,23 +28,26 @@ class CollectionEditor extends React.Component {
   }
 
 	render() {
+		const { collection } = this.props;
+
 		return (
 			<div className="collectionEditor">
-				<DashboardNav />
 
-				<h1>Collection Settings</h1>
+				<h1>{collection ? 'Edit' : 'Create'} Collection</h1>
+
+				<CoverImageUploader />
 
 				<form
 					className="collectionEditorForm"
 					onSubmit={this.props.handleSubmit}
 				>
 					<div className="collectionEditorFormInputOuter collectionEditorFormTitleOuter">
-						<label>What is your Organization's or Collection's title?</label>
+						<label>Title</label>
 						<Field
 							name="title"
 							type="text"
 							component="input"
-							placeholder="Your Organization or Collection"
+							placeholder="Your collection title"
 							validate={[required, maxLength200]}
 						/>
 						<span
@@ -67,41 +71,6 @@ class CollectionEditor extends React.Component {
 						>
 							?
 						</span>
-					</div>
-
-					<div
-						className="
-							collectionNameAvailabilityFormInputOuter
-							collectionNameAvailabilityFormURLOuter
-							collectionNameAvailabilityFormURLOuterDisabled
-						"
-					>
-						<div>
-							<label>At what URL would you like users to access your collection?</label>
-							<Field
-								name="hostname"
-								type="text"
-								component="input"
-								placeholder="example"
-								validate={[required, maxLength200]}
-								disabled
-							/>
-							<div className="collectionNameAvailabilityFormURL">
-								<span>
-									.orphe.us
-								</span>
-							</div>
-							<span
-								className="collectionEditorFormHelp"
-							>
-								?
-							</span>
-						</div>
-						<div>
-							<span className="">
-								Contact <a href="mailto:support@orphe.us">support</a> to change your collection URL.
-							</span>
-						</div>
 					</div>
 
 					<button

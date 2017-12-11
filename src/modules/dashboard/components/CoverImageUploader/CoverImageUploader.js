@@ -1,7 +1,8 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import './CoverImageUploader.css';
 import S3Upload from 'react-s3-uploader/s3upload';
+
+import './CoverImageUploader.css';
 
 export default class CoverImageUploader extends React.Component {
 	constructor(props) {
@@ -69,7 +70,8 @@ export default class CoverImageUploader extends React.Component {
 	}
 
 	render() {
-		const backgroundImage = this.props.image.input.value ? {background: `url(${this.props.image.input.value.path})`} : {};
+		const { image } = this.props;
+		const backgroundImage = image && image.input && image.input.value ? {background: `url(${image.input.value.path})`} : {};
 		return (
 			<div className="coverImageUploader">
 				<Dropzone className="backgroundImage" accept="image/*" style={backgroundImage} onDrop={this.uploadFile}>

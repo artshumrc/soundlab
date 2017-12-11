@@ -17,15 +17,26 @@ class _ItemEditorContainer extends React.Component {
 	}
 
 	handleSubmit(values) {
-		const { itemUpdate, router } = this.props;
+		const { itemCreate, itemUpdate, router } = this.props;
 		delete values.__typename;
-		itemUpdate(values)
-			.then((response) => {
-				router.replace(`/dashboard/`);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+
+		if ('_id' in values) {
+			itemUpdate(values)
+				.then((response) => {
+					router.replace(`/items/${values.slug}`);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		} else {
+			itemCreate(values)
+				.then((response) => {
+					router.replace(`/items/`);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
 	}
 
 	handleRemove(itemId) {
