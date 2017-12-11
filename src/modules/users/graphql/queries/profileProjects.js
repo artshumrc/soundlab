@@ -1,16 +1,17 @@
 import { gql, graphql } from 'react-apollo';
 
 const query = gql`
-	query userProfileProjectsQuery {
-		userProfileProjects {
+	query userProjectsQuery {
+		userProjects {
 			_id
-			projects
+			title
+			hostname
 		}
 	}
 `;
 
-const userProfileProjectsQuery = graphql(query, {
-	name: 'userProfileProjectsQuery',
+const userProjectsQuery = graphql(query, {
+	name: 'userProjectsQuery',
 });
 
-export default userProfileProjectsQuery;
+export default userProjectsQuery;

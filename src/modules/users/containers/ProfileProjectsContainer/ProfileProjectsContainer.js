@@ -4,15 +4,19 @@ import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
 
 import ProfileProjects from '../../components/ProfileProjects';
-import profileProjectsQuery from '../../graphql/queries/profile';
+import profileProjectsQuery from '../../graphql/queries/profileProjects';
 
 
 class ProfileProjectsContainer extends React.Component {
 	render() {
 		let projects = [];
-
-		if (this.props.profileProjectsQuery && !this.props.profileProjectsQuery.loading) {
-			projects = this.props.profileProjectsQuery.profile.projects;
+		
+		if (
+			this.props.userProjectsQuery
+			&& !this.props.userProjectsQuery.loading
+			&& this.props.userProjectsQuery.userProjects
+		) {
+			projects = this.props.userProjectsQuery.userProjects;
 		}
 
 		return (

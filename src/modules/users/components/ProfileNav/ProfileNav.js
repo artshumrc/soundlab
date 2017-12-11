@@ -29,8 +29,19 @@ const ProfileNav = props => {
 					: ''
 				}
 			>
-				<i className="mdi mdi-view-dashboard-variant" />
+				<i className="mdi mdi-view-dashboard" />
 				Your Projects
+			</Link>
+			<Link
+				to="/create"
+				className={
+					activePath === '/create' ?
+					"profileNavLinkActive"
+					: ''
+				}
+			>
+				<i className="mdi mdi-plus" />
+				Create Project
 			</Link>
 		</div>
 	);
