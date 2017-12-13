@@ -5,6 +5,9 @@ import CSSModules from 'react-css-modules'
 import wpautop from 'wpautop';
 import linkifyHtml from 'linkifyjs/html';
 
+
+import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
+
 import styles from './Page.scss'
 
 @CSSModules(styles, {allowMultiple: true})
@@ -24,8 +27,13 @@ export default class About extends Component {
 			return null;
 		}
 
+		let thumbnail;
+		if (page.thumbnail) {
+	    thumbnail = getPostThumbnailBySize(page.thumbnail, 'large');
+		}
+
     const pageCoverImage = {
-      backgroundImage: `url("/images/default_event.jpg")`,
+      backgroundImage: `url("${thumbnail || '/images/default_event.jpg'}")`,
       width: '100%',
       height: '500px',
       objectFit: 'cover',
@@ -41,7 +49,6 @@ export default class About extends Component {
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     };
-
 
     return (
       <div>
