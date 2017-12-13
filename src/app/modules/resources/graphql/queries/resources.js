@@ -7,6 +7,7 @@ const resourceListQuery = graphql(gql`
       post_title
       post_name
       post_content
+			thumbnail
 			post_meta(keys: ["info_byline"]) {
 				meta_key
 				meta_value
@@ -29,6 +30,7 @@ const additionalResourceListQuery = graphql(gql`
       post_title
       post_name
       post_content
+			thumbnail
 			post_meta(keys: ["info_byline"]) {
 				meta_key
 				meta_value
@@ -51,6 +53,7 @@ const resourceSingleQuery = graphql(gql`
       id
       post_title
       post_content
+			thumbnail
 			post_meta(keys: ["info_byline", "date"]) {
 				meta_key
 				meta_value
@@ -77,6 +80,7 @@ const eventSingleQuery = graphql(gql`
       id
       post_title
       post_content
+			thumbnail
 			post_meta(keys: ["event_start", "event_end", "location"]) {
 				meta_key
 				meta_value
@@ -104,6 +108,7 @@ const featuredEventQuery = graphql(gql`
       post_title
       post_name
       post_content
+			thumbnail
 			post_meta(keys: ["event_start", "date_description", "excerpt"]) {
 				meta_key
 				meta_value
@@ -126,6 +131,7 @@ const resourceEventListQuery = graphql(gql`
       post_title
       post_name
       post_content
+			thumbnail
 			post_meta(keys: ["event_start"]) {
 				meta_key
 				meta_value

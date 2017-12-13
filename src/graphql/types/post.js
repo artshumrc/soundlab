@@ -1,10 +1,12 @@
-import { GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString, GraphQLObjectType, GraphQLInputObjectType, GraphQLInt } from 'graphql';
+import { GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString, GraphQLObjectType, GraphQLInt, GraphQLInputObjectType } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
 
 import PostmetaService from '../logic/postmeta';
 import PostService from '../logic/post';
 import UserService from '../logic/user';
+import TermService from '../logic/term';
 import { UserType } from '../types/user';
+import TermType from '../types/term';
 
 import PostmetaType from './postmeta';
 
@@ -15,7 +17,7 @@ import PostmetaType from './postmeta';
  */
 
 const PostType = new GraphQLObjectType({
-	name: 'Post',
+	name: 'PostType',
 	description: 'Wordpress post',
 	fields: () => ({
     id: {
@@ -51,11 +53,16 @@ const PostType = new GraphQLObjectType({
     post_modified: {
 			type: GraphQLString,
 		},
-    thumbnail: {
-			type: GraphQLString,
-		},
     author: {
 			type: UserType,
+		},
+
+    categoriesAndTags: {
+			type: new GraphQLList(TermType),
+			resolve: async ( post, _, { token } ) => {
+				const termService = new TermService({ token });
+        return await termService.getCategoriesAndTagsForPost(post.id);
+			},
 		},
 
     post_meta: {
@@ -114,6 +121,14 @@ const PostType = new GraphQLObjectType({
         return await postService.getAudioFile(post.id);
 			},
 		},
+
+    pdf: {
+			type: GraphQLJSON,
+			resolve: async ( post, {}, { token } ) => {
+				const postService = new PostService({ token });
+        return await postService.getPDF(post.id);
+			},
+		},
 	}),
 });
 
@@ -121,6 +136,12 @@ const PostInputType = new GraphQLInputObjectType({
 	name: 'PostInputType',
 	description: 'Wordpress post input type',
 	fields: () => ({
+    name: {
+			type: GraphQLString,
+		},
+    email: {
+			type: GraphQLString,
+		},
     title: {
 			type: GraphQLString,
 		},
@@ -130,7 +151,19 @@ const PostInputType = new GraphQLInputObjectType({
     location: {
 			type: GraphQLString,
 		},
-    link: {
+    date: {
+			type: GraphQLString,
+		},
+    organizers: {
+			type: GraphQLString,
+		},
+    comment: {
+			type: GraphQLString,
+		},
+    externalLink: {
+			type: GraphQLString,
+		},
+    includeName: {
 			type: GraphQLString,
 		},
 	}),

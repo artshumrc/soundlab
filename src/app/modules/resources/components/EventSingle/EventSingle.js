@@ -8,6 +8,9 @@ import moment from 'moment';
 import wpautop from 'wpautop';
 import linkifyHtml from 'linkifyjs/html';
 
+
+import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
+
 import styles from './EventSingle.scss';
 
 

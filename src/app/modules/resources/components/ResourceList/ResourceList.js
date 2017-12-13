@@ -8,6 +8,7 @@ import _ from 'underscore';
 import ResourceItem from '../ResourceItem';
 import AdditionalResourceListContainer from '../../containers/AdditionalResourceListContainer';
 import ResourceEventListContainer from '../../containers/ResourceEventListContainer';
+import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 
 import styles from './ResourceList.scss';
 
@@ -37,9 +38,14 @@ class ResourceList extends React.Component {
 					backgroundImage: 'url("/images/default_event.jpg")',
 	    };
 
+			console.log('#######################');
+			console.log('#######################');
+			console.log(event);
+			console.log('#######################');
+			console.log('#######################');
 
 			if (event.thumbnail) {
-	      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(event.thumbnail, 'medium_large')}")`;
+	      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(event.thumbnail, 'medium')}")`;
 			}
 
 			byline = _.findWhere(event.post_meta, { meta_key: 'byline' });
