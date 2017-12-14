@@ -136,34 +136,10 @@ const PostInputType = new GraphQLInputObjectType({
 	name: 'PostInputType',
 	description: 'Wordpress post input type',
 	fields: () => ({
-    name: {
-			type: GraphQLString,
-		},
-    email: {
-			type: GraphQLString,
-		},
     title: {
 			type: GraphQLString,
 		},
-    description: {
-			type: GraphQLString,
-		},
-    location: {
-			type: GraphQLString,
-		},
-    date: {
-			type: GraphQLString,
-		},
-    organizers: {
-			type: GraphQLString,
-		},
-    comment: {
-			type: GraphQLString,
-		},
-    externalLink: {
-			type: GraphQLString,
-		},
-    includeName: {
+    content: {
 			type: GraphQLString,
 		},
 	}),

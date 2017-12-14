@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
+import { connect } from 'react-redux';
 
 import Submit from '../../components/Submit';
 import { postCreateMutation } from '../../graphql/mutations/posts';
@@ -14,14 +15,7 @@ class SubmitContainer extends React.Component {
 
 		this.state = {
 			submitted: false,
-			recpatcha: null,
 		};
-	}
-
-	verifyCaptcha(response) {
-		this.setState({
-			recaptcha: response,
-		});
 	}
 
 	dismissSubmitted() {
@@ -32,26 +26,24 @@ class SubmitContainer extends React.Component {
 
 	async onSubmit(values) {
 		const newPost = {
-			link: values.link,
-			title: values.title,
-			description: values.description,
-			location: values.location,
-		}
+			content: `
+				Link: ${values.link},
+				Title: ${values.title},
+				Description: ${values.description},
+				Location: ${values.location},
+			`,
+		};
 
 		// create post
-		if (this.state.recaptcha) {
-			await this.props.postCreate(newPost);
+		await this.props.postCreate(newPost);
 
-			// set form state submitted
-			this.setState({
-				submitted: true,
-			});
+		// set form state submitted
+		this.setState({
+			submitted: true,
+		});
 
-			// scroll to top
-		  window.scrollTo(0, 0);
-		} else {
-			console.error('Recaptcha failed');
-		}
+		// scroll to top
+	  window.scrollTo(0, 0);
 	}
 
 	render() {
@@ -59,13 +51,18 @@ class SubmitContainer extends React.Component {
 			<Submit
 				onSubmit={this.onSubmit}
 				dismissSubmitted={this.dismissSubmitted}
-				verifyCaptcha={this.verifyCaptcha}
 				submitted={this.state.submitted}
 			/>
 		);
 	}
 }
 
+const mapStateToProps = state => ({
+	username: state.auth.username,
+	token: state.auth.token,
+});
+
 export default compose(
 	postCreateMutation,
+	connect(mapStateToProps),
 )(SubmitContainer);

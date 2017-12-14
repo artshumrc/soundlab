@@ -10,6 +10,7 @@ import Term from '../../models/Term';
 import TermRelationship from '../../models/TermRelationship';
 import Post from '../../models/Post';
 import Postmeta from '../../models/Postmeta';
+import User from '../../models/User';
 
 import EmailManager from '../../email';
 
@@ -294,36 +295,33 @@ export default class PostService extends PermissionsService {
 	 */
 	async create(post) {
 		if (!this.userId) {
+			console.error('Authentication error');
 			return null;
 		}
 
-		const title = validator.escape(post.title);
+		const user = await User.findOne({
+			where: {
+				id: this.userId,
+			}
+		});
+
+		if (!user) {
+			console.error('No user found error');
+			return null;
+		}
+
+		const title = `Submission from ${user.dataValues.display_name} (${user.dataValues.user_email})`;
 		const newPost = {
 			post_title: title,
 			post_status: 'draft',
 			post_author: this.userId,
 			post_name: slugify(title),
 			post_type: 'user_submission',
+			post_content: validator.escape(post.content),
 		};
 
-		let content = '';
-
-		if (post.link) {
-			content = `${content} Link: ${validator.escape(post.link)}<br />`;
-		}
-
-		if (post.description) {
-			content = `${content} Description: ${validator.escape(post.description)}<br />`;
-		}
-
-		if (post.location) {
-			content = `${content} Location: ${validator.escape(post.location)}<br />`;
-		}
-
-		newPost.post_content = content;
-
 		const emailManager = new EmailManager();
-		emailManager.sendNotificationEmail(content);
+		emailManager.sendNotificationEmail(`${title} ${post.content}`);
 
 		return await Post.create(newPost);
 	}

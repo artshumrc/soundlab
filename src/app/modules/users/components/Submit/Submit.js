@@ -95,12 +95,6 @@ class Submit extends React.Component {
 									validate={[maxLength1000]}
 								/>
 							</div>
-							<div className={styles.submitRecaptcha}>
-								<Recaptcha
-							    sitekey="6Ldn7TgUAAAAACa08jPERgl3IYbmluJ2B3MXG4UX"
-							    verifyCallback={this.props.verifyCaptcha}
-							  />
-							</div>
 							<button type="submit">Submit</button>
 						</div>
 					</div>

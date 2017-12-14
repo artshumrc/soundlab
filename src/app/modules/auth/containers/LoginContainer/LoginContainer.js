@@ -29,10 +29,6 @@ class LoginContainer extends React.Component {
 		return await this.props.userCreateToken(userData)
 			.then(async ({ data }) => {
 				const { token, user_display_name } = data.userCreateToken.response;
-				console.log('####################')
-				console.log('login')
-				console.log(data);
-
 				if (!token) {
 					dispatchSetFormMessage('Username or password incorrect.');
 					return null;
@@ -67,7 +63,6 @@ class LoginContainer extends React.Component {
 
 const mapStateToProps = state => ({
 	username: state.auth.username,
-	token: state.auth.token,
 	token: state.auth.token,
 });
 
