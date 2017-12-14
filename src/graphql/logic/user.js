@@ -17,7 +17,6 @@ export default class UserService extends PermissionsService {
 	 * @param {Object} user - user candidate to create via wordpress api
 	 * @returns {Object} create response
 	 */
-
 	create(user) {
 		const uri = `${process.env.ADMIN_URL}/wp-admin/admin-ajax.php`;
 
@@ -45,6 +44,13 @@ export default class UserService extends PermissionsService {
 				console.log(err);
 			});
   }
+
+	/**
+	 * Reset password
+	 * @returns {Object} resetPassword response
+	 */
+	resetPassword(user) {
+	}
 
 	/**
 	 * Update a user

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hello from 'hellojs';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import OAuthButtons from '../OAuthButtons';
 import PWDLoginForm from '../PWDLoginForm';
-import { Grid, Row, Col } from 'react-bootstrap'
 import styles from './Login.scss';
 
 
@@ -39,7 +39,7 @@ class Login extends React.Component {
 					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
 						<p className={styles.signupLink}>
 							<a
-								onClick={() => {}}
+								href="//admin.soundlab.orphe.us/wp-login.php?action=lostpassword"
 							>
 								Forgot Password?
 							</a>
