@@ -8,7 +8,7 @@ import Profile from '../../components/Profile';
 
 class ProfileContainer extends React.Component {
 	componentDidMount() {
-		if (!this.props.userId) {
+		if (!this.props.token) {
 			this.props.router.replace('/');
 		}
 	}
@@ -22,7 +22,6 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = state => ({
 	username: state.auth.username,
-	userId: state.auth.userId,
 	token: state.auth.token,
 });
 

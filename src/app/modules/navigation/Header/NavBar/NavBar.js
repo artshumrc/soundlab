@@ -126,7 +126,6 @@ NavBar.propTypes = {
 
 const mapStateToProps = state => ({
 	username: state.auth.username,
-	userId: state.auth.userId,
 	token: state.auth.token,
 });
 

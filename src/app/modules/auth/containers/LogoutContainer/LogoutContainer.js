@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { compose } from 'react-apollo';
 
 import { logoutMethod } from '../../../../lib/auth';
 import { logout } from '../../../auth/actions';
@@ -9,6 +11,7 @@ class LogoutContainer extends React.Component {
 
 	componentDidMount() {
 		this.props.dispatchLogout();
+		this.props.router.replace('/');
 	}
 
 	render() {
@@ -17,7 +20,7 @@ class LogoutContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	userId: state.auth.userId,
+	token: state.auth.token,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -27,7 +30,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps,
+export default compose(
+	withRouter,
+	connect(
+		mapStateToProps,
+		mapDispatchToProps,
+	),
 )(LogoutContainer);

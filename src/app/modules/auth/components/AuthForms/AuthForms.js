@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Cookies from 'universal-cookie';
+
 
 import ModalHead from '../ModalHead';
 
@@ -16,6 +18,9 @@ import styles from './AuthForms.scss';
 
 
 const ESCAPE_KEY = 27;
+
+// cookies
+const cookies = new Cookies();
 
 
 class _AuthForms extends React.Component {
@@ -62,9 +67,10 @@ class _AuthForms extends React.Component {
 		if (getUserFromServer) {
 			try {
 				const user = await getUserFromServer();
+				const token = cookies.get('token');
+
 				if (user) {
-					user.userId = user._id;
-				 	dispatchSetUser(user);
+				 	dispatchSetUser({ token, ...user });
 				}
 			} catch (err) {
 				console.log(err);

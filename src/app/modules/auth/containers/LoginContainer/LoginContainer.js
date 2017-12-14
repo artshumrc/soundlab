@@ -22,17 +22,27 @@ class LoginContainer extends React.Component {
 		autoBind(this);
 	}
 
-	handleLogin(userData) {
+	async handleLogin(userData) {
 		const self = this;
 		const { dispatchSetUser, dispatchToggleAuthModal, dispatchSetFormMessage, dispatchNavigateToHome } = this.props;
 
-		this.props.userCreateToken(userData)
-			.then(({ data }) => {
+		return await this.props.userCreateToken(userData)
+			.then(async ({ data }) => {
 				const { token, user_display_name } = data.userCreateToken.response;
-				dispatchSetUser({
+				console.log('####################')
+				console.log('login')
+				console.log(data);
+
+				if (!token) {
+					dispatchSetFormMessage('Username or password incorrect.');
+					return null;
+				}
+
+				await dispatchSetUser({
 					username: user_display_name,
 					token,
 				});
+
 				dispatchToggleAuthModal(false);
 				dispatchSetFormMessage('Login successful!');
 				dispatchNavigateToHome();
@@ -57,7 +67,7 @@ class LoginContainer extends React.Component {
 
 const mapStateToProps = state => ({
 	username: state.auth.username,
-	userId: state.auth.userId,
+	token: state.auth.token,
 	token: state.auth.token,
 });
 

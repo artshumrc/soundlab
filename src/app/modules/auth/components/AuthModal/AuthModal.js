@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Cookies from 'universal-cookie';
 
 import Modal from '../../../../components/common/modal/Modal';
 import ModalHead from '../ModalHead';
@@ -14,6 +15,9 @@ import { toggleAuthModal, changeAuthMode, setUser, login, logout } from '../../a
 
 
 const ESCAPE_KEY = 27;
+
+// cookies
+const cookies = new Cookies();
 
 
 class _AuthModal extends React.Component {
@@ -60,9 +64,10 @@ class _AuthModal extends React.Component {
 		if (getUserFromServer) {
 			try {
 				const user = await getUserFromServer();
+				const token = cookies.get('token');
+
 				if (user) {
-					user.userId = user._id;
-					dispatchSetUser(user);
+				 	dispatchSetUser({ token, ...user });
 				}
 			} catch (err) {
 				console.log(err);

@@ -45,7 +45,7 @@ export default (state = initialState, action) => {
 		return {
 			...state,
 			username: null,
-			userId: null,
+			token: null,
 		};
 	}
 	case types.SET_USER_CREATED_MESSAGE: {

@@ -8,26 +8,26 @@ import NavBar from './NavBar';
 // actions
 import { authActions } from '../../../modules/auth';
 
-const _Header = ({ toggleAuthModal, userId }) => (
+const _Header = ({ toggleAuthModal, token }) => (
 	<div>
 		<NavBar
 			toggleAuthModal={toggleAuthModal}
-			userId={userId}
+			token={token}
 		/>
 	</div>
 );
 
 _Header.propTypes = {
 	toggleAuthModal: PropTypes.func.isRequired,
-	userId: PropTypes.string,
+	token: PropTypes.string,
 };
 
 _Header.defaultProps = {
-	userId: null
+	token: null
 };
 
 const mapStateToProps = state => ({
-	userId: state.auth.userId,
+	token: state.auth.token,
 });
 
 const mapDispatchToProps = dispatch => ({

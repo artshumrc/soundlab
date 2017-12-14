@@ -20,7 +20,7 @@ export const changeAuthMode = authMode => ({
 	type: CHANGE_AUTH_MODE,
 	authMode,
 });
-export const setUser = ({ username, userId, token }) => ({
+export const setUser = ({ username, token }) => ({
 	type: SET_USER,
 	username,
 	token,

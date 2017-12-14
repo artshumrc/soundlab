@@ -53,7 +53,7 @@ class SignupContainer extends React.Component {
 
 const mapStateToProps = state => ({
 	username: state.auth.username,
-	userId: state.auth.userId,
+	token: state.auth.token,
 	token: state.auth.token,
 });
 
