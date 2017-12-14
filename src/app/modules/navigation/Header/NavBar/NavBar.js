@@ -91,10 +91,17 @@ class NavBar extends React.Component {
 						</Link>
 					</li>
 					{ token ?
-						<li>
+						<li styleName="hasDropdown">
 							<Link styleName="navLink" to={'/profile'}>
 								My Tracks
 							</Link>
+							<div styleName="dropdown signOutDropdown">
+								<li>
+									<Link styleName="navDropdownLink" to="/logout">
+										Sign out
+									</Link>
+								</li>
+							</div>
 						</li>
 					:
 						<li>

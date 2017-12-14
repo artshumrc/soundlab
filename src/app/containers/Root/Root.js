@@ -33,7 +33,7 @@ const Root = ({ store, history }) => (
 						loginMethod={login}
 						signupMethod={register}
 						logoutMethod={logout}
-						getUserFromServer={verifyToken}
+						// getUserFromServer={verifyToken}
 					/>
 				</div>
 			</CookiesProvider>

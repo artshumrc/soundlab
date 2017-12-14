@@ -65,8 +65,8 @@ export default class UserService extends PermissionsService {
 
 	/**
 	 * Login a user
-	 * @param {string} username - the user email
-	 * @param {string} password - the user email
+	 * @param {string} email - the user email
+	 * @param {string} password - the user password
 	 * @returns {Object} login response
 	 */
 	userCreateToken(email, password) {
@@ -89,9 +89,8 @@ export default class UserService extends PermissionsService {
 				};
 			})
 			.catch(err => {
-				console.log(err);
 				return {
-					response: JSON.parse(err)
+					response: JSON.parse(err.error)
 				};
 			});
   }

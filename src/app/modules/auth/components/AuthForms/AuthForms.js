@@ -61,11 +61,11 @@ class _AuthForms extends React.Component {
 		const { getUserFromServer, dispatchSetUser } = this.props;
 		if (getUserFromServer) {
 			try {
-				const user = await getUserFromServer();
-				if (user) {
-					user.userId = user._id;
-					dispatchSetUser(user);
-				}
+				// const user = await getUserFromServer();
+				// if (user) {
+				// 	user.userId = user._id;
+				// 	dispatchSetUser(user);
+				// }
 			} catch (err) {
 				console.log(err);
 				// TODO: Determine why dispatchLogout always called on page load
