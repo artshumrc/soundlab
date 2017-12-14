@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 
 import { userSoundsQuery } from '../../graphql/queries/users';
 import Profile from '../../components/Profile';
@@ -19,7 +20,14 @@ class ProfileContainer extends React.Component {
 	}
 }
 
+const mapStateToProps = state => ({
+	username: state.auth.username,
+	userId: state.auth.userId,
+	token: state.auth.token,
+});
+
 export default compose(
 	userSoundsQuery,
 	withRouter,
+	connect(mapStateToProps),
 )(ProfileContainer);

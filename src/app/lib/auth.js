@@ -38,7 +38,7 @@ const login = async (data) => {
 	}
 };
 
-const logout = async () => {
+const logoutMethod = async () => {
 	cookies.remove('token');
 	cookies.remove('hello');
 };
@@ -80,29 +80,28 @@ const register = async (data) => {
 
 const verifyToken = async () => {
 	const token = cookies.get('token');
-	if (token) {
-		try {
-			let ADMIN_URL = process.env.ADMIN_URL || 'http://admin.soundlab.local:8888';
-			const res = await fetch(`${ADMIN_URL}/wp-json/jwt-auth/v1/token/validate`, {
-				method: 'POST',
-				credentials: 'include',
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json',
-					authorization: token,
-				}
-			});
-			
-			if (!res.ok) {
-				throw new Error(res.statusText);
-			}
-
-			return res.json();
-		} catch (err) {
-			throw err;
-		}
+	
+	if (!token) {
+		return null;
 	}
-	return null;
+
+	let ADMIN_URL = process.env.ADMIN_URL || 'http://admin.soundlab.local:8888';
+	const res = await fetch(`${ADMIN_URL}/wp-json/jwt-auth/v1/token/validate`, {
+		method: 'POST',
+		credentials: 'include',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+			authorization: token,
+		}
+	});
+
+	if (!res.ok) {
+		console.error(res.statusText);
+		return null;
+	}
+
+	return res.json();
 };
 
-export { login, logout, register, verifyToken };
+export { login, logoutMethod, register, verifyToken };

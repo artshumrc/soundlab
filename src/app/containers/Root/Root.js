@@ -9,7 +9,7 @@ import client from '../../middleware/apolloClient';
 
 // auth
 import AuthModal from '../../modules/auth';
-import { login, register, logout, verifyToken } from '../../lib/auth';
+import { login, register, logoutMethod, verifyToken } from '../../lib/auth';
 
 // components
 import PlayerContainer from '../../modules/player/containers/PlayerContainer'
@@ -32,8 +32,8 @@ const Root = ({ store, history }) => (
 					<AuthModal
 						loginMethod={login}
 						signupMethod={register}
-						logoutMethod={logout}
-						// getUserFromServer={verifyToken}
+						logoutMethod={logoutMethod}
+						getUserFromServer={verifyToken}
 					/>
 				</div>
 			</CookiesProvider>
