@@ -8,6 +8,9 @@ import moment from 'moment';
 import wpautop from 'wpautop';
 import linkifyHtml from 'linkifyjs/html';
 
+
+import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
+
 import styles from './ResourceSingle.scss';
 
 
@@ -24,19 +27,19 @@ class ResourceSingle extends Component {
 			return null;
 		}
 
+		let thumbnail;
+		if (resource.thumbnail) {
+	    thumbnail = getPostThumbnailBySize(resource.thumbnail, 'large');
+		}
 
-    const coverImage = {
-      backgroundImage: `url("/images/default_event.jpg")`,
+    const pageCoverImage = {
+      backgroundImage: `url("${thumbnail || '/images/default_event.jpg'}")`,
       width: '100%',
       height: '500px',
       objectFit: 'cover',
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     };
-
-		if (resource.thumbnail) {
-      coverImage.backgroundImage = `url("${getPostThumbnailBySize(resource.thumbnail, 'large')}")`;
-		}
 
 		const byline = _.findWhere(resource.post_meta, { meta_key: 'byline' });
 		const resourceDate = _.findWhere(resource.post_meta, { meta_key: 'date' });
@@ -47,7 +50,7 @@ class ResourceSingle extends Component {
         </Row>
         <Row styleName="content-section">
           <Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
-            <div styleName="cover-image" style={coverImage}></div>
+            <div styleName="cover-image" style={pageCoverImage} />
             <div>
               <h1 styleName="section-title">
 								{resource.post_title}
