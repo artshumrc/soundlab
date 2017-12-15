@@ -91,7 +91,7 @@ class ResourceList extends React.Component {
 					}
 	        <Row className={styles.resourceListContainer}>
 	          <Col sm={8}>
-	            <h2 className={styles.resourceSectionTitle}>Workshops</h2>
+	            <h2 className={styles.resourceSectionTitle}>Resources</h2>
 	            {resources.map((resource) =>
 	              <ResourceItem
 									key={resource.id}
