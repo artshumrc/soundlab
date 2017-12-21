@@ -57,7 +57,7 @@ export default class TrackUploader extends React.Component {
 				fileElement: fileToUpload,
 				signingUrl: '/s3/sign',
 				s3path: 'uploads/',
-				server: 'http://soundlab.local:3000',
+				server: 'http://soundlab.fas.harvard.edu',
 				onError: this.handleError,
 				uploadRequestHeaders: {'x-amz-acl': 'public-read'},
 				contentDisposition: 'auto',
