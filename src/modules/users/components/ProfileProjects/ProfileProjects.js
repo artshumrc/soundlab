@@ -13,7 +13,7 @@ const ProfileProjects = ({ projects }) => (
 			<Row>
 				<div className="profileProjectList">
 					{projects.map(project => (
-						<Col >
+						<Col key={project._id}>
 							<a
 								className="profileProjectListItem"
 								href={`//${project.hostname}.orphe.us`}
