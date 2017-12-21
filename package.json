@@ -1,7 +1,7 @@
 {
-  "name": "orpheus-wordexpress",
+  "name": "soundlab-wordexpress",
   "version": "0.1.0",
-  "description": "Orpheus Wordexpress frontend",
+  "description": "Orpheus Wordexpress frontend for Sound Lab",
   "main": "server.js",
   "keywords": [
     "express",
@@ -16,7 +16,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:CtrHellenicStudies/Commentary.git"
+    "url": "git@gitlab.archimedes.digital:archimedes/soundlab-wordexpress.git"
   },
   "scripts": {
     "test": "",
@@ -134,6 +134,7 @@
     "react-css-modules": "^3.7.7",
     "react-disqus-thread": "^0.4.0",
     "react-dom": "^15.4.2",
+    "react-dropzone": "^4.2.3",
     "react-flexbox-grid-aphrodite": "^1.0.3",
     "react-google-maps": "^8.3.2",
     "react-headroom": "^2.1.6",
@@ -147,6 +148,7 @@
     "react-router": "^2.5.1",
     "react-router-redux": "^4.0.5",
     "react-s3-uploader": "^4.5.0",
+    "react-sortable-hoc": "^0.6.8",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",

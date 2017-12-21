@@ -8,7 +8,12 @@ import autoBind from 'react-autobind';
 import { Link } from 'react-router';
 import Cookies from 'js-cookie';
 
+
+import TrackUploader from '../../../dashboard/components/TrackUploader';
+
+
 import styles from './Submit.scss';
+
 
 const required = value => value ? undefined : 'Required';
 const maxLength = max => value =>
@@ -21,6 +26,10 @@ class Submit extends React.Component {
 	constructor(props) {
 		super(props);
 		autoBind(this);
+
+		this.state = {
+			track: null,
+		};
 	}
 
 	componentDidMount() {
@@ -37,10 +46,19 @@ class Submit extends React.Component {
 		// resetForm();
 	}
 
+	addFile(track) {
+		this.setState({
+			track,
+		});
+		this.props.change('link', track.url);
+	}
+
 	render() {
 		const {
 			handleSubmit, onSubmit, submitted, dismissSubmitted, verifyCaptcha
-		 } = this.props;
+		} = this.props;
+		const { track } = this.state;
+
 
 		return (
 			<form
@@ -67,13 +85,28 @@ class Submit extends React.Component {
 						<div className={styles.submitForm}>
 							<div className={styles.submitFormInner}>
 								<label>File</label>
-								<Field
-									name="link"
-									type="text"
-									component="input"
-									placeholder="Paste a link"
-									validate={[required, maxLength1000]}
-								/>
+								<Row>
+									<Col md="7">
+										<Field
+											name="link"
+											type="text"
+											component="input"
+											placeholder="Paste a link"
+											validate={[required, maxLength1000]}
+										/>
+									</Col>
+									<Col md="2">
+										<span className={styles.submitOr} >
+											or
+										</span>
+									</Col>
+									<Col md="3">
+										<TrackUploader
+											addFile={this.addFile}
+											track={track}
+										/>
+									</Col>
+								</Row>
 								<label>Title</label>
 								<Field
 									name="title"
