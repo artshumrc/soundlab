@@ -49,12 +49,12 @@ To start the project you need to follow these steps:
 	AWS_REGION=us-east-1
 	```
 
-	Environment variables for the *client* (*!IMPORTANT*: this should be set in the `client` folder):
+	Environment variables for the *client* (*!IMPORTANT*: this should be set in the `client` repo):
 	```sh
 	// client/.env
-	REACT_APP_GRAPHQL_SERVER=http://localhost:3001
+	REACT_APP_GRAPHQL_SERVER=http://api.orpheus.local:3001
 	REACT_APP_GRAPHQL_URI=graphql
-	REACT_APP_SERVER=http://localhost:3001
+	REACT_APP_SERVER=http://orpheus.local:3000
 	REACT_APP_LOGIN_URI=auth/login
 	REACT_APP_LOGIN_JWT_URI=auth/login-jwt
 	REACT_APP_LOGOUT_URI=auth/logout
