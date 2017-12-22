@@ -1,13 +1,32 @@
 import React from 'react';
 import { Route } from 'react-router';
 
-// Collections
+// orphe.us home
 import Home from '../components/Home';
+
+// project home
+import ProjectHomeContainer from '../../projects/containers/ProjectHomeContainer';
+
+// lib
+import getCurrentProjectHostname from '../../../lib/getCurrentProjectHostname';
 
 
 export default (
 	<div>
-		{/* Normal home landing page */}
-		<Route exact path="/" component={Home} />
+		<Route exact path="/" component={() => {
+			const currentProjectHostname = getCurrentProjectHostname();
+
+			// If this is a project, return the project home container
+			if (currentProjectHostname && currentProjectHostname.length) {
+				return (
+					<ProjectHomeContainer />
+				);
+			}
+
+			// Otherwise, return the main orpheus home page
+			return (
+				<Home />
+			);
+		}} />
 	</div>
 );
