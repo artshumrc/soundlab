@@ -33,8 +33,6 @@ class ProjectNameAvailabilityCheckContainer extends React.Component {
 				projectFound={projectFound}
 				onChange={this.props.onChange}
 				onSubmit={this.props.onSubmit}
-				verifyCaptcha={this.props.verifyCaptcha}
-				captchaVerified={this.props.captchaVerified}
 			/>
 		)
 	}

@@ -19,7 +19,6 @@ class ProjectCreateContainer extends React.Component {
 		this.state = {
 			projectSlug: '',
 			submitted: false,
-			recaptcha: null,
 			available: false,
 		};
 	}
@@ -31,12 +30,6 @@ class ProjectCreateContainer extends React.Component {
 		}
 	}
 
-	verifyCaptcha(response) {
-		this.setState({
-			recaptcha: response,
-		});
-	}
-
 	async onSubmit(values) {
 		const newProject = {
 			title: values.title,
@@ -44,13 +37,8 @@ class ProjectCreateContainer extends React.Component {
 		}
 
 		// create post
-		if (this.state.recaptcha) {
-			const created = await this.props.projectCreate(newProject);
-
-			window.location = `//${newProject.hostname}.orphe.us/dashboard`;
-		} else {
-			console.error('Recaptcha failed');
-		}
+		const created = await this.props.projectCreate(newProject);
+		window.location = `//${newProject.hostname}.orphe.us/dashboard`;
 	}
 
 	onChange(values) {
@@ -65,8 +53,6 @@ class ProjectCreateContainer extends React.Component {
 				projectHostname={this.state.projectHostname}
 				onSubmit={this.onSubmit}
 				onChange={this.onChange}
-				verifyCaptcha={this.verifyCaptcha}
-				captchaVerified={this.state.recaptcha}
 				currentUserId={this.props.userId}
 			/>
 		)

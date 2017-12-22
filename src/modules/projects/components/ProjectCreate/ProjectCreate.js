@@ -37,8 +37,6 @@ const ProjectCreate = props => (
 			}}
 			onChange={props.onChange}
 			onSubmit={props.onSubmit}
-			verifyCaptcha={props.verifyCaptcha}
-			captchaVerified={props.captchaVerified}
 		/>
 	</div>
 );

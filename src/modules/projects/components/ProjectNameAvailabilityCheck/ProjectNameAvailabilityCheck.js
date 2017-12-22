@@ -71,19 +71,11 @@ class ProjectNameAvailabilityCheck extends React.Component {
 						</div>
 					</div>
 
-
-					<div className="projectCreateCaptcha">
-						<Recaptcha
-					    sitekey="6LcfAzwUAAAAAGE3A1yY_IAKDxaskRVuSiman8OS"
-					    verifyCallback={this.props.verifyCaptcha}
-					  />
-					</div>
-
 					<button
 						type="submit"
 						className={`
 							projectNameAvaibilityButton
-							${this.props.projectFound || !this.props.captchaVerified ? 'disabled' : ''}
+							${this.props.projectFound ? 'disabled' : ''}
 						`}
 					>
 						Create
