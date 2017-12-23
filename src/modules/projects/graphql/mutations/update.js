@@ -18,7 +18,7 @@ const projectUpdateMutation = graphql(projectUpdate, {
 	}),
 	name: 'projectUpdateMutation',
 	options: {
-		refetchQueries: ['projectsQuery'],
+		refetchQueries: ['projectsQuery', 'projectQuery'],
 	},
 });
 

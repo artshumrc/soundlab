@@ -2,13 +2,13 @@ import React from 'react';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
 
-import ProjectEditor from '../../components/ProjectEditor';
+import ProjectPeopleEditor from '../../components/ProjectPeopleEditor';
 import projectDetailQuery from '../../graphql/queries/detail';
 import projectUpdateMutation from '../../graphql/mutations/update';
 import projectRemoveMutation from '../../graphql/mutations/remove';
 
 
-class ProjectMembersContainer extends React.Component {
+class ProjectPeopleContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		autoBind(this);
@@ -16,22 +16,11 @@ class ProjectMembersContainer extends React.Component {
 
 	handleSubmit(values) {
 		const { projectUpdate, router } = this.props;
-		delete values.__typename;
-		projectUpdate(values)
+		const users = values.users;
+
+		projectUpdate({ users })
 			.then((response) => {
 				router.replace('/dashboard/');
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}
-
-	handleRemove(projectId) {
-		const { projectRemove } = this.props;
-
-		projectRemove(projectId)
-			.then((response) => {
-				window.location = '//orphe.us';
 			})
 			.catch((err) => {
 				console.log(err);
@@ -46,7 +35,7 @@ class ProjectMembersContainer extends React.Component {
 		}
 
 		return (
-			<ProjectEditor
+			<ProjectPeopleEditor
 				onSubmit={this.handleSubmit}
 				onRemove={this.handleRemove}
 				project={project}
@@ -57,4 +46,4 @@ class ProjectMembersContainer extends React.Component {
 
 export default compose(
 	projectUpdateMutation, projectRemoveMutation, projectDetailQuery,
-)(ProjectMembersContainer);
+)(ProjectPeopleContainer);

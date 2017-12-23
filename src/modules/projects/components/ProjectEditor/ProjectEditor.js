@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import _ from 'underscore';
 
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 
@@ -16,11 +17,8 @@ const maxLength2100 = maxLength(2100);
 class ProjectEditor extends React.Component {
 	componentWillReceiveProps (nextProps) {
 		if (
-			(
-				!this.props.project
-			&& nextProps.project
-			)
-			|| this.props.project !== nextProps.project
+				nextProps.project
+			&& !this.props.project
 		) {
 			this.props.destroy();
 			let hostname = '';

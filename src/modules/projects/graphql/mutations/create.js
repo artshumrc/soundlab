@@ -17,6 +17,9 @@ const projectCreateMutation = graphql(projectCreate, {
 		}),
 	}),
 	name: 'projectCreateMutation',
+	options: {
+		refetchQueries: ['projectsQuery', 'projectQuery'],
+	},
 });
 
 export default projectCreateMutation;

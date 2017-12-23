@@ -17,7 +17,14 @@ class ProjectEditorContainer extends React.Component {
 
 	handleSubmit(values) {
 		const { projectUpdate, router } = this.props;
+
+		// values from query not to send back to update
 		delete values.__typename;
+		delete values.users; // users handled in separate form
+
+		// regularize subdomain to hostname
+		values.hostname = `${values.hostname}.orphe.us`;
+
 		projectUpdate(values)
 			.then((response) => {
 				router.replace('/dashboard/');

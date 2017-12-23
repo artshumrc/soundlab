@@ -19,7 +19,7 @@ const projectRemoveMutation = graphql(projectRemove, {
 	}),
 	name: 'projectRemoveMutation',
 	options: {
-		refetchQueries: ['projectsQuery'],
+		refetchQueries: ['projectsQuery', 'projectQuery'],
 	},
 });
 

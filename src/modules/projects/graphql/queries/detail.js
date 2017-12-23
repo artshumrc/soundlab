@@ -3,15 +3,32 @@ import { gql, graphql } from 'react-apollo';
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
 
 
-
 const query = gql`
 	query projectQuery($hostname: String) {
 		project(hostname: $hostname) {
 	    _id
 			title
 			slug
-			hostname
+			subtitle
 			description
+			hostname
+			email
+			url
+			address
+			phone
+			users {
+				role
+				user {
+					username
+					avatar
+					name
+					email
+					bio
+					_id
+					updatedAt
+					createdAt
+				}
+			}
 		}
 	}
 `;
