@@ -1,8 +1,8 @@
 import { gql, graphql } from 'react-apollo';
 
 const query = gql`
-	query projectQuery($hostname: String) {
-		project(hostname: $hostname) {
+	query projectQuery {
+		project {
 	    _id
 			title
 			slug
@@ -14,12 +14,6 @@ const query = gql`
 
 const projectQuery = graphql(query, {
 	name: 'projectQuery',
-  options: ({ params }) => {
-		return ({
-    variables: {
-      hostname: params.hostname,
-    }
-  })},
 });
 
 export default projectQuery;

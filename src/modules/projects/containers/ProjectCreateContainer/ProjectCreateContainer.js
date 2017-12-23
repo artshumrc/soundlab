@@ -33,12 +33,12 @@ class ProjectCreateContainer extends React.Component {
 	async onSubmit(values) {
 		const newProject = {
 			title: values.title,
-			hostname: values.hostname,
+			hostname: `${values.hostname}.orphe.us`,
 		}
 
 		// create post
 		const created = await this.props.projectCreate(newProject);
-		window.location = `//${newProject.hostname}.orphe.us/dashboard`;
+		window.location = `//${newProject.hostname}/dashboard`;
 	}
 
 	onChange(values) {
@@ -50,7 +50,7 @@ class ProjectCreateContainer extends React.Component {
 	render() {
 		return (
 			<ProjectCreate
-				projectHostname={this.state.projectHostname}
+				projectHostname={`${this.state.projectHostname}.orphe.us`}
 				onSubmit={this.onSubmit}
 				onChange={this.onChange}
 				currentUserId={this.props.userId}

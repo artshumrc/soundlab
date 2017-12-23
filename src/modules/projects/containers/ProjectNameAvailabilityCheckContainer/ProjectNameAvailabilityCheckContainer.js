@@ -3,26 +3,26 @@ import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
 
 import ProjectNameAvailabilityCheck from '../../components/ProjectNameAvailabilityCheck';
-import projectDetailQuery from '../../graphql/queries/detail';
+import projectAvailabilityQuery from '../../graphql/queries/availability';
 import projectCreateMutation from '../../graphql/mutations/create';
 
 
 
 class ProjectNameAvailabilityCheckContainer extends React.Component {
 
-	constructor(props) {
-		super(props);
-		autoBind(this);
-	}
-
 	render() {
 		let projectFound = false;
+		console.log('###############');
+		console.log('###############');
+		console.log(this.props);
+		console.log('###############');
+		console.log('###############');
 
 		if (
 			this.props.params.hostname
 			&& this.props.params.hostname.length
-			&& this.props.projectQuery
-			&& this.props.projectQuery.project
+			&& this.props.projectAvailabilityQuery
+			&& this.props.projectAvailabilityQuery.checkProjectAvailability
 		) {
 			projectFound = true;
 		}
@@ -39,5 +39,5 @@ class ProjectNameAvailabilityCheckContainer extends React.Component {
 }
 
 export default compose(
-	projectDetailQuery,
+	projectAvailabilityQuery,
 )(ProjectNameAvailabilityCheckContainer);

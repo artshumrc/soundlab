@@ -65,7 +65,7 @@ const register = async (data) => {
 		}
 		const resJson = await res.json();
 		if (resJson.token) {
-			// TODO: Add domain: 'orphe.us' options to cookie for cross subdomain auth
+			// TODO: Add domain: 'orphe.us' options to cookie for cross hostname auth
 			const domain = process.env.REACT_APP_COOKIE_DOMAIN || 'orpheus.local';
 			cookies.set('token', resJson.token, { domain });
 			return resJson;

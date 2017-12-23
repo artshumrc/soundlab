@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo';
 
 const query = gql`
-	query collectionListQuery($hostname: String) {
+	query collectionListQuery($subomain: String) {
 		project(hostname: $hostname) {
 	    _id
 			collections {

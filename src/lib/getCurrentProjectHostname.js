@@ -2,13 +2,14 @@
 
 const getCurrentProjectHostname = () => {
 	let hostname = null;
-	let domainArray = [];
+	const orpheusHostnames = ['orphe.us', 'orpheus.local', 'localhost'];
 
-	if (window && window.location.hostname) {
-		domainArray = window.location.hostname.split('.');
-		if (domainArray.length && !(~['orphe', 'orpheus'].indexOf(domainArray[0]))) {
-			hostname = domainArray[0];
-		}
+	if (
+		window
+		&& window.location.hostname
+		&& !~orpheusHostnames.indexOf(window.location.hostname)
+	) {
+		hostname = window.location.hostname
 	}
 
 	return hostname;
