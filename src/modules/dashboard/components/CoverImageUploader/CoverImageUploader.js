@@ -2,6 +2,8 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import S3Upload from 'react-s3-uploader/s3upload';
 
+import makeId from '../../../../lib/makeId';
+
 import './CoverImageUploader.css';
 
 export default class CoverImageUploader extends React.Component {
@@ -28,8 +30,8 @@ export default class CoverImageUploader extends React.Component {
 	}
 
 	handleFinish(event) {
-		console.log('event LOG', event);
 		this.setState({uploading: false});
+
 		const image = {
 			name: event.filename,
 			type: 'sometype',
@@ -37,11 +39,13 @@ export default class CoverImageUploader extends React.Component {
 			thumbPath: `http://iiif.orphe.us/${event.filename}/full/90,/0/default.jpg`,
 			_id: this._id
 		};
+
 		this.props.image.changeValue('coverImage', image);
 	}
 
 	handleProgress(event) {
 		console.log('event LOG', event);
+
 	}
 
 	uploadFile(acceptedFile) {
@@ -50,21 +54,23 @@ export default class CoverImageUploader extends React.Component {
 		};
 		if (fileToUpload.files.length) {
 			this.setState({uploading: true});
-			this.myUploader = new S3Upload({
+
+			const uploader = new S3Upload({
 				onFinishS3Put: this.handleFinish,
 				onProgress: this.handleProgress,
 				fileElement: fileToUpload,
 				signingUrl: '/s3/sign',
+				s3path: 'uploads/',
 				server: process.env.REACT_APP_SERVER,
 				onError: this.handleError,
 				uploadRequestHeaders: {'x-amz-acl': 'public-read'},
 				contentDisposition: 'auto',
 				scrubFilename: (filename) => {
           const secureFilename = filename.replace(/[^\w\d_\-\.]+/ig, ''); // eslint-disable-line
-					return `${this._id}-${secureFilename}`;
+					return `${makeId()}-${secureFilename}`;
 				},
 				signingUrlMethod: 'GET',
-				signingUrlWithCredentials: true
+				signingUrlWithCredentials: true,
 			});
 		}
 	}
@@ -81,7 +87,7 @@ export default class CoverImageUploader extends React.Component {
 								this.state.uploading ?
 									'Uploading...'
 								:
-									'Drop a cover image or click to select file'
+									'Drag and drop a cover image or click to select file'
 							}
 						</label>
 					</div>
