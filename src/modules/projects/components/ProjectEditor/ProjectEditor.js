@@ -1,8 +1,6 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
-import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
-import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 
 import './ProjectEditor.css';
@@ -18,8 +16,11 @@ const maxLength2100 = maxLength(2100)
 class ProjectEditor extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (
-			!this.props.project && nextProps.project
-		|| this.props.project !== nextProps.project
+			(
+				!this.props.project
+			&& nextProps.project
+			)
+			|| this.props.project !== nextProps.project
 		) {
       this.props.destroy();
       this.props.initialize({ ...nextProps.project });
@@ -102,6 +103,54 @@ class ProjectEditor extends React.Component {
 								Contact <a href="mailto:support@orphe.us">support</a> to change your project URL.
 							</span>
 						</div>
+					</div>
+
+					<div className="projectEditorFormInputOuter ">
+						<label>Address</label>
+						<Field
+							name="address"
+							type="text"
+							component="input"
+							placeholder="123 Your Street, City, State"
+							validate={[required, maxLength2100]}
+						/>
+						<span
+							className="projectEditorFormHelp"
+						>
+							?
+						</span>
+					</div>
+
+					<div className="projectEditorFormInputOuter ">
+						<label>Phone number</label>
+						<Field
+							name="phone"
+							type="text"
+							component="input"
+							placeholder="(###) ###-####"
+							validate={[required, maxLength2100]}
+						/>
+						<span
+							className="projectEditorFormHelp"
+						>
+							?
+						</span>
+					</div>
+
+					<div className="projectEditorFormInputOuter ">
+						<label>Email</label>
+						<Field
+							name="phone"
+							type="text"
+							component="input"
+							placeholder="contact@example.edu"
+							validate={[required, maxLength2100]}
+						/>
+						<span
+							className="projectEditorFormHelp"
+						>
+							?
+						</span>
 					</div>
 
 					<button

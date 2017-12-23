@@ -7,7 +7,6 @@ import Modal from '../../../../components/common/modal/Modal';
 // auth types:
 import Login from '../../components/Login';
 import Signup from '../../components/Signup';
-import Logout from '../../components/Logout';
 
 // actions
 import { toggleAuthModal, changeAuthMode, setUser, login, logout } from '../../actions';
@@ -16,7 +15,7 @@ import { toggleAuthModal, changeAuthMode, setUser, login, logout } from '../../a
 const ESCAPE_KEY = 27;
 
 
-class _AuthModalContainer extends React.Component {
+class AuthModalContainer extends React.Component {
 
 	static propTypes = {
 		dispatchLogin: PropTypes.func.isRequired,
@@ -125,4 +124,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(_AuthModalContainer);
+)(AuthModalContainer);

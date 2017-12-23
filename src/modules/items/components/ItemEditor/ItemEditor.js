@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
-import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';

@@ -10,7 +10,7 @@ import collectionUpdateMutation from '../../graphql/mutations/update';
 import collectionRemoveMutation from '../../graphql/mutations/remove';
 
 
-class _CollectionEditorContainer extends React.Component {
+class CollectionEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		autoBind(this);
@@ -57,20 +57,6 @@ class _CollectionEditorContainer extends React.Component {
 	}
 }
 
-const _CollectionEditorContainerWithQuery =  compose(
+export default compose(
 	collectionUpdateMutation, collectionRemoveMutation, collectionDetailQuery,
-)(_CollectionEditorContainer);
-
-
-const CollectionEditorContainer = () => {
-	const hostname = getCurrentProjectHostname();
-	return (
-		<_CollectionEditorContainerWithQuery
-			params={{
-				hostname,
-			}}
-		/>
-	);
-}
-
-export default CollectionEditorContainer;
+)(CollectionEditorContainer);

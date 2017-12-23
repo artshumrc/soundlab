@@ -16,7 +16,7 @@ const ProfileProjects = ({ projects }) => (
 						<Col key={project._id}>
 							<a
 								className="profileProjectListItem"
-								href={`//${project.hostname}.orphe.us`}
+								href={`//${project.hostname}`}
 							>
 								<span>
 									{project.title}

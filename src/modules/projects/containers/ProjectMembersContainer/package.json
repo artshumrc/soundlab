@@ -1,6 +1,6 @@
 {
-  "name": "ProjectEditorContainer",
+  "name": "ProjectMembersContainer",
   "version": "0.0.1",
   "private": true,
-  "main": "./ProjectEditorContainer.js"
+  "main": "./ProjectMembersContainer.js"
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
 
@@ -10,7 +9,7 @@ import projectUpdateMutation from '../../graphql/mutations/update';
 import projectRemoveMutation from '../../graphql/mutations/remove';
 
 
-class _ProjectEditorContainer extends React.Component {
+class ProjectEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		autoBind(this);
@@ -29,7 +28,7 @@ class _ProjectEditorContainer extends React.Component {
 	}
 
 	handleRemove(projectId) {
-		const { projectRemove, router } = this.props;
+		const { projectRemove } = this.props;
 
 		projectRemove(projectId)
 			.then((response) => {
@@ -57,20 +56,6 @@ class _ProjectEditorContainer extends React.Component {
 	}
 }
 
-const _ProjectEditorContainerWithQuery =  compose(
+export default compose(
 	projectUpdateMutation, projectRemoveMutation, projectDetailQuery,
-)(_ProjectEditorContainer);
-
-
-const ProjectEditorContainer = () => {
-	const hostname = getCurrentProjectHostname();
-	return (
-		<_ProjectEditorContainerWithQuery
-			params={{
-				hostname,
-			}}
-		/>
-	);
-}
-
-export default ProjectEditorContainer;
+)(ProjectEditorContainer);

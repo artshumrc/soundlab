@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
 
@@ -10,7 +9,7 @@ import itemUpdateMutation from '../../graphql/mutations/update';
 import itemRemoveMutation from '../../graphql/mutations/remove';
 
 
-class _ItemEditorContainer extends React.Component {
+class ItemEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		autoBind(this);
@@ -68,20 +67,6 @@ class _ItemEditorContainer extends React.Component {
 	}
 }
 
-const _ItemEditorContainerWithQuery =  compose(
+export default compose(
 	itemUpdateMutation, itemRemoveMutation, itemDetailQuery,
-)(_ItemEditorContainer);
-
-
-const ItemEditorContainer = () => {
-	const hostname = getCurrentProjectHostname();
-	return (
-		<_ItemEditorContainerWithQuery
-			params={{
-				hostname,
-			}}
-		/>
-	);
-}
-
-export default ItemEditorContainer;
+)(ItemEditorContainer);

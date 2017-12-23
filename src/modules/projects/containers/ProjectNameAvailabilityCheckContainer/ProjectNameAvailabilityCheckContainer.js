@@ -12,11 +12,6 @@ class ProjectNameAvailabilityCheckContainer extends React.Component {
 
 	render() {
 		let projectFound = false;
-		console.log('###############');
-		console.log('###############');
-		console.log(this.props);
-		console.log('###############');
-		console.log('###############');
 
 		if (
 			this.props.params.hostname

@@ -20,14 +20,13 @@ class Signup extends React.Component {
 				<div className="at-title">
 					<h3>
 						Create an Account or
-						<a
-							href="#"
+						<button
 							id="at-signUp"
 							className="at-link at-signup"
 							onClick={onSigninClick}
 						>
 							Sign in
-						</a>
+						</button>
 						.
 					</h3>
 				</div>

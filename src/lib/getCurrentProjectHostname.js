@@ -12,6 +12,11 @@ const getCurrentProjectHostname = () => {
 		hostname = window.location.hostname
 	}
 
+	// regularlize development domain
+	if (hostname && hostname.endsWith('orpheus.local')) {
+		hostname = hostname.replace('orpheus.local', 'orphe.us');
+	}
+
 	return hostname;
 };
 

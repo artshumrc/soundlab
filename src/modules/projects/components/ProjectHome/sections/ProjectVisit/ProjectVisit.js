@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import { Row, Col } from 'react-bootstrap';
+import ReactMapboxGl from "react-mapbox-gl";
 
 
 import './ProjectVisit.css';
@@ -10,6 +10,7 @@ export default class ProjectVisit extends React.Component {
 	render() {
 		const Map = ReactMapboxGl({
 			accessToken: "pk.eyJ1IjoibHVrZWhvbGxpcyIsImEiOiJ6Rk1vdjc0In0.jQDtXA8wqU_wYi5p1ClCyw",
+			scrollZoom: false,
 		});
 
 		return (
@@ -20,7 +21,7 @@ export default class ProjectVisit extends React.Component {
 						className="projectVisitCol"
 					>
 						<Map
-						  style="mapbox://styles/lukehollis/cj7dnh4fb11452smw1dj34x04"
+						  style="mapbox://styles/lukehollis/cj7dnh4fb11452smw1dj34x04" // eslint-disable-line
 						  containerStyle={{
 						    height: "100vh",
 						    width: "100%"

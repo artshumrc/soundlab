@@ -32,25 +32,19 @@ class ProjectCover extends React.Component {
 					</p>
 
 					<div className="home-cover-buttons">
-						<Link
+						<Button
+							dark
 							to="/collections"
 						>
-							<Button
-								dark
-							>
-								Explore
-							</Button>
-						</Link>
-						<Link
+							Explore
+						</Button>
+						<Button
+							transparentLight
+							outline
 							to="/#learn"
 						>
-							<Button
-								transparentLight
-								outline
-							>
-								About
-							</Button>
-						</Link>
+							About
+						</Button>
 					</div>
 				</div>
 			</Cover>
