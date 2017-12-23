@@ -79,8 +79,11 @@ const ProjectHeader = ({ toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, 
 					: '' }
 				</li>
 				<li>
-					<Link to="/search">
-						<i className="mdi mdi-magnify search-icon" />
+					<Link
+						className="searchLink"
+						to="/search"
+					>
+						<i className="mdi mdi-magnify searchIcon" />
 					</Link>
 				</li>
 			</ul>
