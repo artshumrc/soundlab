@@ -20,6 +20,44 @@ const DashboardNav = (props) => {
 				<i className="mdi mdi-view-dashboard" />
 				Dashboard
 			</Link>
+			<div className="navLinkWithDropdown">
+				<Link
+					to="/create"
+					className={`
+						dashboardNavLinkWithDropdown
+						${activePath === '/dashboard' ?
+						'dashboardNavLinkActive'
+						: ''}
+					`}
+				>
+					<i className="mdi mdi-plus" />
+					Create
+				</Link>
+				<div className="dropdownContent">
+					<Link
+						to="/collections/create"
+						className={`
+							dropdownLink
+							${activePath === '/dashboard' ?
+							'dashboardNavLinkActive'
+							: ''}
+						`}
+					>
+						Collection
+					</Link>
+					<Link
+						to="/items/create"
+						className={`
+							dropdownLink
+							${activePath === '/dashboard' ?
+							'dashboardNavLinkActive'
+							: ''}
+						`}
+					>
+						Item
+					</Link>
+				</div>
+			</div>
 			<Link
 				to="/dashboard/settings"
 				className={

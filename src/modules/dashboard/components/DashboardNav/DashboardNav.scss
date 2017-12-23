@@ -40,3 +40,37 @@
 		}
 	}
 }
+
+.navLinkWithDropdown {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+
+	&:hover {
+		.dropdownContent {
+			display:block;
+		}
+	}
+
+	.dropdownContent {
+		display: none;
+		position: absolute;
+		top: 45px;
+		left: 5px;
+		width: 114px;
+		background: #f6f6f6;
+		border: 1px solid #ddd;
+
+		a {
+			margin: 0;
+			padding: 10px;
+			display: block;
+			width: 100%;
+			border: none;
+			outline: none;
+			font-size: 12px;
+			text-align: left;
+		}
+
+	}
+}
