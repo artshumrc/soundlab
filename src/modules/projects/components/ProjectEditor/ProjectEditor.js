@@ -23,7 +23,13 @@ class ProjectEditor extends React.Component {
 			|| this.props.project !== nextProps.project
 		) {
 			this.props.destroy();
-			this.props.initialize({ ...nextProps.project });
+			let hostname = '';
+
+			if (nextProps.project.hostname) {
+				hostname = nextProps.project.hostname.replace('.orphe.us', '');
+			}
+
+			this.props.initialize({ ...nextProps.project, hostname });
 		}
 	}
 
@@ -38,13 +44,29 @@ class ProjectEditor extends React.Component {
 					className="projectEditorForm"
 					onSubmit={this.props.handleSubmit}
 				>
-					<div className="projectEditorFormInputOuter projectEditorFormTitleOuter">
+					<div className="projectEditorFormInputOuter">
 						<label>What is your Organization&apos;s or Project&apos;s title?</label>
 						<Field
 							name="title"
 							type="text"
 							component="input"
 							placeholder="Your Organization or Project"
+							validate={[required, maxLength200]}
+						/>
+						<span
+							className="projectEditorFormHelp"
+						>
+							?
+						</span>
+					</div>
+
+					<div className="projectEditorFormInputOuter">
+						<label>Enter a subtitle for your project&apos;s homepage.</label>
+						<Field
+							name="subtitle"
+							type="text"
+							component="input"
+							placeholder="E.g. 16th and 17th century manuscripts"
 							validate={[required, maxLength200]}
 						/>
 						<span
@@ -106,7 +128,40 @@ class ProjectEditor extends React.Component {
 					</div>
 
 					<div className="projectEditorFormInputOuter ">
-						<label>Address</label>
+						<label>Enter an email for users to contact your project or institution.</label>
+						<Field
+							name="email"
+							type="text"
+							component="input"
+							placeholder="contact@example.edu"
+							validate={[required, maxLength2100]}
+						/>
+						<span
+							className="projectEditorFormHelp"
+						>
+							?
+						</span>
+					</div>
+
+					<div className="projectEditorFormInputOuter ">
+						<label>Enter the website of the project (if there is one).</label>
+						<Field
+							name="url"
+							type="text"
+							component="input"
+							placeholder="https://project.example.edu"
+							validate={[required, maxLength2100]}
+						/>
+						<span
+							className="projectEditorFormHelp"
+						>
+							?
+						</span>
+					</div>
+
+
+					<div className="projectEditorFormInputOuter ">
+						<label>Enter the address of the project (if there is one).</label>
 						<Field
 							name="address"
 							type="text"
@@ -122,7 +177,7 @@ class ProjectEditor extends React.Component {
 					</div>
 
 					<div className="projectEditorFormInputOuter ">
-						<label>Phone number</label>
+						<label>Enter the phone number of the project (if there is one).</label>
 						<Field
 							name="phone"
 							type="text"
@@ -137,21 +192,6 @@ class ProjectEditor extends React.Component {
 						</span>
 					</div>
 
-					<div className="projectEditorFormInputOuter ">
-						<label>Email</label>
-						<Field
-							name="phone"
-							type="text"
-							component="input"
-							placeholder="contact@example.edu"
-							validate={[required, maxLength2100]}
-						/>
-						<span
-							className="projectEditorFormHelp"
-						>
-							?
-						</span>
-					</div>
 
 					<button
 						type="submit"
