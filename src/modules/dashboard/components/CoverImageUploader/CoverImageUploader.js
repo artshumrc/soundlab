@@ -75,13 +75,15 @@ export default class CoverImageUploader extends React.Component {
 		return (
 			<div className="coverImageUploader">
 				<Dropzone className="backgroundImage" accept="image/*" style={backgroundImage} onDrop={this.uploadFile}>
-					<div className="text">
-						{
-							this.state.uploading ?
-								'Uploading...'
-							:
-								'Drop a cover image'
-            }
+					<div className="coverImageLabel">
+						<label>
+							{
+								this.state.uploading ?
+									'Uploading...'
+								:
+									'Drop a cover image or click to select file'
+							}
+						</label>
 					</div>
 				</Dropzone>
 			</div>

@@ -5,10 +5,9 @@
 	position: relative;
 	text-align: left;
 	vertical-align: top;
-	margin: 25px 5%;
+	margin: 25px 4%;
 	width: 90%;
-	max-width: 280px;
-
+	max-width: 260px;
 
 	img {
 		@include transition(all 100ms ease-in-out);
