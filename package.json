@@ -138,7 +138,7 @@
     "react-flexbox-grid-aphrodite": "^1.0.3",
     "react-google-maps": "^8.3.2",
     "react-headroom": "^2.1.6",
-    "react-helmet": "^2.3.1",
+    "react-helmet": "^5.2.0",
     "react-map-gl": "^3.0.4",
     "react-moment": "^0.6.1",
     "react-player": "^0.24.5",
