@@ -7,7 +7,7 @@ import userAvatarQuery from '../../graphql/queries/avatar';
 import SidebarUserAvatar from '../../components/SidebarUserAvatar';
 
 
-const SidebarUserAvatarContainer = props => {
+const SidebarUserAvatarContainer = (props) => {
 	let user;
 	let userName = '';
 	let avatarUrl = '/images/default_user.jpg';
@@ -28,7 +28,7 @@ const SidebarUserAvatarContainer = props => {
 			name={userName}
 		/>
 	);
-}
+};
 
 export default compose(
 	userAvatarQuery,

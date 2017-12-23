@@ -34,7 +34,7 @@ class ProjectCreateContainer extends React.Component {
 		const newProject = {
 			title: values.title,
 			hostname: `${values.hostname}.orphe.us`,
-		}
+		};
 
 		// create post
 		const created = await this.props.projectCreate(newProject);
@@ -55,7 +55,7 @@ class ProjectCreateContainer extends React.Component {
 				onChange={this.onChange}
 				currentUserId={this.props.userId}
 			/>
-		)
+		);
 	}
 }
 
@@ -64,7 +64,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	toggleAuthModal: toggled => {
+	toggleAuthModal: (toggled) => {
 		dispatch(authActions.toggleAuthModal(toggled));
 	},
 });

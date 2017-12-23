@@ -40,8 +40,7 @@ class Login extends React.Component {
 					</button>
 					.
 				</h3>
-				<div className="at-signup-link">
-				</div>
+				<div className="at-signup-link" />
 
 				<OAuthButtons
 					login={login}

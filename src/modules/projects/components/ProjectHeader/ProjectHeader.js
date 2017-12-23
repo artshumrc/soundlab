@@ -107,7 +107,7 @@ const mapDispatchToProps = dispatch => ({
 		e.preventDefault();
 		dispatch(authActions.toggleAuthModal());
 	},
-	dispatchToggleLeftMenu: open => {
+	dispatchToggleLeftMenu: (open) => {
 		dispatch(toggleLeftMenu(open));
 	},
 });

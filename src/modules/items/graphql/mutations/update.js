@@ -10,7 +10,7 @@ const itemUpdate = gql`
 
 const itemUpdateMutation = graphql(itemUpdate, {
 	props: params => ({
-		itemUpdate: (item) => params.itemUpdateMutation({
+		itemUpdate: item => params.itemUpdateMutation({
 			variables: {
 				item,
 			},

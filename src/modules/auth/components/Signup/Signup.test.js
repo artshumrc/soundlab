@@ -1,15 +1,18 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { mount, shallow } from 'enzyme';
 
-// component:
-import Signup from './index';
+// component
+import Signup from './Signup';
 
 describe('Signup', () => {
 	it('renders correctly', () => {
-
-		const tree = renderer
-			.create(<Signup />)
-			.toJSON();
-		expect(tree).toMatchSnapshot();
+		const wrapper = shallow(
+			<Signup
+				onSigninClick={() => {}}
+				signup={() => {}}
+				login={() => {}}
+			/>
+		);
+		expect(wrapper).toBeDefined();
 	});
 });

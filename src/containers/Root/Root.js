@@ -14,7 +14,7 @@ import { login, register, logoutUser, verifyToken } from '../../lib/auth';
 
 const scrollToElemOrTop = () => {
 	if (window.location.hash.length) {
-		const elem = window.location.hash.replace('#', '')
+		const elem = window.location.hash.replace('#', '');
 
 		if (elem) {
 			document.getElementById(elem).scrollIntoView();
@@ -22,7 +22,7 @@ const scrollToElemOrTop = () => {
 	} else {
 		window.scrollTo(0, 0);
 	}
-}
+};
 
 const Root = ({store, history}) => (
 	<ApolloProvider

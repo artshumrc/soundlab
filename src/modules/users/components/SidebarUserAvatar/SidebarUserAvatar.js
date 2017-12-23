@@ -9,7 +9,8 @@ import './SidebarUserAvatar.css';
 const SidebarUserAvatar = props => (
 	<div className="sidebarUserAvatar">
 		<Link to="/profile">
-			<div className="sidebarUserAvatarImage"
+			<div
+				className="sidebarUserAvatarImage"
 				style={{
 					backgroundImage: `url('${props.avatarUrl}')`,
 					backgroundSize: 'cover',

@@ -1,6 +1,6 @@
 import React from 'react';
-import './FeaturesSection.css';
 import {Grid, Row, Col, Image} from 'react-bootstrap';
+import './FeaturesSection.css';
 
 export default class FeaturesSection extends React.Component {
 
@@ -14,7 +14,7 @@ export default class FeaturesSection extends React.Component {
 							<h4>Multimedia Archives</h4>
 						</div>
 						<hr />
-						<p>Present your collections' digital media in a myriad of different formats</p>
+						<p>Present your collections&apos; digital media in a myriad of different formats</p>
 					</div>
 					<div className="feature">
 						<div className="feature-title">

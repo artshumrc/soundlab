@@ -7,7 +7,7 @@ import userAvatarQuery from '../../graphql/queries/avatar';
 import Avatar from '../../components/Avatar';
 
 
-const UserAvatarContainer = props => {
+const UserAvatarContainer = (props) => {
 	let user;
 	let avatarUrl = '/images/default_user.jpg';
 
@@ -23,7 +23,7 @@ const UserAvatarContainer = props => {
 			avatarUrl={avatarUrl}
 		/>
 	);
-}
+};
 
 export default compose(
 	userAvatarQuery,

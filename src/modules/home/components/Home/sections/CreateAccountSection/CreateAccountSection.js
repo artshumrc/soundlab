@@ -22,7 +22,7 @@ export default class CreateAccountSection extends React.Component {
 							<p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut lobortis nulla.
                 Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
-              </p>
+							</p>
 							<Row>
 								<Col lg={4}>
 									<div className="createAccountIcon" />
@@ -75,9 +75,9 @@ export default class CreateAccountSection extends React.Component {
 								</div>
 								<Checkbox>
                     I agree to the terms of use
-                  </Checkbox>
+								</Checkbox>
 								{/* TODO: add site key to recaptcha */}
-								{/* <Recaptcha ref={e => recaptchaInstance = e}/>*/}
+								{/* <Recaptcha ref={e => recaptchaInstance = e}/> */}
 								<Button bsStyle="primary">Create account</Button>
 							</form>
 						</Col>

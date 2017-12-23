@@ -1,13 +1,13 @@
 import React from 'react';
-import CollectionListItem from '../../../../../collections/components/CollectionListItem';
 import _ from 'underscore';
+import CollectionListItem from '../../../../../collections/components/CollectionListItem';
 import './ShowcaseCollections.css';
 
 const ShowcaseCollections = (props) => {
 
 	const listItems = [];
 
-	_.range(1, 4).forEach(i => {
+	_.range(1, 4).forEach((i) => {
 		const imageNumber = _.random(0, 106);
 
 		listItems.push({

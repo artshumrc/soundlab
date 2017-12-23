@@ -19,7 +19,7 @@ class ProjectMembersContainer extends React.Component {
 		delete values.__typename;
 		projectUpdate(values)
 			.then((response) => {
-				router.replace(`/dashboard/`);
+				router.replace('/dashboard/');
 			})
 			.catch((err) => {
 				console.log(err);

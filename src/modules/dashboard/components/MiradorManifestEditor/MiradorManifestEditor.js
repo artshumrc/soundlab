@@ -2,9 +2,9 @@ import React from 'react';
 import { Field, FieldArray, SubmissionError, reduxForm } from 'redux-form';
 import AlertContainer from 'react-alert';
 // import mongoose from 'mongoose';
-import TextInput from '../components/TextInput';
-import { createManifest } from '../../../lib/createManifest';
-import FormImagesUploader from '../components/FormImagesUploader';
+// import TextInput from '../TextInput';
+import { createManifest } from '../../../../lib/createManifest';
+import FormImagesUploader from '../FormImagesUploader';
 
 const validate = (values) => {
 	const errors = {};

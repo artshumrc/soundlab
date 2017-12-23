@@ -29,13 +29,12 @@ const query = gql`
 
 const itemQuery = graphql(query, {
 	name: 'itemQuery',
-  options: ({ params }) => {
-		return ({
-    variables: {
-      hostname: getCurrentProjectHostname(),
-      slug: params.slug,
-    }
-  })},
+	options: ({ params }) => ({
+		variables: {
+			hostname: getCurrentProjectHostname(),
+			slug: params.slug,
+		}
+	}),
 });
 
 export default itemQuery;

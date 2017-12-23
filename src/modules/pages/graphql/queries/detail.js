@@ -1,4 +1,4 @@
-import { gql, graphql } from 'react-apollo'
+import { gql, graphql } from 'react-apollo';
 
 const pageDetailQuery = graphql(gql`
   query pageDetailQuery($post: String){
@@ -10,20 +10,16 @@ const pageDetailQuery = graphql(gql`
     }
   }
 `, {
-  options: ({ params }) => ({
-    variables: {
-      post: params.slug,
-    }
-  }),
-  name: 'pageDetailQuery',
-  props: props => {
-    return {
-      page: props.pageDetailQuery.post,
-    };
-  },
+	options: ({ params }) => ({
+		variables: {
+			post: params.slug,
+		}
+	}),
+	name: 'pageDetailQuery',
+	props: props => ({
+		page: props.pageDetailQuery.post,
+	}),
 });
 
 
-export {
-	pageDetailQuery,
-};
+export default pageDetailQuery;

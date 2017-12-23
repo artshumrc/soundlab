@@ -10,7 +10,7 @@ const projectUpdate = gql`
 
 const projectUpdateMutation = graphql(projectUpdate, {
 	props: params => ({
-		projectUpdate: (project) => params.projectUpdateMutation({
+		projectUpdate: project => params.projectUpdateMutation({
 			variables: {
 				project,
 			},

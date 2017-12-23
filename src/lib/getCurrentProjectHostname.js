@@ -9,7 +9,7 @@ const getCurrentProjectHostname = () => {
 		&& window.location.hostname
 		&& !~orpheusHostnames.indexOf(window.location.hostname)
 	) {
-		hostname = window.location.hostname
+		hostname = window.location.hostname;
 	}
 
 	// regularlize development domain

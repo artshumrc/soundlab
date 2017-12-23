@@ -16,12 +16,11 @@ const query = gql`
 
 const collectionListQuery = graphql(query, {
 	name: 'collectionListQuery',
-  options: ({ params }) => {
-		return ({
-    variables: {
-      hostname: params.hostname,
-    }
-  })},
+	options: ({ params }) => ({
+		variables: {
+			hostname: params.hostname,
+		}
+	}),
 });
 
 export default collectionListQuery;

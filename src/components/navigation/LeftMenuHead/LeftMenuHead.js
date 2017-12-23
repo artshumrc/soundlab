@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-import SidebarUserAvatarContainer from '../../../modules/users/containers/SidebarUserAvatarContainer'
+import SidebarUserAvatarContainer from '../../../modules/users/containers/SidebarUserAvatarContainer';
 
 import './LeftMenuHead.css';
 

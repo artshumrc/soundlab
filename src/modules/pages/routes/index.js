@@ -6,13 +6,14 @@ import PageContainer from '../containers/PageContainer';
 import ProjectLayout from '../../projects/layouts/ProjectLayout';
 
 export default (
-  <div>
-    <Route path=":slug" component={() => {
-			return (
+	<div>
+		<Route
+			path=":slug"
+			component={() => (
 				<ProjectLayout>
 					<PageContainer />
 				</ProjectLayout>
-			)
-		}}></Route>
-  </div>
+			)}
+		/>
+	</div>
 );

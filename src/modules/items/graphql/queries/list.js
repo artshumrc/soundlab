@@ -16,12 +16,11 @@ const query = gql`
 
 const itemListQuery = graphql(query, {
 	name: 'itemListQuery',
-  options: ({ params }) => {
-		return ({
-    variables: {
-      hostname: params.hostname,
-    }
-  })},
+	options: ({ params }) => ({
+		variables: {
+			hostname: params.hostname,
+		}
+	}),
 });
 
 export default itemListQuery;

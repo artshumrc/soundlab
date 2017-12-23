@@ -14,12 +14,11 @@ const query = gql`
 
 const projectAvailabilityQuery = graphql(query, {
 	name: 'projectAvailabilityQuery',
-  options: ({ params }) => {
-		return ({
-    variables: {
-      hostname: params.hostname,
-    }
-  })},
+	options: ({ params }) => ({
+		variables: {
+			hostname: params.hostname,
+		}
+	}),
 });
 
 export default projectAvailabilityQuery;

@@ -19,7 +19,7 @@ class ProfileContainer extends React.Component {
 		delete values.__typename;
 		userUpdate(values)
 			.then((response) => {
-				router.replace(`/profile`);
+				router.replace('/profile');
 			})
 			.catch((err) => {
 				console.log(err);

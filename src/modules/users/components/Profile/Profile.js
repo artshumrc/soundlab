@@ -6,22 +6,22 @@ import ProfileNav from '../ProfileNav';
 import './Profile.css';
 
 
-const required = value => value ? undefined : 'Required';
-const maxLength = max => value =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined
-const maxLength200 = maxLength(200)
-const maxLength2100 = maxLength(2100)
+const required = value => value ? undefined : 'Required'; // eslint-disable-line
+const maxLength = max => value => // eslint-disable-line
+  value && value.length > max ? `Must be ${max} characters or less` : undefined; // eslint-disable-line
+const maxLength200 = maxLength(200);
+const maxLength2100 = maxLength(2100);
 
 class Profile extends React.Component {
-  componentWillReceiveProps (nextProps) {
-    if (
-			!this.props.profile && nextProps.profile
+	componentWillReceiveProps (nextProps) {
+		if (
+			(!this.props.profile && nextProps.profile)
 		|| this.props.profile !== nextProps.profile
 		) {
-      this.props.destroy();
-      this.props.initialize({ ...nextProps.profile });
-    }
-  }
+			this.props.destroy();
+			this.props.initialize({ ...nextProps.profile });
+		}
+	}
 
 	render() {
 		return (

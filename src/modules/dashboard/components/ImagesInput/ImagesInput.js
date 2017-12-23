@@ -1,12 +1,11 @@
 import React from 'react';
 import S3Upload from 'react-s3-uploader/s3upload';
 import CircularProgressbar from 'react-circular-progressbar';
-import {Field} from 'redux-form';
+import { Field } from 'redux-form';
 import FontAwesome from 'react-fontawesome';
-
-import TextInput from '../../components/TextInput';
-
 import { SortableHandle } from 'react-sortable-hoc';
+
+
 
 export default class ImagesInput extends React.Component {
 	constructor(props) {
@@ -109,8 +108,13 @@ export default class ImagesInput extends React.Component {
 						<div className="col-lg-10">
 							<div>
 								<Field
-									name={`images[${this.props.imageIndex}].label`} component={this.inputComponent} type="text"
-									placeholder="Image label..." value={this.props.image.label} disabled={disableInput} onClick={this.test}
+									name={`images[${this.props.imageIndex}].label`}
+									component={this.inputComponent}
+									type="text"
+									placeholder="Image label..."
+									value={this.props.image.label}
+									disabled={disableInput}
+									onClick={this.test}
 								/>
 							</div>
 						</div>

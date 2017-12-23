@@ -71,10 +71,10 @@ const register = async (data) => {
 			return resJson;
 		}
 		if (resJson.passwordStrength) {
-			throw {
+			throw new Error({
 				passwordError: true,
 				suggestion: resJson.passwordStrength.feedback.suggestions[0],
-			};
+			});
 		}
 	} catch (err) {
 		throw err;
@@ -82,7 +82,7 @@ const register = async (data) => {
 };
 
 const verifyToken = async () => {
-	let token = cookies.get('token');
+	const token = cookies.get('token');
 	if (token) {
 		try {
 			const res = await fetch(`${process.env.REACT_APP_SERVER}/${process.env.REACT_APP_VERIFY_TOKEN_URI}`, {

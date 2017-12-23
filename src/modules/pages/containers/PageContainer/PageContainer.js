@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 
-import { pageDetailQuery } from '../../graphql/queries/detail';
+import pageDetailQuery from '../../graphql/queries/detail';
 import Page from '../../components/Page';
 
 

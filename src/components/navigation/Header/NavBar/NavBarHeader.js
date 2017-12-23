@@ -6,7 +6,7 @@ import { toggleLeftMenu } from '../../../../actions/leftMenu';
 
 import './NavBarHeader.css';
 
-const NavBarHeader = ({ dispatchToggleLeftMenu, leftMenuOpen })=> (
+const NavBarHeader = ({ dispatchToggleLeftMenu, leftMenuOpen }) => (
 	<div className="nav-header">
 		<i
 			className="mdi mdi-menu left-menu-toggle-icon"
@@ -26,7 +26,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	dispatchToggleLeftMenu: open => {
+	dispatchToggleLeftMenu: (open) => {
 		dispatch(toggleLeftMenu(open));
 	},
 });

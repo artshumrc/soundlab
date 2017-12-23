@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
 import './DashboardNav.css';
 
 
-const DashboardNav = props => {
+const DashboardNav = (props) => {
 	const activePath = props.location.pathname;
 
 	return (
@@ -14,7 +13,7 @@ const DashboardNav = props => {
 				to="/dashboard"
 				className={
 					activePath === '/dashboard' ?
-					"dashboardNavLinkActive"
+					'dashboardNavLinkActive'
 					: ''
 				}
 			>
@@ -25,7 +24,7 @@ const DashboardNav = props => {
 				to="/dashboard/settings"
 				className={
 					activePath === '/dashboard/settings' ?
-					"dashboardNavLinkActive"
+					'dashboardNavLinkActive'
 					: ''
 				}
 			>
@@ -36,7 +35,7 @@ const DashboardNav = props => {
 				to="/dashboard/people"
 				className={
 					activePath === '/dashboard/people' ?
-					"dashboardNavLinkActive"
+					'dashboardNavLinkActive'
 					: ''
 				}
 			>
@@ -47,7 +46,7 @@ const DashboardNav = props => {
 				to="/dashboard/help"
 				className={
 					activePath === '/dashboard/help' ?
-					"dashboardNavLinkActive"
+					'dashboardNavLinkActive'
 					: ''
 				}
 			>
@@ -56,6 +55,6 @@ const DashboardNav = props => {
 			</Link>
 		</div>
 	);
-}
+};
 
 export default withRouter(DashboardNav);

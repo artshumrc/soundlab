@@ -1,15 +1,12 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { mount, shallow } from 'enzyme';
 
 // component:
 import ModalChangePwd from './ModalChangePwd';
 
 describe('ModalChangePwd', () => {
 	it('renders correctly', () => {
-
-		const tree = renderer
-			.create(<ModalChangePwd />)
-			.toJSON();
-		expect(tree).toMatchSnapshot();
+		const wrapper = shallow(<ModalChangePwd />);
+		expect(wrapper).toBeDefined();
 	});
 });

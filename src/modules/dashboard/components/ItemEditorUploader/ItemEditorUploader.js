@@ -86,7 +86,7 @@ const SortableItem = SortableElement(({file, fileIndex, removeFile, updateFileCb
 		updateFileCb={updateFileCb}
 		deleteFile={removeFile}
 		showError={showError}
-  />
+	/>
 ));
 
 const SortableList = SortableContainer(({files, updateFile, showError, removeFile}) => (

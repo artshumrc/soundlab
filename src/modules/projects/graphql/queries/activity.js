@@ -19,12 +19,11 @@ const query = gql`
 
 const projectActivityQuery = graphql(query, {
 	name: 'projectActivityQuery',
-  options: ({ params }) => {
-		return ({
-    variables: {
-      hostname: params.hostname,
-    },
-  })},
+	options: ({ params }) => ({
+		variables: {
+			hostname: params.hostname,
+		},
+	}),
 });
 
 export default projectActivityQuery;

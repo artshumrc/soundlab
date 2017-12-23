@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import * as d3 from 'd3';
@@ -9,9 +10,10 @@ import './LifetimeData.css';
 // from http://bl.ocks.org/mbostock/4349187
 // Sample from a normal distribution with mean 0, stddev 1.
 const normal = () => {
-	var x = 0,
+	let x = 0,
 		y = 0,
-		rds, c;
+		rds,
+		c;
 	do {
 		x = Math.random() * 2 - 1;
 		y = Math.random() * 2 - 1;
@@ -19,17 +21,17 @@ const normal = () => {
 	} while (rds == 0 || rds > 1);
 	c = Math.sqrt(-2 * Math.log(rds) / rds); // Box-Muller transform
 	return x * c; // throw away extra sample y * c
-}
+};
 
-//taken from Jason Davies science library
+// taken from Jason Davies science library
 // https://github.com/jasondavies/science.js/
 const gaussian = (x) => {
-	var gaussianConstant = 1 / Math.sqrt(2 * Math.PI),
+	let gaussianConstant = 1 / Math.sqrt(2 * Math.PI),
 		mean = 0,
 		sigma = 1;
 
 	x = (x - mean) / sigma;
-	return gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+	return gaussianConstant * Math.exp(-0.5 * x * x) / sigma;
 };
 
 
@@ -51,9 +53,9 @@ class LifetimeData extends React.Component {
 
 		// loop to populate data array with
 		// probabily - quantile pairs
-		for (var i = 0; i < 200; i++) {
-			const q = normal() // calc random draw from normal dist
-			const p = gaussian(q) // calc prob of rand draw
+		for (let i = 0; i < 200; i++) {
+			const q = normal(); // calc random draw from normal dist
+			const p = gaussian(q); // calc prob of rand draw
 			const el = {
 				q,
 				p,
@@ -64,31 +66,25 @@ class LifetimeData extends React.Component {
 			const el2 = {
 				q: q2,
 				p: (p2 * 0.8) - 0.02,
-			}
+			};
 
 			const q3 = normal();
 			const p3 = gaussian(q3);
 			const el3 = {
 				q: q3,
 				p: (p3 * 0.6) - 0.01,
-			}
+			};
 
-			data.push(el)
-			data2.push(el2)
-			data3.push(el3)
-		};
+			data.push(el);
+			data2.push(el2);
+			data3.push(el3);
+		}
 
 		// need to sort for plotting
-		//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-		data.sort((x, y) => {
-			return x.q - y.q;
-		});
-		data2.sort((x, y) => {
-			return x.q - y.q;
-		});
-		data3.sort((x, y) => {
-			return x.q - y.q;
-		});
+		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+		data.sort((x, y) => x.q - y.q);
+		data2.sort((x, y) => x.q - y.q);
+		data3.sort((x, y) => x.q - y.q);
 
 		// Set the dimensions of the canvas / graph
 		const width = window.innerWidth;
@@ -101,67 +97,67 @@ class LifetimeData extends React.Component {
 		// define the line
 		const lineWhite = d3.line()
 			.curve(d3.curveNatural)
-			.x((d) => x(d.q) )
-			.y((d) => y(d.p) )
+			.x(d => x(d.q))
+			.y(d => y(d.p))
 			;
 
 		const linePrimary = d3.line()
 			.curve(d3.curveNatural)
-			.x((d) => x(d.q) )
-			.y((d) => y(d.p) )
+			.x(d => x(d.q))
+			.y(d => y(d.p))
 			;
 
 		const lineAccent = d3.line()
 			.curve(d3.curveNatural)
-			.x((d) => x(d.q) )
-			.y((d) => y(d.p) )
+			.x(d => x(d.q))
+			.y(d => y(d.p))
 			;
 
 		// append the svg obgect to the body of the page
 		// appends a 'group' element to 'svg'
-		const svg = d3.select(".lifetimeDataLineGraph").append("svg")
-			.attr("width", width)
-			.attr("height", height)
-		  .append("g")
+		const svg = d3.select('.lifetimeDataLineGraph').append('svg')
+			.attr('width', width)
+			.attr('height', height)
+		  .append('g');
 			/*
 			.attr("transform",
 				  "translate(" + margin.left + "," + margin.top + ")");
 					*/
 
 	  // Scale the range of the data
-	  x.domain(d3.extent(data, (d) => d.q ));
-	  y.domain([0, d3.max(data, (d) => d.p )]);
+	  x.domain(d3.extent(data, d => d.q));
+	  y.domain([0, d3.max(data, d => d.p)]);
 
 	  // Add the line paths
-	  svg.append("path")
+	  svg.append('path')
 		  .data([data])
-		  .attr("class", "line")
-			.attr("stroke", "#ffffff")
-			.attr("fill", "transparent")
-			.style("stroke-dasharray", '1, 20')
-			.style("stroke-linecap", 'round')
-			.style("stroke-width", '1')
-		  .attr("d", lineWhite);
+		  .attr('class', 'line')
+			.attr('stroke', '#ffffff')
+			.attr('fill', 'transparent')
+			.style('stroke-dasharray', '1, 20')
+			.style('stroke-linecap', 'round')
+			.style('stroke-width', '1')
+		  .attr('d', lineWhite);
 
-	  svg.append("path")
+	  svg.append('path')
 		  .data([data2])
-		  .attr("class", "line")
-			.attr("stroke", "#03A9F4")
-			.attr("fill", "transparent")
-			.style("stroke-dasharray", '1, 20')
-			.style("stroke-linecap", 'round')
-			.style("stroke-width", '1')
-		  .attr("d", linePrimary);
+		  .attr('class', 'line')
+			.attr('stroke', '#03A9F4')
+			.attr('fill', 'transparent')
+			.style('stroke-dasharray', '1, 20')
+			.style('stroke-linecap', 'round')
+			.style('stroke-width', '1')
+		  .attr('d', linePrimary);
 
-	  svg.append("path")
+	  svg.append('path')
 		  .data([data3])
-		  .attr("class", "line")
-			.attr("stroke", "#666666")
-			.attr("fill", "transparent")
-			.style("stroke-dasharray", '1, 20')
-			.style("stroke-linecap", 'round')
-			.style("stroke-width", '1')
-		  .attr("d", lineAccent);
+		  .attr('class', 'line')
+			.attr('stroke', '#666666')
+			.attr('fill', 'transparent')
+			.style('stroke-dasharray', '1, 20')
+			.style('stroke-linecap', 'round')
+			.style('stroke-width', '1')
+		  .attr('d', lineAccent);
 	}
 
 	handleStepHover(newActiveStepIndex) {

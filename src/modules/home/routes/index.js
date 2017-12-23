@@ -13,20 +13,24 @@ import getCurrentProjectHostname from '../../../lib/getCurrentProjectHostname';
 
 export default (
 	<div>
-		<Route exact path="/" component={() => {
-			const currentProjectHostname = getCurrentProjectHostname();
+		<Route
+			exact
+			path="/"
+			component={() => {
+				const currentProjectHostname = getCurrentProjectHostname();
 
 			// If this is a project, return the project home container
-			if (currentProjectHostname && currentProjectHostname.length) {
-				return (
-					<ProjectHomeContainer />
-				);
-			}
+				if (currentProjectHostname && currentProjectHostname.length) {
+					return (
+						<ProjectHomeContainer />
+					);
+				}
 
 			// Otherwise, return the main orpheus home page
-			return (
-				<Home />
-			);
-		}} />
+				return (
+					<Home />
+				);
+			}}
+		/>
 	</div>
 );

@@ -8,23 +8,23 @@ import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader
 import './ItemEditor.css';
 
 
-const required = value => value ? undefined : 'Required';
-const maxLength = max => value =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined
-const maxLength200 = maxLength(200)
-const maxLength200000 = maxLength(200000)
+const required = value => value ? undefined : 'Required'; // eslint-disable-line
+const maxLength = max => value => // eslint-disable-line
+  value && value.length > max ? `Must be ${max} characters or less` : undefined; // eslint-disable-line
+const maxLength200 = maxLength(200);
+const maxLength200000 = maxLength(200000);
 
 
 class ItemEditor extends React.Component {
-  componentWillReceiveProps (nextProps) {
-    if (
-			!this.props.item && nextProps.item
+	componentWillReceiveProps (nextProps) {
+		if (
+			(!this.props.item && nextProps.item)
 		|| this.props.item !== nextProps.item
 		) {
-      this.props.destroy();
-      this.props.initialize({ ...nextProps.item });
-    }
-  }
+			this.props.destroy();
+			this.props.initialize({ ...nextProps.item });
+		}
+	}
 
 	render() {
 		const { item } = this.props;

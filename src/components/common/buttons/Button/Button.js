@@ -6,7 +6,7 @@ import './Button.css';
 const Button = (props) => {
 
 	const { to, onClick, light, transparentLight, dark, primary, accent, outline, classes } = props;
-	const _classes = classes ||  [];
+	const _classes = classes || [];
 
 	_classes.push('orpheus-button');
 

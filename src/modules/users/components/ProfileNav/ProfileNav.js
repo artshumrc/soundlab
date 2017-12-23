@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
 import './ProfileNav.css';
 
 
-const ProfileNav = props => {
+const ProfileNav = (props) => {
 	const activePath = props.location.pathname;
 
 	return (
@@ -14,7 +13,7 @@ const ProfileNav = props => {
 				to="/profile"
 				className={
 					activePath === '/profile' ?
-					"profileNavLinkActive"
+					'profileNavLinkActive'
 					: ''
 				}
 			>
@@ -25,7 +24,7 @@ const ProfileNav = props => {
 				to="/profile/projects"
 				className={
 					activePath === '/profile/projects' ?
-					"profileNavLinkActive"
+					'profileNavLinkActive'
 					: ''
 				}
 			>
@@ -36,7 +35,7 @@ const ProfileNav = props => {
 				to="/create"
 				className={
 					activePath === '/create' ?
-					"profileNavLinkActive"
+					'profileNavLinkActive'
 					: ''
 				}
 			>
@@ -45,6 +44,6 @@ const ProfileNav = props => {
 			</Link>
 		</div>
 	);
-}
+};
 
 export default withRouter(ProfileNav);

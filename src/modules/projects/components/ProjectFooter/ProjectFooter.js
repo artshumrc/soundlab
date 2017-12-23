@@ -43,7 +43,7 @@ export default class Footer extends React.Component {
 					</Row>
 					<Row>
 						<Col>
-              <span className="footerCopyright">
+							<span className="footerCopyright">
 								© Copyright Example Project, {year}
 							</span>
 						</Col>

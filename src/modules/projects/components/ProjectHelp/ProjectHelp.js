@@ -15,9 +15,7 @@ const ProjectHelp = () => (
 			</Row>
 			<Row>
 				<Col>
-					<div className="contactSupport">
-
-					</div>
+					<div className="contactSupport" />
 				</Col>
 			</Row>
 		</Grid>

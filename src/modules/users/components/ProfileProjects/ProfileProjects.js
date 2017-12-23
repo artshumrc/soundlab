@@ -29,7 +29,7 @@ const ProfileProjects = ({ projects }) => (
 				{projects && !projects.length ?
 					<div className="profileProjectListNoResults">
 						<p>
-							You don't belong to any projects. <Link to="/create">Create one.</Link>
+							You don&apos;t belong to any projects. <Link to="/create">Create one.</Link>
 						</p>
 					</div>
 				: ''}

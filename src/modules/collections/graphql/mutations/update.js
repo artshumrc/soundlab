@@ -10,7 +10,7 @@ const collectionUpdate = gql`
 
 const collectionUpdateMutation = graphql(collectionUpdate, {
 	props: params => ({
-		collectionUpdate: (collection) => params.collectionUpdateMutation({
+		collectionUpdate: collection => params.collectionUpdateMutation({
 			variables: {
 				collection,
 			},

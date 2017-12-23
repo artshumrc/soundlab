@@ -19,7 +19,7 @@ import { logoutUser } from '../../../lib/auth';
 import './LeftMenu.css';
 
 
-const LeftMenu =  ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId, dispatchLogout, dispatchToggleAuthModal }) => (
+const LeftMenu = ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId, dispatchLogout, dispatchToggleAuthModal }) => (
 	<Drawer
 		open={leftMenuOpen}
 		docked={false}

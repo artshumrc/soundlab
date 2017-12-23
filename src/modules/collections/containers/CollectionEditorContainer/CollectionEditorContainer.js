@@ -21,7 +21,7 @@ class CollectionEditorContainer extends React.Component {
 		delete values.__typename;
 		collectionUpdate(values)
 			.then((response) => {
-				router.replace(`/dashboard/`);
+				router.replace('/dashboard/');
 			})
 			.catch((err) => {
 				console.log(err);

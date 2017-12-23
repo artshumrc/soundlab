@@ -80,7 +80,7 @@ export default class CoverImageUploader extends React.Component {
 							this.state.uploading ?
 								'Uploading...'
 							:
-	              'Drop a cover image'
+								'Drop a cover image'
             }
 					</div>
 				</Dropzone>

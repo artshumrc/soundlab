@@ -10,21 +10,18 @@ import './Dashboard.css';
 
 
 
-const Dashboard = ({ collectionsCount, articlesCount, itemsCount, textsCount }) => {
-
-	return (
-		<div className="dashboard">
-			<DashboardNav />
-			<DashboardCounts
-				collectionsCount={collectionsCount}
-				articlesCount={articlesCount}
-				itemsCount={itemsCount}
-				textsCount={textsCount}
-			/>
-			<DashboardRecentActivity />
-		</div>
+const Dashboard = ({ collectionsCount, articlesCount, itemsCount, textsCount }) => (
+	<div className="dashboard">
+		<DashboardNav />
+		<DashboardCounts
+			collectionsCount={collectionsCount}
+			articlesCount={articlesCount}
+			itemsCount={itemsCount}
+			textsCount={textsCount}
+		/>
+		<DashboardRecentActivity />
+	</div>
 	);
-}
 
 Dashboard.propTypes = {
 	collectionsCount: PropTypes.number,

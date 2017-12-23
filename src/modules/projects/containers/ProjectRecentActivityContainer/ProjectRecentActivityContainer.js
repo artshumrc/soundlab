@@ -8,15 +8,15 @@ import projectActivityQuery from '../../graphql/queries/activity';
 
 
 
-const ProjectRecentActivityContainer = ({}) => {
-	let activityFeed = [];
+const ProjectRecentActivityContainer = () => {
+	const activityFeed = [];
 
 	return (
 		<ProjectRecentActivity
 			activityFeed={activityFeed}
 		/>
 	);
-}
+};
 
 
 export default compose(

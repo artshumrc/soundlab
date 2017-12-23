@@ -24,13 +24,12 @@ const query = gql`
 
 const collectionQuery = graphql(query, {
 	name: 'collectionQuery',
-  options: ({ params }) => {
-		return ({
-    variables: {
-      hostname: getCurrentProjectHostname(),
-      slug: params.slug,
-    }
-  })},
+	options: ({ params }) => ({
+		variables: {
+			hostname: getCurrentProjectHostname(),
+			slug: params.slug,
+		}
+	}),
 });
 
 export default collectionQuery;

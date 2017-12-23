@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import ReactMapboxGl from "react-mapbox-gl";
+import ReactMapboxGl from 'react-mapbox-gl';
 
 
 import './ProjectVisit.css';
@@ -9,7 +9,7 @@ export default class ProjectVisit extends React.Component {
 
 	render() {
 		const Map = ReactMapboxGl({
-			accessToken: "pk.eyJ1IjoibHVrZWhvbGxpcyIsImEiOiJ6Rk1vdjc0In0.jQDtXA8wqU_wYi5p1ClCyw",
+			accessToken: 'pk.eyJ1IjoibHVrZWhvbGxpcyIsImEiOiJ6Rk1vdjc0In0.jQDtXA8wqU_wYi5p1ClCyw',
 			scrollZoom: false,
 		});
 
@@ -22,16 +22,15 @@ export default class ProjectVisit extends React.Component {
 					>
 						<Map
 						  style="mapbox://styles/lukehollis/cj7dnh4fb11452smw1dj34x04" // eslint-disable-line
-						  containerStyle={{
-						    height: "100vh",
-						    width: "100%"
-						  }}
+							containerStyle={{
+								height: '100vh',
+								width: '100%'
+							}}
 							center={[
-								-71.1139213,42.3741574
+								-71.1139213, 42.3741574
 							]}
-						  zoom={[13]}
-						>
-						</Map>
+							zoom={[13]}
+						/>
 					</Col>
 					<Col
 						md={7}

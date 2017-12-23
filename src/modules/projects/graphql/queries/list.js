@@ -10,11 +10,9 @@ const query = gql`
 
 const projectsQuery = graphql(query, {
 	name: 'projectsQuery',
-  props: props => {
-    return {
-      projects: props.projectsQuery.projects,
-    };
-  },
+	props: props => ({
+		projects: props.projectsQuery.projects,
+	}),
 });
 
-export projectsQuery;
+export default projectsQuery;

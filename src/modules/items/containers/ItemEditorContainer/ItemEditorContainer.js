@@ -30,7 +30,7 @@ class ItemEditorContainer extends React.Component {
 		} else {
 			itemCreate(values)
 				.then((response) => {
-					router.replace(`/items/`);
+					router.replace('/items/');
 				})
 				.catch((err) => {
 					console.log(err);

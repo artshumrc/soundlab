@@ -1,7 +1,8 @@
 import React from 'react';
-import './TestimonialSection.css';
-import {Grid, Row, Col, Image} from 'react-bootstrap';
+import { Grid, Row, Col, Image } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
+
+import './TestimonialSection.css';
 
 export default class TestimonialSection extends React.Component {
 	render() {
@@ -25,7 +26,7 @@ export default class TestimonialSection extends React.Component {
                     lacus pretium rhoncus a quis
                     nisly Ut vehicula gravida dui in pulvinar donec diam elit to the end consequateget augue vitae
                     aliquet sollicitudin.
-                    <br /><br />
+										<br /><br />
 										<span className="testimonyAuthor">- Ashiful Pappu | Museum Archeologist</span>
 									</p>
 								</Col>

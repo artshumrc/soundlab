@@ -29,7 +29,7 @@ class ProjectNameAvailabilityCheckContainer extends React.Component {
 				onChange={this.props.onChange}
 				onSubmit={this.props.onSubmit}
 			/>
-		)
+		);
 	}
 }
 

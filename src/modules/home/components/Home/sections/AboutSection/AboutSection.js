@@ -15,7 +15,7 @@ export default class AboutSection extends React.Component {
 		const selImage = _.sample(artImages);
 		const exampleItem = {
 			imageUrl: `//iiif.orphe.us/orpheus/art/${selImage}.jpg/full/400,/0/default.jpg`,
-			title: `Example Item`,
+			title: 'Example Item',
 			tags: ['Manuscripts', '12th Century'],
 			collection: 'example-collection',
 			slug: 'example-item',
@@ -39,7 +39,7 @@ export default class AboutSection extends React.Component {
 										. . . it will never pass into nothingness.
 									</p>
 									<p className="quoteByline">
-										&mdash; John Keats, "Endymion"
+										&mdash; John Keats, &quot;Endymion&quot;
 									</p>
 								</blockquote>
 							</div>

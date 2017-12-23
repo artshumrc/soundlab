@@ -47,7 +47,6 @@ CollectionListItem.propTypes = {
 	slug: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	imageUrl: PropTypes.string,
-	tags: PropTypes.array,
 };
 
 export default CollectionListItem;

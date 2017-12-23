@@ -24,8 +24,8 @@ const CollectionsCover = ({ title, createLink }) => {
 		>
 			<CoverTitle
 				title={title}
-				coverLink={createLink ? "/collections/create" : null}
-				coverLinkText={createLink ? "Create a new collection" : null}
+				coverLink={createLink ? '/collections/create' : null}
+				coverLinkText={createLink ? 'Create a new collection' : null}
 			/>
 		</Cover>
 	);

@@ -33,7 +33,7 @@ class _Bricks extends React.Component {
 
 	initializeBricks() {
 		this.instance = Bricks({
-		  container: '.bricks-inner',
+			container: '.bricks-inner',
 			packed: 'data-packed',
 			sizes: [
 				{ columns: 5, gutter: 20 },
@@ -83,7 +83,7 @@ class _Bricks extends React.Component {
 		return images.map((image, i) => (
 			<img
 				alt={image}
-				key={`${image}-${i}`}
+				key={`${image}-${i}`} // eslint-disable-line
 				className="brick"
 				src={`//iiif.orphe.us/orpheus/art/${image}.jpg/full/90,/0/default.jpg`}
 				onLoad={this.handleImageLoad.bind(this)}
@@ -92,7 +92,7 @@ class _Bricks extends React.Component {
 	}
 
 	render() {
-	 	let bricks = this.props.children;
+		let bricks = this.props.children;
 		const { loaded } = this.props;
 
 		if (!bricks) {

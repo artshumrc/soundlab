@@ -5,7 +5,8 @@ import { Link } from 'react-router';
 const UserListItem = ({ username, avatarUrl }) => (
 	<div className="userListItem">
 		<Link to="/profile">
-			<div className="userListItemAvatarImage"
+			<div
+				className="userListItemAvatarImage"
 				style={{
 					backgroundImage: `url('${avatarUrl}')`,
 					backgroundSize: 'cover',

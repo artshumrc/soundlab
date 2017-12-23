@@ -12,7 +12,7 @@ export default class ProjectPeople extends React.Component {
 		const people = [];
 
 		// Faker people
-		_.range(0, 5).forEach(i => {
+		_.range(0, 5).forEach((i) => {
 			people.push({
 				imageName: faker.image.avatar(),
 				name: faker.name.findName(),
