@@ -3,13 +3,11 @@ import { Field, reduxForm } from 'redux-form';
 import _ from 'underscore';
 
 import DashboardNav from '../../../dashboard/components/DashboardNav';
+import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './ProjectEditor.css';
 
 
-const required = value => value ? undefined : 'Required'; // eslint-disable-line
-const maxLength = max => value => // eslint-disable-line
-  value && value.length > max ? `Must be ${max} characters or less` : undefined; // eslint-disable-line
 const maxLength200 = maxLength(200);
 const maxLength2100 = maxLength(2100);
 

@@ -2,13 +2,11 @@ import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import ProfileNav from '../ProfileNav';
+import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './Profile.css';
 
 
-const required = value => value ? undefined : 'Required'; // eslint-disable-line
-const maxLength = max => value => // eslint-disable-line
-  value && value.length > max ? `Must be ${max} characters or less` : undefined; // eslint-disable-line
 const maxLength200 = maxLength(200);
 const maxLength2100 = maxLength(2100);
 

@@ -4,13 +4,11 @@ import { Field, reduxForm } from 'redux-form';
 import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 import CoverImageUploader from '../../../dashboard/components/CoverImageUploader';
+import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './CollectionEditor.css';
 
 
-const required = value => value ? undefined : 'Required'; // eslint-disable-line
-const maxLength = max => value => // eslint-disable-line
-  value && value.length > max ? `Must be ${max} characters or less` : undefined; // eslint-disable-line
 const maxLength200 = maxLength(200);
 const maxLength2100 = maxLength(2100);
 
@@ -41,7 +39,7 @@ class CollectionEditor extends React.Component {
 					onSubmit={this.props.handleSubmit}
 				>
 					<div className="collectionEditorFormInputOuter collectionEditorFormTitleOuter">
-						<label>Title</label>
+						<label>Enter the title of the collection.</label>
 						<Field
 							name="title"
 							type="text"

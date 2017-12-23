@@ -4,13 +4,11 @@ import { Field, reduxForm } from 'redux-form';
 import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader';
+import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './ItemEditor.css';
 
 
-const required = value => value ? undefined : 'Required'; // eslint-disable-line
-const maxLength = max => value => // eslint-disable-line
-  value && value.length > max ? `Must be ${max} characters or less` : undefined; // eslint-disable-line
 const maxLength200 = maxLength(200);
 const maxLength200000 = maxLength(200000);
 

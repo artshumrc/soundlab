@@ -2,13 +2,11 @@ import React from 'react';
 import Recaptcha from 'react-recaptcha';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import Button from '../../../../components/common/buttons/Button';
+import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './ProjectNameAvailabilityCheck.css';
 
 
-const required = value => value ? undefined : 'Required'; // eslint-disable-line
-const maxLength = max => value => // eslint-disable-line
-  value && value.length > max ? `Must be ${max} characters or less` : undefined; // eslint-disable-line
 const maxLength200 = maxLength(200);
 
 
