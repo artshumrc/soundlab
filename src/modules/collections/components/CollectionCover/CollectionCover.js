@@ -7,6 +7,7 @@ import BackgroundImage from '../../../../components/common/cover/BackgroundImage
 
 import './CollectionCover.css';
 
+
 const CollectionCover = ({ title, coverImage, coverLink, coverLinkText }) => (
 	<Cover
 		className="collections-cover"

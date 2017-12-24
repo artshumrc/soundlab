@@ -33,8 +33,6 @@ export default class CoverImageUploader extends React.Component {
 			uploading: false,
 		});
 
-		console.log(event);
-
 		const image = {
 			name: event.filename,
 			path: `${process.env.REACT_APP_BUCKET_URL}/${event.filename}`,

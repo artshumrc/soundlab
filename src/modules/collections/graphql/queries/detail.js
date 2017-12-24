@@ -15,6 +15,7 @@ const query = gql`
 				coverImage
 				description
 				itemsCount
+				projectId
 				items {
 					_id
 					title

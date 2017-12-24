@@ -27,6 +27,7 @@ class CollectionEditorContainer extends React.Component {
 
 		// remove unused values
 		delete values.__typename;
+		delete values.itemsCount;
 
 		// set cover image from state
 		if (coverImage) {
@@ -36,7 +37,7 @@ class CollectionEditorContainer extends React.Component {
 		if ('_id' in values) {
 			collectionUpdate(values)
 				.then((response) => {
-					router.replace('/collections/');
+					router.replace(`/collections/${values.slug}`);
 				})
 				.catch((err) => {
 					console.log(err);
@@ -74,7 +75,16 @@ class CollectionEditorContainer extends React.Component {
 		let collection;
 
 		if (this.props.collectionQuery && !this.props.collectionQuery.loading) {
-			collection = this.props.collectionQuery.collection;
+			collection = this.props.collectionQuery.project.collection;
+		}
+
+		let coverImage = null;
+		if (this.state.coverImage && this.state.coverImage !== null) {
+			coverImage = this.state.coverImage;
+		} else if (collection) {
+			coverImage = {
+				path: `//iiif.orphe.us/${collection.coverImage}/full/1400,/0/default.jpg`,
+			};
 		}
 
 		return (
@@ -82,7 +92,7 @@ class CollectionEditorContainer extends React.Component {
 				onSubmit={this.handleSubmit}
 				onRemove={this.handleRemove}
 				changeImageValue={this.changeImageValue}
-				coverImage={this.state.coverImage}
+				coverImage={coverImage}
 				collection={collection}
 			/>
 		);
