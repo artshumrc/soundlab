@@ -29,7 +29,7 @@ class Cover extends React.Component {
 		const { className, full, left, bottom, background, reactsToMouse, overlay } = this.props;
 		const classes = [className];
 		const { windowWidth } = this.state;
-		let height = window.innerHeight * 0.8;
+		let height = window.innerHeight * 0.66;
 
 		if (full) {
 			classes.push('cover--full');

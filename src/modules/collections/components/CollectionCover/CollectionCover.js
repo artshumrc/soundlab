@@ -7,32 +7,33 @@ import BackgroundImage from '../../../../components/common/cover/BackgroundImage
 
 import './CollectionCover.css';
 
-const CollectionCover = ({ title, createLink }) => {
-	const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
-		83, 87, 90, 92, 93, 95, 102, 103];
-	const selImage = _.sample(artImages);
-
-	return (
-		<Cover
-			className="collections-cover"
-			background={
-				<BackgroundImage
-					src={`//iiif.orphe.us/orpheus/art/${selImage}.jpg/full/1400,/0/default.jpg`}
-				/>
-			}
-			bottom
-		>
-			<CoverTitle
-				title={title}
-				coverLink={createLink ? '/collections/create' : null}
-				coverLinkText={createLink ? 'Create a new collection' : null}
+const CollectionCover = ({ title, coverImage, createLink }) => (
+	<Cover
+		className="collections-cover"
+		background={
+			<BackgroundImage
+				src={
+					coverImage ?
+					`//iiif.orphe.us/${coverImage}/full/1400,/0/default.jpg`
+					: null
+				}
 			/>
-		</Cover>
-	);
-};
+		}
+		bottom
+		reactsToMouse
+	>
+		<CoverTitle
+			title={title}
+			coverLink={createLink ? '/collections/create' : null}
+			coverLinkText={createLink ? 'Create a new collection' : null}
+		/>
+	</Cover>
+);
 
 CollectionCover.propTypes = {
-	title: PropTypes.string.isRequired
+	title: PropTypes.string.isRequired,
+	coverImage: PropTypes.string,
+	createLink: PropTypes.bool,
 };
 
 export default CollectionCover;

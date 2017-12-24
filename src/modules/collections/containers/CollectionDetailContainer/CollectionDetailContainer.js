@@ -1,0 +1,32 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { compose } from 'react-apollo';
+import autoBind from 'react-autobind';
+
+import CollectionDetail from '../../components/CollectionDetail';
+import collectionDetailQuery from '../../graphql/queries/detail';
+
+
+class CollectionDetailContainer extends React.Component {
+	render() {
+		let collection = [];
+
+		if (
+			this.props.collectionQuery
+			&& !this.props.collectionQuery.loading
+			&& this.props.collectionQuery.project
+		) {
+			collection = this.props.collectionQuery.project.collection;
+		}
+
+		return (
+			<CollectionDetail
+				{...collection}
+			/>
+		);
+	}
+}
+
+export default compose(
+	collectionDetailQuery,
+)(CollectionDetailContainer);

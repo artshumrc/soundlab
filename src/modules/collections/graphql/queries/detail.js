@@ -13,10 +13,22 @@ const query = gql`
 				slug
 				coverImage
 				description
+				itemsCount
 				items {
 					_id
 					title
+					description
 					slug
+					files {
+						_id
+						name
+						title
+						itemId
+						type
+						path
+						thumbPath
+						slug
+					}
 				}
 			}
 		}
