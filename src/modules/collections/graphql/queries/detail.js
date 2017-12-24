@@ -11,6 +11,7 @@ const query = gql`
 				_id
 				title
 				slug
+				coverImage
 				description
 				items {
 					_id

@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import S3Upload from 'react-s3-uploader/s3upload';
+import autoBind from 'react-autobind';
 
 import makeId from '../../../../lib/makeId';
 
@@ -9,14 +10,12 @@ import './CoverImageUploader.css';
 export default class CoverImageUploader extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleFinish = this.handleFinish.bind(this);
-		this.uploadFile = this.uploadFile.bind(this);
-		this.handleProgress = this.handleProgress.bind(this);
-		this.handleError = this.handleError.bind(this);
+
 		this.state = {
 			image: this.props.image,
 			uploading: false
 		};
+		autoBind(this);
 	}
 
 	handleError(error) {
@@ -30,7 +29,11 @@ export default class CoverImageUploader extends React.Component {
 	}
 
 	handleFinish(event) {
-		this.setState({uploading: false});
+		this.setState({
+			uploading: false,
+		});
+
+		console.log(event);
 
 		const image = {
 			name: event.filename,
@@ -40,7 +43,7 @@ export default class CoverImageUploader extends React.Component {
 			_id: this._id
 		};
 
-		this.props.image.changeValue('coverImage', image);
+		this.props.changeValue(image);
 	}
 
 	handleProgress(event) {
@@ -60,10 +63,10 @@ export default class CoverImageUploader extends React.Component {
 				onProgress: this.handleProgress,
 				fileElement: fileToUpload,
 				signingUrl: '/s3/sign',
-				s3path: 'uploads/',
+				s3path: 'images/',
 				server: process.env.REACT_APP_SERVER,
 				onError: this.handleError,
-				uploadRequestHeaders: {'x-amz-acl': 'public-read'},
+				uploadRequestHeaders: { 'x-amz-acl': 'public-read' },
 				contentDisposition: 'auto',
 				scrubFilename: (filename) => {
           const secureFilename = filename.replace(/[^\w\d_\-\.]+/ig, ''); // eslint-disable-line
@@ -77,20 +80,38 @@ export default class CoverImageUploader extends React.Component {
 
 	render() {
 		const { image } = this.props;
-		const backgroundImage = image && image.input && image.input.value ? {background: `url(${image.input.value.path})`} : {};
+		const styles = {
+			backgroundColor: '#fff',
+			backgroundSize: 'cover',
+			backgroundPosition: 'center',
+			backgroundRepeat: 'no-repeat',
+		};
+
+		if (image) {
+			styles.backgroundImage = `url(${image.path})`;
+		}
+
+
 		return (
 			<div className="coverImageUploader">
-				<Dropzone className="backgroundImage" accept="image/*" style={backgroundImage} onDrop={this.uploadFile}>
-					<div className="coverImageLabel">
-						<label>
-							{
-								this.state.uploading ?
-									'Uploading...'
-								:
-									'Drag and drop a cover image or click to select file'
-							}
-						</label>
-					</div>
+				<Dropzone
+					className="backgroundImage"
+					accept="image/*"
+					onDrop={this.uploadFile}
+					style={styles}
+				>
+					{!image ?
+						<div className="coverImageLabel">
+							<label>
+								{
+									this.state.uploading ?
+										'Uploading...'
+									:
+										'Drag and drop a cover image or click to select file'
+								}
+							</label>
+						</div>
+					: ''}
 				</Dropzone>
 			</div>
 		);

@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo';
 
 const collectionUpdate = gql`
-	mutation collectionUpdate($collection: ProjectInputType!) {
+	mutation collectionUpdate($collection: CollectionInputType!) {
 	collectionUpdate(collection: $collection) {
 		_id
 	}
@@ -18,7 +18,7 @@ const collectionUpdateMutation = graphql(collectionUpdate, {
 	}),
 	name: 'collectionUpdateMutation',
 	options: {
-		refetchQueries: ['collectionsQuery'],
+		refetchQueries: ['collectionsQuery', 'collectionQuery'],
 	},
 });
 

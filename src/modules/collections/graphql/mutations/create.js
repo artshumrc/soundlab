@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo';
 
 const collectionCreate = gql`
-mutation collectionCreate($collection: ProjectInputType!) {
+mutation collectionCreate($collection: CollectionInputType!) {
 	collectionCreate(collection: $collection) {
     _id
 	}
@@ -17,6 +17,9 @@ const collectionCreateMutation = graphql(collectionCreate, {
 		}),
 	}),
 	name: 'collectionCreateMutation',
+	options: {
+		refetchQueries: ['collectionsQuery', 'collectionQuery'],
+	},
 });
 
 export default collectionCreateMutation;

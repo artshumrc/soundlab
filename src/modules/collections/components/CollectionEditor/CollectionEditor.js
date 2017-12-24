@@ -34,6 +34,7 @@ class CollectionEditor extends React.Component {
 
 				<CoverImageUploader
 					changeValue={this.props.changeImageValue}
+					image={this.props.coverImage}
 				/>
 
 				<form

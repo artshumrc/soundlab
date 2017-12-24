@@ -19,7 +19,7 @@ const itemRemoveMutation = graphql(itemRemove, {
 	}),
 	name: 'itemRemoveMutation',
 	options: {
-		refetchQueries: ['itemsQuery'],
+		refetchQueries: ['itemsQuery', 'itemQuery'],
 	},
 });
 

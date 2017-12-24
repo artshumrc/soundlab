@@ -1,7 +1,7 @@
 import { gql, graphql } from 'react-apollo';
 
 const itemUpdate = gql`
-	mutation itemUpdate($item: ProjectInputType!) {
+	mutation itemUpdate($item: ItemInputType!) {
 	itemUpdate(item: $item) {
 		_id
 	}
@@ -18,7 +18,7 @@ const itemUpdateMutation = graphql(itemUpdate, {
 	}),
 	name: 'itemUpdateMutation',
 	options: {
-		refetchQueries: ['itemsQuery'],
+		refetchQueries: ['itemsQuery', 'itemQuery'],
 	},
 });
 
