@@ -7,7 +7,7 @@ import BackgroundImage from '../../../../components/common/cover/BackgroundImage
 
 import './CollectionCover.css';
 
-const CollectionCover = ({ title, coverImage, createLink }) => (
+const CollectionCover = ({ title, coverImage, coverLink, coverLinkText }) => (
 	<Cover
 		className="collections-cover"
 		background={
@@ -24,8 +24,8 @@ const CollectionCover = ({ title, coverImage, createLink }) => (
 	>
 		<CoverTitle
 			title={title}
-			coverLink={createLink ? '/collections/create' : null}
-			coverLinkText={createLink ? 'Create a new collection' : null}
+			coverLink={coverLink}
+			coverLinkText={coverLinkText}
 		/>
 	</Cover>
 );
@@ -33,7 +33,8 @@ const CollectionCover = ({ title, coverImage, createLink }) => (
 CollectionCover.propTypes = {
 	title: PropTypes.string.isRequired,
 	coverImage: PropTypes.string,
-	createLink: PropTypes.bool,
+	coverLink: PropTypes.string,
+	coverLinkText: PropTypes.string,
 };
 
 export default CollectionCover;

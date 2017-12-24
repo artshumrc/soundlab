@@ -16,18 +16,18 @@
 
 .coverLink {
 	font-family: $font-reading;
-	color: #bbb;
-	font-size: 16px;
+	color: $primary;
+	font-size: 22px;
 	font-weight: 100;
 	font-style: italic;
 	display: inline-block;
 	vertical-align: baseline;
 	padding: 0px;
-	border-bottom: 1px solid $divider-light-grey;
+	border-bottom: 1px solid transparent;
 	@include transition(100ms all ease-in-out);
 
 	&:hover {
-		color: $primary;
+		color: $primary-dark;
 		border-bottom: 1px solid transparent;
 	}
 }

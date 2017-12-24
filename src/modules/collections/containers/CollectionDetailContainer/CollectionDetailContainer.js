@@ -10,6 +10,7 @@ import collectionDetailQuery from '../../graphql/queries/detail';
 class CollectionDetailContainer extends React.Component {
 	render() {
 		let collection = [];
+		let userIsAdmin = false;
 
 		if (
 			this.props.collectionQuery
@@ -17,11 +18,13 @@ class CollectionDetailContainer extends React.Component {
 			&& this.props.collectionQuery.project
 		) {
 			collection = this.props.collectionQuery.project.collection;
+			userIsAdmin = this.props.collectionQuery.project.userIsAdmin;
 		}
 
 		return (
 			<CollectionDetail
 				{...collection}
+				userIsAdmin={userIsAdmin}
 			/>
 		);
 	}

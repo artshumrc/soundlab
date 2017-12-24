@@ -7,13 +7,13 @@ import ProjectLayout from '../../projects/layouts/ProjectLayout';
 // components
 import CollectionEditorContainer from '../containers/CollectionEditorContainer';
 import CollectionDetailContainer from '../containers/CollectionDetailContainer';
-import CollectionListPage from '../components/CollectionListPage';
+import CollectionListPageContainer from '../containers/CollectionListPageContainer';
 
 export default (
 	<div>
 
 		<Route path="/collections" component={ProjectLayout}>
-			<IndexRoute component={CollectionListPage} />
+			<IndexRoute component={CollectionListPageContainer} />
 			<Route path="/collections/create" component={CollectionEditorContainer} />
 			<Route path="/collections/:slug" component={CollectionDetailContainer} />
 			<Route path="/collections/:slug/edit" component={CollectionEditorContainer} />

@@ -14,6 +14,8 @@ const CollectionDetail = props => (
 		<CollectionCover
 			title={props.title}
 			coverImage={props.coverImage}
+			coverLink={props.userIsAdmin ? `/collections/${props.slug}/edit` : null}
+			coverLinkText={props.userIsAdmin ? 'Edit' : null}
 		/>
 		{props.description ?
 			<CollectionDescription

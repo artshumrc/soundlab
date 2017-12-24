@@ -8,7 +8,8 @@ const CollectionListPage = props => (
 	<div >
 		<CollectionCover
 			title="Collections"
-			createLink={false}
+			coverLink={props.userIsAdmin ? '/collections/create' : null}
+			coverLinkText={props.userIsAdmin ? 'Create new' : null}
 		/>
 		<CollectionListContainer />
 	</div>
