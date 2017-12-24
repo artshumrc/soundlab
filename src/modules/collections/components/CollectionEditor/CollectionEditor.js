@@ -32,7 +32,9 @@ class CollectionEditor extends React.Component {
 
 				<h1>{collection ? 'Edit' : 'Create'} Collection</h1>
 
-				<CoverImageUploader />
+				<CoverImageUploader
+					changeValue={this.props.changeImageValue}
+				/>
 
 				<form
 					className="collectionEditorForm"

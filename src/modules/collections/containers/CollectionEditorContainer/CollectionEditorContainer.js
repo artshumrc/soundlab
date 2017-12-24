@@ -14,6 +14,10 @@ class CollectionEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		autoBind(this);
+
+		this.state = {
+			image: null,
+		};
 	}
 
 	handleSubmit(values) {
@@ -38,6 +42,12 @@ class CollectionEditorContainer extends React.Component {
 			.catch((err) => {
 				console.log(err);
 			});
+	}
+
+	changeImageValue(image) {
+		this.setState({
+			image
+		});
 	}
 
 	render() {
