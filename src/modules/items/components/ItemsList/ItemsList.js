@@ -1,11 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'underscore';
+
+import NoResults from '../../../../components/pagination/NoResults';
+import ItemListItem from '../ItemListItem';
 
 import './ItemsList.css';
 
-import ItemListItem from '../ItemListItem';
 
-const ItemsList = (props) => {
+const ItemsList = ({ items, horizontal }) => {
 	const listItems = [];
 	const classes = [];
 	const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
@@ -23,21 +26,34 @@ const ItemsList = (props) => {
 	});
 
 
-	if (props.horizontal) {
+	if (horizontal) {
 		classes.push('itemsListHorizontal');
 	}
 
 	return (
 		<div className={`itemsList ${classes.join(' ')}`}>
-			{listItems.map((listItem, i) => (
+			{items.map((listItem, i) => (
 				<ItemListItem
 					key={`${listItem.slug}-${i}`}
 					{...listItem}
 				/>
 			))}
+
+			{!items || !items.length ?
+				<NoResults
+					message="No items have been added to this collection yet."
+				/>
+			: ''}
 		</div>
 	);
 };
 
+ItemsList.propTypes = {
+	items: PropTypes.array,
+};
+
+ItemsList.defaultProps = {
+	items: [],
+};
 
 export default ItemsList;

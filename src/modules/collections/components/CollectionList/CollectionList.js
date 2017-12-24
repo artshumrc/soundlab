@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import NoResults from '../../../../components/pagination/NoResults';
 import CollectionListItem from '../CollectionListItem';
 
 import './CollectionList.css';
