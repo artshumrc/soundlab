@@ -30,9 +30,8 @@ class CollectionEditorContainer extends React.Component {
 
 		// set cover image from state
 		if (coverImage) {
-			values.coverImage = `http://iiif.orphe.us/${coverImage.filename}/full/1600,/0/default.jpg`;
+			values.coverImage = coverImage.name;
 		}
-
 
 		if ('_id' in values) {
 			collectionUpdate(values)

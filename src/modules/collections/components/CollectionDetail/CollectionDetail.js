@@ -1,5 +1,5 @@
 import React from 'react';
-import CollectionsCover from '../CollectionsCover';
+import CollectionCover from '../CollectionCover';
 import CollectionDescription from '../CollectionDescription';
 import ItemsList from '../../../items/components/ItemsList';
 import Pagination from '../../../../components/pagination/Pagination';
@@ -8,7 +8,7 @@ import './CollectionDetail.css';
 
 const CollectionDetail = props => (
 	<div >
-		<CollectionsCover
+		<CollectionCover
 			title="Example Collection: Quid faciat laetas segetes"
 		/>
 		<CollectionDescription />

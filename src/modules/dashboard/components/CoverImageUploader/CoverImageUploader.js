@@ -37,7 +37,6 @@ export default class CoverImageUploader extends React.Component {
 
 		const image = {
 			name: event.filename,
-			type: 'sometype',
 			path: `${process.env.REACT_APP_BUCKET_URL}/${event.filename}`,
 			thumbPath: `http://iiif.orphe.us/${event.filename}/full/90,/0/default.jpg`,
 			_id: this._id

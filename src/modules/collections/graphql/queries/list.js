@@ -4,7 +4,7 @@ import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname
 
 
 const query = gql`
-	query collectionListQuery($subomain: String) {
+	query collectionListQuery($hostname: String) {
 		project(hostname: $hostname) {
 	    _id
 			collections {

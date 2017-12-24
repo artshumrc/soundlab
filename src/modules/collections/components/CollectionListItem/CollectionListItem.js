@@ -10,24 +10,36 @@ import './CollectionListItem.css';
 
 const CollectionListItem = (props) => {
 	const collectionUrl = `/collections/${props.slug}`;
-	const collectionCount = _.random(25, 999);
+	let thumbnail = null;
+	if (props.coverImage) {
+		thumbnail = `http://iiif.orphe.us/${props.coverImage}/full/210,/0/default.jpg`;
+	}
 
 	return (
 		<div className="collectionListItem">
-			<div className="collectionListItemImage">
-				<Link to={collectionUrl}>
-					<img alt={props.title} src={props.imageUrl} />
-				</Link>
-			</div>
-			<div className="collectionListItemBackground">
+			{props.coverImage ?
+				<div className="collectionListItemImage">
+					<Link to={collectionUrl}>
+						<img alt={props.title} src={thumbnail} />
+					</Link>
+				</div>
+			: ''}
+			<div
+				className={`
+					collectionListItemBackground
+					${props.coverImage ?
+						'collectionListItemBackgroundWithImage'
+					: ''}
+				`}
+			>
 				<div className="collectionCount">
-					{collectionCount} items
+					{props.count} items
 				</div>
 				<Link to={collectionUrl}>
 					<h3>{props.title}</h3>
 				</Link>
 				<p>
-					{truncate(faker.lorem.sentences(), 120)}
+					{props.description}
 				</p>
 				<Link
 					to={collectionUrl}
@@ -46,7 +58,16 @@ const CollectionListItem = (props) => {
 CollectionListItem.propTypes = {
 	slug: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-	imageUrl: PropTypes.string,
+	description: PropTypes.string,
+	coverImage: PropTypes.string,
+};
+
+CollectionListItem.defaultProps = {
+	slug: '',
+	title: '',
+	description: '',
+	coverImage: null,
+	count: 0,
 };
 
 export default CollectionListItem;

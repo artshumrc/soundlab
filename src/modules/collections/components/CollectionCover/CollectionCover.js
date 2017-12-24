@@ -5,9 +5,9 @@ import Cover from '../../../../components/common/cover/Cover';
 import CoverTitle from '../../../../components/common/cover/CoverTitle';
 import BackgroundImage from '../../../../components/common/cover/BackgroundImage';
 
-import './CollectionsCover.css';
+import './CollectionCover.css';
 
-const CollectionsCover = ({ title, createLink }) => {
+const CollectionCover = ({ title, createLink }) => {
 	const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
 		83, 87, 90, 92, 93, 95, 102, 103];
 	const selImage = _.sample(artImages);
@@ -31,8 +31,8 @@ const CollectionsCover = ({ title, createLink }) => {
 	);
 };
 
-CollectionsCover.propTypes = {
+CollectionCover.propTypes = {
 	title: PropTypes.string.isRequired
 };
 
-export default CollectionsCover;
+export default CollectionCover;

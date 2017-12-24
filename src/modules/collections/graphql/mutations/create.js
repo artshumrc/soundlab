@@ -1,8 +1,11 @@
 import { gql, graphql } from 'react-apollo';
 
+import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
+
+
 const collectionCreate = gql`
-mutation collectionCreate($collection: CollectionInputType!) {
-	collectionCreate(collection: $collection) {
+mutation collectionCreate($hostname: String!, $collection: CollectionInputType!) {
+	collectionCreate(hostname: $hostname, collection: $collection) {
     _id
 	}
 }
@@ -13,6 +16,7 @@ const collectionCreateMutation = graphql(collectionCreate, {
 		collectionCreate: collection => params.collectionCreateMutation({
 			variables: {
 				collection,
+				hostname: getCurrentProjectHostname(),
 			},
 		}),
 	}),

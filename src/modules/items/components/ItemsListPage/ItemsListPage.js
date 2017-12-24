@@ -1,5 +1,5 @@
 import React from 'react';
-import CollectionsCover from '../../../collections/components/CollectionsCover';
+import CollectionCover from '../../../collections/components/CollectionCover';
 import ItemsList from '../ItemsList';
 import Pagination from '../../../../components/pagination/Pagination';
 
@@ -7,7 +7,7 @@ import './ItemsListPage.css';
 
 const ItemsListPage = props => (
 	<div >
-		<CollectionsCover
+		<CollectionCover
 			title="Example Project Items"
 		/>
 		<ItemsList />
