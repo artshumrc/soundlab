@@ -14,10 +14,14 @@ import { login, register, logoutUser, verifyToken } from '../../lib/auth';
 
 const scrollToElemOrTop = () => {
 	if (window.location.hash.length) {
-		const elem = window.location.hash.replace('#', '');
+		const elemHash = window.location.hash.replace('#', '');
 
-		if (elem) {
-			document.getElementById(elem).scrollIntoView();
+		if (elemHash) {
+			const elem = document.getElementById(elemHash);
+
+			if (elem) {
+				elem.scrollIntoView();
+			}
 		}
 	} else {
 		window.scrollTo(0, 0);

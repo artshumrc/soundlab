@@ -6,14 +6,22 @@ import CollectionListItem from '../CollectionListItem';
 import './CollectionList.css';
 
 
-const CollectionList = props => (
+const CollectionList = ({ collections }) => (
 	<div className="collectionsList">
-		{props.collections.map((listItem, i) => (
+		{collections.map((listItem, i) => (
 			<CollectionListItem
 				key={`${listItem.slug}-${i}`}
 				{...listItem}
 			/>
 		))}
+
+		{!collections || !collections.length ?
+			<div className="collectionsListNoResults">
+				<p>
+					There are no collections for this project yet.
+				</p>
+			</div>
+		: ''}
 	</div>
 );
 

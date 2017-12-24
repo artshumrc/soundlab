@@ -7,7 +7,7 @@ export default class ProjectAbout extends React.Component {
 
 	render() {
 		return (
-			<section className="projectAbout">
+			<section className="projectAbout" id="about">
 				<h2>About</h2>
 				<p>
 					Quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisuque

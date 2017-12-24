@@ -33,7 +33,7 @@ const CollectionListItem = (props) => {
 				`}
 			>
 				<div className="collectionCount">
-					{props.count} items
+					{props.itemsCount} items
 				</div>
 				<Link to={collectionUrl}>
 					<h3>{props.title}</h3>
@@ -67,7 +67,7 @@ CollectionListItem.defaultProps = {
 	title: '',
 	description: '',
 	coverImage: null,
-	count: 0,
+	itemsCount: 0,
 };
 
 export default CollectionListItem;
