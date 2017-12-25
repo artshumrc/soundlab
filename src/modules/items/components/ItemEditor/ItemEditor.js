@@ -1,10 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Grid, Row, Col } from 'react-bootstrap';
 import { Field, reduxForm } from 'redux-form';
 
 import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader';
 import { required, maxLength } from '../../../../lib/formHelpers';
+import NoResults from '../../../../components/pagination/NoResults';
 
 import './ItemEditor.css';
 
@@ -25,14 +28,17 @@ class ItemEditor extends React.Component {
 	}
 
 	render() {
-		const { item } = this.props;
+		const { item, files, metadata } = this.props;
 
 		return (
 			<div className="itemEditor">
 
 				<h1>{item ? 'Edit' : 'Create'} Item</h1>
 
-				<ItemEditorUploader />
+				<ItemEditorUploader
+					changeValue={this.props.changeFilesValue}
+					files={files}
+				/>
 
 				<form
 					className="itemEditorForm"
@@ -70,6 +76,64 @@ class ItemEditor extends React.Component {
 						</span>
 					</div>
 
+					<div className="itemEditorFormInputOuter">
+						<label>Enter metadata for this item.</label>
+						<div className="itemEditorMetadata">
+							<Grid>
+								{metadata.map((field) => {
+									const fieldType = '';
+									return (
+										<Row>
+											<Col md="3">
+												<Field
+													name="fieldType"
+													type="text"
+													component="input"
+													placeholder="Example description of item . . . "
+													validate={[required, maxLength200000]}
+												/>
+											</Col>
+											<Col md="3">
+												<Field
+													name="fieldLabel"
+													type="text"
+													component="input"
+													placeholder="Example description of item . . . "
+													validate={[required, maxLength200000]}
+												/>
+											</Col>
+											<Col md="4">
+												<Field
+													name="fieldValue"
+													type="text"
+													component="textarea"
+													placeholder="Example description of item . . . "
+													validate={[required, maxLength200000]}
+												/>
+											</Col>
+										</Row>
+									);
+								})}
+							</Grid>
+
+							{!metadata || !metadata.length ?
+								<div className="itemEditorMetadataNoResults">
+									<NoResults
+										message="No metadata entered for this item."
+									/>
+								</div>
+							: ''}
+
+							<button
+								className="itemEditorButton itemEditorAddMetadata"
+							>
+								<i className="mdi mdi-plus" />
+								Add metadata
+							</button>
+						</div>
+					</div>
+
+
 					<button
 						type="submit"
 						className={`
@@ -83,6 +147,16 @@ class ItemEditor extends React.Component {
 		);
 	}
 }
+
+
+ItemEditor.propTypes = {
+	item: PropTypes.object,
+	files: PropTypes.array,
+	metadata: PropTypes.array,
+	addMetadata: PropTypes.func,
+	removeMetadata: PropTypes.func,
+};
+
 
 export default reduxForm({
 	form: 'ItemEditor',

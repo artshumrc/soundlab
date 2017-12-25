@@ -8,7 +8,12 @@ import './FileUploader.css';
 export default class FileUploader extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.handleDrop = this.handleDrop.bind(this);
+
+		this.state = {
+			uploading: false,
+		};
 	}
 
 	handleDrop(acceptedFiles, rejectedFiles) {
@@ -19,9 +24,22 @@ export default class FileUploader extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<Dropzone className="dropzone" accept="image/*, application/pdf" onDrop={this.handleDrop}>
-					<div className="text">Drop files here</div>
+			<div className="fileUploader">
+				<Dropzone
+					className="fileDropzone"
+					accept="image/*, application/pdf"
+					onDrop={this.handleDrop}
+				>
+					<div className="fileUploaderLabel">
+						<label>
+							{
+								this.state.uploading ?
+									'Uploading...'
+								:
+									'Drag and drop files or click to select'
+							}
+						</label>
+					</div>
 				</Dropzone>
 			</div>
 		);

@@ -13,6 +13,11 @@ class ItemEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		autoBind(this);
+
+		this.state = {
+			files: [],
+			metadata: [],
+		};
 	}
 
 	handleSubmit(values) {
@@ -50,7 +55,17 @@ class ItemEditorContainer extends React.Component {
 			});
 	}
 
+	addMetadata() {
+
+	}
+
+	removeMetadata(metadataToRemove) {
+
+	}
+
 	render() {
+		const { files, metadata } = this.state;
+
 		let item;
 
 		if (this.props.itemQuery && !this.props.itemQuery.loading) {
@@ -62,6 +77,10 @@ class ItemEditorContainer extends React.Component {
 				onSubmit={this.handleSubmit}
 				onRemove={this.handleRemove}
 				item={item}
+				metadata={metadata}
+				files={files}
+				addMetadata={this.addMetadata}
+				removeMetadata={this.removeMetadata}
 			/>
 		);
 	}

@@ -3,7 +3,7 @@
 .itemEditor {
 	padding: 120px 0;
 	min-height: 100vh;
-	max-width: 720px;
+	max-width: 990px;
 	margin: 0 auto;
 
 	h1 {
@@ -45,7 +45,7 @@
 		margin: 20px 0;
 		outline: none;
 		width: 90%;
-		max-width: 720px;
+		max-width: 990px;
 		text-align: left;
 
 		&:focus {
@@ -115,4 +115,18 @@
 	&:focus {
 		outline: none;
 	}
+
+	i {
+		padding-right: 10px;
+	}
+}
+
+.itemEditorAddMetadata {
+	font-size: 12px;
+	padding: 10px 15px;
+}
+
+.itemEditorMetadataNoResults {
+	padding: 30px 0 10px;
+
 }
