@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
+import { Grid, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
@@ -25,7 +28,7 @@ class CollectionEditor extends React.Component {
 	}
 
 	render() {
-		const { collection } = this.props;
+		const { collection, items, selectedItems } = this.props;
 
 		return (
 			<div className="collectionEditor">
@@ -73,6 +76,50 @@ class CollectionEditor extends React.Component {
 						</span>
 					</div>
 
+					<div className="collectionEditorFormInputOuter ">
+						<Grid>
+							<Row>
+								<Col md={6}>
+									<div className="collectionEditorItems">
+										<label>
+											Project Items <Link to="/items/create">Create a new item</Link>
+										</label>
+										<div className="collectionItemsTextsearch">
+											<Field
+												name="collectionItemsTextsearch"
+												type="text"
+												component="input"
+												placeholder="Search..."
+												validate={[required, maxLength2100]}
+											/>
+										</div>
+										<div className="collectionEditorItemList">
+											{items.map(item => (
+												<div className="collectionItem">
+													{item.title}
+												</div>
+											))}
+										</div>
+									</div>
+								</Col>
+								<Col md={6}>
+									<div className="collectionEditorItems">
+										<label>
+											Selected
+										</label>
+										<div className="collectionEditorItemList collectionEditorItemListSelected">
+											{selectedItems.map(item => (
+												<div className="collectionItem">
+													{item.title}
+												</div>
+											))}
+										</div>
+									</div>
+								</Col>
+							</Row>
+						</Grid>
+
+					</div>
 					<button
 						type="submit"
 						className={`
@@ -86,6 +133,19 @@ class CollectionEditor extends React.Component {
 		);
 	}
 }
+
+CollectionEditor.propTypes = {
+	collection: PropTypes.object,
+	items: PropTypes.array,
+	selectedItems: PropTypes.array,
+	toggleSelectItem: PropTypes.func,
+};
+
+CollectionEditor.defaultProps = {
+	collection: null,
+	items: [],
+	selectedItems: [],
+};
 
 export default reduxForm({
 	form: 'CollectionEditor',

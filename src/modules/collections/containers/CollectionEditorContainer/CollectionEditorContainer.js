@@ -18,6 +18,7 @@ class CollectionEditorContainer extends React.Component {
 
 		this.state = {
 			coverImage: null,
+			selectedItems: [],
 		};
 	}
 
@@ -71,7 +72,25 @@ class CollectionEditorContainer extends React.Component {
 		});
 	}
 
+	toggleSelectItem(item) {
+		const selectedItems = this.state.selectedItems.slice();
+
+		if (selectedItems.some(selectedItem => selectedItem._id === item._id)) {
+			selectedItems.splice(
+				selectedItems.findIndex(selectedItem => selectedItem._id === item._id),
+				1
+			);
+		} else {
+			selectedItems.push(item);
+		}
+
+		this.setState({
+			selectedItems,
+		});
+	}
+
 	render() {
+		const { selectedItems } = this.state;
 		let collection;
 
 		if (this.props.collectionQuery && !this.props.collectionQuery.loading) {
@@ -94,6 +113,8 @@ class CollectionEditorContainer extends React.Component {
 				changeImageValue={this.changeImageValue}
 				coverImage={coverImage}
 				collection={collection}
+				selectedItems={selectedItems}
+				toggleSelectItem={this.toggleSelectItem}
 			/>
 		);
 	}
