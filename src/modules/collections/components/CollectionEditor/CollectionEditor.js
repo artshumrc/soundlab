@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 import CoverImageUploader from '../../../dashboard/components/CoverImageUploader';
+import ItemSelectorField from '../../../dashboard/components/ItemSelectorField';
 import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './CollectionEditor.css';
@@ -77,48 +78,11 @@ class CollectionEditor extends React.Component {
 					</div>
 
 					<div className="collectionEditorFormInputOuter ">
-						<Grid>
-							<Row>
-								<Col md={6}>
-									<div className="collectionEditorItems">
-										<label>
-											Project Items <Link to="/items/create">Create a new item</Link>
-										</label>
-										<div className="collectionItemsTextsearch">
-											<Field
-												name="collectionItemsTextsearch"
-												type="text"
-												component="input"
-												placeholder="Search..."
-												validate={[required, maxLength2100]}
-											/>
-										</div>
-										<div className="collectionEditorItemList">
-											{items.map(item => (
-												<div className="collectionItem">
-													{item.title}
-												</div>
-											))}
-										</div>
-									</div>
-								</Col>
-								<Col md={6}>
-									<div className="collectionEditorItems">
-										<label>
-											Selected
-										</label>
-										<div className="collectionEditorItemList collectionEditorItemListSelected">
-											{selectedItems.map(item => (
-												<div className="collectionItem">
-													{item.title}
-												</div>
-											))}
-										</div>
-									</div>
-								</Col>
-							</Row>
-						</Grid>
-
+						<ItemSelectorField
+							items={items}
+							selectedItems={selectedItems}
+							toggleSelectedItem={this.props.toggleSelectedItem}
+						/>
 					</div>
 					<button
 						type="submit"
@@ -138,7 +102,7 @@ CollectionEditor.propTypes = {
 	collection: PropTypes.object,
 	items: PropTypes.array,
 	selectedItems: PropTypes.array,
-	toggleSelectItem: PropTypes.func,
+	toggleSelectedItem: PropTypes.func,
 };
 
 CollectionEditor.defaultProps = {

@@ -47,7 +47,7 @@ class MetadataField extends React.Component {
 							<option value="date">Date</option>
 							<option value="place">Place</option>
 							<option value="media">Media</option>
-							<option value="relatedItem">Item</option>
+							<option value="item">Item</option>
 						</Field>
 					</Col>
 					<Col md={2}>
