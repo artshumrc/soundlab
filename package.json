@@ -16,6 +16,7 @@
     "enzyme-adapter-react-15": "^1.0.5",
     "enzyme-adapter-react-16": "^1.1.1",
     "es6-shim": "^0.35.3",
+    "eslint-config-react-app": "^2.0.1",
     "eslint-import-resolver-node": "^0.3.0",
     "eslint-plugin-import": "^2.3.0",
     "faker": "^4.1.0",
