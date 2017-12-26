@@ -1,8 +1,11 @@
 import React from 'react';
-import {gql, graphql} from 'react-apollo';
+import { gql, graphql } from 'react-apollo';
 
 const Mirador = window.Mirador;
+
+
 class MiradorViewer extends React.Component {
+
 	componentDidUpdate() {
 		if (!this.props.data.loading) {
 			setTimeout(() => {
@@ -61,7 +64,7 @@ class MiradorViewer extends React.Component {
 		if (this.props.data.loading) {
 			return <div>Loading</div>;
 		}
-    
+
 		const manifest = this.props.data.miradorById;
 		const manifestUri = this.props.data.miradorById.remoteUri;
 
@@ -83,41 +86,15 @@ class MiradorViewer extends React.Component {
 				}}
 			/>
 		);
-    
+
 	}
 }
 
+
 MiradorViewer.propTypes = {
-	manifest: React.PropTypes.object,
-	manifestUri: React.PropTypes.string,
+	manifest: PropTypes.object,
+	manifestUri: PropTypes.string,
 };
 
 
-const MiradorDetailsQuery = gql`query getMirador($id: String!) {
-  miradorById(_id: $id) {
-    title, 
-    label, 
-    abbr, 
-    author, 
-    seeAlso, 
-    attribution, 
-    slug,
-    remoteUri,
-    images {
-      name
-      type
-      path
-      thumbPath
-    }
-  }
-}`;
-
-const MiradorWithData = graphql(MiradorDetailsQuery, {
-	options: ownProps => ({
-		variables: {
-			id: ownProps.params.id
-		}
-	})
-})(MiradorViewer);
-
-export default MiradorWithData;
+export default MiradorViewer;
