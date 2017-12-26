@@ -164,38 +164,3 @@
 		padding-right: 10px;
 	}
 }
-
-.itemEditorAddMetadata {
-	font-size: 12px;
-	padding: 10px 15px;
-}
-
-.itemEditorRemoveMetadata {
-	padding: 5px 10px;
-	text-align: center;
-	i {
-		padding: 0;
-	}
-}
-
-.itemEditorMetadataNoResults {
-	padding: 30px 0 10px;
-
-}
-
-.itemEditorMetadataLabels {
-	padding: 0;
-	margin: 20px 0 0;
-	background: #fefefe;
-	border-bottom: 1px solid $divider-light-grey;
-	border-top: 1px solid $divider-light-grey;
-
-	label {
-		display: block;
-		padding: 15px;
-		color: $dark;
-		font-weight: bold;
-		font-size: 12px;
-		text-transform: uppercase;
-	}
-}

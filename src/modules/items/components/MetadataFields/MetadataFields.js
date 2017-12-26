@@ -5,6 +5,8 @@ import { Row, Col } from 'react-bootstrap';
 import MetadataField from '../MetadataField';
 import NoResults from '../../../../components/pagination/NoResults';
 
+import './MetadataFields.css';
+
 
 const MetadataFields = ({ fields }) => (
 	<div className="itemEditorMetadata">
