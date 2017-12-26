@@ -1,6 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Tag from '../Tag';
+
 import './Tags.css';
+
 
 const Tags = props => (
 	<div className="tags">
@@ -12,6 +16,14 @@ const Tags = props => (
 		))}
 	</div>
 );
+
+Tags.propTypes = {
+	tags: PropTypes.array,
+};
+
+Tags.defaultProps = {
+	tags: [],
+};
 
 
 export default Tags;

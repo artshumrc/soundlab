@@ -7,16 +7,16 @@ import ProjectLayout from '../../projects/layouts/ProjectLayout';
 
 // components
 import ItemEditorContainer from '../containers/ItemEditorContainer';
-import ItemsListPage from '../components/ItemsListPage';
-import ItemDetail from '../components/ItemDetail';
+import ItemListPageContainer from '../containers/ItemListPageContainer';
+import ItemDetailContainer from '../containers/ItemDetailContainer';
 
 
 export default (
 	<div>
 		<Route path="/items" component={ProjectLayout}>
-			<IndexRoute component={ItemsListPage} />
+			<IndexRoute component={ItemListPageContainer} />
 			<Route path="/items/create" component={ItemEditorContainer} />
-			<Route path="/items/:slug" component={ItemDetail} />
+			<Route path="/items/:slug" component={ItemDetailContainer} />
 			<Route path="/items/:slug/edit" component={ItemEditorContainer} />
 		</Route>
 	</div>

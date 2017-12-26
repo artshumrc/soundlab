@@ -5,6 +5,7 @@ import autoBind from 'react-autobind';
 import ItemEditor from '../../components/ItemEditor';
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
 import itemDetailQuery from '../../graphql/queries/detail';
+import itemCreateMutation from '../../graphql/mutations/create';
 import itemUpdateMutation from '../../graphql/mutations/update';
 import itemRemoveMutation from '../../graphql/mutations/remove';
 
@@ -87,5 +88,5 @@ class ItemEditorContainer extends React.Component {
 }
 
 export default compose(
-	itemUpdateMutation, itemRemoveMutation, itemDetailQuery,
+	itemCreateMutation, itemUpdateMutation, itemRemoveMutation, itemDetailQuery,
 )(ItemEditorContainer);

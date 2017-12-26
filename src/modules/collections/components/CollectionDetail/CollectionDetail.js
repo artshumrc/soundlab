@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import CollectionCover from '../CollectionCover';
 import CollectionDescription from '../CollectionDescription';
-import ItemsList from '../../../items/components/ItemsList';
+import ItemList from '../../../items/components/ItemList';
 import Pagination from '../../../../components/pagination/Pagination';
 
 import './CollectionDetail.css';
@@ -22,7 +22,7 @@ const CollectionDetail = props => (
 				description={props.description}
 			/>
 		: ''}
-		<ItemsList
+		<ItemList
 			items={props.items}
 		/>
 		<Pagination

@@ -14,7 +14,6 @@ const query = gql`
 				slug
 				coverImage
 				description
-				itemsCount
 				projectId
 				items {
 					_id
@@ -32,6 +31,7 @@ const query = gql`
 						slug
 					}
 				}
+				itemsCount
 			}
 		}
 	}

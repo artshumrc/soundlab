@@ -13,6 +13,7 @@ const query = gql`
 				slug
 				description
 			}
+			itemsCount
 		}
 	}
 `;

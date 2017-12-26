@@ -6,6 +6,7 @@ import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname
 const query = gql`
 	query userIsAdminQuery($hostname: String) {
 		project(hostname: $hostname) {
+			_id
 			userIsAdmin
 		}
 	}
