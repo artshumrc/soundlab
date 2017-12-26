@@ -11,47 +11,45 @@ const maxLength2100 = maxLength(2100);
 
 const ItemSelectorField = ({ items, selectedItems, toggleSelectedItem }) => (
 	<div className="itemSelector">
-		<Grid>
-			<Row>
-				<Col md={6}>
-					<div className="collectionEditorItems">
-						<label>
-							Project Items <Link to="/items/create">Create a new item</Link>
-						</label>
-						<div className="collectionItemsTextsearch">
-							<Field
-								name="collectionItemsTextsearch"
-								type="text"
-								component="input"
-								placeholder="Search..."
-								validate={[required, maxLength2100]}
-							/>
-						</div>
-						<div className="collectionEditorItemList">
-							{items.map(item => (
-								<div className="collectionItem">
-									{item.title}
-								</div>
-							))}
-						</div>
+		<Row>
+			<Col md={6}>
+				<div className="collectionEditorItems">
+					<label>
+						Project Items <Link to="/items/create">Create a new item</Link>
+					</label>
+					<div className="collectionItemsTextsearch">
+						<Field
+							name="collectionItemsTextsearch"
+							type="text"
+							component="input"
+							placeholder="Search..."
+							validate={[required, maxLength2100]}
+						/>
 					</div>
-				</Col>
-				<Col md={6}>
-					<div className="collectionEditorItems">
-						<label>
-							Selected
-						</label>
-						<div className="collectionEditorItemList collectionEditorItemListSelected">
-							{selectedItems.map(item => (
-								<div className="collectionItem">
-									{item.title}
-								</div>
-							))}
-						</div>
+					<div className="collectionEditorItemList">
+						{items.map(item => (
+							<div className="collectionItem">
+								{item.title}
+							</div>
+						))}
 					</div>
-				</Col>
-			</Row>
-		</Grid>
+				</div>
+			</Col>
+			<Col md={6}>
+				<div className="collectionEditorItems">
+					<label>
+						Selected
+					</label>
+					<div className="collectionEditorItemList collectionEditorItemListSelected">
+						{selectedItems.map(item => (
+							<div className="collectionItem">
+								{item.title}
+							</div>
+						))}
+					</div>
+				</div>
+			</Col>
+		</Row>
 	</div>
 );
 
