@@ -8,6 +8,7 @@ test:
   before_script:
     - npm i -g yarn
     - yarn install
+    - yarn build
   script:
     - npm run test
 
