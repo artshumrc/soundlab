@@ -3,7 +3,8 @@
 .itemEditor {
 	padding: 120px 0;
 	min-height: 100vh;
-	max-width: 990px;
+	width: 100%;
+	max-width: none;
 	margin: 0 auto;
 
 	h1 {
@@ -23,9 +24,18 @@
 	}
 }
 
+.itemEditorHead {
+	margin: 50px auto;
+	width: 100%;
+	max-width: 990px;
+
+}
 
 .itemEditorFormInputOuter {
-	margin: 50px 0;
+	margin: 50px auto;
+	width: 100%;
+	max-width: 990px;
+
 
 	label {
 		font-size: 14px;
@@ -61,6 +71,40 @@
 		font-size: 22px;
 		line-height: 1.7em;
 		min-height: 180px;
+	}
+}
+
+.itemEditorFormInputOuterMetadata {
+	max-width: none;
+	width: 90%;
+	border-bottom: 1px solid $divider-light-grey;
+
+	input, textarea, select {
+		font-size: 20px;
+		margin: 10px 0;
+		display: block;
+		width: 100%;
+	}
+
+	select {
+		font-family: $font-reading;
+		font-weight: 100;
+		margin: 26px 0;
+		color: $dark;
+		border: none;
+		border-bottom: 2px solid $divider-light-grey;
+		padding: 15px;
+		background: $light;
+		border-radius: 0;
+
+		option {
+			background: $light;
+			color: $dark;
+		}
+	}
+
+	textarea {
+		min-height: 120px;
 	}
 }
 
@@ -126,7 +170,32 @@
 	padding: 10px 15px;
 }
 
+.itemEditorRemoveMetadata {
+	padding: 5px 10px;
+	text-align: center;
+	i {
+		padding: 0;
+	}
+}
+
 .itemEditorMetadataNoResults {
 	padding: 30px 0 10px;
 
+}
+
+.itemEditorMetadataLabels {
+	padding: 0;
+	margin: 20px 0 0;
+	background: #fefefe;
+	border-bottom: 1px solid $divider-light-grey;
+	border-top: 1px solid $divider-light-grey;
+
+	label {
+		display: block;
+		padding: 15px;
+		color: $dark;
+		font-weight: bold;
+		font-size: 12px;
+		text-transform: uppercase;
+	}
 }
