@@ -11,17 +11,7 @@ const query = gql`
 				_id
 				title
 				slug
-				description
-				metadata {
-					value
-					label
-				}
-				files {
-					name
-					title
-					type
-					path
-				}
+				content
 			}
 		}
 	}

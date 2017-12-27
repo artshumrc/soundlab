@@ -11,7 +11,7 @@ const query = gql`
 				_id
 				title
 				slug
-				description
+				content
 			}
 			articlesCount
 		}
