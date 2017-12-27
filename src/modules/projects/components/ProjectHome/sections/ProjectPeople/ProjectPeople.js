@@ -1,24 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'underscore';
-import faker from 'faker';
 
 import ProjectPerson from '../../../ProjectPerson';
 
 import './ProjectPeople.css';
 
-export default class ProjectPeople extends React.Component {
+
+class ProjectPeople extends React.Component {
 
 	render() {
-		const people = [];
+		const { people } = this.props;
 
-		// Faker people
-		_.range(0, 5).forEach((i) => {
-			people.push({
-				imageName: faker.image.avatar(),
-				name: faker.name.findName(),
-				role: faker.name.jobTitle(),
-			});
-		});
+		if (!people || !people.length) {
+			return null;
+		}
 
 		return (
 			<section className="peopleList">
@@ -26,7 +22,7 @@ export default class ProjectPeople extends React.Component {
 				<div>
 					{people.map(person => (
 						<ProjectPerson
-							key={person.name}
+							key={person.user.username}
 							{...person}
 						/>
 					))}
@@ -35,3 +31,13 @@ export default class ProjectPeople extends React.Component {
 		);
 	}
 }
+
+ProjectPeople.propTypes = {
+	people: PropTypes.array,
+};
+
+ProjectPeople.defaultProps = {
+	people: [],
+};
+
+export default ProjectPeople;

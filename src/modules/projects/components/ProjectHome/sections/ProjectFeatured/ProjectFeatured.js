@@ -13,10 +13,6 @@ const ProjectFeatured = ({ items }) => {
 	if (items) {
 		featuredItems = items;
 	}
-	console.log('##########')
-	console.log('##########')
-	console.log('##########')
-	console.log(featuredItems);
 
 	return (
 		<section className="projectFeatured">

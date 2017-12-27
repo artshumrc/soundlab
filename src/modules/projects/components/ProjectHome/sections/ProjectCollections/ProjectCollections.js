@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 import CollectionListItem from '../../../../../collections/components/CollectionListItem';
@@ -6,32 +7,21 @@ import Button from '../../../../../../components/common/buttons/Button';
 
 import './ProjectCollections.css';
 
-export default class ProjectCollections extends React.Component {
+class ProjectCollections extends React.Component {
 	render() {
-		const listItems = [{
-			imageUrl: '//iiif.orphe.us/orpheus/art/64.jpg/full/400,/0/default.jpg',
-			title: 'Example Collection',
-			tags: ['Manuscripts', '12th Century'],
-			slug: 'example-collection',
-		}, {
-			imageUrl: '//iiif.orphe.us/orpheus/art/77.jpg/full/400,/0/default.jpg',
-			title: 'Example Collection',
-			tags: ['Manuscripts', '12th Century'],
-			slug: 'example-collection',
-		}, {
-			imageUrl: '//iiif.orphe.us/orpheus/art/22.jpg/full/400,/0/default.jpg',
-			title: 'Example Collection',
-			tags: ['Manuscripts', '12th Century'],
-			slug: 'example-collection',
-		}];
+		const { collections } = this.props;
+
+		if (!collections || !collections.length) {
+			return null;
+		}
 
 		return (
 			<div className="projectCollections">
 				<h2>Collections</h2>
-				{listItems.map((listItem, i) => (
+				{collections.map((collection, i) => (
 					<CollectionListItem
-						key={`${listItem.slug}-${i}`}
-						{...listItem}
+						key={`${collection.slug}-${i}`}
+						{...collection}
 					/>
 				))}
 				<div className="projectCollectionsViewMoreOuter">
@@ -47,3 +37,14 @@ export default class ProjectCollections extends React.Component {
 		);
 	}
 }
+
+ProjectCollections.propTypes = {
+	collections: PropTypes.array,
+};
+
+ProjectCollections.defaultProps = {
+	collections: [],
+};
+
+
+export default ProjectCollections;

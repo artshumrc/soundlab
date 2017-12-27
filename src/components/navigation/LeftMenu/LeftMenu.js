@@ -26,12 +26,6 @@ const LeftMenu = ({
 		return null;
 	}
 
-	console.log('leftmenuproject')
-	console.log('####')
-	console.log('####')
-	console.log('####')
-	console.log(project);
-
 	return (
 		<Drawer
 			open={leftMenuOpen}

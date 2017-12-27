@@ -4,16 +4,30 @@ import Avatar from '../../../users/components/Avatar';
 
 import './ProjectPerson.css';
 
-const ProjectPerson = props => (
-	<div className="projectPerson">
-		<Avatar
-			alt={props.name}
-			src={props.imageName}
-		/>
-		<h4 className="projectPersonName">{props.name}</h4>
-		<hr />
-		<p>{props.role}</p>
-	</div>
-);
+const ProjectPerson = ({ user }) => {
+
+	return (
+		<div className="projectPerson">
+			{user.avatar ?
+				<Avatar
+					alt={user.name}
+					src={user.avatar}
+				/>
+			: ''}
+			<h4 className="projectPersonName">{user.name}</h4>
+			{user.name !== user.email ?
+				<div>
+					<hr />
+					<p>
+						{/*
+							TODO: set user project position (like curator, researcher, administrator, etc)
+						*/}
+						{user.email}
+					</p>
+				</div>
+			: ''}
+		</div>
+	);
+}
 
 export default ProjectPerson;

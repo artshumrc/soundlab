@@ -1,17 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
 import ReactMapboxGl from 'react-mapbox-gl';
 
 
 import './ProjectVisit.css';
 
-export default class ProjectVisit extends React.Component {
+class ProjectVisit extends React.Component {
 
 	render() {
+		const { email, url, address, phone } = this.props;
+
 		const Map = ReactMapboxGl({
 			accessToken: 'pk.eyJ1IjoibHVrZWhvbGxpcyIsImEiOiJ6Rk1vdjc0In0.jQDtXA8wqU_wYi5p1ClCyw',
 			scrollZoom: false,
 		});
+
+		if (!email && !url && !address && !phone) {
+			return null;
+		}
+
 
 		return (
 			<section id="visit">
@@ -60,3 +68,19 @@ export default class ProjectVisit extends React.Component {
 		);
 	}
 }
+
+ProjectVisit.propTypes = {
+	email: PropTypes.string,
+	url: PropTypes.string,
+	address: PropTypes.string,
+	phone: PropTypes.string,
+};
+
+ProjectVisit.defaultProps = {
+	email: null,
+	url: null,
+	address: null,
+	phone: null,
+};
+
+export default ProjectVisit;
