@@ -1,14 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './ItemDescription.css';
 
-const ItemDescription = props => (
+const ItemDescription = ({ description }) => (
 	<p className="itemDescription">
-		Quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisque adiungere
-		vites conveniat quae curum boum cui cultus habendo sit pecori apibus quanta
-		experientia parcis hinc canere incipiam. vos, o clarissima mundi lumina labentem
-		caelo quae ducitis annum, liber et alma ceres, vestro si munere tellus chaoniam
-		pingui glandem mutavit artista, poculaque inventis Acheloia miscuit uvis.
+		{description}
 	</p>
 );
+
+ItemDescription.propTypes = {
+	description: PropTypes.string,
+};
+
+ItemDescription.defaultProps = {
+	description: ''
+};
+
 
 export default ItemDescription;

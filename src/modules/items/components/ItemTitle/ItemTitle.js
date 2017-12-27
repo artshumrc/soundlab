@@ -1,14 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './ItemTitle.css';
 
-const ItemTitle = props => (
+
+const ItemTitle = ({ title }) => (
 	<div className="itemTitleOuter">
-		<h1 className="itemTitle">Example Item Quid faciat laetas segetes</h1>
-		<div className="itemMetaField aboutMetaField">
-			<label>About</label>
-		</div>
+		<h1 className="itemTitle">{title}</h1>
 	</div>
 );
+
+ItemTitle.propTypes = {
+	title: PropTypes.string,
+};
+
+ItemTitle.defaultProps = {
+	title: '',
+};
+
 
 export default ItemTitle;

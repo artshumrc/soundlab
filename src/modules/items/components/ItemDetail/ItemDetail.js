@@ -10,45 +10,57 @@ import ItemDiscussion from '../ItemDiscussion/ItemDiscussion.js';
 
 import './ItemDetail.css';
 
-const ItemDetail = props => (
-	<div className="itemDetail">
-		<div className="itemDetailColumn">
-			<ItemImageViewer
-				title="Example Item"
-			/>
-			<ItemTitle />
-			<ItemDescription />
-			<Tags
-				tags={[
-					'Example Tag', 'Manuscripts', 'Psalters', 'Illuminated Manuscripts',
-				]}
-			/>
-			<ItemMetaFields
-				metaFields={[{
-					label: 'Date',
-					value: '1400',
-				}, {
-					label: 'Creator',
-					value: 'P. Vergilius Maro',
-				}, {
-					label: 'Country of origin',
-					value: 'Italy',
-				}, {
-					label: 'Type',
-					value: 'Manuscript',
-				}, {
-					label: 'Material',
-					value: 'Bound vellum with leather.',
-				}, {
-					label: 'Notes',
-					value: 'Illumination on r17, v29, r30, v30.',
-				}]}
-			/>
-			<ItemDiscussion />
-		</div>
+const ItemDetail = ({ _id, title, description, tags, metafields, files })=> {
 
-	</div>
-);
+	if (!_id) {
+		// TODO: loading or no results
+		return null;
+	}
+
+	return (
+		<div className="itemDetail">
+			<div className="itemDetailColumn">
+				<ItemImageViewer
+					title={title}
+					files={files}
+				/>
+				<ItemTitle
+					title={title}
+				/>
+				<ItemDescription
+					description={description}
+				/>
+				<Tags
+					tags={tags}
+				/>
+				<ItemMetaFields
+					metaFields={[{
+						label: 'Date',
+						value: '1400',
+					}, {
+						label: 'Creator',
+						value: 'P. Vergilius Maro',
+					}, {
+						label: 'Country of origin',
+						value: 'Italy',
+					}, {
+						label: 'Type',
+						value: 'Manuscript',
+					}, {
+						label: 'Material',
+						value: 'Bound vellum with leather.',
+					}, {
+						label: 'Notes',
+						value: 'Illumination on r17, v29, r30, v30.',
+					}]}
+				/>
+				<ItemDiscussion />
+			</div>
+
+			<ItemCollection />
+		</div>
+	);
+}
 
 
 export default ItemDetail;

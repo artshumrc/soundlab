@@ -1,11 +1,22 @@
 import React from 'react';
-import ItemList from '../ItemList';
+import { Grid, Row, Col } from 'react-bootstrap';
+
+import ItemListContainer from '../../containers/ItemListContainer';
+
 import './ItemCollection.css';
 
 const ItemCollection = props => (
 	<div className="itemCollection">
-		<h4>Related Objects in the collection</h4>
-		<ItemList horizontal />
+		<Grid>
+			<Row>
+				<Col>
+					<h4>Related Items</h4>
+				</Col>
+			</Row>
+		</Grid>
+		<ItemListContainer
+			horizontal
+		/>
 	</div>
 );
 
