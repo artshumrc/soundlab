@@ -92,16 +92,18 @@ class CollectionEditorContainer extends React.Component {
 
 	render() {
 		const { selectedItems } = this.state;
-		let collection;
 
+		// Get collection from query
+		let collection;
 		if (this.props.collectionQuery && !this.props.collectionQuery.loading) {
 			collection = this.props.collectionQuery.project.collection;
 		}
 
+		// set cover image from state or pre-existing collection coverImage
 		let coverImage = null;
 		if (this.state.coverImage && this.state.coverImage !== null) {
 			coverImage = this.state.coverImage;
-		} else if (collection) {
+		} else if (collection && collection.coverImage) {
 			coverImage = {
 				path: `//iiif.orphe.us/${collection.coverImage}/full/1400,/0/default.jpg`,
 			};

@@ -83,6 +83,7 @@ export default class CoverImageUploader extends React.Component {
 			backgroundPosition: 'center',
 			backgroundRepeat: 'no-repeat',
 		};
+		
 
 		if (image) {
 			styles.backgroundImage = `url(${image.path})`;
