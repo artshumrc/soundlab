@@ -9,6 +9,7 @@ const query = gql`
 	    _id
 			title
 			subtitle
+			description
 			files {
 				_id
 				name

@@ -75,7 +75,7 @@ class ProjectCover extends React.Component {
 							<Button
 								transparentLight
 								outline
-								to="/#learn"
+								to="/#about"
 							>
 								About
 							</Button>
