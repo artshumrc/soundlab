@@ -24,10 +24,16 @@ class CollectionEditorContainer extends React.Component {
 
 	handleSubmit(values) {
 		const { collectionCreate, collectionUpdate, router } = this.props;
-		const { coverImage } = this.state;
+		const { coverImage, selectedItems } = this.state;
+
+		let selectedItemIds = [];
+		selectedItems.forEach(selectedItem => {
+			selectedItemIds.push(selectedItem._id);
+		});
 
 		// remove unused values
 		delete values.__typename;
+		delete values.items;
 		delete values.itemSelectorTextsearch;
 		delete values.itemsCount;
 
@@ -36,10 +42,9 @@ class CollectionEditorContainer extends React.Component {
 			values.coverImage = coverImage.name;
 		}
 
-		debugger;
-
+		// create or update
 		if ('_id' in values) {
-			collectionUpdate(values)
+			collectionUpdate(values, selectedItemIds)
 				.then((response) => {
 					router.replace(`/collections/${values.slug}`);
 				})
@@ -47,7 +52,7 @@ class CollectionEditorContainer extends React.Component {
 					console.log(err);
 				});
 		} else {
-			collectionCreate(values)
+			collectionCreate(values, selectedItemIds)
 				.then((response) => {
 					router.replace('/collections/');
 				})
@@ -97,8 +102,12 @@ class CollectionEditorContainer extends React.Component {
 
 		// Get collection from query
 		let collection;
-		if (this.props.collectionQuery && !this.props.collectionQuery.loading) {
-			// collection = this.props.collectionQuery.project.collection;
+		if (
+			this.props.collectionQuery
+			&& !this.props.collectionQuery.loading
+			&& this.props.collectionQuery.project
+		) {
+			collection = this.props.collectionQuery.project.collection;
 		}
 
 		// set cover image from state or pre-existing collection coverImage

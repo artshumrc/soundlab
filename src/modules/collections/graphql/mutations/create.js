@@ -4,8 +4,8 @@ import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname
 
 
 const collectionCreate = gql`
-mutation collectionCreate($hostname: String!, $collection: CollectionInputType!) {
-	collectionCreate(hostname: $hostname, collection: $collection) {
+mutation collectionCreate($hostname: String!, $collection: CollectionInputType!, $items: [String]) {
+	collectionCreate(hostname: $hostname, collection: $collection, items: $items) {
     _id
 	}
 }
@@ -13,9 +13,10 @@ mutation collectionCreate($hostname: String!, $collection: CollectionInputType!)
 
 const collectionCreateMutation = graphql(collectionCreate, {
 	props: params => ({
-		collectionCreate: collection => params.collectionCreateMutation({
+		collectionCreate: (collection, items) => params.collectionCreateMutation({
 			variables: {
 				collection,
+				items,
 				hostname: getCurrentProjectHostname(),
 			},
 		}),
