@@ -15,10 +15,10 @@ import { toggleLeftMenu } from '../../../../actions/leftMenu';
 
 import './ProjectHeader.css';
 
-const ProjectHeader = ({ toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, userId }) => (
+const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, userId }) => (
 	<div>
-		<LeftMenu />
-		<Headroom className="navbar">
+		<LeftMenu project={project} />
+		<Headroom className="navbar projectNavbar">
 			<div className="nav-header">
 				<i
 					className="mdi mdi-menu left-menu-toggle-icon"
@@ -28,7 +28,7 @@ const ProjectHeader = ({ toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, 
 					to="/"
 				>
 					<h2 className="site-title">
-						Example Project
+						{project.title}
 					</h2>
 				</Link>
 			</div>
@@ -92,6 +92,7 @@ const ProjectHeader = ({ toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, 
 );
 
 ProjectHeader.propTypes = {
+	project: PropTypes.object,
 	toggleAuthModal: PropTypes.func.isRequired,
 	userId: PropTypes.string,
 };

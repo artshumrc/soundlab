@@ -19,7 +19,7 @@ import { logoutUser } from '../../../lib/auth';
 import './LeftMenu.css';
 
 
-const LeftMenu = ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId, dispatchLogout, dispatchToggleAuthModal }) => (
+const LeftMenu = ({ project, leftMenuOpen, closeLeftMenu, userId, dispatchLogout, dispatchToggleAuthModal }) => (
 	<Drawer
 		open={leftMenuOpen}
 		docked={false}
@@ -40,58 +40,70 @@ const LeftMenu = ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId, 
 			>
 				Collections
 			</MenuItem>
-			<MenuSubItem
-				to="/collections"
-				onClick={closeLeftMenu}
-			>
-				List
-			</MenuSubItem>
-			<MenuSubItem
-				to="/collections/create"
-				onClick={closeLeftMenu}
-				last
-			>
-				Create
-			</MenuSubItem>
+			{project.userIsAdmin ?
+				<div>
+					<MenuSubItem
+						to="/collections"
+						onClick={closeLeftMenu}
+					>
+						List
+					</MenuSubItem>
+					<MenuSubItem
+						to="/collections/create"
+						onClick={closeLeftMenu}
+						last
+					>
+						Create
+					</MenuSubItem>
+				</div>
+			: ''}
 			<MenuItem
 				to="/items"
 				onClick={closeLeftMenu}
 			>
 				Items
 			</MenuItem>
-			<MenuSubItem
-				to="/items"
-				onClick={closeLeftMenu}
-			>
-				List
-			</MenuSubItem>
-			<MenuSubItem
-				to="/items/create"
-				onClick={closeLeftMenu}
-				last
-			>
-				Create
-			</MenuSubItem>
+			{project.userIsAdmin ?
+				<div>
+					<MenuSubItem
+						to="/items"
+						onClick={closeLeftMenu}
+					>
+						List
+					</MenuSubItem>
+					<MenuSubItem
+						to="/items/create"
+						onClick={closeLeftMenu}
+						last
+					>
+						Create
+					</MenuSubItem>
+				</div>
+			: ''}
 			<MenuItem
 				to="/articles"
 				onClick={closeLeftMenu}
 			>
 				Articles
 			</MenuItem>
-			<MenuSubItem
-				to="/articles"
-				onClick={closeLeftMenu}
-			>
-				List
-			</MenuSubItem>
-			<MenuSubItem
-				to="/articles/create"
-				onClick={closeLeftMenu}
-				last
-			>
-				Create
-			</MenuSubItem>
-			{userHasRoleForProject ?
+			{project.userIsAdmin ?
+				<div>
+					<MenuSubItem
+						to="/articles"
+						onClick={closeLeftMenu}
+					>
+						List
+					</MenuSubItem>
+					<MenuSubItem
+						to="/articles/create"
+						onClick={closeLeftMenu}
+						last
+					>
+						Create
+					</MenuSubItem>
+				</div>
+			: ''}
+			{project.userIsAdmin ?
 				<div>
 					<MenuItem
 						to="/dashboard"
@@ -146,13 +158,15 @@ const LeftMenu = ({ leftMenuOpen, closeLeftMenu, userHasRoleForProject, userId, 
 
 
 LeftMenu.propTypes = {
+	project: PropTypes.object,
 	leftMenuOpen: PropTypes.bool,
 	closeLeftMenu: PropTypes.func,
-	userHasRoleForProject: PropTypes.bool,
 };
 
 LeftMenu.defaultProps = {
-	userHasRoleForProject: false,
+	project: {
+		userIsAdmin: false,
+	},
 };
 
 const mapStateToProps = (state, props) => ({

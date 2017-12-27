@@ -25,7 +25,7 @@ const DashboardNav = (props) => {
 					to="/create"
 					className={`
 						dashboardNavLinkWithDropdown
-						${activePath === '/dashboard' ?
+						${activePath === '/create' ?
 						'dashboardNavLinkActive'
 						: ''}
 					`}
@@ -38,7 +38,7 @@ const DashboardNav = (props) => {
 						to="/collections/create"
 						className={`
 							dropdownLink
-							${activePath === '/dashboard' ?
+							${activePath === '/collections/create' ?
 							'dashboardNavLinkActive'
 							: ''}
 						`}
@@ -49,7 +49,7 @@ const DashboardNav = (props) => {
 						to="/items/create"
 						className={`
 							dropdownLink
-							${activePath === '/dashboard' ?
+							${activePath === '/items/create' ?
 							'dashboardNavLinkActive'
 							: ''}
 						`}

@@ -17,6 +17,13 @@ const query = gql`
 			address
 			phone
 			userIsAdmin
+
+			items {
+				_id
+				title
+				description
+			}
+			
 			users {
 				role
 				user {

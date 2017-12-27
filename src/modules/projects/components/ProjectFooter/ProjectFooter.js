@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Grid,
   Row,
@@ -13,8 +14,11 @@ import { Link } from 'react-router';
 import '../../../../components/navigation/Footer/Footer.css';
 import './ProjectFooter.css';
 
-export default class Footer extends React.Component {
+
+class Footer extends React.Component {
+
 	render() {
+		const { project } = this.props;
 		const now = new Date();
 		const year = now.getFullYear();
 
@@ -44,7 +48,7 @@ export default class Footer extends React.Component {
 					<Row>
 						<Col>
 							<span className="footerCopyright">
-								© Copyright Example Project, {year}
+								© Copyright {project.title}, {year}
 							</span>
 						</Col>
 					</Row>
@@ -53,3 +57,14 @@ export default class Footer extends React.Component {
 		);
 	}
 }
+
+Footer.propTypes = {
+	project: PropTypes.object,
+};
+
+Footer.defaultProps = {
+	project: null,
+};
+
+
+export default Footer;
