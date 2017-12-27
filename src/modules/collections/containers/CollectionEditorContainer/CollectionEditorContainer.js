@@ -22,6 +22,24 @@ class CollectionEditorContainer extends React.Component {
 		};
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (
+			(
+				!this.props.collectionQuery
+				|| this.props.collectionQuery.loading
+				|| !this.props.collectionQuery.project
+			)
+			&& nextProps.collectionQuery
+			&& !nextProps.collectionQuery.loading
+			&& nextProps.collectionQuery.project
+		) {
+			const collection = nextProps.collectionQuery.project.collection;
+			this.setState({
+				selectedItems: collection.items,
+			});
+		}
+	}
+
 	handleSubmit(values) {
 		const { collectionCreate, collectionUpdate, router } = this.props;
 		const { coverImage, selectedItems } = this.state;
