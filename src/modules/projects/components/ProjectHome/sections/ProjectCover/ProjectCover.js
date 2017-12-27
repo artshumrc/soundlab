@@ -71,13 +71,15 @@ class ProjectCover extends React.Component {
 						>
 							Explore
 						</Button>
-						<Button
-							transparentLight
-							outline
-							to="/#learn"
-						>
-							About
-						</Button>
+						{project.description ?
+							<Button
+								transparentLight
+								outline
+								to="/#learn"
+							>
+								About
+							</Button>
+						: ''}
 					</div>
 				</div>
 			</Cover>

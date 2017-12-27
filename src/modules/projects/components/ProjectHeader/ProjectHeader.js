@@ -17,6 +17,10 @@ import './ProjectHeader.css';
 
 const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, userId }) => {
 
+	if (!project) {
+		return null;
+	}
+
 	return (
 		<div>
 			<LeftMenu project={project} />
@@ -37,6 +41,15 @@ const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftM
 					: ''}
 				</div>
 				<ul className="nav">
+					{project.userIsAdmin ?
+						<li>
+							<Link
+								to="/dashboard"
+							>
+								Dashboard
+							</Link>
+						</li>
+					: ''}
 					<li>
 						<Link to="/items" >
 							Items
@@ -52,13 +65,15 @@ const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftM
 							Articles
 						</Link>
 					</li>
-					<li>
-						<Link
-							to="/#about"
-						>
-							About
-						</Link>
-					</li>
+					{project.description ?
+						<li>
+							<Link
+								to="/#about"
+							>
+								About
+							</Link>
+						</li>
+					: ''}
 					<li>
 						{ userId ?
 							<Link
