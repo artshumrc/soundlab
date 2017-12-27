@@ -14,11 +14,11 @@ const ItemList = ({ items, horizontal }) => {
 
 
 	if (horizontal) {
-		classes.push('itemsListHorizontal');
+		classes.push('itemListHorizontal');
 	}
 
 	return (
-		<div className={`itemsList ${classes.join(' ')}`}>
+		<div className={`itemList ${classes.join(' ')}`}>
 			{items.map((listItem, i) => (
 				<ItemListItem
 					key={`${listItem.slug}-${i}`}

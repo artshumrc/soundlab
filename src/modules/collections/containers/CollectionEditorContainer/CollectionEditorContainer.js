@@ -28,13 +28,15 @@ class CollectionEditorContainer extends React.Component {
 
 		// remove unused values
 		delete values.__typename;
-		delete values.collectionItemsTextsearch;
+		delete values.itemSelectorTextsearch;
 		delete values.itemsCount;
 
 		// set cover image from state
 		if (coverImage) {
 			values.coverImage = coverImage.name;
 		}
+
+		debugger;
 
 		if ('_id' in values) {
 			collectionUpdate(values)
@@ -73,7 +75,7 @@ class CollectionEditorContainer extends React.Component {
 		});
 	}
 
-	toggleSelectItem(item) {
+	toggleSelectedItem(item) {
 		const selectedItems = this.state.selectedItems.slice();
 
 		if (selectedItems.some(selectedItem => selectedItem._id === item._id)) {
@@ -96,7 +98,7 @@ class CollectionEditorContainer extends React.Component {
 		// Get collection from query
 		let collection;
 		if (this.props.collectionQuery && !this.props.collectionQuery.loading) {
-			collection = this.props.collectionQuery.project.collection;
+			// collection = this.props.collectionQuery.project.collection;
 		}
 
 		// set cover image from state or pre-existing collection coverImage
@@ -117,7 +119,7 @@ class CollectionEditorContainer extends React.Component {
 				coverImage={coverImage}
 				collection={collection}
 				selectedItems={selectedItems}
-				toggleSelectItem={this.toggleSelectItem}
+				toggleSelectedItem={this.toggleSelectedItem}
 			/>
 		);
 	}

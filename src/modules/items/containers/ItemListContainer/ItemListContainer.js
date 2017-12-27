@@ -19,13 +19,6 @@ class ItemListContainer extends React.Component {
 			items = this.props.itemListQuery.project.items;
 		}
 
-		console.log('############');
-		console.log('############');
-		console.log('############');
-		console.log(this.props);
-
-		console.log('############');
-		console.log('############');
 		return (
 			<ItemList
 				items={items}

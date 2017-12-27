@@ -1,8 +1,8 @@
 import { gql, graphql } from 'react-apollo';
 
 const collectionUpdate = gql`
-	mutation collectionUpdate($collection: CollectionInputType!) {
-	collectionUpdate(collection: $collection) {
+	mutation collectionUpdate($collection: CollectionInputType!, $items: [String]) {
+	collectionUpdate(collection: $collection, items: $items) {
 		_id
 	}
 }
@@ -10,9 +10,10 @@ const collectionUpdate = gql`
 
 const collectionUpdateMutation = graphql(collectionUpdate, {
 	props: params => ({
-		collectionUpdate: collection => params.collectionUpdateMutation({
+		collectionUpdate: (collection, items) => params.collectionUpdateMutation({
 			variables: {
 				collection,
+				items,
 			},
 		}),
 	}),

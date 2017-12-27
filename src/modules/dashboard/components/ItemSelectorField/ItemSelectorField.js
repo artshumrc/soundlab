@@ -4,49 +4,49 @@ import { Link } from 'react-router';
 import { Field } from 'redux-form';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-import { required, maxLength } from '../../../../lib/formHelpers';
+import ItemSelectorItemList from '../ItemSelectorItemList';
+import ItemSelectorItemListContainer from '../../containers/ItemSelectorItemListContainer';
+import { maxLength } from '../../../../lib/formHelpers';
+
+import './ItemSelectorField.css';
 
 
 const maxLength2100 = maxLength(2100);
 
-const ItemSelectorField = ({ items, selectedItems, toggleSelectedItem }) => (
+
+const ItemSelectorField = ({ selectedItems, toggleSelectedItem }) => (
 	<div className="itemSelector">
 		<Row>
 			<Col md={6}>
-				<div className="collectionEditorItems">
+				<div className="itemSelectorItems">
 					<label>
 						Project Items <Link to="/items/create">Create a new item</Link>
 					</label>
-					<div className="collectionItemsTextsearch">
+					<div className="itemSelectorTextsearch">
 						<Field
-							name="collectionItemsTextsearch"
+							name="itemSelectorTextsearch"
 							type="text"
 							component="input"
 							placeholder="Search..."
 							validate={[maxLength2100]}
 						/>
 					</div>
-					<div className="collectionEditorItemList">
-						{items.map(item => (
-							<div className="collectionItem">
-								{item.title}
-							</div>
-						))}
-					</div>
+					<ItemSelectorItemListContainer
+						selectedItems={selectedItems}
+						toggleSelectedItem={toggleSelectedItem}
+					/>
 				</div>
 			</Col>
 			<Col md={6}>
-				<div className="collectionEditorItems">
+				<div className="itemSelectorItems">
 					<label>
 						Selected
 					</label>
-					<div className="collectionEditorItemList collectionEditorItemListSelected">
-						{selectedItems.map(item => (
-							<div className="collectionItem">
-								{item.title}
-							</div>
-						))}
-					</div>
+					<ItemSelectorItemList
+						selectedItems={selectedItems}
+						toggleSelectedItem={toggleSelectedItem}
+						showSelected
+					/>
 				</div>
 			</Col>
 		</Row>
