@@ -23,7 +23,7 @@ const ItemSelectorField = ({ items, selectedItems, toggleSelectedItem }) => (
 							type="text"
 							component="input"
 							placeholder="Search..."
-							validate={[required, maxLength2100]}
+							validate={[maxLength2100]}
 						/>
 					</div>
 					<div className="collectionEditorItemList">

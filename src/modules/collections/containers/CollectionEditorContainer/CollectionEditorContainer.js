@@ -28,6 +28,7 @@ class CollectionEditorContainer extends React.Component {
 
 		// remove unused values
 		delete values.__typename;
+		delete values.collectionItemsTextsearch;
 		delete values.itemsCount;
 
 		// set cover image from state
