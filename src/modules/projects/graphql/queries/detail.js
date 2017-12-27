@@ -18,12 +18,21 @@ const query = gql`
 			phone
 			userIsAdmin
 
+			collections {
+				_id
+				title
+				slug
+				description
+				coverImage
+				itemsCount
+			}
+
 			items {
 				_id
 				title
 				description
 			}
-			
+
 			users {
 				role
 				user {
