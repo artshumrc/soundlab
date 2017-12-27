@@ -20,6 +20,8 @@ class ProjectEditorContainer extends React.Component {
 
 		// values from query not to send back to update
 		delete values.__typename;
+		delete values.userIsAdmin;
+		delete values.items;
 		delete values.users; // users handled in separate form
 
 		// regularize subdomain to hostname
