@@ -23,7 +23,7 @@ const ItemListItem = (props) => {
 				<h3>{props.title}</h3>
 			</Link>
 			<p className="description">
-				{_s.prune(props.description, 120)}
+				{_s.prune(props.description, 90)}
 			</p>
 		</div>
 	);

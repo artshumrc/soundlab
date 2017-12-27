@@ -18,7 +18,7 @@ const query = gql`
 			phone
 			userIsAdmin
 
-			collections {
+			collections(limit: 3) {
 				_id
 				title
 				slug
@@ -27,7 +27,7 @@ const query = gql`
 				itemsCount
 			}
 
-			items {
+			items(limit: 3) {
 				_id
 				title
 				description

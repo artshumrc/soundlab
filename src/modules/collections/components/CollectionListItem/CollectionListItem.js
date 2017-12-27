@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import faker from 'faker';
 import _ from 'underscore';
-import { truncate } from 'underscore.string';
+import { prune } from 'underscore.string';
 
 import Tags from '../../../tags/components/Tags';
 import './CollectionListItem.css';
@@ -39,7 +39,7 @@ const CollectionListItem = (props) => {
 					<h3>{props.title}</h3>
 				</Link>
 				<p>
-					{props.description}
+					{prune(props.description, 90)}
 				</p>
 				<Link
 					to={collectionUrl}
