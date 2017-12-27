@@ -6,6 +6,7 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader';
+import ExampleEditor from '../ExampleEditor';
 import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './ArticleEditor.css';
@@ -60,6 +61,8 @@ class ArticleEditor extends React.Component {
 							?
 						</span>
 					</div>
+					
+					<ExampleEditor />
 
 
 					<div className="articleEditorFormInputOuter">
