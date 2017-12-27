@@ -24,11 +24,13 @@ const ProjectHome = props => {
 		const items = props.items.slice();
 		_.range(0, 3).forEach(i => {
 			const selectedItem = _.sample(items);
-			featuredItems.push(selectedItem);
-			items.splice(
-				items.findIndex(item => item._id === selectedItem._id),
-				1
-			);
+			if (selectedItem) {
+				featuredItems.push(selectedItem);
+				items.splice(
+					items.findIndex(item => item._id === selectedItem._id),
+					1
+				);
+			}
 		});
 	}
 
@@ -40,11 +42,13 @@ const ProjectHome = props => {
 		const collections = props.collections.slice();
 		_.range(0, 3).forEach(i => {
 			const selectedCollection = _.sample(collections);
-			featuredCollections.push(selectedCollection);
-			collections.splice(
-				collections.findIndex(collection => collection._id === selectedCollection._id),
-				1
-			);
+			if (selectedCollection) {
+				featuredCollections.push(selectedCollection);
+				collections.splice(
+					collections.findIndex(collection => collection._id === selectedCollection._id),
+					1
+				);
+			}
 		});
 	}
 

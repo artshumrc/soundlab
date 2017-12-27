@@ -15,81 +15,84 @@ import { toggleLeftMenu } from '../../../../actions/leftMenu';
 
 import './ProjectHeader.css';
 
-const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, userId }) => (
-	<div>
-		<LeftMenu project={project} />
-		<Headroom className="navbar projectNavbar">
-			<div className="nav-header">
-				<i
-					className="mdi mdi-menu left-menu-toggle-icon"
-					onClick={dispatchToggleLeftMenu.bind(this, !leftMenuOpen)}
-				/>
-				<Link
-					to="/"
-				>
-					<h2 className="site-title">
-						{project.title}
-					</h2>
-				</Link>
-			</div>
-			<ul className="nav">
-				<li>
-					<Link to="/collections" >
-						Collections
-					</Link>
-				</li>
-				<li>
-					<Link to="/articles" >
-						Articles
-					</Link>
-				</li>
-				<li>
-					<Link
-						to="/#about"
-					>
-						About
-					</Link>
-				</li>
-				<li>
-					<Link
-						to="/#visit"
-					>
-						Visit
-					</Link>
-				</li>
-				<li>
-					{ userId ?
+const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, userId }) => {
+
+	return (
+		<div>
+			<LeftMenu project={project} />
+			<Headroom className="navbar projectNavbar">
+				<div className="nav-header">
+					<i
+						className="mdi mdi-menu left-menu-toggle-icon"
+						onClick={dispatchToggleLeftMenu.bind(this, !leftMenuOpen)}
+					/>
+					{project ?
 						<Link
-							to={'/profile'}
-							className="userAvatarLink"
+							to="/"
 						>
-							<UserAvatarContainer />
+							<h2 className="site-title">
+								{project.title}
+							</h2>
 						</Link>
-					: '' }
-				</li>
-				<li>
-					{!userId ?
+					: ''}
+				</div>
+				<ul className="nav">
+					<li>
+						<Link to="/items" >
+							Items
+						</Link>
+					</li>
+					<li>
+						<Link to="/collections" >
+							Collections
+						</Link>
+					</li>
+					<li>
+						<Link to="/articles" >
+							Articles
+						</Link>
+					</li>
+					<li>
 						<Link
-							to={'/'}
-							className="login-button"
-							onClick={toggleAuthModal}
+							to="/#about"
 						>
-							Sign Up / In
+							About
 						</Link>
-					: '' }
-				</li>
-				<li>
-					<Link
-						className="searchLink"
-						to="/search"
-					>
-						<i className="mdi mdi-magnify searchIcon" />
-					</Link>
-				</li>
-			</ul>
-		</Headroom>
-	</div>
-);
+					</li>
+					<li>
+						{ userId ?
+							<Link
+								to={'/profile'}
+								className="userAvatarLink"
+							>
+								<UserAvatarContainer />
+							</Link>
+						: '' }
+					</li>
+					<li>
+						{!userId ?
+							<Link
+								to={'/'}
+								className="login-button"
+								onClick={toggleAuthModal}
+							>
+								Sign Up / In
+							</Link>
+						: '' }
+					</li>
+					<li>
+						<Link
+							className="searchLink"
+							to="/search"
+						>
+							<i className="mdi mdi-magnify searchIcon" />
+						</Link>
+					</li>
+				</ul>
+			</Headroom>
+		</div>
+	);
+}
 
 ProjectHeader.propTypes = {
 	project: PropTypes.object,

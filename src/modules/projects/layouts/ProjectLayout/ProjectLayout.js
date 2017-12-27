@@ -1,15 +1,15 @@
 import React from 'react';
 
-import ProjectHeader from '../../components/ProjectHeader';
-import ProjectFooter from '../../components/ProjectFooter';
+import ProjectHeaderContainer from '../../containers/ProjectHeaderContainer';
+import ProjectFooterContainer from '../../containers/ProjectFooterContainer';
 
 import './ProjectLayout.css';
 
 const ProjectLayout = props => (
 	<div>
-		<ProjectHeader />
+		<ProjectHeaderContainer />
 		{props.children}
-		<ProjectFooter />
+		<ProjectFooterContainer />
 	</div>
 );
 

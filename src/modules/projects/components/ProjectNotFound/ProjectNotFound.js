@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-import ProjectHeader from '../../components/ProjectHeader';
-import ProjectFooter from '../../components/ProjectFooter';
+import ProjectHeaderContainer from '../../containers/ProjectHeaderContainer';
+import ProjectFooterContainer from '../../containers/ProjectFooterContainer';
 
 
 import './ProjectNotFound.css';
@@ -11,7 +11,7 @@ import './ProjectNotFound.css';
 
 const ProjectNotFound = props => (
 	<div className="projectNotFound">
-		<ProjectHeader />
+		<ProjectHeaderContainer />
 		<Grid>
 			<Row>
 				<Col>
@@ -24,7 +24,7 @@ const ProjectNotFound = props => (
 				</Col>
 			</Row>
 		</Grid>
-		<ProjectFooter />
+		<ProjectFooterContainer />
 	</div>
 );
 

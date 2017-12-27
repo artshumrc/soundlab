@@ -46,7 +46,7 @@ class ProjectCover extends React.Component {
 				className="home-cover home-cover--project"
 				background={
 					<Bricks >
-						{this.makeBricks}
+						{/* this.makeBricks */}
 					</Bricks>
 				}
 				overlay={

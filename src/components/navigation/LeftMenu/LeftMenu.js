@@ -19,142 +19,156 @@ import { logoutUser } from '../../../lib/auth';
 import './LeftMenu.css';
 
 
-const LeftMenu = ({ project, leftMenuOpen, closeLeftMenu, userId, dispatchLogout, dispatchToggleAuthModal }) => (
-	<Drawer
-		open={leftMenuOpen}
-		docked={false}
-		onRequestChange={closeLeftMenu}
-		className="leftMenu"
-	>
-		<LeftMenuHead />
-		<div className="leftMenuContent">
-			<MenuItem
-				to="/"
-				onClick={closeLeftMenu}
-			>
-				Home
-			</MenuItem>
-			<MenuItem
-				to="/collections"
-				onClick={closeLeftMenu}
-			>
-				Collections
-			</MenuItem>
-			{project.userIsAdmin ?
-				<div>
-					<MenuSubItem
-						to="/collections"
-						onClick={closeLeftMenu}
-					>
-						List
-					</MenuSubItem>
-					<MenuSubItem
-						to="/collections/create"
-						onClick={closeLeftMenu}
-						last
-					>
-						Create
-					</MenuSubItem>
-				</div>
-			: ''}
-			<MenuItem
-				to="/items"
-				onClick={closeLeftMenu}
-			>
-				Items
-			</MenuItem>
-			{project.userIsAdmin ?
-				<div>
-					<MenuSubItem
-						to="/items"
-						onClick={closeLeftMenu}
-					>
-						List
-					</MenuSubItem>
-					<MenuSubItem
-						to="/items/create"
-						onClick={closeLeftMenu}
-						last
-					>
-						Create
-					</MenuSubItem>
-				</div>
-			: ''}
-			<MenuItem
-				to="/articles"
-				onClick={closeLeftMenu}
-			>
-				Articles
-			</MenuItem>
-			{project.userIsAdmin ?
-				<div>
-					<MenuSubItem
-						to="/articles"
-						onClick={closeLeftMenu}
-					>
-						List
-					</MenuSubItem>
-					<MenuSubItem
-						to="/articles/create"
-						onClick={closeLeftMenu}
-						last
-					>
-						Create
-					</MenuSubItem>
-				</div>
-			: ''}
-			{project.userIsAdmin ?
-				<div>
-					<MenuItem
-						to="/dashboard"
-						onClick={closeLeftMenu}
-					>
-						Dashboard
-					</MenuItem>
-					<MenuItem
-						to="/dashboard/settings"
-						onClick={closeLeftMenu}
-					>
-						Settings
-					</MenuItem>
-				</div>
-			: ''}
-			<Divider />
+const LeftMenu = ({
+	project, leftMenuOpen, closeLeftMenu, userId, dispatchLogout, dispatchToggleAuthModal
+}) => {
+	if (!project) {
+		return null;
+	}
 
-			{userId ?
-				<div>
-					<MenuItem
-						to="/profile"
-						onClick={closeLeftMenu}
-					>
-						Profile
-					</MenuItem>
-					<MenuItem
-						to="/profile/projects"
-						onClick={closeLeftMenu}
-					>
-						Projects
-					</MenuItem>
-					<Divider />
+	console.log('leftmenuproject')
+	console.log('####')
+	console.log('####')
+	console.log('####')
+	console.log(project);
 
-					<MenuItem
-						to="/"
-						onClick={dispatchLogout}
-					>
-						Sign out
-					</MenuItem>
-				</div>
-			:
+	return (
+		<Drawer
+			open={leftMenuOpen}
+			docked={false}
+			onRequestChange={closeLeftMenu}
+			className="leftMenu"
+		>
+			<LeftMenuHead />
+			<div className="leftMenuContent">
 				<MenuItem
-					onClick={dispatchToggleAuthModal}
+					to="/"
+					onClick={closeLeftMenu}
 				>
-					Sign up / in
+					Home
 				</MenuItem>
-			}
-		</div>
-	</Drawer>
+				<MenuItem
+					to="/collections"
+					onClick={closeLeftMenu}
+				>
+					Collections
+				</MenuItem>
+				{project.userIsAdmin ?
+					<div>
+						<MenuSubItem
+							to="/collections"
+							onClick={closeLeftMenu}
+						>
+							List
+						</MenuSubItem>
+						<MenuSubItem
+							to="/collections/create"
+							onClick={closeLeftMenu}
+							last
+						>
+							Create
+						</MenuSubItem>
+					</div>
+				: ''}
+				<MenuItem
+					to="/items"
+					onClick={closeLeftMenu}
+				>
+					Items
+				</MenuItem>
+				{project.userIsAdmin ?
+					<div>
+						<MenuSubItem
+							to="/items"
+							onClick={closeLeftMenu}
+						>
+							List
+						</MenuSubItem>
+						<MenuSubItem
+							to="/items/create"
+							onClick={closeLeftMenu}
+							last
+						>
+							Create
+						</MenuSubItem>
+					</div>
+				: ''}
+				<MenuItem
+					to="/articles"
+					onClick={closeLeftMenu}
+				>
+					Articles
+				</MenuItem>
+				{project.userIsAdmin ?
+					<div>
+						<MenuSubItem
+							to="/articles"
+							onClick={closeLeftMenu}
+						>
+							List
+						</MenuSubItem>
+						<MenuSubItem
+							to="/articles/create"
+							onClick={closeLeftMenu}
+							last
+						>
+							Create
+						</MenuSubItem>
+					</div>
+				: ''}
+				{project.userIsAdmin ?
+					<div>
+						<MenuItem
+							to="/dashboard"
+							onClick={closeLeftMenu}
+						>
+							Dashboard
+						</MenuItem>
+						<MenuItem
+							to="/dashboard/settings"
+							onClick={closeLeftMenu}
+						>
+							Settings
+						</MenuItem>
+					</div>
+				: ''}
+				<Divider />
 
-);
+				{userId ?
+					<div>
+						<MenuItem
+							to="/profile"
+							onClick={closeLeftMenu}
+						>
+							Profile
+						</MenuItem>
+						<MenuItem
+							to="/profile/projects"
+							onClick={closeLeftMenu}
+						>
+							Projects
+						</MenuItem>
+						<Divider />
+
+						<MenuItem
+							to="/"
+							onClick={dispatchLogout}
+						>
+							Sign out
+						</MenuItem>
+					</div>
+				:
+					<MenuItem
+						onClick={dispatchToggleAuthModal}
+					>
+						Sign up / in
+					</MenuItem>
+				}
+			</div>
+		</Drawer>
+
+	);
+}
 
 
 LeftMenu.propTypes = {

@@ -47,9 +47,11 @@ class Footer extends React.Component {
 					</Row>
 					<Row>
 						<Col>
-							<span className="footerCopyright">
-								© Copyright {project.title}, {year}
-							</span>
+							{project ?
+								<span className="footerCopyright">
+									© Copyright {project.title}, {year}
+								</span>
+							: ''}
 						</Col>
 					</Row>
 				</Grid>

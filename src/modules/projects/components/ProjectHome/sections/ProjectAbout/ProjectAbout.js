@@ -6,16 +6,20 @@ import './ProjectAbout.css';
 export default class ProjectAbout extends React.Component {
 
 	render() {
+		const { description } = this.props;
+
+		if (!description) {
+			return null;
+		}
+
 		return (
 			<section className="projectAbout" id="about">
 				<h2>About</h2>
 				<p>
-					Quid faciat laetas segetes quo sidere terram vertere Mycenas ulmisuque
-					adiungere vites conveniat quae curum boum qui cultus habendo sit pecori
-					apibus quanta experientia parcis hinc canere incipiam
+					{description}
 				</p>
 				<Button
-					href={'/articles/example-article'}
+					href={'/articles/about'}
 					light
 					outline
 				>

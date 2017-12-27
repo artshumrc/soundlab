@@ -5,15 +5,18 @@ import { Route, IndexRoute } from 'react-router';
 import ProjectLayout from '../../projects/layouts/ProjectLayout';
 
 // components
-import ArticleListPage from '../components/ArticleListPage';
-import ArticleDetail from '../components/ArticleDetail';
+import ArticleListPageContainer from '../containers/ArticleListPageContainer';
+import ArticleDetailContainer from '../containers/ArticleDetailContainer';
+import ArticleEditorContainer from '../containers/ArticleEditorContainer';
+
 
 export default (
 	<div>
 
 		<Route path="/articles" component={ProjectLayout}>
-			<IndexRoute component={ArticleListPage} />
-			<Route path="/articles/:slug" component={ArticleDetail} />
+			<IndexRoute component={ArticleListPageContainer} />
+			<Route path="/articles/:slug" component={ArticleDetailContainer} />
+			<Route path="/articles/:slug/edit" component={ArticleEditorContainer} />
 		</Route>
 
 	</div>
