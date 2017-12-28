@@ -36,7 +36,7 @@ class ProjectCreateContainer extends React.Component {
 			hostname: `${values.hostname}.orphe.us`,
 		};
 
-		// create post
+		// create project
 		const created = await this.props.projectCreate(newProject);
 		window.location = `//${newProject.hostname}/dashboard`;
 	}

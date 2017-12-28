@@ -1,10 +1,8 @@
 import React from 'react';
-import Immutable from 'immutable';
+import Immutable, { Map, fromJS } from 'immutable';
 
 import { Dante, DanteEditor } from "Dante2/es/index.js";
 import dantecss from 'Dante2/dist/DanteStyles.css';
-
-import { Map, fromJS } from 'immutable'
 import DanteImagePopover from 'Dante2/es/components/popovers/image.js'
 import DanteAnchorPopover from 'Dante2/es/components/popovers/link.js'
 import DanteInlineTooltip from 'Dante2/es/components/popovers/addButton.js'
@@ -64,6 +62,8 @@ class ExampleEditor extends React.Component {
 						return "sectionLayout--fullWidth"
 					case "fill":
 						return "graf--layoutFillWidth"
+					default:
+						return "graf--layoutOutsetLeft"
 					}
 				},
 				handleEnterWithoutText(ctx, block) {
