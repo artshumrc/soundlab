@@ -1,24 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'underscore';
+
 import ThumbnailImage from './ThumbnailImage';
+
 import './ThumbnailImages.css';
 
-const ThumbnailImages = props => (
-	<div className="thumbnailImages">
-		{props.images.map((image, i) => {
-			const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
-				83, 87, 90, 92, 93, 95, 102, 103];
-			const selImage = _.sample(artImages);
 
-			return (
+const ThumbnailImages = ({ files }) => {
+	if (!files) {
+		return null;
+	}
+
+	return (
+		<div className="thumbnailImages">
+			{files.map((file, i) => (
 				<ThumbnailImage
-					key={`${selImage}-${i}`}
-					alt={selImage}
-					src={`//iiif.orphe.us/orpheus/art/${selImage}.jpg/square/90,/0/default.jpg`}
+					key={file._id}
+					{...file}
 				/>
-			);
-		})}
-	</div>
-);
+			))}
+		</div>
+	);
+};
+
+ThumbnailImages.propTypes = {
+	files: PropTypes.array,
+};
+
+ThumbnailImages.defaultProps = {
+	files: [],
+};
+
 
 export default ThumbnailImages;
