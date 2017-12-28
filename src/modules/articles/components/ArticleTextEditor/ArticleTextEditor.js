@@ -18,7 +18,10 @@ import {
 } from 'Dante2/es/model/index.js'
 
 
-class ExampleEditor extends React.Component {
+import './ArticleTextEditor.css';
+
+
+class ArticleTextEditor extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -37,7 +40,7 @@ class ExampleEditor extends React.Component {
 		defaultOptions.read_only = false
 		defaultOptions.spellcheck = false
 		defaultOptions.title_placeholder = "Title"
-		defaultOptions.body_placeholder = "Write your story"
+		defaultOptions.body_placeholder = "Write your article with items from your collections . . . "
 		// @defaultOptions.api_key = "86c28a410a104c8bb58848733c82f840"
 
 		defaultOptions.widgets = [
@@ -284,8 +287,9 @@ class ExampleEditor extends React.Component {
 
 	render(){
 		return(
-			<div className="articleEditor">
+			<div className="articleTextEditor">
 				<DanteEditor
+					content={ this.props.content }
 					config={ this.options }
 				/>
 			</div>
@@ -294,4 +298,4 @@ class ExampleEditor extends React.Component {
 }
 
 
-export default ExampleEditor;
+export default ArticleTextEditor;

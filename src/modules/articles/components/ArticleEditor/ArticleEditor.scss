@@ -1,7 +1,7 @@
 @import '../../../../variables.scss';
 
 .articleEditor {
-	padding: 120px 0;
+	padding: 30px 0;
 	min-height: 100vh;
 	width: 100%;
 	max-width: none;
@@ -24,39 +24,33 @@
 	}
 }
 
-.articleEditorHead {
-	margin: 50px auto;
-	width: 100%;
-	max-width: 990px;
-
+.articleEditorForm {
+	position: relative;
 }
 
 .articleEditorFormInputOuter {
-	margin: 50px auto;
+	margin: 0px auto;
 	width: 100%;
-	max-width: 990px;
+	max-width: 800px;
+	text-align: center;
 
-
-	label {
-		font-size: 14px;
-		display: block;
-	}
-
-	input, textarea {
+	textarea {
+		text-align: left;
 		display: inline-block;
 		vertical-align: top;
-		font-size: 38px;
-		font-family: $font-reading;
-		font-weight: 100;
+		font-size: 42px;
+		font-family: $font-title;
+		font-weight: bold;
 		color: $dark;
 		border: none;
-		border-bottom: 2px solid $divider-light-grey;
 		padding: 15px 15px 5px 15px;
-		margin: 20px 0;
+		margin: 50px auto 20px;
 		outline: none;
 		width: 90%;
-		max-width: 990px;
+		max-width: 800px;
 		text-align: left;
+		height: 90px;
+		resize: none;
 
 		&:focus {
 			outline: none;
@@ -65,46 +59,6 @@
 		&::placeholder {
 			color: #bbb;
 		}
-	}
-
-	textarea {
-		font-size: 22px;
-		line-height: 1.7em;
-		min-height: 180px;
-	}
-}
-
-.articleEditorFormInputOuterMetadata {
-	max-width: none;
-	width: 90%;
-	border-bottom: 1px solid $divider-light-grey;
-
-	input, textarea, select {
-		font-size: 20px;
-		margin: 10px 0;
-		display: block;
-		width: 100%;
-	}
-
-	select {
-		font-family: $font-reading;
-		font-weight: 100;
-		margin: 26px 0;
-		color: $dark;
-		border: none;
-		border-bottom: 2px solid $divider-light-grey;
-		padding: 15px;
-		background: $light;
-		border-radius: 0;
-
-		option {
-			background: $light;
-			color: $dark;
-		}
-	}
-
-	textarea {
-		min-height: 120px;
 	}
 }
 
@@ -130,7 +84,10 @@
 	}
 }
 
-.articleEditorButton {
+.articleEditorButtonSubmit {
+	position:fixed;
+	bottom: 15px;
+	right: 6%;
 	display: inline-block;
 	margin: 30px 0;
 	color: $dark;
@@ -146,9 +103,7 @@
 
 	&.disabled {
 		opacity: 0.3;
-
 	}
-
 
 	&:hover {
 		background: $primary;
