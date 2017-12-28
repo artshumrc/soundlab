@@ -32,6 +32,7 @@ class CollectionEditorContainer extends React.Component {
 			&& nextProps.collectionQuery
 			&& !nextProps.collectionQuery.loading
 			&& nextProps.collectionQuery.project
+			&& nextProps.collectionQuery.project.collection
 		) {
 			const collection = nextProps.collectionQuery.project.collection;
 			this.setState({

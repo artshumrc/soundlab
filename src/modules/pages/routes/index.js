@@ -9,9 +9,9 @@ export default (
 	<div>
 		<Route
 			path=":slug"
-			component={() => (
+			component={props => (
 				<ProjectLayout>
-					<PageContainer />
+					<PageContainer {...props} />
 				</ProjectLayout>
 			)}
 		/>

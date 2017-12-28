@@ -1,23 +1,23 @@
 import { gql, graphql } from 'react-apollo';
 
 const pageDetailQuery = graphql(gql`
-  query pageDetailQuery($post: String){
-    post(name: $post){
-      id
-      post_title
-      post_content
-			thumbnail
+  query pageDetailQuery($slug: String){
+    page(name: $slug){
+      _id
+      title
+      content
+			coverImage
     }
   }
 `, {
 	options: ({ params }) => ({
 		variables: {
-			post: params.slug,
+			slug: params.slug,
 		}
 	}),
 	name: 'pageDetailQuery',
 	props: props => ({
-		page: props.pageDetailQuery.post,
+		page: props.pageDetailQuery.page,
 	}),
 });
 
