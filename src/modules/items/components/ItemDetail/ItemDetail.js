@@ -10,7 +10,9 @@ import ItemDiscussion from '../ItemDiscussion/ItemDiscussion.js';
 
 import './ItemDetail.css';
 
-const ItemDetail = ({ _id, title, description, tags, metadata, files })=> {
+const ItemDetail = ({
+	_id, title, description, tags, metadata, files, commentsCount, comments
+})=> {
 
 	if (!_id) {
 		// TODO: loading or no results
@@ -36,7 +38,10 @@ const ItemDetail = ({ _id, title, description, tags, metadata, files })=> {
 				<ItemMetaFields
 					metafields={metadata}
 				/>
-				<ItemDiscussion />
+				<ItemDiscussion
+					commentsCount={commentsCount}
+					comments={comments}
+				/>
 			</div>
 
 			<ItemCollection />

@@ -12,15 +12,28 @@ const query = gql`
 				title
 				slug
 				description
+
 				metadata {
 					value
 					label
 				}
+
 				files {
 					name
 					title
 					type
 					path
+				}
+
+				commentsCount
+				comments {
+					userId
+					itemId
+					content
+					_id
+					updatedAt
+					createdAt
+					__v
 				}
 			}
 		}
