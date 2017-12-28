@@ -3076,6 +3076,12 @@ draft-js-custom-styles@^2.0.1:
     lodash.camelcase "^4.3.0"
     lodash.snakecase "^4.1.1"
 
+draft-js-export-html@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/draft-js-export-html/-/draft-js-export-html-1.2.0.tgz#1cbe2b78e1fed74fc29c7cdcbfd7540468eca209"
+  dependencies:
+    draft-js-utils "^1.2.0"
+
 draft-js-image-plugin@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/draft-js-image-plugin/-/draft-js-image-plugin-2.0.1.tgz#08b4c33b8d795d673512cdbf6eb2c02f748455c9"
@@ -3123,6 +3129,10 @@ draft-js-single-line-plugin@^2.0.1:
   resolved "https://registry.yarnpkg.com/draft-js-single-line-plugin/-/draft-js-single-line-plugin-2.0.1.tgz#3aea1b100b1562d7ef3d5d02e73190da12953857"
   dependencies:
     immutable "^3.8.1"
+
+draft-js-utils@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/draft-js-utils/-/draft-js-utils-1.2.0.tgz#f5cb23eb167325ffed3d79882fdc317721d2fd12"
 
 draft-js-video-plugin@^2.0.1:
   version "2.0.1"
@@ -9841,6 +9851,10 @@ textures@^1.2.0:
 throat@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-3.2.0.tgz#50cb0670edbc40237b9e347d7e1f88e4620af836"
+
+throttle-debounce@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-1.0.1.tgz#dad0fe130f9daf3719fdea33dc36a8e6ba7f30b5"
 
 through2@^2.0.0, through2@^2.0.3:
   version "2.0.3"

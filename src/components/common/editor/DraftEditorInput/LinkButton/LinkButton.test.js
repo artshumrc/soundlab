@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { mount, shallow } from 'enzyme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // component:
@@ -8,38 +8,35 @@ import LinkButton from './LinkButton';
 
 describe('LinkButton', () => {
 	it('renders correctly', () => {
-
-		const tree = renderer
-			.create(
-				<MuiThemeProvider>
-					<LinkButton
-						getEditorState={() => ({
-							getCurrentContent: () => ({
-								getEntity: () => ({
-									data: {
-										link: 'http://test.url',
-									},
-								}),
-								getBlockForKey: () => ({
-									getEntityAt: () => ({}),
-								}),
+		const wrapper = shallow(
+			<MuiThemeProvider>
+				<LinkButton
+					getEditorState={() => ({
+						getCurrentContent: () => ({
+							getEntity: () => ({
+								data: {
+									link: 'http://test.url',
+								},
 							}),
-							getSelection: () => ({
-								isCollapsed: () => false,
-								getStartKey: () => ({}),
-								getStartOffset: () => ({}),
+							getBlockForKey: () => ({
+								getEntityAt: () => ({}),
 							}),
-						})}
-						setEditorState={() => {}}
-						theme={{
-							button: 'test',
-							active: 'test',
-							buttonWrapper: {},
-						}}
-					/>
-				</MuiThemeProvider>
-			)
-			.toJSON();
-		expect(tree).toMatchSnapshot();
+						}),
+						getSelection: () => ({
+							isCollapsed: () => false,
+							getStartKey: () => ({}),
+							getStartOffset: () => ({}),
+						}),
+					})}
+					setEditorState={() => {}}
+					theme={{
+						button: 'test',
+						active: 'test',
+						buttonWrapper: 'test',
+					}}
+				/>
+			</MuiThemeProvider>
+		);
+		expect(wrapper).toBeDefined();
 	});
 });
