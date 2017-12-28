@@ -7,6 +7,7 @@ const query = gql`
 	query itemQuery($hostname: String, $slug: String) {
 		project(hostname: $hostname) {
 	    _id
+			userIsAdmin
 			item(slug: $slug) {
 				_id
 				title

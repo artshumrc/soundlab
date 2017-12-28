@@ -9,10 +9,9 @@ import './ItemMetaFields.css';
 
 const ItemMetaFields = ({ metafields }) => {
 
-	console.log('######')
-	console.log('######')
-	console.log('######')
-	console.log(metafields);
+	if (!metafields) {
+		return null;
+	}
 
 	return (
 		<div className="itemMetaFields">

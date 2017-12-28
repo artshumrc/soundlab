@@ -11,7 +11,8 @@ import ItemDiscussion from '../ItemDiscussion/ItemDiscussion.js';
 import './ItemDetail.css';
 
 const ItemDetail = ({
-	_id, title, description, tags, metadata, files, commentsCount, comments
+	_id, title, slug, description, tags, metadata, files, commentsCount, comments,
+	userIsAdmin
 })=> {
 
 	if (!_id) {
@@ -28,6 +29,8 @@ const ItemDetail = ({
 				/>
 				<ItemTitle
 					title={title}
+					slug={slug}
+					showEditLink={userIsAdmin}
 				/>
 				<ItemDescription
 					description={description}
