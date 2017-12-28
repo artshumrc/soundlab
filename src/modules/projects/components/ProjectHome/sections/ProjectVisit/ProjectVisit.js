@@ -4,12 +4,16 @@ import { Row, Col } from 'react-bootstrap';
 import ReactMapboxGl from 'react-mapbox-gl';
 
 
+import Textures from '../../../../../../components/common/cover/Textures';
+
+
 import './ProjectVisit.css';
+
 
 class ProjectVisit extends React.Component {
 
 	render() {
-		const { email, url, address, phone } = this.props;
+		const { title, email, url, address, phone } = this.props;
 
 		const Map = ReactMapboxGl({
 			accessToken: 'pk.eyJ1IjoibHVrZWhvbGxpcyIsImEiOiJ6Rk1vdjc0In0.jQDtXA8wqU_wYi5p1ClCyw',
@@ -20,7 +24,6 @@ class ProjectVisit extends React.Component {
 			return null;
 		}
 
-
 		return (
 			<section id="visit">
 				<Row>
@@ -28,39 +31,77 @@ class ProjectVisit extends React.Component {
 						md={5}
 						className="projectVisitCol"
 					>
-						<Map
-						  style="mapbox://styles/lukehollis/cj7dnh4fb11452smw1dj34x04" // eslint-disable-line
-							containerStyle={{
-								height: '100vh',
-								width: '100%'
-							}}
-							center={[
-								-71.1139213, 42.3741574
-							]}
-							zoom={[13]}
-						/>
+						{address ?
+							<Map
+							  style="mapbox://styles/lukehollis/cj7dnh4fb11452smw1dj34x04" // eslint-disable-line
+								containerStyle={{
+									height: '100vh',
+									minHeight: '500px',
+									width: '100%'
+								}}
+								center={[
+									-71.1139213, 42.3741574
+								]}
+								zoom={[13]}
+							/>
+						:
+							<div
+								style={{
+									height: '100vh',
+									minHeight: '500px',
+									width: '100%',
+									overflow: 'hidden',
+								}}
+							>
+								<Textures />
+							</div>
+						}
+
 					</Col>
 					<Col
 						md={7}
 						className="projectVisitCol"
 					>
 						<div className="projectVisitInfo">
-							<h2>Plan your visit</h2>
+							<h2>
+								Contact
+							</h2>
 							<hr />
 							<p>
-								Example Project Gallery
+								{title}
 							</p>
-							<p>
-								10 Ware Street, Cambridge, MA 02138
-							</p>
-							<p>
-								857.600.2681
-							</p>
-							<p>
-								<a href="https://archimedes.digital" target="_blank" rel="noopener noreferrer">
-									https://archimedes.digital/
-								</a>
-							</p>
+							{email ?
+								<p>
+									<a
+										href={`mailto:${email}`}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{email}
+									</a>
+								</p>
+							: ''}
+							{url ?
+								<p>
+									<a
+										href={url}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{url}
+									</a>
+								</p>
+							: ''}
+							{address ?
+								<p>
+									{address}
+								</p>
+							: ''}
+							{phone ?
+								<p>
+									{phone}
+								</p>
+							: ''}
 						</div>
 					</Col>
 				</Row>

@@ -21,7 +21,6 @@ const CollectionCover = ({ title, coverImage, coverLink, coverLinkText }) => (
 			/>
 		}
 		bottom
-		reactsToMouse
 	>
 		<CoverTitle
 			title={title}

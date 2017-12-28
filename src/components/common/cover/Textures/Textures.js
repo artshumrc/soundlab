@@ -7,11 +7,17 @@ import textures from 'textures';
 class Textures extends React.Component {
 
 	componentDidMount() {
+		let width = window.innerWidth * 1.2;
+		let height = window.innerHeight * 1.2;
+		if (height < 500) {
+			height = 500;
+		}
+
 		const svg = d3
 			.select('#textures')
 			.append('svg')
-			.attr('width', window.innerWidth * 1.2)
-			.attr('height', window.innerHeight * 1.2)
+			.attr('width', width)
+			.attr('height', height)
 			;
 
 		const texture = textures
@@ -26,8 +32,8 @@ class Textures extends React.Component {
 
 		svg
 			.append('rect')
-			.attr('width', window.innerWidth * 1.2)
-			.attr('height', window.innerHeight * 1.2)
+			.attr('width', width)
+			.attr('height', height)
 			.style('fill', texture.url());
 	}
 

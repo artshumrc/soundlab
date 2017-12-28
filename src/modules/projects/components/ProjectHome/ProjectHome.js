@@ -72,6 +72,7 @@ const ProjectHome = props => {
 				people={props.users}
 			/>
 			<ProjectVisit
+				title={props.title}
 				email={props.email}
 				url={props.url}
 				address={props.address}

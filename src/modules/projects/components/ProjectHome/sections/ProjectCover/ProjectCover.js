@@ -53,6 +53,7 @@ class ProjectCover extends React.Component {
 					<div className="home-overlay" />
 				}
 				left
+				reactsToMouse
 				full
 			>
 				<div className="home-cover-content">
