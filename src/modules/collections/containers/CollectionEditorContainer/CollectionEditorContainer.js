@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
-import winston from 'winston';
 
 import CollectionEditor from '../../components/CollectionEditor';
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
@@ -69,7 +68,7 @@ class CollectionEditorContainer extends React.Component {
 					router.replace(`/collections/${values.slug}`);
 				})
 				.catch((err) => {
-					winston.error(err);
+					console.error(err);
 				});
 		} else {
 			collectionCreate(values, selectedItemIds)
@@ -77,7 +76,7 @@ class CollectionEditorContainer extends React.Component {
 					router.replace('/collections/');
 				})
 				.catch((err) => {
-					winston.error(err);
+					console.error(err);
 				});
 		}
 	}
@@ -90,7 +89,7 @@ class CollectionEditorContainer extends React.Component {
 				router.replace('/collections');
 			})
 			.catch((err) => {
-				winston.error(err);
+				console.error(err);
 			});
 	}
 

@@ -2,7 +2,6 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import S3Upload from 'react-s3-uploader/s3upload';
 import autoBind from 'react-autobind';
-import winston from 'winston';
 
 import makeId from '../../../../lib/makeId';
 
@@ -20,7 +19,7 @@ export default class CoverImageUploader extends React.Component {
 	}
 
 	handleError(error) {
-		winston.error('error LOG', error);
+		console.error('error LOG', error);
 	}
 
 	componentWillMount() {
@@ -45,7 +44,7 @@ export default class CoverImageUploader extends React.Component {
 	}
 
 	handleProgress(event) {
-		winston.error('event LOG', event);
+		console.error('event LOG', event);
 	}
 
 	uploadFile(acceptedFile) {

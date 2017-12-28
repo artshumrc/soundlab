@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
-import winston from 'winston';
 
 import './PWDLoginForm.css';
 
@@ -11,7 +10,7 @@ const wrapSubmit = login => async (values, dispatch) => {
 		await login(values);
 		return {};
 	} catch (err) {
-		winston.error(err);
+		console.error(err);
 		throw new SubmissionError({ _error: 'Username or password incorrect.' });
 	}
 };

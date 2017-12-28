@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
-import winston from 'winston';
 
 import Profile from '../../components/Profile';
 import profileQuery from '../../graphql/queries/profile';
@@ -25,7 +24,7 @@ class ProfileContainer extends React.Component {
 				router.replace('/profile');
 			})
 			.catch((err) => {
-				winston.error(err);
+				console.error(err);
 			});
 	}
 

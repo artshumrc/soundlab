@@ -1,7 +1,6 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
-import winston from 'winston';
 
 import ItemEditor from '../../components/ItemEditor';
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
@@ -32,7 +31,7 @@ class ItemEditorContainer extends React.Component {
 					router.replace(`/items/${values.slug}`);
 				})
 				.catch((err) => {
-					winston.error(err);
+					console.error(err);
 				});
 		} else {
 			itemCreate(values)
@@ -40,7 +39,7 @@ class ItemEditorContainer extends React.Component {
 					router.replace('/items/');
 				})
 				.catch((err) => {
-					winston.error(err);
+					console.error(err);
 				});
 		}
 	}
@@ -53,7 +52,7 @@ class ItemEditorContainer extends React.Component {
 				router.replace('/items');
 			})
 			.catch((err) => {
-				winston.error(err);
+				console.error(err);
 			});
 	}
 
@@ -65,13 +64,6 @@ class ItemEditorContainer extends React.Component {
 		if (this.props.itemQuery && !this.props.itemQuery.loading) {
 			item = this.props.itemQuery.item;
 		}
-
-		winston.info('###########')
-		winston.info('###########')
-		winston.info('###########')
-		winston.info('###########')
-		winston.info('###########')
-		winston.info(item);
 
 		return (
 			<ItemEditor

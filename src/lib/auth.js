@@ -1,4 +1,3 @@
-import winston from 'winston';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -104,7 +103,7 @@ const verifyToken = async () => {
 			cookies.remove('token', { domain });
 			cookies.remove('hello', { domain });
 
-			winston.error(err);
+			console.error(err);
 		}
 	}
 	return null;

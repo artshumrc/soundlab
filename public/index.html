@@ -9,6 +9,8 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+		<script src="https://cdn.ravenjs.com/3.21.0/raven.min.js"
+    crossorigin="anonymous"></script>
     <!-- fonts -->
 		<link href="https://fonts.googleapis.com/icon?family=Gentium+Basic|Merriweather:300,400&subset=cyrillic,cyrillic-ext,latin-ext"
 		  rel="stylesheet">
@@ -46,6 +48,9 @@
 			ga('create', 'UA-36250260-14', 'auto');
 			ga('send', 'pageview');
 			*/
+		</script>
+		<script>
+			Raven.config('https://76f7a5f822734857ac0606932782f7f5@sentry.io/264480').install()
 		</script>
 		<script src='https://www.google.com/recaptcha/api.js'></script>
 	  <script src="http://crm.igor.usermd.net/build/mirador/mirador.js"></script>
