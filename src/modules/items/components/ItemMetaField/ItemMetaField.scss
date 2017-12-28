@@ -21,8 +21,9 @@
 	}
 
 	span {
+		font-family: $font-accent;
+		font-weight: 100;
 		color: $text-primary;
-		font-family: $font-body;
 		font-size: 18px;
 		line-height: 1.7em;
 		text-align:left;

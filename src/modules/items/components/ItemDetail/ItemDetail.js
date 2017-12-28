@@ -10,7 +10,7 @@ import ItemDiscussion from '../ItemDiscussion/ItemDiscussion.js';
 
 import './ItemDetail.css';
 
-const ItemDetail = ({ _id, title, description, tags, metafields, files })=> {
+const ItemDetail = ({ _id, title, description, tags, metadata, files })=> {
 
 	if (!_id) {
 		// TODO: loading or no results
@@ -34,25 +34,7 @@ const ItemDetail = ({ _id, title, description, tags, metafields, files })=> {
 					tags={tags}
 				/>
 				<ItemMetaFields
-					metaFields={[{
-						label: 'Date',
-						value: '1400',
-					}, {
-						label: 'Creator',
-						value: 'P. Vergilius Maro',
-					}, {
-						label: 'Country of origin',
-						value: 'Italy',
-					}, {
-						label: 'Type',
-						value: 'Manuscript',
-					}, {
-						label: 'Material',
-						value: 'Bound vellum with leather.',
-					}, {
-						label: 'Notes',
-						value: 'Illumination on r17, v29, r30, v30.',
-					}]}
+					metafields={metadata}
 				/>
 				<ItemDiscussion />
 			</div>
