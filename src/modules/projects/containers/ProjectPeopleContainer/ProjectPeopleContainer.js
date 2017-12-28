@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
+import winston from 'winston';
 
 import ProjectPeopleEditor from '../../components/ProjectPeopleEditor';
 import projectDetailQuery from '../../graphql/queries/detail';
@@ -23,7 +24,7 @@ class ProjectPeopleContainer extends React.Component {
 				router.replace('/dashboard/');
 			})
 			.catch((err) => {
-				console.log(err);
+				winston.error(err);
 			});
 	}
 

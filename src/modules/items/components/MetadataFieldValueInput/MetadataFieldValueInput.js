@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import ReactMapboxGl from 'react-mapbox-gl';
+import winston from 'winston';
 
 
 import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader';
@@ -21,12 +22,11 @@ class MetadataFieldValueInput extends React.Component {
 	}
 
 	changeFilesValue(files) {
-		console.log(files);
+		winston.info(files);
 	}
 
 	toggleSelectedItem(item) {
-		console.log(item);
-
+		winston.info(item);
 	}
 
 	render () {

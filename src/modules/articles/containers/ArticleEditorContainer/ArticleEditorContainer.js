@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
+import winston from 'winston';
 
 import ArticleEditor from '../../components/ArticleEditor';
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
@@ -31,7 +32,7 @@ class ArticleEditorContainer extends React.Component {
 					router.replace(`/articles/${values.slug}`);
 				})
 				.catch((err) => {
-					console.log(err);
+					winston.error(err);
 				});
 		} else {
 			articleCreate(values)
@@ -39,7 +40,7 @@ class ArticleEditorContainer extends React.Component {
 					router.replace('/articles/');
 				})
 				.catch((err) => {
-					console.log(err);
+					winston.error(err);
 				});
 		}
 	}
@@ -52,16 +53,8 @@ class ArticleEditorContainer extends React.Component {
 				router.replace('/articles');
 			})
 			.catch((err) => {
-				console.log(err);
+				winston.error(err);
 			});
-	}
-
-	addMetadata() {
-
-	}
-
-	removeMetadata(metadataToRemove) {
-
 	}
 
 	render() {

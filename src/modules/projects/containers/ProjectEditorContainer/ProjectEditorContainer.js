@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
+import winston from 'winston';
 
 import ProjectEditor from '../../components/ProjectEditor';
 import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
@@ -33,7 +34,7 @@ class ProjectEditorContainer extends React.Component {
 				router.replace('/dashboard/');
 			})
 			.catch((err) => {
-				console.log(err);
+				winston.error(err);
 			});
 	}
 
@@ -45,7 +46,7 @@ class ProjectEditorContainer extends React.Component {
 				window.location = '//orphe.us';
 			})
 			.catch((err) => {
-				console.log(err);
+				winston.error(err);
 			});
 	}
 

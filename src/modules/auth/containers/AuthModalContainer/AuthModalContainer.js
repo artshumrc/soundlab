@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import winston from 'winston';
 
 import Modal from '../../../../components/common/modal/Modal';
 
@@ -64,7 +65,7 @@ class AuthModalContainer extends React.Component {
 					dispachSetUser(user);
 				}
 			} catch (err) {
-				console.log(err);
+				winston.error(err);
 				// TODO: Determine why dispatchLogout always called on page load
 				// dispatchLogout();
 			}

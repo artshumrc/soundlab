@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
+import winston from 'winston';
 
 import Profile from '../../components/Profile';
 import profileQuery from '../../graphql/queries/profile';
@@ -19,19 +20,12 @@ class ProfileContainer extends React.Component {
 
 		delete values.__typename;
 
-		console.log('#####')
-		console.log('#####')
-		console.log(values)
-		console.log('#####')
-		console.log('#####')
-
-
 		userUpdate(values)
 			.then((response) => {
 				router.replace('/profile');
 			})
 			.catch((err) => {
-				console.log(err);
+				winston.error(err);
 			});
 	}
 

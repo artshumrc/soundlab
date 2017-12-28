@@ -1,3 +1,5 @@
+import winston from 'winston';
+
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives
@@ -24,19 +26,19 @@ export default function register() {
 									// the fresh content will have been added to the cache.
 									// It's the perfect time to display a "New content is
 									// available; please refresh." message in your web app.
-									console.log('New content is available; please refresh.');
+									winston.info('New content is available; please refresh.');
 								} else {
 									// At this point, everything has been precached.
 									// It's the perfect time to display a
 									// "Content is cached for offline use." message.
-									console.log('Content is cached for offline use.');
+									winston.info('Content is cached for offline use.');
 								}
 							}
 						};
 					};
 				})
 				.catch((error) => {
-					console.error('Error during service worker registration:', error);
+					winston.error('Error during service worker registration:', error);
 				});
 		});
 	}

@@ -2,6 +2,7 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import S3Upload from 'react-s3-uploader/s3upload';
 import autoBind from 'react-autobind';
+import winston from 'winston';
 
 import makeId from '../../../../lib/makeId';
 
@@ -19,7 +20,7 @@ export default class CoverImageUploader extends React.Component {
 	}
 
 	handleError(error) {
-		console.log('error LOG', error);
+		winston.error('error LOG', error);
 	}
 
 	componentWillMount() {
@@ -44,8 +45,7 @@ export default class CoverImageUploader extends React.Component {
 	}
 
 	handleProgress(event) {
-		console.log('event LOG', event);
-
+		winston.error('event LOG', event);
 	}
 
 	uploadFile(acceptedFile) {
@@ -83,7 +83,7 @@ export default class CoverImageUploader extends React.Component {
 			backgroundPosition: 'center',
 			backgroundRepeat: 'no-repeat',
 		};
-		
+
 
 		if (image) {
 			styles.backgroundImage = `url(${image.path})`;

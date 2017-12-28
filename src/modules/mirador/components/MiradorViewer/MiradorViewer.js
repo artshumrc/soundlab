@@ -18,8 +18,6 @@ class MiradorViewer extends React.Component {
 					miradorManifestUri = manifest.remoteUri;
 				}
 
-				console.log(miradorManifestUri);
-
 				if (!miradorManifestUri) {
 					return null;
 				}

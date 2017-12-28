@@ -19,13 +19,6 @@ class ArticleListContainer extends React.Component {
 			articles = this.props.articleListQuery.project.articles;
 		}
 
-		console.log('############');
-		console.log('############');
-		console.log('############');
-		console.log(this.props);
-
-		console.log('############');
-		console.log('############');
 		return (
 			<ArticleList
 				articles={articles}
