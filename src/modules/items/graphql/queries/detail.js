@@ -15,8 +15,9 @@ const query = gql`
 				description
 
 				metadata {
-					value
+					type
 					label
+					value
 				}
 
 				files {

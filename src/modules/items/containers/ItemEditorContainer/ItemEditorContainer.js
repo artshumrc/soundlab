@@ -17,14 +17,37 @@ class ItemEditorContainer extends React.Component {
 
 		this.state = {
 			files: [],
-			metadata: [],
 		};
 	}
 
-	handleSubmit(values) {
+	handleSubmit(_values) {
 		const { itemCreate, itemUpdate, router } = this.props;
-		delete values.__typename;
+		const values = Object.assign({}, _values);
 
+		// remove non-input values
+		delete values.__typename;
+		delete values.comments;
+		delete values.commentsCount;
+
+		// sanitize metadata
+		const metadata = [];
+		if (values.metadata) {
+			values.metadata.forEach(metadataField => {
+				metadata.push({
+					type: metadataField.type,
+					label: metadataField.label,
+					value: metadataField.value,
+				});
+			});
+		}
+		values.metadata = metadata;
+
+		// set files
+		if (this.state.files) {
+			values.files = this.state.files;
+		}
+
+		// create or update
 		if ('_id' in values) {
 			itemUpdate(values)
 				.then((response) => {
@@ -57,20 +80,23 @@ class ItemEditorContainer extends React.Component {
 	}
 
 	render() {
-		const { files, metadata } = this.state;
+		const { files } = this.state;
 
 		let item;
 
-		if (this.props.itemQuery && !this.props.itemQuery.loading) {
-			item = this.props.itemQuery.item;
+		if (
+			this.props.itemQuery
+			&& !this.props.itemQuery.loading
+			&& this.props.itemQuery.project
+		) {
+			item = this.props.itemQuery.project.item;
 		}
 
 		return (
 			<ItemEditor
 				onSubmit={this.handleSubmit}
 				onRemove={this.handleRemove}
-				item={item}
-				metadata={metadata}
+				initialValues={item}
 				files={files}
 				addMetadata={this.addMetadata}
 				removeMetadata={this.removeMetadata}

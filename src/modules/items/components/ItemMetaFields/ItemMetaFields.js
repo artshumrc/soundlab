@@ -15,9 +15,9 @@ const ItemMetaFields = ({ metafields }) => {
 
 	return (
 		<div className="itemMetaFields">
-			{metafields.map(metafield => (
+			{metafields.map((metafield, i) => (
 				<ItemMetaField
-					key={metafield.label}
+					key={`${metafield.label}-${i}`}
 					{...metafield}
 				/>
 			))}

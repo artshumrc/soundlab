@@ -24,6 +24,18 @@ class MetadataField extends React.Component {
 		autoBind(this);
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (
+			!this.props.type
+			&& nextProps.type
+			&& nextProps.type.length
+		) {
+			this.setState({
+				type: nextProps.type,
+			});
+		}
+	}
+
 	toggleFieldType(e) {
 		this.setState({
 			type: e.target.options[e.target.selectedIndex].value,

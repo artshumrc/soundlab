@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { Field, FieldArray, reduxForm, formValueSelector } from 'redux-form';
+import { connect } from 'react-redux';
 
 import Button from '../../../../components/common/buttons/Button';
 import DashboardNav from '../../../dashboard/components/DashboardNav';
@@ -17,6 +18,7 @@ const maxLength200000 = maxLength(200000);
 
 
 class ItemEditor extends React.Component {
+	/**
 	componentWillReceiveProps (nextProps) {
 		if (
 			(!this.props.item && nextProps.item)
@@ -26,6 +28,7 @@ class ItemEditor extends React.Component {
 			this.props.initialize({ ...nextProps.item });
 		}
 	}
+	*/
 
 	render() {
 		const { item, files, metadata } = this.props;
@@ -80,7 +83,11 @@ class ItemEditor extends React.Component {
 
 					<div className="itemEditorFormInputOuter itemEditorFormInputOuterMetadata">
 						<label>Enter metadata for this item.</label>
-						<FieldArray name="metadata" component={MetadataFields} />
+						<FieldArray
+							name="metadata"
+							component={MetadataFields}
+							metadata={metadata}
+						/>
 					</div>
 
 
@@ -105,11 +112,27 @@ ItemEditor.propTypes = {
 	item: PropTypes.object,
 	files: PropTypes.array,
 	metadata: PropTypes.array,
-	addMetadata: PropTypes.func,
-	removeMetadata: PropTypes.func,
 };
 
 
-export default reduxForm({
+let ItemEditorForm = reduxForm({
 	form: 'ItemEditor',
+	enableReinitialize: true,
 })(ItemEditor);
+
+const selector = formValueSelector('ItemEditor') // <-- same as form name
+
+const mapStateToProps = (state, props) => {
+	const metadata = selector(state, 'metadata')
+
+	return {
+		metadata,
+		// initialValues: props.item,
+	};
+};
+
+ItemEditorForm = connect(
+	mapStateToProps
+)(ItemEditorForm);
+
+export default ItemEditorForm;
