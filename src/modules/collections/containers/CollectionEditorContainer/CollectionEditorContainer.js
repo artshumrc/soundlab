@@ -145,7 +145,7 @@ class CollectionEditorContainer extends React.Component {
 				onRemove={this.handleRemove}
 				changeImageValue={this.changeImageValue}
 				coverImage={coverImage}
-				collection={collection}
+				initialValues={collection}
 				selectedItems={selectedItems}
 				toggleSelectedItem={this.toggleSelectedItem}
 			/>

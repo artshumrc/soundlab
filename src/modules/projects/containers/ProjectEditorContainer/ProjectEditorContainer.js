@@ -60,7 +60,7 @@ class ProjectEditorContainer extends React.Component {
 			<ProjectEditor
 				onSubmit={this.handleSubmit}
 				onRemove={this.handleRemove}
-				project={project}
+				initialValues={project}
 			/>
 		);
 	}

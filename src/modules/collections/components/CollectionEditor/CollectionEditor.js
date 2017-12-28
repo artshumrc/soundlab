@@ -18,15 +18,6 @@ const maxLength2100 = maxLength(2100);
 
 
 class CollectionEditor extends React.Component {
-	componentWillReceiveProps (nextProps) {
-		if (
-			(!this.props.collection && nextProps.collection)
-		|| this.props.collection !== nextProps.collection
-		) {
-			this.props.destroy();
-			this.props.initialize({ ...nextProps.collection });
-		}
-	}
 
 	render() {
 		const { collection, items, selectedItems } = this.props;

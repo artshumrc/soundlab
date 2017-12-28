@@ -69,8 +69,7 @@ class ArticleEditorContainer extends React.Component {
 			<ArticleEditor
 				onSubmit={this.handleSubmit}
 				onRemove={this.handleRemove}
-				article={article}
-				metadata={metadata}
+				initialValues={article}
 				files={files}
 				addMetadata={this.addMetadata}
 				removeMetadata={this.removeMetadata}

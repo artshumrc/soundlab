@@ -17,15 +17,6 @@ const maxLength200000 = maxLength(200000);
 
 
 class ArticleEditor extends React.Component {
-	componentWillReceiveProps (nextProps) {
-		if (
-			(!this.props.article && nextProps.article)
-		|| this.props.article !== nextProps.article
-		) {
-			this.props.destroy();
-			this.props.initialize({ ...nextProps.article });
-		}
-	}
 
 	render() {
 		const { article, files, metadata } = this.props;
@@ -61,7 +52,7 @@ class ArticleEditor extends React.Component {
 							?
 						</span>
 					</div>
-					
+
 					<ExampleEditor />
 
 

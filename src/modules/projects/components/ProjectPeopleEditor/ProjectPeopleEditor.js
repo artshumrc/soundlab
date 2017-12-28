@@ -15,21 +15,6 @@ const maxLength2100 = maxLength(2100);
 
 
 class ProjectPeopleEditor extends React.Component {
-	componentWillReceiveProps (nextProps) {
-		if (
-				nextProps.project
-			&& !this.props.project
-		) {
-			this.props.destroy();
-			let hostname = '';
-
-			if (nextProps.project.hostname) {
-				hostname = nextProps.project.hostname.replace('.orphe.us', '');
-			}
-
-			this.props.initialize({ ...nextProps.project, hostname });
-		}
-	}
 
 	render() {
 		const { project } = this.props;

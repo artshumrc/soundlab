@@ -38,7 +38,7 @@ class ProjectPeopleContainer extends React.Component {
 			<ProjectPeopleEditor
 				onSubmit={this.handleSubmit}
 				onRemove={this.handleRemove}
-				project={project}
+				initialValues={project}
 			/>
 		);
 	}

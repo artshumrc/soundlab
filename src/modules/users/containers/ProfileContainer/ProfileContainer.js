@@ -38,7 +38,7 @@ class ProfileContainer extends React.Component {
 		return (
 			<Profile
 				onSubmit={this.handleSubmit}
-				profile={profile}
+				initialValues={profile}
 			/>
 		);
 	}

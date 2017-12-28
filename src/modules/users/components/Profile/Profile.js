@@ -11,15 +11,6 @@ const maxLength200 = maxLength(200);
 const maxLength2100 = maxLength(2100);
 
 class Profile extends React.Component {
-	componentWillReceiveProps (nextProps) {
-		if (
-			(!this.props.profile && nextProps.profile)
-		|| this.props.profile !== nextProps.profile
-		) {
-			this.props.destroy();
-			this.props.initialize({ ...nextProps.profile });
-		}
-	}
 
 	render() {
 		return (

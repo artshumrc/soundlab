@@ -18,17 +18,6 @@ const maxLength200000 = maxLength(200000);
 
 
 class ItemEditor extends React.Component {
-	/**
-	componentWillReceiveProps (nextProps) {
-		if (
-			(!this.props.item && nextProps.item)
-		|| this.props.item !== nextProps.item
-		) {
-			this.props.destroy();
-			this.props.initialize({ ...nextProps.item });
-		}
-	}
-	*/
 
 	render() {
 		const { item, files, metadata } = this.props;
