@@ -16,7 +16,16 @@ class ProfileContainer extends React.Component {
 
 	handleSubmit(values) {
 		const { userUpdate, router } = this.props;
+
 		delete values.__typename;
+
+		console.log('#####')
+		console.log('#####')
+		console.log(values)
+		console.log('#####')
+		console.log('#####')
+
+
 		userUpdate(values)
 			.then((response) => {
 				router.replace('/profile');

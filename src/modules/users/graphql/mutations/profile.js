@@ -18,7 +18,7 @@ const userUpdateMutation = graphql(userUpdate, {
 	}),
 	name: 'userUpdateMutation',
 	options: {
-		refetchQueries: ['usersQuery'],
+		refetchQueries: [],
 	},
 });
 

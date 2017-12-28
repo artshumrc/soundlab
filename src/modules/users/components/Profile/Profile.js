@@ -64,7 +64,7 @@ class Profile extends React.Component {
 					</div>
 
 					<div className="profileEditorFormInputOuter">
-						<label>Bio</label>
+						<label>Biography</label>
 						<Field
 							name="bio"
 							type="text"
