@@ -3,7 +3,7 @@ import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
 
 import ItemEditor from '../../components/ItemEditor';
-import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
+import itemListQuery from '../../graphql/queries/list';
 import itemDetailQuery from '../../graphql/queries/detail';
 import itemCreateMutation from '../../graphql/mutations/create';
 import itemUpdateMutation from '../../graphql/mutations/update';
@@ -116,4 +116,5 @@ class ItemEditorContainer extends React.Component {
 
 export default compose(
 	itemCreateMutation, itemUpdateMutation, itemRemoveMutation, itemDetailQuery,
+	itemListQuery,
 )(ItemEditorContainer);

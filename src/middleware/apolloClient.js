@@ -1,5 +1,5 @@
 import { ApolloClient, createNetworkInterface } from 'react-apollo';
-import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
+// import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
 import Cookies from 'universal-cookie';
 
 
@@ -22,7 +22,7 @@ networkInterface.use([{
 	}
 }]);
 
-const connectionParams = () => ({ authToken: cookies.get('token') ? cookies.get('token') : null });
+// const connectionParams = () => ({ authToken: cookies.get('token') ? cookies.get('token') : null });
 
 // const wsClient = new SubscriptionClient(`${process.env.REACT_APP_WS_SERVER}/${process.env.REACT_APP_WS_SERVER_URI}`, {
 // 	reconnect: true,

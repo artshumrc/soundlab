@@ -6,7 +6,10 @@ import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname
 const itemCreate = gql`
 mutation itemCreate($hostname: String!, $item: ItemInputType!) {
 	itemCreate(hostname: $hostname, item: $item) {
-    _id
+		_id
+		title
+		slug
+		description
 	}
 }
 `;
@@ -22,7 +25,7 @@ const itemCreateMutation = graphql(itemCreate, {
 	}),
 	name: 'itemCreateMutation',
 	options: {
-		refetchQueries: ['itemsQuery', 'itemQuery'],
+		refetchQueries: ['itemListQuery'],
 	},
 });
 

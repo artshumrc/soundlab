@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'react-apollo';
-import autoBind from 'react-autobind';
 
 import ItemList from '../../components/ItemList';
-import itemsQuery from '../../graphql/queries/list';
+import itemListQuery from '../../graphql/queries/list';
 
 
 class ItemListContainer extends React.Component {
@@ -26,6 +25,10 @@ class ItemListContainer extends React.Component {
 	}
 }
 
+ItemListContainer.propTypes = {
+	itemListQuery: PropTypes.object,
+};
+
 export default compose(
-	itemsQuery,
+	itemListQuery,
 )(ItemListContainer);

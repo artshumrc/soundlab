@@ -4,10 +4,6 @@ import {
   Grid,
   Row,
   Col,
-  Button,
-  NavItem,
-  Navbar,
-  Nav
 } from 'react-bootstrap';
 import { Link } from 'react-router';
 
@@ -27,7 +23,7 @@ class Footer extends React.Component {
 				<Grid>
 					<Row>
 						<Col>
-							<ul className="projectFooterNav" role="nav">
+							<ul className="projectFooterNav">
 								<li>
 									<Link
 										to="/terms"
