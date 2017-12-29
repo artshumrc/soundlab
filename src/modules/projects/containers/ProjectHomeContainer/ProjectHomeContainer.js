@@ -11,7 +11,7 @@ const ProjectHomeContainer = props => {
 	const { router } = props;
 	let project;
 
-	if (props.projectQuery.loading) {
+	if (!props.projectQuery) {
 		// TODO: loading state
 		return (
 			<div />

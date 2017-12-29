@@ -9,7 +9,7 @@ import projectQuery from '../../graphql/queries/detail';
 const ProjectHeaderContainer = props => {
 	let project = null;
 
-	if (props.projectQuery && !props.projectQuery.loading) {
+	if (props.projectQuery) {
 		project = props.projectQuery.project;
 	}
 

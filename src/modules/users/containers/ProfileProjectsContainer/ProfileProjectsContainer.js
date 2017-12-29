@@ -10,10 +10,9 @@ import profileProjectsQuery from '../../graphql/queries/profileProjects';
 class ProfileProjectsContainer extends React.Component {
 	render() {
 		let projects = [];
-		
+
 		if (
 			this.props.userProjectsQuery
-			&& !this.props.userProjectsQuery.loading
 			&& this.props.userProjectsQuery.userProjects
 		) {
 			projects = this.props.userProjectsQuery.userProjects;

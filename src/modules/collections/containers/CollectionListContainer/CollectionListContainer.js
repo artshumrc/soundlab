@@ -13,7 +13,6 @@ class CollectionListContainer extends React.Component {
 
 		if (
 			this.props.collectionListQuery
-			&& !this.props.collectionListQuery.loading
 			&& this.props.collectionListQuery.project
 		) {
 			collections = this.props.collectionListQuery.project.collections;

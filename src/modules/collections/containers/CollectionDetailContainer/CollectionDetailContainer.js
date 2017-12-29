@@ -14,7 +14,6 @@ class CollectionDetailContainer extends React.Component {
 
 		if (
 			this.props.collectionQuery
-			&& !this.props.collectionQuery.loading
 			&& this.props.collectionQuery.project
 		) {
 			collection = this.props.collectionQuery.project.collection;

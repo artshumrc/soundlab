@@ -14,7 +14,6 @@ class ItemDetailContainer extends React.Component {
 
 		if (
 			this.props.itemQuery
-			&& !this.props.itemQuery.loading
 			&& this.props.itemQuery.project
 		) {
 			item = this.props.itemQuery.project.item;

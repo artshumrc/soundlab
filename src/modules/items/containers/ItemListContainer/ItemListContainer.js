@@ -13,7 +13,6 @@ class ItemListContainer extends React.Component {
 
 		if (
 			this.props.itemListQuery
-			&& !this.props.itemListQuery.loading
 			&& this.props.itemListQuery.project
 		) {
 			items = this.props.itemListQuery.project.items;

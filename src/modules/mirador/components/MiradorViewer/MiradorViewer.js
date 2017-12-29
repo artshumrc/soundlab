@@ -7,62 +7,56 @@ const Mirador = window.Mirador;
 class MiradorViewer extends React.Component {
 
 	componentDidUpdate() {
-		if (!this.props.data.loading) {
-			setTimeout(() => {
+		setTimeout(() => {
 
-				const manifest = this.props.data.miradorById;
-				const manifestUri = this.props.data.miradorById.remoteUri;
-				let miradorManifestUri = manifestUri;
+			const manifest = this.props.data.miradorById;
+			const manifestUri = this.props.data.miradorById.remoteUri;
+			let miradorManifestUri = manifestUri;
 
-				if (manifest) {
-					miradorManifestUri = manifest.remoteUri;
-				}
+			if (manifest) {
+				miradorManifestUri = manifest.remoteUri;
+			}
 
-				if (!miradorManifestUri) {
-					return null;
-				}
+			if (!miradorManifestUri) {
+				return null;
+			}
 
-				Mirador({
-					id: 'miradorViewer',
-					layout: '1x1',
+			Mirador({
+				id: 'miradorViewer',
+				layout: '1x1',
 
-					data: [
-						{
-							manifestUri: miradorManifestUri,
-							location: 'Harvard University'
-						}
-					],
+				data: [
+					{
+						manifestUri: miradorManifestUri,
+						location: 'Harvard University'
+					}
+				],
 
-					windowObjects: [{
-						loadedManifest: miradorManifestUri,
-					}],
+				windowObjects: [{
+					loadedManifest: miradorManifestUri,
+				}],
 
-					windowSettings: {
-						sidePanel: false,
-						canvasControls: {
-							annotations: {
-								annotationLayer: false
-							},
-							imageManipulation: {
-								manipulationLayer: false
-							},
+				windowSettings: {
+					sidePanel: false,
+					canvasControls: {
+						annotations: {
+							annotationLayer: false
 						},
-						displayLayout: false,
+						imageManipulation: {
+							manipulationLayer: false
+						},
 					},
+					displayLayout: false,
+				},
 
-					mainMenuSettings: {
-						show: false
-					},
-				});
-			}, 1000);
-		}
+				mainMenuSettings: {
+					show: false
+				},
+			});
+		}, 1000);
 	}
 
 	render() {
-		if (this.props.data.loading) {
-			return <div>Loading</div>;
-		}
-
 		const manifest = this.props.data.miradorById;
 		const manifestUri = this.props.data.miradorById.remoteUri;
 

@@ -31,7 +31,7 @@ class ProfileContainer extends React.Component {
 	render() {
 		let profile;
 
-		if (this.props.userProfileQuery && !this.props.userProfileQuery.loading) {
+		if (this.props.userProfileQuery) {
 			profile = this.props.userProfileQuery.userProfile;
 		}
 

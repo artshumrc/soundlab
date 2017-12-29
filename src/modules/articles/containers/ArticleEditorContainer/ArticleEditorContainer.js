@@ -28,23 +28,6 @@ class ArticleEditorContainer extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log('###########')
-		console.log('###########')
-		console.log('###########')
-		console.log('###########')
-		console.log('###########')
-		console.log('nextProps');
-		console.log(nextProps);
-		console.log('this.props');
-		console.log(this.props)
-		console.log('this.state');
-		console.log(this.state);
-		console.log('###########')
-		console.log('###########')
-		console.log('###########')
-		console.log('###########')
-		console.log('###########')
-		console.log('###########')
 		if (
 				nextProps.articleQuery
 			&& nextProps.articleQuery.project
@@ -61,8 +44,6 @@ class ArticleEditorContainer extends React.Component {
 	}
 
 	handleSubmit(_values) {
-		const { router } = this.props;
-
 		// on publish?
 	}
 

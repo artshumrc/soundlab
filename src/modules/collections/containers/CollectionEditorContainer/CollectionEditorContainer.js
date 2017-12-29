@@ -26,11 +26,9 @@ class CollectionEditorContainer extends React.Component {
 		if (
 			(
 				!this.props.collectionQuery
-				|| this.props.collectionQuery.loading
 				|| !this.props.collectionQuery.project
 			)
 			&& nextProps.collectionQuery
-			&& !nextProps.collectionQuery.loading
 			&& nextProps.collectionQuery.project
 			&& nextProps.collectionQuery.project.collection
 		) {
@@ -123,7 +121,6 @@ class CollectionEditorContainer extends React.Component {
 		let collection;
 		if (
 			this.props.collectionQuery
-			&& !this.props.collectionQuery.loading
 			&& this.props.collectionQuery.project
 		) {
 			collection = this.props.collectionQuery.project.collection;

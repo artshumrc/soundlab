@@ -30,7 +30,7 @@ class ProjectPeopleContainer extends React.Component {
 	render() {
 		let project;
 
-		if (this.props.projectQuery && !this.props.projectQuery.loading) {
+		if (this.props.projectQuery) {
 			project = this.props.projectQuery.project;
 		}
 

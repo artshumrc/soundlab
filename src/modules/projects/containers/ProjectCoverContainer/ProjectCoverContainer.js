@@ -8,7 +8,7 @@ import projectCoverQuery from '../../graphql/queries/projectCoverQuery';
 const ProjectCoverContainer = props => {
 	let project = null;
 
-	if (props.projectCoverQuery && !props.projectCoverQuery.loading) {
+	if (props.projectCoverQuery) {
 		project = props.projectCoverQuery.project;
 	}
 

@@ -13,7 +13,6 @@ class ArticleListContainer extends React.Component {
 
 		if (
 			this.props.articleListQuery
-			&& !this.props.articleListQuery.loading
 			&& this.props.articleListQuery.project
 		) {
 			articles = this.props.articleListQuery.project.articles;
