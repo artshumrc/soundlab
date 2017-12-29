@@ -18,10 +18,10 @@ const ArticleList = ({ articles, horizontal }) => {
 
 	return (
 		<div className={`articlesList ${classes.join(' ')}`}>
-			{articles.map((listArticle, i) => (
+			{articles.map((articleListItem, i) => (
 				<ArticleListItem
-					key={`${listArticle.slug}-${i}`}
-					{...listArticle}
+					key={`${articleListItem.slug}-${i}`}
+					{...articleListItem}
 				/>
 			))}
 

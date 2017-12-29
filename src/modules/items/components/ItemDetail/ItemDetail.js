@@ -6,7 +6,7 @@ import ItemDescription from '../ItemDescription';
 import ItemMetaFields from '../ItemMetaFields';
 import ItemCollection from '../ItemCollection';
 import ItemProject from '../ItemProject';
-import ItemDiscussion from '../ItemDiscussion/ItemDiscussion.js';
+import Discussion from '../../../comments/components/Discussion';
 
 import './ItemDetail.css';
 
@@ -41,7 +41,7 @@ const ItemDetail = ({
 				<ItemMetaFields
 					metafields={metadata}
 				/>
-				<ItemDiscussion
+				<Discussion
 					commentsCount={commentsCount}
 					comments={comments}
 				/>

@@ -22,7 +22,7 @@ const articleCreateMutation = graphql(articleCreate, {
 	}),
 	name: 'articleCreateMutation',
 	options: {
-		refetchQueries: ['articlesQuery', 'articleQuery'],
+		refetchQueries: ['articleQuery'],
 	},
 });
 

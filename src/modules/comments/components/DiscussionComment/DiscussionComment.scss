@@ -1,6 +1,6 @@
 @import '../../../../variables.scss';
 
-.itemDiscussion {
+.discussion {
   border-top: 1px solid $divider-light-grey;
   padding-top: 40px;
   text-align: left;
@@ -16,25 +16,25 @@
   padding-bottom: 40px;
 }
 
-.itemDiscussionAuthor, .itemDiscussionDate, .itemDiscussionContent, .itemDiscussionReplyButton {
+.discussionAuthor, .discussionDate, .discussionContent, .discussionReplyButton {
   font-size: 18px;
 }
 
-.itemDiscussionMeta {
+.discussionMeta {
   padding-bottom: 10px;
 }
 
-.itemDiscussionAuthor {
+.discussionAuthor {
   color: $text-primary;
   font-weight: bold;
   padding-right: 10px;
 }
 
-.itemDiscussionDate {
+.discussionDate {
   color: $light-grey;
 }
 
-.itemDiscussionContent {
+.discussionContent {
   font-family: $font-accent;
 	font-weight: 100;
 	font-size: 18px;
@@ -43,13 +43,13 @@
 	width: 100%;
 }
 
-.itemDiscussionReplyButton {
+.discussionReplyButton {
   color: $text-primary;
   text-decoration: underline;
   cursor: pointer;
 }
 
-.itemDiscussionReply {
+.discussionReply {
   border-left: 2px solid $divider-light-grey;
   text-align: left;
   margin: 20px 0px;

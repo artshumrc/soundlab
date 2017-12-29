@@ -1,5 +1,7 @@
 import React from 'react';
 import Immutable, { Map, fromJS } from 'immutable';
+import { EditorState, convertToRaw } from 'draft-js';
+import autoBind from 'react-autobind';
 
 import { Dante, DanteEditor } from "Dante2/es/index.js";
 import dantecss from 'Dante2/dist/DanteStyles.css';
@@ -25,8 +27,10 @@ class ArticleTextEditor extends React.Component {
 
 	constructor(props) {
 		super(props)
+
 		let config = Map(fromJS(this.defaultOptions(props.config)))
 		this.options = config.mergeDeep(props.config).toJS()
+		autoBind(this);
 	}
 
 	defaultOptions(options) {
@@ -271,26 +275,28 @@ class ArticleTextEditor extends React.Component {
 		return defaultOptions
 	}
 
-	componentDidMount() {
-
-		//	// simple implementation, use the js class
-		//
-		//	var article = new Dante({
-		//		el: "app",
-		//		content: demo,
-		//		read_only: true,
-		//		debug: true
-		//	})
-		//	article.render()
-
-	}
-
 	render(){
+		const { editorState } = this.props;
+
+		if (!editorState) {
+			/*
+			return (
+				<div className="articleTextEditor">
+					<DanteEditor
+						content={EditorState.createEmpty()}
+						config={this.options}
+					/>
+				</div>
+			);
+			*/
+			return null;
+		}
+
 		return(
 			<div className="articleTextEditor">
 				<DanteEditor
-					content={ this.props.content }
-					config={ this.options }
+					content={editorState}
+					config={this.options}
 				/>
 			</div>
 		)

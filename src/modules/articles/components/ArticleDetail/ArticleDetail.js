@@ -1,9 +1,49 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { EditorState, ContentState, convertToRaw, convertFromRaw } from 'draft-js';
+
+import Tags from '../../../tags/components/Tags';
+import ArticleTitle from '../ArticleTitle';
+import Discussion from '../../../comments/components/Discussion';
+import ArticleTextEditor from '../ArticleTextEditor';
+
 import './ArticleDetail.css';
 
-const ArticleDetail = props => (
-	<div />
-);
+const ArticleDetail = ({
+	_id, title, slug, content, tags, commentsCount, comments,
+	userIsAdmin
+})=> {
+	let editorState = null;
+
+	if (!_id || !content) {
+		// TODO: loading or no results
+		return null;
+	}
+	const parsedContent = JSON.parse(content);
+
+	return (
+		<div className="articleDetail">
+			<div className="articleDetailColumn">
+				<ArticleTitle
+					title={title}
+					slug={slug}
+					showEditLink={userIsAdmin}
+				/>
+				<Tags
+					tags={tags}
+				/>
+
+				<ArticleTextEditor
+					editorState={parsedContent}
+					config={{
+						read_only: true,
+					}}
+				/>
+			</div>
+			<Discussion />
+		</div>
+	);
+}
 
 
 export default ArticleDetail;

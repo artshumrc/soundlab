@@ -14,7 +14,6 @@ class ArticleDetailContainer extends React.Component {
 
 		if (
 			this.props.articleQuery
-			&& !this.props.articleQuery.loading
 			&& this.props.articleQuery.project
 		) {
 			article = this.props.articleQuery.project.article;
