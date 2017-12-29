@@ -3,6 +3,8 @@
 
 #permissions {
 	min-height: 350px;
+	position: relative;
+	z-index: 1;
 }
 
 .permissionsHeader, .permissionsInfoBlock {

@@ -19,10 +19,18 @@ class Home extends React.Component {
 				<HomeCover />
 				<AboutSection />
 				<FeaturesSection />
-				<ShowcaseCollections />
+
+				{/* TODO: explore collections when there are collections to explore 
+					<ShowcaseCollections />
+				*/}
+
 				<LifetimeData />
 				<PermissionsSection />
-				<ExploreOrDemo />
+
+				{/* TODO: create explore and demo pages
+					<ExploreOrDemo />
+				*/}
+
 				<ReadyToStart />
 				<Footer />
 			</div>

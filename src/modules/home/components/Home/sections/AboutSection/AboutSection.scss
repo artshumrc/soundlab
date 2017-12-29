@@ -7,21 +7,12 @@
 		text-align: center;
 		padding: 30px 0;
 		width: 90%;
+		max-width: 990px;
+		margin: 0 auto;
 
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
 		display: flex;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		-ms-flex-align: center;
 		align-items: center;
-		-webkit-box-pack: center;
-		-webkit-justify-content: center;
-		-ms-flex-pack: center;
 		justify-content: center;
 	}
 
@@ -29,29 +20,32 @@
 		text-align: left;
 		display: inline-block;
 		margin: 0;
-		padding: 30px 0 30px 80px;
+		padding: 30px 20px 30px 80px;
 
 		p {
-			font-size: 42px;
+			font-size: 34px;
 			font-family: $font-reading;
 			color: $dark;
 			line-height: 1.7em;
+			font-style: normal;
 		}
 
 		.quoteByline {
-			font-size: 26px;
-			padding: 30px 10px 30px 90px;
+			font-size: 24px;
+			padding: 20px 10px 30px 60px;
 			color: $text-gray;
+			font-style: italic;
 		}
 
 	}
 
 	.aboutText {
+		padding: 30px 0;
 		p {
 			line-height: 1.7em;
 			font-family: $font-reading;
 			color: $dark;
-			font-size: 28px;
+			font-size: 26px;
 			max-width: 720px;
 			margin: 0 auto;
 			padding: 15px 0;

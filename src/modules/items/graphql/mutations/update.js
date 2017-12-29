@@ -18,7 +18,7 @@ const itemUpdateMutation = graphql(itemUpdate, {
 	}),
 	name: 'itemUpdateMutation',
 	options: {
-		refetchQueries: ['itemsQuery', 'itemQuery'],
+		refetchQueries: ['itemListQuery'],
 	},
 });
 

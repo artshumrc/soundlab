@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import faker from 'faker';
-import _ from 'underscore';
 import { prune } from 'underscore.string';
 
-import Tags from '../../../tags/components/Tags';
+// import Tags from '../../../tags/components/Tags';
 import './CollectionListItem.css';
 
 const CollectionListItem = (props) => {

@@ -12,7 +12,7 @@ const ExploreOrDemo = props => (
 						<Row>
 							<Col sm={2}>
 								<div className="exploreOrDemoIcon">
-									<i className="mdi mdi-compass" />
+									<i className="mdi mdi-view-dashboard" />
 								</div>
 							</Col>
 							<Col sm={10}>
@@ -32,7 +32,7 @@ const ExploreOrDemo = props => (
 						<Row>
 							<Col sm={2}>
 								<div className="exploreOrDemoIcon">
-									<i className="mdi mdi-home" />
+									<i className="mdi mdi-pillar" />
 								</div>
 							</Col>
 							<Col sm={10}>

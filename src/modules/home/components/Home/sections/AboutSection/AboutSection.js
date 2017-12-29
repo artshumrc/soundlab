@@ -1,25 +1,34 @@
 import React from 'react';
-import { Grid, Row, Col, Image } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import _ from 'underscore';
 
-import CollectionListItem from '../../../../../collections/components/CollectionListItem';
+import ExampleItem from '../ExampleItem';
 
 import './AboutSection.css';
 
 export default class AboutSection extends React.Component {
 	render() {
-		const artImages = [3, 16, 19, 22, 31, 34, 35, 38, 42, 43, 44, 47, 48, 58, 70,
-			83, 87, 90, 92, 93, 95, 102, 103, 104, 87, 77, 92, 56, 49, 43, 38, 44, 3,
-			103, 22, 71, 100, 15, 99, 36, 17, 28, 72, 32, 33, 63, 102, 62, 80, 30, 60];
-
-		const selImage = _.sample(artImages);
-		const exampleItem = {
-			imageUrl: `//iiif.orphe.us/orpheus/art/${selImage}.jpg/full/400,/0/default.jpg`,
-			title: 'Example Item',
-			tags: ['Manuscripts', '12th Century'],
-			collection: 'example-collection',
-			slug: 'example-item',
-		};
+		const exampleItems = [{
+			imageUrl: '//iiif.orphe.us/orpheus/art/62.jpg/full/400,/0/default.jpg',
+			title: 'Tree A / Boom A',
+			description: 'Mondrian, Piet. 1913. Oil-painting on canvas; location: Tate Modern London. Accessed via Wikimedia.',
+		}, {
+			imageUrl: '//iiif.orphe.us/orpheus/art/1.jpg/full/400,/0/default.jpg',
+			title: '"The Annunciation", Pidgeon Triptich',
+			description: 'Mass, Tjaarke Hendrika Maria. 1999. Charcoal, egg tempera, paper on canvas. Accessed via Wikimedia.',
+		}, {
+			imageUrl: '//iiif.orphe.us/orpheus/art/74.jpg/full/400,/0/default.jpg',
+			title: 'A Hunt in the Papyrus Thicket',
+			description: 'Wall painting in the tomb of Nabamun. Before 1350 BC. Tempera on plaster. Accessed via Wikimedia.',
+		}, {
+			imageUrl: '//iiif.orphe.us/orpheus/art/73.jpg/full/400,/0/default.jpg',
+			title: 'Fol 012v, The Tudor Pattern Book',
+			description: 'Bodleian Library, MS. Ashmole 1504. Accessed via Wikimedia.',
+		}, {
+			imageUrl: '//iiif.orphe.us/orpheus/art/26.jpg/full/400,/0/default.jpg',
+			title: 'Circle of Melchior Lorck',
+			description: 'From "Studies of Men and Women in Arab, Medieval and other Costumes". Circa 1527-1594. Accessed via Wikimedia.',
+		}];
 
 		return (
 			<section id="learn">
@@ -28,8 +37,8 @@ export default class AboutSection extends React.Component {
 						<Col>
 							<div className="aboutIntro">
 								<div className="aboutImage">
-									<CollectionListItem
-										{...exampleItem}
+									<ExampleItem
+										{..._.sample(exampleItems)}
 									/>
 								</div>
 								<blockquote className="aboutLead">
@@ -39,7 +48,7 @@ export default class AboutSection extends React.Component {
 										. . . it will never pass into nothingness.
 									</p>
 									<p className="quoteByline">
-										&mdash; John Keats, &quot;Endymion&quot;
+										John Keats, &quot;Endymion&quot;
 									</p>
 								</blockquote>
 							</div>
