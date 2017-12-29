@@ -33,8 +33,18 @@ class ItemEditorContainer extends React.Component {
 		const metadata = [];
 		if (values.metadata) {
 			values.metadata.forEach(metadataField => {
+				// default type
+				let type = 'text';
+
+				if (
+					metadataField.type
+					&& typeof metadataField.type !== 'undefined'
+				) {
+					type = metadataField.type;
+				}
+
 				metadata.push({
-					type: metadataField.type,
+					type,
 					label: metadataField.label,
 					value: metadataField.value,
 				});
