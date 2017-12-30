@@ -16,8 +16,8 @@ export default (
 		<Route path="/articles" component={ProjectLayout}>
 			<IndexRoute component={ArticleListPageContainer} />
 			<Route path="/articles/create" component={ArticleEditorContainer} />
-			<Route path="/articles/:slug" component={ArticleDetailContainer} />
-			<Route path="/articles/:slug/edit" component={ArticleEditorContainer} />
+			<Route path="/articles/:id/:slug" component={ArticleDetailContainer} />
+			<Route path="/articles/:id/:slug/edit" component={ArticleEditorContainer} />
 		</Route>
 
 	</div>

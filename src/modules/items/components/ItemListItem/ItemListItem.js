@@ -9,7 +9,7 @@ import './ItemListItem.css';
 
 
 const ItemListItem = (props) => {
-	const itemUrl = `/items/${props.slug}`;
+	const itemUrl = `/items/${props._id}/${props.slug}`;
 
 	return (
 		<div className="itemListItem">

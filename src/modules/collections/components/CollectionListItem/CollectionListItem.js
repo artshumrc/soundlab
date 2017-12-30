@@ -7,7 +7,7 @@ import { prune } from 'underscore.string';
 import './CollectionListItem.css';
 
 const CollectionListItem = (props) => {
-	const collectionUrl = `/collections/${props.slug}`;
+	const collectionUrl = `/collections/${props._id}/${props.slug}`;
 	let thumbnail = null;
 	if (props.coverImage) {
 		thumbnail = `http://iiif.orphe.us/${props.coverImage}/full/210,/0/default.jpg`;

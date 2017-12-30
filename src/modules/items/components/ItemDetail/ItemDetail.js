@@ -28,8 +28,7 @@ const ItemDetail = ({
 				/>
 				<ItemTitle
 					title={title}
-					slug={slug}
-					showEditLink={userIsAdmin}
+					editLink={userIsAdmin ? `/items/${_id}/${slug}/edit` : null}
 				/>
 				<ItemDescription
 					description={description}

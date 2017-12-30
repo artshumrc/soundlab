@@ -61,7 +61,7 @@ class CollectionEditorContainer extends React.Component {
 		if ('_id' in values) {
 			collectionUpdate(values, selectedItemIds)
 				.then((response) => {
-					router.replace(`/collections/${values.slug}`);
+					router.replace(`/collections/${values._id}/${values.slug}`);
 				})
 				.catch((err) => {
 					console.error(err);

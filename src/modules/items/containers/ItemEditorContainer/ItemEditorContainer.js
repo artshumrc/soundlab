@@ -61,7 +61,7 @@ class ItemEditorContainer extends React.Component {
 		if ('_id' in values) {
 			itemUpdate(values)
 				.then((response) => {
-					router.replace(`/items/${values.slug}`);
+					router.replace(`/items/${values._id}/${values.slug}`);
 				})
 				.catch((err) => {
 					console.error(err);

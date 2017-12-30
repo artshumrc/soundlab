@@ -5,12 +5,12 @@ import { Link } from 'react-router';
 import './ArticleTitle.css';
 
 
-const ArticleTitle = ({ title, slug, showEditLink }) => (
+const ArticleTitle = ({ title, editLink }) => (
 	<div className="articleTitleOuter">
 		<h1 className="articleTitle">{title}</h1>
-		{showEditLink ?
+		{editLink ?
 			<Link
-				to={`/articles/${slug}/edit`}
+				to={editLink}
 				className="articleTitleLink"
 			>
 				Edit

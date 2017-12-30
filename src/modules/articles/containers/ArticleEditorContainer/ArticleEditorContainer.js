@@ -69,7 +69,7 @@ class ArticleEditorContainer extends React.Component {
 		await articleSave(values)
 			.then((response) => {
 				console.log('Article saved');
-				router.replace(`/articles/${_s.slugify(values.title)}`)
+				router.replace(`/articles/${this.state.articleId}/${_s.slugify(values.title)}`)
 			})
 			.catch((err) => {
 				console.error(err);

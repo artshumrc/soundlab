@@ -4,11 +4,11 @@ import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname
 
 
 const query = gql`
-	query articleQuery($hostname: String, $slug: String) {
+	query articleQuery($hostname: String, $id: String) {
 		project(hostname: $hostname) {
 	    _id
 			userIsAdmin
-			article(slug: $slug) {
+			article(_id: $id) {
 				_id
 				title
 				slug
@@ -23,7 +23,7 @@ const articleQuery = graphql(query, {
 	options: ({ params }) => ({
 		variables: {
 			hostname: getCurrentProjectHostname(),
-			slug: params.slug,
+			id: params.id,
 		}
 	}),
 });

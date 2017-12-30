@@ -15,8 +15,8 @@ export default (
 		<Route path="/collections" component={ProjectLayout}>
 			<IndexRoute component={CollectionListPageContainer} />
 			<Route path="/collections/create" component={CollectionEditorContainer} />
-			<Route path="/collections/:slug" component={CollectionDetailContainer} />
-			<Route path="/collections/:slug/edit" component={CollectionEditorContainer} />
+			<Route path="/collections/:id/:slug" component={CollectionDetailContainer} />
+			<Route path="/collections/:id/:slug/edit" component={CollectionEditorContainer} />
 		</Route>
 
 	</div>

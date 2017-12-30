@@ -9,7 +9,7 @@ import './ArticleListItem.css';
 
 
 const ArticleListItem = (props) => {
-	const articleUrl = `/articles/${props.slug}`;
+	const articleUrl = `/articles/${props._id}/${props.slug}`;
 
 	return (
 		<div className="articleListItem">

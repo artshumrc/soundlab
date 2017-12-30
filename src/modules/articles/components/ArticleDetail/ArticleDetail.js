@@ -24,8 +24,7 @@ const ArticleDetail = ({
 			<div className="articleDetailColumn">
 				<ArticleTitle
 					title={title}
-					slug={slug}
-					showEditLink={userIsAdmin}
+					editLink={userIsAdmin ? `/articles/${_id}/${slug}/edit` : null}
 				/>
 				<Tags
 					tags={tags}
