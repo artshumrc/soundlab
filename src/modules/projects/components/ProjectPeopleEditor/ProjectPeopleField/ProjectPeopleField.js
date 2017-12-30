@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'react-bootstrap';
 import autoBind from 'react-autobind';
 import { Field } from 'redux-form';
@@ -28,6 +29,7 @@ class ProjectPeopleField extends React.Component {
 		) {
 			this.setState({
 				role: nextProps.role,
+				status: nextProps.status,
 			});
 		}
 	}
@@ -46,19 +48,17 @@ class ProjectPeopleField extends React.Component {
 
 	render() {
 		const { field } = this.props;
-		console.log("#########")
-		console.log("#########")
-		console.log("#########")
-		console.log("#########")
-		console.log(field.user);
+		const { status } = this.state;
 
 		return (
 			<div className="projectPeopleField projectPeopleFieldInput">
 				<Row key={field}>
 					<Col md={5}>
-						<UserListItem
-							{...field.user}
-						/>
+						{field.user ?
+							<UserListItem
+								{...field.user}
+							/>
+						: ''}
 					</Col>
 					<Col md={3}>
 						<Field
@@ -72,16 +72,21 @@ class ProjectPeopleField extends React.Component {
 						</Field>
 					</Col>
 					<Col md={3}>
-						<Field
-							name={`${field}.status`}
-							component="select"
-							onChange={this.toggleFieldStatus}
-							disabled={!(field.user ? field.user.isActiveUser : false)}
-						>
-							<option value="public">Public</option>
-							<option value="private">Private</option>
-							<option value="pending">Pending</option>
-						</Field>
+						{(field.user && field.user.isActiveUser) ?
+							<Field
+								name={`${field}.status`}
+								component="select"
+								onChange={this.toggleFieldStatus}
+							>
+								<option value="public">Public</option>
+								<option value="private">Private</option>
+								<option value="pending">Pending</option>
+							</Field>
+						:
+							<p>
+								{status}
+							</p>
+						}
 					</Col>
 					<Col md={1}>
 						<button
@@ -96,5 +101,9 @@ class ProjectPeopleField extends React.Component {
 		);
 	}
 }
+
+ProjectPeopleField.propTypes = {
+	field: PropTypes.object,
+};
 
 export default ProjectPeopleField;
