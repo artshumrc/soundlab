@@ -1,8 +1,10 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
+import { reduxForm, FieldArray } from 'redux-form';
+import { formValueSelector } from 'redux-form';
+import { connect } from 'react-redux';
 
 import DashboardNav from '../../../dashboard/components/DashboardNav';
-import ProjectPerson from '../ProjectPerson';
+import ProjectPeopleFields from './ProjectPeopleFields';
 
 
 import './ProjectPeopleEditor.css';
@@ -12,49 +14,28 @@ import './ProjectPeopleEditor.css';
 class ProjectPeopleEditor extends React.Component {
 
 	render() {
-		const { project } = this.props;
-
-		if (!project) {
-			return null;
-		}
+		const { users } = this.props;
 
 		return (
 			<div className="projectEditor">
 				<DashboardNav />
 
-				<h1>Project Members</h1>
+				<h1>People</h1>
 
 				<form
 					className="projectEditorForm"
 					onSubmit={this.props.handleSubmit}
 				>
 
-					{project.users.map((user, i) => (
-						<div
-							key={user._id}
-							className="projectEditorFormInputOuter"
-						>
-							<ProjectPerson {...user} />
-
-							<div className="role">
-								<label>Role</label>
-
-							</div>
-
-							<span
-								className="projectEditorFormHelp"
-							>
-								?
-							</span>
-						</div>
-					))}
 
 					<div
 						className="projectEditorFormInputOuter"
 					>
-						<button>
-							Add new project member
-						</button>
+						<FieldArray
+							name="users"
+							component={ProjectPeopleFields}
+							users={users}
+						/>
 					</div>
 
 					<button
@@ -69,6 +50,22 @@ class ProjectPeopleEditor extends React.Component {
 	}
 }
 
-export default reduxForm({
+let ProjectPeopleEditorForm = reduxForm({
 	form: 'ProjectPeopleEditor',
 })(ProjectPeopleEditor);
+
+const selector = formValueSelector('ProjectPeopleEditor') // <-- same as form name
+
+const mapStateToProps = (state, props) => {
+	const users = selector(state, 'users')
+
+	return {
+		users,
+	};
+};
+
+ProjectPeopleEditorForm = connect(
+	mapStateToProps
+)(ProjectPeopleEditorForm);
+
+export default ProjectPeopleEditorForm;

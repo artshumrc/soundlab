@@ -113,7 +113,6 @@ const mapStateToProps = (state, props) => {
 
 	return {
 		metadata,
-		// initialValues: props.item,
 	};
 };
 

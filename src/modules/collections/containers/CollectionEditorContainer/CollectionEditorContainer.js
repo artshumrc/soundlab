@@ -21,14 +21,6 @@ class CollectionEditorContainer extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log('######')
-		console.log('######')
-		console.log('######')
-		console.log(this.props);
-		console.log('######')
-		console.log('######')
-		console.log('next')
-		console.log(nextProps);
 		if (
 			nextProps.collectionQuery
 			&& nextProps.collectionQuery.project

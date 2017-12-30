@@ -89,7 +89,7 @@ const DashboardNav = (props) => {
 				}
 			>
 				<i className="mdi mdi-account-multiple" />
-				Members
+				People
 			</Link>
 			<Link
 				to="/dashboard/help"
