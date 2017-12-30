@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router';
-import _s from 'underscore.string';
 
 import ArticleTextEditor from '../ArticleTextEditor';
 import { required, maxLength } from '../../../../lib/formHelpers';
