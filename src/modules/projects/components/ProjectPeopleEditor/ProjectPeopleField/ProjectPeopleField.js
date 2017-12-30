@@ -46,14 +46,18 @@ class ProjectPeopleField extends React.Component {
 
 	render() {
 		const { field } = this.props;
+		console.log("#########")
+		console.log("#########")
+		console.log("#########")
+		console.log("#########")
+		console.log(field.user);
 
 		return (
 			<div className="projectPeopleField projectPeopleFieldInput">
 				<Row key={field}>
 					<Col md={5}>
 						<UserListItem
-							{...field.user._id}
-							name={field.user._id}
+							{...field.user}
 						/>
 					</Col>
 					<Col md={3}>
@@ -72,7 +76,7 @@ class ProjectPeopleField extends React.Component {
 							name={`${field}.status`}
 							component="select"
 							onChange={this.toggleFieldStatus}
-							disabled={!field.user.isActiveUser}
+							disabled={!(field.user ? field.user.isActiveUser : false)}
 						>
 							<option value="public">Public</option>
 							<option value="private">Private</option>

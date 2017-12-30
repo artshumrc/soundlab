@@ -57,11 +57,11 @@ const ProjectPeopleFields = ({ fields, users }) => {
 			: ''}
 
 			<button
-				className="projectPeopleButton projectPeopleAdd"
+				className="projectEditorButton projectPeopleAdd"
 				onClick={() => fields.push({})}
 			>
 				<i className="mdi mdi-plus" />
-				Add project member
+				Invite project member
 			</button>
 		</div>
 	);
