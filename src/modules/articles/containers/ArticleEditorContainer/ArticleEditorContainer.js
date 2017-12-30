@@ -1,10 +1,12 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { formValueSelector } from 'redux-form';
 import autoBind from 'react-autobind';
 import shortid from 'shortid';
-// import { EditorState, ContentState, convertToRaw, convertFromRaw } from 'draft-js';
+import { EditorState, convertToRaw } from 'draft-js';
+import _s from 'underscore.string';
 
 import ArticleEditor from '../../components/ArticleEditor';
 import articleDetailQuery from '../../graphql/queries/detail';
@@ -18,11 +20,17 @@ class ArticleEditorContainer extends React.Component {
 		autoBind(this);
 
 
+		let editorState;
+		// if creating a new article, initialize with editorstate empty
+		if (props.location.pathname === '/articles/create') {
+			editorState = convertToRaw(EditorState.createEmpty().getCurrentContent());
+		}
+
 		this.state = {
 			articleId: shortid.generate(),
 			files: [],
 			metadata: [],
-			editorState: null,
+			editorState,
 		};
 	}
 
@@ -42,14 +50,36 @@ class ArticleEditorContainer extends React.Component {
 		}
 	}
 
-	handleSubmit(_values) {
-		// on publish?
+	async handleSubmit() {
+		const values = {};
+		const { articleSave, router } = this.props;
+
+		// set id generated with component and projectId if not exists
+		values._id = this.state.articleId;
+		values.projectId = this.props.articleQuery.project._id;
+		values.title = this.props.title;
+
+		// set article content
+		// values.content = JSON.stringify(saveBehavior.editorContent);
+
+		if (!values.title) {
+			return null;
+		}
+
+		await articleSave(values)
+			.then((response) => {
+				console.log('Article saved');
+				router.replace(`/articles/${_s.slugify(values.title)}`)
+			})
+			.catch((err) => {
+				console.error(err);
+			});
 	}
 
-	handleRemove(articleId) {
+	async handleRemove(articleId) {
 		const { articleRemove, router } = this.props;
 
-		articleRemove(articleId)
+		await articleRemove(articleId)
 			.then((response) => {
 				router.replace('/articles');
 			})
@@ -58,7 +88,7 @@ class ArticleEditorContainer extends React.Component {
 			});
 	}
 
-	handleEditorChange(saveBehavior) {
+	async handleEditorChange(saveBehavior) {
 		const values = {};
 		const { articleSave } = this.props;
 
@@ -67,6 +97,16 @@ class ArticleEditorContainer extends React.Component {
 		values.projectId = this.props.articleQuery.project._id;
 		values.title = this.props.title;
 
+		// TODO: find better solution for preventing this
+		// prevent false submit before editor is initialized
+		if (
+			saveBehavior.editorContent.blocks
+		&& saveBehavior.editorContent.blocks.length
+		&& !saveBehavior.editorContent.blocks[0].text.length
+		) {
+			return null
+		}
+
 		// set article content
 		values.content = JSON.stringify(saveBehavior.editorContent);
 
@@ -74,7 +114,7 @@ class ArticleEditorContainer extends React.Component {
 			return null;
 		}
 
-		articleSave(values)
+		await articleSave(values)
 			.then((response) => {
 				console.log('Article saved');
 			})
@@ -84,23 +124,19 @@ class ArticleEditorContainer extends React.Component {
 	}
 
 	render() {
-		const { files } = this.state;
+		const { files, editorState } = this.state;
 
 		let article;
-		let project;
 
 		if (
 			this.props.articleQuery
 			&& this.props.articleQuery.project
+			&& this.props.articleQuery.project.article
 		) {
-			project = this.props.articleQuery.project;
-
-			if (this.props.articleQuery.project.article) {
-				article = this.props.articleQuery.project.article;
-			}
+			article = this.props.articleQuery.project.article;
 		}
 
-		if (!project) {
+		if (!editorState) {
 			return null;
 		}
 
@@ -112,7 +148,7 @@ class ArticleEditorContainer extends React.Component {
 				files={files}
 				addMetadata={this.addMetadata}
 				removeMetadata={this.removeMetadata}
-				editorState={this.state.editorState}
+				editorState={editorState}
 				handleEditorChange={this.handleEditorChange}
 				title={this.props.title}
 			/>
@@ -136,4 +172,5 @@ export default compose(
 	connect(
 		mapStateToProps,
 	),
+	withRouter,
 )(ArticleEditorContainer);

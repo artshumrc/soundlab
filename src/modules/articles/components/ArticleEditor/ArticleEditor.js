@@ -57,7 +57,7 @@ class ArticleEditor extends React.Component {
 								articleEditorButton
 								articleEditorButtonSubmit
 							`}
-							onClick={() => {this.props.router.replace(`/articles/${_s.slugify(this.props.title)}`)}}
+							type="submit"
 						>
 							Publish
 						</button>

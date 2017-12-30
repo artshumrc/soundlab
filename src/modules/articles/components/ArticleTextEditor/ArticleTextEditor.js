@@ -278,20 +278,6 @@ class ArticleTextEditor extends React.Component {
 	render(){
 		const { editorState } = this.props;
 
-		if (!editorState) {
-			/*
-			return (
-				<div className="articleTextEditor">
-					<DanteEditor
-						content={EditorState.createEmpty()}
-						config={this.options}
-					/>
-				</div>
-			);
-			*/
-			return null;
-		}
-
 		return(
 			<div className="articleTextEditor">
 				<DanteEditor
