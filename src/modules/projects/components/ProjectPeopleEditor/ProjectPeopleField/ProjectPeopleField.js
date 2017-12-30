@@ -4,6 +4,8 @@ import autoBind from 'react-autobind';
 import { Field } from 'redux-form';
 
 
+import UserListItem from '../../../../users/components/UserListItem';
+
 import './ProjectPeopleField.css';
 
 
@@ -30,9 +32,15 @@ class ProjectPeopleField extends React.Component {
 		}
 	}
 
-	toggleFieldType(e) {
+	toggleFieldRole(e) {
 		this.setState({
 			role: e.target.options[e.target.selectedIndex].value,
+		});
+	}
+
+	toggleFieldStatu(e) {
+		this.setState({
+			status: e.target.options[e.target.selectedIndex].value,
 		});
 	}
 
@@ -40,26 +48,39 @@ class ProjectPeopleField extends React.Component {
 		const { field } = this.props;
 
 		return (
-			<div className="itemEditorProjectPeopleField">
+			<div className="projectPeopleField projectPeopleFieldInput">
 				<Row key={field}>
-					<Col md={2}>
+					<Col md={5}>
+						<UserListItem
+							user={field.user}
+						/>
+					</Col>
+					<Col md={3}>
 						<Field
 							name={`${field}.role`}
 							component="select"
-							onChange={this.toggleFieldType}
+							onChange={this.toggleFieldRole}
 						>
 							<option value="administrator">Administrator</option>
 							<option value="editor">Editor</option>
 							<option value="contributor">Contributor</option>
 						</Field>
 					</Col>
-					<Col md={2}>
-					</Col>
-					<Col md={7}>
+					<Col md={3}>
+						<Field
+							name={`${field}.status`}
+							component="select"
+							onChange={this.toggleFieldStatus}
+							disabled
+						>
+							<option value="public">Public</option>
+							<option value="private">Private</option>
+							<option value="pending">Pending</option>
+						</Field>
 					</Col>
 					<Col md={1}>
 						<button
-							className="itemEditorRemoveProjectPeople"
+							className="projectPeopleRemove"
 							onClick={this.props.handleRemove}
 						>
 							<i className="mdi mdi-close" />

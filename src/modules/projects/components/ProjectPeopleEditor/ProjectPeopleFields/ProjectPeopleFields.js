@@ -14,7 +14,7 @@ const ProjectPeopleFields = ({ fields, users }) => {
 		<div className="projectPeople">
 			<div className="projectPeopleLabels">
 				<Row>
-					<Col md={6}>
+					<Col md={5}>
 						<label>User</label>
 					</Col>
 					<Col md={3}>
@@ -57,7 +57,7 @@ const ProjectPeopleFields = ({ fields, users }) => {
 			: ''}
 
 			<button
-				className="projectPeopleButton projectPeopleAddMetadata"
+				className="projectPeopleButton projectPeopleAdd"
 				onClick={() => fields.push({})}
 			>
 				<i className="mdi mdi-plus" />

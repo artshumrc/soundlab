@@ -26,8 +26,6 @@ class ProjectPeopleEditor extends React.Component {
 					className="projectEditorForm"
 					onSubmit={this.props.handleSubmit}
 				>
-
-
 					<div
 						className="projectEditorFormInputOuter"
 					>
@@ -37,7 +35,6 @@ class ProjectPeopleEditor extends React.Component {
 							users={users}
 						/>
 					</div>
-
 					<button
 						type="submit"
 						className="projectEditorButton"

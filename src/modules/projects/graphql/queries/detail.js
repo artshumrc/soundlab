@@ -36,14 +36,11 @@ const query = gql`
 			users {
 				role
 				user {
+					_id
 					username
 					avatar
 					name
-					email
-					bio
-					_id
-					updatedAt
-					createdAt
+					isActiveUser
 				}
 			}
 		}

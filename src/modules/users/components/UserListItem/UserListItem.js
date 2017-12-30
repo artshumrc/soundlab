@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
-const UserListItem = ({ username, avatarUrl }) => (
+const UserListItem = ({ _id, name, username, avatarUrl, isActiveUser }) => (
 	<div className="userListItem">
-		<Link to="/profile">
+		<Link
+			to={isActiveUser ?
+				"/profile"
+			:
+				`/users/${_id}`
+			}
+		>
 			<div
 				className="userListItemAvatarImage"
 				style={{
@@ -15,7 +21,11 @@ const UserListItem = ({ username, avatarUrl }) => (
 				}}
 			/>
 			<div className="userListItemUserName">
-				{username}
+				{name ?
+					name
+				:
+					username
+				}
 			</div>
 		</Link>
 	</div>

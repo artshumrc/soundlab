@@ -9,6 +9,7 @@ const query = gql`
 	    name
 	    email
 	    bio
+			isActiveUser
 		}
 	}
 `;
