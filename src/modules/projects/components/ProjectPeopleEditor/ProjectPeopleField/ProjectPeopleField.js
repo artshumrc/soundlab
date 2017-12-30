@@ -52,7 +52,8 @@ class ProjectPeopleField extends React.Component {
 				<Row key={field}>
 					<Col md={5}>
 						<UserListItem
-							user={field.user}
+							{...field.user._id}
+							name={field.user._id}
 						/>
 					</Col>
 					<Col md={3}>
@@ -71,7 +72,7 @@ class ProjectPeopleField extends React.Component {
 							name={`${field}.status`}
 							component="select"
 							onChange={this.toggleFieldStatus}
-							disabled
+							disabled={!field.user.isActiveUser}
 						>
 							<option value="public">Public</option>
 							<option value="private">Private</option>
