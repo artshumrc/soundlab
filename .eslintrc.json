@@ -29,6 +29,7 @@
   	"no-underscore-dangle": "off",
   	"no-undef": "off",
   	"no-console": "off",
+		"no-unused-vars": "error",
   	"react/jsx-indent": [
   		"error",
   		"tab"
