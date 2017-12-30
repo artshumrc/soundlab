@@ -1,6 +1,5 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import _ from 'underscore';
 
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 import { required, maxLength } from '../../../../lib/formHelpers';

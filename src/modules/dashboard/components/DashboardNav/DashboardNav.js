@@ -56,6 +56,17 @@ const DashboardNav = (props) => {
 					>
 						Item
 					</Link>
+					<Link
+						to="/articles/create"
+						className={`
+							dropdownLink
+							${activePath === '/articles/create' ?
+							'dashboardNavLinkActive'
+							: ''}
+						`}
+					>
+						Articles
+					</Link>
 				</div>
 			</div>
 			<Link
