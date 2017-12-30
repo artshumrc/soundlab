@@ -4,11 +4,11 @@ import Header from '../../../../components/navigation/Header';
 import Footer from '../../../../components/navigation/Footer';
 import HomeCover from './sections/HomeCover';
 import AboutSection from './sections/AboutSection';
-import ShowcaseCollections from './sections/ShowcaseCollections';
+// import ShowcaseCollections from './sections/ShowcaseCollections';
 import FeaturesSection from './sections/FeaturesSection';
 import LifetimeData from './sections/LifetimeData';
 import PermissionsSection from './sections/PermissionsSection';
-import ExploreOrDemo from './sections/ExploreOrDemo';
+// import ExploreOrDemo from './sections/ExploreOrDemo';
 import ReadyToStart from './sections/ReadyToStart';
 
 class Home extends React.Component {
@@ -20,7 +20,7 @@ class Home extends React.Component {
 				<AboutSection />
 				<FeaturesSection />
 
-				{/* TODO: explore collections when there are collections to explore 
+				{/* TODO: explore collections when there are collections to explorew
 					<ShowcaseCollections />
 				*/}
 
