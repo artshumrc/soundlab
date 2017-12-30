@@ -1,7 +1,5 @@
 import React from 'react';
-import Recaptcha from 'react-recaptcha';
-import { Field, reduxForm, SubmissionError } from 'redux-form';
-import Button from '../../../../components/common/buttons/Button';
+import { Field, reduxForm } from 'redux-form';
 import { required, maxLength } from '../../../../lib/formHelpers';
 
 import './ProjectNameAvailabilityCheck.css';

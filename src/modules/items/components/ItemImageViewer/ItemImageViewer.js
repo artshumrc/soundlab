@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'underscore';
 import autoBind from 'react-autobind';
 
 import PrimaryImage from './PrimaryImage';
@@ -31,7 +30,7 @@ class ItemImageViewer extends React.Component {
 	}
 
 	setActiveFile(file) {
-		const activeImage = `//iiif.orphe.us/orpheus/art/${file.path}.jpg/full/750,/0/default.jpg`;
+		// const activeImage = `//iiif.orphe.us/orpheus/art/${file.path}.jpg/full/750,/0/default.jpg`;
 
 	}
 

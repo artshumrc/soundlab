@@ -1,9 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router';
 
 import Button from '../../../../../../components/common/buttons/Button';
-import Util from '../../../../../../lib/util';
 
 import './ReadyToStart.css';
 

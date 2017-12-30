@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col } from 'react-bootstrap';
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router';
 import _s from 'underscore.string';
 
-import Button from '../../../../components/common/buttons/Button';
-import DashboardNav from '../../../dashboard/components/DashboardNav';
-import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader';
 import ArticleTextEditor from '../ArticleTextEditor';
 import { required, maxLength } from '../../../../lib/formHelpers';
 
@@ -20,8 +16,6 @@ const maxLength2000 = maxLength(2000);
 class ArticleEditor extends React.Component {
 
 	render() {
-		const { article, files, metadata } = this.props;
-
 		return (
 			<div className="articleEditor">
 				<form

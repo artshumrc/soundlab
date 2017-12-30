@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { compose } from 'react-apollo';
-import autoBind from 'react-autobind';
 
 import ItemDetail from '../../components/ItemDetail';
 import itemDetailQuery from '../../graphql/queries/detail';

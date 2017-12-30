@@ -3,10 +3,6 @@ import {
   Grid,
   Row,
   Col,
-  Button,
-  NavItem,
-  Navbar,
-  Nav
 } from 'react-bootstrap';
 import { Link } from 'react-router';
 

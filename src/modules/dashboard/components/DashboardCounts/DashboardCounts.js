@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import CountSection from '../CountSection';
 
@@ -7,7 +7,7 @@ import CountSection from '../CountSection';
 import './DashboardCounts.css';
 
 
-const DashboardCounts = ({ collectionsCount, articlesCount, itemsCount, textsCount }) => ( 
+const DashboardCounts = ({ collectionsCount, articlesCount, itemsCount, textsCount }) => (
 	<div className="dashboardCounts">
 		<Row>
 			<Col md={3}>

@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 import Button from '../../../../../../components/common/buttons/Button';
 import Cover from '../../../../../../components/common/cover/Cover';
 import Bricks from '../../../../../../components/common/cover/Bricks';
-import Util from '../../../../../../lib/util';
 import './HomeCover.css';
 
 

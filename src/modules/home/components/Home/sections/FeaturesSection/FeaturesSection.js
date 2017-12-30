@@ -1,6 +1,8 @@
 import React from 'react';
-import {Grid, Row, Col, Image} from 'react-bootstrap';
+
+
 import './FeaturesSection.css';
+
 
 export default class FeaturesSection extends React.Component {
 

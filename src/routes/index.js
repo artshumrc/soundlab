@@ -1,5 +1,4 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
 
 // Home
 import homeRoute from '../modules/home/routes';

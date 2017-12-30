@@ -1,10 +1,10 @@
 import React from 'react';
-import Immutable, { Map, fromJS } from 'immutable';
-import { EditorState, convertToRaw } from 'draft-js';
+import { Map, fromJS } from 'immutable';
+// import { EditorState, convertToRaw } from 'draft-js';
 import autoBind from 'react-autobind';
 
-import { Dante, DanteEditor } from "Dante2/es/index.js";
-import dantecss from 'Dante2/dist/DanteStyles.css';
+import { DanteEditor } from "Dante2/es/index.js";
+import 'Dante2/dist/DanteStyles.css';
 import DanteImagePopover from 'Dante2/es/components/popovers/image.js'
 import DanteAnchorPopover from 'Dante2/es/components/popovers/link.js'
 import DanteInlineTooltip from 'Dante2/es/components/popovers/addButton.js'

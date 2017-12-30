@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import autoBind from 'react-autobind';
-import { Field, FieldArray } from 'redux-form';
+import { Field } from 'redux-form';
 
 import { required, maxLength } from '../../../../lib/formHelpers';
 import MetadataFieldValueInput from '../MetadataFieldValueInput';
@@ -10,7 +10,6 @@ import './MetadataField.css';
 
 
 const maxLength200 = maxLength(200);
-const maxLength200000 = maxLength(200000);
 
 
 class MetadataField extends React.Component {
@@ -43,7 +42,7 @@ class MetadataField extends React.Component {
 	}
 
 	render() {
-		const { field, index } = this.props;
+		const { field } = this.props;
 
 		return (
 			<div className="itemEditorMetadataField">

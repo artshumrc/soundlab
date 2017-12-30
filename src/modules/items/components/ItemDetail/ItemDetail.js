@@ -5,7 +5,6 @@ import ItemTitle from '../ItemTitle';
 import ItemDescription from '../ItemDescription';
 import ItemMetaFields from '../ItemMetaFields';
 import ItemCollection from '../ItemCollection';
-import ItemProject from '../ItemProject';
 import Discussion from '../../../comments/components/Discussion';
 
 import './ItemDetail.css';

@@ -1,10 +1,8 @@
 import React from 'react';
 import { compose } from 'react-apollo';
-import autoBind from 'react-autobind';
 
 import ProjectNameAvailabilityCheck from '../../components/ProjectNameAvailabilityCheck';
 import projectAvailabilityQuery from '../../graphql/queries/availability';
-import projectCreateMutation from '../../graphql/mutations/create';
 
 
 

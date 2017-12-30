@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import Headroom from 'react-headroom';
 import { Link } from 'react-router';
 
-// lib
-import scrollToElement from '../../../../lib/scrollToElement';
-
 // components
 import NavBarHeader from './NavBarHeader';
 import UserAvatarContainer from '../../../../modules/users/containers/UserAvatarContainer';

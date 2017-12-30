@@ -1,6 +1,4 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
-import Recaptcha from 'react-recaptcha';
 
 import ProjectNameAvailabilityCheckContainer from '../../containers/ProjectNameAvailabilityCheckContainer';
 

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import * as authActions from '../../../auth/actions';
 import ProjectCreate from '../../components/ProjectCreate';
-import projectDetailQuery from '../../graphql/queries/detail';
 import projectCreateMutation from '../../graphql/mutations/create';
 
 
@@ -37,7 +36,7 @@ class ProjectCreateContainer extends React.Component {
 		};
 
 		// create project
-		const created = await this.props.projectCreate(newProject);
+		await this.props.projectCreate(newProject);
 		window.location = `//${newProject.hostname}/dashboard`;
 	}
 

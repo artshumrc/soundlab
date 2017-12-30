@@ -1,6 +1,5 @@
 import React from 'react';
-import { gql, graphql, compose } from 'react-apollo';
-import { connect } from 'react-redux';
+import { compose } from 'react-apollo';
 
 
 import userAvatarQuery from '../../graphql/queries/avatar';

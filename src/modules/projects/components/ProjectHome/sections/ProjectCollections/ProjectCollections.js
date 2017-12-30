@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
 
 import CollectionListItem from '../../../../../collections/components/CollectionListItem';
 import Button from '../../../../../../components/common/buttons/Button';

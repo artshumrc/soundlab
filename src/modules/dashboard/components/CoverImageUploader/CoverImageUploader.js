@@ -71,6 +71,9 @@ export default class CoverImageUploader extends React.Component {
 				signingUrlMethod: 'GET',
 				signingUrlWithCredentials: true,
 			});
+
+			// TODO: fix uploader
+			uploader.upload();
 		}
 	}
 

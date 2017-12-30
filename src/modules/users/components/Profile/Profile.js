@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 import ProfileNav from '../ProfileNav';
 import { required, maxLength } from '../../../../lib/formHelpers';

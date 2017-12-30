@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'underscore';
+
+
 import Cover from '../../../../components/common/cover/Cover';
 import CoverTitle from '../../../../components/common/cover/CoverTitle';
 import BackgroundImage from '../../../../components/common/cover/BackgroundImage';

@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { EditorState, ContentState, convertToRaw, convertFromRaw } from 'draft-js';
 
 import Tags from '../../../tags/components/Tags';
 import ArticleTitle from '../ArticleTitle';
@@ -12,13 +10,13 @@ import './ArticleDetail.css';
 const ArticleDetail = ({
 	_id, title, slug, content, tags, commentsCount, comments,
 	userIsAdmin
-})=> {
-	let editorState = null;
+}) => {
 
 	if (!_id || !content) {
 		// TODO: loading or no results
 		return null;
 	}
+
 	const parsedContent = JSON.parse(content);
 
 	return (

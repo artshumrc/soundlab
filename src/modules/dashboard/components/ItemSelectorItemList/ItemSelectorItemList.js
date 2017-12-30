@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'underscore';
-import { Grid } from 'react-bootstrap';
 
-import NoResults from '../../../../components/pagination/NoResults';
+
 import ItemSelectorItemListItem from '../ItemSelectorItemListItem';
 
 import './ItemSelectorItemList.css';

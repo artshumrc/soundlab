@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
 
 import CollectionEditor from '../../components/CollectionEditor';
-import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
 import collectionDetailQuery from '../../graphql/queries/detail';
 import collectionCreateMutation from '../../graphql/mutations/create';
 import collectionUpdateMutation from '../../graphql/mutations/update';

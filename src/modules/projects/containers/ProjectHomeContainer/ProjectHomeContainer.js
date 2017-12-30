@@ -8,7 +8,6 @@ import projectQuery from '../../graphql/queries/detail';
 
 
 const ProjectHomeContainer = props => {
-	const { router } = props;
 	let project;
 
 	if (!props.projectQuery) {

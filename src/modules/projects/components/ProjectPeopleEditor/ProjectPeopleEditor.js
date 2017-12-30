@@ -1,17 +1,12 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import _ from 'underscore';
+import { reduxForm } from 'redux-form';
 
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 import ProjectPerson from '../ProjectPerson';
-import { required, maxLength } from '../../../../lib/formHelpers';
 
 
 import './ProjectPeopleEditor.css';
 
-
-const maxLength200 = maxLength(200);
-const maxLength2100 = maxLength(2100);
 
 
 class ProjectPeopleEditor extends React.Component {

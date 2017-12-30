@@ -1,9 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
-import _s from 'underscore.string';
-
-import Tags from '../../../tags/components/Tags';
 
 import './ItemSelectorItemListItem.css';
 

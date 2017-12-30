@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { Grid, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router';
 
-import Button from '../../../../components/common/buttons/Button';
-import DashboardNav from '../../../dashboard/components/DashboardNav';
+
 import CoverImageUploader from '../../../dashboard/components/CoverImageUploader';
 import ItemSelectorField from '../../../dashboard/components/ItemSelectorField';
 import { required, maxLength } from '../../../../lib/formHelpers';

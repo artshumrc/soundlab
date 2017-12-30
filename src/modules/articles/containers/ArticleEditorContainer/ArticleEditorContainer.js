@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import { formValueSelector } from 'redux-form';
 import autoBind from 'react-autobind';
 import shortid from 'shortid';
-import { EditorState, ContentState, convertToRaw, convertFromRaw } from 'draft-js';
+// import { EditorState, ContentState, convertToRaw, convertFromRaw } from 'draft-js';
 
 import ArticleEditor from '../../components/ArticleEditor';
-import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
 import articleDetailQuery from '../../graphql/queries/detail';
 import articleSaveMutation from '../../graphql/mutations/save';
 import articleRemoveMutation from '../../graphql/mutations/remove';
@@ -85,7 +84,7 @@ class ArticleEditorContainer extends React.Component {
 	}
 
 	render() {
-		const { files, metadata } = this.state;
+		const { files } = this.state;
 
 		let article;
 		let project;

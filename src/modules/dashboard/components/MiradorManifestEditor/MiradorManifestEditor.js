@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, FieldArray, SubmissionError, reduxForm } from 'redux-form';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 import AlertContainer from 'react-alert';
 // import mongoose from 'mongoose';
 // import TextInput from '../TextInput';
@@ -112,14 +112,6 @@ class MiradorManifestEditor extends React.Component {
 	}
 }
 
-
-const addNewMiradorManifest = gql`
-	mutation miradorCreate($miradorManifest: MiradorManifestInputType!) {
-		miradorManifestCreate(miradorManifest: $miradorManifest) {
-			title
-		}
-	}
-`;
 
 const MiradorManifestEditorForm = reduxForm({
 	form: 'miradorManifestsEditor',
