@@ -21,12 +21,16 @@ class CollectionEditorContainer extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		console.log('######')
+		console.log('######')
+		console.log('######')
+		console.log(this.props);
+		console.log('######')
+		console.log('######')
+		console.log('next')
+		console.log(nextProps);
 		if (
-			(
-				!this.props.collectionQuery
-				|| !this.props.collectionQuery.project
-			)
-			&& nextProps.collectionQuery
+			nextProps.collectionQuery
 			&& nextProps.collectionQuery.project
 			&& nextProps.collectionQuery.project.collection
 		) {
@@ -37,7 +41,8 @@ class CollectionEditorContainer extends React.Component {
 		}
 	}
 
-	handleSubmit(values) {
+	handleSubmit(_values) {
+		const values = Object.assign({}, _values);
 		const { collectionCreate, collectionUpdate, router } = this.props;
 		const { coverImage, selectedItems } = this.state;
 

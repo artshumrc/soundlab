@@ -42,9 +42,9 @@ const ItemSelectorField = ({ selectedItems, toggleSelectedItem }) => (
 						Selected
 					</label>
 					<ItemSelectorItemList
-						selectedItems={selectedItems}
+						items={selectedItems}
 						toggleSelectedItem={toggleSelectedItem}
-						showSelected
+						showUnselect
 					/>
 				</div>
 			</Col>

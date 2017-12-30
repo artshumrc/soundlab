@@ -8,19 +8,33 @@ import itemsQuery from '../../../items/graphql/queries/list';
 
 class ItemSelectorItemListContainer extends React.Component {
 	render() {
+		const { selectedItems } = this.props;
 		let items = [];
 
 		if (
 			this.props.itemListQuery
 			&& this.props.itemListQuery.project
 		) {
-			items = this.props.itemListQuery.project.items;
+			items = this.props.itemListQuery.project.items.slice();
 		}
+
+		// don't show the items that are common between lists
+		selectedItems.forEach(selectedItem => {
+			items.forEach(item => {
+				if (item._id === selectedItem._id) {
+					items.splice(
+						items.findIndex( _i => _i._id === item._id),
+						1
+					);
+				}
+			});
+		});
+
 
 		return (
 			<ItemSelectorItemList
 				items={items}
-				selectedItems={this.props.selectedItems}
+				selectedItems={selectedItems}
 				toggleSelectedItem={this.props.toggleSelectedItem}
 			/>
 		);
@@ -28,8 +42,12 @@ class ItemSelectorItemListContainer extends React.Component {
 }
 
 ItemSelectorItemListContainer.propTypes = {
+	toggleSelectedItem: PropTypes.func.isRequired,
 	selectedItems: PropTypes.array,
-	toggleSelectedItem: PropTypes.func,
+};
+
+ItemSelectorItemListContainer.defaultProps = {
+	selectedItems: [],
 };
 
 export default compose(
