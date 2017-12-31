@@ -26,8 +26,11 @@ class ItemEditor extends React.Component {
 					<h1>{item ? 'Edit' : 'Create'} Item</h1>
 
 					<ItemEditorUploader
-						changeValue={this.props.changeFilesValue}
 						files={files}
+						addFile={this.props.addFile}
+						removeFile={this.props.removeFile}
+						onSortEnd={this.props.onSortEnd}
+						updateFile={this.props.updateFile}
 					/>
 				</div>
 

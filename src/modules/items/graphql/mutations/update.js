@@ -1,8 +1,8 @@
 import { gql, graphql } from 'react-apollo';
 
 const itemUpdate = gql`
-	mutation itemUpdate($item: ItemInputType!) {
-	itemUpdate(item: $item) {
+	mutation itemUpdate($item: ItemInputType!, $files: [FileInputType]) {
+	itemUpdate(item: $item, files: $files) {
 		_id
 	}
 }
@@ -10,9 +10,10 @@ const itemUpdate = gql`
 
 const itemUpdateMutation = graphql(itemUpdate, {
 	props: params => ({
-		itemUpdate: item => params.itemUpdateMutation({
+		itemUpdate: (item, files) => params.itemUpdateMutation({
 			variables: {
 				item,
+				files,
 			},
 		}),
 	}),

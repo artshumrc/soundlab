@@ -4,8 +4,8 @@ import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname
 
 
 const itemCreate = gql`
-mutation itemCreate($hostname: String!, $item: ItemInputType!) {
-	itemCreate(hostname: $hostname, item: $item) {
+mutation itemCreate($hostname: String!, $item: ItemInputType!, $files: [FileInputType]) {
+	itemCreate(hostname: $hostname, item: $item, files: $files) {
 		_id
 		title
 		slug
@@ -16,9 +16,10 @@ mutation itemCreate($hostname: String!, $item: ItemInputType!) {
 
 const itemCreateMutation = graphql(itemCreate, {
 	props: params => ({
-		itemCreate: item => params.itemCreateMutation({
+		itemCreate: (item, files) => params.itemCreateMutation({
 			variables: {
 				item,
+				files,
 				hostname: getCurrentProjectHostname(),
 			},
 		}),

@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
+import { arrayMove } from 'react-sortable-hoc';
 
 import ItemEditor from '../../components/ItemEditor';
 import itemListQuery from '../../graphql/queries/list';
@@ -22,6 +23,7 @@ class ItemEditorContainer extends React.Component {
 
 	handleSubmit(_values) {
 		const { itemCreate, itemUpdate, router } = this.props;
+		const { files } = this.state;
 		const values = Object.assign({}, _values);
 
 		// remove non-input values
@@ -59,7 +61,7 @@ class ItemEditorContainer extends React.Component {
 
 		// create or update
 		if ('_id' in values) {
-			itemUpdate(values)
+			itemUpdate(values, files)
 				.then((response) => {
 					router.replace(`/items/${values._id}/${values.slug}`);
 				})
@@ -67,7 +69,7 @@ class ItemEditorContainer extends React.Component {
 					console.error(err);
 				});
 		} else {
-			itemCreate(values)
+			itemCreate(values, files)
 				.then((response) => {
 					router.replace('/items/');
 				})
@@ -89,6 +91,40 @@ class ItemEditorContainer extends React.Component {
 			});
 	}
 
+	addFile(file) {
+		const files = this.state.files.slice();
+
+		files.push(file);
+		this.setState({
+			files,
+		});
+	}
+
+	removeFile(index, a, b, c) {
+		const files = this.state.files.slice();
+		files.splice(index, 1);
+		this.setState({
+			files,
+		});
+	}
+
+	onSortEnd({ oldIndex, newIndex }) {
+		this.setState({
+			files: arrayMove(this.state.files, oldIndex, newIndex),
+		});
+	}
+
+	updateFile(index, file) {
+		const files = this.state.files.slice();
+
+		files[index] = file;
+
+		this.setState({
+			files,
+		});
+	}
+
+
 	render() {
 		const { files } = this.state;
 
@@ -107,8 +143,10 @@ class ItemEditorContainer extends React.Component {
 				onRemove={this.handleRemove}
 				initialValues={item}
 				files={files}
-				addMetadata={this.addMetadata}
-				removeMetadata={this.removeMetadata}
+				addFile={this.addFile}
+				removeFile={this.removeFile}
+				onSortEnd={this.onSortEnd}
+				updateFile={this.updateFile}
 			/>
 		);
 	}
