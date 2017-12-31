@@ -15,6 +15,10 @@ const query = gql`
 				coverImage
 				itemsCount
 			}
+			files {
+				_id
+				name
+			}
 		}
 	}
 `;

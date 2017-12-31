@@ -14,6 +14,10 @@ const query = gql`
 				content
 			}
 			articlesCount
+			files {
+				_id
+				name
+			}
 		}
 	}
 `;

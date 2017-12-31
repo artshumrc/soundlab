@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'underscore';
 
 import CollectionCover from '../../../collections/components/CollectionCover';
 import Pagination from '../../../../components/pagination/Pagination';
@@ -18,7 +19,7 @@ const ItemListPage = props => {
 	}
 
 	if (files.length) {
-		coverImage = files[0].name;
+		coverImage = _.sample(files).name;
 	}
 
 
