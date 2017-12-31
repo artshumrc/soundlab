@@ -11,11 +11,22 @@ import './ItemListItem.css';
 const ItemListItem = (props) => {
 	const itemUrl = `/items/${props._id}/${props.slug}`;
 
+	let files = [];
+	let imageUrl = null;
+
+	if (props.files && props.files.length) {
+		files = props.files;
+	}
+
+	if (files.length) {
+		imageUrl = `//iiif.orphe.us/${files[0].name}/full/300,/0/default.jpg`;
+	}
+
 	return (
 		<div className="itemListItem">
-			{props.imageUrl ?
+			{imageUrl ?
 				<Link to={itemUrl}>
-					<img src={props.imageUrl} alt={props.title} />
+					<img src={imageUrl} alt={props.title} />
 				</Link>
 			: ''}
 			<Tags tags={props.tags} />

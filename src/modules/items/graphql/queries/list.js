@@ -18,6 +18,7 @@ const query = gql`
 				}
 			}
 			itemsCount
+
 			files {
 				_id
 				name
