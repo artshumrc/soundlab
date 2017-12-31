@@ -31,6 +31,9 @@ const userUpdateMutation = graphql(userUpdate, {
 		}),
 	}),
 	name: 'userInviteMutation',
+	options: {
+		refetchQueries: ['projectQuery', 'projectsQuery'],
+	},
 });
 
 

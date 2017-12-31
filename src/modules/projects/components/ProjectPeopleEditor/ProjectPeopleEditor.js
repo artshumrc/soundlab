@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm, FieldArray } from 'redux-form';
 import { formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import DashboardNav from '../../../dashboard/components/DashboardNav';
 import ProjectPeopleFields from './ProjectPeopleFields';
@@ -20,7 +21,12 @@ class ProjectPeopleEditor extends React.Component {
 			<div className="projectEditor">
 				<DashboardNav />
 
-				<h1>People</h1>
+				<div className="projectEditorHead">
+					<h1>People</h1>
+					<Link to="/dashboard/people/invite">
+						Invite a new member.
+					</Link>
+				</div>
 
 				<form
 					className="projectEditorForm"

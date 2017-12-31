@@ -7,7 +7,7 @@ import ProjectEditorContainer from '../../projects/containers/ProjectEditorConta
 import ProjectPeopleContainer from '../../projects/containers/ProjectPeopleContainer';
 import ProjectHelp from '../../projects/components/ProjectHelp';
 import DashboardContainer from '../containers/DashboardContainer';
-
+import UserInviteContainer from '../../users/containers/UserInviteContainer';
 
 export default (
 	<div>
@@ -15,6 +15,7 @@ export default (
 			<IndexRoute component={DashboardContainer} />
 			<Route path="/dashboard/settings" component={ProjectEditorContainer} />
 			<Route path="/dashboard/people" component={ProjectPeopleContainer} />
+			<Route path="/dashboard/people/invite" component={UserInviteContainer} />
 			<Route path="/dashboard/help" component={ProjectHelp} />
 		</Route>
 	</div>

@@ -3,6 +3,7 @@ import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
 
 import ProjectPeopleEditor from '../../components/ProjectPeopleEditor';
+import projectListQuery from '../../graphql/queries/list';
 import projectDetailQuery from '../../graphql/queries/detail';
 import projectUpdateMutation from '../../graphql/mutations/update';
 import projectRemoveMutation from '../../graphql/mutations/remove';
@@ -16,14 +17,7 @@ class ProjectPeopleContainer extends React.Component {
 
 	handleSubmit(_values, a, b, c) {
 		const values = Object.assign({}, _values);
-		const { projectUpdate } = this.props;
-		console.log('#####')
-		console.log('#####')
-		console.log('#####')
-		console.log(a, b, c);
-		console.log('#####')
-		console.log('#####')
-		console.log('#####')
+		const { projectUpdate, router } = this.props;
 
 		delete values.__typename;
 		delete values.userIsAdmin;
@@ -52,7 +46,7 @@ class ProjectPeopleContainer extends React.Component {
 
 		projectUpdate(values)
 			.then((response) => {
-				// router.replace('/dashboard/');
+				router.replace('/dashboard/');
 			})
 			.catch((err) => {
 				console.error(err);
@@ -78,4 +72,5 @@ class ProjectPeopleContainer extends React.Component {
 
 export default compose(
 	projectUpdateMutation, projectRemoveMutation, projectDetailQuery,
+	projectListQuery,
 )(ProjectPeopleContainer);

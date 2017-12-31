@@ -1,7 +1,10 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import autoBind from 'react-autobind';
+import { withRouter } from 'react-router';
 
+import projectListQuery from '../../../projects/graphql/queries/list';
+import projectDetailQuery from '../../../projects/graphql/queries/detail';
 import userInviteMutation from '../../graphql/mutations/invite';
 import UserInvite from '../../components/UserInvite';
 
@@ -12,15 +15,19 @@ class UserInviteContainer extends React.Component {
 		autoBind(this);
 	}
 
-	handleSubmit(_values) {
+	async handleSubmit(_values) {
 		const values = Object.assign({}, _values);
-		const { userInvite } = this.props;
+		const { userInvite, router } = this.props;
 
-		values.recaptchaVerification = 'q4083fg1450tbgu3qv-n0u13iqrafsdvc0oqgu4ltaf';
+		// TODO: integrate recaptchaVerification
+		values.recaptchaVerification = '###';
+
+		// TODO: let users select role of invitee
+		values.role = 'admin';
 
 		userInvite(values)
 			.then((response) => {
-				this.props.updatePostUserInvite(values);
+				router.replace('/dashboard/people');
 			})
 			.catch((err) => {
 				console.error(err);
@@ -37,5 +44,6 @@ class UserInviteContainer extends React.Component {
 }
 
 export default compose(
-	userInviteMutation,
+	userInviteMutation, projectDetailQuery, projectListQuery,
+	withRouter,
 )(UserInviteContainer);
