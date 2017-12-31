@@ -5,6 +5,7 @@ import autoBind from 'react-autobind';
 import { Field } from 'redux-form';
 
 
+import UserInviteContainer from '../../../../users/containers/UserInviteContainer';
 import UserListItem from '../../../../users/components/UserListItem';
 
 import './ProjectPeopleField.css';
@@ -17,6 +18,7 @@ class ProjectPeopleField extends React.Component {
 
 		this.state = {
 			role: 'administrator',
+			status: '',
 		};
 		autoBind(this);
 	}
@@ -26,6 +28,9 @@ class ProjectPeopleField extends React.Component {
 			!this.props.role
 			&& nextProps.role
 			&& nextProps.role.length
+			&& !this.props.status
+			&& nextProps.status
+			&& nextProps.status.length
 		) {
 			this.setState({
 				role: nextProps.role,
@@ -40,25 +45,37 @@ class ProjectPeopleField extends React.Component {
 		});
 	}
 
-	toggleFieldStatu(e) {
+	toggleFieldStatus(e) {
 		this.setState({
 			status: e.target.options[e.target.selectedIndex].value,
 		});
 	}
 
+	updatePostUserInvite(user) {
+		this.setState({
+			user,
+			status: 'pending',
+		});
+	}
+
 	render() {
-		const { field } = this.props;
+		const { field, user } = this.props;
 		const { status } = this.state;
+
 
 		return (
 			<div className="projectPeopleField projectPeopleFieldInput">
 				<Row key={field}>
-					<Col md={5}>
-						{field.user ?
+					<Col md={6}>
+						{user ?
 							<UserListItem
-								{...field.user}
+								{...user}
 							/>
-						: ''}
+						:
+							<UserInviteContainer
+								updatePostUserInvite={this.updatePostUserInvite}
+							/>
+						}
 					</Col>
 					<Col md={3}>
 						<Field
@@ -71,8 +88,8 @@ class ProjectPeopleField extends React.Component {
 							<option value="contributor">Contributor</option>
 						</Field>
 					</Col>
-					<Col md={3}>
-						{(field.user && field.user.isActiveUser) ?
+					<Col md={2}>
+						{(user && user.isActiveUser) ?
 							<Field
 								name={`${field}.status`}
 								component="select"
@@ -83,7 +100,7 @@ class ProjectPeopleField extends React.Component {
 								<option value="pending">Pending</option>
 							</Field>
 						:
-							<p>
+							<p className="projectPersonStatus">
 								{status}
 							</p>
 						}
@@ -103,7 +120,8 @@ class ProjectPeopleField extends React.Component {
 }
 
 ProjectPeopleField.propTypes = {
-	field: PropTypes.object,
+	field: PropTypes.string,
+	user: PropTypes.object,
 };
 
 export default ProjectPeopleField;

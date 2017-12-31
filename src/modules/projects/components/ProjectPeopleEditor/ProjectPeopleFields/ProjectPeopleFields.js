@@ -14,13 +14,13 @@ const ProjectPeopleFields = ({ fields, users }) => {
 		<div className="projectPeople">
 			<div className="projectPeopleLabels">
 				<Row>
-					<Col md={5}>
+					<Col md={6}>
 						<label>User</label>
 					</Col>
 					<Col md={3}>
 						<label>Role</label>
 					</Col>
-					<Col md={3}>
+					<Col md={2}>
 						<label>Status</label>
 					</Col>
 					<Col md={1} />
@@ -29,12 +29,14 @@ const ProjectPeopleFields = ({ fields, users }) => {
 			{fields.map((field, index) => {
 				let role = '';
 				let status = '';
+				let user = null;
 
 				if (users) {
-					users.forEach((user, i) => {
+					users.forEach((_user, i) => {
 						if (index === i) {
-							role = user.role;
-							status = user.status;
+							role = _user.role;
+							status = _user.status;
+							user = _user.user;
 						}
 					});
 				}
@@ -46,6 +48,7 @@ const ProjectPeopleFields = ({ fields, users }) => {
 						index={index}
 						role={role}
 						status={status}
+						user={user}
 						handleRemove={() => fields.remove(index)}
 					/>
 				)

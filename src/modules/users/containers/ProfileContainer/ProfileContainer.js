@@ -17,6 +17,7 @@ class ProfileContainer extends React.Component {
 		const { userUpdate, router } = this.props;
 
 		delete values.__typename;
+		delete values.isActiveUser;
 
 		userUpdate(values)
 			.then((response) => {

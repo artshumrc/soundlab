@@ -1,0 +1,40 @@
+@import '../../../../variables.scss';
+
+.userInvite {
+	display: flex;
+	align-items: center;
+	justify-content: left;
+
+	input[type="email"] {
+		font-size: 20px;
+		font-family: $font-reading;
+		font-weight: 100;
+		line-height: 1.3em;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	button {
+		background: $dark;
+		font-family: $font-label;
+		text-transform: uppercase;
+		border-radius: 0;
+		display: inline-block;
+		vertical-align: top;
+		padding: 15px 10px;
+		height: auto;
+		margin-left: 10px;
+		border: 0;
+		outline: 0;
+		line-height: 1.3em;
+		@include transition(100ms all ease-in-out);
+
+		&:focus {
+			outline: 0;
+		}
+
+		&:hover {
+			background: $primary;
+		}
+	}
+}

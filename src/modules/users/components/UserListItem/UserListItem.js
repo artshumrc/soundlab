@@ -37,7 +37,7 @@ UserListItem.propTypes = {
 };
 
 UserListItem.defaultProps = {
-	username: 'Example User',
+	username: '',
 	avatarUrl: '/images/default_user.jpg',
 };
 

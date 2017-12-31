@@ -14,13 +14,45 @@ class ProjectPeopleContainer extends React.Component {
 		autoBind(this);
 	}
 
-	handleSubmit(values) {
-		const { projectUpdate, router } = this.props;
-		const users = values.users;
+	handleSubmit(_values, a, b, c) {
+		const values = Object.assign({}, _values);
+		const { projectUpdate } = this.props;
+		console.log('#####')
+		console.log('#####')
+		console.log('#####')
+		console.log(a, b, c);
+		console.log('#####')
+		console.log('#####')
+		console.log('#####')
 
-		projectUpdate({ users })
+		delete values.__typename;
+		delete values.userIsAdmin;
+		delete values.collections;
+		delete values.items;
+
+		// sanitize user input
+		const users = values.users.slice();
+		const sanitizedUsers = [];
+
+		users.forEach(user => {
+			// process user input
+			const sanitizedUser = Object.assign({}, user);
+
+			if (!sanitizedUser.user) {
+				return null;
+			}
+
+			sanitizedUser.userId = sanitizedUser.user._id;
+			delete sanitizedUser.user;
+			delete sanitizedUser.__typename;
+			sanitizedUsers.push(sanitizedUser);
+		});
+		values.users = sanitizedUsers;
+
+
+		projectUpdate(values)
 			.then((response) => {
-				router.replace('/dashboard/');
+				// router.replace('/dashboard/');
 			})
 			.catch((err) => {
 				console.error(err);
