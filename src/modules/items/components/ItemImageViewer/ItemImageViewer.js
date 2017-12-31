@@ -20,33 +20,30 @@ class ItemImageViewer extends React.Component {
 		autoBind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (
-			nextProps.files
-			&& this.props.files
-		) {
-
-		}
-	}
 
 	setActiveFile(file) {
-		// const activeImage = `//iiif.orphe.us/orpheus/art/${file.path}.jpg/full/750,/0/default.jpg`;
-
+		this.setState({
+			activeImage: file,
+		});
 	}
 
-
 	render() {
-		const { files, title } = this.props;
-		const { activeImage } = this.state;
+		const { files } = this.props;
+		let activeImage = this.state.activeImage;
+
+		if (!activeImage) {
+			activeImage = files[0];
+		}
 
 		return (
 			<div className="itemImageViewer">
 				<PrimaryImage
-					alt={title}
-					src={activeImage}
+					image={activeImage}
 				/>
 				<ThumbnailImages
 					files={files}
+					activeImage={activeImage}
+					setActiveFile={this.setActiveFile}
 				/>
 			</div>
 		);

@@ -21,11 +21,12 @@ const ItemDetail = ({
 
 	return (
 		<div className="itemDetail">
-			<div className="itemDetailColumn">
+			{files ?
 				<ItemImageViewer
-					title={title}
 					files={files}
 				/>
+			: ''}
+			<div className="itemDetailColumn">
 				<ItemTitle
 					title={title}
 					editLink={userIsAdmin ? `/items/${_id}/${slug}/edit` : null}
