@@ -12,8 +12,16 @@ const query = gql`
 				title
 				slug
 				description
+				files {
+					_id
+					name
+				}
 			}
 			itemsCount
+			files {
+				_id
+				name
+			}
 		}
 	}
 `;

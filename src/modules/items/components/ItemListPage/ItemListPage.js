@@ -8,20 +8,36 @@ import ItemListContainer from '../../containers/ItemListContainer';
 
 import './ItemListPage.css';
 
-const ItemListPage = props => (
-	<div >
-		<CollectionCover
-			title="Items"
-			coverLink={props.userIsAdmin ? '/items/create' : null}
-			coverLinkText={props.userIsAdmin ? 'Create new' : null}
-		/>
-		<ItemListContainer />
-		<Pagination
-			total={props.itemsCount}
-			limit={18}
-		/>
-	</div>
-);
+const ItemListPage = props => {
+
+	let files = [];
+	let coverImage = null;
+
+	if (props.files && props.files.length) {
+		files = props.files;
+	}
+
+	if (files.length) {
+		coverImage = files[0].name;
+	}
+
+
+	return (
+		<div >
+			<CollectionCover
+				title="Items"
+				coverImage={coverImage}
+				coverLink={props.userIsAdmin ? '/items/create' : null}
+				coverLinkText={props.userIsAdmin ? 'Create new' : null}
+			/>
+			<ItemListContainer />
+			<Pagination
+				total={props.itemsCount}
+				limit={18}
+			/>
+		</div>
+	);
+}
 
 ItemListPage.propTypes = {
 	userIsAdmin: PropTypes.bool,
