@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
 import './PrimaryImage.css';
 
@@ -19,10 +20,18 @@ const PrimaryImage = ({ image }) => {
 	};
 
 	return (
-		<div
-			style={styles}
-			className="primaryImage"
-		/>
+		<div className="primaryImageOuter">
+			<div
+				style={styles}
+				className="primaryImage"
+			/>
+			<Link
+				to={`/mirador/${image._id}`}
+				className="viewInMiradorLink"
+			>
+				View in Mirador
+			</Link>
+		</div>
 	);
 };
 

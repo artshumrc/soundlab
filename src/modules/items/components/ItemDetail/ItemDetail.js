@@ -21,11 +21,13 @@ const ItemDetail = ({
 
 	return (
 		<div className="itemDetail">
+			
 			{files ?
 				<ItemImageViewer
 					files={files}
 				/>
 			: ''}
+
 			<div className="itemDetailColumn">
 				<ItemTitle
 					title={title}
