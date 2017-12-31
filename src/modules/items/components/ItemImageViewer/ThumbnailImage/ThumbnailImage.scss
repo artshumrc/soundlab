@@ -2,12 +2,19 @@
 
 .thumbnailImage {
 	margin: 0px 4px;
-	border: 8px solid transparent;
-	outline: 2px solid transparent;
+	border: 6px solid transparent;
+	outline: 1px solid transparent;
 	cursor: pointer;
 	@include transition(all 100ms ease-in-out);
 
 	&:hover {
-		outline: 2px solid $dark;
+		outline: 1px solid $dark;
+		&.isActiveImage {
+			outline: 1px solid $dark;
+		}
+	}
+
+	&.isActiveImage {
+		outline: 1px solid $divider;
 	}
 }
