@@ -21,15 +21,33 @@ class ItemEditorContainer extends React.Component {
 		};
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (
+			(
+				!this.state.files
+			|| !this.state.files.length
+			)
+			&& nextProps.itemQuery
+			&& nextProps.itemQuery.project
+			&& nextProps.itemQuery.project.item
+			&& nextProps.itemQuery.project.item.files
+		) {
+			this.setState({
+				files: nextProps.itemQuery.project.item.files
+			});
+		}
+	}
+
 	handleSubmit(_values) {
 		const { itemCreate, itemUpdate, router } = this.props;
-		const { files } = this.state;
+		const _files = this.state.files;
 		const values = Object.assign({}, _values);
 
 		// remove non-input values
 		delete values.__typename;
 		delete values.comments;
 		delete values.commentsCount;
+		delete values.files;
 
 		// sanitize metadata
 		const metadata = [];
@@ -54,10 +72,13 @@ class ItemEditorContainer extends React.Component {
 		}
 		values.metadata = metadata;
 
-		// set files
-		if (this.state.files) {
-			values.files = this.state.files;
-		}
+		// sanitize files
+		const files = [];
+		_files.forEach(_file => {
+			const file = Object.assign({}, _file);
+			delete file.__typename;
+			files.push(file);
+		});
 
 		// create or update
 		if ('_id' in values) {

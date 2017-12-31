@@ -21,6 +21,7 @@ const query = gql`
 				}
 
 				files {
+					_id
 					name
 					title
 					type
@@ -29,13 +30,11 @@ const query = gql`
 
 				commentsCount
 				comments {
+					_id
 					userId
 					itemId
 					content
-					_id
 					updatedAt
-					createdAt
-					__v
 				}
 			}
 		}
@@ -47,7 +46,7 @@ const itemQuery = graphql(query, {
 	options: ({ params }) => ({
 		variables: {
 			hostname: getCurrentProjectHostname(),
-			id: params.slug,
+			id: params.id,
 		}
 	}),
 });

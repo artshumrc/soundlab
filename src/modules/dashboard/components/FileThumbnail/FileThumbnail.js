@@ -74,12 +74,6 @@ export default class FileThumbnail extends React.Component {
 		this.props.updateFileCb(this.props.fileIndex, file);
 	}
 
-	handleTitleChange(event) {
-		const file = this.props.file;
-		file.title = event.target.value;
-		this.props.updateFileCb(this.props.fileIndex, file);
-	}
-
 	render() {
 
 		const { file } = this.props;
@@ -125,7 +119,6 @@ export default class FileThumbnail extends React.Component {
 				</div>
 				<FileDetails
 					file={file}
-					handleTitleChange={this.props.handleTitleChange}
 				/>
 			</div>
 		);

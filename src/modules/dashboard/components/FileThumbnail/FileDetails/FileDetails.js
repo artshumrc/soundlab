@@ -3,16 +3,15 @@ import React from 'react';
 import './FileDetails.css';
 
 
-const FileDetails = ({ file, handleTitleChange }) => (
+const FileDetails = ({ file }) => (
 	<div
 		className="fileDetails"
 	>
 		<div className="fileDetailsTitleInput">
 			<input
 				type="text"
-				onChange={handleTitleChange}
 				placeholder="Enter file title . . ."
-				value={file.title}
+				defaultValue={file.title}
 			/>
 		</div>
 	</div>
