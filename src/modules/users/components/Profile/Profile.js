@@ -61,7 +61,7 @@ class Profile extends React.Component {
 							type="text"
 							component="textarea"
 							placeholder="Your Biography . . . "
-							validate={[required, maxLength2100]}
+							validate={[maxLength2100]}
 						/>
 					</div>
 

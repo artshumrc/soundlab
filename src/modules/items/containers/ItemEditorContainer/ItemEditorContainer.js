@@ -48,6 +48,7 @@ class ItemEditorContainer extends React.Component {
 		delete values.comments;
 		delete values.commentsCount;
 		delete values.files;
+		delete values.manifest;
 
 		// sanitize metadata
 		const metadata = [];

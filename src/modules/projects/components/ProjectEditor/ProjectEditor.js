@@ -47,7 +47,7 @@ class ProjectEditor extends React.Component {
 							type="text"
 							component="input"
 							placeholder="E.g. 16th and 17th century manuscripts"
-							validate={[required, maxLength200]}
+							validate={[maxLength200]}
 						/>
 						<span
 							className="projectEditorFormHelp"
@@ -63,7 +63,7 @@ class ProjectEditor extends React.Component {
 							type="text"
 							component="textarea"
 							placeholder="Example description of project . . . "
-							validate={[required, maxLength2100]}
+							validate={[maxLength2100]}
 						/>
 						<span
 							className="projectEditorFormHelp"
@@ -86,7 +86,7 @@ class ProjectEditor extends React.Component {
 								type="text"
 								component="input"
 								placeholder="example"
-								validate={[required, maxLength200]}
+								validate={[maxLength200]}
 								disabled
 							/>
 							<div className="projectNameAvailabilityFormURL">
@@ -114,7 +114,7 @@ class ProjectEditor extends React.Component {
 							type="text"
 							component="input"
 							placeholder="contact@example.edu"
-							validate={[required, maxLength2100]}
+							validate={[maxLength2100]}
 						/>
 						<span
 							className="projectEditorFormHelp"
@@ -130,7 +130,7 @@ class ProjectEditor extends React.Component {
 							type="text"
 							component="input"
 							placeholder="https://project.example.edu"
-							validate={[required, maxLength2100]}
+							validate={[maxLength2100]}
 						/>
 						<span
 							className="projectEditorFormHelp"
@@ -147,7 +147,7 @@ class ProjectEditor extends React.Component {
 							type="text"
 							component="input"
 							placeholder="123 Your Street, City, State"
-							validate={[required, maxLength2100]}
+							validate={[maxLength2100]}
 						/>
 						<span
 							className="projectEditorFormHelp"
@@ -163,7 +163,7 @@ class ProjectEditor extends React.Component {
 							type="text"
 							component="input"
 							placeholder="(###) ###-####"
-							validate={[required, maxLength2100]}
+							validate={[maxLength2100]}
 						/>
 						<span
 							className="projectEditorFormHelp"

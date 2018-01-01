@@ -56,7 +56,7 @@ class CollectionEditor extends React.Component {
 							type="text"
 							component="textarea"
 							placeholder="Example description of collection . . . "
-							validate={[required, maxLength2100]}
+							validate={[maxLength2100]}
 						/>
 						<span
 							className="collectionEditorFormHelp"
