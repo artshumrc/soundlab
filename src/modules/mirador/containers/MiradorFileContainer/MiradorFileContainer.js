@@ -1,26 +1,35 @@
 import React from 'react';
+import { compose } from 'react-apollo';
 
+import fileQuery from '../../graphql/queries/detail';
 import MiradorFileViewer from '../../components/MiradorFileViewer';
 
 
 
-const MiradorFileViewerContainer = props => {
-	let miradorManifest = null;
+const MiradorFileContainer = props => {
+	let file = null;
 
-	console.log('############')
-	console.log('############')
-	console.log('############')
-	console.log(props);
-	console.log('############')
-	console.log('############')
-	console.log('############')
+	if (
+		props.fileQuery
+	&& props.fileQuery.project
+	&& props.fileQuery.project.file
+	) {
+		file = props.fileQuery.project.file;
+	}
+
+
+	if (!file) {
+		return null;
+	}
 
 	return (
 		<MiradorFileViewer
-			manifest={miradorManifest}
+			file={file}
 		/>
 	);
 }
 
 
-export default MiradorFileViewerContainer;
+export default compose(
+	fileQuery,
+)(MiradorFileContainer);

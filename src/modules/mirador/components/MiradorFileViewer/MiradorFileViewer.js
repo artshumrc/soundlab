@@ -42,11 +42,19 @@ class MiradorFileViewer extends React.Component {
 					show: false
 				},
 			});
-		}, 1000);
+		}, 2000);
 	}
 
 	render() {
 		const { file } = this.props;
+
+		console.log('file')
+		console.log('file')
+		console.log('file')
+		console.log('file')
+		console.log('file')
+		console.log('file')
+		console.log(file);
 
 		if (!file) {
 			return null;

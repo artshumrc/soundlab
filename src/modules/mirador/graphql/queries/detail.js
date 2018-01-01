@@ -8,7 +8,7 @@ const query = gql`
 		project(hostname: $hostname) {
 	    _id
 			userIsAdmin
-			file(id: $id) {
+			file(_id: $id) {
 				_id
 				name
 				title
