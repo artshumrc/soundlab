@@ -29,7 +29,10 @@ const PrimaryImage = ({ image }) => {
 				to={`/mirador/${image._id}`}
 				className="viewInMiradorLink"
 			>
-				View in Mirador
+				<i className="mdi mdi-eye" />
+				<span>
+					View in Mirador
+				</span>
 			</Link>
 		</div>
 	);

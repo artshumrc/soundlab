@@ -4,35 +4,27 @@ import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname
 
 
 const query = gql`
-	query getMirador($id: String!) {
-	  miradorById(_id: $id) {
-	    title,
-	    label,
-	    abbr,
-	    author,
-	    seeAlso,
-	    attribution,
-	    slug,
-	    remoteUri,
-	    images {
-	      name
-	      type
-	      path
-	      thumbPath
-	    }
-	  }
+	query fileQuery($hostname: String, $id: String) {
+		project(hostname: $hostname) {
+	    _id
+			userIsAdmin
+			file(id: $id) {
+				_id
+				name
+				title
+			}
+		}
 	}
 `;
 
-const miradorQuery = graphql(query, {
-	name: 'miradorQuery',
-	options: ({ params })=> ({
+const fileQuery = graphql(query, {
+	name: 'fileQuery',
+	options: ({ params }) => ({
 		variables: {
 			hostname: getCurrentProjectHostname(),
-			id: params.id
+			id: params.id,
 		}
-	})
+	}),
 });
 
-
-export default miradorQuery;
+export default fileQuery;
