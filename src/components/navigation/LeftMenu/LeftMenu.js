@@ -14,32 +14,21 @@ import LeftMenuHead from '../LeftMenuHead';
 import { logout, toggleAuthModal } from '../../../modules/auth/actions';
 import { logoutUser } from '../../../lib/auth';
 
+// lib
+import getCurrentProjectHostname from '../../../lib/getCurrentProjectHostname';
 
 import './LeftMenu.css';
 
 
-const LeftMenu = ({
-	project, leftMenuOpen, closeLeftMenu, userId, dispatchLogout, dispatchToggleAuthModal
-}) => {
-	if (!project) {
-		return null;
-	}
+class LeftMenu extends React.Component {
 
-	return (
-		<Drawer
-			open={leftMenuOpen}
-			docked={false}
-			onRequestChange={closeLeftMenu}
-			className="leftMenu"
-		>
-			<LeftMenuHead />
-			<div className="leftMenuContent">
-				<MenuItem
-					to="/"
-					onClick={closeLeftMenu}
-				>
-					Home
-				</MenuItem>
+	renderMenuItems() {
+		const {
+			project, closeLeftMenu
+		} = this.props;
+
+		return (
+			<div>
 				<MenuItem
 					to="/collections"
 					onClick={closeLeftMenu}
@@ -125,42 +114,81 @@ const LeftMenu = ({
 						</MenuItem>
 					</div>
 				: ''}
-				<Divider />
-
-				{userId ?
-					<div>
-						<MenuItem
-							to="/profile"
-							onClick={closeLeftMenu}
-						>
-							Profile
-						</MenuItem>
-						<MenuItem
-							to="/profile/projects"
-							onClick={closeLeftMenu}
-						>
-							Projects
-						</MenuItem>
-						<Divider />
-
-						<MenuItem
-							to="/"
-							onClick={dispatchLogout}
-						>
-							Sign out
-						</MenuItem>
-					</div>
-				:
-					<MenuItem
-						onClick={dispatchToggleAuthModal}
-					>
-						Sign up / in
-					</MenuItem>
-				}
 			</div>
-		</Drawer>
+		);
+	}
 
-	);
+	render() {
+		const {
+			project, leftMenuOpen, closeLeftMenu, userId, dispatchLogout,
+			dispatchToggleAuthModal
+		} = this.props;
+
+		let isMainOrpheusProject = false;
+		const hostname = getCurrentProjectHostname();
+		
+		if (!hostname || ~['orphe.us', 'orpheus.local'].indexOf(hostname)) {
+			isMainOrpheusProject = true;
+		}
+
+		if (!project) {
+			return null;
+		}
+		return (
+			<Drawer
+				open={leftMenuOpen}
+				docked={false}
+				onRequestChange={closeLeftMenu}
+				className="leftMenu"
+			>
+				<LeftMenuHead />
+				<div className="leftMenuContent">
+					<MenuItem
+						to="/"
+						onClick={closeLeftMenu}
+					>
+						Home
+					</MenuItem>
+					{!isMainOrpheusProject ?
+						this.renderMenuItems()
+					: ''}
+					<Divider />
+
+					{userId ?
+						<div>
+							<MenuItem
+								to="/profile"
+								onClick={closeLeftMenu}
+							>
+								Profile
+							</MenuItem>
+							<MenuItem
+								to="/profile/projects"
+								onClick={closeLeftMenu}
+							>
+								Projects
+							</MenuItem>
+							<Divider />
+
+							<MenuItem
+								to="/"
+								onClick={dispatchLogout}
+							>
+								Sign out
+							</MenuItem>
+						</div>
+					:
+						<MenuItem
+							onClick={dispatchToggleAuthModal}
+						>
+							Sign up / in
+						</MenuItem>
+					}
+				</div>
+			</Drawer>
+
+		);
+	}
 }
 
 
