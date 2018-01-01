@@ -12,7 +12,7 @@ const query = gql`
 				_id
 				manifest {
 					_id
-					uri
+					remoteUri
 				}
 			}
 		}

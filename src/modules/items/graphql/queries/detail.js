@@ -36,6 +36,10 @@ const query = gql`
 					content
 					updatedAt
 				}
+
+				manifest {
+					_id
+				}
 			}
 		}
 	}

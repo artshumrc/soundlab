@@ -11,7 +11,7 @@ import './ItemDetail.css';
 
 const ItemDetail = ({
 	_id, title, slug, description, tags, metadata, files, commentsCount, comments,
-	userIsAdmin
+	userIsAdmin, manifest
 })=> {
 
 	if (!_id) {
@@ -24,7 +24,7 @@ const ItemDetail = ({
 
 			{files ?
 				<ItemImageViewer
-					itemMiradorLink={`/items/${_id}/${slug}/mirador`}
+					itemMiradorLink={ manifest ? `/items/${_id}/${slug}/mirador` : null}
 					files={files}
 				/>
 			: ''}

@@ -25,15 +25,17 @@ const PrimaryImage = ({ image, itemMiradorLink }) => {
 				style={styles}
 				className="primaryImage"
 			/>
-			<Link
-				to={itemMiradorLink}
-				className="viewInMiradorLink"
-			>
-				<i className="mdi mdi-eye" />
-				<span>
-					View in Mirador
-				</span>
-			</Link>
+			{itemMiradorLink ?
+				<Link
+					to={itemMiradorLink}
+					className="viewInMiradorLink"
+				>
+					<i className="mdi mdi-eye" />
+					<span>
+						View in Mirador
+					</span>
+				</Link>
+			: ''}
 		</div>
 	);
 };

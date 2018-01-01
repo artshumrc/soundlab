@@ -9,7 +9,7 @@ import ProjectLayout from '../../projects/layouts/ProjectLayout';
 import ItemEditorContainer from '../containers/ItemEditorContainer';
 import ItemListPageContainer from '../containers/ItemListPageContainer';
 import ItemDetailContainer from '../containers/ItemDetailContainer';
-import MiradorItemContainer from '../../mirador/containers/MiradorItemContainer';
+import MiradorItemViewerContainer from '../../mirador/containers/MiradorItemViewerContainer';
 
 
 export default (
@@ -19,7 +19,7 @@ export default (
 			<Route path="/items/create" component={ItemEditorContainer} />
 			<Route path="/items/:id/:slug" component={ItemDetailContainer} />
 			<Route path="/items/:id/:slug/edit" component={ItemEditorContainer} />
-			<Route path="/items/:id/:slug/mirador" component={MiradorItemContainer} />
+			<Route path="/items/:id/:slug/mirador" component={MiradorItemViewerContainer} />
 		</Route>
 	</div>
 );

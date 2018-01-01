@@ -2,66 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const Mirador = window.Mirador;
+import './MiradorItemViewer.css';
 
 
 class MiradorItemViewer extends React.Component {
 
-	componentDidUpdate() {
-
-		setTimeout(() => {
-			Mirador({
-				id: 'miradorItemViewer',
-				layout: '1x1',
-
-				data: [
-					{
-						manifestUri: 'https://s3-us-west-2.amazonaws.com/archimedes-data003/iiif/manifests/zyHGnoWYyoLgwP4dX/manifest.json',
-						location: 'orphe.us'
-					}
-				],
-
-				windowObjects: [{
-					loadedManifest: 'https://s3-us-west-2.amazonaws.com/archimedes-data003/iiif/manifests/zyHGnoWYyoLgwP4dX/manifest.json',
-				}],
-
-				windowSettings: {
-					sidePanel: false,
-					canvasControls: {
-						annotations: {
-							annotationLayer: false
-						},
-						imageManipulation: {
-							manipulationLayer: false
-						},
-					},
-					displayLayout: false,
-				},
-
-				mainMenuSettings: {
-					show: false
-				},
-			});
-		}, 1000);
-	}
-
 	render() {
-		const { file } = this.props;
-
-		if (!file) {
-			return null;
-		}
+		const { manifest } = this.props;
 
 		return (
-			<div
-				id="miradorItemViewer"
+			<iframe
+				title="mirador"
 				className="miradorItemViewer"
+				src={`//s3.amazonaws.com/mirador-orpheus001/index.html?manifestUri=${manifest.remoteUri}`}
 				style={{
 					position: 'fixed',
 					top: 0,
 					left: 0,
 					width: '100vw',
 					height: '100vh',
+					zIndex: '1000',
+					border: 'none',
+					outline: 'none',
 				}}
 			/>
 		);
@@ -70,7 +32,7 @@ class MiradorItemViewer extends React.Component {
 
 
 MiradorItemViewer.propTypes = {
-	file: PropTypes.object,
+	manifest: PropTypes.object,
 };
 
 
