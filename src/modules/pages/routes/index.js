@@ -1,12 +1,25 @@
 import React from 'react';
 import { Route } from 'react-router';
-import PageContainer from '../containers/PageContainer';
 
 // layouts
 import ProjectLayout from '../../projects/layouts/ProjectLayout';
+import MainLayout from '../../../layouts/MainLayout';
+
+// components
+import AboutPage from '../components/AboutPage';
+import PageContainer from '../containers/PageContainer';
+
 
 export default (
 	<div>
+		<Route
+			path="about"
+			component={props => (
+				<MainLayout>
+					<AboutPage />
+				</MainLayout>
+			)}
+		/>
 		<Route
 			path=":slug"
 			component={props => (

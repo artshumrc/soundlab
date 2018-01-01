@@ -5,14 +5,18 @@ import PropTypes from 'prop-types';
 import Cover from '../../../../components/common/cover/Cover';
 import CoverTitle from '../../../../components/common/cover/CoverTitle';
 import BackgroundImage from '../../../../components/common/cover/BackgroundImage';
+import Bricks from '../../../../components/common/cover/Bricks';
 
 import './CollectionCover.css';
 
 
-const CollectionCover = ({ title, coverImage, coverLink, coverLinkText }) => (
-	<Cover
-		className="collections-cover"
-		background={
+const CollectionCover = ({ title, coverImage, coverLink, coverLinkText, coverBricks }) => {
+	let background = null;
+
+	if (coverBricks) {
+		background = (<Bricks />);
+	} else {
+		background = (
 			<BackgroundImage
 				src={
 					coverImage ?
@@ -20,16 +24,23 @@ const CollectionCover = ({ title, coverImage, coverLink, coverLinkText }) => (
 					: null
 				}
 			/>
-		}
-		bottom
-	>
-		<CoverTitle
-			title={title}
-			coverLink={coverLink}
-			coverLinkText={coverLinkText}
-		/>
-	</Cover>
-);
+		);
+	}
+
+	return (
+		<Cover
+			className="collections-cover"
+			background={background}
+			bottom
+		>
+			<CoverTitle
+				title={title}
+				coverLink={coverLink}
+				coverLinkText={coverLinkText}
+			/>
+		</Cover>
+	);
+}
 
 CollectionCover.propTypes = {
 	title: PropTypes.string.isRequired,

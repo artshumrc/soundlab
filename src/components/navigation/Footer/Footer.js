@@ -18,7 +18,7 @@ export default class Footer extends React.Component {
 					<Row>
 						<Col lg={4}>
 							<span className="footerCopyright">
-                © orphe.us, {year}
+                © orphe.us {year}
 							</span>
 							<span className="footerBuiltBy">
 								Created by
