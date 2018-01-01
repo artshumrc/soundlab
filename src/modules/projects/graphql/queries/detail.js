@@ -30,7 +30,12 @@ const query = gql`
 			items(limit: 3) {
 				_id
 				title
+				slug
 				description
+				files {
+					_id
+					name
+				}
 			}
 
 			users {
