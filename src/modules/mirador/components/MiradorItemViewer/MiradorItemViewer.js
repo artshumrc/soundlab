@@ -5,24 +5,24 @@ import PropTypes from 'prop-types';
 const Mirador = window.Mirador;
 
 
-class MiradorFileViewer extends React.Component {
+class MiradorItemViewer extends React.Component {
 
 	componentDidUpdate() {
 
 		setTimeout(() => {
 			Mirador({
-				id: 'miradorFileViewer',
+				id: 'miradorItemViewer',
 				layout: '1x1',
 
 				data: [
 					{
-						manifestUri: 'http://iiif.orphe.us/protest%2F1TitleGraffiti.jpg/info.json',
+						manifestUri: 'https://s3-us-west-2.amazonaws.com/archimedes-data003/iiif/manifests/zyHGnoWYyoLgwP4dX/manifest.json',
 						location: 'orphe.us'
 					}
 				],
 
 				windowObjects: [{
-					loadedManifest: 'http://iiif.orphe.us/protest%2F1TitleGraffiti.jpg/info.json',
+					loadedManifest: 'https://s3-us-west-2.amazonaws.com/archimedes-data003/iiif/manifests/zyHGnoWYyoLgwP4dX/manifest.json',
 				}],
 
 				windowSettings: {
@@ -42,19 +42,11 @@ class MiradorFileViewer extends React.Component {
 					show: false
 				},
 			});
-		}, 2000);
+		}, 1000);
 	}
 
 	render() {
 		const { file } = this.props;
-
-		console.log('file')
-		console.log('file')
-		console.log('file')
-		console.log('file')
-		console.log('file')
-		console.log('file')
-		console.log(file);
 
 		if (!file) {
 			return null;
@@ -62,8 +54,8 @@ class MiradorFileViewer extends React.Component {
 
 		return (
 			<div
-				id="miradorFileViewer"
-				className="miradorFileViewer"
+				id="miradorItemViewer"
+				className="miradorItemViewer"
 				style={{
 					position: 'fixed',
 					top: 0,
@@ -77,9 +69,9 @@ class MiradorFileViewer extends React.Component {
 }
 
 
-MiradorFileViewer.propTypes = {
+MiradorItemViewer.propTypes = {
 	file: PropTypes.object,
 };
 
 
-export default MiradorFileViewer;
+export default MiradorItemViewer;

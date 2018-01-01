@@ -24,9 +24,6 @@ import dashboardRoutes from '../modules/dashboard/routes';
 // users
 import userRoutes from '../modules/users/routes';
 
-// miradors
-import miradorRoutes from '../modules/mirador/routes';
-
 
 export default (
 	<div>
@@ -41,9 +38,6 @@ export default (
 
 		{/* Routes for items */}
 		{itemRoutes}
-
-		{/* Mirdaors */}
-		{miradorRoutes}
 
 		{/* Routes for dashboard */}
 		{dashboardRoutes}

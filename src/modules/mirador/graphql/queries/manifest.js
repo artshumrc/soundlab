@@ -4,21 +4,23 @@ import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname
 
 
 const query = gql`
-	query fileQuery($hostname: String, $id: String) {
+	query manifestQuery($hostname: String, $id: String) {
 		project(hostname: $hostname) {
 	    _id
 			userIsAdmin
-			file(_id: $id) {
+			item (_id: $id) {
 				_id
-				name
-				title
+				manifest {
+					_id
+					uri
+				}
 			}
 		}
 	}
 `;
 
-const fileQuery = graphql(query, {
-	name: 'fileQuery',
+const manifestQuery = graphql(query, {
+	name: 'manifestQuery',
 	options: ({ params }) => ({
 		variables: {
 			hostname: getCurrentProjectHostname(),
@@ -27,4 +29,4 @@ const fileQuery = graphql(query, {
 	}),
 });
 
-export default fileQuery;
+export default manifestQuery;

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 import './PrimaryImage.css';
 
-const PrimaryImage = ({ image }) => {
+const PrimaryImage = ({ image, itemMiradorLink }) => {
 
 	if (!image) {
 		return null;
@@ -26,7 +26,7 @@ const PrimaryImage = ({ image }) => {
 				className="primaryImage"
 			/>
 			<Link
-				to={`/mirador/${image._id}`}
+				to={itemMiradorLink}
 				className="viewInMiradorLink"
 			>
 				<i className="mdi mdi-eye" />

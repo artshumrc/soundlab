@@ -21,9 +21,10 @@ const ItemDetail = ({
 
 	return (
 		<div className="itemDetail">
-			
+
 			{files ?
 				<ItemImageViewer
+					itemMiradorLink={`/items/${_id}/${slug}/mirador`}
 					files={files}
 				/>
 			: ''}

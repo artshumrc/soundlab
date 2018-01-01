@@ -28,7 +28,7 @@ class ItemImageViewer extends React.Component {
 	}
 
 	render() {
-		const { files } = this.props;
+		const { files, itemMiradorLink } = this.props;
 		let activeImage = this.state.activeImage;
 
 		if (!activeImage) {
@@ -39,6 +39,7 @@ class ItemImageViewer extends React.Component {
 			<div className="itemImageViewer">
 				<PrimaryImage
 					image={activeImage}
+					itemMiradorLink={itemMiradorLink}
 				/>
 				<ThumbnailImages
 					files={files}
