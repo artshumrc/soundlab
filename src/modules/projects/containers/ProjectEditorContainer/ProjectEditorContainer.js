@@ -22,7 +22,8 @@ class ProjectEditorContainer extends React.Component {
 		delete values.userIsAdmin;
 		delete values.collections;
 		delete values.items;
-		delete values.users; // users handled in separate form
+		delete values.files;
+		delete values.users;
 
 		// regularize subdomain to hostname
 		values.hostname = `${values.hostname}.orphe.us`;
