@@ -26,13 +26,12 @@ const ReadyToStart = props => (
 					>
 						Start your archive
 					</Button>
-					<Button
-						transparentLight
-						outline
+					<a
+						className="contactButton"
 						href="mailto:contact@orphe.us"
 					>
 						Contact Us
-					</Button>
+					</a>
 				</Col>
 			</Row>
 		</Grid>
