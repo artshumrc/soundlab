@@ -4,31 +4,15 @@ import autoBind from 'react-autobind';
 import Button from '../../../../../../components/common/buttons/Button';
 import Cover from '../../../../../../components/common/cover/Cover';
 import Bricks from '../../../../../../components/common/cover/Bricks';
+
 import './ProjectCover.css';
+
 
 
 class ProjectCover extends React.Component {
 	constructor(props) {
 		super(props);
 		autoBind(this);
-	}
-
-	makeBricks() {
-		const { project } = this.props;
-
-		if (!project.files || !project.files.length) {
-			return null;
-		}
-
-		return project.files.map(file => {
-			let imageURL = null;
-
-			if (!imageURL) {
-				return null;
-			}
-
-			return null;
-		});
 	}
 
 	render() {
@@ -43,9 +27,7 @@ class ProjectCover extends React.Component {
 			<Cover
 				className="home-cover home-cover--project"
 				background={
-					<Bricks >
-						{/* this.makeBricks */}
-					</Bricks>
+					<Bricks files={project.files} />
 				}
 				overlay={
 					<div className="home-overlay" />

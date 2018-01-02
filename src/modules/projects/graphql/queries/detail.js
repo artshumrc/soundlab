@@ -48,6 +48,11 @@ const query = gql`
 					isActiveUser
 				}
 			}
+		
+			files {
+				_id
+				name
+			}
 		}
 	}
 `;

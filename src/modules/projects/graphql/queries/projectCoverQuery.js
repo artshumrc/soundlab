@@ -13,9 +13,6 @@ const query = gql`
 			files {
 				_id
 				name
-				path
-				thumbPath
-				itemId
 			}
 		}
 	}

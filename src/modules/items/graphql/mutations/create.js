@@ -26,7 +26,7 @@ const itemCreateMutation = graphql(itemCreate, {
 	}),
 	name: 'itemCreateMutation',
 	options: {
-		refetchQueries: ['itemListQuery'],
+		refetchQueries: ['itemQuery', 'itemListQuery'],
 	},
 });
 

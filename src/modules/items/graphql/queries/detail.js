@@ -13,6 +13,7 @@ const query = gql`
 				title
 				slug
 				description
+				projectId
 
 				metadata {
 					type
