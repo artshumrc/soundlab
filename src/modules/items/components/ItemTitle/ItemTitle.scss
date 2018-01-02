@@ -25,12 +25,17 @@
 	font-style: italic;
 	display: inline-block;
 	vertical-align: baseline;
-	padding: 0px 10px;
-	border-bottom: 1px solid transparent;
+	padding: 0px 0px 0 20px;
+	border: none;
+	outline: none;
 	@include transition(100ms all ease-in-out);
 
 	&:hover {
 		color: $primary-dark;
-		border-bottom: 1px solid transparent;
 	}
+
+	&:focus {
+		outline: none;
+	}
+
 }

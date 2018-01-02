@@ -5,16 +5,24 @@ import { Link } from 'react-router';
 import './ItemTitle.css';
 
 
-const ItemTitle = ({ title, editLink }) => (
+const ItemTitle = ({ _id, title, editLink, handleRemove }) => (
 	<div className="itemTitleOuter">
 		<h1 className="itemTitle">{title}</h1>
 		{editLink ?
 			<Link
 				to={editLink}
-				className="itemTitleLink"
+				className="itemTitleLink itemTitleLinkEdit"
 			>
 				Edit
 			</Link>
+		: ''}
+		{handleRemove ?
+			<button
+				className="itemTitleLink itemTitleLinkRemove"
+				onClick={handleRemove.bind(this, _id)}
+			>
+				Remove
+			</button>
 		: ''}
 	</div>
 );

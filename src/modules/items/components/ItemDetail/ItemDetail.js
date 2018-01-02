@@ -11,7 +11,7 @@ import './ItemDetail.css';
 
 const ItemDetail = ({
 	_id, title, slug, description, tags, metadata, files, commentsCount, comments,
-	userIsAdmin, manifest
+	userIsAdmin, manifest, handleRemove
 })=> {
 
 	if (!_id) {
@@ -31,8 +31,10 @@ const ItemDetail = ({
 
 			<div className="itemDetailColumn">
 				<ItemTitle
+					_id={_id}
 					title={title}
 					editLink={userIsAdmin ? `/items/${_id}/${slug}/edit` : null}
+					handleRemove={handleRemove}
 				/>
 				<ItemDescription
 					description={description}

@@ -22,7 +22,7 @@ const articleSaveMutation = graphql(articleSave, {
 	}),
 	name: 'articleSaveMutation',
 	options: {
-		refetchQueries: ['articleQuery'],
+		refetchQueries: ['articleQuery', 'articleListQuery'],
 	},
 });
 

@@ -1,10 +1,12 @@
 import { gql, graphql } from 'react-apollo';
 
+import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
+
 
 const collectionRemove = gql`
-	mutation collectionRemove($id: String!) {
-	collectionRemove(id: $id) {
-		_id
+	mutation collectionRemove($id: String!, $hostname: String!) {
+	collectionRemove(_id: $id, hostname: $hostname) {
+		result
 	}
 }
 `;
@@ -14,6 +16,7 @@ const collectionRemoveMutation = graphql(collectionRemove, {
 		collectionRemove: id => params.collectionRemoveMutation({
 			variables: {
 				id,
+				hostname: getCurrentProjectHostname(),
 			},
 		}),
 	}),

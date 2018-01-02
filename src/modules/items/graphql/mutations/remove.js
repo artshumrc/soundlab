@@ -1,10 +1,13 @@
 import { gql, graphql } from 'react-apollo';
 
 
+import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname';
+
+
 const itemRemove = gql`
-	mutation itemRemove($id: String!) {
-	itemRemove(id: $id) {
-		_id
+	mutation itemRemove($id: String!, $hostname: String!) {
+	itemRemove(_id: $id, hostname: $hostname) {
+		result
 	}
 }
 `;
@@ -14,12 +17,13 @@ const itemRemoveMutation = graphql(itemRemove, {
 		itemRemove: id => params.itemRemoveMutation({
 			variables: {
 				id,
+				hostname: getCurrentProjectHostname(),
 			},
 		}),
 	}),
 	name: 'itemRemoveMutation',
 	options: {
-		refetchQueries: ['itemsQuery', 'itemQuery'],
+		refetchQueries: ['itemQuery', 'itemListQuery'],
 	},
 });
 
