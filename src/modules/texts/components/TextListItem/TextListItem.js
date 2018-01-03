@@ -13,6 +13,12 @@ const TextListItem = (props) => {
 		thumbnail = `http://iiif.orphe.us/${props.coverImage}/full/210,/0/default.jpg`;
 	}
 
+	if (
+		!props.collection
+	) {
+		return null;
+	}
+
 	return (
 		<div className="textListItem">
 			{props.coverImage ?
@@ -31,13 +37,13 @@ const TextListItem = (props) => {
 				`}
 			>
 				<div className="textCount">
-					{props.itemsCount} items
+					{props.itemsCount} annotations
 				</div>
 				<Link to={textUrl}>
-					<h3>{props.title}</h3>
+					<h3>{props.collection.textGroup.work.english_title}</h3>
 				</Link>
 				<p>
-					{prune(props.description, 90)}
+					{prune(props.collection.textGroup.work.urn, 90)}
 				</p>
 				<Link
 					to={textUrl}

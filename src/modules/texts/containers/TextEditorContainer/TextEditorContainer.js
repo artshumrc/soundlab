@@ -12,51 +12,48 @@ import textRemoveMutation from '../../graphql/mutations/remove';
 class TextEditorContainer extends React.Component {
 	constructor(props) {
 		super(props);
-		autoBind(this);
 
 		this.state = {
-			coverImage: null,
-			selectedItems: [],
+			collection: null,
+			textGroup: '',
+			work: '',
 		};
+		autoBind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (
-			nextProps.textQuery
-			&& nextProps.textQuery.project
-			&& nextProps.textQuery.project.text
-		) {
-			const text = nextProps.textQuery.project.text;
-			this.setState({
-				selectedItems: text.items,
-			});
-		}
+	handleSelectCollection(event, index, value) {
+		this.setState({
+			collection: value,
+		});
+	}
+
+	handleSelectTextGroup(event, index, value) {
+		this.setState({
+			textGroup: value,
+		});
+	}
+
+	handleSelectWork(event, index, value) {
+		this.setState({
+			work: value,
+		});
 	}
 
 	handleSubmit(_values) {
-		const values = Object.assign({}, _values);
+		const values = {}; // Object.assign({}, _values);
 		const { textCreate, textUpdate, router } = this.props;
-		const { coverImage, selectedItems } = this.state;
+		const { collection, textGroup, work } = this.state;
 
-		let selectedItemIds = [];
-		selectedItems.forEach(selectedItem => {
-			selectedItemIds.push(selectedItem._id);
-		});
 
+		values.ctsNamespace = collection;
+		values.textGroup = textGroup;
+		values.work = work;
 		// remove unused values
 		delete values.__typename;
-		delete values.items;
-		delete values.itemSelectorTextsearch;
-		delete values.itemsCount;
-
-		// set cover image from state
-		if (coverImage) {
-			values.coverImage = coverImage.name;
-		}
 
 		// create or update
 		if ('_id' in values) {
-			textUpdate(values, selectedItemIds)
+			textUpdate(values)
 				.then((response) => {
 					router.replace(`/texts/${values._id}/${values.slug}`);
 				})
@@ -64,7 +61,7 @@ class TextEditorContainer extends React.Component {
 					console.error(err);
 				});
 		} else {
-			textCreate(values, selectedItemIds)
+			textCreate(values)
 				.then((response) => {
 					router.replace('/texts/');
 				})
@@ -110,7 +107,7 @@ class TextEditorContainer extends React.Component {
 	}
 
 	render() {
-		const { selectedItems } = this.state;
+		const { collection, textGroup, work } = this.state;
 
 		// Get text from query
 		let text;
@@ -121,25 +118,17 @@ class TextEditorContainer extends React.Component {
 			text = this.props.textQuery.project.text;
 		}
 
-		// set cover image from state or pre-existing text coverImage
-		let coverImage = null;
-		if (this.state.coverImage && this.state.coverImage !== null) {
-			coverImage = this.state.coverImage;
-		} else if (text && text.coverImage) {
-			coverImage = {
-				path: `//iiif.orphe.us/${text.coverImage}/full/1400,/0/default.jpg`,
-			};
-		}
-
 		return (
 			<TextEditor
 				onSubmit={this.handleSubmit}
 				onRemove={this.handleRemove}
-				changeImageValue={this.changeImageValue}
-				coverImage={coverImage}
 				initialValues={text}
-				selectedItems={selectedItems}
-				toggleSelectedItem={this.toggleSelectedItem}
+				handleSelectCollection={this.handleSelectCollection}
+				handleSelectTextGroup={this.handleSelectTextGroup}
+				handleSelectWork={this.handleSelectWork}
+				collection={collection}
+				textGroup={textGroup}
+				work={work}
 			/>
 		);
 	}

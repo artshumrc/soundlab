@@ -12,7 +12,7 @@ const query = gql`
 				_id
 			  projectId
 			  ctsNamespace
-			  textgroup
+			  textGroup
 			  work
 			}
 		}

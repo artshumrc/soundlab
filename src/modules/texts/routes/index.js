@@ -6,7 +6,7 @@ import ProjectLayout from '../../projects/layouts/ProjectLayout';
 
 // components
 import TextEditorContainer from '../containers/TextEditorContainer';
-import ReadingEnvironmentContainer from '../containers/ReadingEnvironmentContainer';
+import TextDetailContainer from '../containers/TextDetailContainer';
 import TextListPageContainer from '../containers/TextListPageContainer';
 
 export default (
@@ -15,7 +15,8 @@ export default (
 		<Route path="/texts" component={ProjectLayout}>
 			<IndexRoute component={TextListPageContainer} />
 			<Route path="/texts/create" component={TextEditorContainer} />
-			<Route path="/texts/:id/:location" component={ReadingEnvironmentContainer} />
+			<Route path="/texts/:id/" component={TextDetailContainer} />
+			<Route path="/texts/:id/:location" component={TextDetailContainer} />
 			<Route path="/texts/:id/edit" component={TextEditorContainer} />
 		</Route>
 

@@ -1,54 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
+
+
+import TextSelectorContainer from '../../containers/TextSelectorContainer';
+
 
 import './TextEditor.css';
-
 
 
 class TextEditor extends React.Component {
 
 	render() {
-		const { text } = this.props;
+		const { text, collection, textGroup, work } = this.props;
 
 		return (
 			<div className="textEditor">
 
-				<h1>{text ? 'Edit' : 'Create'} Text</h1>
+				<h1>{text ? 'Edit this Text associated with your project' : 'Add a Text to your project'}</h1>
 
 				<form
 					className="textEditorForm"
 					onSubmit={this.props.handleSubmit}
 				>
-					<div className="textEditorFormInputOuter textEditorFormTitleOuter">
-						<label>Enter the title of the text.</label>
-						<Field
-							name="title"
-							type="text"
-							component="input"
-							placeholder="Your text title"
-						/>
-						<span
-							className="textEditorFormHelp"
-						>
-							?
-						</span>
-					</div>
 
-					<div className="textEditorFormInputOuter textEditorFormDescriptionOuter">
-						<label>Enter a brief description of your text.</label>
-						<Field
-							name="description"
-							type="text"
-							component="textarea"
-							placeholder="Example description of text . . . "
-						/>
-						<span
-							className="textEditorFormHelp"
-						>
-							?
-						</span>
-					</div>
+					<TextSelectorContainer
+						collectionId={collection}
+						textGroupUrn={textGroup}
+						workUrn={work}
+						handleSelectCollection={this.props.handleSelectCollection}
+						handleSelectTextGroup={this.props.handleSelectTextGroup}
+						handleSelectWork={this.props.handleSelectWork}
+					/>
 
 					<button
 						type="submit"

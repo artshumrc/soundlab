@@ -2,25 +2,25 @@ import React from 'react';
 import { compose } from 'react-apollo';
 
 import ReadingEnvironment from '../../components/ReadingEnvironment';
-import textDetailQuery from '../../graphql/queries/detail';
+import readingEnvironmentQuery from '../../graphql/queries/readingEnvironment';
 
 
 class ReadingEnvironmentContainer extends React.Component {
 	render() {
-		let text = [];
-		let userIsAdmin = false;
+		let collection = null;
+		let userIsAdmin = this.props.userIsAdmin;
 
 		if (
-			this.props.textQuery
-			&& this.props.textQuery.project
+			this.props.readingEnvironmentQuery
+			&& this.props.readingEnvironmentQuery.collection
 		) {
-			text = this.props.textQuery.project.text;
-			userIsAdmin = this.props.textQuery.project.userIsAdmin;
+			collection = this.props.readingEnvironmentQuery.collection;
 		}
 
 		return (
 			<ReadingEnvironment
-				{...text}
+				_id={this.props._id}
+				collection={collection}
 				userIsAdmin={userIsAdmin}
 			/>
 		);
@@ -28,5 +28,5 @@ class ReadingEnvironmentContainer extends React.Component {
 }
 
 export default compose(
-	textDetailQuery,
+	readingEnvironmentQuery,
 )(ReadingEnvironmentContainer);

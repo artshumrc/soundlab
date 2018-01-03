@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TextListItem from '../TextListItem';
+import TextListItemContainer from '../../containers/TextListItemContainer';
 
 import './TextList.css';
 
@@ -9,7 +9,7 @@ import './TextList.css';
 const TextList = ({ texts }) => (
 	<div className="textsList">
 		{texts.map((listItem, i) => (
-			<TextListItem
+			<TextListItemContainer
 				key={`${listItem.slug}-${i}`}
 				{...listItem}
 			/>
