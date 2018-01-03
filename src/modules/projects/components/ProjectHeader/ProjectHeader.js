@@ -65,6 +65,11 @@ const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftM
 							Articles
 						</Link>
 					</li>
+					<li>
+						<Link to="/texts" >
+							Texts
+						</Link>
+					</li>
 					{project.description ?
 						<li>
 							<Link

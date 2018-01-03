@@ -98,6 +98,29 @@ class LeftMenu extends React.Component {
 						</MenuSubItem>
 					</div>
 				: ''}
+				<MenuItem
+					to="/texts"
+					onClick={closeLeftMenu}
+				>
+					Texts
+				</MenuItem>
+				{project.userIsAdmin ?
+					<div>
+						<MenuSubItem
+							to="/texts"
+							onClick={closeLeftMenu}
+						>
+							List
+						</MenuSubItem>
+						<MenuSubItem
+							to="/texts/create"
+							onClick={closeLeftMenu}
+							last
+						>
+							Create
+						</MenuSubItem>
+					</div>
+				: ''}
 				{project.userIsAdmin ?
 					<div>
 						<MenuItem
@@ -126,7 +149,7 @@ class LeftMenu extends React.Component {
 
 		let isMainOrpheusProject = false;
 		const hostname = getCurrentProjectHostname();
-		
+
 		if (!hostname || ~['orphe.us', 'orpheus.local'].indexOf(hostname)) {
 			isMainOrpheusProject = true;
 		}
