@@ -12,6 +12,7 @@ const query = gql`
 			pagesCount
 			itemsCount
 			filesCount
+			textsCount
 		}
 	}
 `;
