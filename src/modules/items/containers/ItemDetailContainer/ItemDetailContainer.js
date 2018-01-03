@@ -17,12 +17,6 @@ class ItemDetailContainer extends React.Component {
 	}
 
 	handleRemove(itemId) {
-		console.log('####')
-		console.log('####')
-		console.log('####')
-		console.log(itemId);
-		console.log('####')
-		console.log('####')
 		const { itemRemove, router } = this.props;
 
 		itemRemove(itemId)

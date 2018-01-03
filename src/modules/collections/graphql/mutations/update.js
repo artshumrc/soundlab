@@ -19,7 +19,7 @@ const collectionUpdateMutation = graphql(collectionUpdate, {
 	}),
 	name: 'collectionUpdateMutation',
 	options: {
-		refetchQueries: ['collectionsQuery', 'collectionQuery'],
+		refetchQueries: ['collectionListQuery', 'collectionQuery'],
 	},
 });
 

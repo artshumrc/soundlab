@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import './CoverTitle.css';
 
 
-const CoverTitle = ({ title, coverLink, coverLinkText }) => (
+const CoverTitle = ({ title, coverLink, coverLinkText, handleRemove }) => (
 	<div className="coverTitleOuter">
 		<h1 className="coverTitle">{title}</h1>
 		{coverLink && coverLinkText ?
@@ -15,6 +15,14 @@ const CoverTitle = ({ title, coverLink, coverLinkText }) => (
 			>
 				{coverLinkText}
 			</Link>
+		: ''}
+		{handleRemove ?
+			<button
+				onClick={handleRemove}
+				className="coverLink coverLinkRemove"
+			>
+				Remove
+			</button>
 		: ''}
 	</div>
 );

@@ -22,7 +22,7 @@ const collectionRemoveMutation = graphql(collectionRemove, {
 	}),
 	name: 'collectionRemoveMutation',
 	options: {
-		refetchQueries: ['collectionsQuery', 'collectionQuery'],
+		refetchQueries: ['collectionListQuery', 'collectionQuery'],
 	},
 });
 

@@ -23,7 +23,7 @@ const collectionCreateMutation = graphql(collectionCreate, {
 	}),
 	name: 'collectionCreateMutation',
 	options: {
-		refetchQueries: ['collectionsQuery', 'collectionQuery'],
+		refetchQueries: ['collectionListQuery', 'collectionQuery'],
 	},
 });
 

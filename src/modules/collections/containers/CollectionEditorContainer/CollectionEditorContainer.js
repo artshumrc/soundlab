@@ -4,6 +4,7 @@ import autoBind from 'react-autobind';
 
 import CollectionEditor from '../../components/CollectionEditor';
 import collectionDetailQuery from '../../graphql/queries/detail';
+import collectionListQuery from '../../graphql/queries/list';
 import collectionCreateMutation from '../../graphql/mutations/create';
 import collectionUpdateMutation from '../../graphql/mutations/update';
 import collectionRemoveMutation from '../../graphql/mutations/remove';
@@ -147,5 +148,5 @@ class CollectionEditorContainer extends React.Component {
 
 export default compose(
 	collectionCreateMutation, collectionUpdateMutation, collectionRemoveMutation,
-	collectionDetailQuery,
+	collectionDetailQuery, collectionListQuery,
 )(CollectionEditorContainer);

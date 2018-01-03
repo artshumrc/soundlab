@@ -16,6 +16,7 @@ const CollectionDetail = props => (
 			coverImage={props.coverImage}
 			coverLink={props.userIsAdmin ? `/collections/${props._id}/${props.slug}/edit` : null}
 			coverLinkText={props.userIsAdmin ? 'Edit' : null}
+			handleRemove={props.handleRemove.bind(this, props._id)}
 		/>
 		{props.description ?
 			<CollectionDescription

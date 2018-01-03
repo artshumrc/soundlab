@@ -10,7 +10,9 @@ import Bricks from '../../../../components/common/cover/Bricks';
 import './CollectionCover.css';
 
 
-const CollectionCover = ({ title, coverImage, coverLink, coverLinkText, coverBricks }) => {
+const CollectionCover = ({
+	title, coverImage, coverLink, coverLinkText, coverBricks, handleRemove
+}) => {
 	let background = null;
 
 	if (coverBricks) {
@@ -37,6 +39,7 @@ const CollectionCover = ({ title, coverImage, coverLink, coverLinkText, coverBri
 				title={title}
 				coverLink={coverLink}
 				coverLinkText={coverLinkText}
+				handleRemove={handleRemove}
 			/>
 		</Cover>
 	);
