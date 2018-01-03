@@ -66,6 +66,7 @@ class TextSelector extends React.Component {
 						>
 							{collections.map(collection => (
 								<MenuItem
+									key={collection.id}
 									value={collection.id}
 									primaryText={collection.title}
 									style={styles.menuItem}
@@ -93,6 +94,7 @@ class TextSelector extends React.Component {
 						>
 							{textGroups.map(textGroup => (
 								<MenuItem
+									key={textGroup.urn}
 									value={textGroup.urn}
 									primaryText={textGroup.title}
 									style={styles.menuItem}
@@ -120,6 +122,7 @@ class TextSelector extends React.Component {
 						>
 							{works.map(work => (
 								<MenuItem
+									key={work.urn}
 									value={work.urn}
 									primaryText={work.english_title}
 									style={styles.menuItem}

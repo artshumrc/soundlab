@@ -16,8 +16,8 @@ export default (
 			<IndexRoute component={TextListPageContainer} />
 			<Route path="/texts/create" component={TextEditorContainer} />
 			<Route path="/texts/:id/" component={TextDetailContainer} />
-			<Route path="/texts/:id/:location" component={TextDetailContainer} />
 			<Route path="/texts/:id/edit" component={TextEditorContainer} />
+			<Route path="/texts/:id/:location" component={TextDetailContainer} />
 		</Route>
 
 	</div>

@@ -17,7 +17,7 @@ class TextEditor extends React.Component {
 		return (
 			<div className="textEditor">
 
-				<h1>{text ? 'Edit this Text associated with your project' : 'Add a Text to your project'}</h1>
+				<h1>{text ? 'Edit this Text included with your project' : 'Add a Text to your project'}</h1>
 
 				<form
 					className="textEditorForm"

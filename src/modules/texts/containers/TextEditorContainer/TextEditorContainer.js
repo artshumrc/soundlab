@@ -21,6 +21,23 @@ class TextEditorContainer extends React.Component {
 		autoBind(this);
 	}
 
+	componentWillReceiveProps(nextProps) {
+		let text = null;
+		if (
+				!this.state.collection
+			&& nextProps.textQuery
+			&& nextProps.textQuery.project
+			&& nextProps.textQuery.project.text
+		) {
+			text = nextProps.textQuery.project.text;
+			this.setState({
+				collection: parseInt(text.ctsNamespace, 10),
+				textGroup: text.textGroup,
+				work: text.work,
+			});
+		}
+	}
+
 	handleSelectCollection(event, index, value) {
 		this.setState({
 			collection: value,
@@ -52,10 +69,11 @@ class TextEditorContainer extends React.Component {
 		delete values.__typename;
 
 		// create or update
-		if ('_id' in values) {
+		if ('_id' in _values) {
+			values._id = _values._id;
 			textUpdate(values)
 				.then((response) => {
-					router.replace(`/texts/${values._id}/${values.slug}`);
+					router.replace(`/texts/${values._id}`);
 				})
 				.catch((err) => {
 					console.error(err);
@@ -123,6 +141,7 @@ class TextEditorContainer extends React.Component {
 				onSubmit={this.handleSubmit}
 				onRemove={this.handleRemove}
 				initialValues={text}
+				text={text}
 				handleSelectCollection={this.handleSelectCollection}
 				handleSelectTextGroup={this.handleSelectTextGroup}
 				handleSelectWork={this.handleSelectWork}
