@@ -11,6 +11,8 @@ import ProjectFeatured from './sections/ProjectFeatured';
 import ProjectPeople from './sections/ProjectPeople';
 import ProjectVisit from './sections/ProjectVisit';
 
+import ReleaseMessage from '../../../../components/common/ReleaseMessage';
+
 import './ProjectHome.css';
 import '../../../home/components/Home/Home.css';
 
@@ -81,6 +83,7 @@ const ProjectHome = props => {
 
 			{/* Footer */}
 			<ProjectFooterContainer />
+			<ReleaseMessage />
 		</div>
 	);
 }

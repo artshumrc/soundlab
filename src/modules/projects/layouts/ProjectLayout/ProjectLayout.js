@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ReleaseMessage from '../../../../components/common/ReleaseMessage';
+
 import ProjectHeaderContainer from '../../containers/ProjectHeaderContainer';
 import ProjectFooterContainer from '../../containers/ProjectFooterContainer';
 
@@ -10,6 +12,7 @@ const ProjectLayout = props => (
 		<ProjectHeaderContainer />
 		{props.children}
 		<ProjectFooterContainer />
+		<ReleaseMessage />
 	</div>
 );
 
