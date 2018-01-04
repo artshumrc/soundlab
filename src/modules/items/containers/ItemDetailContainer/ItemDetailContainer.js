@@ -6,6 +6,7 @@ import autoBind from 'react-autobind';
 import ItemDetail from '../../components/ItemDetail';
 
 // graphql
+import itemListQuery from '../../graphql/queries/list';
 import itemDetailQuery from '../../graphql/queries/detail';
 import itemRemoveMutation from '../../graphql/mutations/remove';
 
@@ -51,5 +52,5 @@ class ItemDetailContainer extends React.Component {
 }
 
 export default compose(
-	itemDetailQuery, itemRemoveMutation
+	itemListQuery, itemDetailQuery, itemRemoveMutation
 )(ItemDetailContainer);
