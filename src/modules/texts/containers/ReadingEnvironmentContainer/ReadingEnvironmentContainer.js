@@ -22,6 +22,7 @@ class ReadingEnvironmentContainer extends React.Component {
 				_id={this.props._id}
 				collection={collection}
 				userIsAdmin={userIsAdmin}
+				handleRemove={this.props.handleRemove.bind(this, this.props._id)}
 			/>
 		);
 	}

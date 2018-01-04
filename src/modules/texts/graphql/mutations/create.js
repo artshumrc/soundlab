@@ -22,7 +22,7 @@ const textCreateMutation = graphql(textCreate, {
 	}),
 	name: 'textCreateMutation',
 	options: {
-		refetchQueries: ['textsQuery', 'textQuery'],
+		refetchQueries: ['textListQuery', 'textQuery'],
 	},
 });
 

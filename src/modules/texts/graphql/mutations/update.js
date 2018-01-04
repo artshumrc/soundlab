@@ -18,7 +18,7 @@ const textUpdateMutation = graphql(textUpdate, {
 	}),
 	name: 'textUpdateMutation',
 	options: {
-		refetchQueries: ['textsQuery', 'textQuery'],
+		refetchQueries: ['textListQuery', 'textQuery'],
 	},
 });
 

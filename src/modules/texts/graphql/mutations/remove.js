@@ -22,7 +22,7 @@ const textRemoveMutation = graphql(textRemove, {
 	}),
 	name: 'textRemoveMutation',
 	options: {
-		refetchQueries: ['textsQuery', 'textQuery'],
+		refetchQueries: ['textListQuery', 'textQuery'],
 	},
 });
 

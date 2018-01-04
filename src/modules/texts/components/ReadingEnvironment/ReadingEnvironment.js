@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import './ReadingEnvironment.css';
 
 
-const ReadingEnvironment = ({ _id, collection, userIsAdmin })=> {
+const ReadingEnvironment = ({ _id, collection, userIsAdmin, handleRemove })=> {
 
 	if (!collection) {
 		return null;
@@ -20,12 +20,22 @@ const ReadingEnvironment = ({ _id, collection, userIsAdmin })=> {
 					<span className="textGroupTitle">{collection.textGroup.title},</span> {collection.textGroup.work.english_title}
 				</h1>
 				{userIsAdmin ?
-					<Link
-						to={`/texts/${_id}/edit`}
-						className="readingEnvironmentEditLink"
-					>
-						Edit
-					</Link>
+					<div className="readingEnvironmentHeaderEditLinks">
+						<Link
+							to={`/texts/${_id}/edit`}
+							className="readingEnvironmentEditLink"
+						>
+							Edit
+						</Link>
+						{handleRemove ?
+							<button
+								onClick={handleRemove}
+								className="readingEnvironmentEditLink"
+							>
+								Remove
+							</button>
+						: ''}
+					</div>
 				: ''}
 			</div>
 			<div className="readingEnvironmentText">
