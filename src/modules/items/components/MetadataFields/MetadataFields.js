@@ -8,7 +8,7 @@ import NoResults from '../../../../components/pagination/NoResults';
 import './MetadataFields.css';
 
 
-const MetadataFields = ({ fields, metadata }) => {
+const MetadataFields = ({ fields, metadata, handleUpdateMetadata }) => {
 
 	return (
 		<div className="itemEditorMetadata">
@@ -43,6 +43,7 @@ const MetadataFields = ({ fields, metadata }) => {
 						field={field}
 						index={index}
 						type={type}
+						handleUpdateMetadata={handleUpdateMetadata}
 						handleRemove={() => fields.remove(index)}
 					/>
 				)

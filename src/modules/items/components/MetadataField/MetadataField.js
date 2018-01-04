@@ -71,7 +71,11 @@ class MetadataField extends React.Component {
 						/>
 					</Col>
 					<Col md={7}>
-						<MetadataFieldValueInput field={field} type={this.state.type} />
+						<MetadataFieldValueInput
+							field={field}
+							type={this.state.type}
+							handleUpdateMetadata={this.props.handleUpdateMetadata}
+						/>
 					</Col>
 					<Col md={1}>
 						<button

@@ -76,6 +76,7 @@ class ItemEditor extends React.Component {
 							name="metadata"
 							component={MetadataFields}
 							metadata={metadata}
+							handleUpdateMetadata={this.props.handleUpdateMetadata}
 						/>
 					</div>
 

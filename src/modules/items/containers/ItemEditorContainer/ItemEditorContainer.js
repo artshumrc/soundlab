@@ -18,6 +18,7 @@ class ItemEditorContainer extends React.Component {
 
 		this.state = {
 			files: [],
+			metadataFieldsExtra: [],
 		};
 	}
 
@@ -53,10 +54,14 @@ class ItemEditorContainer extends React.Component {
 		// sanitize metadata
 		const metadata = [];
 		if (values.metadata) {
-			values.metadata.forEach(metadataField => {
+			values.metadata.forEach((metadataField, i) => {
 				// default type
 				let type = 'text';
 
+				// default value (files/items handled by extra state)
+				let value = metadataField.value;
+
+				// set type from metadata redux form
 				if (
 					metadataField.type
 					&& typeof metadataField.type !== 'undefined'
@@ -64,10 +69,19 @@ class ItemEditorContainer extends React.Component {
 					type = metadataField.type;
 				}
 
+				// set extra field value from state
+				if (!value) {
+					this.state.metadataFieldsExtra.forEach(metadataFieldExtra => {
+						if (metadataFieldExtra.field === `metadata[${i}]`) {
+							value = JSON.stringify(metadataFieldExtra.value);
+						}
+					});
+				}
+
 				metadata.push({
 					type,
 					label: metadataField.label,
-					value: metadataField.value,
+					value,
 				});
 			});
 		}
@@ -80,6 +94,14 @@ class ItemEditorContainer extends React.Component {
 			delete file.__typename;
 			files.push(file);
 		});
+
+		console.log('######')
+		console.log('######')
+		console.log('######')
+		console.log(values);
+		console.log('######')
+		console.log('######')
+		console.log('######')
 
 		// create or update
 		if ('_id' in values) {
@@ -146,6 +168,29 @@ class ItemEditorContainer extends React.Component {
 		});
 	}
 
+	updateMetadata(field, value) {
+		const metadataFieldsExtra = this.state.metadataFieldsExtra.slice();
+		let existingField = false;
+
+		metadataFieldsExtra.forEach(metadataFieldExtra => {
+			if (metadataFieldExtra.field === field) {
+				metadataFieldExtra.value = value;
+				existingField = true;
+			}
+		});
+
+		if (!existingField) {
+			metadataFieldsExtra.push({
+				field,
+				value,
+			});
+		}
+
+		this.setState({
+			metadataFieldsExtra,
+		});
+	}
+
 
 	render() {
 		const { files } = this.state;
@@ -169,6 +214,7 @@ class ItemEditorContainer extends React.Component {
 				removeFile={this.removeFile}
 				onSortEnd={this.onSortEnd}
 				updateFile={this.updateFile}
+				handleUpdateMetadata={this.updateMetadata}
 			/>
 		);
 	}

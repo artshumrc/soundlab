@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import ReactMapboxGl from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import autoBind from 'react-autobind';
+import { arrayMove } from 'react-sortable-hoc';
 
 
 import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader';
@@ -18,14 +20,80 @@ class MetadataFieldValueInput extends React.Component {
 			items: [],
 			selectedItems: [],
 		};
+		autoBind(this);
 	}
 
-	changeFilesValue(files) {
-		console.info(files);
+	componentWillReceiveProps(nextProps) {
+		if (
+			(
+				!this.state.files
+			|| !this.state.files.length
+			)
+			&& nextProps.itemQuery
+			&& nextProps.itemQuery.project
+			&& nextProps.itemQuery.project.item
+			&& nextProps.itemQuery.project.item.files
+		) {
+			this.setState({
+				files: nextProps.itemQuery.project.item.files
+			});
+		}
+	}
+
+	addFile(file) {
+		const files = this.state.files.slice();
+
+		files.push(file);
+		this.setState({
+			files,
+		});
+		this.props.handleUpdateMetadata(this.props.field, files);
+	}
+
+	removeFile(index, a, b, c) {
+		const files = this.state.files.slice();
+		files.splice(index, 1);
+		this.setState({
+			files,
+		});
+		this.props.handleUpdateMetadata(this.props.field, files);
+	}
+
+	onSortEnd({ oldIndex, newIndex }) {
+		const files = arrayMove(this.state.files, oldIndex, newIndex);
+		this.setState({
+			files,
+		});
+		this.props.handleUpdateMetadata(this.props.field, files);
+	}
+
+	updateFile(index, file) {
+		const files = this.state.files.slice();
+
+		files[index] = file;
+
+		this.setState({
+			files,
+		});
+		this.props.handleUpdateMetadata(this.props.field, files);
 	}
 
 	toggleSelectedItem(item) {
-		console.info(item);
+		const selectedItems = this.state.selectedItems.slice();
+
+		if (selectedItems.some(selectedItem => selectedItem._id === item._id)) {
+			selectedItems.splice(
+				selectedItems.findIndex(selectedItem => selectedItem._id === item._id),
+				1
+			);
+		} else {
+			selectedItems.push(item);
+		}
+
+		this.setState({
+			selectedItems,
+		});
+		this.props.handleUpdateMetadata(this.props.field, selectedItems);
 	}
 
 	render () {
@@ -80,15 +148,29 @@ class MetadataFieldValueInput extends React.Component {
 						-71.1139213, 42.3741574
 					]}
 					zoom={[13]}
-				/>
+				>
+					<Layer
+						type="symbol"
+						id="marker"
+						layout={{ "icon-image": "marker-15" }}>
+						<Feature coordinates={[
+							-71.1139213, 42.3741574
+						]}/>
+					</Layer>
+				</Map>
 			);
 			break;
 		case 'media':
 			elem = (
-				<ItemEditorUploader
-					changeValue={this.changeFilesValue}
-					files={this.state.files}
-				/>
+				<div>
+					<ItemEditorUploader
+						files={this.state.files}
+						addFile={this.addFile}
+						removeFile={this.removeFile}
+						onSortEnd={this.onSortEnd}
+						updateFile={this.updateFile}
+					/>
+				</div>
 			);
 			break;
 		case 'item':
