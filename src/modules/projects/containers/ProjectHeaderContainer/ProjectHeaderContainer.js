@@ -3,14 +3,18 @@ import { compose } from 'react-apollo';
 
 import ProjectHeader from '../../components/ProjectHeader';
 import projectQuery from '../../graphql/queries/detail';
+import countsQuery from '../../../dashboard/graphql/queries/counts';
 
 
 
 const ProjectHeaderContainer = props => {
 	let project = null;
 
-	if (props.projectQuery) {
-		project = props.projectQuery.project;
+	if (props.projectQuery && props.countsQuery) {
+		project = {
+			...props.projectQuery.project,
+			...props.countsQuery.project,
+		};
 	}
 
 	return (
@@ -21,5 +25,5 @@ const ProjectHeaderContainer = props => {
 };
 
 export default compose(
-	projectQuery,
+	projectQuery, countsQuery,
 )(ProjectHeaderContainer);

@@ -17,6 +17,16 @@ import './ProjectHeader.css';
 
 const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, userId }) => {
 
+	console.log('###')
+	console.log('###')
+	console.log('###')
+	console.log('###')
+	console.log(project)
+	console.log('###')
+	console.log('###')
+	console.log('###')
+	console.log('###')
+
 	if (!project) {
 		return null;
 	}
@@ -50,26 +60,34 @@ const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftM
 							</Link>
 						</li>
 					: ''}
-					<li>
-						<Link to="/items" >
-							Items
-						</Link>
-					</li>
-					<li>
-						<Link to="/collections" >
-							Collections
-						</Link>
-					</li>
-					<li>
-						<Link to="/articles" >
-							Articles
-						</Link>
-					</li>
-					<li>
-						<Link to="/texts" >
-							Texts
-						</Link>
-					</li>
+					{project.itemsCount ?
+						<li>
+							<Link to="/items" >
+								Items
+							</Link>
+						</li>
+					: ''}
+					{project.collectionsCount ?
+						<li>
+							<Link to="/collections" >
+								Collections
+							</Link>
+						</li>
+					: ''}
+					{project.articlesCount ?
+						<li>
+							<Link to="/articles" >
+								Articles
+							</Link>
+						</li>
+					: ''}
+					{project.textsCount ?
+						<li>
+							<Link to="/texts" >
+								Texts
+							</Link>
+						</li>
+					: ''}
 					{project.description ?
 						<li>
 							<Link
