@@ -1,17 +1,16 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-import ProjectHeaderContainer from '../../containers/ProjectHeaderContainer';
+// import ProjectHeaderContainer from '../../containers/ProjectHeaderContainer';
+import Header from '../../../../components/navigation/Header';
 import ProjectFooterContainer from '../../containers/ProjectFooterContainer';
-
 
 import './ProjectNotFound.css';
 
 
-
 const ProjectNotFound = props => (
 	<div className="projectNotFound">
-		<ProjectHeaderContainer />
+		<Header />
 		<Grid>
 			<Row>
 				<Col>

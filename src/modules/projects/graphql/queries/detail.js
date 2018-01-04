@@ -7,6 +7,7 @@ const query = gql`
 	query projectQuery($hostname: String) {
 		project(hostname: $hostname) {
 	    _id
+			status
 			title
 			slug
 			subtitle
@@ -48,7 +49,7 @@ const query = gql`
 					isActiveUser
 				}
 			}
-		
+
 			files {
 				_id
 				name

@@ -17,16 +17,6 @@ import './ProjectHeader.css';
 
 const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftMenuOpen, userId }) => {
 
-	console.log('###')
-	console.log('###')
-	console.log('###')
-	console.log('###')
-	console.log(project)
-	console.log('###')
-	console.log('###')
-	console.log('###')
-	console.log('###')
-
 	if (!project) {
 		return null;
 	}

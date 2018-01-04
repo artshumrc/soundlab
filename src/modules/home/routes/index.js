@@ -19,7 +19,7 @@ export default (
 			component={() => {
 				const currentProjectHostname = getCurrentProjectHostname();
 
-			// If this is a project, return the project home container
+				// If this is a project, return the project home container
 				if (currentProjectHostname && currentProjectHostname.length) {
 					return (
 						<ProjectHomeContainer />

@@ -1,8 +1,11 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 
 import ProjectHome from '../../components/ProjectHome';
+import ProjectLoginToView from '../../components/ProjectLoginToView';
+import ProjectNotAuthorized from '../../components/ProjectNotAuthorized';
 import ProjectNotFound from '../../components/ProjectNotFound';
 import projectQuery from '../../graphql/queries/detail';
 
@@ -24,6 +27,21 @@ const ProjectHomeContainer = props => {
 		return (
 			<ProjectNotFound />
 		);
+
+	// TODO: move authentication logic to server side and global check in react router
+	} else if (
+		project.status === 'private'
+		&& !project.userIsAdmin
+	) {
+		if (props.userId) {
+			return (
+				<ProjectNotAuthorized />
+			);
+		} else {
+			return (
+				<ProjectLoginToView />
+			);
+		}
 	}
 
 	return (
@@ -31,7 +49,14 @@ const ProjectHomeContainer = props => {
 	);
 };
 
+const mapStateToProps = state => ({
+	userId: state.auth.userId,
+});
+
 export default compose(
 	projectQuery,
 	withRouter,
+	connect(
+		mapStateToProps,
+	),
 )(ProjectHomeContainer);
