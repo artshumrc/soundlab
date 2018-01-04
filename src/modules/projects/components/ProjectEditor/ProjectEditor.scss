@@ -39,7 +39,7 @@
 		display: block;
 	}
 
-	input, textarea {
+	input, textarea, select {
 		display: inline-block;
 		vertical-align: top;
 		font-size: 38px;
@@ -61,6 +61,26 @@
 
 		&::placeholder {
 			color: #bbb;
+		}
+	}
+
+	select {
+		font-family: $font-reading;
+		font-weight: 100;
+		margin: 26px 0;
+		font-size: 20px;
+		min-width: 200px;
+		max-width: 50%;
+		color: $dark;
+		border: none;
+		border-bottom: 2px solid $divider-light-grey;
+		padding: 15px;
+		background: $light;
+		border-radius: 0;
+
+		option {
+			background: $light;
+			color: $dark;
 		}
 	}
 

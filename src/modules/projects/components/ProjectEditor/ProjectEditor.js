@@ -107,6 +107,20 @@ class ProjectEditor extends React.Component {
 						</div>
 					</div>
 
+					<div className="projectEditorFormInputOuter projectEditorFormStatusOuter">
+						<div>
+							<label>Is your project publicly available or private?</label>
+							<Field
+								name="status"
+								component="select"
+								onChange={this.toggleFieldStatus}
+							>
+								<option value="public">Public</option>
+								<option value="private">Private</option>
+							</Field>
+						</div>
+					</div>
+
 					<div className="projectEditorFormInputOuter ">
 						<label>Enter an email for users to contact your project or institution.</label>
 						<Field

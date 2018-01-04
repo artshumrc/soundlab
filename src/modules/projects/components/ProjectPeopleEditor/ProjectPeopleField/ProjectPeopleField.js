@@ -53,13 +53,6 @@ class ProjectPeopleField extends React.Component {
 	}
 
 	updatePostUserInvite(user) {
-		console.log('#######')
-		console.log('#######')
-		console.log('#######')
-		console.log(user)
-		console.log('#######')
-		console.log('#######')
-		console.log('#######')
 		this.setState({
 			user,
 			role: 'admin',
