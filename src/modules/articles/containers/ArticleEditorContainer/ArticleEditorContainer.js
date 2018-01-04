@@ -10,6 +10,7 @@ import _s from 'underscore.string';
 
 import ArticleEditor from '../../components/ArticleEditor';
 import articleDetailQuery from '../../graphql/queries/detail';
+import articleListQuery from '../../graphql/queries/list';
 import articleSaveMutation from '../../graphql/mutations/save';
 import articleRemoveMutation from '../../graphql/mutations/remove';
 
@@ -39,12 +40,18 @@ class ArticleEditorContainer extends React.Component {
 				nextProps.articleQuery
 			&& nextProps.articleQuery.project
 			&& nextProps.articleQuery.project.article
-			&& nextProps.articleQuery.project.article.content
 			&& !this.state.editorState
 		) {
 			const article = nextProps.articleQuery.project.article;
+			let editorState = null;
+
+			if (article.content) {
+				editorState = JSON.parse(article.content);
+			} else {
+				editorState = convertToRaw(EditorState.createEmpty().getCurrentContent());
+			}
 			this.setState({
-				editorState: JSON.parse(article.content),
+				editorState,
 				articleId: article._id,
 			});
 		}
@@ -53,6 +60,7 @@ class ArticleEditorContainer extends React.Component {
 	async handleSubmit() {
 		const values = {};
 		const { articleSave, router } = this.props;
+		const { editorState } = this.state;
 
 		// set id generated with component and projectId if not exists
 		values._id = this.state.articleId;
@@ -60,8 +68,13 @@ class ArticleEditorContainer extends React.Component {
 		values.title = this.props.title;
 
 		// set article content
-		// values.content = JSON.stringify(saveBehavior.editorContent);
+		if (editorState) {
+			values.content = JSON.stringify(editorState);
+		} else {
+			values.content = JSON.stringify(convertToRaw(EditorState.createEmpty().getCurrentContent()));
+		}
 
+		// if no title, don't save/submit
 		if (!values.title) {
 			return null;
 		}
@@ -110,6 +123,7 @@ class ArticleEditorContainer extends React.Component {
 		// set article content
 		values.content = JSON.stringify(saveBehavior.editorContent);
 
+		// if no title, don't save/submit
 		if (!values.title) {
 			return null;
 		}
@@ -121,6 +135,10 @@ class ArticleEditorContainer extends React.Component {
 			.catch((err) => {
 				console.error(err);
 			});
+
+		this.setState({
+			articleContent: JSON.stringify(saveBehavior.editorContent),
+		});
 	}
 
 	render() {
@@ -135,7 +153,7 @@ class ArticleEditorContainer extends React.Component {
 		) {
 			article = this.props.articleQuery.project.article;
 		}
-
+		
 		if (!editorState) {
 			return null;
 		}
@@ -167,8 +185,8 @@ const mapStateToProps = (state, props) => {
 };
 
 export default compose(
-	articleSaveMutation, articleRemoveMutation,
-	articleDetailQuery,
+	articleSaveMutation, articleRemoveMutation, articleDetailQuery,
+	articleListQuery,
 	connect(
 		mapStateToProps,
 	),

@@ -5,19 +5,21 @@ import autoBind from 'react-autobind';
 
 import { DanteEditor } from "Dante2/es/index.js";
 import 'Dante2/dist/DanteStyles.css';
-import DanteImagePopover from 'Dante2/es/components/popovers/image.js'
-import DanteAnchorPopover from 'Dante2/es/components/popovers/link.js'
-import DanteInlineTooltip from 'Dante2/es/components/popovers/addButton.js'
-import DanteTooltip from 'Dante2/es/components/popovers/toolTip.js'
-import ImageBlock from 'Dante2/es/components/blocks/image.js'
-import EmbedBlock from 'Dante2/es/components/blocks/embed.js'
-import VideoBlock from 'Dante2/es/components/blocks/video.js'
-import PlaceholderBlock from 'Dante2/es/components/blocks/placeholder.js'
+// import DanteImagePopover from 'Dante2/es/components/popovers/image.js'
+// import DanteAnchorPopover from 'Dante2/es/components/popovers/link.js'
+// import DanteInlineTooltip from 'Dante2/es/components/popovers/addButton.js'
+// import DanteTooltip from 'Dante2/es/components/popovers/toolTip.js'
+//  import ImageBlock from 'Dante2/es/components/blocks/image.js'
+// import EmbedBlock from 'Dante2/es/components/blocks/embed.js'
+// import VideoBlock from 'Dante2/es/components/blocks/video.js'
+// import PlaceholderBlock from 'Dante2/es/components/blocks/placeholder.js'
 
+/*
 import {
 	resetBlockWithType,
 	addNewBlockAt,
 } from 'Dante2/es/model/index.js'
+*/
 
 
 import './ArticleTextEditor.css';
@@ -47,6 +49,7 @@ class ArticleTextEditor extends React.Component {
 		defaultOptions.body_placeholder = "Write your article with items from your collections . . . "
 		// @defaultOptions.api_key = "86c28a410a104c8bb58848733c82f840"
 
+		/*
 		defaultOptions.widgets = [
 			{
 				title: 'add an image',
@@ -213,6 +216,9 @@ class ArticleTextEditor extends React.Component {
 			ref: 'image_popover',
 			component: DanteImagePopover
 		}]
+		*/
+		defaultOptions.widgets = [];
+		defaultOptions.tooltips = [];
 
 		defaultOptions.xhr = {
 			before_handler: null,

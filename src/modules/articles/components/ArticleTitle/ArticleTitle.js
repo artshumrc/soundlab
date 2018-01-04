@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import './ArticleTitle.css';
 
 
-const ArticleTitle = ({ title, editLink }) => (
+const ArticleTitle = ({ title, editLink, handleRemove }) => (
 	<div className="articleTitleOuter">
 		<h1 className="articleTitle">{title}</h1>
 		{editLink ?
@@ -15,6 +15,14 @@ const ArticleTitle = ({ title, editLink }) => (
 			>
 				Edit
 			</Link>
+		: ''}
+		{handleRemove ?
+			<button
+				onClick={handleRemove}
+				className="articleTitleLink articleTitleLinkRemove"
+			>
+				Remove
+			</button>
 		: ''}
 	</div>
 );

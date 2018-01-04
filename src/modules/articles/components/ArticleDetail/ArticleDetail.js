@@ -9,10 +9,10 @@ import './ArticleDetail.css';
 
 const ArticleDetail = ({
 	_id, title, slug, content, tags, commentsCount, comments,
-	userIsAdmin
+	userIsAdmin, handleRemove
 }) => {
 
-	if (!_id || !content) {
+	if (!_id) {
 		// TODO: loading or no results
 		return null;
 	}
@@ -25,6 +25,7 @@ const ArticleDetail = ({
 				<ArticleTitle
 					title={title}
 					editLink={userIsAdmin ? `/articles/${_id}/${slug}/edit` : null}
+					handleRemove={handleRemove.bind(this, _id)}
 				/>
 				<Tags
 					tags={tags}
@@ -34,6 +35,7 @@ const ArticleDetail = ({
 					editorState={parsedContent}
 					config={{
 						read_only: true,
+						body_placeholder: '',
 					}}
 				/>
 			</div>

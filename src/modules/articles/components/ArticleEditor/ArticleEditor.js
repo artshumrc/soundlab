@@ -44,7 +44,7 @@ class ArticleEditor extends React.Component {
 								method: 'POST',
 								success_handler: null,
 								failure_handler: null,
-								interval: 1500,
+								interval: 500,
 								save_handler: this.props.handleEditorChange
 							}
 						}}
