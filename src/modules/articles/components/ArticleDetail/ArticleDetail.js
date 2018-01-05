@@ -25,7 +25,7 @@ const ArticleDetail = ({
 				<ArticleTitle
 					title={title}
 					editLink={userIsAdmin ? `/articles/${_id}/${slug}/edit` : null}
-					handleRemove={handleRemove.bind(this, _id)}
+					handleRemove={userIsAdmin ? handleRemove.bind(this, _id) : null}
 				/>
 				<Tags
 					tags={tags}

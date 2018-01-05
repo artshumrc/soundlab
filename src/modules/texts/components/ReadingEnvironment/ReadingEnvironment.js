@@ -27,14 +27,12 @@ const ReadingEnvironment = ({ _id, collection, userIsAdmin, handleRemove })=> {
 						>
 							Edit
 						</Link>
-						{handleRemove ?
-							<button
-								onClick={handleRemove}
-								className="readingEnvironmentEditLink"
-							>
-								Remove
-							</button>
-						: ''}
+						<button
+							onClick={handleRemove}
+							className="readingEnvironmentEditLink"
+						>
+							Remove
+						</button>
 					</div>
 				: ''}
 			</div>

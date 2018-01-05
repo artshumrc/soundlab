@@ -34,7 +34,7 @@ const ItemDetail = ({
 					_id={_id}
 					title={title}
 					editLink={userIsAdmin ? `/items/${_id}/${slug}/edit` : null}
-					handleRemove={handleRemove}
+					handleRemove={userIsAdmin ? handleRemove : null}
 				/>
 				<ItemDescription
 					description={description}
