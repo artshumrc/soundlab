@@ -16,6 +16,8 @@ const ItemCollection = props => (
 		</Grid>
 		<ItemListContainer
 			horizontal
+			limit={3}
+			random
 		/>
 	</div>
 );
