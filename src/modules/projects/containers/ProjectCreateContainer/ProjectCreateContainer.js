@@ -33,6 +33,7 @@ class ProjectCreateContainer extends React.Component {
 		const newProject = {
 			title: values.title,
 			hostname: `${values.hostname}.orphe.us`,
+			status: 'private',
 		};
 
 		// create project
