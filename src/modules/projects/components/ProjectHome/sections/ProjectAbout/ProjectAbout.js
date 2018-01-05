@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../../../../../components/common/buttons/Button';
+// import Button from '../../../../../../components/common/buttons/Button';
 
 import './ProjectAbout.css';
 
@@ -18,13 +18,15 @@ export default class ProjectAbout extends React.Component {
 				<p>
 					{description}
 				</p>
-				<Button
+				{/*
+					<Button
 					href={'/articles/about'}
 					light
 					outline
 				>
 					Read more
 				</Button>
+				*/}
 			</section>
 		);
 	}
