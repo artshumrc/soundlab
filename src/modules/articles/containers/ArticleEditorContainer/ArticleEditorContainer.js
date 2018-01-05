@@ -60,7 +60,7 @@ class ArticleEditorContainer extends React.Component {
 	async handleSubmit() {
 		const values = {};
 		const { articleSave, router } = this.props;
-		const { editorState } = this.state;
+		const { articleContent } = this.state;
 
 		// set id generated with component and projectId if not exists
 		values._id = this.state.articleId;
@@ -68,8 +68,8 @@ class ArticleEditorContainer extends React.Component {
 		values.title = this.props.title;
 
 		// set article content
-		if (editorState) {
-			values.content = JSON.stringify(editorState);
+		if (articleContent) {
+			values.content = articleContent; 
 		} else {
 			values.content = JSON.stringify(convertToRaw(EditorState.createEmpty().getCurrentContent()));
 		}
@@ -153,7 +153,7 @@ class ArticleEditorContainer extends React.Component {
 		) {
 			article = this.props.articleQuery.project.article;
 		}
-		
+
 		if (!editorState) {
 			return null;
 		}
