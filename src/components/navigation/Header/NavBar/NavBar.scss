@@ -19,6 +19,7 @@
 	top: 0;
 	left: 0;
   z-index: 100;
+	width: 100vw;
 }
 
 .headroom {
@@ -29,6 +30,7 @@
 	position: fixed;
 	background: rgba(255, 255, 255, 0.6);
 	height: 60px;
+	width: 100vw;
 }
 .headroom--unfixed {
   transform: translateY(0);
@@ -58,6 +60,8 @@
 			cursor: pointer;
 			border: 2px solid transparent;
 			@include transition(all 100ms linear);
+			display: block;
+			height: 60px;
 
 			&:hover {
 				background: rgba(255, 255, 255, 0.9);
