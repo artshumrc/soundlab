@@ -143,9 +143,8 @@ class _Bricks extends React.Component {
 		const { files } = this.props;
 		let _files = _.shuffle(files);
 
-		let imageWidth = '90,';
+		let imageWidth = '90';
 
-		/**
 		if (this.nImages === 1) {
 			imageWidth = 'full'; // Math.floor(window.innerWidth * 1.2);
 		} else if (1 < this.nImages && this.nImages < 6) {
@@ -168,7 +167,6 @@ class _Bricks extends React.Component {
 
 		// round to nearest hundred
 		imageWidth = Math.floor(imageWidth / 100) * 100;
-		*/
 
 		return _files.map((file, i) => (
 			<img
