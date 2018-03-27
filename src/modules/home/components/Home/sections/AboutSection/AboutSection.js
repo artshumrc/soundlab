@@ -50,7 +50,7 @@ export default class AboutSection extends React.Component {
 				</div>
 				<div className="aboutText">
 					<p>
-						Preserve the items in your archive, museum, or library digitially for the next generation.
+						Preserve the items in your archive, museum, or library digitally for the next generation.
 					</p>
 					<p>
 						We partner with you to plan for the full lifetime of your digital collection, share it with who you want to share it with, and archive it for the perpetual future.
