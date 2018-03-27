@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import autoBind from 'react-autobind';
 import { arrayMove } from 'react-sortable-hoc';
-import ReactMapboxGl from 'react-mapbox-gl';
 
 
 import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader';
 import ItemSelectorField from '../../../dashboard/components/ItemSelectorField';
-// import MetadataFieldMapInput from '../MetadataFieldMapInput';
+import MetadataFieldMapInput from '../MetadataFieldMapInput';
 
 
 
@@ -105,11 +104,6 @@ class MetadataFieldValueInput extends React.Component {
 	render () {
 		const { field, type, items } = this.props;
 
-		const Map = ReactMapboxGl({
-			accessToken: 'pk.eyJ1IjoibHVrZWhvbGxpcyIsImEiOiJ6Rk1vdjc0In0.jQDtXA8wqU_wYi5p1ClCyw',
-			scrollZoom: false,
-		});
-
 		let elem = null;
 
 		switch (type) {
@@ -144,25 +138,10 @@ class MetadataFieldValueInput extends React.Component {
 			);
 			break;
 		case 'place':
-			/*
 			elem = (
 				<MetadataFieldMapInput
 					field={field}
 					handleChangeFieldMapInput={this.handleChangeFieldMapInput}
-				/>
-			);
-			*/
-			elem = (
-				<Map
-				  style="mapbox://styles/lukehollis/cj7dnh4fb11452smw1dj34x04" // eslint-disable-line
-					containerStyle={{
-						height: '210px',
-						width: '100%'
-					}}
-					center={[
-						-71.1139213, 42.3741574
-					]}
-					zoom={[13]}
 				/>
 			);
 			break;
