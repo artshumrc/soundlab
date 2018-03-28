@@ -19,6 +19,25 @@ class MetadataFieldMapInput extends React.Component {
 		};
 	}
 
+	componentWillReceiveProps(nextProps) {
+		const { position } = this.state;
+
+		if (
+				!position
+			&& nextProps.defaultValue
+		) {
+			const value = JSON.parse(nextProps.defaultValue);
+			this.props.handleChangeFieldMapInput({ position: value.position });
+			this.setState({
+				marker: {
+					position: value.position,
+				},
+				position: value.position,
+				zoom: 13,
+			});
+		}
+	}
+
 	onSubmit(e) {
 		e.preventDefault();
 	}
@@ -32,7 +51,7 @@ class MetadataFieldMapInput extends React.Component {
 		this.setState({
 			marker,
 			position: latLng,
-			zoom: 17,
+			zoom: 13,
 		});
 	}
 
@@ -48,7 +67,7 @@ class MetadataFieldMapInput extends React.Component {
 			lng: e.latLng.lng(),
 		};
 
-		this.props.handleChangeFieldMapInput({ position, });
+		this.props.handleChangeFieldMapInput({ position });
 		this.setState({
 			marker: {
 				position

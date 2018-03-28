@@ -97,13 +97,11 @@ class MetadataFieldValueInput extends React.Component {
 	}
 
 	handleChangeFieldMapInput(marker) {
-		// console.log(location);
-
 		this.props.handleUpdateMetadata(this.props.field, marker);
 	}
 
 	render () {
-		const { field, type, items } = this.props;
+		const { field, type, items, defaultValue } = this.props;
 
 		let elem = null;
 
@@ -142,6 +140,7 @@ class MetadataFieldValueInput extends React.Component {
 			elem = (
 				<MetadataFieldMapInput
 					field={field}
+					defaultValue={defaultValue}
 					handleChangeFieldMapInput={this.handleChangeFieldMapInput}
 				/>
 			);
