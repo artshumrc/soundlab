@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ItemMetaFieldMap from '../ItemMetaFieldMap';
+import ItemMetaFieldMedia from '../ItemMetaFieldMedia';
+import ItemMetaFieldItem from '../ItemMetaFieldItem';
 
 
 import './ItemMetaField.css';
@@ -46,18 +48,18 @@ const ItemMetaField = ({ type, label, value }) => {
 		break;
 	case 'media':
 		elem = (
-			<div className="itemMetaField">
-				<label>{label}</label>
-				<span>{value}</span>
-			</div>
+			<ItemMetaFieldMedia
+				label={label}
+				value={value}
+			/>
 		);
 		break;
 	case 'item':
 		elem = (
-			<div className="itemMetaField">
-				<label>{label}</label>
-				<span>{value}</span>
-			</div>
+			<ItemMetaFieldItem
+				label={label}
+				value={value}
+			/>
 		);
 		break;
 	default:

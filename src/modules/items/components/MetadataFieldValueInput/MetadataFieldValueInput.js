@@ -147,15 +147,14 @@ class MetadataFieldValueInput extends React.Component {
 			break;
 		case 'media':
 			elem = (
-				<div>
-					<ItemEditorUploader
-						files={this.state.files}
-						addFile={this.addFile}
-						removeFile={this.removeFile}
-						onSortEnd={this.onSortEnd}
-						updateFile={this.updateFile}
-					/>
-				</div>
+				<ItemEditorUploader
+					files={JSON.parse(defaultValue)}
+					addFile={this.addFile}
+					removeFile={this.removeFile}
+					onSortEnd={this.onSortEnd}
+					updateFile={this.updateFile}
+					defaultValue={defaultValue}
+				/>
 			);
 			break;
 		case 'item':
@@ -164,6 +163,7 @@ class MetadataFieldValueInput extends React.Component {
 					items={items}
 					selectedItems={this.state.selectedItems}
 					toggleSelectedItem={this.toggleSelectedItem}
+					defaultValue={defaultValue}
 				/>
 			);
 			break;
