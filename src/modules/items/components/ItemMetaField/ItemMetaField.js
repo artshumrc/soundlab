@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactMapboxGl from 'react-mapbox-gl';
+
+import ItemMetaFieldMap from '../ItemMetaFieldMap';
 
 
 import './ItemMetaField.css';
@@ -8,11 +9,6 @@ import './ItemMetaField.css';
 
 const ItemMetaField = ({ type, label, value }) => {
 
-
-	const Map = ReactMapboxGl({
-		accessToken: 'pk.eyJ1IjoibHVrZWhvbGxpcyIsImEiOiJ6Rk1vdjc0In0.jQDtXA8wqU_wYi5p1ClCyw',
-		scrollZoom: false,
-	});
 
 	let elem = null;
 	switch (type) {
@@ -42,16 +38,9 @@ const ItemMetaField = ({ type, label, value }) => {
 		break;
 	case 'place':
 		elem = (
-			<Map
-			  style="mapbox://styles/lukehollis/cj7dnh4fb11452smw1dj34x04" // eslint-disable-line
-				containerStyle={{
-					height: '210px',
-					width: '100%'
-				}}
-				center={[
-					-71.1139213, 42.3741574
-				]}
-				zoom={[13]}
+			<ItemMetaFieldMap
+				label={label}
+				value={value}
 			/>
 		);
 		break;

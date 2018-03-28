@@ -96,9 +96,10 @@ class MetadataFieldValueInput extends React.Component {
 		this.props.handleUpdateMetadata(this.props.field, selectedItems);
 	}
 
-	handleChangeFieldMapInput(location) {
+	handleChangeFieldMapInput(marker) {
 		// console.log(location);
 
+		this.props.handleUpdateMetadata(this.props.field, marker);
 	}
 
 	render () {

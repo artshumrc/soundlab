@@ -26,11 +26,11 @@ class MetadataFieldMapInput extends React.Component {
 	async onSelectAutocompletePlace(address) {
 		const results = await geocodeByAddress(this.state.address);
 		const latLng = await getLatLng(results[0]);
+		const marker = { position: latLng };
 
+		this.props.handleChangeFieldMapInput(marker);
 		this.setState({
-			marker: {
-				position: latLng,
-			},
+			marker,
 			position: latLng,
 			zoom: 17,
 		});
@@ -43,12 +43,15 @@ class MetadataFieldMapInput extends React.Component {
 	}
 
 	onMapClicked(map, _, e) {
+		const position = {
+			lat: e.latLng.lat(),
+			lng: e.latLng.lng(),
+		};
+
+		this.props.handleChangeFieldMapInput({ position, });
 		this.setState({
 			marker: {
-				position: {
-					lat: e.latLng.lat(),
-					lng: e.latLng.lng(),
-				},
+				position
 			},
 		});
 	}
