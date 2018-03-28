@@ -4,6 +4,9 @@ import React from 'react';
 import homeRoute from '../modules/home/routes';
 
 // Articles
+import authRoutes from '../modules/auth/routes';
+
+// Articles
 import articleRoutes from '../modules/articles/routes';
 
 // Collections
@@ -32,6 +35,9 @@ export default (
 	<div>
 		{/* Home Route for orphe.us */}
 		{homeRoute}
+
+		{/* Routes for authentication */}
+		{authRoutes}
 
 		{/* Routes for articles */}
 		{articleRoutes}
