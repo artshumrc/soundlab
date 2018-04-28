@@ -7,10 +7,14 @@
 
 .profileProjectList {
 	text-align: center;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .profileProjectListItem {
-	max-width: 720px;
+	max-width: 320px;
 	width: 90%;
 	margin: 25px auto;
 	padding: 15px 0;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 
 import ProfileNav from '../ProfileNav';
 
@@ -13,17 +13,16 @@ const ProfileProjects = ({ projects }) => (
 			<Row>
 				<div className="profileProjectList">
 					{projects.map(project => (
-						<Col key={project._id}>
-							<a
-								className="profileProjectListItem"
-								href={`//${project.hostname}`}
-							>
-								<span>
-									{project.title}
-								</span>
-								<hr />
-							</a>
-						</Col>
+						<a
+							className="profileProjectListItem"
+							href={`//${project.hostname}`}
+							key={project._id}
+						>
+							<span>
+								{project.title}
+							</span>
+							<hr />
+						</a>
 					))}
 				</div>
 				{projects && !projects.length ?
