@@ -1,9 +1,9 @@
 import React from 'react';
 import Bricks from 'bricks.js';
 import _ from 'underscore';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as bricksActions from '../../../../actions/bricks';
+import autoBind from 'react-autobind';
+import OnImagesLoaded from 'react-on-images-loaded';
+
 
 import './Bricks.css';
 
@@ -25,7 +25,11 @@ class _Bricks extends React.Component {
 		}
 
 		this.nImages = nImages;
-		this.nImagesLoaded = 0;
+
+		this.state = {
+			showImages: false,
+		};
+		autoBind(this);
 	}
 
 	static defaultProps = {
@@ -103,26 +107,6 @@ class _Bricks extends React.Component {
 	}
 
 
-	handleImageLoad() {
-		const { loaded } = this.props;
-
-		if (!loaded) {
-			// setTimeout for render
-			setTimeout(() => {
-				this.nImagesLoaded += 1;
-
-				if (this.nImages <= this.nImagesLoaded) {
-					this.handleAllImagesLoaded();
-				}
-			},  500);
-		}
-	}
-
-	handleAllImagesLoaded() {
-		this.props.actions.imagesLoaded();
-		setTimeout(() => { this.instance.pack(); }, 500);
-	}
-
 	makeDefaultBricks() {
 		const imagesUpperRange = 106;
 		const images = _.shuffle(_.range(1, imagesUpperRange));
@@ -134,7 +118,6 @@ class _Bricks extends React.Component {
 				key={`${image}-${i}`} // eslint-disable-line
 				className="brick"
 				src={`//iiif.orphe.us/orpheus/art/${image}.jpg/full/90,/0/default.jpg`}
-				onLoad={this.handleImageLoad.bind(this)}
 			/>
 		));
 	}
@@ -174,14 +157,20 @@ class _Bricks extends React.Component {
 				key={`${file.name}-${i}`} // eslint-disable-line
 				className="brick"
 				src={`//iiif.orphe.us/${file.name}/full/${imageWidth},/0/default.jpg`}
-				onLoad={this.handleImageLoad.bind(this)}
 			/>
 		));
 	}
 
+	handleAllImagesLoaded() {
+		setTimeout(() => {
+			this.setState({
+				showImages: true,
+			});
+		}, 3000);
+	}
+
 	render() {
 		const { files } = this.props;
-		const { loaded } = this.props;
 		let bricks = null;
 
 		if (files) {
@@ -190,22 +179,27 @@ class _Bricks extends React.Component {
 			bricks = this.makeDefaultBricks();
 		}
 
+		if (this.state.showImages) {
+			setTimeout(() => {
+				this.instance.pack();
+			}, 500);
+		}
+
+
 		return (
-			<div className={`bricks ${loaded ? '' : 'loading'}`}>
-				<div className="bricks-inner">
-					{bricks}
-				</div>
+			<div className={`bricks ${this.state.showImages ? '' : 'loading'}`}>
+				<OnImagesLoaded
+					onLoaded={this.handleAllImagesLoaded.bind(this)}
+					onTimeout={this.handleAllImagesLoaded.bind(this)}
+					timeout={100000}
+				>
+					<div className="bricks-inner">
+						{bricks}
+					</div>
+				</OnImagesLoaded>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = (state, props) => ({
-	loaded: state.bricks.loaded,
-});
-
-const mapDispatchToProps = dispatch => ({
-	actions: bindActionCreators(bricksActions, dispatch),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(_Bricks);
+export default _Bricks;

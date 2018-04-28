@@ -8,6 +8,8 @@
 	font-family: $font-label;
 	color: $light;
 	cursor: pointer;
+	display: inline-block;
+
 	@include transition(all 100ms ease-in-out);
 
 	&.orpheus-button--primary {
