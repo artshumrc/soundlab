@@ -10,7 +10,7 @@ class OAuthButtons extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.socialTypes = ['facebook', 'google', 'twitter'];
+		this.socialTypes = ['google', 'twitter'];
 
 		this.state = {
 			disabledButtons: false,
