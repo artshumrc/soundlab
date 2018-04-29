@@ -1,12 +1,11 @@
 import React from 'react';
 import autoBind from 'react-autobind';
-import Map, { Marker, GoogleApiWrapper } from 'google-maps-react';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import Map, { Marker } from 'google-maps-react';
 
 
 import './MetadataFieldMapInput.css';
 
-class MetadataFieldMapInput extends React.Component {
+class MetadataFieldMapInputContent extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -15,120 +14,108 @@ class MetadataFieldMapInput extends React.Component {
 		this.state = {
 			place: null,
 			position: null,
-			zoom: 1,
+			autocomplete: '',
 		};
-	}
-
-	componentWillReceiveProps(nextProps) {
-		const { position } = this.state;
-
-		if (
-				!position
-			&& nextProps.defaultValue
-		) {
-			const value = JSON.parse(nextProps.defaultValue);
-			this.props.handleChangeFieldMapInput({ position: value.position });
-			this.setState({
-				marker: {
-					position: value.position,
-				},
-				position: value.position,
-				zoom: 13,
-			});
-		}
 	}
 
 	onSubmit(e) {
 		e.preventDefault();
 	}
 
-	async onSelectAutocompletePlace(address) {
-		const results = await geocodeByAddress(this.state.address);
-		const latLng = await getLatLng(results[0]);
-		const marker = { position: latLng };
-
-		this.props.handleChangeFieldMapInput(marker);
-		this.setState({
-			marker,
-			position: latLng,
-			zoom: 13,
-		});
+	componentDidMount() {
+		this.renderAutoComplete();
 	}
 
-	handleChangeAutocomplete(address) {
-		this.setState({
-			address,
-		});
+	componentDidUpdate(prevProps) {
+		const { map } = this.props;
+		if (map !== prevProps.map) {
+			this.renderAutoComplete();
+		}
 	}
 
-	onMapClicked(map, _, e) {
-		const position = {
-			lat: e.latLng.lat(),
-			lng: e.latLng.lng(),
-		};
+	renderAutoComplete() {
+		const { google, map } = this.props;
 
-		this.props.handleChangeFieldMapInput({ position });
+		if (!google || !map) return;
+
+		var autocomplete = new google.maps.places.Autocomplete(this.state.autocomplete);
+		autocomplete.bindTo('bounds', map);
+
+		autocomplete.addListener('place_changed', () => {
+			const place = autocomplete.getPlace();
+			if (!place.geometry) {
+				return;
+			}
+
+			if (place.geometry.viewport) {
+				map.fitBounds(place.geometry.viewport);
+			} else {
+				map.setCenter(place.geometry.location);
+				map.setZoom(17);
+			}
+
+			this.setState({
+				place: place,
+				position: place.geometry.location
+			})
+		})
+	}
+
+	handleChangeAutocomplete(e) {
 		this.setState({
-			marker: {
-				position
-			},
+			autocomplete: e.value,
 		});
 	}
 
 	render() {
-		const { google } = this.props;
-		const { position, marker } = this.state;
+		const props = this.props;
+		const { position } = this.state;
 
 		return (
 			<div className="metadataFieldMapInput">
-				<div className="placesAutocompleteInput">
-					<i className="mdi mdi-magnify" />
-					{google &&
-						<PlacesAutocomplete
-							inputProps={{
-								onChange: this.handleChangeAutocomplete,
-								value: this.state.address,
-							}}
-							onSelect={this.onSelectAutocompletePlace}
-						/>
-					}
+				<input
+					type="text"
+					placeholder="Enter a location"
+					onChange={this.handleChangeAutocomplete}
+				/>
+				<button
+					className="metadataFieldMapInputTextSubmit"
+				>
+					Select
+				</button>
+				<div>
+					<div>
+						Lat: {position && position.lat()}
+					</div>
+					<div>
+						Lng: {position && position.lng()}
+					</div>
 				</div>
 				<Map
-					google={this.props.google}
+					{...props}
 					containerStyle={{
-	    			position: 'relative',
-	    			height: '290px',
-	    			width: '100%'
-	    		}}
-					center={position}
+						position: 'relative',
+						height: '100vh',
+						width: '100%'
+					}}
+					center={this.state.position}
 					centerAroundCurrentLocation={false}
-					zoom={this.state.zoom}
-					onClick={this.onMapClicked}
-	    	>
-					{marker ?
-						<Marker
-							position={marker.position}
-	          />
-	        : ''}
+				>
+					<Marker position={this.state.position} />
 				</Map>
-				{position &&
-					<div className="latitudeAndLongitude">
-						<h5>Selected Point</h5>
-						<span>
-							<label>Latitude:</label> {marker && marker.position.lat}
-						</span>
-						<span>
-							<label>Longitude:</label> {marker && marker.position.lng}
-						</span>
-					</div>
-				}
 			</div>
 		)
 	}
 }
 
+const MetadataFieldMapInput = props => (
+	<Map
+		google={props.google}
+		className="metadataFieldMapInput"
+		visible={false}
+	>
+		<MetadataFieldMapInputContent {...props} />
+	</Map>
+);
 
-export default GoogleApiWrapper({
-	apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-	libraries: ['places', 'visualization'],
-})(MetadataFieldMapInput);
+export default MetadataFieldMapInput;

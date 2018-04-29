@@ -17,9 +17,14 @@ export default (
 		<Route path="/items" component={ProjectLayout}>
 			<IndexRoute component={ItemListPageContainer} />
 			<Route path="/items/create" component={ItemEditorContainer} />
+			<Route path="/items/:id" component={ItemDetailContainer} />
 			<Route path="/items/:id/:slug" component={ItemDetailContainer} />
 			<Route path="/items/:id/:slug/edit" component={ItemEditorContainer} />
 			<Route path="/items/:id/:slug/mirador" component={MiradorItemViewerContainer} />
+		</Route>
+
+		<Route path="/search" component={ProjectLayout}>
+			<IndexRoute component={ItemListPageContainer} />
 		</Route>
 	</div>
 );
