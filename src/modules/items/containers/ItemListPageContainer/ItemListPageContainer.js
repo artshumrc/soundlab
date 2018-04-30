@@ -1,5 +1,6 @@
 import React from 'react';
 import { compose } from 'react-apollo';
+import { withRouter } from 'react-router';
 
 import ItemListPage from '../../components/ItemListPage';
 import userIsAdminQuery from '../../../users/graphql/queries/userIsAdmin';
@@ -23,11 +24,18 @@ const ItemListPageContainer = (props) => {
 	) {
 		files = props.itemListQuery.project.files;
 	}
+	
+	let skip = 0;
+	if (props.router.location.query.page) {
+		skip = (props.router.location.query.page - 1) * 24;
+	}
 
 	return (
 		<ItemListPage
 			userIsAdmin={userIsAdmin}
 			files={files}
+			{...props.router.location.query}
+			skip={skip}
 		/>
 	);
 };
@@ -35,4 +43,5 @@ const ItemListPageContainer = (props) => {
 export default compose(
 	userIsAdminQuery,
 	itemListQuery,
+	withRouter,
 )(ItemListPageContainer);

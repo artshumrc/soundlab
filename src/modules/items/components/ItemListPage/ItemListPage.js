@@ -8,7 +8,7 @@ import './ItemListPage.css';
 
 
 
-const ItemListPage = ({ filter, skip }) => (
+const ItemListPage = ({ textsearch, filter, skip }) => (
 	<div className="itemListPage">
 		<SearchHead />
 
@@ -16,7 +16,7 @@ const ItemListPage = ({ filter, skip }) => (
 			<SearchFilter />
 
 			<ItemListContainer
-				filter={filter}
+				textsearch={textsearch}
 				skip={skip}
 			/>
 		</div>
