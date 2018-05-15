@@ -1,17 +1,21 @@
 import React from 'react';
 
-import ItemList from '../ItemList';
+import ItemMetaFieldItemListContainer from '../../containers/ItemMetaFieldItemListContainer';
 
 
 import './ItemMetaFieldItem.css';
 
 
-const ItemMetaFieldItem = ({ label, value })=> {
 
+const ItemMetaFieldItem = ({ label, value })=> {
 	let items = [];
+	let itemIds = [];
 
 	if (value) {
 		items = JSON.parse(value);
+		items.forEach(item => {
+			itemIds.push(item._id);
+		});
 	}
 
 	return (
@@ -19,9 +23,8 @@ const ItemMetaFieldItem = ({ label, value })=> {
 			<label>
 				{label}
 			</label>
-			<ItemList
-				items={items}
-				horizontal
+			<ItemMetaFieldItemListContainer
+				ids={itemIds}
   		/>
 		</div>
 	);
