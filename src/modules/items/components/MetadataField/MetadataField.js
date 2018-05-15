@@ -18,16 +18,15 @@ class MetadataField extends React.Component {
 		super(props);
 
 		this.state = {
-			type: 'text',
+			type: props.type ? props.type : 'text',
 		};
 		autoBind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (
-			!this.props.type
-			&& nextProps.type
-			&& nextProps.type.length
+			nextProps.type
+			&& this.state.type !== nextProps.type
 		) {
 			this.setState({
 				type: nextProps.type,
@@ -42,7 +41,7 @@ class MetadataField extends React.Component {
 	}
 
 	render() {
-		const { field } = this.props;
+		const { field, initialValue } = this.props;
 
 		return (
 			<div className="itemEditorMetadataField">
@@ -74,6 +73,7 @@ class MetadataField extends React.Component {
 						<MetadataFieldValueInput
 							field={field}
 							type={this.state.type}
+							initialValue={initialValue}
 							handleUpdateMetadata={this.props.handleUpdateMetadata}
 						/>
 					</Col>

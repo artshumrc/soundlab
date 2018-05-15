@@ -84,8 +84,6 @@ class ItemEditorContainer extends React.Component {
 			});
 		}
 
-
-
 		// set metadata
 		values.metadata = metadata;
 
@@ -96,14 +94,6 @@ class ItemEditorContainer extends React.Component {
 			delete file.__typename;
 			files.push(file);
 		});
-
-		console.log('######')
-		console.log('######')
-		console.log('######')
-		console.log(values);
-		console.log('######')
-		console.log('######')
-		console.log('######')
 
 		// create or update
 		if ('_id' in values) {

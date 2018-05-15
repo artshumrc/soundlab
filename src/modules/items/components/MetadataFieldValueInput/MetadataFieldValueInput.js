@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import autoBind from 'react-autobind';
 import { arrayMove } from 'react-sortable-hoc';
-import ReactMapboxGl from 'react-mapbox-gl';
 
 
 import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader';
 import ItemSelectorField from '../../../dashboard/components/ItemSelectorField';
-// import MetadataFieldMapInput from '../MetadataFieldMapInput';
+import MetadataFieldMapInput from '../MetadataFieldMapInput';
 
 
 
@@ -16,34 +15,38 @@ class MetadataFieldValueInput extends React.Component {
 	constructor(props) {
 		super(props);
 
+		let files = [];
+		let selectedItems = [];
+
+		if (
+			props.type === 'media'
+			&& props.initialValue
+		) {
+			files = JSON.parse(props.initialValue);
+		} else if (
+				props.type === 'item'
+			&& props.initialValue
+		) {
+			selectedItems = JSON.parse(props.initialValue);
+		}
+
 		this.state = {
-			files: [],
-			items: [],
-			selectedItems: [],
+			files,
+			selectedItems,
 		};
 		autoBind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (
-			(
-				!this.state.files
-			|| !this.state.files.length
-			)
-			&& nextProps.itemQuery
-			&& nextProps.itemQuery.project
-			&& nextProps.itemQuery.project.item
-			&& nextProps.itemQuery.project.item.files
+			nextProps.initialValue
 		) {
-			this.setState({
-				files: nextProps.itemQuery.project.item.files
-			});
+
 		}
 	}
 
 	addFile(file) {
 		const files = this.state.files.slice();
-
 		files.push(file);
 		this.setState({
 			files,
@@ -97,19 +100,12 @@ class MetadataFieldValueInput extends React.Component {
 		this.props.handleUpdateMetadata(this.props.field, selectedItems);
 	}
 
-	handleChangeFieldMapInput(location) {
-		// console.log(location);
-
+	handleChangeFieldMapInput(marker) {
+		this.props.handleUpdateMetadata(this.props.field, marker);
 	}
 
 	render () {
-		const { field, type, items } = this.props;
-
-		const Map = ReactMapboxGl({
-			accessToken: 'pk.eyJ1IjoibHVrZWhvbGxpcyIsImEiOiJ6Rk1vdjc0In0.jQDtXA8wqU_wYi5p1ClCyw',
-			scrollZoom: false,
-		});
-
+		const { field, type, items, initialValue } = this.props;
 		let elem = null;
 
 		switch (type) {
@@ -144,39 +140,23 @@ class MetadataFieldValueInput extends React.Component {
 			);
 			break;
 		case 'place':
-			/*
 			elem = (
 				<MetadataFieldMapInput
 					field={field}
+					defaultValue={initialValue}
 					handleChangeFieldMapInput={this.handleChangeFieldMapInput}
-				/>
-			);
-			*/
-			elem = (
-				<Map
-				  style="mapbox://styles/lukehollis/cj7dnh4fb11452smw1dj34x04" // eslint-disable-line
-					containerStyle={{
-						height: '210px',
-						width: '100%'
-					}}
-					center={[
-						-71.1139213, 42.3741574
-					]}
-					zoom={[13]}
 				/>
 			);
 			break;
 		case 'media':
 			elem = (
-				<div>
-					<ItemEditorUploader
-						files={this.state.files}
-						addFile={this.addFile}
-						removeFile={this.removeFile}
-						onSortEnd={this.onSortEnd}
-						updateFile={this.updateFile}
-					/>
-				</div>
+				<ItemEditorUploader
+					files={this.state.files}
+					addFile={this.addFile}
+					removeFile={this.removeFile}
+					onSortEnd={this.onSortEnd}
+					updateFile={this.updateFile}
+				/>
 			);
 			break;
 		case 'item':

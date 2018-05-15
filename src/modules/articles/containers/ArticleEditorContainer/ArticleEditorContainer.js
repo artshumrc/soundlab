@@ -69,7 +69,7 @@ class ArticleEditorContainer extends React.Component {
 
 		// set article content
 		if (articleContent) {
-			values.content = articleContent; 
+			values.content = articleContent;
 		} else {
 			values.content = JSON.stringify(convertToRaw(EditorState.createEmpty().getCurrentContent()));
 		}
@@ -81,7 +81,6 @@ class ArticleEditorContainer extends React.Component {
 
 		await articleSave(values)
 			.then((response) => {
-				console.log('Article saved');
 				router.replace(`/articles/${this.state.articleId}/${_s.slugify(values.title)}`)
 			})
 			.catch((err) => {
@@ -130,7 +129,7 @@ class ArticleEditorContainer extends React.Component {
 
 		await articleSave(values)
 			.then((response) => {
-				console.log('Article saved');
+				// console.log('Article saved');
 			})
 			.catch((err) => {
 				console.error(err);

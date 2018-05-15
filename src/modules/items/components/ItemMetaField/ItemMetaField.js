@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ItemMetaFieldMap from '../ItemMetaFieldMap';
 import ItemMetaFieldMedia from '../ItemMetaFieldMedia';
 import ItemMetaFieldItem from '../ItemMetaFieldItem';
+import ItemMetaFieldDate from '../ItemMetaFieldDate';
 
 
 import './ItemMetaField.css';
@@ -32,10 +33,10 @@ const ItemMetaField = ({ type, label, value }) => {
 		break;
 	case 'date':
 		elem = (
-			<div className="itemMetaField">
-				<label>{label}</label>
-				<span>{value}</span>
-			</div>
+			<ItemMetaFieldDate
+				label={label}
+				value={value}
+			/>
 		);
 		break;
 	case 'place':

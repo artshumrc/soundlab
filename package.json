@@ -39,6 +39,7 @@
     "mdi": "^1.9.33",
     "medium-editor": "^5.23.0",
     "moment": "^2.19.1",
+    "moment-timezone": "^0.5.17",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.0.2",
     "pre-commit": "^1.2.2",

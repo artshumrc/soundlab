@@ -37,7 +37,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchLogout: () => {
 		dispatch(logout(logoutUser));
-		console.log(document.cookie);
     // window.location = '/auth';
 	},
 });

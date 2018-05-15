@@ -28,11 +28,13 @@ const MetadataFields = ({ fields, metadata, handleUpdateMetadata }) => {
 			</div>
 			{fields.map((field, index) => {
 				let type = '';
+				let initialValue = null;
 
 				if (metadata) {
 					metadata.forEach((metadataField, i) => {
 						if (index === i) {
 							type = metadataField.type;
+							initialValue = metadataField.value;
 						}
 					});
 				}
@@ -43,6 +45,7 @@ const MetadataFields = ({ fields, metadata, handleUpdateMetadata }) => {
 						field={field}
 						index={index}
 						type={type}
+						initialValue={initialValue}
 						handleUpdateMetadata={handleUpdateMetadata}
 						handleRemove={() => fields.remove(index)}
 					/>
