@@ -13,13 +13,13 @@ class Cover extends React.Component {
 				<div styleName="cover">
 					<Grid>
 				    <Row>
-				      <Col md={6}>
+				      <Col md={6} sm={12}>
 				        <div styleName="coverText">
 			            <h1 styleName="siteTag">We hear you</h1>
 			            <h2 styleName="siteTagSubtitle">The Sound Lab at Harvard University</h2>
 				        </div>
 				      </Col>
-				      <Col md={6}>
+				      <Col styleName="featuredTrackColumn" md={6} sm={12}>
 				        <FeaturedTrackContainer />
 				      </Col>
 				    </Row>

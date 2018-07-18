@@ -169,6 +169,9 @@
 
 @media (max-width: 990px) {
   .featuredTrackComponent {
-		display: none;
+		//display: none;
 	}
+  .featuredTrackPlayerContainer {
+    margin-top: 160px;
+  }
 }
