@@ -11,14 +11,14 @@ class Intro extends React.Component {
     return (
 			<Grid>
         <Row styleName="intro-section">
-          <Col styleName="intro-section-col" md={6}>
+          <Col styleName="intro-section-col" md={6} sm={12}>
 	          <div styleName="site-tag-container intro-tag">
               <h3 styleName="site-tag-subtitle">
 								The Sound Lab is a place for students to experiment with sound.
 							</h3>
 	          </div>
           </Col>
-          <Col styleName="intro-section-col" md={6}>
+          <Col styleName="intro-section-col" md={6} sm={12}>
 	          <div styleName="intro-text-container">
 	            <p styleName="intro-text">
 								The Sound Lab is a studio for students to experiment with sound production equipment and techniques. We host weekly workshops and offer a suite of equipment for you to use on your project.

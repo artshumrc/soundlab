@@ -16,12 +16,14 @@
   min-height: 400px;
 	padding: 90px 0;
   width: 100%;
+  margin: auto;
 }
 
 .intro-section-col {
 	display: inline-block;
 	text-align: left;
 	vertical-align: top;
+  padding: 0;
 }
 
 .site-tag-container.intro-tag {
@@ -36,7 +38,7 @@
 }
 
 .intro-text-container {
-  padding-left: 20%;
+  padding-left: 15%;
 }
 
 .listen-latest {

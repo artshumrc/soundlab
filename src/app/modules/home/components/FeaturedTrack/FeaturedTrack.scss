@@ -172,6 +172,18 @@
 		//display: none;
 	}
   .featuredTrackPlayerContainer {
-    margin-top: 160px;
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+
+	.featuredTrackPlayerContainer {
+		display: flex;
+		width: 100%;
+	}
+
+  .featuredTrackMetaContainer {
+    padding: 0 15px;
   }
 }
