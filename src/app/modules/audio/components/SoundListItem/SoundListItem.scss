@@ -112,3 +112,11 @@
 	line-height: 1.5em;
 	display: block;
 }
+
+@media (max-width: 1200px) {
+	.thumbnail {
+		width: 0px;
+		margin-right: 70px;
+	}
+
+}
