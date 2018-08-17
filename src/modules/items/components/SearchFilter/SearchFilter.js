@@ -38,7 +38,7 @@ const SearchFilter = props => {
 							{_s.capitalize(field.key)}
 						</label>
 						<span>
-							{field.value}
+							{field.value.indexOf(',') >= 0 ? field.value.split(',').join(', ') : field.value}
 						</span>
 						<i className="mdi mdi-close" />
 					</Link>

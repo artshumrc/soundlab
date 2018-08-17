@@ -2,7 +2,7 @@
 
 .searchHead {
 
-  margin: 180px 0 30px 0;
+  margin: 180px 0 10px 0;
 
   label {
 
@@ -41,7 +41,7 @@
   @include transition(all 100ms ease-in-out);
   width: 100%;
   max-width: 990px;
-  margin: 60px auto 30px;
+  margin: 60px auto 0px;
   display: flex;
   padding: 10px 20px;
 
@@ -52,6 +52,22 @@
   i {
     color: #444;
     width: 30px;
+  }
+
+  i.filterIcon {
+    cursor: pointer;
+    width: 46px;
+    border-radius: 3px;
+    padding: 0 5px;
+    @include transition(all 100ms ease-in-out);
+
+    &:hover {
+      color: $primary;
+      background: rgba(0, 0, 0, 0.02);
+    }
+    &.filterIconActive {
+      color: $primary;
+    }
   }
 
   input {
@@ -71,6 +87,7 @@
 
   }
 }
+
 
 .searchToolHeader {
   padding: 20px;

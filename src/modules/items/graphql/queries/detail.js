@@ -8,12 +8,14 @@ const query = gql`
 		project(hostname: $hostname) {
 	    _id
 			userIsAdmin
+			tags
 			item(_id: $id) {
 				_id
 				title
 				slug
 				description
 				projectId
+				tags
 
 				metadata {
 					type

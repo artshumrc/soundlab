@@ -42,6 +42,7 @@ class ItemEditorContainer extends React.Component {
 	handleSubmit(_values) {
 		const { itemCreate, itemUpdate, router } = this.props;
 		const _files = this.state.files;
+		const tags = _values.tags.slice();
 		const values = Object.assign({}, _values);
 
 		// remove non-input values
@@ -50,6 +51,12 @@ class ItemEditorContainer extends React.Component {
 		delete values.commentsCount;
 		delete values.files;
 		delete values.manifest;
+
+		// consolidate tag label/values
+		values.tags = [];
+		tags.forEach(tag => {
+			values.tags.push(tag.value);
+		});
 
 		// sanitize metadata
 		const metadata = [];
@@ -188,12 +195,34 @@ class ItemEditorContainer extends React.Component {
 		const { files } = this.state;
 
 		let item;
+		const tagOptions = [];
 
 		if (
 			this.props.itemQuery
 			&& this.props.itemQuery.project
 		) {
-			item = this.props.itemQuery.project.item;
+			// set item to be edited
+			item = Object.assign({}, this.props.itemQuery.project.item);
+			if (item.tags) {
+				const _tags = item.tags.slice();
+				item.tags = [];
+				_tags.forEach(tag => {
+					item.tags.push({
+						value: tag,
+						label: tag,
+					});
+				});
+			}
+
+			// set project tags
+			if (this.props.itemQuery.project.tags) {
+				this.props.itemQuery.project.tags.forEach(tag => {
+					tagOptions.push({
+						value: tag,
+						label: tag,
+					});
+				});
+			}
 		}
 
 		return (
@@ -202,6 +231,7 @@ class ItemEditorContainer extends React.Component {
 				onRemove={this.handleRemove}
 				initialValues={item}
 				files={files}
+				tagOptions={tagOptions}
 				metadata={item ? item.metadata : []}
 				addFile={this.addFile}
 				removeFile={this.removeFile}

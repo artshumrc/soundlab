@@ -33,8 +33,10 @@ const query = gql`
 				title
 				slug
 				description
+				tags
 				files {
 					_id
+					type
 					name
 				}
 			}
@@ -52,6 +54,7 @@ const query = gql`
 
 			files {
 				_id
+				type
 				name
 			}
 		}

@@ -42,7 +42,7 @@
 		display: block;
 	}
 
-	input, textarea {
+	input, textarea, .tagSelect {
 		display: inline-block;
 		vertical-align: top;
 		font-size: 38px;
@@ -71,6 +71,20 @@
 		font-size: 22px;
 		line-height: 1.7em;
 		min-height: 180px;
+	}
+
+	.tagSelect {
+		font-size: 18px;
+		outline: none;
+		border: none;
+		margin: 0;
+		padding: 5px;
+
+		> div {
+			border: none;
+			outline: none;
+			padding: 5px 10px;
+		}
 	}
 }
 

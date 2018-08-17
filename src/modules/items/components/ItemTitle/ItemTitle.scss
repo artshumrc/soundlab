@@ -10,6 +10,7 @@
 	color: $text-primary;
 	display: inline-block;
 	vertical-align: baseline;
+	padding-right: 15px;
 }
 
 .itemMetaField.aboutMetaField {
@@ -25,7 +26,8 @@
 	font-style: italic;
 	display: inline-block;
 	vertical-align: baseline;
-	padding: 0px 0px 0 20px;
+	padding: 0px 10px;
+	cursor: pointer;
 	border: none;
 	outline: none;
 	@include transition(100ms all ease-in-out);

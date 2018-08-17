@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, FieldArray, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
+import CreatableSelect from 'react-select/lib/Creatable';
 
 import ItemEditorUploader from '../../../dashboard/components/ItemEditorUploader';
 import { required, maxLength } from '../../../../lib/formHelpers';
@@ -17,7 +18,7 @@ const maxLength200000 = maxLength(200000);
 class ItemEditor extends React.Component {
 
 	render() {
-		const { item, files, metadata } = this.props;
+		const { item, files, tagOptions, metadata } = this.props;
 
 		return (
 			<div className="itemEditor">
@@ -46,6 +47,32 @@ class ItemEditor extends React.Component {
 							component="input"
 							placeholder="Your item title"
 							validate={[required, maxLength200]}
+						/>
+						<span
+							className="itemEditorFormHelp"
+						>
+							?
+						</span>
+					</div>
+
+					<div className="itemEditorFormInputOuter itemEditorFormDescriptionOuter">
+						<label>Enter tags for your item.</label>
+						<Field
+							name="tags"
+							options={tagOptions}
+							component={({input, options, name, id}) => (
+								<CreatableSelect
+									{...input}
+									className="tagSelect"
+									id={id}
+									name={name}
+									options={options}
+									value={input.value}
+									onChange={(value) => { console.log(value); input.onChange(value)}}
+									onBlur={() => {}}
+									isMulti
+								/>
+							)}
 						/>
 						<span
 							className="itemEditorFormHelp"

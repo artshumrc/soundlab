@@ -36,11 +36,11 @@ const ItemDetail = ({
 					editLink={userIsAdmin ? `/items/${_id}/${slug}/edit` : null}
 					handleRemove={userIsAdmin ? handleRemove : null}
 				/>
-				<ItemDescription
-					description={description}
-				/>
 				<Tags
 					tags={tags}
+				/>
+				<ItemDescription
+					description={description}
 				/>
 				<ItemMetaFields
 					metafields={metadata}

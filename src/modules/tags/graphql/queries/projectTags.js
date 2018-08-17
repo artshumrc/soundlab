@@ -7,26 +7,7 @@ const query = gql`
 	query projectQuery($hostname: String) {
 		project(hostname: $hostname) {
 	    _id
-			title
-			slug
-			userIsAdmin
-			items {
-				_id
-				title
-				description
-				slug
-				tags
-				files {
-					_id
-					name
-					title
-					itemId
-					type
-					path
-					thumbPath
-					slug
-				}
-			}
+      tags
 		}
 	}
 `;

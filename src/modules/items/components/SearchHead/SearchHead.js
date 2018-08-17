@@ -1,11 +1,11 @@
 import React from 'react';
-// import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import { DebounceInput } from 'react-debounce-input';
 import { withRouter } from 'react-router';
 import autoBind from 'react-autobind';
 
-// Maker location date
+import SearchTagsContainer from '../../../tags/containers/SearchTagsContainer';
+
 
 
 
@@ -19,7 +19,7 @@ class SearchHead extends React.Component {
 		super(props);
 
 		this.state = {
-			open: false,
+			dropdownOpen: false,
 		};
 		autoBind(this);
 	}
@@ -30,6 +30,12 @@ class SearchHead extends React.Component {
 		query.page = 1;
 
 		this.props.router.push({ pathname: '/search', query });
+	}
+
+	handleToggleDropdown() {
+		this.setState({
+			dropdownOpen: !this.state.dropdownOpen,
+		});
 	}
 
 	filterMenu(filterValues) {
@@ -58,6 +64,7 @@ class SearchHead extends React.Component {
 		if (this.props.router.location.query.textsearch) {
 			defaultValue = this.props.router.location.query.textsearch;
 		}
+		const { dropdownOpen } = this.state;
 
 		// const fields = this.props.router.location.query;
 
@@ -74,8 +81,19 @@ class SearchHead extends React.Component {
 						onChange={this.updateFilter}
 						value={defaultValue}
 					/>
+					<i
+						className={`
+							filterIcon ${dropdownOpen ? 'filterIconActive' : '' }
+							mdi mdi-filter-outline mdi-36px
+						`}
+						onClick={this.handleToggleDropdown}
+					/>
 				</div>
-
+				{dropdownOpen &&
+					<div className="tagsDropdown">
+						<SearchTagsContainer />
+					</div>
+				}
 			</div>
 		);
 	}

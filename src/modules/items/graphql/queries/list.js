@@ -4,14 +4,15 @@ import getCurrentProjectHostname from '../../../../lib/getCurrentProjectHostname
 
 
 const query = gql`
-	query itemListQuery($hostname: String, $textsearch: String, $offset: Int, $limit: Int) {
+	query itemListQuery($hostname: String, $textsearch: String, $tags: [String], $offset: Int, $limit: Int) {
 		project(hostname: $hostname) {
 	    _id
-			items(textsearch: $textsearch, offset: $offset, limit: $limit) {
+			items(textsearch: $textsearch, tags: $tags, offset: $offset, limit: $limit) {
 				_id
 				title
 				slug
 				description
+				tags
 				files {
 					_id
 					type
@@ -31,10 +32,11 @@ const query = gql`
 
 const itemListQuery = graphql(query, {
 	name: 'itemListQuery',
-	options: ({ textsearch, skip, limit }) => ({
+	options: ({ textsearch, tags, skip, limit }) => ({
 		variables: {
 			hostname: getCurrentProjectHostname(),
 			textsearch,
+			tags: tags ? tags.split(',') : null,
 			offset: skip,
 			limit,
 		},
