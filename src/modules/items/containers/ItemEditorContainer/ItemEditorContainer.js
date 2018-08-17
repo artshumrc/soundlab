@@ -42,7 +42,7 @@ class ItemEditorContainer extends React.Component {
 	handleSubmit(_values) {
 		const { itemCreate, itemUpdate, router } = this.props;
 		const _files = this.state.files;
-		const tags = _values.tags.slice();
+		const tags = _values.tags ? _values.tags.slice() : [];
 		const values = Object.assign({}, _values);
 
 		// remove non-input values
