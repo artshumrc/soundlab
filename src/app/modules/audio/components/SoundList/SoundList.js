@@ -95,72 +95,75 @@ class SoundList extends React.Component {
 						/>
 					</Col>
 				</Row>
-				<Row>
-					<Col >
-						<div id="tracklist" className={styles.searchTitle}>
-							<span className={styles.letsListen}>Let's listen to</span>
-							<div
-								onClick={this.toggleSearchDropdown.bind(this)}
-								className={styles.searchDropdownToggle}
-							>
-								<span className={styles.filterTitle}>{activeCategoryTitle}</span>
-								{open ?
-									<i className="mdi mdi-menu-up" />
-								:
-									<i className="mdi mdi-menu-down" />
-								}
-							</div>
-						</div>
-						{open ?
-							<div className={styles.filterContainer}>
-								<Link
-									to={`/sounds`}
-									className={`
-										${styles.filterButton}
-										${activeCategory === 'everything' ? styles.filterButtonActive : ''}
-									`}
+				<div className={styles.trackListSectionContainer}>
+
+					<Row >
+						<Col >
+							<div id="tracklist" className={styles.searchTitle}>
+								<span className={styles.letsListen}>Let's listen to</span>
+								<div
+									onClick={this.toggleSearchDropdown.bind(this)}
+									className={styles.searchDropdownToggle}
 								>
-									<span>
-										Everything
-									</span>
-								</Link>
-								{categories.map(category => (
+									<span className={styles.filterTitle}>{activeCategoryTitle}</span>
+									{open ?
+										<i className="mdi mdi-menu-up" />
+									:
+										<i className="mdi mdi-menu-down" />
+									}
+								</div>
+							</div>
+							{open ?
+								<div className={styles.filterContainer}>
 									<Link
-										to={`/sounds/category/${category.slug}`}
-										key={category.slug}
+										to={`/sounds`}
 										className={`
 											${styles.filterButton}
-											${activeCategory === category.slug ? styles.filterButtonActive : ''}
+											${activeCategory === 'everything' ? styles.filterButtonActive : ''}
 										`}
 									>
 										<span>
-											{category.title}
+											Everything
 										</span>
 									</Link>
-								))}
-							</div>
-						: ''}
-					</Col>
-				</Row>
-	      <Row className={styles.postsColumnSectionTitles}>
-          <Col sm={1}>
-						<span className={styles.sectionTitleNumber}>#</span>
-					</Col>
-          <Col sm={8}>
-						<span className={styles.sectionTrackLabel}>Track</span>
-					</Col>
-					<Col sm={3}>
-						<span className={styles.sectionTitleDuration}></span>
-					</Col>
-				</Row>
+									{categories.map(category => (
+										<Link
+											to={`/sounds/category/${category.slug}`}
+											key={category.slug}
+											className={`
+												${styles.filterButton}
+												${activeCategory === category.slug ? styles.filterButtonActive : ''}
+											`}
+										>
+											<span>
+												{category.title}
+											</span>
+										</Link>
+									))}
+								</div>
+							: ''}
+						</Col>
+					</Row>
+		      <Row className={styles.postsColumnSectionTitles}>
+	          <Col sm={1}>
+							<span className={styles.sectionTitleNumber}>#</span>
+						</Col>
+	          <Col sm={8}>
+							<span className={styles.sectionTrackLabel}>Track</span>
+						</Col>
+						<Col sm={3}>
+							<span className={styles.sectionTitleDuration}></span>
+						</Col>
+					</Row>
 
-				{sounds.map((sound, i) => (
-					<SoundListItem
-						key={`${sound.id}-${i}`}
-						sound={sound}
-						index={i}
-					/>
-				))}
+					{sounds.map((sound, i) => (
+						<SoundListItem
+							key={`${sound.id}-${i}`}
+							sound={sound}
+							index={i}
+						/>
+					))}
+				</div>
 			</Grid>
 		);
 	}

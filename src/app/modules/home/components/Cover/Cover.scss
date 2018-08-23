@@ -21,3 +21,25 @@
   color: $lightGrey;
 	font-family: $font-title;
 }
+
+@media (max-width: 600px) {
+	.cover {
+		height: 100%;
+	}
+
+	.coverText {
+		margin-top: 150px;
+	}
+
+	.siteTag {
+		font-size: 44px;
+	}
+
+	.siteTagSubtitle {
+		font-size: 30px;
+	}
+
+	.featuredTrackColumn {
+		padding: 0;
+	}
+}

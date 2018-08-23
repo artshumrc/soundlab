@@ -236,8 +236,82 @@
 	}
 }
 
-@media (max-width: 520px) {
+/*
+Responsive mobile menu
+*/
+
+:global {
+
+	@media screen and (max-width: 600px) {
+
+		.orpheusModal .closeModal {
+			display: none !important;
+		}
+
+		.bm-menu {
+		  background: $light;
+		  padding: 2.5em 1.5em 0;
+		  font-size: 1.15em;
+		}
+
+		.bm-menu-wrap {
+			z-index: 1000 !important;
+		}
+		.bm-burger-button {
+			display: block;
+			color: $dark;
+			width: 30px;
+			height: 25px;
+			position: absolute;
+			top: 25px;
+			right: 20px;
+			width: 35px;
+
+			span .bm-burger-bars {
+				background: black !important;
+				width: 35px;
+			}
+
+		}
+
+		.menu-item {
+			font-family: "Proxima Nova W08 Reg";
+			text-transform: uppercase;
+			height: 40px;
+			width: 100%;
+			display: flex;
+			align-items: center;
+
+			a {
+				padding: 0px !important;
+				border: none;
+				&:hover {
+					background: none;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
 	.nav {
 		display: none;
+	}
+
+	.mobileHasDropdown {
+		position: relative;
+	}
+
+	.mobileNavDropdownLink {
+		margin: 0;
+		padding: 10px 20px 10px 40px;
+		font-size: 14px;
+		font-family: $font-label;
+		font-weight: bold;
+		letter-spacing: 1px;
+		color: $light;
+		background: $primary-600;
+		width: 100%;
+		display: block;
 	}
 }
