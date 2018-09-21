@@ -11,10 +11,12 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 .profileProjectListItem {
 	max-width: 320px;
+	min-width: 240px;
 	width: 90%;
 	margin: 25px auto;
 	padding: 15px 0;
