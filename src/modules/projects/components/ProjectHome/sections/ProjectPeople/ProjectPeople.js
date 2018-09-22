@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'underscore';
 
 import ProjectPerson from '../../../ProjectPerson';
 
@@ -15,11 +16,17 @@ class ProjectPeople extends React.Component {
 			return null;
 		}
 
+		const _people = _.sortBy(people, (person) => {
+			const nameParts = person.user.name.split(' ');
+			const lastName = nameParts[nameParts.length - 1];
+			return lastName;
+		});
+
 		return (
 			<section className="peopleList">
 				<h2>People</h2>
 				<div>
-					{people.map(person => (
+					{_people.map(person => (
 						<ProjectPerson
 							key={person.user.username}
 							{...person}
