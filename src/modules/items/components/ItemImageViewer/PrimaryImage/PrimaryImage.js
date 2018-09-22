@@ -56,7 +56,7 @@ const PrimaryImage = ({ file, itemMiradorLink }) => {
 				>
 					<i className="mdi mdi-eye" />
 					<span>
-						View in Mirador
+						View in Detail 
 					</span>
 				</Link>
 			: ''}
