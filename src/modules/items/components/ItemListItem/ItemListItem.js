@@ -30,7 +30,10 @@ const ItemListItem = (props) => {
 		if (isImage) {
 			imageUrl = `//iiif.orphe.us/${file.name}/full/300,/0/default.jpg`;
 			viewer = (
-				<Link to={itemUrl}>
+				<Link
+					to={itemUrl}
+					className="listItemImageLink"
+				>
 					<img src={imageUrl} alt={props.title} />
 				</Link>
 			);

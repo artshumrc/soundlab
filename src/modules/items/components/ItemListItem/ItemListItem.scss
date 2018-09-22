@@ -9,6 +9,12 @@
 	width: 90%;
 	max-width: 260px;
 
+	.listItemImageLink {
+		display: block;
+		max-height: 330px;
+		overflow: hidden;
+	}
+
 	img {
 		@include transition(all 100ms ease-in-out);
 		width: 110%;
