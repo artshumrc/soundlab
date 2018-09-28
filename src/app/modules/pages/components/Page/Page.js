@@ -51,12 +51,15 @@ export default class About extends Component {
     };
 
     return (
+
+			//remove cover section and cover section image for release
+
       <div>
-        <Row styleName="page-cover-section">
-        </Row>
+        {/* <Row styleName="page-cover-section">
+			</Row> */}
         <Row styleName="page-content-section">
           <Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
-            <div styleName="page-cover-image" style={pageCoverImage} />
+            {/* <div styleName="page-cover-image" style={pageCoverImage} /> */}
             <div>
               <h1 styleName="page-section-title">
 								{page.post_title}
