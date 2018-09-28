@@ -36,6 +36,7 @@ class Footer extends Component {
               </div>
             </div>
           </Col>
+          {/*
           <Col md={6}>
 						<div styleName="footer-social-links">
 							<a
@@ -72,6 +73,7 @@ class Footer extends Component {
 							</a>
 						</div>
           </Col>
+          */}
         </Row>
       </footer>
     );
