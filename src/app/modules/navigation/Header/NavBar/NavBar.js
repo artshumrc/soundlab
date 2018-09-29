@@ -131,13 +131,21 @@ class NavBar extends React.Component {
 				>
 				<ul >
 					<li styleName="mobileHasDropdown">
-						<Link styleName="navLink" to={'/sounds'} onClick={this.closeMenu}>
+						<Link
+							styleName="navLink"
+							to={'/sounds'}
+							onClick={this.closeMenu}
+						>
 							Sounds
 						</Link>
 
 						<div styleName="mobileHasDropdown">
 							<li>
-								<Link styleName="mobileNavDropdownLink" to={'/playlists'}>
+								<Link
+									styleName="mobileNavDropdownLink"
+									to={'/playlists'}
+									onClick={this.closeMenu}
+								>
 									Playlists
 								</Link>
 							</li>
@@ -145,24 +153,40 @@ class NavBar extends React.Component {
 
 					</li>
 					<li styleName="mobileHasDropdown">
-						<Link styleName="navLink" to={'/resources'}>
+						<Link
+							styleName="navLink"
+							to={'/resources'}
+							onClick={this.closeMenu}
+						>
 							Resources
 						</Link>
 						<div styleName="mobileHasDropdown">
 							<li>
-								<Link styleName="mobileNavDropdownLink" to={'/events'}>
+								<Link
+									styleName="mobileNavDropdownLink"
+									to={'/events'}
+									onClick={this.closeMenu}
+								>
 									Events
 								</Link>
 							</li>
 							<li>
-								<Link styleName="mobileNavDropdownLink" to={'/equipment'}>
+								<Link
+									styleName="mobileNavDropdownLink"
+									to={'/equipment'}
+									onClick={this.closeMenu}
+								>
 									Equipment
 								</Link>
 							</li>
 						</div>
 					</li>
 					<li>
-						<Link styleName="navLink" to={'/about'}>
+						<Link
+							styleName="navLink"
+							to={'/about'}
+							onClick={this.closeMenu}
+						>
 							About
 						</Link>
 					</li>
