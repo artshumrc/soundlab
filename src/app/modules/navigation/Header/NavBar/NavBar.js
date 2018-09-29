@@ -65,6 +65,11 @@ class NavBar extends React.Component {
 						</Link>
 					</div>
 					<ul styleName="nav">
+						<li>
+							<Link styleName="navLink" to={'/events'}>
+								Workshops
+							</Link>
+						</li>
 						<li styleName="hasDropdown">
 							<Link styleName="navLink" to={'/sounds'}>
 								Sounds
@@ -82,11 +87,6 @@ class NavBar extends React.Component {
 								Resources
 							</Link>
 							<div styleName="dropdown">
-								<li>
-									<Link styleName="navDropdownLink" to={'/events'}>
-										Events
-									</Link>
-								</li>
 								<li>
 									<Link styleName="navDropdownLink" to={'/equipment'}>
 										Equipment
@@ -130,6 +130,15 @@ class NavBar extends React.Component {
 					right
 				>
 				<ul >
+					<li>
+						<Link
+							styleName="navLink"
+							to={'/events'}
+							onClick={this.closeMenu}
+						>
+							Workshops
+						</Link>
+					</li>
 					<li styleName="mobileHasDropdown">
 						<Link
 							styleName="navLink"
@@ -161,15 +170,6 @@ class NavBar extends React.Component {
 							Resources
 						</Link>
 						<div styleName="mobileHasDropdown">
-							<li>
-								<Link
-									styleName="mobileNavDropdownLink"
-									to={'/events'}
-									onClick={this.closeMenu}
-								>
-									Events
-								</Link>
-							</li>
 							<li>
 								<Link
 									styleName="mobileNavDropdownLink"
