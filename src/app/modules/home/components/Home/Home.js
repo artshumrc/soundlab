@@ -9,6 +9,7 @@ import Cover from '../Cover';
 import Intro from '../Intro';
 import RecentContainer from '../../containers/RecentContainer';
 import LearnContainer from '../../containers/LearnContainer';
+import CalendarContainer from '../../containers/CalendarContainer';
 
 import styles from './Home.scss';
 
@@ -23,6 +24,7 @@ class Home extends React.Component {
         <Intro />
         <LearnContainer />
         <RecentContainer />
+        <CalendarContainer />
       </div>
     );
   }

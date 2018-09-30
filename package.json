@@ -129,6 +129,7 @@
     "react-apollo": "^1.0.0",
     "react-audio-player": "^0.5.0",
     "react-autobind": "^1.0.6",
+    "react-big-calendar": "^0.17.0",
     "react-bootstrap": "^0.31.3",
     "react-burger-menu": "^2.5.2",
     "react-cookie": "^2.1.1",
