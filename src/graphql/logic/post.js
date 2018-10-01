@@ -116,6 +116,69 @@ export default class PostService extends PermissionsService {
 	}
 
 	/**
+	 * Get events
+	 * @param {string[]} post_type - post types
+	 * @param {number} limit - the orm query limit
+	 * @param {number} skip - the orm query skip
+	 * @param {boolean} upcoming - get upcoming posts or past posts
+	 * @returns {Object[]} post object records
+	 */
+	getEvents({ post_type=['event'], limit = 200, skip = 0, upcoming = false }) {
+
+		const now = parseInt(moment().format("YYYYMMDD"), 10);
+
+		let include = [{
+			model: Postmeta,
+			where: {
+				meta_key: 'start_date',
+				meta_value: {
+					[Sequelize.Op.lte]: now,
+				},
+			},
+		}];
+
+		let order = [[
+			Postmeta, 'meta_value', 'DESC'
+		]];
+
+		if (upcoming) {
+			include = [{
+				model: Postmeta,
+				where: {
+					meta_key: 'start_date',
+					meta_value: {
+						[Sequelize.Op.gte]: now,
+					},
+				},
+				order: [
+					'meta_value', 'ASC'
+				]
+			}];
+
+			order = [[
+				Postmeta, 'meta_value', 'ASC'
+			]];
+		}
+
+
+		return Post.findAll({
+			include,
+			where: {
+				post_type,
+				post_status: 'publish',
+			},
+			limit,
+			order,
+			offset: skip,
+		})
+	}
+
+
+
+
+
+
+	/**
 	 * Get posts for a category
 	 * @param {number} termId - the id of the category term
 	 * @param {string[]} post_type - post types
