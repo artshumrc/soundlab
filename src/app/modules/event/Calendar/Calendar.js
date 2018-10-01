@@ -21,7 +21,6 @@ const Event = props => (
 
 const Calendar = props => {
 	const { events } = props;
-  console.log('**************', props)
 
 	if (!events || !events.length) {
 		return <div>No events</div>;
@@ -51,7 +50,7 @@ const Calendar = props => {
 			title = title.split(': ')[1];
 		}
 
-		let link = `/item/${event.post_name}`;
+		let link = `/events/${event.post_name}`;
 
 		_events.push({
 			start,

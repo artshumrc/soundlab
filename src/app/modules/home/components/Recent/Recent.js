@@ -36,6 +36,13 @@ class Recent extends React.Component {
 							</Col>
 						))}
 	        </Row>
+					<Row styleName="recent-section-title">
+					 <Col>
+						 <h3>
+							 Workshops
+						 </h3>
+					 </Col>
+				 </Row>
 				</Grid>
       </section>
 		);
