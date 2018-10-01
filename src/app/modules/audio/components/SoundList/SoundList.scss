@@ -6,7 +6,8 @@
 }
 
 .waveCoverSection {
-  // height: 80vh;
+	// height: 80vh;
+	justify-content: center;
 }
 
 .searchTitle {
@@ -21,9 +22,9 @@
 .letsListen {
 	display: inline-block;
 	vertical-align: top;
-  font-size: 44px;
+	font-size: 44px;
 	line-height: 1.3em;
-  color: $lightGrey;
+	color: $lightGrey;
 }
 
 .searchDropdownToggle {
@@ -35,6 +36,7 @@
 		display: inline-block;
 		vertical-align: center;
 		padding: 5px 5px 0;
+
 		&:before {
 			font-size: 36px;
 		}
@@ -44,15 +46,15 @@
 .filterTitle {
 	display: inline-block;
 	vertical-align: top;
-  font-size: 44px;
+	font-size: 44px;
 	line-height: 1.3em;
-  color: $dark;
-  border-bottom: 2px solid $dark;
+	color: $dark;
+	border-bottom: 2px solid $dark;
 	cursor: pointer;
 }
 
 .filterContainer {
-  padding: 0px 0 40px;
+	padding: 0 0 40px;
 	display: flex;
 	align-items: baseline;
 	justify-content: left;
@@ -88,13 +90,13 @@
 }
 
 .waveAudioPostsSection {
-  min-height: 300px;
-  padding-bottom: 80px;
+	min-height: 300px;
+	padding-bottom: 80px;
 }
 
 .postsColumnSectionTitles {
-  border-bottom: 1px solid $lightGrey;
-  margin-bottom: 16px;
+	border-bottom: 1px solid $lightGrey;
+	margin-bottom: 16px;
 	font-family: $font-label;
 	font-size: 12px;
 	text-transform: uppercase;
@@ -106,13 +108,11 @@
 .durationColumn {
 	text-align: left;
 }
-
 @media (max-width: 990px) {
 	.soundList {
 		padding-top: 120px;
 	}
 }
-
 @media (max-width: 800px) {
 	.trackListSectionContainer {
 		padding: 0 40px !important;
