@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose } from 'react-apollo';
 
-import EventSingle from '../../components/EventSingle';
+import EventSingle from '../../../event/EventSingle';
 import { eventSingleQuery } from '../../graphql/queries/resources';
 
 

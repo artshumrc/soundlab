@@ -18,7 +18,7 @@ class EventTeaser extends Component {
 
 		} = this.props;
 
-		const postLink = `/item/${post_name}`;
+		const postLink = `/events/${post_name}`;
 
 		let thumbnailFeaturedImage;
 		let thumbnailTeaserImage;

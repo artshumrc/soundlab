@@ -75,13 +75,13 @@ const resourceSingleQuery = graphql(gql`
 });
 
 const eventSingleQuery = graphql(gql`
-  query eventSingleQuery($post: String){
+  query($post: String){
     post(name:$post){
       id
       post_title
       post_content
 			thumbnail
-			post_meta(keys: ["event_start", "event_end", "location"]) {
+			post_meta(keys: ["event_start", "event_end", "location", "start_date", "start_time", "end_date", "end_time"]) {
 				meta_key
 				meta_value
 			}
@@ -100,6 +100,7 @@ const eventSingleQuery = graphql(gql`
     };
   },
 });
+
 
 const featuredEventQuery = graphql(gql`
   query featuredEventQuery {

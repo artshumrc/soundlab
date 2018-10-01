@@ -9,7 +9,7 @@ import wpautop from 'wpautop';
 import linkifyHtml from 'linkifyjs/html';
 
 
-import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
+import { getPostThumbnailBySize } from '../../../lib/thumbnails';
 
 import styles from './EventSingle.scss';
 
@@ -19,13 +19,20 @@ import styles from './EventSingle.scss';
 class EventSingle extends Component {
 
 
+
+
   render() {
-    const { event, loading, error } = this.props;
+    const {
+      event, loading, error
+
+    } = this.props;
 
     if (loading || !event) {
 			// TODO: add loading state
 			return null;
 		}
+
+    console.log("@@@@@@@@@@%%%%%%%%%%%%", event)
 
 
     const coverImage = {
@@ -42,8 +49,10 @@ class EventSingle extends Component {
 		}
 
 		const byline = _.findWhere(event.post_meta, { meta_key: 'byline' });
-		const eventStart = _.findWhere(event.post_meta, { meta_key: 'event_start' });
-		const eventEnd = _.findWhere(event.post_meta, { meta_key: 'event_end' });
+    const startDate = _.findWhere(event.post_meta, { meta_key: 'start_date' });
+    const startTime = _.findWhere(event.post_meta, { meta_key: 'start_time' });
+    const endDate = _.findWhere(event.post_meta, { meta_key: 'end_date' });
+    const endTime = _.findWhere(event.post_meta, { meta_key: 'end_time' });
 		const dateDescription = _.findWhere(event.post_meta, { meta_key: 'date_description' });
 		const location = _.findWhere(event.post_meta, { meta_key: 'location' });
 
@@ -55,57 +64,41 @@ class EventSingle extends Component {
           <Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
             <div styleName="cover-image" style={coverImage}></div>
             <div>
+
               <h1 styleName="section-title">
 								{event.post_title}
 							</h1>
-							{byline &&
-			          <h3 className={styles.postAuthor}>
-									{byline.meta_value}
-								</h3>
-							}
+
               <div styleName="content" dangerouslySetInnerHTML={{__html: linkifyHtml(wpautop(event.post_content)) }} />
-							{eventStart &&
-								<Row styleName="metaItem">
-									<Col md={2}>
-										<label>
-											Start
-										</label>
-									</Col>
-									<Col md={10}>
-										<p>
-											{moment(parseInt(eventStart.meta_value, 10) * 1000).format('MMMM Do YYYY, h:mm a')}
-										</p>
-									</Col>
-								</Row>
-							}
-							{eventEnd &&
-								<Row styleName="metaItem">
-									<Col md={2}>
-										<label>
-											End
-										</label>
-									</Col>
-									<Col md={10}>
-										<p>
-											{moment(parseInt(eventEnd.meta_value, 10) * 1000).format('MMMM Do YYYY, h:mm a')}
-										</p>
-									</Col>
-								</Row>
-							}
+
 							{location &&
-								<Row styleName="metaItem">
-									<Col md={2}>
-										<label>
-											Location
-										</label>
-									</Col>
-									<Col md={10}>
-										<p>
-											{location.meta_value}
-										</p>
-									</Col>
-								</Row>
+								<div styleName="metaItem">
+									<label>
+										Location
+									</label>
+									<p>
+										{location.meta_value}
+									</p>
+								</div>
 							}
+
+              {startDate &&
+                <div styleName="metaItem">
+                  <label>
+                    Date
+                  </label>
+
+                  <p>
+                    Starts: {moment(startDate.meta_value).format('MMMM Do YYYY')}&nbsp;at&nbsp;
+                    { startTime ?
+                      startTime.meta_value : ''}
+                  </p>
+                  <p>
+                    Ends: {endDate.meta_value === startDate.meta_value ? endTime.meta_value : moment(endDate.meta_value).format('MMMM Do YYYY') + 'at' + endTime.meta_value }
+
+                  </p>
+                </div>
+              }
 						</div>
 						{/*
 	          <ReactDisqusThread
@@ -113,6 +106,7 @@ class EventSingle extends Component {
 	            identifier="soundlab-information"
 	            title="Information Thread"
 	            onNewComment={this.handleNewComment}
+
 	          />
 						*/}
 					</Col>

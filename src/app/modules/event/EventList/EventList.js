@@ -15,6 +15,9 @@ const EventList = props => {
 
 	return (
 		<div className={styles.itemList}>
+			<h1 className={styles.pageSectionTitle}>
+				Workshops
+			</h1>
 			<MuiThemeProvider  muiTheme={tabsMuiTheme}>
 				<Tabs>
 					<Tab label="Upcoming Events">
