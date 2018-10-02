@@ -15,80 +15,16 @@ import styles from './ResourceList.scss';
 class ResourceList extends React.Component {
 
   render () {
-		const { loading, resources, events, error } = this.props;
+		const { loading, resources, error } = this.props;
 
     if (loading) {
       return (<div>Loading</div>)
     }
 
-		let event;
-		let byline;
-		let dateDescription;
-		let excerpt;
-		let thumbnailListImage;
-
-		if (events && events.length) {
-			event = events[0];
-	    thumbnailListImage = {
-	        width: '100%',
-	        height: '800px',
-	        objectFit: 'cover',
-	        backgroundSize: 'cover',
-	        backgroundPosition: 'center',
-					backgroundImage: 'url("/images/default_event.jpg")',
-	    };
-
-			if (event.thumbnail) {
-	      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(event.thumbnail, 'medium')}")`;
-			}
-
-			byline = _.findWhere(event.post_meta, { meta_key: 'byline' });
-			dateDescription = _.findWhere(event.post_meta, { meta_key: 'date_description' });
-			excerpt = _.findWhere(event.post_meta, { meta_key: 'excerpt' });
-		}
 
     return (
 			<div className={styles.resourceList}>
 	      <Grid>
-					{event &&
-			      <Row>
-			        <Col>
-								<div className={styles.learnUpper}>
-									<Link to={`/events/${event.post_name}`}>
-					          <div
-											className={styles.learnBackground}
-											style={thumbnailListImage}
-										/>
-									</Link>
-				          <div className={styles.learnInlay}>
-										<Link to={`/events/${event.post_name}`}>
-					            <h3 className={styles.learnTitle}>
-												{event.post_title}
-											</h3>
-										</Link>
-										{dateDescription &&
-					            <span className={styles.learnDate}>
-												{dateDescription.meta_value}
-											</span>
-										}
-										{excerpt &&
-					            <p className={styles.learnDescription}>
-												{excerpt.meta_value}
-											</p>
-										}
-										<Link to={`/events/${event.post_name}`}>
-											<div className={styles.learnMore}>
-												<i className="mdi mdi-chevron-right" />
-												<span>
-													Learn more
-												</span>
-											</div>
-										</Link>
-				          </div>
-								</div>
-			        </Col>
-			      </Row>
-					}
 	        <Row className={styles.resourceListContainer}>
 	          <Col sm={8}>
 	            <h2 className={styles.resourceSectionTitle}>Resources</h2>

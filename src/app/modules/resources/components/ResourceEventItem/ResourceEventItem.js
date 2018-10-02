@@ -12,29 +12,37 @@ import styles from './ResourceEventItem.scss';
 class ResourceEventItem extends Component {
 
   render() {
-    const { event } = this.props;
 
-		if (!event) {
-			return null;
-		}
+    const {
+      event, loading, error
 
-		const eventStart = _.findWhere(event.post_meta, { meta_key: 'event_start' });
-		const eventEnd = _.findWhere(event.post_meta, { meta_key: 'event_end' });
+    } = this.props;
+
+    if (loading || !event) {
+      // TODO: add loading state
+      return null;
+    }
+
+
+		const eventStart = _.findWhere(event.post_meta, { meta_key: 'start_date' });
+		const eventEnd = _.findWhere(event.post_meta, { meta_key: 'end_date' });
+    const eventStartTime = _.findWhere(event.post_meta, { meta_key: 'start_time' });
+    const eventEndTime = _.findWhere(event.post_meta, { meta_key: 'end_time' });
+
 		let eventMonth;
 		let eventDay;
-		let eventTimeStart;
-		let eventTimeEnd;
+		let startTime;
+		let endTime;
 
 		if (eventStart) {
-			eventMonth = moment(parseInt(eventStart.meta_value, 10) * 1000).format('MMM');
-			eventDay = moment(parseInt(eventStart.meta_value, 10) * 1000).format('DD');
-			eventTimeStart = moment(parseInt(eventStart.meta_value, 10) * 1000).format('h:mm');
+			eventMonth = moment(eventStart.meta_value).format('MMM');
+			eventDay = moment(eventStart.meta_value).format('DD');
+			startTime = eventStartTime.meta_value;
 		}
 
-		if (eventEnd) {
-			eventTimeEnd = moment(parseInt(eventEnd.meta_value, 10) * 1000).format('h:mm');
+		if (eventEndTime) {
+			endTime = eventEndTime.meta_value;
 		}
-
 
     return (
       <Link
@@ -62,8 +70,8 @@ class ResourceEventItem extends Component {
           </div>
           <div>
             <span className={styles.eventTime}>
-							{eventTimeStart}{eventTimeEnd ? `- ${eventTimeEnd}` : ''}
-						</span>
+              	{startTime}{endTime ? `- ${endTime}` : ''}
+  					</span>
           </div>
         </div>
       </Link>

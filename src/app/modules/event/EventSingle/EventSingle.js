@@ -32,9 +32,6 @@ class EventSingle extends Component {
 			return null;
 		}
 
-    console.log("@@@@@@@@@@%%%%%%%%%%%%", event)
-
-
     const coverImage = {
       backgroundImage: `url("/images/default_event.jpg")`,
       width: '100%',

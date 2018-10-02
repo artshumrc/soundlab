@@ -81,7 +81,7 @@ const eventSingleQuery = graphql(gql`
       post_title
       post_content
 			thumbnail
-			post_meta(keys: ["event_start", "event_end", "location", "start_date", "start_time", "end_date", "end_time"]) {
+			post_meta(keys: ["location", "start_date", "start_time", "end_date", "end_time"]) {
 				meta_key
 				meta_value
 			}
@@ -133,7 +133,7 @@ const resourceEventListQuery = graphql(gql`
       post_name
       post_content
 			thumbnail
-			post_meta(keys: ["event_start"]) {
+			post_meta(keys: ["location", "start_date", "start_time", "end_date", "end_time"]) {
 				meta_key
 				meta_value
 			}
