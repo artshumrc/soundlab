@@ -45,12 +45,15 @@ class ResourceSingle extends Component {
 		const resourceDate = _.findWhere(resource.post_meta, { meta_key: 'date' });
 
     return (
+
+      //remove cover section and cover section image for release
+
 			<div>
-        <Row styleName="cover-section">
-        </Row>
+        {/* <Row styleName="cover-section">
+      </Row> */}
         <Row styleName="content-section">
-          <Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
-            <div styleName="cover-image" style={pageCoverImage} />
+          <Col>
+            {/*<div styleName="cover-image" style={pageCoverImage} /> */}
             <div>
               <h1 styleName="section-title">
 								{resource.post_title}
