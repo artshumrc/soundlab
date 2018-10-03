@@ -15,8 +15,9 @@
  |
  |   1. Colors
  |   2. Typography
- |   3. Mixins
- |   4. Sizes
+ |   3. Breakpoints
+ |   4. Mixins
+ |   5. Sizes
 
 
 ******************************************************************************/
@@ -140,7 +141,15 @@ $copy: "Overpass", serif;
 $mono: "source-code-pro", sans-serif;
 /******************************************************************************
 
-3. Mixins
+3. Breakpoints
+
+******************************************************************************/
+$breakpoint-0: "(max-width: 600px)";
+$breakpoint-1: "(max-width: 1080px)";
+$breakpoint-2: "(max-width: 1200px)";
+/******************************************************************************
+
+4. Mixins
 
  Mixins are based off of the excellent ups-mixin-lib repository by Upstatement
  @https://github.com/Upstatement/ups-mixin-lib
@@ -178,7 +187,7 @@ $mono: "source-code-pro", sans-serif;
 @import "./mixins/transition";
 /******************************************************************************
 
-3. Sizes
+5. Sizes
 
 	Sizes and breakpoints from original Wordexpress template
 
