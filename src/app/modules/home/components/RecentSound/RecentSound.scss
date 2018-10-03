@@ -3,6 +3,7 @@
 .recent-track {
 	display: block;
 	color: $dark;
+
 	&:hover {
 		text-decoration: none;
 	}
@@ -21,6 +22,9 @@
 
 .recent-track-meta-container {
 	display: block;
+	@media #{$breakpoint-0} {
+		padding-bottom: 30px;
+	}
 }
 
 .recent-track-title {
@@ -34,6 +38,9 @@
 
 	&:hover {
 		color: $primary-500;
+	}
+	@media #{$breakpoint-0} {
+		padding: 10px 0;
 	}
 }
 
