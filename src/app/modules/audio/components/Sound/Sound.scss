@@ -7,7 +7,8 @@
 }
 
 .waveCoverSection {
-  // height: 80vh;
+	// height: 80vh;
+	justify-content: center;
 }
 
 .soundBody {
@@ -31,7 +32,6 @@
 		a {
 			color: $primary-800;
 		}
-
 	}
 }
 
@@ -52,21 +52,31 @@
 		font-weight: 100;
 		padding: 0 15px;
 	}
-	h1, h2, h3, h4, h5 {
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
 		font-family: $font-title;
 	}
+
 	h1 {
 		font-size: 42px;
 	}
+
 	h2 {
 		font-size: 32px;
 	}
+
 	h3 {
 		font-size: 28px;
 	}
+
 	h4 {
 		font-size: 22px;
 	}
+
 	h5 {
 		font-size: 18px;
 	}
@@ -75,7 +85,7 @@
 .backToSound {
 	position: absolute;
 	top: 80px;
-	left: 0px;
+	left: 0;
 	color: $darkGrey;
 	font-size: 14px;
 	font-family: $font-label;
@@ -91,20 +101,22 @@
 		padding-bottom: 3px;
 		display: inline-block;
 		vertical-align: middle;
+
 		&:before {
 			font-size: 20px;
 		}
 	}
 }
-
 @media (max-width: 990px) {
 	.soundBody {
 		padding-top: 120px;
 	}
+
 	.metaItem {
 		label {
 			text-align: left;
 		}
+
 		p {
 			padding: 15px 0;
 		}
