@@ -14,6 +14,9 @@
 		font-family: "Overpass", serif;
 		font-weight: 100;
 		color: #757575;
+		@media #{$breakpoint-0} {
+			padding: 100px 5% 60px;
+		}
 	}
 
 	.tabsLabel div div {
