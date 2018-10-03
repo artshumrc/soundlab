@@ -24,7 +24,7 @@ class Recent extends React.Component {
 							</h3>
 						</Col>
 	        </Row>
-	        <Row>
+	        <Row styleName="recent-sound-container">
 		        {items.map((item, i) => (
 							<Col
 								md={4}
