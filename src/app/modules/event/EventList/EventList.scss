@@ -15,8 +15,16 @@
 		font-weight: 100;
 		color: #757575;
 	}
+
+	.tabsLabel div div {
+		font-family: $font-title;
+	}
 }
 
 .itemTabContent {
 	padding: 33px 0;
+}
+
+.tabLabel {
+	font-family: $font-title;
 }

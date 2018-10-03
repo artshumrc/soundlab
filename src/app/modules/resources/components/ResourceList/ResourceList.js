@@ -42,6 +42,7 @@ class ResourceList extends React.Component {
 	            <ResourceEventListContainer />
 	          </Col>
 	      </Row>
+        {/*
 	      <Row className={styles.additionalResourcesContainer}>
 	        <Col>
 	          <h4 className={styles.resourceSectionTitle}>
@@ -50,6 +51,7 @@ class ResourceList extends React.Component {
 						<AdditionalResourceListContainer />
 	        </Col>
 	      </Row>
+        */}
 	    </Grid>
 		</div>
 		);

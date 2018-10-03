@@ -73,21 +73,19 @@ class Sound extends React.Component {
 						className={styles.content}
 						dangerouslySetInnerHTML={{ __html: linkifyHtml(wpautop(soundContent)) }}
 					/>
+					{soundLocation && soundLocation.meta_value &&
+						<div className={styles.metaItem}>
+
+								<label>
+									Location
+								</label>
+								<p>
+									{soundLocation.meta_value}
+								</p>
+
+						</div>
+					}
 				</div>
-				{soundLocation && soundLocation.meta_value &&
-					<Row className={styles.metaItem}>
-						<Col md={2}>
-							<label>
-								Location
-							</label>
-						</Col>
-						<Col md={10}>
-							<p>
-								{soundLocation.meta_value}
-							</p>
-						</Col>
-					</Row>
-				}
 			</Grid>
 		);
 	}

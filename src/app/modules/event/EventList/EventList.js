@@ -20,7 +20,7 @@ const EventList = props => {
 			</h1>
 			<MuiThemeProvider  muiTheme={tabsMuiTheme}>
 				<Tabs>
-					<Tab label="Upcoming Events">
+					<Tab label="Upcoming Events" className={styles.tabsLabel}>
 						<div className={styles.itemTabContent}>
 							<div className={styles.items}>
 								{itemsUpcoming.map((item, i) => (
@@ -36,7 +36,7 @@ const EventList = props => {
 							*/}
 						</div>
 					</Tab>
-					<Tab label="Already Past Events">
+					<Tab label="Already Past Events" className={styles.tabsLabel}>
 						<div className={styles.itemTabContent}>
 							<div className={styles.items}>
 								{itemsPast.map((item, i) => (

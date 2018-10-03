@@ -8,7 +8,6 @@
 
 .eventSectionWrapper {
   display: inline-block;
-
 }
 
 .dateWrapper {
@@ -27,16 +26,16 @@
 .dateContainer {
   display: flex;
   justify-content: center;
-  height: 0px;
+  height: 0;
 
   &.monthContainer {
-    padding: 16px 0 10px 0;
+    padding: 16px 0 10px;
   }
 }
 
 .month {
   font-size: 14px;
-	color: $darkGrey;
+  color: $darkGrey;
   font-family: $font-reading;
   text-transform: uppercase;
 }
@@ -44,13 +43,13 @@
 .day {
   font-size: 36px;
   font-family: $font-reading;
-	color: $dark;
+  color: $dark;
 }
 
 .eventName {
   font-size: 20px;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: $font-title, sans-serif;
   color: $dark;
 }
 

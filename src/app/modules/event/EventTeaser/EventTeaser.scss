@@ -15,7 +15,7 @@
   padding: 10px 15px;
   border: 1px solid #e6e6e6;
   position: absolute;
-  font-family: $font-label;
+  font-family: $font-reading;
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -86,7 +86,7 @@
 
 .readMore {
   color: $accent-primary;
-  font-family: 'Futura LT W01 Book';
+  font-family: $font-title;
   font-size: 12px;
   letter-spacing: 1.5px;
   padding-right: 10px;
