@@ -12,6 +12,11 @@
 	}
 }
 
+.itemTrack {
+	display: flex;
+	align-items: center;
+}
+
 .soundListItemIsCurrentTrack {
 	background: #fbf7f5;
 	cursor: pointer;
@@ -28,12 +33,15 @@
 	color: $dark;
 }
 
+.itemIndex {
+	width: 10%;
+}
 
 .itemContent {
 	display: flex;
 	justify-content: left;
 	align-items: center;
-	width: 100%;
+	width: 90%;
 	color: $dark;
 }
 
@@ -93,6 +101,7 @@
 	display: inline-block;
 	vertical-align: top;
 	padding: 0 20px;
+	width: 100%;
 }
 
 .title {
@@ -111,12 +120,13 @@
 	color: #999;
 	line-height: 1.5em;
 	display: block;
+	@media #{$breakpoint-0} {
+		display: none;
+	}
 }
-
 @media (max-width: 1200px) {
 	.thumbnail {
-		width: 0px;
+		width: 0;
 		margin-right: 70px;
 	}
-
 }

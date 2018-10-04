@@ -7,7 +7,6 @@
 }
 
 .waveCoverSection {
-	// height: 80vh;
 	justify-content: center;
 }
 
@@ -16,6 +15,9 @@
 	margin: 0 auto;
 	padding: 20px 0;
 	text-align: center;
+	@media #{$breakpoint-0} {
+		padding: 20px;
+	}
 }
 
 .content {
@@ -109,10 +111,6 @@
 	}
 }
 @media (max-width: 990px) {
-	.soundBody {
-		padding-top: 120px;
-	}
-
 	.metaItem {
 		label {
 			text-align: left;

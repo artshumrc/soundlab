@@ -102,11 +102,21 @@
 	text-transform: uppercase;
 	display: block;
 	color: $lightGrey;
-	padding-bottom: 6px;
+	padding: 0 15px 6px;
+}
+
+.sectionTitleNumberContainer {
+	display: inline-block;
+	width: 10%;
+}
+
+.sectionTrackLabelContainer {
+	display: inline-block;
+	width: 90%;
 }
 
 .durationColumn {
-	text-align: left;
+	width: 7%;
 }
 @media (max-width: 990px) {
 	.soundList {

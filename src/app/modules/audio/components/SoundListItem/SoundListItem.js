@@ -46,7 +46,7 @@ class SoundListItem extends Component{
 		}
 
 		const byline = _.findWhere(sound.post_meta, { meta_key: 'byline' });
-		const duration = "0:00";
+		const duration = _.findWhere(sound.post_meta, { meta_key: 'duration' });
 
     const thumbnailListImage = {
       width: '70px',
@@ -76,12 +76,13 @@ class SoundListItem extends Component{
 					onMouseEnter={this.handleMouseEnter.bind(this)}
 					onMouseLeave={this.handleMouseLeave.bind(this)}
 				>
-          <Col sm={1}>
-            <span className={styles.index}>
-							{this.props.index + 1}
-						</span>
-          </Col>
-          <Col sm={8}>
+
+          <Col sm={12} className={styles.itemTrack}>
+						<div className={styles.itemIndex}>
+							<span className={styles.index}>
+								{this.props.index + 1}
+							</span>
+						</div>
 						<div className={styles.itemContent}>
 	            <div className={styles.thumbnail}>
 		            <div
@@ -108,12 +109,19 @@ class SoundListItem extends Component{
 									</span>
 								}
 							</div>
+							<div className={styles.durationColumn}>
+								<span className={styles.duration}>
+								{duration &&
+									<span className={styles.byline}>
+										{duration.meta_value}
+									</span>
+								}
+								</span>
+							</div>
 						</div>
+
           </Col>
-          <Col sm={3} className={styles.durationColumn}>
-            <span className={styles.duration}>
-						</span>
-					</Col>
+
 				</Link>
 	    </Row>
     );
