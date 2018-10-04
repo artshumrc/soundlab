@@ -91,7 +91,7 @@ class EventSingle extends Component {
                       startTime.meta_value : ''}
                   </p>
                   <p>
-                    Ends: {endDate.meta_value === startDate.meta_value ? endTime.meta_value : moment(endDate.meta_value).format('MMMM Do YYYY') + 'at' + endTime.meta_value }
+                    Ends: {endDate.meta_value === startDate.meta_value ? endTime.meta_value : moment(endDate.meta_value).format('MMMM Do YYYY') + ' at ' + endTime.meta_value }
 
                   </p>
                 </div>
