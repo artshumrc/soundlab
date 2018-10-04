@@ -6,6 +6,9 @@
   max-width: 990px;
   width: 95%;
   margin: 30px auto 100px;
+  @media #{$breakpoint-0} {
+    display: none;
+  }
 }
 
 .itemTabContent {

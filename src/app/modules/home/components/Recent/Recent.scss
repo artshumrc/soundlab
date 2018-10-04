@@ -14,6 +14,11 @@
     font-weight: 100;
     color: $dark;
   }
+  @media #{$breakpoint-0} {
+    &.workshops {
+      display: none;
+    }
+  }
 }
 
 .recent-sound-container {
