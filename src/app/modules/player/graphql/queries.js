@@ -10,7 +10,7 @@ const tracksQuery = graphql(gql`
 			post_content
 			thumbnail
 			audio_file
-			post_meta(keys: ["byline", "date", "external_link"]) {
+			post_meta(keys: ["byline", "date", "external_link", "duration"]) {
 				meta_key
 				meta_value
 			}
