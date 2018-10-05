@@ -17,10 +17,18 @@
 	padding: 90px 0;
   width: 100%;
   margin: auto;
-
-  .row {
-    flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  @media #{$breakpoint-3} {
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 200px;
   }
+  @media #{$breakpoint-0} {
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 100px;
+  }
+
 }
 
 .intro-section-col {

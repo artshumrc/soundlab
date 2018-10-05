@@ -9,8 +9,10 @@
 .page-content-section {
   min-height: 500px;
   padding: 10% 5% 60px;
+  max-width: 990px;
+  margin: 0 auto;
   @media #{$breakpoint-0} {
-    padding: 100px 5% 60px;
+    padding: 100px 20px 60px;
   }
 }
 

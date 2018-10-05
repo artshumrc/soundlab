@@ -7,6 +7,10 @@
 
 .coverRow {
 	flex-wrap: nowrap;
+	@media #{$breakpoint-3} {
+		flex-wrap: wrap;
+	}
+
 }
 
 .coverText {

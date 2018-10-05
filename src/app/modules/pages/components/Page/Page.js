@@ -58,7 +58,7 @@ export default class About extends Component {
         {/* <Row styleName="page-cover-section">
 			</Row> */}
         <Row styleName="page-content-section">
-          <Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
+          <Col mdOffset sm={12}>
             {/* <div styleName="page-cover-image" style={pageCoverImage} /> */}
             <div>
               <h1 styleName="page-section-title">
