@@ -12,7 +12,7 @@ class Cover extends React.Component {
 			<Clearfix>
 				<div styleName="cover">
 					<Grid>
-				    <Row>
+				    <Row styleName="coverRow">
 				      <Col md={6} sm={12}>
 				        <div styleName="coverText">
 			            <h1 styleName="siteTag">We hear you</h1>
