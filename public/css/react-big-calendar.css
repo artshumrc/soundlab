@@ -93,7 +93,7 @@ button.rbc-input::-moz-focus-inner {
 }
 
 .rbc-today {
-  background-color: #eaf6ff;
+  background-color: rgb(230, 154, 156, .2);
 }
 
 .rbc-toolbar {
@@ -202,13 +202,13 @@ button.rbc-input::-moz-focus-inner {
 .rbc-event {
   cursor: pointer;
   padding: 2px 5px;
-  background-color: #3174ad;
+  background-color: rgb(230, 154, 156, .8);
   border-radius: 5px;
   color: #fff;
 }
 
 .rbc-event.rbc-selected {
-  background-color: #265985;
+  background-color: rgb(230, 154, 156);
 }
 
 .rbc-event-label {
