@@ -73,6 +73,10 @@
 		}
 	}
 
+	@media #{$breakpoint-0} {
+		width: 30%;
+	}
+
 	span {
 		font-family: $font-label;
 		color: $darkGrey;
