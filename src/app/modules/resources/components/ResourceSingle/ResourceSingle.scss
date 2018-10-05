@@ -8,9 +8,12 @@
 
 .content-section {
   min-height: 500px;
-  padding: 10% 5% 60px;
-  margin: 0 auto;
+  padding: 60px 5% 0;
+  margin: 60px auto;
   max-width: 990px;
+  @media #{$breakpoint-0} {
+    padding: 80px 40px 60px;
+  }
 }
 
 .cover-image {
