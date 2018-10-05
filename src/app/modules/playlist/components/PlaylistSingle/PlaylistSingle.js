@@ -41,15 +41,17 @@ class PlaylistList extends React.Component {
 					</Col>
 				</Row>
 	      <Row className={styles.postsColumnSectionTitles}>
-          <Col sm={1}>
+					<div className={styles.sectionTitleNumberContainer}>
 						<span className={styles.sectionTitleNumber}>#</span>
-					</Col>
-          <Col sm={8}>
+					</div>
+					<div className={styles.sectionTrackLabelContainer}>
 						<span className={styles.sectionTrackLabel}>Track</span>
-					</Col>
+					</div>
+					{/*
 					<Col sm={3}>
 						<span className={styles.sectionTitleDuration}></span>
 					</Col>
+					*/}
 				</Row>
 				<PlaylistSounds sounds={playlist.queue} />
 			</Grid>

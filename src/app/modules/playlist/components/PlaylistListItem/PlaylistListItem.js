@@ -70,12 +70,12 @@ class PlaylistListItem extends Component{
 					onMouseEnter={this.handleMouseEnter.bind(this)}
 					onMouseLeave={this.handleMouseLeave.bind(this)}
 				>
-          <Col sm={1}>
-            <span className={styles.index}>
-							{this.props.index + 1}
-						</span>
-          </Col>
-          <Col sm={8}>
+          <Col sm={12} className={styles.itemTrack}>
+						<div className={styles.itemIndex}>
+							<span className={styles.index}>
+								{this.props.index + 1}
+							</span>
+						</div>
 						<div className={styles.itemContent}>
 	            <div className={styles.thumbnail}>
 		            <div
@@ -102,11 +102,11 @@ class PlaylistListItem extends Component{
 									</span>
 								}
 							</div>
+		          <div className={styles.durationColumn}>
+		            <span className={styles.duration}>
+								</span>
+							</div>
 						</div>
-          </Col>
-          <Col sm={3} className={styles.durationColumn}>
-            <span className={styles.duration}>
-						</span>
 					</Col>
 				</Link>
 	    </Row>

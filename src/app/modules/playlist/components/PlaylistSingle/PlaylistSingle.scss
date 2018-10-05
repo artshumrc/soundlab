@@ -6,6 +6,9 @@
 	padding: 120px 0;
 	max-width: 1100px;
 	margin: 0 auto;
+	@media #{$breakpoint-0} {
+		padding: 100px 40px 60px;
+	}
 }
 
 .waveCoverSection {
@@ -22,15 +25,26 @@
 }
 
 .postsColumnSectionTitles {
-  border-bottom: 1px solid $lightGrey;
-  margin-bottom: 16px;
+	border-bottom: 1px solid $lightGrey;
+	margin-bottom: 16px;
 	font-family: $font-label;
 	font-size: 12px;
 	text-transform: uppercase;
 	display: block;
 	color: $lightGrey;
-	padding-bottom: 6px;
+	padding: 0 15px 6px;
 }
+
+.sectionTitleNumberContainer {
+	display: inline-block;
+	width: 10%;
+}
+
+.sectionTrackLabelContainer {
+	display: inline-block;
+	width: 90%;
+}
+
 
 .durationColumn {
 	text-align: left;
