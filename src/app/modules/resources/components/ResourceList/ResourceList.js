@@ -26,7 +26,7 @@ class ResourceList extends React.Component {
 			<div className={styles.resourceList}>
 	      <Grid>
 	        <Row className={styles.resourceListContainer}>
-	          <Col sm={8}>
+	          <Col sm={12} md={12} lg={8}>
 	            <h2 className={styles.resourceSectionTitle}>Resources</h2>
 	            {resources.map((resource) =>
 	              <ResourceItem
@@ -35,7 +35,7 @@ class ResourceList extends React.Component {
 								/>
 	            )}
 	          </Col>
-	          <Col sm={4}>
+	          <Col sm={12} md={12} lg={4}>
 	            <h4 className={styles.resourceSectionTitle}>
 								Upcoming Events
 							</h4>

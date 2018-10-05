@@ -2,11 +2,11 @@
 
 .playlistList {
 	min-height: 600px;
-	padding: 10% 5%;
+	padding: 60px 5% 0;
 	max-width: 990px;
-	margin: 0 auto;
+	margin: 60px auto;
 	@media #{$breakpoint-0} {
-		padding: 100px 40px 60px;
+		padding: 80px 40px 60px;
 	}
 }
 
@@ -35,7 +35,7 @@
 	color: $darkestGrey;
 	padding: 30px 0;
 	@media #{$breakpoint-0} {
-		padding: 100px 5% 60px;
+		//padding: 100px 5% 60px;
 	}
 }
 
