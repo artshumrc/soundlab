@@ -17,10 +17,10 @@ const ExploreOrDemo = props => (
 							</Col>
 							<Col sm={10}>
 								<div className="exploreOrDemoText">
-									<h3>Explore collections built with orphe.us</h3>
+									<h3>Explore collections built with Orpheus</h3>
 									<p>
 										Browse example collections to see how institutions are using
-										orphe.us to manage their data
+										Orpheus to manage their data
 									</p>
 								</div>
 							</Col>
@@ -39,7 +39,7 @@ const ExploreOrDemo = props => (
 								<div className="exploreOrDemoText">
 									<h3>Try the demo</h3>
 									<p>
-										See how orphe.us works by uploading and tagging items in our
+										See how Orpheus works by uploading and tagging items in our
 										demo dashboard
 									</p>
 								</div>

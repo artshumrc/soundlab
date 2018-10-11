@@ -24,7 +24,7 @@ class HomeCover extends React.Component {
 				full
 			>
 				<div className="home-cover-content">
-					<h1>the archive, reimagined.</h1>
+					<h1>The archive, reimagined.</h1>
 					<p className="lead">
 						Create and share digital records and collections when, where, and how you want
 					</p>

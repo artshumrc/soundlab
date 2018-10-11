@@ -14,7 +14,7 @@ const NavBarHeader = ({ dispatchToggleLeftMenu, leftMenuOpen }) => (
 		/>
 		<Link to="/">
 			<h2 className="site-title">
-				orphe.us [alpha]
+				Orpheus
 			</h2>
 		</Link>
 	</div>
