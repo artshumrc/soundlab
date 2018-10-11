@@ -22,7 +22,7 @@ class SoundList extends React.Component {
 		autoBind(this);
 	}
 
-	componentDidMount() {
+/*	componentDidMount() {
 		if (this.props.activeCategory !== 'everything') {
 	    this.moveToTracklist();
 		}
@@ -37,7 +37,7 @@ class SoundList extends React.Component {
 	moveToTracklist() {
 		const element = document.getElementById('tracklist');
     if (element) element.scrollIntoView();
-	}
+	} */
 
 	toggleSearchDropdown() {
 		this.setState({
