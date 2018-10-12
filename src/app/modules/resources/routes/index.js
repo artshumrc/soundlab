@@ -11,6 +11,6 @@ export default (
     <Route path="events" component={EventListContainer}></Route>
     <Route path="events/:slug" component={EventSingleContainer}></Route>
     <Route path="resources/:slug" component={ResourceSingleContainer}></Route>
-    <Route path="resources" component={ResourceListContainer}></Route>
+    <Route path="directory" component={ResourceListContainer}></Route>
   </div>
 );
