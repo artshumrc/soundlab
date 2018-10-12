@@ -4,6 +4,14 @@
   width: 100%;
   display: flex;
   margin-bottom: 30px;
+  &:hover {
+    text-decoration: none;
+    .eventName {
+      color: $darkGrey;
+      text-decoration: underline;
+    }
+
+  }
 }
 
 .eventSectionWrapper {
