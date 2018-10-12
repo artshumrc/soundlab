@@ -52,3 +52,11 @@
 	font-size: 16px;
 	color: $text-secondary;
 }
+
+.recent-track-link:hover {
+  color: $primary-500;
+
+	.recent-track-title {
+		color: $primary-500;
+	}
+}
