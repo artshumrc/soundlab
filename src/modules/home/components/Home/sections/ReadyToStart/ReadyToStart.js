@@ -30,7 +30,7 @@ const ReadyToStart = props => (
 						className="contactButton"
 						href="mailto:contact@orphe.us"
 					>
-						Contact Us
+						Email Us
 					</a>
 				</Col>
 			</Row>

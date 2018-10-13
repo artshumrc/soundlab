@@ -35,7 +35,7 @@ export default class Footer extends React.Component {
 						<Col lg={8}>
 							<div className="footerLinks">
 								<Link href="mailto:contact@orphe.us">
-									Contact
+									Email
 								</Link>
 							</div>
 						</Col>

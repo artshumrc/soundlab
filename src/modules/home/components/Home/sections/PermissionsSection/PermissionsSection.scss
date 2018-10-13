@@ -36,12 +36,6 @@
 .permissionsInfoBlock {
 	padding: 6px 10px 30px;
 
-	&:hover {
-		h4 {
-			color: $primary;
-		}
-	}
-
 	h4 {
 		font-size: 16px;
 		font-family: $font-title;

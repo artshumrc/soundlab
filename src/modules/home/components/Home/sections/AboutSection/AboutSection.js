@@ -30,7 +30,7 @@ export default class AboutSection extends React.Component {
 		}];
 
 		return (
-			<section id="learn">
+			<section id="about">
 				<div className="aboutIntro">
 					<div className="aboutImage">
 						<ExampleItem
@@ -49,6 +49,9 @@ export default class AboutSection extends React.Component {
 					</blockquote>
 				</div>
 				<div className="aboutText">
+					<p>
+						Orpheus reimagines the purpose of an archive in a digital medium, where all (or at least many) things may be remembered. It is a tool for creating and managing digital collections and sharing them with our community. Orpheus is currently under active development and in alpha release.
+					</p>
 					<p>
 						Preserve the items in your archive, museum, or library digitally for the next generation.
 					</p>

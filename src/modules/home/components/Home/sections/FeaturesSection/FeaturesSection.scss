@@ -32,25 +32,10 @@
 
 	border-top:1px solid rgba(255,255,255,0.1);
 	border-right:1px solid rgba(255,255,255,0.01);
-	// .transition(all 300ms ease-out);
 	box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 0.0);
 	-moz-box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 0.0);
 	-webkit-box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 0.0);
 	cursor:default;
-	@include transition(all 100ms ease-in-out);
-
-	&:hover {
-		background:rgba(10,10,10,0.02);
-		box-shadow: inset 0 0 0 15px rgba(10, 10, 10, 0.1);
-		-moz-box-shadow: inset 0 0 0 15px rgba(10, 10, 10, 0.1);
-		-webkit-box-shadow: inset 0 0 0 15px rgba(10, 10, 10, 0.1);
-		i, h4 {
-			color: $primary-600;
-		}
-		hr {
-			background: $divider;
-		}
-	}
 
   hr {
     width: 50px;
@@ -58,7 +43,6 @@
 		background: $divider-light-grey;
 		border: none;
 		outline: none;
-		@include transition(all 100ms ease-in-out);
   }
 
 	.feature-title {
