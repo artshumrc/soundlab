@@ -2,7 +2,7 @@
 
 
 .fileUploader {
-  border: 2px dashed lighten($black, 50%);
+  border: 2px dashed $color_grey_500;
 
   .fileDropzone {
     background-color: $orpheus_color_accent_200;

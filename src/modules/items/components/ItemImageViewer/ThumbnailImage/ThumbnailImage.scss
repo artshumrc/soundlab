@@ -16,6 +16,6 @@
 	}
 
 	&.isActiveImage {
-		outline: 1px solid lighten($black, 50%);
+		outline: 1px solid $color_grey_500;
 	}
 }

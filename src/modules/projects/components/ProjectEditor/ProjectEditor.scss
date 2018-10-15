@@ -17,7 +17,7 @@
 		width: 90%;
 		margin: 20px 0;
 		height: 3px;
-		background: lighten($black, 50%);
+		background: $color_grey_500;
 		border: none;
 		outline: none;
 		display: none;
@@ -44,7 +44,7 @@
 		vertical-align: top;
 		color: $black;
 		border: none;
-		border-bottom: 2px solid lighten($black, 50%);
+		border-bottom: 2px solid $color_grey_500;
 		padding: 15px 15px 5px 15px;
 		margin: 20px 0;
 		outline: none;
@@ -65,7 +65,7 @@
 		min-width: 200px;
 		max-width: 50%;
 		border: none;
-		border-bottom: 2px solid lighten($black, 50%);
+		border-bottom: 2px solid $color_grey_500;
 		padding: 15px;
 		background: $orpheus_color_accent_200;
 		border-radius: 0;

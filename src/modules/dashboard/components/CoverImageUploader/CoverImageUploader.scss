@@ -2,7 +2,7 @@
 
 
 .coverImageUploader {
-  border: 2px dashed lighten($black, 50%);
+  border: 2px dashed $color_grey_500;
 
   .backgroundImage {
     background-color: $orpheus_color_accent_200;

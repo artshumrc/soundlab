@@ -6,7 +6,7 @@
 	align-items: center;
 	width: 100%;
 	text-align: left;
-	background: darken($white, 10%);
+	background: $color_grey_100;
 	margin-top: 30px;
 	padding-top: 60px;
 	position: relative;
@@ -28,7 +28,7 @@
 .readyToStartSplash {
 	width: 200%;
 	margin: 0 -50%;
-	background: darken($white, 10%);
+	background: $color_grey_100;
 	height: 300px;
 	position: absolute;
 	top: -60px;

@@ -23,7 +23,7 @@
 			cursor: pointer;
 
 			&:hover {
-				outline: 2px solid lighten($black, 50%);
+				outline: 2px solid $color_grey_500;
 			}
 		}
 	}
@@ -68,7 +68,7 @@
 
 		span, i {
 			@include transition(all 100ms ease-in-out);
-			color: lighten($black, 30%);
+			color: $color_grey_700;
 			display: inline-block;
 			vertical-align: top;
 		}

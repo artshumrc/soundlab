@@ -24,7 +24,7 @@
 		cursor:pointer;
 
 		&:hover {
-			outline: 2px solid lighten($black, 50%);
+			outline: 2px solid $color_grey_500;
 		}
 	}
 

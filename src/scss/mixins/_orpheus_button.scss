@@ -51,28 +51,28 @@
 
 @mixin orpheus_button--light {
   @include orpheus_button;
-	background: darken($white, 10%);
+	background: $color_grey_100;
 	color: $black;
 	&:hover {
-		background: darken($white, 20%);
+		background: $color_grey_200;
 		color: $black;
 	}
 	&:active {
-		background: darken($white, 30%);
+		background: $color_grey_300;
 		color: $black;
 	}
 }
 
 @mixin orpheus_button--dark {
   @include orpheus_button;
-	background: lighten($black, 10%);
+	background: $color_grey_900;
 	color: $white;
 	&:hover {
-		background: lighten($black, 20%);
+		background: $color_grey_800;
 		color: $white;
 	}
 	&:active {
-		background: lighten($black, 30%);
+		background: $color_grey_700;
 		color: $white;
 	}
 	&:focus {

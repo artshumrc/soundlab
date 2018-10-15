@@ -22,7 +22,7 @@
 	}
 
 	p {
-		color: lighten($black, 30%);
+		color: $color_grey_700;
 		margin: 0;
 		padding: 0;
 	}
@@ -40,7 +40,7 @@
 	}
 	p {
 		@include orpheus_font_body2;
-		color: lighten($black, 30%);
+		color: $color_grey_700;
 		margin: 0;
 		padding: 0;
 		display: inline;

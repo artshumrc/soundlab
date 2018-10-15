@@ -1,7 +1,7 @@
 @import '../../../../../../variables.scss';
 
 .lifetimeData {
-	background: lighten($black, 5%);
+	background: $black;
 	min-height: 720px;
 	position: relative;
 
@@ -61,6 +61,6 @@
 	}
 
 	p {
-		color: darken($white, 40%)
+		color: $color_grey_400
 	}
 }
