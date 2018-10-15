@@ -16,7 +16,7 @@
 	}
 
 	img {
-		@include transition(all 100ms ease-in-out);
+		transition: all 100ms ease-in-out;
 		width: 110%;
 		margin-left: -10px;
 		border: 10px solid transparent;

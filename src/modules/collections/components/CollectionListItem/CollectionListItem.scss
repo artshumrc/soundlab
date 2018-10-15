@@ -15,7 +15,7 @@
 		z-index: 1;
 
 		img {
-			@include transition(all 100ms ease-in-out);
+			transition: all 100ms ease-in-out;
 			width: 110%;
 			margin-left: -10px;
 			border: 10px solid transparent;
@@ -54,7 +54,7 @@
 		cursor: pointer;
 		margin: 0;
 		padding: 5px 0 15px;
-		@include transition(all 100ms ease-in-out);
+		transition: all 100ms ease-in-out;
 
 		&:hover {
 			color: $orpheus_color_primary_600;
@@ -75,7 +75,7 @@
 		}
 
 		span, i {
-			@include transition(all 100ms ease-in-out);
+			transition: all 100ms ease-in-out;
 			color: #444;
 			display: inline-block;
 			vertical-align: top;

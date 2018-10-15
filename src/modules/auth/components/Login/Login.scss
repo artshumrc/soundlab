@@ -10,7 +10,7 @@
 			background: none;
 			border: none;
 			outline: none;
-			@include transition(all 100ms ease-in-out);
+			transition: all 100ms ease-in-out;
 
 			&:hover {
 				color: $orpheus_color_primary_500;

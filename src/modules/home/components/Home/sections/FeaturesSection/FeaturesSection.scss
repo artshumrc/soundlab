@@ -51,7 +51,7 @@
 		margin: 0px auto;
 		text-align: center;
 		display: inline-block;
-		@include transition(all 100ms ease-in-out);
+		transition: all 100ms ease-in-out;
 
 	}
 
@@ -59,7 +59,7 @@
 		color: $black;
 		display: inline-block;
 		vertical-align: top;
-		@include transition(all 100ms ease-in-out);
+		transition: all 100ms ease-in-out;
 		&:before {
 			font-size: 32px;
 		}
@@ -69,6 +69,6 @@
 		display: inline-block;
 		vertical-align: top;
 		padding: 3px 10px 0;
-		@include transition(all 100ms ease-in-out);
+		transition: all 100ms ease-in-out;
 	}
 }

@@ -95,7 +95,7 @@
 	cursor: pointer;
 	border-radius: 0;
 	outline: 0;
-	@include transition(all 100ms ease-in-out);
+	transition: all 100ms ease-in-out;
 
 	&.disabled {
 		opacity: 0.3;

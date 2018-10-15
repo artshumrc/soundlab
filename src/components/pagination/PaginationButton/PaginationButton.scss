@@ -10,7 +10,7 @@
 	border: 2px solid #eee;
 	padding: 5px 15px;
 
-	@include transition(all 100ms ease-in-out);
+	transition: all 100ms ease-in-out;
 
 	&:hover {
 		background: #fff;

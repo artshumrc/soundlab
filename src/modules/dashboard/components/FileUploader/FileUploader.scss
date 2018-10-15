@@ -11,7 +11,7 @@
     height: 220px;
     position: relative;
 		cursor: pointer;
-		@include transition(all 100ms ease-in-out);
+		transition: all 100ms ease-in-out;
 
 		&:hover {
 			background-color: #f6f6f6;
