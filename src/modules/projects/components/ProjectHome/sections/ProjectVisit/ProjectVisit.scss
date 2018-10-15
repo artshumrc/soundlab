@@ -15,41 +15,30 @@
 	text-align: left;
 	padding: 40px 50px;
 
-		h2 {
-			color: $dark;
-		}
+	h2 {
+		color: $black;
+	}
 
-		hr {
-			background: #aaa;
-			max-width: 120px;
-			height: 2px;
-			border: none;
-			outline: none;
-			margin: 30px 0;
-		}
+	hr {
+		background: #aaa;
+		max-width: 120px;
+		height: 2px;
+		border: none;
+		outline: none;
+		margin: 30px 0;
+	}
 
-		p {
-			color: $dark;
-			font-family: $font-reading;
-			line-height: 1.7em;
-			padding: 6px 0;
-			margin: 0;
+	p {
+		color: $black;
+		padding: 6px 0;
+		margin: 0;
 
-			a {
-				color: $dark;
-				border-bottom: 1px solid $dark;
-				&:hover {
-					border-bottom: 1px solid rgba(0, 0, 0, 0);
-				}
+		a {
+			color: $black;
+			border-bottom: 1px solid $black;
+			&:hover {
+				border-bottom: 1px solid rgba(0, 0, 0, 0);
 			}
-		}
-
-}
-
-#home {
-	.projectVisitInfo {
-		p {
-			font-size: 20px;
 		}
 	}
 }

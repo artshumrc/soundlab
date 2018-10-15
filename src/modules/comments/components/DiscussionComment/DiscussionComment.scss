@@ -1,15 +1,13 @@
 @import '../../../../variables.scss';
 
 .discussion {
-  border-top: 1px solid $divider-light-grey;
+  border-top: 1px solid $orpheus_color_primary_100;
   padding-top: 40px;
   text-align: left;
 }
 
 .discussionTitle {
-  font-size: 26px;
-  font-family: $font-reading;
-  color: $text-primary;
+  color: $orpheus_color_primary_500;
 }
 
 .discussionTitleContainer {
@@ -25,32 +23,25 @@
 }
 
 .discussionAuthor {
-  color: $text-primary;
+  color: $orpheus_color_primary_500;
   font-weight: bold;
   padding-right: 10px;
 }
 
 .discussionDate {
-  color: $light-grey;
+  color: $orpheus_color_accent_200;
 }
 
-.discussionContent {
-  font-family: $font-accent;
-	font-weight: 100;
-	font-size: 18px;
-	color: $text-primary;
-	line-height: 1.7em;
+.discussionContent {;
 	width: 100%;
 }
 
 .discussionReplyButton {
-  color: $text-primary;
-  text-decoration: underline;
-  cursor: pointer;
+  @include orpheus_button;
 }
 
 .discussionReply {
-  border-left: 2px solid $divider-light-grey;
+  border-left: 2px solid lighten($black, 50%);
   text-align: left;
   margin: 20px 0px;
   padding-left: 30px;

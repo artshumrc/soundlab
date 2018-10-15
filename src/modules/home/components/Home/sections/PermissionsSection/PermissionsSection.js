@@ -10,7 +10,7 @@ export default class PermissionsSection extends React.Component {
 					<Row>
 						<Col md={4}>
 							<div className="permissionsHeader">
-								<h3>Sharing and Security</h3>
+								<h5>Sharing and Security</h5>
 								<p>
 									Participate in the community of linked data and scholarship or create private collections with fine grained access controls
 								</p>
@@ -20,7 +20,7 @@ export default class PermissionsSection extends React.Component {
 							<Row>
 								<Col lg={6}>
 									<div className="permissionsInfoBlock">
-										<h4>User Roles</h4>
+										<h6>User Roles</h6>
 										<p>
 											Administrators can break down Editorial teams into discrete roles and manage fine-grained permissions between roles
 										</p>
@@ -28,7 +28,7 @@ export default class PermissionsSection extends React.Component {
 								</Col>
 								<Col lg={6}>
 									<div className="permissionsInfoBlock">
-										<h4>Metadata Permissions</h4>
+										<h6>Metadata Permissions</h6>
 										<p>
 											Field by field, choose who can see which metadata on your item records
 										</p>
@@ -38,7 +38,7 @@ export default class PermissionsSection extends React.Component {
 							<Row>
 								<Col lg={6}>
 									<div className="permissionsInfoBlock">
-										<h4>Linked Data Sharing</h4>
+										<h6>Linked Data Sharing</h6>
 										<p>
 											When you want to share content, you can seamlessly integrate collections via using shared linked data ontologies
 										</p>
@@ -46,7 +46,7 @@ export default class PermissionsSection extends React.Component {
 								</Col>
 								<Col lg={6}>
 									<div className="permissionsInfoBlock">
-										<h4>Private Collections</h4>
+										<h6>Private Collections</h6>
 										<p>
 											Share your data with just your team or in a private collection that you create
 										</p>

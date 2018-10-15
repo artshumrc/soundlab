@@ -59,7 +59,7 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login 
 			</div>
 			<button
 				type="submit"
-				className="at-btn submit btn btn-lg btn-block btn-default"
+				className="at-btn submit button"
 				disabled={submitting}
 			>
 				Sign In

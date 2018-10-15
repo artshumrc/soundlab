@@ -6,12 +6,9 @@
 	margin: 12px 0;
 	display: block;
 	border-radius: 100%;
-	border: 1px solid $divider-light-grey;
+	border: 1px solid lighten($black, 50%);
 }
 
 .sidebarUserName {
-	font-size: 16px;
-	font-family: $font-body;
-	font-weight: bold;
-	line-height: 1.3em;
+	@include orpheus_font_body1;
 }

@@ -13,7 +13,7 @@ export default class FeaturesSection extends React.Component {
 					<div className="feature">
 						<div className="feature-title">
 							<i className="mdi mdi-view-quilt" />
-							<h4>Multimedia Archives</h4>
+							<h5>Multimedia Archives</h5>
 						</div>
 						<hr />
 						<p>Present your collections&apos; digital media in a myriad of different formats</p>
@@ -21,7 +21,7 @@ export default class FeaturesSection extends React.Component {
 					<div className="feature">
 						<div className="feature-title">
 							<i className="mdi mdi-link" />
-							<h4>Linked Data Publishing</h4>
+							<h5>Linked Data Publishing</h5>
 						</div>
 						<hr />
 						<p>Leverage existing ontologies and create your own schemata for your item records</p>
@@ -29,7 +29,7 @@ export default class FeaturesSection extends React.Component {
 					<div className="feature">
 						<div className="feature-title">
 							<i className="mdi mdi-laptop-chromebook" />
-							<h4>Cross-platform Access</h4>
+							<h5>Cross-platform Access</h5>
 						</div>
 						<hr />
 						<p>
@@ -39,7 +39,7 @@ export default class FeaturesSection extends React.Component {
 					<div className="feature">
 						<div className="feature-title">
 							<i className="mdi mdi-file-document-box" />
-							<h4>Publish Articles</h4>
+							<h5>Publish Articles</h5>
 						</div>
 						<hr />
 						<p>
@@ -49,7 +49,7 @@ export default class FeaturesSection extends React.Component {
 					<div className="feature">
 						<div className="feature-title">
 							<i className="mdi mdi-database" />
-							<h4>Long-term storage</h4>
+							<h5>Long-term storage</h5>
 						</div>
 						<hr />
 						<p>
@@ -59,7 +59,7 @@ export default class FeaturesSection extends React.Component {
 					<div className="feature">
 						<div className="feature-title">
 							<i className="mdi mdi-lightbulb-on-outline" />
-							<h4>Intelligent Data Entry</h4>
+							<h5>Intelligent Data Entry</h5>
 						</div>
 						<hr />
 						<p>

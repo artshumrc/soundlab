@@ -2,7 +2,7 @@
 
 #footer {
 	padding: 90px 0;
-	background: #f6f6f6;
+	background: darken($white, 10%);
 	min-height: 100px;
 
 	.footerNav {
@@ -24,19 +24,18 @@
 		@include transition(100ms all ease-in-out);
 
 		&:hover {
-			color: $primary;
+			color: $orpheus_color_primary_500;
 		}
 	}
 }
 
 .footerCopyright {
-	color: $dark;
+	color: $black;
 	margin: 10px 0;
 	font-size: 18px;
 }
 
 .footerBuiltBy {
-	color: $text-secondary;
 }
 
 .footerLinks {
@@ -44,18 +43,18 @@
 	margin: 10px 0;
 
 	a {
+		@include orpheus_font_caption;
+		@include transition(100ms all ease-in-out);
 		display: inline-block;
 		padding: 0;
 		margin: 0 5px;
-		border-bottom: 2px solid $divider-light-grey;
-		@include transition(100ms all ease-in-out);
-		color: $dark;
+		border-bottom: 2px solid $orpheus_color_primary_100;
+		color: $black;
 		font-size: 16px;
-		font-family: $font-label;
 
 		&:hover {
-			border-bottom: 2px solid rgba(0,0,0, 0);
-			color: $primary-dark;
+			border-bottom: 2px solid $orpheus_color_primary_300;
+			color: $orpheus_color_primary_800;
 		}
 
 	}

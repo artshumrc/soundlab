@@ -2,7 +2,7 @@
 
 
 .dashboard {
-	color: $dark;
+	color: $black;
 	padding: 120px 0;
 	max-width: 990px;
 	margin: 0 auto;
@@ -12,7 +12,6 @@
 .dashboardCounts {
 	padding: 60px 0;
 }
-
 
 .dashboardRecentActivity {
 	padding: 60px 0;
@@ -24,7 +23,7 @@
 	hr {
 		max-width: 120px;
 		height: 3px;
-		background: $divider-light-grey;
+		background: lighten($black, 50%);
 		margin: 25px 0;
 		border: 0;
 		outline: 0;

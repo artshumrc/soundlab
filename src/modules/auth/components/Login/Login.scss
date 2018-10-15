@@ -1,13 +1,10 @@
 @import '../../../../variables.scss';
 
 .at-form {
-	h3 {
-		padding: 10px 0 20px;
-		font-size: 28px;
-		color: $text-secondary;
-
+	h5 {
 		button {
-			color: $dark;
+			color: $orpheus_color_primary_500;
+			cursor: pointer;
 			margin-left: 10px;
 			padding: 0 0px 2px;
 			background: none;
@@ -16,7 +13,7 @@
 			@include transition(all 100ms ease-in-out);
 
 			&:hover {
-				color: $primary;
+				color: $orpheus_color_primary_500;
 			}
 		}
 	}
@@ -27,19 +24,14 @@
 	}
 
 	.error-text {
-		font-size: 16px;
-		font-family: $font-body;
-		font-weight: 100;
-		color: $accent;
+		@include orpheus_font_caption;
+		color: $black;
 	}
 }
 
 .at-sep {
-	font-size: 14px;
+	@include orpheus_button;
 	margin: 15px auto;
-	font-family: $font-label;
-	font-weight: 100;
-	color: $text-primary;
 }
 
 #at-forgotPwd {

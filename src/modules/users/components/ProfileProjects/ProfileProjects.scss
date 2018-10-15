@@ -23,39 +23,19 @@
 	display: inline-block;
 	@include transition(100ms all ease-in-out);
 
-	span {
-		font-family: $font-reading;
-		margin: 15px 0;
-		font-size: 24px;
-		line-height: 1.7em;
-		color: $dark;
-		display: inline-block;
-	}
-
 	hr {
 		height: 2px;
-		background: $divider-light-grey;
+		background: lighten($black, 50%);
 		max-width: 660px;
 		width: 80%;
 		margin: 0 auto;
 		border: none;
 		outline: none;
 	}
-
 }
 
 .profileProjectListNoResults {
 	max-width: 720px;
 	width: 90%;
 	margin: 25px auto;
-
-	p {
-		font-family: $font-reading;
-		font-size: 24px;
-		line-height: 1.7em;
-		padding: 15px 0;
-		color: $text-gray;
-
-	}
-
 }

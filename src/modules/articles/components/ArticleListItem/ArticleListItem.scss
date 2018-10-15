@@ -18,21 +18,18 @@
 		cursor:pointer;
 
 		&:hover {
-			outline: 2px solid $grey;
+			outline: 2px solid lighten(black, 0.5);
 		}
 	}
 
 	h3 {
-		font-family: $font-title-variant;
-		color: $text-primary;
-		cursor:pointer;
+		color: $orpheus_color_primary_500;
+		cursor: pointer;
 	}
 
 	.description {
-		font-size: 14px;
-		font-family: $font-body;
-		font-weight: 100;
-		color: $text-secondary;
+		@include orpheus_font_caption;
+		color: $orpheus_color_primary_300;
 		padding: 10px 0;
 		line-height: 1.5em;
 	}

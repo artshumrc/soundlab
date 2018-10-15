@@ -9,13 +9,13 @@
 		border-radius: 0px;
 		border: 2px solid #999;
 		background: #999;
-		color: $light;
+		color: $orpheus_color_accent_200;
 		@include transition(all 100ms ease-in-out);
 
 		&:hover {
-			border: 2px solid $dark;
-			background: $dark;
-			color: $light;
+			border: 2px solid $black;
+			background: $black;
+			color: $orpheus_color_accent_200;
 
 		}
 	}

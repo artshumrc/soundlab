@@ -13,9 +13,7 @@ const NavBarHeader = ({ dispatchToggleLeftMenu, leftMenuOpen }) => (
 			onClick={dispatchToggleLeftMenu.bind(this, !leftMenuOpen)}
 		/>
 		<Link to="/">
-			<h2 className="site-title">
-				Orpheus
-			</h2>
+			<div className="site-title">Orpheus</div>
 		</Link>
 	</div>
 );

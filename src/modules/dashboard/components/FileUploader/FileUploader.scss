@@ -2,10 +2,10 @@
 
 
 .fileUploader {
-  border: 2px dashed $divider-light-grey;
+  border: 2px dashed lighten($black, 50%);
 
   .fileDropzone {
-    background-color: $light;
+    background-color: $orpheus_color_accent_200;
     margin: 0;
     width: 100%;
     height: 220px;
@@ -23,7 +23,6 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-      color: $text-secondary;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -31,14 +30,6 @@
       width: 100%;
       height: 100%;
 			background: rgba(255, 255, 255, 0.1);
-
-			label {
-				font-size: 14px;
-				font-family: $font-label;
-				font-weight: 100;
-				text-transform: uppercase;
-	      text-align: center;
-			}
     }
   }
 }

@@ -1,38 +1,26 @@
 @import '../../../../../../variables.scss';
 
 .readyToStart {
+	color: $black;
+	display: flex;
+	align-items: center;
 	width: 100%;
-	// overflow-x: hidden;
 	text-align: left;
-	background: #f6f6f6;
+	background: darken($white, 10%);
+	margin-top: 30px;
+	padding-top: 60px;
 	position: relative;
 
-	.orpheus-button {
+	.button {
 		display: inline-block;
 		margin: 10px 0;
-		padding: 10px 20px;
-
 	}
 
 	.startButtons {
 		text-align: right;
 		.contactButton {
-			padding: 15px 25px;
-			margin: 10px;
-			text-transform: uppercase;
-			font-family: $font-label;
-			cursor: pointer;
-			background: transparent;
-			border: 2px solid $dark;
-			color: $dark;
-
-			@include transition(all 100ms ease-in-out);
-
-			&:hover {
-				background: $primary;
-				border: 2px solid $primary;
-				color: $light;
-			}
+			@include orpheus_button;
+			margin-left: 10px;
 		}
 	}
 }
@@ -40,24 +28,10 @@
 .readyToStartSplash {
 	width: 200%;
 	margin: 0 -50%;
-	background: #f6f6f6;
+	background: darken($white, 10%);
 	height: 300px;
-	position:absolute;
+	position: absolute;
 	top: -60px;
 	left: 0;
-	transform: rotate(-5deg);
-}
-
-.readyToStartQuestion {
-	color: $text-secondary;
-	font-family: $font-reading;
-	font-weight: 100;
-	font-size: 42px;
-}
-
-.readyToStartCallToAction {
-	color: $text-primary;
-	font-family: $font-reading;
-	font-weight: 100;
-	font-size: 46px;
+	transform: rotate(-3deg);
 }

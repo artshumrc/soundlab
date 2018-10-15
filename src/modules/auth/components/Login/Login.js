@@ -29,7 +29,7 @@ class Login extends React.Component {
 
 		return (
 			<div className="at-form">
-				<h3>
+				<h5>
 					Sign In or
 					<button
 						id="at-signUp"
@@ -39,7 +39,7 @@ class Login extends React.Component {
 						Create an Account
 					</button>
 					.
-				</h3>
+				</h5>
 				<div className="at-signup-link" />
 
 				<OAuthButtons

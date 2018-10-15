@@ -1,26 +1,58 @@
 @import './variables.scss';
 
 html, body, input, p, span, label {
-	font-family: $font-body;
-	color: $text-gray;
+	@include orpheus_font_body1;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-family:$font-title;
+h1 {
+	@include orpheus_font_heading1;
+}
+
+h2 {
+	@include orpheus_font_heading2;
+}
+
+h3 {
+	@include orpheus_font_heading3;
+}
+
+h4 {
+	@include orpheus_font_heading4;
+}
+
+h5 {
+	@include orpheus_font_heading5;
+}
+
+h6 {
+	@include orpheus_font_heading6;
 }
 
 body {
-  color: #ffffff;
-  font-family: sans-serif;
+	@include orpheus_font_body1;
+  color: $black;
   margin: 0;
   padding: 0;
 }
 
+.caption {
+	@include orpheus_font_caption;
+}
+
+.overline {
+	@include orpheus_font_overline;
+}
+
+.subtitle {
+	@include orpheus_font_subtitle;
+}
+
 a {
-	color: $text-primary;
+	color: $orpheus_color_primary_500;
+	font-weight: 600;
 	text-decoration: none;
 	&:hover, &:focus {
-		color: $text-primary;
+		color: $orpheus_color_primary_700;
 		text-decoration: none;
 	}
 }
@@ -29,12 +61,19 @@ li {
 	list-style:none;
 }
 
+input {
+	border: 1px solid lighten($black, 50%);
+	padding: 10px;
+}
+
+input[type="submit"], button[type="submit"] {
+	@include orpheus_button--primary;
+}
 
 /* Remove scroll on the body when react-modal is open */
 .ReactModal__Body--open {
-    overflow: hidden;
+  overflow: hidden;
 }
-
 
 .absolute {
   position: absolute;
@@ -112,40 +151,6 @@ li {
 
 .z100 {
   z-index: 100;
-}
-
-.btn {
-  font-family: $font-label;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.btn-primary {
-  background-color: #2797d8;
-  color: #fff;
-  padding: 10px 45px;
-  margin: 0 10px;
-  border: 2px solid #2797d8;
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: #fff;
-  padding: 10px 45px;
-  margin: 0 10px;
-  border: 2px solid #fff;
-}
-
-.btn-primary:hover {
-  background-color: #60b0de;
-  border: 2px solid #60b0de;
-}
-
-.btn-secondary:hover {
-  background-color: #fff;
-  color: #9f9f9f;
-  border: 2px solid #fff;
 }
 
 section {

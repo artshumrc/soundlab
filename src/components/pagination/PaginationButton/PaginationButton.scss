@@ -2,7 +2,7 @@
 
 .paginationButton {
 	background: #eee;
-	color: $primary;
+	color: $orpheus_color_primary_500;
 	display: inline-block;
 	vertical-align: top;
 	cursor: pointer;
@@ -14,23 +14,23 @@
 
 	&:hover {
 		background: #fff;
-		border: 2px solid $primary;
+		border: 2px solid $orpheus_color_primary_500;
 	}
 
 	&.isActive{
-		background: $primary;
-		border: 2px solid $primary;
-		outline: 1px solid $light;
-		color: $light;
+		background: $orpheus_color_primary_500;
+		border: 2px solid $orpheus_color_primary_500;
+		outline: 1px solid $orpheus_color_accent_200;
+		color: $orpheus_color_accent_200;
 		span {
-			color: $light;
+			color: $orpheus_color_accent_200;
 		}
 	}
 
 	span {
+		@include orpheus_font_caption;
 		display: inline-block;
 		vertical-align: top;
-		font-family: $font-label;
 	}
 
 	i {

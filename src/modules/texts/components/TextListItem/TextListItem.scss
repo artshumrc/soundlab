@@ -20,19 +20,16 @@
 			margin-left: -10px;
 			border: 10px solid transparent;
 			outline: 2px solid transparent;
-			cursor:pointer;
+			cursor: pointer;
 
 			&:hover {
-				outline: 2px solid $grey;
+				outline: 2px solid lighten($black, 50%);
 			}
 		}
 	}
 
 	.textCount {
-		color: #999;
-		font-size: 14px;
-		font-family: $font-body;
-		padding: 10px 0;
+		@include orpheus_font_caption
 	}
 
 	.textListItemBackground {
@@ -51,36 +48,27 @@
 
 
 	h3 {
-		font-family: $font-title-variant;
-		color: $text-primary;
 		cursor: pointer;
 		margin: 0;
 		padding: 5px 0 15px;
 		word-wrap: break-word;
-		line-height: 1.3em;
 		@include transition(all 100ms ease-in-out);
 
 		&:hover {
-			color: $primary-600;
+			color: $orpheus_color_primary_600;
 		}
 	}
 
-	p {
-		font-weight: 100;
-		color: $text-primary;
-	}
-
 	.textLink {
-
 		&:hover {
 			span, i {
-				color: $primary-600;
+				color: $orpheus_color_primary_600;
 			}
 		}
 
 		span, i {
 			@include transition(all 100ms ease-in-out);
-			color: #444;
+			color: lighten($black, 30%);
 			display: inline-block;
 			vertical-align: top;
 		}

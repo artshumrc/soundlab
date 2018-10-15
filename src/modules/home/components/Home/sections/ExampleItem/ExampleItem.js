@@ -16,7 +16,7 @@ const ExampleItem = (props) => {
 					exampleListItemBackgroundWithImage
 				`}
 			>
-				<h3>{props.title}</h3>
+				<h5>{props.title}</h5>
 				<p>
 					{props.description}
 				</p>

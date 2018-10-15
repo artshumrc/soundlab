@@ -23,15 +23,13 @@
 		display: inline-block;
 		padding: 0;
 		margin: 0 5px;
-		border-bottom: 2px solid $divider-light-grey;
+		border-bottom: 2px solid lighten($black, 50%);
 		@include transition(100ms all ease-in-out);
-		color: $dark;
-		font-size: 16px;
-		font-family: $font-label;
+		color: $black;
 
 		&:hover {
 			border-bottom: 2px solid rgba(0,0,0, 0);
-			color: $primary-dark;
+			color: $orpheus_color_primary_700;
 		}
 	}
 }

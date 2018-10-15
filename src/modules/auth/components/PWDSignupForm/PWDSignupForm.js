@@ -70,7 +70,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signu
 					<a href="/forgot-password" id="at-forgotPwd" className="at-link at-pwd">Forgot your password?</a>
 				</p>
 			</div>
-			<button type="submit" className="at-btn submit btn btn-lg btn-block btn-default" id="at-btn" disabled={submitting}>
+			<button type="submit" className="at-btn submit button" id="at-btn" disabled={submitting}>
 				Register
 			</button>
 		</form>

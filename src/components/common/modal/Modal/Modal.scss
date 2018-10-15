@@ -9,7 +9,7 @@
 	top: 0;
 	left: 0;
 	z-index: 100;
-	color: $dark;
+	color: $black;
 	overflow-y: scroll;
 
 	.modalInner {
@@ -32,13 +32,13 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		color: $light;
+		color: $orpheus_color_accent_200;
 		@include transition(all 100ms ease-in-out);
 
 		&:hover {
-			background: $dark;
-			border: $dark 2px solid;
-			color: $light;
+			background: $black;
+			border: $black 2px solid;
+			color: $orpheus_color_accent_200;
 		}
 
 		i {

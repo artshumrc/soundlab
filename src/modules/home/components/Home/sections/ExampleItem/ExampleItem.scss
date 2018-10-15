@@ -9,21 +9,15 @@
 	width: 90%;
 	max-width: 290px;
 
-
 	.exampleListItemImage {
 		position: relative;
 		z-index: 1;
 
 		img {
-			@include transition(all 100ms ease-in-out);
 			width: 110%;
 			margin-left: -10px;
 			border: 10px solid transparent;
 			outline: 2px solid transparent;
-
-			&:hover {
-				outline: 2px solid $grey;
-			}
 		}
 	}
 
@@ -41,19 +35,12 @@
 		}
 	}
 
-
 	h3 {
-		font-family: $font-title-variant;
-		color: $text-primary;
 		margin: 0;
 		padding: 5px 0 15px;
-		line-height: 1.3em;
 		@include transition(all 100ms ease-in-out);
 	}
 
 	p {
-		font-weight: 100;
-		line-height:1.7em;
-		color: $text-primary;
 	}
 }

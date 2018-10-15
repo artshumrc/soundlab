@@ -1,19 +1,16 @@
 @import '../../../../variables.scss';
 
 .tag {
-	font-family: $font-label-mono;
-	font-size: 14px;
-	color: $text-primary;
 	display: inline-block;
 	vertical-align: top;
 	padding: 3px 0;
 	margin: 2px 5px;
-	border-bottom: 1px solid $light-grey;
+	border-bottom: 1px solid $orpheus_color_accent_200;
 	@include transition(all 100ms ease-in-out);
 	cursor: pointer;
 
 	&:hover {
-		border-bottom: 1px solid $dark;
+		border-bottom: 1px solid $black;
 	}
 }
 

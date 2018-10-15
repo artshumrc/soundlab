@@ -18,7 +18,7 @@ class Signup extends React.Component {
 		return (
 			<div className="at-form">
 				<div className="at-title">
-					<h3>
+					<h5>
 						Create an Account or
 						<button
 							id="at-signUp"
@@ -28,7 +28,7 @@ class Signup extends React.Component {
 							Sign in
 						</button>
 						.
-					</h3>
+					</h5>
 				</div>
 
 				<OAuthButtons

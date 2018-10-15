@@ -25,9 +25,7 @@ class HomeCover extends React.Component {
 			>
 				<div className="home-cover-content">
 					<h1>The archive, reimagined.</h1>
-					<p className="lead">
-						Create and share digital records and collections when, where, and how you want.
-					</p>
+					<h5>Create and share digital records and collections when, where, and how you want.</h5>
 					<div className="home-cover-buttons">
 						<Button
 							dark

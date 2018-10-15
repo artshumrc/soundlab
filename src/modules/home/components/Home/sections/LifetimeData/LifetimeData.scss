@@ -1,15 +1,14 @@
 @import '../../../../../../variables.scss';
 
 .lifetimeData {
-	background: #111;
+	background: lighten($black, 5%);
 	min-height: 720px;
 	position: relative;
 
 	h2 {
-		color: $light;
+		color: $white;
 		margin: 0 auto;
 		text-align: center;
-		font-size: 32px;
 		padding: 60px 0 30px;
 	}
 }
@@ -55,18 +54,13 @@
 	}
 
 	.lifetimeDataLabel {
-		font-family: $font-label;
-		font-weight: bold;
-		font-size: 16px;
-		color: $light;
+		color: $white;
 		margin: 0px auto;
 		padding: 25px 0;
 		display: block;
 	}
 
 	p {
-		font-size: 14px;
-		line-height: 1.6em;
-		color: #eee;
+		color: darken($white, 40%)
 	}
 }

@@ -41,11 +41,11 @@ export default class AboutSection extends React.Component {
 						<p>
 							A thing of beauty is a joy forever
 							<br />
-							. . . it will never pass into nothingness.
+							... it will never pass into nothingness.
 						</p>
-						<p className="quoteByline">
-							John Keats, &quot;Endymion&quot;
-						</p>
+						<h6 className="subtitle">
+							John Keats, "Endymion"
+						</h6>
 					</blockquote>
 				</div>
 				<div className="aboutText">

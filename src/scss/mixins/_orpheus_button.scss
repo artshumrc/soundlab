@@ -1,0 +1,81 @@
+@mixin orpheus_button {
+	@include orpheus_font_button;
+	border-radius: 2px;
+	color: $orpheus_color_primary_500;
+	cursor: pointer;
+	display: inline-block;
+	padding: 15px 25px;
+	text-align: center;
+	text-transform: uppercase;
+	transition: all 100ms ease-in-out;
+	&:hover {
+		color: $orpheus_color_primary_700;
+	}
+	&:active {
+		color: $orpheus_color_primary_900;
+		transition: none;
+	}
+	&:disabled, &.disabled {
+		cursor: default;
+		opacity: 0.3;
+	}
+}
+
+@mixin orpheus_button--primary {
+  @include orpheus_button;
+	background: $orpheus_color_primary_500;
+	color: $white;
+	&:hover {
+		background: $orpheus_color_primary_700;
+		color: $white;
+	}
+	&:active {
+		background: $orpheus_color_primary_900;
+		color: $white;
+	}
+}
+
+@mixin orpheus_button--secondary {
+  @include orpheus_button;
+	background: $orpheus_color_accent_300;
+	color: $orpheus_color_accent_700;
+	&:hover {
+		background: $orpheus_color_accent_700;
+		color: $orpheus_color_accent_700;
+	}
+	&:active {
+		background: $orpheus_color_accent_900;
+		color: $orpheus_color_accent_700;
+	}
+}
+
+@mixin orpheus_button--light {
+  @include orpheus_button;
+	background: darken($white, 10%);
+	color: $black;
+	&:hover {
+		background: darken($white, 20%);
+		color: $black;
+	}
+	&:active {
+		background: darken($white, 30%);
+		color: $black;
+	}
+}
+
+@mixin orpheus_button--dark {
+  @include orpheus_button;
+	background: lighten($black, 10%);
+	color: $white;
+	&:hover {
+		background: lighten($black, 20%);
+		color: $white;
+	}
+	&:active {
+		background: lighten($black, 30%);
+		color: $white;
+	}
+	&:focus {
+		color: $white;
+	}
+}

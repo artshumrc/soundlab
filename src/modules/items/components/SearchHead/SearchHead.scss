@@ -1,27 +1,15 @@
 @import '../../../../variables.scss';
 
 .searchHead {
-
   margin: 180px 0 10px 0;
 
   label {
-
-    color: $primary;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-family: $font-label;
     padding: 10px;
-    font-weight: bold;
-    letter-spacing: 3px;
-
   }
 
   h1 {
-    font-size: 42px;
-    color: $dark;
     margin: 0;
     padding: 0;
-
   }
 
  .resultsHeader {
@@ -31,11 +19,10 @@
    font-size: 40px;
    font-weight: bold;
  }
-
 }
 
 .searchInputOuter {
-  background: #fff;
+  background: $white;
   border-radius: 6px;
   box-shadow: 0px 10px 33px #e7e6e6;
   @include transition(all 100ms ease-in-out);
@@ -62,11 +49,11 @@
     @include transition(all 100ms ease-in-out);
 
     &:hover {
-      color: $primary;
+      color: $orpheus_color_primary_500;
       background: rgba(0, 0, 0, 0.02);
     }
     &.filterIconActive {
-      color: $primary;
+      color: $orpheus_color_primary_500;
     }
   }
 
@@ -79,15 +66,12 @@
     border: none;
     outline: none;
 
-
     &:focus {
-      color: $dark;
+      color: $black;
       outline: none;
     }
-
   }
 }
-
 
 .searchToolHeader {
   padding: 20px;

@@ -9,13 +9,13 @@
 	@include transition(all 100ms ease-in-out);
 
 	&:hover {
-		outline: 1px solid $dark;
+		outline: 1px solid $black;
 		&.isActiveImage {
-			outline: 1px solid $dark;
+			outline: 1px solid $black;
 		}
 	}
 
 	&.isActiveImage {
-		outline: 1px solid $divider;
+		outline: 1px solid lighten($black, 50%);
 	}
 }

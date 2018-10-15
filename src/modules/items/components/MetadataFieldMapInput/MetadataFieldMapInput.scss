@@ -6,7 +6,7 @@
 	position: relative;
 
 	.latitudeAndLongitude {
-		color: $dark;
+		color: $black;
 		display: flex;
 		align-items: baseline;
 		margin: 15px 0;
@@ -18,7 +18,6 @@
 		span {
 			padding: 5px 10px;
 		}
-
 	}
 }
 
@@ -28,13 +27,13 @@
 	top: 10px;
 	left: 10px;
 	display: flex;
-	background: $light;
+	background: $orpheus_color_accent_200;
 	justify-content: center;
 	align-items: center;
 	padding: 5px 15px;
 
 	i {
-		color: $dark;
+		color: $black;
 		&:before {
 			font-size: 22px;
 		}
@@ -43,7 +42,6 @@
 
 .metadataFieldMapSearch {
 	display: flex;
-
 
 	input[type="text"] {
 		font-size: 20px;
@@ -55,34 +53,7 @@
 }
 
 .metadataFieldMapInputTextSubmit {
-	display: inline-block;
-	margin: 10px 0;
-	color: $dark;
-	padding: 10px 25px;
-	background: transparent;
-	border: 2px solid $dark;
-	text-transform: uppercase;
-	font-family: $font-label;
-	cursor: pointer;
-	border-radius: 0;
-	outline: 0;
-	font-size: 12px;
-	@include transition(all 100ms ease-in-out);
-	height: 45px;
-
-	&.disabled {
-		opacity: 0.3;
-	}
-
-	&:hover {
-		background: $primary;
-		border: 2px solid $primary;
-		color: $light;
-	}
-
-	&:focus {
-		outline: none;
-	}
+	@include orpheus_button;
 
 	i {
 		padding-right: 10px;

@@ -42,7 +42,7 @@
 	@include transition(all 100ms linear);
 
 	&:hover {
-		outline: 1px solid $divider;
+		outline: 1px solid $orpheus_color_primary_300;
 		opacity: 1;
 	}
 }

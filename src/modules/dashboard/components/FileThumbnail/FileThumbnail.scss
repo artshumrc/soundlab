@@ -56,7 +56,7 @@
 	right: 0;
 
   .fileDetailsDeleteFile {
-    background: $dark;
+    background: $black;
 		outline: none;
 		border: none;
 		cursor: pointer;
@@ -67,11 +67,11 @@
 
 
 		&:hover {
-			background: $primary;
+			background: $orpheus_color_primary_500;
 		}
 
     i {
-      color: $light;
+      color: $orpheus_color_accent_200;
 			margin: 0;
 			padding: 0;
 

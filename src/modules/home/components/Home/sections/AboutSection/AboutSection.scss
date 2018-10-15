@@ -1,7 +1,7 @@
 @import '../../../../../../variables.scss';
 
 #about {
-	margin-top: 0;
+	padding-top: 0;
 	text-align: left;
 
 	.aboutIntro {
@@ -18,24 +18,14 @@
 	}
 
 	.aboutLead {
+		font-size: 2rem;
 		text-align: left;
 		display: inline-block;
 		margin: 0;
 		padding: 30px 20px 30px 80px;
 
-		p {
-			font-size: 34px;
-			font-family: $font-reading;
-			color: $dark;
-			line-height: 1.7em;
-			font-style: normal;
-		}
-
 		.quoteByline {
-			font-size: 24px;
 			padding: 20px 10px 30px 60px;
-			color: $text-gray;
-			font-style: italic;
 		}
 
 	}
@@ -43,10 +33,7 @@
 	.aboutText {
 		padding: 30px 0;
 		p {
-			line-height: 1.7em;
-			font-family: $font-reading;
-			color: $dark;
-			font-size: 26px;
+			font-size: 1.3rem;
 			max-width: 720px;
 			margin: 0 auto;
 			padding: 15px 0;

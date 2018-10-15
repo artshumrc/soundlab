@@ -15,9 +15,9 @@ const ReadyToStart = props => (
 					<h2 className="readyToStartQuestion">
 						Ready to get started?
 					</h2>
-					<h3 className="readyToStartCallToAction">
-						Get in touch, or start your archive.
-					</h3>
+					<h5 className="readyToStartCallToAction">
+						Start your archive, or get in touch.
+					</h5>
 				</Col>
 				<Col md={5} className="startButtons">
 					<Button
