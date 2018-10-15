@@ -24,7 +24,7 @@
 		padding: 0;
 		margin: 0 5px;
 		border-bottom: 2px solid $color_grey_500;
-		@include transition(100ms all ease-in-out);
+		transition: all 100ms ease-in-out;
 		color: $black;
 
 		&:hover {

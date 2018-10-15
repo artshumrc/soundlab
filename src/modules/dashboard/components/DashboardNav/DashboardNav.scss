@@ -13,7 +13,7 @@
 		color: $black;
 		margin: 5px;
 		border: 1px solid $color_grey_500;
-		@include transition(100ms all ease-in-out);
+		transition: all 100ms ease-in-out;
 		font-size: 12px;
 		padding: 10px 20px;
 

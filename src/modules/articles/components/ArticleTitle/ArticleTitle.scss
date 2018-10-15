@@ -19,7 +19,7 @@
 	display: inline-block;
 	vertical-align: baseline;
 	padding: 0px 10px 0 20px;
-	@include transition(100ms all ease-in-out);
+	transition: all 100ms ease-in-out;
 
 	&:hover {
 		color: $orpheus_color_primary_800;

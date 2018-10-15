@@ -24,7 +24,7 @@
 .readingEnvironmentEditLink {
 	color: $orpheus_color_primary_500;
 	padding: 10px 20px;
-	@include transition(100ms all ease-in-out);
+	transition: all 100ms ease-in-out;
 
 	&:hover {
 		color: $orpheus_color_primary_700;
@@ -55,7 +55,7 @@
 	display: inline-block;
 	vertical-align: top;
 	opacity: 0;
-	@include transition(100ms all ease-in-out);
+	transition: all 100ms ease-in-out;
 	padding: 20px;
 
 	&.readingEnvironmentTextNodeNumberShow {

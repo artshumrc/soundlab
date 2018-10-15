@@ -38,12 +38,12 @@
 			vertical-align: top;
 			border: 1px solid $color_grey_500;
 			margin-right: 20px;
-			@include transition(100ms all ease-in-out);
+			transition: all 100ms ease-in-out;
 		}
 
 		.userListItemUserName {
 			display: inline-block;
-			@include transition(100ms all ease-in-out);
+			transition: all 100ms ease-in-out;
 		}
 	}
 
@@ -68,7 +68,7 @@
 
 	.projectPersonStatus {
 		@include orpheus_font_overline;
-		@include transition(100ms all ease-in-out);
+		transition: all 100ms ease-in-out;
 		display: inline-block;
 		vertical-align: top;
 		padding: 24px 5px;

@@ -21,7 +21,7 @@
 	margin: 25px auto;
 	padding: 15px 0;
 	display: inline-block;
-	@include transition(100ms all ease-in-out);
+	transition: all 100ms ease-in-out;
 
 	hr {
 		height: 2px;

@@ -20,7 +20,7 @@
 		background: rgba(255, 255, 255, 0.8);
 		border: 1px solid $color_grey_500;
 		padding: 15px 20px;
-		@include transition(100ms all ease-in-out);
+		transition: all 100ms ease-in-out;
 
 		&:hover {
 			background: rgba(255, 255, 255, 1);

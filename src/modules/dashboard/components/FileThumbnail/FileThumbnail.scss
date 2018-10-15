@@ -10,7 +10,7 @@
   border: 30px solid transparent;
   outline: 2px solid transparent;
   cursor: grab;
-	@include transition(100ms all ease-in-out);
+	transition: all 100ms ease-in-out;
 
 	&:hover {
 	  outline: 2px solid #eee;
@@ -61,7 +61,7 @@
 		border: none;
 		cursor: pointer;
 		border-radius: 100%;
-		@include transition(100ms all ease-in-out);
+		transition: all 100ms ease-in-out;
 		width: 26px;
 		height: 26px;
 

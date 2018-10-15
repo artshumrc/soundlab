@@ -11,7 +11,7 @@
 	cursor: pointer;
 	border-bottom: 1px solid $color_grey_500;
 	background: #fff;
-	@include transition(100ms all ease-in-out);
+	transition: all 100ms ease-in-out;
 	padding: 10px 15px;
 	clear: both;
 
@@ -33,7 +33,7 @@
 	.itemSelectorItemTitle {
 		display: inline-block;
 		vertical-align: top;
-		@include transition(100ms all ease-in-out);
+		transition: all 100ms ease-in-out;
 	}
 
 	.itemSelectorItemPlus {
@@ -41,7 +41,7 @@
 		vertical-align: top;
 		float: right;
 		padding: 5px;
-		@include transition(100ms all ease-in-out);
+		transition: all 100ms ease-in-out;
 
 		&:before {
 			font-size: 18px;

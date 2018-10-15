@@ -32,7 +32,7 @@
 		color: $orpheus_color_primary_500;
 		display: inline-block;
 		vertical-align: baseline;
-		@include transition(100ms all ease-in-out);
+		transition: all 100ms ease-in-out;
 		&:hover {
 			color: $orpheus_color_primary_700;
 		}
