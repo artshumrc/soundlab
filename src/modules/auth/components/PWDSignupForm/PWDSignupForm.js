@@ -66,9 +66,9 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signu
 				{error && <strong>{error}</strong>}
 			</span>
 			<div className="at-pwd-link">
-				<p>
+				{/*<p>
 					<a href="/forgot-password" id="at-forgotPwd" className="at-link at-pwd">Forgot your password?</a>
-				</p>
+				</p>*/}
 			</div>
 			<button type="submit" className="at-btn submit button" id="at-btn" disabled={submitting}>
 				Register

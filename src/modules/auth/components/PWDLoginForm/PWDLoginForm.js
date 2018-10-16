@@ -53,9 +53,9 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login 
 				<p className="error-text">
 					{error}
 				</p>
-				<p>
+				{/*<p>
 					<a href="/forgot-password" id="at-forgotPwd" className="at-link at-pwd">Forgot your password?</a>
-				</p>
+				</p>*/}
 			</div>
 			<button
 				type="submit"

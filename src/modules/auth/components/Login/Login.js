@@ -54,11 +54,11 @@ class Login extends React.Component {
 					login={login}
 				/>
 
-				<div className="at-resend-verification-email-link at-wrap">
+				{/*<div className="at-resend-verification-email-link at-wrap">
 					<p>
 						Verification email lost? <a href="/send-again" id="at-resend-verification-email" className="at-link at-resend-verification-email">Send again.</a>
 					</p>
-				</div>
+				</div>*/}
 			</div>
 		);
 	}
