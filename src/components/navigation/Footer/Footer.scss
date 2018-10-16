@@ -12,13 +12,13 @@
 }
 
 .footerCopyright, .footerBuiltBy {
-	display: block;
+	display: inline-block;
 	text-align: left;
 	font-weight: 500;
 }
 
 .footerCopyright {
-	margin: 10px 0;
+	margin: 10px 40px 10px 0;
 }
 
 .footerBuiltBy {
@@ -30,6 +30,9 @@
 	margin: 10px 0;
 	@include breakpoint2 {
 		display: block;
+		#home & {
+			display: none;
+		}
 	}
 
 	a {

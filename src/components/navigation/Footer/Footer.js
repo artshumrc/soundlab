@@ -16,7 +16,7 @@ export default class Footer extends React.Component {
 			<section id="footer">
 				<Grid>
 					<Row>
-						<Col lg={4}>
+						<Col lg={6}>
 							<span className="footerCopyright">
                 © orphe.us {year}
 							</span>
@@ -32,7 +32,7 @@ export default class Footer extends React.Component {
 								.
 							</span>
 						</Col>
-						<Col lg={8}>
+						<Col lg={6}>
 							<div className="footerLinks">
 								<Link href="mailto:contact@orphe.us">
 									Email
