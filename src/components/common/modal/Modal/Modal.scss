@@ -3,18 +3,19 @@
 .orpheusModal {
 	background: rgba(255, 255, 255, 0.98);
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
 	text-align: center;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	z-index: 100;
-	color: $black;
 	overflow-y: scroll;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	.modalInner {
 		margin: 30px auto;
-		display: inline-block;
 		max-width: 720px;
 		width: 95%;
 	}

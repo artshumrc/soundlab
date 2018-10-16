@@ -4,16 +4,16 @@
 	width: 100%;
 
 	.nav-header, .nav {
-		height: 60px;
+		height: 40px;
+
+		@include breakpoint2 {
+			height: 60px;
+		}
 	}
 
 	.nav-header > a {
 		display: flex;
 		align-items: center;
-	}
-
-	.nav {
-		float: right;
 	}
 }
 
@@ -33,7 +33,6 @@
   z-index: 1;
 	position: fixed;
 	background: rgba(255, 255, 255, 0.6);
-	height: 60px;
 	width: 100vw;
 	display: flex;
 	align-items: center;
@@ -61,15 +60,19 @@
 		vertical-align: top;
 
 		a {
-			padding: 18px 20px;
+			padding: 10px 10px;
 			cursor: pointer;
 			border: 2px solid transparent;
 			@include transition(all 100ms linear);
 			display: block;
-			height: 60px;
+			height: 100%;
 			line-height: 1;
 			display: flex;
 			align-items: center;
+
+			@include breakpoint2 {
+				padding: 18px 20px;
+			}
 
 			&:hover {
 				background: $color_grey_100;
@@ -110,10 +113,9 @@
 
 .nav li a.userAvatarLink {
 	padding: 0 20px;
-	height: 60px;
 
 	&:hover {
-		background: #eee;
+		background: $color_grey_300;
 	}
 
 	.userAvatar {

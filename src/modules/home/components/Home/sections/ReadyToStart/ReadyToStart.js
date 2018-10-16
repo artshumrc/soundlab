@@ -27,7 +27,7 @@ const ReadyToStart = props => (
 						Start your archive
 					</Button>
 					<a
-						className="contactButton"
+						className="button contactButton"
 						href="mailto:contact@orphe.us"
 					>
 						Email Us

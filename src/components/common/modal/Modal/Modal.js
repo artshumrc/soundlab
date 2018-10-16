@@ -7,6 +7,7 @@ import './Modal.css';
 const Modal = ({ children, classes, show, closeModal }) => {
 
 	if (show) {
+		document.body.classList.add('js-showing-modal');
 		return (
 			<div
 				className={`orpheusModal ${classes.join(' ')}`}
@@ -22,6 +23,8 @@ const Modal = ({ children, classes, show, closeModal }) => {
 				</div>
 			</div>
 		);
+	} else {
+		document.body.classList.remove('js-showing-modal');
 	}
 	return null;
 };

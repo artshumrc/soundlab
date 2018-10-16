@@ -10,7 +10,11 @@
 	display: flex;
 	height: 100%;
 	color: $black;
-	padding: 15px 15px 15px 20px;
+	padding: 15px 5px 15px 10px;
+
+	@include breakpoint2 {
+		padding: 15px 15px 15px 20px;
+	}
 
 	&:before {
 		font-size: 22px;
@@ -24,7 +28,6 @@
 	padding: 12px 15px 12px 5px;
 	color: $black;
 	line-height: 1;
-	margin: 0 10px 0 0;
 	text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.6);
 	letter-spacing: 1px;
 }

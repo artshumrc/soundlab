@@ -41,7 +41,6 @@ class AuthModalContainer extends React.Component {
 
 	componentWillMount() {
 		document.addEventListener('keydown', this._handleKeyDown);
-
 		this._initiateUser();
 	}
 

@@ -1,9 +1,7 @@
 @import '../../../variables.scss';
 
 #footer {
-	padding: 90px 0;
 	background: $color_grey_100;
-	min-height: 100px;
 
 	.footerNav {
 		margin: 0;
@@ -27,8 +25,12 @@
 }
 
 .footerLinks {
+	display: none;
 	text-align: right;
 	margin: 10px 0;
+	@include breakpoint2 {
+		display: block;
+	}
 
 	a {
 		display: inline-block;
