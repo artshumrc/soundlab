@@ -8,7 +8,7 @@ import Avatar from '../../components/Avatar';
 
 const UserAvatarContainer = (props) => {
 	let user;
-	let avatarUrl = '/images/default_user.jpg';
+	let avatarUrl = '/images/default_user.svg';
 
 	if (props.userAvatarQuery && props.userAvatarQuery.userProfile) {
 		user = props.userAvatarQuery.userProfile;

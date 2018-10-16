@@ -16,23 +16,11 @@
 .footerCopyright, .footerBuiltBy {
 	display: block;
 	text-align: left;
-	font-size: 14px;
 	font-weight: 500;
-
-	a {
-		padding: 0 0 0 2px;
-		transition: all 100ms ease-in-out;
-
-		&:hover {
-			color: $orpheus_color_primary_500;
-		}
-	}
 }
 
 .footerCopyright {
-	color: $black;
 	margin: 10px 0;
-	font-size: 18px;
 }
 
 .footerBuiltBy {
@@ -43,19 +31,8 @@
 	margin: 10px 0;
 
 	a {
-		@include orpheus_font_caption;
-		transition: all 100ms ease-in-out;
 		display: inline-block;
 		padding: 0;
 		margin: 0 5px;
-		border-bottom: 2px solid $orpheus_color_primary_100;
-		color: $black;
-		font-size: 16px;
-
-		&:hover {
-			border-bottom: 2px solid $orpheus_color_primary_300;
-			color: $orpheus_color_primary_800;
-		}
-
 	}
 }

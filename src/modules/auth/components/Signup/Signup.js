@@ -36,7 +36,7 @@ class Signup extends React.Component {
 							By clicking "Sign Up", you agree to our <a href="/terms" className="at-link at-link--terms at-resend-verification-email">Terms and Privacy Policy.</a>
 						</p>
 						<p>
-							Have an account already? <a href="#" onClick={onSigninClick}>Log in</a>
+							Have an account already? <button onClick={onSigninClick}>Log in</button>
 						</p>
 					</div>
 				</div>

@@ -38,7 +38,7 @@ UserListItem.propTypes = {
 
 UserListItem.defaultProps = {
 	username: '',
-	avatarUrl: '/images/default_user.jpg',
+	avatarUrl: '/images/default_user.svg',
 };
 
 export default UserListItem;

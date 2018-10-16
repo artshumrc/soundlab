@@ -32,7 +32,7 @@ SidebarUserAvatar.propTypes = {
 
 SidebarUserAvatar.defaultProps = {
 	name: '',
-	avatarUrl: '/images/default_user.jpg',
+	avatarUrl: '/images/default_user.svg',
 };
 
 export default SidebarUserAvatar;

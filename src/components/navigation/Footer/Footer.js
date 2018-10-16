@@ -21,7 +21,7 @@ export default class Footer extends React.Component {
                 © orphe.us {year}
 							</span>
 							<span className="footerBuiltBy">
-								Created by
+								Created by&nbsp;
 								<a
 									href="https://archimedes.digital"
 									target="_blank"

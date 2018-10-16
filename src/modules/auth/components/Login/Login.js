@@ -48,7 +48,7 @@ class Login extends React.Component {
 				</div>*/}
 
 				<p>
-					Don't have an account? <a href="#" onClick={onRegisterClick}>Sign up</a>
+					Don't have an account? <button onClick={onRegisterClick}>Sign up</button>
 				</p>
 			</div>
 		);

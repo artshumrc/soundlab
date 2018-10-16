@@ -9,7 +9,7 @@ import SidebarUserAvatar from '../../components/SidebarUserAvatar';
 const SidebarUserAvatarContainer = (props) => {
 	let user;
 	let userName = '';
-	let avatarUrl = '/images/default_user.jpg';
+	let avatarUrl = '/images/default_user.svg';
 
 	if (props.userAvatarQuery && props.userAvatarQuery.userProfile) {
 		user = props.userAvatarQuery.userProfile;
