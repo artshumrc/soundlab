@@ -31,7 +31,7 @@ class HomeCover extends React.Component {
 							dark
 							to="/create"
 						>
-							Get Started
+							Start your archive
 						</Button>
 					</div>
 				</div>
