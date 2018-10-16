@@ -31,7 +31,6 @@ class CoverBackground extends React.Component {
 		return (
 			<div
 				className="cover-background"
-				onMouseMove={this.translateBackground.bind(this)}
 				style={{
 					transform,
 				}}
