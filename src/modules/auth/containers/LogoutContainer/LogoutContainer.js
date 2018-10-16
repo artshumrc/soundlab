@@ -3,31 +3,38 @@ import { compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { logoutUser } from '../../../../lib/auth';
+import { logoutUser } from '../../lib/auth';
 import { logout } from '../../actions';
 
-const LogoutContainer = props => {
+class LogoutContainer extends React.Component {
 
-	return (
-		<div
-			style={{
-				width: '90%',
-				maxWidth: '800px',
-				margin: '0 auto',
-				padding: '120px 0',
-				textAlign: 'center',
-			}}
-    >
-			<p>
-        Log out of the project
-			</p>
-			<button
-				onClick={props.dispatchLogout}
-      >
-        Log out
-			</button>
-		</div>
-	);
+	async componentDidMount() {
+		await this.props.dispatchLogout();
+		this.props.router.push('/');
+	}
+
+	render() {
+		return (
+			<div
+				style={{
+					width: '90%',
+					maxWidth: '800px',
+					margin: '0 auto',
+					padding: '120px 0',
+					textAlign: 'center',
+				}}
+	    >
+				<p>
+	        Log out of the project
+				</p>
+				<button
+					onClick={this.props.dispatchLogout}
+	      >
+	        Log out
+				</button>
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => ({

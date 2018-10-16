@@ -11,8 +11,8 @@ import MenuSubItem from '../MenuSubItem';
 import LeftMenuHead from '../LeftMenuHead';
 
 // actions
-import { logout, toggleAuthModal } from '../../../modules/auth/actions';
-import { logoutUser } from '../../../lib/auth';
+import { logout } from '../../../modules/auth/actions';
+import { logoutUser } from '../../../modules/auth/lib/auth';
 
 // lib
 import getCurrentProjectHostname from '../../../lib/getCurrentProjectHostname';
@@ -146,7 +146,6 @@ class LeftMenu extends React.Component {
 	render() {
 		const {
 			project, leftMenuOpen, closeLeftMenu, userId, dispatchLogout,
-			dispatchToggleAuthModal
 		} = this.props;
 
 		let isMainOrpheusProject = false;
@@ -204,7 +203,7 @@ class LeftMenu extends React.Component {
 						</div>
 					:
 						<MenuItem
-							onClick={dispatchToggleAuthModal}
+							to={'/sign-in'}
 						>
 							Log In
 						</MenuItem>
@@ -240,10 +239,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	},
 	dispatchLogout: () => {
 		dispatch(logout(logoutUser));
-		dispatch(toggleLeftMenu(false));
-	},
-	dispatchToggleAuthModal: () => {
-		dispatch(toggleAuthModal());
 		dispatch(toggleLeftMenu(false));
 	},
 });

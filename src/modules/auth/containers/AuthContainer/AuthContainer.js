@@ -10,14 +10,11 @@ import Signup from '../../components/Signup';
 
 // actions
 import { changeAuthMode, setUser, login, logout } from '../../actions';
+import { loginUser, register, resetPassword, logoutUser } from '../../lib/auth';
 
 
 class AuthContainer extends React.Component {
-
 	static propTypes = {
-		dispatchLogin: PropTypes.func.isRequired,
-		dispatchSignup: PropTypes.func.isRequired,
-		dispatchChangeAuthMode: PropTypes.func.isRequired,
 		authMode: PropTypes.string,
 	};
 
@@ -25,36 +22,11 @@ class AuthContainer extends React.Component {
 		authMode: 'login'
 	};
 
-	constructor(props) {
-		super(props);
-
-		// methods:
-		this._initiateUser = this._initiateUser.bind(this);
-	}
-
-	async _initiateUser() {
-		const { getUserFromServer, dispatchSetUser } = this.props;
-		if (getUserFromServer) {
-			try {
-				const user = await getUserFromServer();
-				if (user) {
-					user.userId = user._id;
-					user.roles = user.roles;
-					user.commenters = user.canEditCommenters;
-					dispatchSetUser(user);
-				}
-			} catch (err) {
-				console.error(err);
-				// TODO: Determine why dispatchLogout always called on page load
-				// dispatchLogout();
-			}
-		}
-	}
 
 	render() {
 		const {
-      authMode, dispatchChangeAuthMode, dispatchLogin, dispatchSignup,
-    } = this.props;
+			authMode, dispatchChangeAuthMode, dispatchLogin, dispatchSignup,
+		} = this.props;
 
 		return (
 			<div
@@ -62,7 +34,6 @@ class AuthContainer extends React.Component {
 					width: '90%',
 					maxWidth: '800px',
 					margin: '0 auto',
-					padding: '120px 0',
 					textAlign: 'center',
 				}}
       >
@@ -71,13 +42,13 @@ class AuthContainer extends React.Component {
 						onRegisterClick={dispatchChangeAuthMode.bind(null, 'signup')}
 						login={dispatchLogin}
 					/>
-				: null}
+					: null}
 				{authMode === 'signup' ?
 					<Signup
 						onSigninClick={dispatchChangeAuthMode.bind(null, 'login')}
 						signup={dispatchSignup}
 					/>
-				: null}
+					: null}
 			</div>
 		);
 	}
@@ -91,26 +62,35 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchChangeAuthMode: (mode) => {
 		dispatch(changeAuthMode(mode));
 	},
-	dispatchSetUser: (userObject) => {
-		dispatch(setUser(userObject));
-    // Go to commentary requested route instead of toggling modal
-		ownProps.history.push('/');
+	dispatchSetUser: async (userObject) => {
+		await dispatch(setUser(userObject));
+		// Go to commentary requested route instead of toggling modal
+		ownProps.router.push('/');
 	},
-	dispatchLogin: data => {
-		dispatch(login(ownProps.loginMethod, data));
-    // Go to commentary requested route instead of toggling modal
-		ownProps.history.push('/');
+	dispatchLogin: async data => {
+		await dispatch(login(loginUser, data));
+		// Go to commentary requested route instead of toggling modal
+		ownProps.router.push('/');
 	},
-	dispatchSignup: data => dispatch(login(ownProps.signupMethod, data)),
+	dispatchSignup: async data => {
+		await dispatch(login(register, data));
+		ownProps.router.push('/');
+	},
+	dispatchReset: async data => {
+		await dispatch(login(resetPassword, data));
+
+		// Go to commentary requested route instead of toggling modal
+		ownProps.router.push('/');
+	},
 	dispatchLogout: () => {
-		dispatch(logout(ownProps.logoutMethod));
+		dispatch(logout(logoutUser));
 	},
 });
 
 export default compose(
-  withRouter,
-  connect(
+	withRouter,
+	connect(
   	mapStateToProps,
   	mapDispatchToProps
-  ),
+	),
 )(AuthContainer);

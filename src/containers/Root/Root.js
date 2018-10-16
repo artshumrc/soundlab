@@ -9,7 +9,7 @@ import client from '../../middleware/apolloClient';
 
 // auth
 import AuthModalContainer from '../../modules/auth/containers/AuthModalContainer';
-import { login, register, logoutUser, verifyToken } from '../../lib/auth';
+import { loginUser, register, logoutUser, verifyToken } from '../../modules/auth/lib/auth';
 
 
 const scrollToElemOrTop = () => {
@@ -42,7 +42,7 @@ const Root = ({store, history}) => (
 						routes={routes}
 					/>
 					<AuthModalContainer
-						loginMethod={login}
+						loginMethod={loginUser}
 						signupMethod={register}
 						logoutMethod={logoutUser}
 						getUserFromServer={verifyToken}
