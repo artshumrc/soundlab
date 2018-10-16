@@ -217,9 +217,12 @@ input[type="submit"], button[type="submit"] {
 
 body {
   &.js-showing-modal {
-    #home {
-      overflow: hidden;
-      position: fixed;
+    [data-reactroot] {
+      > div:first-child {
+        height: 100vh;
+        overflow: hidden;
+        position: fixed;
+      }
     }
   }
 }

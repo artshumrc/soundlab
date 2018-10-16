@@ -22,8 +22,8 @@
 
 	.closeModal {
 		position: fixed;
-		top: 25px;
-		right: 25px;
+		top: 10px;
+		right: 10px;
 		width: 44px;
 		height: 44px;
 		border: 2px #999 solid;
@@ -35,6 +35,10 @@
 		align-items: center;
 		color: $orpheus_color_accent_200;
 		transition: all 100ms ease-in-out;
+		@include breakpoint2 {
+			top: 25px;
+			right: 25px;
+		}
 
 		&:hover {
 			background: $black;
