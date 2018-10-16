@@ -104,7 +104,7 @@ const ProjectHeader = ({ project, toggleAuthModal, dispatchToggleLeftMenu, leftM
 								className="login-button"
 								onClick={toggleAuthModal}
 							>
-								Sign Up / In
+								Sign In
 							</Link>
 						: '' }
 					</li>

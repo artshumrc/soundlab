@@ -56,27 +56,23 @@
 
 .nav {
 	li {
-		@include orpheus_font_caption;
+		@include orpheus_font_body2;
 		display: inline-block;
 		vertical-align: top;
 
 		a {
 			padding: 18px 20px;
-			font-weight: bold;
-			text-transform: uppercase;
 			cursor: pointer;
 			border: 2px solid transparent;
 			@include transition(all 100ms linear);
 			display: block;
 			height: 60px;
-			font-size: 12px;
 			line-height: 1;
 			display: flex;
 			align-items: center;
 
 			&:hover {
 				background: $color_grey_100;
-				color: $black;
 			}
 
 			&.login-button  {
