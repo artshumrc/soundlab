@@ -19,3 +19,7 @@
 .button--dark {
 	@include orpheus_button--dark;
 }
+
+.button--expand {
+	width: 100%;
+}

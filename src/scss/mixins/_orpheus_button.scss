@@ -1,10 +1,11 @@
 @mixin orpheus_button {
 	@include orpheus_font_button;
+	border: none;
 	border-radius: 2px;
 	color: $orpheus_color_primary_500;
 	cursor: pointer;
 	display: inline-block;
-	padding: 15px 25px;
+	padding: 1.2rem 2rem;
 	text-align: center;
 	text-transform: uppercase;
 	transition: all 100ms ease-in-out;
@@ -38,14 +39,14 @@
 @mixin orpheus_button--secondary {
   @include orpheus_button;
 	background: $orpheus_color_accent_300;
-	color: $orpheus_color_accent_700;
+	color: $color_grey_800;
 	&:hover {
 		background: $orpheus_color_accent_700;
-		color: $orpheus_color_accent_700;
+		color: $color_grey_800;
 	}
 	&:active {
 		background: $orpheus_color_accent_900;
-		color: $orpheus_color_accent_700;
+		color: $color_grey_800;
 	}
 }
 

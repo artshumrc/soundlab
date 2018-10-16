@@ -7,19 +7,17 @@
 }
 
 .projectNameAvailabilityFormInputOuter {
+	margin-bottom: 40px;
 	input {
-		display: inline-block;
-		margin: 20px 0;
 		width: 90%;
-		max-width: 660px;
+		// max-width: 660px;
 	}
 }
 
 .projectNameAvailabilityFormURLOuter {
-
 	&.projectNameUnavailable {
 		input {
-			color: $orpheus_color_accent_400;
+			color: $color_grey_400;
 		}
 	}
 
@@ -27,28 +25,19 @@
 		width: 260px;
 		text-align: right;
 	}
+}
 
-	.projectNameAvailabilityFormHelp {
-		padding-top: 45px;
-	}
+.projectNameAvailabilityFormURLFields {
+	display: flex;
+	align-items: center;
 }
 
 .projectNameAvailabilityFormURL {
-	display: inline-block;
-	vertical-align: top;
-
-	span {
-	}
-
-}
-
-.projectNameAvailabilityFormHelp {
-	display: inline-block;
-	cursor: pointer;
+	margin-left: 7px;
 }
 
 .nameNotAvailable {
-	color: $orpheus_color_accent_500;
+	color: $color_grey_400;
 	opacity: 0;
 
 	&.nameNotAvailableVisible {

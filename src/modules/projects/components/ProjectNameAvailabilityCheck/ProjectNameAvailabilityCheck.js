@@ -18,7 +18,7 @@ class ProjectNameAvailabilityCheck extends React.Component {
 					onSubmit={this.props.handleSubmit}
 				>
 					<div className="projectNameAvailabilityFormInputOuter projectNameAvailabilityFormTitleOuter">
-						<label>What is your Organization&apos;s or Project&apos;s title?</label>
+						<label>What is your Organization's or Project's title?</label>
 						<Field
 							name="title"
 							type="text"
@@ -26,11 +26,6 @@ class ProjectNameAvailabilityCheck extends React.Component {
 							placeholder="Your Organization or Project"
 							validate={[required, maxLength200]}
 						/>
-						<span
-							className="projectNameAvailabilityFormHelp"
-						>
-							?
-						</span>
 					</div>
 
 					<div
@@ -42,23 +37,20 @@ class ProjectNameAvailabilityCheck extends React.Component {
 					>
 						<div>
 							<label>At what URL would you like users to access your project?</label>
-							<Field
-								name="hostname"
-								type="text"
-								component="input"
-								placeholder="example"
-								validate={[required, maxLength200]}
-							/>
-							<div className="projectNameAvailabilityFormURL">
-								<span>
-									.orphe.us
-								</span>
+							<div className="projectNameAvailabilityFormURLFields">
+								<Field
+									name="hostname"
+									type="text"
+									component="input"
+									placeholder="example"
+									validate={[required, maxLength200]}
+								/>
+								<div className="projectNameAvailabilityFormURL">
+									<span>
+										.orphe.us
+									</span>
+								</div>
 							</div>
-							<span
-								className="projectNameAvailabilityFormHelp"
-							>
-								?
-							</span>
 						</div>
 						<div>
 							<span className={`nameNotAvailable ${this.props.projectFound ? 'nameNotAvailableVisible' : ''}`}>
@@ -71,10 +63,11 @@ class ProjectNameAvailabilityCheck extends React.Component {
 						type="submit"
 						className={`
 							projectNameAvaibilityButton
+							button--expand
 							${this.props.projectFound ? 'disabled' : ''}
 						`}
 					>
-						Create
+						Create Project
 					</button>
 
 				</form>

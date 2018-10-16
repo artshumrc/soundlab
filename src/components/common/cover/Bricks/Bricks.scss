@@ -31,7 +31,7 @@
 		opacity: 1;
 		height: 100%;
 		width: 100%;
-		@include transition(all 1000ms ease-in-out);
+		transition: all 1000ms ease-in-out;
 	}
 }
 
@@ -39,10 +39,9 @@
 	border: 6px solid transparent;
 	outline: 1px solid transparent;
 	opacity: 0.12;
-	@include transition(all 100ms linear);
+	transition: all 1000ms linear;
 
 	&:hover {
-		outline: 1px solid $orpheus_color_primary_300;
 		opacity: 1;
 	}
 }

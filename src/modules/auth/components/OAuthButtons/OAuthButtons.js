@@ -56,7 +56,7 @@ class OAuthButtons extends React.Component {
 
 		return (
 			<button
-				className="button at-social-btn"
+				className="button button--secondary at-social-btn"
 				id={`at-${type}`}
 				name={type}
 				onClick={this.handleLogin.bind(this, type)}

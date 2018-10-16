@@ -3,7 +3,7 @@
 .profile {
 	padding: 120px 0;
 	min-height: 100vh;
-	max-width: 720px;
+	max-width: 500px;
 	margin: 0 auto;
 
 	h1 {
@@ -41,4 +41,5 @@
 
 .profileEditorButton {
 	@include orpheus_button;
+	width: 100%;
 }

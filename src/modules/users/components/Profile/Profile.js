@@ -22,56 +22,58 @@ class Profile extends React.Component {
 					onSubmit={this.props.handleSubmit}
 				>
 					<div className="profileEditorFormInputOuter">
-						<label>Username</label>
+						<label htmlFor="username">Username</label>
 						<Field
+							id="username"
 							name="username"
 							type="text"
 							component="input"
-							placeholder="Username"
+							placeholder=""
 							validate={[required, maxLength200]}
 						/>
 					</div>
 
 					<div className="profileEditorFormInputOuter">
-						<label>Name</label>
+						<label htmlFor="name">Full Name</label>
 						<Field
+							id="name"
 							name="name"
 							type="text"
 							component="input"
-							placeholder="Name"
+							placeholder=""
 							validate={[required, maxLength200]}
 						/>
 					</div>
 
 					<div className="profileEditorFormInputOuter">
-						<label>Email</label>
+						<label htmlFor="email">Email</label>
 						<Field
+							id="email"
 							name="email"
 							type="text"
 							component="input"
-							placeholder="Email"
+							placeholder=""
 							validate={[required, maxLength200]}
 						/>
 					</div>
 
 					<div className="profileEditorFormInputOuter">
-						<label>Biography</label>
+						<label htmlFor="bio">Biography</label>
 						<Field
+							id="bio"
 							name="bio"
 							type="text"
 							component="textarea"
-							placeholder="Your Biography . . . "
+							placeholder=""
 							validate={[maxLength2100]}
 						/>
 					</div>
 
 					<button
 						type="submit"
-						className={`
-							profileEditorButton
-						`}
+						className="profileEditorButton"
 					>
-						Save
+						Save Profile
 					</button>
 				</form>
 			</div>
