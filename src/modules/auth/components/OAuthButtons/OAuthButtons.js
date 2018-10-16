@@ -48,7 +48,7 @@ class OAuthButtons extends React.Component {
 	_getButtonText(type) {
 		const { register } = this.props;
 		if (register) return `Sign Up with ${type}`;
-		return `Sign In with ${type}`;
+		return `Log In with ${type}`;
 	}
 
 	OAuthButton({ type }) {

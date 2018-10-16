@@ -206,7 +206,7 @@ class LeftMenu extends React.Component {
 						<MenuItem
 							onClick={dispatchToggleAuthModal}
 						>
-							Sign In
+							Log In
 						</MenuItem>
 					}
 				</div>

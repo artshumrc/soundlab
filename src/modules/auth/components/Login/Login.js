@@ -29,25 +29,12 @@ class Login extends React.Component {
 
 		return (
 			<div className="at-form">
-				<h5>
-					Sign In or
-					<button
-						id="at-signUp"
-						className="at-link at-signup"
-						onClick={onRegisterClick}
-					>
-						Create an Account
-					</button>
-					.
-				</h5>
-				<div className="at-signup-link" />
-
 				<OAuthButtons
 					login={login}
 				/>
 
 				<div className="at-sep">
-					<strong>OR</strong>
+					or
 				</div>
 
 				<PWDLoginForm
@@ -59,6 +46,10 @@ class Login extends React.Component {
 						Verification email lost? <a href="/send-again" id="at-resend-verification-email" className="at-link at-resend-verification-email">Send again.</a>
 					</p>
 				</div>*/}
+
+				<p>
+					Don't have an account? <a href="#" onClick={onRegisterClick}>Sign up</a>
+				</p>
 			</div>
 		);
 	}

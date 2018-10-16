@@ -71,7 +71,7 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signu
 				</p>*/}
 			</div>
 			<button type="submit" className="at-btn submit button" id="at-btn" disabled={submitting}>
-				Register
+				Sign Up
 			</button>
 		</form>
 	</div>

@@ -24,19 +24,17 @@
 	}
 
 	.error-text {
-		@include orpheus_font_caption;
-		color: $black;
+		@include orpheus_font_body2;
+		color: $red;
 	}
 }
 
 .at-sep {
-	@include orpheus_button;
-	margin: 15px auto;
+	margin: 15px auto 25px;
 }
 
 #at-forgotPwd {
 	text-align: left;
-	font-size: 16px;
 	padding: 2px 0 14px;
 	display: block;
 }
@@ -47,5 +45,4 @@
 }
 
 .at-signup-link, .at-resend-verification-email-link {
-	font-size: 16px;
 }
