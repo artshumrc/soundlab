@@ -24,6 +24,10 @@ class ProjectNameAvailabilityCheck extends React.Component {
 							type="text"
 							component="input"
 							placeholder="Your Organization or Project"
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck="false"
 							validate={[required, maxLength200]}
 						/>
 					</div>
@@ -42,7 +46,10 @@ class ProjectNameAvailabilityCheck extends React.Component {
 									name="hostname"
 									type="text"
 									component="input"
-									placeholder="example"
+									autoComplete="off"
+									autoCorrect="off"
+									autoCapitalize="off"
+									spellCheck="false"
 									validate={[required, maxLength200]}
 								/>
 								<div className="projectNameAvailabilityFormURL">
