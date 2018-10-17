@@ -1,48 +1,43 @@
-@import '../../../../variables.scss';
+@import "../../../../styles.scss";
 
-.at-form {
-	h5 {
-		button {
-			color: $orpheus_color_primary_500;
-			cursor: pointer;
-			margin-left: 10px;
-			padding: 0 0px 2px;
-			background: none;
-			border: none;
-			outline: none;
-			transition: all 100ms ease-in-out;
+.loginForm {
+	h3 {
+		padding: 10px 0 20px;
+		font-family: $font-reading;
+		font-size: 24px;
+		font-weight: 100;
+	}
+}
 
-			&:hover {
-				color: $orpheus_color_primary_500;
-			}
+.loginSeparator {
+	font-size: 14px;
+	margin: 15px auto;
+	font-weight: 100;
+}
+
+.signupLink {
+	padding: 25px 0;
+	a, span {
+		font-size: 18px;
+		padding: 0 5px;
+		font-family: $font-body;
+
+	}
+	a {
+		color: $primary;
+		font-weight: bold;
+		cursor: pointer;
+		
+		&:hover {
+			color: $primary-800;
+
 		}
 	}
-
-	form {
-		text-align: left;
-		margin: 0 auto;
-	}
-
-	.error-text {
-		@include orpheus_font_body2;
-		color: $red;
+	span {
+		color: $dark;
 	}
 }
 
-.at-sep {
-	margin: 15px auto 25px;
-}
-
-#at-forgotPwd {
-	text-align: left;
-	padding: 2px 0 14px;
-	display: block;
-}
-
-#at-resend-verification-email {
-	padding: 0 4px;
-
-}
-
-.at-signup-link, .at-resend-verification-email-link {
+.verificationEmailLink {
+	font-size: 16px;
 }

@@ -1,0 +1,6 @@
+{
+  "name": "SoundListContainer",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./SoundListContainer.js"
+}

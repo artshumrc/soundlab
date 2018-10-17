@@ -26,23 +26,15 @@ class Cover extends React.Component {
 	}
 
 	render() {
-		const { className, full, left, bottom, background, reactsToMouse, overlay } = this.props;
+		const { className, full, bottom, background, reactsToMouse, overlay } = this.props;
 		const classes = [className];
 		const { windowWidth } = this.state;
-		let height = window.innerHeight * 0.66;
 
 		if (full) {
 			classes.push('cover--full');
-			height = window.innerHeight;
 		}
 
-		if (height < 260) {
-			height = 260;
-		}
-
-		if (left) {
-			classes.push('cover--left');
-		} else if (bottom) {
+		if (bottom) {
 			classes.push('cover--bottom');
 		} else {
 			classes.push('cover--center');
@@ -54,7 +46,7 @@ class Cover extends React.Component {
 				className={`cover ${classes.join(' ')}`}
 				style={{
 					width: windowWidth,
-					height: `${height}px`,
+					height: full ? window.innerHeight : 400,
 				}}
 			>
 				<div

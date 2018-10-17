@@ -1,0 +1,29 @@
+@import "../../../../styles.scss";
+
+.additionalResourceItem {
+  display: inline-block;
+	vertical-align: top;
+  width: 33%;
+	min-width: 220px;
+}
+
+.link {
+
+	&:hover {
+		i, span {
+			color: $primary;
+		}
+	}
+
+	i, span {
+	  display: inline-block;
+		vertical-align: top;
+		padding: 0 2px;
+		color: $dark;
+	}
+
+	span {
+		font-family: $font-body;
+		font-weight: bold;
+	}
+}

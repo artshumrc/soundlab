@@ -5,32 +5,30 @@ import './Button.css';
 
 const Button = (props) => {
 
-	const { to, onClick, light, transparentLight, dark, primary, accent, outline, classes } = props;
-	const _classes = classes || [];
-
-	_classes.push('button');
+	const { to, onClick, light, transparentLight, dark, primary, accent, outline } = props;
+	const classes = ['orpheus-button'];
 
 	if (primary) {
-		_classes.push('button--primary');
+		classes.push('orpheus-button--primary');
 	} else if (accent) {
-		_classes.push('button--accent');
+		classes.push('orpheus-button--accent');
 	} else if (light) {
-		_classes.push('button--light');
+		classes.push('orpheus-button--light');
 	} else if (transparentLight) {
-		_classes.push('button--trans-light');
+		classes.push('orpheus-button--trans-light');
 	} else if (dark) {
-		_classes.push('button--dark');
+		classes.push('orpheus-button--dark');
 	}
 
 	if (outline) {
-		_classes.push('button--outline');
+		classes.push('orpheus-button--outline');
 	}
 
 	return (
 		<Link
 			to={to}
 			onClick={onClick}
-			className={_classes.join(' ')}
+			className={classes.join(' ')}
 		>
 			{props.children}
 		</Link>

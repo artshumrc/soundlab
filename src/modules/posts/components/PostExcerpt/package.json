@@ -1,0 +1,6 @@
+{
+  "name": "PostExcerpt",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./PostExcerpt.js"
+}

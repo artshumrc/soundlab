@@ -15,4 +15,4 @@ const createManifest = async (manifest) => {
 	}
 };
 
-export default createManifest;
+export {createManifest};

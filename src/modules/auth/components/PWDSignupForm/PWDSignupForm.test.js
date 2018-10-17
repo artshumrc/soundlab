@@ -1,13 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
-// component
-import PWDSignupForm from './PWDSignupForm';
+// component:
+import PWDSignupForm from './index';
 
 describe('PWDSignupForm', () => {
 	it('renders correctly', () => {
 
-		const wrapper = shallow(<PWDSignupForm />);
-		expect(wrapper).toBeDefined();
+		const tree = renderer
+			.create(<PWDSignupForm />)
+			.toJSON();
+		expect(tree).toMatchSnapshot();
 	});
 });

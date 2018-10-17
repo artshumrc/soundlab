@@ -1,0 +1,19 @@
+@import "./styles/reset.scss";
+@import "./styles/vars.scss";
+@import "./styles/typography.scss";
+@import "./styles/colors.scss";
+@import "./styles/wrapper.scss";
+@import "./styles/flexbox.scss";
+@import "./styles/background.scss";
+@import "./styles/images.scss";
+@import "./styles/z-index.scss";
+@import "./styles/hljs.scss";
+
+
+*{
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}

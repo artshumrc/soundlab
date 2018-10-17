@@ -1,29 +1,38 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 // lib
-import muiTheme from '../../../../lib/muiTheme';
+import muiTheme from '../../../lib/muiTheme';
 
-class ModalChangePwd extends React.Component {
+const ModalChangePwd = React.createClass({
+
+	propTypes: {
+		lowered: PropTypes.bool,
+		closeModal: PropTypes.func,
+	},
+
+	childContextTypes: {
+		muiTheme: PropTypes.object.isRequired,
+	},
+
 	getChildContext() {
 		return { muiTheme: getMuiTheme(muiTheme) };
-	}
+	},
 
 	componentWillMount() {
 		document.addEventListener('keydown', this._handleKeyDown);
-	}
+	},
 
 	componentWillUnmount() {
 		document.removeEventListener('keydown', this._handleKeyDown);
-	}
+	},
 
 	_handleKeyDown(event) {
 
 		const { closeModal } = this.props;
 
 		if (event.keyCode === 'ESCAPE_KEY') closeModal();
-	}
+	},
 
 	render() {
 		const lowered = this.props.lowered;
@@ -46,17 +55,7 @@ class ModalChangePwd extends React.Component {
 				</div>
 			</div>
 		);
-	}
-}
-
-ModalChangePwd.propTypes = {
-	lowered: PropTypes.bool,
-	closeModal: PropTypes.func,
-};
-
-ModalChangePwd.childContextTypes = {
-	muiTheme: PropTypes.object.isRequired,
-};
-
+	},
+});
 
 export default ModalChangePwd;

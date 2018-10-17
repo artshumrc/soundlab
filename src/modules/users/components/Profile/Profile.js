@@ -1,87 +1,67 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import React, { Component, PropTypes } from 'react'
+import { graphql } from 'react-apollo'
+import { Grid, Row, Col } from 'react-bootstrap';
+import gql from 'graphql-tag'
+import ReactDOM from 'react-dom'
+import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
+import { Link } from 'react-router';
 
-import ProfileNav from '../ProfileNav';
-import { required, maxLength } from '../../../../lib/formHelpers';
-
-import './Profile.css';
+import UserSubmissionListItem from '../UserSubmissionListItem';
 
 
-const maxLength200 = maxLength(200);
-const maxLength2100 = maxLength(2100);
+import './Profile.css'
 
-class Profile extends React.Component {
 
-	render() {
-		return (
-			<div className="profile">
-				<ProfileNav />
+class Profile extends Component {
 
-				<form
-					className="profileForm"
-					onSubmit={this.props.handleSubmit}
-				>
-					<div className="profileEditorFormInputOuter">
-						<label htmlFor="username">Username</label>
-						<Field
-							id="username"
-							name="username"
-							type="text"
-							component="input"
-							placeholder=""
-							validate={[required, maxLength200]}
-						/>
+  render() {
+    return (
+      <div className="profile">
+				<Grid>
+					<Row>
+						<Col>
+							<h1 className="title">Your Tracks</h1>
+							<div className="submitOuter">
+								<Link
+									to="/submit"
+									className="submitTrackButton"
+								>
+									Submit a track
+								</Link>
+							</div>
+						</Col>
+					</Row>
+					<div className="yourTracks">
+			      <Row className="postsColumnSectionTitles">
+		          <Col sm={1}>
+								<span className="sectionTitleNumber">#</span>
+							</Col>
+		          <Col sm={8}>
+								<span className="sectionTrackLabel">Track</span>
+							</Col>
+							<Col sm={3}>
+								<span className="sectionTitleDuration"></span>
+							</Col>
+						</Row>
+						<div className="playlistSounds">
+							{this.props.sounds.map((sound, i) => (
+								<UserSubmissionListItem
+									key={`${sound.id}-${i}`}
+									sound={sound}
+									index={i}
+								/>
+							))}
+						</div>
 					</div>
-
-					<div className="profileEditorFormInputOuter">
-						<label htmlFor="name">Full Name</label>
-						<Field
-							id="name"
-							name="name"
-							type="text"
-							component="input"
-							placeholder=""
-							validate={[required, maxLength200]}
-						/>
-					</div>
-
-					<div className="profileEditorFormInputOuter">
-						<label htmlFor="email">Email</label>
-						<Field
-							id="email"
-							name="email"
-							type="text"
-							component="input"
-							placeholder=""
-							validate={[required, maxLength200]}
-						/>
-					</div>
-
-					<div className="profileEditorFormInputOuter">
-						<label htmlFor="bio">Biography</label>
-						<Field
-							id="bio"
-							name="bio"
-							type="text"
-							component="textarea"
-							placeholder=""
-							validate={[maxLength2100]}
-						/>
-					</div>
-
-					<button
-						type="submit"
-						className="profileEditorButton"
-					>
-						Save Profile
-					</button>
-				</form>
-			</div>
-		);
-	}
+				</Grid>
+      </div>
+    )
+  }
 }
 
+Profile.defaultProps = {
+	sounds: [],
+};
 
-export default reduxForm({
-	form: 'Profile',
-})(Profile);
+export default Profile;

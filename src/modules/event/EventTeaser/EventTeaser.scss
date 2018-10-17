@@ -1,0 +1,110 @@
+@import "../../../styles.scss";
+
+.itemTeaser {
+  display: flex;
+  margin: 0 0 80px;
+  width: 100%;
+  @media #{$breakpoint-0} {
+    flex-direction: column;
+  }
+}
+
+.text {
+  padding: 0 40px;
+  width: 100%;
+  @media #{$breakpoint-0} {
+    padding: 10px 20px 0;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.teaserDate time {
+  padding: 10px 15px;
+  border: 1px solid #e6e6e6;
+  position: absolute;
+  font-family: $font-reading;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $text-secondary;
+}
+
+.teaserTitle {
+  margin-top: 60px;
+  font-size: 32px;
+  font-family: $font-reading;
+  color: $feature-title;
+  line-height: 40px;
+  border-bottom: 4px solid transparent;
+
+  &:hover {
+    border-bottom: 4px solid $primary-200;
+  }
+}
+
+.teaserTitleFeatured {
+  margin-top: 60px;
+  font-size: 38px;
+  line-height: 40px;
+  font-family: $font-reading;
+  color: $feature-title;
+  border-bottom: 4px solid transparent;
+
+  &:hover {
+    border-bottom: 4px solid $primary-200;
+  }
+}
+
+.teaserTags {
+  text-transform: uppercase;
+  margin: 30px 0;
+  color: $feature-tags;
+  font-size: 12px;
+}
+
+.teaserText {
+  font-family: $font-reading;
+  font-size: 18px;
+  color: $feature-text;
+  line-height: 26px;
+}
+
+.readMoreFeaturedOuter {
+  background: $accent-primary;
+  padding: 10px 15px;
+}
+
+.readMoreFeatured {
+  color: #fff;
+  font-family: 'Futura LT W01 Book';
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  padding-right: 10px;
+}
+
+.readMoreFeaturedIcon {
+  color: #fff;
+
+  &:before {
+    font-size: 18px;
+  }
+}
+
+.readMore {
+  color: $accent-primary;
+  font-family: $font-title;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  padding-right: 10px;
+}
+
+.readMoreIcon {
+  color: $accent-primary;
+
+  &:before {
+    font-size: 18px;
+  }
+}

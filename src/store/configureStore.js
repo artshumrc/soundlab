@@ -1,6 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+import { browserHistory } from 'react-router';
+import { routerMiddleware } from 'react-router-redux';
+
 import rootReducer from '../reducers';
 import client from '../middleware/apolloClient';
 
@@ -11,7 +14,7 @@ const configureStore = (preloadedState) => {
 		rootReducer,
 		preloadedState,
 		composeEnhancers(
-			applyMiddleware(thunk, createLogger(), client.middleware()),
+			applyMiddleware(thunk, createLogger(), client.middleware(), routerMiddleware(browserHistory)),
 		)
 	);
 

@@ -1,14 +1,50 @@
-@import '../../../../variables.scss';
+@import '../../../../styles.scss';
 
-.at-pwd-form {
+.loginForm {
 	label {
+		font-size: 12px;
+		font-family: $font-label;
+		text-transform: uppercase;
 		text-align: left;
+		font-weight: bold;
 		width: 100%;
-		margin: 5px 0;
+		letter-spacing: 2px;
+		margin: 10px 0;
+	}
+
+	input {
+		border-radius: 0px;
+		border: 2px solid #ddd;
+		padding: 15px;
+		font-size: 16px;
+		height: auto;
+		width: 100%;
+		font-family: $font-reading;
+		color: $darkestGrey;
+		font-size: 22px;
+
+		&:focus {
+			border: 2px solid $dark;
+			outline: none;
+		}
 	}
 
 	button {
 		width: 100%;
+		padding: 15px 25px;
 		margin: 10px auto 30px;
+		border-radius: 0px;
+		border: 2px solid $primary;
+		font-size: 14px;
+		background: $primary;
+		@include transition(all 100ms ease-in-out);
+		color: $light;
+		font-family: $font-body;
+		text-transform: uppercase;
+
+		&:hover, &:focus {
+			background: $primary-600;
+			border: 2px solid $primary-600;
+		}
 	}
 }

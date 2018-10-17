@@ -1,16 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
 // component:
 import OAuthButtons from './OAuthButtons';
 
 describe('OAuthButtons', () => {
 	it('renders correctly', () => {
-		const wrapper = shallow(
-			<OAuthButtons
-				login={() => {}}
-			/>
-		);
-		expect(wrapper).toBeDefined();
+
+		const tree = renderer
+			.create(<OAuthButtons />)
+			.toJSON();
+		expect(tree).toMatchSnapshot();
 	});
 });

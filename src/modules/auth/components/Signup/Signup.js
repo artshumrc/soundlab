@@ -1,45 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import OAuthButtons from '../OAuthButtons';
 import PWDSignupForm from '../PWDSignupForm';
+
+import './Signup.css';
 
 
 class Signup extends React.Component {
 
 	static propTypes = {
 		onSigninClick: PropTypes.func.isRequired,
-		signup: PropTypes.func.isRequired,
+		handleSignup: PropTypes.func.isRequired,
 	}
 
 	render() {
-		const { signup, onSigninClick } = this.props;
+		const { handleSignup, onSigninClick } = this.props;
 
 		return (
-			<div className="at-form">
-				<OAuthButtons
-					login={signup}
-					register
-				/>
+			<div className="signupForm">
+				<Row>
+					<Col>
+						<h3>Create an account</h3>
+					</Col>
+				</Row>
 
-				<div className="at-sep">
-					or
-				</div>
+				<Row>
+					<Col>
+						<PWDSignupForm
+							handleSignup={handleSignup}
+						/>
+					</Col>
+				</Row>
 
-				<PWDSignupForm
-					signup={signup}
-				/>
-
-				<div className="at-signup-link">
-					<div className="at-resend-verification-email-link at-wrap">
-						<p>
-							By clicking "Sign Up", you agree to our <a href="/terms" className="at-link at-link--terms at-resend-verification-email">Terms and Privacy Policy.</a>
+				<Row>
+					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
+						<p className="loginLink">
+							<span>Already have an account? </span>
+							<a
+								onClick={onSigninClick}
+							>
+								Login.
+							</a>
 						</p>
-						<p>
-							Have an account already? <button onClick={onSigninClick}>Log in</button>
-						</p>
-					</div>
-				</div>
+					</Col>
+				</Row>
+
 			</div>
 		);
 	}

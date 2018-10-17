@@ -1,77 +1,72 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react'
+import ReactDOM from 'react-dom'
+import { Grid, Row, Col } from 'react-bootstrap'
+import wpautop from 'wpautop';
+import linkifyHtml from 'linkifyjs/html';
 
-class Page extends React.Component {
 
-	render() {
-		const { page, slug, loading } = this.props;
-		const headerImageUrl = '/images/apotheosis_homer.jpg';
+import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 
-		if (loading) {
-			return (
-				<div>Loading</div>
-			);
-		} else if (!loading && !page) {
-			return (
-				<div>Not found</div>
-			);
-		}
+import './Page.css'
 
-		if (page && page.title) {
-			// Utils.setTitle(`${page.title} | ${settings.title}`);
-		}
-		if (headerImageUrl) {
-			// Utils.setMetaImage(headerImageUrl);
-		}
+export default class About extends Component {
 
-		return (
-			// todo: return 404 if !page.length
-			<div className={`page page-${slug} content primary`}>
+	renderPostContent() {
+		const { page } = this.props;
 
-				<section className="block header header-page cover parallax">
-					{/* <BackgroundImageHolder */}
-					{/* imgSrc="/images/apotheosis_homer.jpg" */}
-					{/* /> */}
-
-					<div className="container v-align-transform">
-						<div className="grid inner">
-							<div className="center-content">
-								<div className="page-title-wrap">
-									<h1 className="page-title">
-										{page.title}
-									</h1>
-									<h2>
-										{page.subtitle}
-									</h2>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section className="page-content container">
-					{page.byline ?
-						<div className="page-byline">
-							<h3>
-								{page.byline}
-							</h3>
-						</div>
-						: ''}
-					<div dangerouslySetInnerHTML={{ __html: page.content }} />
-				</section>
-			</div>
-		);
+		return { __html: linkifyHtml(wpautop(page.post_content)) };
 	}
+
+  render() {
+		const { page } = this.props;
+
+		if (!page) {
+			// TODO add loading
+			return null;
+		}
+
+		let thumbnail;
+		if (page.thumbnail) {
+	    thumbnail = getPostThumbnailBySize(page.thumbnail, 'large');
+		}
+
+    const pageCoverImage = {
+      backgroundImage: `url("${thumbnail || '/images/default_event.jpg'}")`,
+      width: '100%',
+      height: '500px',
+      objectFit: 'cover',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    };
+
+    const teamMemberImage = {
+      backgroundImage: `url("/images/default_sound.jpg")`,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    };
+
+    return (
+
+			//remove cover section and cover section image for release
+
+      <div>
+        {/* <Row styleName="page-cover-section">
+			</Row> */}
+        <Row styleName="page-content-section">
+          <Col mdOffset sm={12}>
+            {/* <div styleName="page-cover-image" style={pageCoverImage} /> */}
+            <div>
+              <h1 styleName="page-section-title">
+								{page.post_title}
+							</h1>
+              <div styleName="content" dangerouslySetInnerHTML={this.renderPostContent()} />
+            </div>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
 }
-
-Page.propTypes = {
-	slug: PropTypes.string,
-	page: PropTypes.object,
-	ready: PropTypes.bool,
-	images: PropTypes.array,
-	thumbnails: PropTypes.array,
-	loading: PropTypes.bool,
-	settings: PropTypes.object,
-};
-
-export default Page;

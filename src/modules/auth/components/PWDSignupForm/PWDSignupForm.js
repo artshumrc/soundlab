@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Row, Col } from 'react-bootstrap';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 
-import '../PWDLoginForm/PWDLoginForm.css';
+import './PWDSignupForm.css';
 
 // actions
 import { toggleAuthModal, setUser } from '../../actions';
 
 
-const wrapSubmit = signup => async (values, dispatch) => {
+const wrapSubmit = handleSignup => async (values, dispatch) => {
 	try {
-		const userObj = await signup(values);
-		dispatch(setUser(userObj));
-		dispatch(toggleAuthModal(false));
+		const userObj = await handleSignup(values);
 		return {};
 	} catch (err) {
 		if (err.passwordError) {
@@ -41,44 +40,103 @@ function renderField({ input, label, type, meta }) {
 	);
 }
 
-const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, signup }) => (
-	<div className="at-pwd-form">
-		<form onSubmit={handleSubmit(wrapSubmit(signup))}>
-			<Field
-				name="username"
-				label="Email"
-				type="email"
-				component={renderField}
-			/>
-			<Field
-				name="password"
-				label="Password"
-				type="password"
-				component={renderField}
-			/>
-			<Field
-				name="passwordRepeat"
-				label="Password (Again)"
-				type="password"
-				component={renderField}
-			/>
-			<span className="error-text">
-				{error && <strong>{error}</strong>}
-			</span>
-			<div className="at-pwd-link">
-				{/*<p>
-					<a href="/forgot-password" id="at-forgotPwd" className="at-link at-pwd">Forgot your password?</a>
-				</p>*/}
-			</div>
-			<button type="submit" className="at-btn submit button" id="at-btn" disabled={submitting}>
-				Sign Up
-			</button>
+const required = value => value ? undefined : 'Required';
+const maxLength = max => value =>
+  value && value.length > max ? `Must be ${max} characters or less` : undefined
+const maxLength100 = maxLength(100)
+
+const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handleSignup }) => (
+	<Row className="signupForm">
+		<form onSubmit={handleSubmit(wrapSubmit(handleSignup))}>
+			<Row>
+				<Col md={6}>
+					<label>First Name</label>
+					<Field
+						name="first_name"
+						type="text"
+						placeholder=""
+						component={renderField}
+						validate={[required, maxLength100]}
+					/>
+				</Col>
+				<Col md={6}>
+					<label>Last Name</label>
+					<Field
+						name="last_name"
+						type="text"
+						placeholder=""
+						component={renderField}
+						validate={[required, maxLength100]}
+					/>
+				</Col>
+			</Row>
+			<Row>
+				<Col md={6}>
+					<label>Harvard Email Address</label>
+					<Field
+						name="email"
+						type="email"
+						placeholder=""
+						component={renderField}
+						validate={[required, maxLength100]}
+					/>
+				</Col>
+				<Col md={6}>
+					<label>Field of Study</label>
+					<Field
+						name="field"
+						type="text"
+						placeholder=""
+						component={renderField}
+						validate={[maxLength100]}
+					/>
+				</Col>
+			</Row>
+			<Row>
+				<Col md={6}>
+					<label>Password</label>
+					<Field
+						name="password"
+						type="password"
+						placeholder=""
+						component={renderField}
+						validate={[required, maxLength100]}
+					/>
+				</Col>
+				<Col md={6}>
+					<label>Confirm Password</label>
+					<Field
+						name="confirm_password"
+						type="password"
+						placeholder=""
+						component={renderField}
+						validate={[required, maxLength100]}
+					/>
+				</Col>
+			</Row>
+
+			<Row>
+				<Col>
+					<div className="at-pwd-link">
+						<p className="error-text">
+							{error}
+						</p>
+					</div>
+					<button
+						type="submit"
+						className="signInButton"
+						disabled={submitting}
+					>
+						Create account
+					</button>
+				</Col>
+			</Row>
 		</form>
-	</div>
+	</Row>
 );
 
 PWDSignupForm.propTypes = {
-	signup: PropTypes.func.isRequired,
+	handleSignup: PropTypes.func.isRequired,
 };
 
 const validate = (values) => {

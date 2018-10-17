@@ -8,27 +8,14 @@ import routes from '../../routes';
 import client from '../../middleware/apolloClient';
 
 // auth
-import AuthModalContainer from '../../modules/auth/containers/AuthModalContainer';
-import { loginUser, register, logoutUser, verifyToken } from '../../modules/auth/lib/auth';
+import AuthModal from '../../modules/auth';
+import { login, register, logoutMethod, verifyToken } from '../../lib/auth';
+
+// components
+import PlayerContainer from '../../modules/player/containers/PlayerContainer'
 
 
-const scrollToElemOrTop = () => {
-	if (window.location.hash.length) {
-		const elemHash = window.location.hash.replace('#', '');
-
-		if (elemHash) {
-			const elem = document.getElementById(elemHash);
-
-			if (elem) {
-				elem.scrollIntoView();
-			}
-		}
-	} else {
-		window.scrollTo(0, 0);
-	}
-};
-
-const Root = ({store, history}) => (
+const Root = ({ store, history }) => (
 	<ApolloProvider
 		client={client}
 		store={store}
@@ -37,14 +24,15 @@ const Root = ({store, history}) => (
 			<CookiesProvider>
 				<div>
 					<Router
-						onUpdate={scrollToElemOrTop}
+						onUpdate={() => window.scrollTo(0, 0)}
 						history={history}
 						routes={routes}
 					/>
-					<AuthModalContainer
-						loginMethod={loginUser}
+					<PlayerContainer />
+					<AuthModal
+						loginMethod={login}
 						signupMethod={register}
-						logoutMethod={logoutUser}
+						logoutMethod={logoutMethod}
 						getUserFromServer={verifyToken}
 					/>
 				</div>
@@ -54,8 +42,8 @@ const Root = ({store, history}) => (
 );
 
 Root.propTypes = {
-	store: PropTypes.shape({}).isRequired,
-	history: PropTypes.shape({}).isRequired,
+	store: PropTypes.shape({/* TODO: update */}).isRequired,
+	history: PropTypes.shape({/* TODO: update */}).isRequired,
 };
 
 export default Root;

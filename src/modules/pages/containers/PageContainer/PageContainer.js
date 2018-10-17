@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'react-apollo';
 
-import pageDetailQuery from '../../graphql/queries/detail';
+import { pageQuery } from '../../graphql/queries/pages';
 import Page from '../../components/Page';
 
 
@@ -10,5 +10,5 @@ const PageContainer = props => (
 );
 
 export default compose(
-	pageDetailQuery,
+	pageQuery,
 )(PageContainer);

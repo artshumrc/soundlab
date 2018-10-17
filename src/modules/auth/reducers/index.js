@@ -38,14 +38,20 @@ export default (state = initialState, action) => {
 		return {
 			...state,
 			username: action.username,
-			userId: action.userId,
+			token: action.token,
 		};
 	}
 	case types.REMOVE_USER: {
 		return {
 			...state,
 			username: null,
-			userId: null,
+			token: null,
+		};
+	}
+	case types.SET_USER_CREATED_MESSAGE: {
+		return {
+			...state,
+			formMessage: action.formMessage,
 		};
 	}
 	default:

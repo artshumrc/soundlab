@@ -4,16 +4,22 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import './PWDLoginForm.css';
 
+// actions
+import { toggleAuthModal, setUser } from '../../actions';
 
-const wrapSubmit = login => async (values, dispatch) => {
+const wrapSubmit = handleLogin => async (values, dispatch) => {
 	try {
-		await login(values);
+		await handleLogin(values);
 		return {};
 	} catch (err) {
-		console.error(err);
-		throw new SubmissionError({ _error: 'Username or password incorrect.' });
+		throw new SubmissionError({ _error: 'Login failed!' });
 	}
 };
+
+const required = value => value ? undefined : 'Required';
+const maxLength = max => value =>
+  value && value.length > max ? `Must be ${max} characters or less` : undefined
+const maxLength100 = maxLength(100)
 
 function renderField({ input, label, type, meta }) {
 	return (
@@ -34,42 +40,43 @@ function renderField({ input, label, type, meta }) {
 	);
 }
 
-const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, login }) => (
-	<div className="at-pwd-form">
-		<form onSubmit={handleSubmit(wrapSubmit(login))}>
+const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, handleLogin }) => (
+	<div className="loginForm">
+		<form onSubmit={handleSubmit(wrapSubmit(handleLogin))}>
+			<label>Email</label>
 			<Field
 				name="username"
-				label="Email"
-				type="email"
+				type="text"
+				placeholder=""
 				component={renderField}
+				validate={[required, maxLength100]}
 			/>
+			<label>Password</label>
 			<Field
 				name="password"
-				label="Password"
 				type="password"
+				placeholder=""
 				component={renderField}
+				validate={[required, maxLength100]}
 			/>
 			<div className="at-pwd-link">
 				<p className="error-text">
 					{error}
 				</p>
-				{/*<p>
-					<a href="/forgot-password" id="at-forgotPwd" className="at-link at-pwd">Forgot your password?</a>
-				</p>*/}
 			</div>
 			<button
 				type="submit"
-				className="at-btn submit button"
+				className="signInButton"
 				disabled={submitting}
 			>
-				Log In
+				Login
 			</button>
 		</form>
 	</div>
 );
 
 PWDLoginForm.propTypes = {
-	login: PropTypes.func.isRequired,
+	handleLogin: PropTypes.func.isRequired,
 };
 PWDLoginForm.defaultProps = {
 	// errorMsg: null,
@@ -77,5 +84,5 @@ PWDLoginForm.defaultProps = {
 
 
 export default reduxForm({
-	form: 'PWDLoginForm',  // a unique identifier for this form
+	form: 'PWDLoginForm',
 })(PWDLoginForm);

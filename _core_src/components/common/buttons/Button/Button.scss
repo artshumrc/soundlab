@@ -1,0 +1,25 @@
+@import '../../../../variables.scss';
+
+.button {
+	@include orpheus_button;
+}
+
+.button--primary {
+	@include orpheus_button--primary;
+}
+
+.button--secondary {
+	@include orpheus_button--secondary;
+}
+
+.button--light {
+	@include orpheus_button--light;
+}
+
+.button--dark {
+	@include orpheus_button--dark;
+}
+
+.button--expand {
+	width: 100%;
+}

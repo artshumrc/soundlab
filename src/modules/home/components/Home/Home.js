@@ -1,43 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+
+import ShowcaseList from '../../../showcase/components/ShowcaseList';
+import Cover from '../Cover';
+import Intro from '../Intro';
+import RecentContainer from '../../containers/RecentContainer';
+import LearnContainer from '../../containers/LearnContainer';
+import CalendarContainer from '../../containers/CalendarContainer';
+
 import './Home.css';
-import Header from '../../../../components/navigation/Header';
-import Footer from '../../../../components/navigation/Footer';
-import HomeCover from './sections/HomeCover';
-import AboutSection from './sections/AboutSection';
-// import ShowcaseCollections from './sections/ShowcaseCollections';
-import FeaturesSection from './sections/FeaturesSection';
-import LifetimeData from './sections/LifetimeData';
-import PermissionsSection from './sections/PermissionsSection';
-// import ExploreOrDemo from './sections/ExploreOrDemo';
-import ReadyToStart from './sections/ReadyToStart';
-import ReleaseMessage from '../../../../components/common/ReleaseMessage';
 
 class Home extends React.Component {
-	render() {
-		return (
-			<div id="home">
-				<Header />
-				<HomeCover />
-				<AboutSection />
-				<FeaturesSection />
 
-				{/* TODO: explore collections when there are collections to explorew
-					<ShowcaseCollections />
-				*/}
+  render() {
 
-				<LifetimeData />
-				<PermissionsSection />
-
-				{/* TODO: create explore and demo pages
-					<ExploreOrDemo />
-				*/}
-
-				<ReadyToStart />
-				<Footer />
-				<ReleaseMessage />
-			</div>
-		);
-	}
+    return (
+      <div>
+				<Cover />
+        <Intro />
+        <LearnContainer />
+        <RecentContainer />
+        <CalendarContainer />
+      </div>
+    );
+  }
 }
 
 export default Home;

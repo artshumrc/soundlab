@@ -1,19 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hello from 'hellojs';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import OAuthButtons from '../OAuthButtons';
 import PWDLoginForm from '../PWDLoginForm';
 import './Login.css';
-
-hello.init({
-	facebook: process.env.REACT_APP_FACBOOK_CLIENT_ID,
-	twitter: process.env.REACT_APP_TWITTER_CLIENT_ID,
-	google: process.env.REACT_APP_GOOGLE_CLIENT_ID
-}, {
-	// redirect_uri: '/',
-	oauth_proxy: `${process.env.REACT_APP_SERVER}/oauthproxy`,
-});
 
 
 
@@ -21,35 +13,46 @@ class Login extends React.Component {
 
 	static propTypes = {
 		onRegisterClick: PropTypes.func.isRequired,
-		login: PropTypes.func.isRequired,
+		handleLogin: PropTypes.func.isRequired,
 	}
 
 	render() {
-		const { login, onRegisterClick } = this.props;
+		const { handleLogin, onRegisterClick } = this.props;
 
 		return (
-			<div className="at-form">
-				<OAuthButtons
-					login={login}
-				/>
+			<div className="loginForm">
+				<Row>
+					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
+						<h3>Login to an existing account</h3>
+					</Col>
+				</Row>
 
-				<div className="at-sep">
-					or
-				</div>
+				<Row>
+					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
+						<PWDLoginForm
+							handleLogin={handleLogin}
+						/>
+					</Col>
+				</Row>
 
-				<PWDLoginForm
-					login={login}
-				/>
+				<Row>
+					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
+						<p className="signupLink">
+							<a
+								href="//admin.soundlab.orphe.us/wp-login.php?action=lostpassword"
+							>
+								Forgot Password?
+							</a>
+							<span>or</span>
+							<a
+								onClick={onRegisterClick}
+							>
+								Create Account
+							</a>
+						</p>
+					</Col>
+				</Row>
 
-				{/*<div className="at-resend-verification-email-link at-wrap">
-					<p>
-						Verification email lost? <a href="/send-again" id="at-resend-verification-email" className="at-link at-resend-verification-email">Send again.</a>
-					</p>
-				</div>*/}
-
-				<p>
-					Don't have an account? <button onClick={onRegisterClick}>Sign up</button>
-				</p>
 			</div>
 		);
 	}

@@ -1,0 +1,6 @@
+{
+  "name": "EventSingleContainer",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./EventSingleContainer.js"
+}

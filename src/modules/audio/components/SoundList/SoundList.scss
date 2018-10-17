@@ -1,0 +1,135 @@
+@import "../../../../styles.scss";
+
+.soundList {
+	min-height: 600px;
+	padding: 0 0 120px;
+}
+
+.waveCoverSection {
+	// height: 80vh;
+	justify-content: center;
+}
+
+.searchTitle {
+	padding: 20px 0;
+
+	i {
+		display: inline-block;
+		vertical-align: top;
+	}
+}
+
+.letsListen {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 44px;
+	line-height: 1.3em;
+	color: $lightGrey;
+}
+
+.searchDropdownToggle {
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 10px;
+
+	i {
+		display: inline-block;
+		vertical-align: center;
+		padding: 5px 5px 0;
+
+		&:before {
+			font-size: 36px;
+		}
+	}
+}
+
+.filterTitle {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 44px;
+	line-height: 1.3em;
+	color: $dark;
+	border-bottom: 2px solid $dark;
+	cursor: pointer;
+}
+
+.filterContainer {
+	padding: 0 0 40px;
+	display: flex;
+	align-items: baseline;
+	justify-content: left;
+	flex-wrap: wrap;
+}
+
+.filterButton {
+	display: inline-block;
+	text-align: left;
+	width: 24%;
+	padding: 10px 0;
+
+	&:hover {
+		text-decoration: none;
+		span {
+			color: $dark;
+		}
+	}
+
+	@media #{$breakpoint-0} {
+		width: 30%;
+	}
+
+	span {
+		font-family: $font-label;
+		color: $darkGrey;
+		font-size: 16px;
+		text-shadow: 0.04em 0 #fafafa, -0.04em 0 #fafafa, 0 0.04em #fafafa, 0 -0.04em #fafafa, 0.08em 0 #fafafa, -0.08em 0 #fafafa, 0.1em 0 #fafafa, -0.1em 0 #fafafa, 0.15em 0 #fafafa, -0.15em 0 #fafafa, 0.18em 0 #fafafa, -0.18em 0 #fafafa, 0.04em 0.1em #fafafa, -0.04em 0.1em #fafafa, 0.08em 0.1em #fafafa, -0.08em 0.1em #fafafa, 0.11em 0.1em #fafafa, -0.11em 0.1em #fafafa, 0.15em 0.1em #fafafa, -0.15em 0.1em #fafafa, 0.2em 0.1em #fafafa, -0.2em 0.1em #fafafa;
+		@include transition(all 100ms ease-in-out);
+	}
+}
+
+.filterButtonActive {
+	span {
+		color: $dark;
+		border-bottom: 1px solid $dark;
+	}
+}
+
+.waveAudioPostsSection {
+	min-height: 300px;
+	padding-bottom: 80px;
+}
+
+.postsColumnSectionTitles {
+	border-bottom: 1px solid $lightGrey;
+	margin-bottom: 16px;
+	font-family: $font-label;
+	font-size: 12px;
+	text-transform: uppercase;
+	display: block;
+	color: $lightGrey;
+	padding: 0 15px 6px;
+}
+
+.sectionTitleNumberContainer {
+	display: inline-block;
+	width: 10%;
+}
+
+.sectionTrackLabelContainer {
+	display: inline-block;
+	width: 90%;
+}
+
+.durationColumn {
+	width: 7%;
+}
+@media (max-width: 990px) {
+	.soundList {
+		padding-top: 120px;
+	}
+}
+@media (max-width: 800px) {
+	.trackListSectionContainer {
+		padding: 0 40px !important;
+	}
+}

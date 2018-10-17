@@ -1,25 +1,83 @@
-@import '../../../../variables.scss';
+@import '../../../../styles.scss';
 
-.button {
-	@include orpheus_button;
-}
+.orpheus-button {
+	padding: 15px 25px;
+	margin: 10px;
+	border: 2px solid $light;
+	text-transform: uppercase;
+	font-family: $font-label;
+	color: $light;
+	cursor: pointer;
+	@include transition(all 100ms ease-in-out);
 
-.button--primary {
-	@include orpheus_button--primary;
-}
+	&.orpheus-button--primary {
+		background: $primary;
+		border: 2px solid $primary;
+		&.orpheus-button--outline {
+			border: 2px solid $light;
+		}
+		&:hover {
+			background: $primary-dark;
+			border: 2px solid $primary-dark;
+			color: $light;
+		}
+	}
 
-.button--secondary {
-	@include orpheus_button--secondary;
-}
+	&.orpheus-button--accent {
+		background: $accent;
+		border: 2px solid $accent;
+		&.orpheus-button--outline {
+			border: 2px solid $light;
+		}
+		&:hover {
+			background: $accent-dark;
+			border: 2px solid $accent-dark;
+			color: $light;
+		}
+	}
 
-.button--light {
-	@include orpheus_button--light;
-}
+	&.orpheus-button--light {
+		background: $light;
+		border: 2px solid $light;
+		color: $dark;
+		&.orpheus-button--outline {
+			border: 2px solid $dark;
+		}
+		&.orpheus-button--outline-dark {
+			border: 2px solid $light;
+		}
+		&:hover {
+			background: $primary;
+			border: 2px solid $primary;
+			color: $light;
+		}
+	}
 
-.button--dark {
-	@include orpheus_button--dark;
-}
+	&.orpheus-button--trans-light {
+		background: rgba(255, 255, 255, 0.4);
+		border: 2px solid rgba(255, 255, 255, 0.4);
+		color: $dark;
+		&.orpheus-button--outline {
+			border: 2px solid $dark;
+		}
+		&:hover {
+			background: $primary;
+			border: 2px solid $primary;
+			color: $light;
+		}
+	}
 
-.button--expand {
-	width: 100%;
+	&.orpheus-button--dark {
+		background: $dark;
+		border: 2px solid $dark;
+		color: $light;
+		&.orpheus-button--outline {
+			border: 2px solid $dark;
+		}
+		&:hover {
+			background: $primary;
+			border: 2px solid $primary;
+			color: $light;
+		}
+	}
 }

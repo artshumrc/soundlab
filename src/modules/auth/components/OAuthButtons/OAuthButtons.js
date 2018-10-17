@@ -10,7 +10,7 @@ class OAuthButtons extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.socialTypes = ['google', 'twitter'];
+		this.socialTypes = ['facebook', 'google', 'twitter'];
 
 		this.state = {
 			disabledButtons: false,
@@ -48,7 +48,7 @@ class OAuthButtons extends React.Component {
 	_getButtonText(type) {
 		const { register } = this.props;
 		if (register) return `Sign Up with ${type}`;
-		return `Log In with ${type}`;
+		return `Sign In with ${type}`;
 	}
 
 	OAuthButton({ type }) {
@@ -56,7 +56,7 @@ class OAuthButtons extends React.Component {
 
 		return (
 			<button
-				className="button button--secondary at-social-btn"
+				className="oauthButton"
 				id={`at-${type}`}
 				name={type}
 				onClick={this.handleLogin.bind(this, type)}
@@ -71,7 +71,7 @@ class OAuthButtons extends React.Component {
 		const { errorOauth } = this.state;
 
 		return (
-			<div className="at-oauth">
+			<div className="oauthButtons">
 				{this.socialTypes.map(social => <this.OAuthButton key={social} type={social} />)}
 				<span className="error-text">
 					{errorOauth}

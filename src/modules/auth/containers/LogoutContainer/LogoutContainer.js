@@ -1,57 +1,39 @@
 import React from 'react';
-import { compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { compose } from 'react-apollo';
 
-import { logoutUser } from '../../lib/auth';
-import { logout } from '../../actions';
+import { logoutMethod } from '../../../../lib/auth';
+import { logout } from '../../../auth/actions';
+
 
 class LogoutContainer extends React.Component {
 
-	async componentDidMount() {
-		await this.props.dispatchLogout();
-		this.props.router.push('/');
+	componentDidMount() {
+		this.props.dispatchLogout();
+		this.props.router.replace('/');
 	}
 
 	render() {
-		return (
-			<div
-				style={{
-					width: '90%',
-					maxWidth: '800px',
-					margin: '0 auto',
-					padding: '120px 0',
-					textAlign: 'center',
-				}}
-	    >
-				<p>
-	        Log out of the project
-				</p>
-				<button
-					onClick={this.props.dispatchLogout}
-	      >
-	        Log out
-				</button>
-			</div>
-		);
+		return (<div />);
 	}
 }
 
 const mapStateToProps = state => ({
-	authMode: state.auth.authMode,
+	token: state.auth.token,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	dispatchLogout: () => {
-		dispatch(logout(logoutUser));
-    // window.location = '/auth';
+		dispatch(logout(logoutMethod));
 	},
 });
 
+
 export default compose(
-  withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
+	withRouter,
+	connect(
+		mapStateToProps,
+		mapDispatchToProps,
+	),
 )(LogoutContainer);

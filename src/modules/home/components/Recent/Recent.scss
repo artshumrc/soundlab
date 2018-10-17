@@ -1,0 +1,31 @@
+@import "../../../../styles.scss";
+
+.recent-section {
+  padding-bottom: 0;
+}
+
+.recent-section-title {
+  padding: 30px 0;
+  margin: auto;
+
+  h3 {
+    font-family: $font-reading;
+    font-size: 36px;
+    font-weight: 100;
+    color: $dark;
+  }
+  @media #{$breakpoint-0} {
+    &.workshops {
+      display: none;
+    }
+  }
+}
+
+.recent-sound-container {
+  padding-top: 30px;
+  padding-bottom: 60px;
+  flex-wrap: nowrap;
+  @media #{$breakpoint-3} {
+    flex-wrap: wrap;
+  }
+}

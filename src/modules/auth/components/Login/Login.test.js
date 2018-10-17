@@ -1,17 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
-// component
-import Login from './Login';
+// component:
+import Login from './index';
 
 describe('Login', () => {
 	it('renders correctly', () => {
-		const wrapper = shallow(
-			<Login
-				onRegisterClick={() => {}}
-				login={() => {}}
-			/>
-		);
-		expect(wrapper).toBeDefined();
+
+		const tree = renderer
+			.create(<Login />)
+			.toJSON();
+		expect(tree).toMatchSnapshot();
 	});
 });

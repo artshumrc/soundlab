@@ -1,45 +1,59 @@
-@import '../../../../variables.scss';
+@import "../../../../styles.scss";
+
 
 .profile {
 	padding: 120px 0;
-	min-height: 100vh;
-	max-width: 500px;
+}
+
+.title {
 	margin: 0 auto;
-
-	h1 {
-		color: $black;
-		font-size: 48px;
-		margin-top: 90px;
-	}
-
-	hr {
-		max-width: 120px;
-		width: 90%;
-		margin: 20px 0;
-		height: 3px;
-		background: $color_grey_500;
-		border: none;
-		outline: none;
-		display: none;
-	}
-}
-
-.profileEditorFormInputOuter {
-	margin: 50px 0;
-}
-
-.profileEditorFormHelp {
-	color: $orpheus_color_primary_500;
-	padding: 40px 6px;
-	display: inline-block;
-	cursor: pointer;
-
-	&:hover {
-		color: $orpheus_color_primary_700;
-	}
-}
-
-.profileEditorButton {
-	@include orpheus_button;
 	width: 100%;
+	font-family: $font-title;
+	font-size: 42px;
+	text-align: center;
+	padding: 20px 0 30px;
+}
+
+.submitOuter {
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+}
+
+.submitTrackButton {
+	margin: 20px auto;
+	background: $primary-500;
+	color: $light;
+	font-family: $font-label;
+	font-size: 14px;
+	padding: 10px 20px;
+	border-radius: 2px;
+	display: inline-block;
+	letter-spacing: 1.6px;
+	width: 90%;
+	max-width: 400px;
+	&:hover {
+		background: $primary-700;
+	}
+}
+
+.postsColumnSectionTitles {
+  border-bottom: 1px solid $lightGrey;
+  margin-bottom: 16px;
+	font-family: $font-label;
+	font-size: 12px;
+	text-transform: uppercase;
+	display: block;
+	color: $lightGrey;
+	padding-bottom: 6px;
+}
+
+.durationColumn {
+	text-align: left;
+}
+
+.yourTracks {
+	padding: 60px 0 0;
+	max-width: 990px;
+	margin: 0 auto;
 }

@@ -1,0 +1,14 @@
+@import '../../../../variables.scss';
+
+.at-pwd-form {
+	label {
+		text-align: left;
+		width: 100%;
+		margin: 5px 0;
+	}
+
+	button {
+		width: 100%;
+		margin: 10px auto 30px;
+	}
+}
