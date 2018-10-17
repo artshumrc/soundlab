@@ -43,9 +43,9 @@ class LoginContainer extends React.Component {
 				dispatchSetFormMessage('Login successful!');
 				dispatchNavigateToHome();
 				Cookies.set('token', token);
-      }).catch((error) => {
+			}).catch((error) => {
 				dispatchSetFormMessage('Username or password incorrect.');
-      });
+			});
 	}
 
 	render() {

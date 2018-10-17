@@ -64,7 +64,7 @@ const Calendar = props => {
 		<div className="itemList">
 			<BigCalendar
 				events={_events}
-        localizer={localizer}
+				localizer={localizer}
 				defaultView="month"
 				views={['month', 'week']}
 				showMultiDayTimes

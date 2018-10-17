@@ -12,12 +12,12 @@ const userSoundsQuery = graphql(gql`
 		}
 	}
 `, {
-  name: 'userSoundsQuery',
-  props: props => {
-    return {
-      sounds: props.userSoundsQuery.userPosts,
-    };
-  },
+	name: 'userSoundsQuery',
+	props: props => {
+		return {
+			sounds: props.userSoundsQuery.userPosts,
+		};
+	},
 });
 
 export { userSoundsQuery };

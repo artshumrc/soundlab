@@ -21,12 +21,12 @@ const soundSingleQuery = graphql(gql`
 			postname: params.slug,
 		}
 	}),
-  name: 'soundQuery',
-  props: props => {
-    return {
-      sound: props.soundQuery.post,
-    };
-  },
+	name: 'soundQuery',
+	props: props => {
+		return {
+			sound: props.soundQuery.post,
+		};
+	},
 });
 
 const soundListQuery = graphql(gql`
@@ -45,12 +45,12 @@ const soundListQuery = graphql(gql`
 		}
 	}
 `, {
-  name: 'soundListQuery',
-  props: props => {
-    return {
-      sounds: props.soundListQuery.posts,
-    };
-  },
+	name: 'soundListQuery',
+	props: props => {
+		return {
+			sounds: props.soundListQuery.posts,
+		};
+	},
 });
 
 const soundListCategoryQuery = graphql(gql`
@@ -78,12 +78,12 @@ const soundListCategoryQuery = graphql(gql`
 			}
 		};
 	},
-  name: 'soundListCategoryQuery',
-  props: props => {
-    return {
-      category: props.soundListCategoryQuery.category,
-    };
-  },
+	name: 'soundListCategoryQuery',
+	props: props => {
+		return {
+			category: props.soundListCategoryQuery.category,
+		};
+	},
 });
 
 

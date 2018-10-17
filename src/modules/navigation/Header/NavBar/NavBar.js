@@ -127,95 +127,95 @@ class NavBar extends React.Component {
 					width={ '300px' }
 					right
 				>
-				<ul >
-					<li>
-						<Link
-							styleName="navLink"
-							to={'/events'}
-							onClick={this.closeMenu}
+					<ul >
+						<li>
+							<Link
+								styleName="navLink"
+								to={'/events'}
+								onClick={this.closeMenu}
 						>
 							Workshops
-						</Link>
-					</li>
-					<li styleName="mobileHasDropdown">
-						<Link
-							styleName="navLink"
-							to={'/sounds'}
-							onClick={this.closeMenu}
+							</Link>
+						</li>
+						<li styleName="mobileHasDropdown">
+							<Link
+								styleName="navLink"
+								to={'/sounds'}
+								onClick={this.closeMenu}
 						>
 							Sounds
-						</Link>
+							</Link>
 
-						<div styleName="mobileHasDropdown">
-							<li>
-								<Link
-									styleName="mobileNavDropdownLink"
-									to={'/playlists'}
-									onClick={this.closeMenu}
+							<div styleName="mobileHasDropdown">
+								<li>
+									<Link
+										styleName="mobileNavDropdownLink"
+										to={'/playlists'}
+										onClick={this.closeMenu}
 								>
 									Playlists
-								</Link>
-							</li>
-						</div>
+									</Link>
+								</li>
+							</div>
 
-					</li>
-					<li styleName="mobileHasDropdown">
-						<Link
-							styleName="navLink"
-							to={'/about'}
-							onClick={this.closeMenu}
+						</li>
+						<li styleName="mobileHasDropdown">
+							<Link
+								styleName="navLink"
+								to={'/about'}
+								onClick={this.closeMenu}
 						>
 							About
-						</Link>
-						<div styleName="mobileHasDropdown">
-							<li>
-								<Link
-									styleName="mobileNavDropdownLink"
-									to={'/directory'}
-									onClick={this.closeMenu}
-								>
-									Directory
-								</Link>
-							</li>
-							<li>
-								<Link
-									styleName="mobileNavDropdownLink"
-									to={'/equipment'}
-									onClick={this.closeMenu}
-								>
-									Equipment
-								</Link>
-							</li>
-						</div>
-					</li>
-					{ token ?
-						<li styleName="mobileHasDropdown">
-							<Link styleName="navLink" to={'/profile'}>
-								My Tracks
 							</Link>
 							<div styleName="mobileHasDropdown">
 								<li>
-									<Link styleName="mobileNavDropdownLink" to="/logout">
-										Sign out
+									<Link
+										styleName="mobileNavDropdownLink"
+										to={'/directory'}
+										onClick={this.closeMenu}
+								>
+									Directory
+									</Link>
+								</li>
+								<li>
+									<Link
+										styleName="mobileNavDropdownLink"
+										to={'/equipment'}
+										onClick={this.closeMenu}
+								>
+									Equipment
 									</Link>
 								</li>
 							</div>
 						</li>
+						{ token ?
+							<li styleName="mobileHasDropdown">
+								<Link styleName="navLink" to={'/profile'}>
+								My Tracks
+								</Link>
+								<div styleName="mobileHasDropdown">
+									<li>
+										<Link styleName="mobileNavDropdownLink" to="/logout">
+										Sign out
+										</Link>
+									</li>
+								</div>
+							</li>
 					:
-						<li>
-							<Link
-								styleName="navLink"
-								to='/sign-in'
+							<li>
+								<Link
+									styleName="navLink"
+									to='/sign-in'
 							>
 								Join / Login
-							</Link>
-						</li>
+								</Link>
+							</li>
 					}
 
-				</ul>
+					</ul>
 
-			</Menu>
-		</div>
+				</Menu>
+			</div>
 		);
 	}
 }

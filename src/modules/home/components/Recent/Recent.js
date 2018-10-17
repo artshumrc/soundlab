@@ -13,36 +13,36 @@ class Recent extends React.Component {
 		const { items } = this.props;
 
 		return (
-      <section styleName="recent-section">
+			<section styleName="recent-section">
 				<Grid>
-	        <Row styleName="recent-section-title">
+					<Row styleName="recent-section-title">
 						<Col>
-	            <h3>
+							<h3>
 								Recent tracks
 							</h3>
 						</Col>
-	        </Row>
-	        <Row styleName="recent-sound-container">
-		        {items.map((item, i) => (
+					</Row>
+					<Row styleName="recent-sound-container">
+						{items.map((item, i) => (
 							<Col
 								md={4}
 								key={`${item.id}-${i}`}
 							>
-			          <RecentSound
+								<RecentSound
 									post={item}
 								/>
 							</Col>
 						))}
-	        </Row>
+					</Row>
 					<Row styleName="recent-section-title workshops">
-					 <Col>
-						 <h3>
+						<Col>
+							<h3>
 							 Workshops
-						 </h3>
-					 </Col>
-				 </Row>
+							</h3>
+						</Col>
+					</Row>
 				</Grid>
-      </section>
+			</section>
 		);
 	}
 }

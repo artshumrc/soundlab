@@ -17,10 +17,10 @@ import './ResourceSingle.css';
 class ResourceSingle extends Component {
 
 
-  render() {
-    const { resource, loading, error } = this.props;
+	render() {
+		const { resource, loading, error } = this.props;
 
-    if (loading || !resource) {
+		if (loading || !resource) {
 			// TODO: add loading state
 			return null;
 		}
@@ -30,62 +30,62 @@ class ResourceSingle extends Component {
 	    thumbnail = getPostThumbnailBySize(resource.thumbnail, 'large');
 		}
 
-    const pageCoverImage = {
-      backgroundImage: `url("${thumbnail || '/images/default_event.jpg'}")`,
-      width: '100%',
-      height: '500px',
-      objectFit: 'cover',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    };
+		const pageCoverImage = {
+			backgroundImage: `url("${thumbnail || '/images/default_event.jpg'}")`,
+			width: '100%',
+			height: '500px',
+			objectFit: 'cover',
+			backgroundSize: 'cover',
+			backgroundPosition: 'center'
+		};
 
 		const byline = _.findWhere(resource.post_meta, { meta_key: 'byline' });
 		const resourceDate = _.findWhere(resource.post_meta, { meta_key: 'date' });
 
-    return (
+		return (
 
       //remove cover section and cover section image for release
 
 			<div>
-        {/* <Row styleName="cover-section">
+				{/* <Row styleName="cover-section">
       </Row> */}
-        <Row styleName="content-section">
-          <Col>
-            {/*<div styleName="cover-image" style={pageCoverImage} /> */}
-            <div>
-              <h1 styleName="section-title">
+				<Row styleName="content-section">
+					<Col>
+						{/*<div styleName="cover-image" style={pageCoverImage} /> */}
+						<div>
+							<h1 styleName="section-title">
 								{resource.post_title}
 							</h1>
 							{byline &&
-			          <h3 className="postAuthor">
-									{byline.meta_value}
-								</h3>
+							<h3 className="postAuthor">
+								{byline.meta_value}
+							</h3>
 							}
-              <div styleName="content" dangerouslySetInnerHTML={{__html: linkifyHtml(wpautop(resource.post_content))}} />
+							<div styleName="content" dangerouslySetInnerHTML={{__html: linkifyHtml(wpautop(resource.post_content))}} />
 							{resourceDate &&
-								<Row styleName="metaItem">
-									<Col md={2}>
-										<label>
+							<Row styleName="metaItem">
+								<Col md={2}>
+									<label>
 											Date
-										</label>
-									</Col>
-									<Col md={10}>
-										<p>
-											{moment(parseInt(resourceDate.meta_value, 10) * 1000).format('MMMM Do YYYY, h:mm a')}
-										</p>
-									</Col>
-								</Row>
+								</label>
+								</Col>
+								<Col md={10}>
+									<p>
+									{moment(parseInt(resourceDate.meta_value, 10) * 1000).format('MMMM Do YYYY, h:mm a')}
+								</p>
+								</Col>
+							</Row>
 							}
 						</div>
 					</Col>
 				</Row>
 			</div>
     );
-  }
+	}
 }
 
 ResourceSingle.propTypes = {
-  data: PropTypes.object
+	data: PropTypes.object
 }
 
 export default ResourceSingle;

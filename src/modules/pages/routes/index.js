@@ -4,7 +4,7 @@ import PageContainer from '../containers/PageContainer';
 
 
 export default (
-  <div>
-    <Route path=":slug" component={PageContainer}></Route>
-  </div>
+	<div>
+		<Route path=":slug" component={PageContainer}></Route>
+	</div>
 );

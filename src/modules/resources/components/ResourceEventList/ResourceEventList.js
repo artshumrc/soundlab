@@ -3,28 +3,28 @@ import ResourceEventItem from '../ResourceEventItem'
 import './ResourceEventList.css'
 
 class ResourceEventList extends Component{
-  render() {
+	render() {
 		const { events, error, loading } = this.props;
 
-    if (loading) {
-      return (
+		if (loading) {
+			return (
 				<div>
 					Loading
 				</div>
 			);
-    }
+		}
 
-    return (
-      <div>
-	      {events.map((event) => (
-	        <ResourceEventItem
+		return (
+			<div>
+				{events.map((event) => (
+					<ResourceEventItem
 						key={event.id}
 						event={event}
 					/>
 	      ))}
-      </div>
-    );
-  }
+			</div>
+		);
+	}
 }
 
 ResourceEventList.defaultProps = {

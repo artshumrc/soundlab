@@ -4,19 +4,19 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import './Footer.css';
 
 class Footer extends Component {
-  render() {
-    return (
-      <footer>
-        <Row>
-          <Col md={6}>
-            <div styleName="footer-left">
-              <div>
-                <span styleName="footer-site-title">The Sound Lab</span>
-              </div>
-              <div>
-                <span styleName="footer-site-title">at Harvard University</span>
-              </div>
-              <div styleName="footer-nav-container">
+	render() {
+		return (
+			<footer>
+				<Row>
+					<Col md={6}>
+						<div styleName="footer-left">
+							<div>
+								<span styleName="footer-site-title">The Sound Lab</span>
+							</div>
+							<div>
+								<span styleName="footer-site-title">at Harvard University</span>
+							</div>
+							<div styleName="footer-nav-container">
 								<a
 									href="mailto:soundlab@g.harvard.edu"
 									target="_blank"
@@ -31,10 +31,10 @@ class Footer extends Component {
 								>
 									Privacy
 								</a>
-              </div>
-            </div>
-          </Col>
-          {/*
+							</div>
+						</div>
+					</Col>
+					{/*
           <Col md={6}>
 						<div styleName="footer-social-links">
 							<a
@@ -72,10 +72,10 @@ class Footer extends Component {
 						</div>
           </Col>
           */}
-        </Row>
-      </footer>
-    );
-  }
+				</Row>
+			</footer>
+		);
+	}
 }
 
 export default Footer;

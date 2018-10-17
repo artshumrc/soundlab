@@ -14,18 +14,18 @@ import './Home.css';
 
 class Home extends React.Component {
 
-  render() {
+	render() {
 
-    return (
-      <div>
+		return (
+			<div>
 				<Cover />
-        <Intro />
-        <LearnContainer />
-        <RecentContainer />
-        <CalendarContainer />
-      </div>
-    );
-  }
+				<Intro />
+				<LearnContainer />
+				<RecentContainer />
+				<CalendarContainer />
+			</div>
+		);
+	}
 }
 
 export default Home;

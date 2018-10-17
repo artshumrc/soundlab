@@ -16,11 +16,11 @@ const eventsUpcomingQuery = graphql(gql`
 	}
 `, {
 	name: 'eventsQuery',
-  props: props => {
+	props: props => {
 		return {
 			eventsUpcoming: props.eventsQuery.events,
 		};
-  },
+	},
 });
 
 const eventsPastQuery = graphql(gql`
@@ -39,11 +39,11 @@ const eventsPastQuery = graphql(gql`
 	}
 `, {
 	name: 'eventsQuery',
-  props: props => {
+	props: props => {
 		return {
 			eventsPast: props.eventsQuery.events,
 		};
-  },
+	},
 });
 
 export {

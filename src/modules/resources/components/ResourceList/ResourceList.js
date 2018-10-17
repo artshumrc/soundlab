@@ -13,35 +13,35 @@ import './ResourceList.css';
 
 class ResourceList extends React.Component {
 
-  render () {
+	render () {
 		const { loading, resources, error } = this.props;
 
-    if (loading) {
-      return (<div>Loading</div>)
-    }
+		if (loading) {
+			return (<div>Loading</div>)
+		}
 
 
-    return (
+		return (
 			<div className="resourceList">
-	      <Grid>
-	        <Row className="resourceListContainer">
-	          <Col sm={12} md={12} lg={8}>
-	            <h2 className="resourceSectionTitle">Resources</h2>
-	            {resources.map((resource) =>
-	              <ResourceItem
+				<Grid>
+					<Row className="resourceListContainer">
+						<Col sm={12} md={12} lg={8}>
+							<h2 className="resourceSectionTitle">Resources</h2>
+							{resources.map((resource) =>
+								<ResourceItem
 									key={resource.id}
 									resource={resource}
 								/>
 	            )}
-	          </Col>
-	          <Col sm={12} md={12} lg={4}>
-	            <h4 className="resourceSectionTitle">
+						</Col>
+						<Col sm={12} md={12} lg={4}>
+							<h4 className="resourceSectionTitle">
 								Upcoming Events
 							</h4>
-	            <ResourceEventListContainer />
-	          </Col>
-	      </Row>
-        {/*
+							<ResourceEventListContainer />
+						</Col>
+					</Row>
+					{/*
 	      <Row className="additionalResourcesContainer">
 	        <Col>
 	          <h4 className="resourceSectionTitle">
@@ -51,10 +51,10 @@ class ResourceList extends React.Component {
 	        </Col>
 	      </Row>
         */}
-	    </Grid>
-		</div>
+				</Grid>
+			</div>
 		);
-  }
+	}
 }
 
 ResourceList.defaultProps = {

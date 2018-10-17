@@ -16,12 +16,12 @@ const learnQuery = graphql(gql`
 		}
 	}
 `, {
-  name: 'learnQuery',
-  props: props => {
-    return {
-      events: props.learnQuery.posts,
-    };
-  },
+	name: 'learnQuery',
+	props: props => {
+		return {
+			events: props.learnQuery.posts,
+		};
+	},
 });
 
 export { learnQuery };

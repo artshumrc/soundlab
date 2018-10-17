@@ -11,23 +11,23 @@ import './ResourceEventItem.css';
 
 class ResourceEventItem extends Component {
 
-  render() {
+	render() {
 
-    const {
+		const {
       event, loading, error
 
     } = this.props;
 
-    if (loading || !event) {
+		if (loading || !event) {
       // TODO: add loading state
-      return null;
-    }
+			return null;
+		}
 
 
 		const eventStart = _.findWhere(event.post_meta, { meta_key: 'start_date' });
 		const eventEnd = _.findWhere(event.post_meta, { meta_key: 'end_date' });
-    const eventStartTime = _.findWhere(event.post_meta, { meta_key: 'start_time' });
-    const eventEndTime = _.findWhere(event.post_meta, { meta_key: 'end_time' });
+		const eventStartTime = _.findWhere(event.post_meta, { meta_key: 'start_time' });
+		const eventEndTime = _.findWhere(event.post_meta, { meta_key: 'end_time' });
 
 		let eventMonth;
 		let eventDay;
@@ -44,43 +44,43 @@ class ResourceEventItem extends Component {
 			endTime = eventEndTime.meta_value;
 		}
 
-    return (
-      <Link
+		return (
+			<Link
 				className="eventContainer"
 				to={`/events/${event.post_name}`}
 			>
-        <div className={`eventSectionWrapper dateWrapper`}>
-          <div className={`dateContainer monthContainer`}>
-            <span className="month">
+				<div className={`eventSectionWrapper dateWrapper`}>
+					<div className={`dateContainer monthContainer`}>
+						<span className="month">
 							{eventMonth}
 						</span>
-          </div>
-          <div className="dateContainer">
-            <span className="day">
+					</div>
+					<div className="dateContainer">
+						<span className="day">
 							{eventDay}
 						</span>
-          </div>
+					</div>
 
-        </div>
-        <div className={`eventSectionWrapper eventMetaWrapper`}>
-          <div>
-            <span className="eventName">
+				</div>
+				<div className={`eventSectionWrapper eventMetaWrapper`}>
+					<div>
+						<span className="eventName">
 							{event.post_title}
 						</span>
-          </div>
-          <div>
-            <span className="eventTime">
-              	{startTime}{endTime ? `- ${endTime}` : ''}
-  					</span>
-          </div>
-        </div>
-      </Link>
-    );
-  }
+					</div>
+					<div>
+						<span className="eventTime">
+							{startTime}{endTime ? `- ${endTime}` : ''}
+						</span>
+					</div>
+				</div>
+			</Link>
+		);
+	}
 }
 
 ResourceEventItem.propTypes = {
-  event: PropTypes.object,
+	event: PropTypes.object,
 };
 
 export default ResourceEventItem;

@@ -3,8 +3,8 @@ import AdditionalResourceItem from '../AdditionalResourceItem';
 
 const AdditionalResourceList = props => (
 	<div>
-    {props.resources.map((resource) =>
-      <AdditionalResourceItem
+		{props.resources.map((resource) =>
+			<AdditionalResourceItem
 				key={resource.id}
 				resource={resource}
 			/>

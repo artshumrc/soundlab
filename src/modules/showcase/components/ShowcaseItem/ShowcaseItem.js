@@ -8,29 +8,29 @@ import '../showcase.css'
 
 
 export default class ShowcaseList extends Component{
-  static propTypes = {
-    post: React.PropTypes.object,
-  }
+	static propTypes = {
+		post: React.PropTypes.object,
+	}
 
-  render() {
-    const { post_content: content } = this.props.post
+	render() {
+		const { post_content: content } = this.props.post
 
-    return(
+		return(
 
-      <div>
+			<div>
 
-        <Card styleName="listContainer">
+				<Card styleName="listContainer">
 
-          <CardTitle title={this.props.post.post_title} subtitle={this.props.post.byline.meta_value} />
+					<CardTitle title={this.props.post.post_title} subtitle={this.props.post.byline.meta_value} />
 
-          <CardText>
-            <PostContent content={content}/>
-          </CardText>
+					<CardText>
+						<PostContent content={content}/>
+					</CardText>
 
-        </Card>
+				</Card>
 
-      </div>
+			</div>
 
-    )
-  }
+		)
+	}
 }

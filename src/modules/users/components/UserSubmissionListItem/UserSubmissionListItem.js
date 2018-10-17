@@ -37,8 +37,8 @@ class UserSubmissionListItem extends Component{
 		});
 	}
 
-  render() {
-    const { sound, player } = this.props;
+	render() {
+		const { sound, player } = this.props;
 		const { mouseOver } = this.state;
 
 		if (!sound) {
@@ -48,19 +48,19 @@ class UserSubmissionListItem extends Component{
 		const byline = _.findWhere(sound.post_meta, { meta_key: 'byline' });
 		const duration = "0:00";
 
-    const thumbnailListImage = {
-      width: '70px',
-      height: '70px',
-      objectFit: 'cover',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center'
-    };
+		const thumbnailListImage = {
+			width: '70px',
+			height: '70px',
+			objectFit: 'cover',
+			backgroundSize: 'cover',
+			backgroundRepeat: 'no-repeat',
+			backgroundPosition: 'center'
+		};
 
 		if (sound.thumbnail) {
-      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(sound.thumbnail, 'thumbnail')}")`;
+			thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(sound.thumbnail, 'thumbnail')}")`;
 		} else {
-      thumbnailListImage.backgroundImage = 'url("/images/default_sound_600w600h.png")';
+			thumbnailListImage.backgroundImage = 'url("/images/default_sound_600w600h.png")';
 		}
 
 		let isCurrentTrack = false;
@@ -68,22 +68,22 @@ class UserSubmissionListItem extends Component{
 			isCurrentTrack = true;
 		}
 
-    return (
-      <Row >
-	      <div
+		return (
+			<Row >
+				<div
 					className={`soundListItem ${isCurrentTrack ? 'soundListItemIsCurrentTrack' : ''}`}
 					onMouseEnter={this.handleMouseEnter.bind(this)}
 					onMouseLeave={this.handleMouseLeave.bind(this)}
 				>
-          <Col sm={1}>
-            <span className="index">
+					<Col sm={1}>
+						<span className="index">
 							{this.props.index + 1}
 						</span>
-          </Col>
-          <Col sm={8}>
+					</Col>
+					<Col sm={8}>
 						<div className="itemContent">
-	            <div className="thumbnail">
-		            <div
+							<div className="thumbnail">
+								<div
 									className="thumbnailImage"
 									style={thumbnailListImage}
 								/>
@@ -93,26 +93,26 @@ class UserSubmissionListItem extends Component{
 									{sound.post_title}
 								</h3>
 								{byline &&
-									<span className="byline">
-										{byline.meta_value}
-									</span>
+								<span className="byline">
+									{byline.meta_value}
+								</span>
 								}
 							</div>
 						</div>
-          </Col>
-          <Col sm={3} className="durationColumn">
-            <span className="duration">
+					</Col>
+					<Col sm={3} className="durationColumn">
+						<span className="duration">
 						</span>
 					</Col>
 				</div>
-	    </Row>
-    );
-  }
+			</Row>
+		);
+	}
 }
 
 UserSubmissionListItem.propTypes = {
-  index: PropTypes.number,
-  post: PropTypes.object,
+	index: PropTypes.number,
+	post: PropTypes.object,
 };
 
 const mapStateToProps = state => ({

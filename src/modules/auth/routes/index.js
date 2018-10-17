@@ -6,8 +6,8 @@ import LogoutContainer from '../containers/LogoutContainer';
 
 
 export default (
-  <div>
-    <Route path="sign-in" component={AuthForms}></Route>
-    <Route path="logout" component={LogoutContainer}></Route>
-  </div>
+	<div>
+		<Route path="sign-in" component={AuthForms}></Route>
+		<Route path="logout" component={LogoutContainer}></Route>
+	</div>
 );

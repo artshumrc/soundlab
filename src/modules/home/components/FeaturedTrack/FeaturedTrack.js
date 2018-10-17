@@ -183,7 +183,7 @@ class FeaturedTrack extends React.Component {
 		}
 	}
 
-  render() {
+	render() {
 		const { status } = this.state;
 		const { track, purple, showFeaturedTrackLabel } = this.props;
 		let postTitle = track ? track.post_title : '';
@@ -199,14 +199,14 @@ class FeaturedTrack extends React.Component {
 		}
 
 
-    return (
-      <div
+		return (
+			<div
 				className="featuredTrackComponent"
 				onMouseEnter={this.handleMouseEnter.bind(this)}
 				onMouseLeave={this.handleMouseLeave.bind(this)}
 				onClick={this.handleClick.bind(this)}
 			>
-        <div
+				<div
 					className="featuredTrackPlayerContainer"
 				>
 					<div className="playerContainer">
@@ -241,31 +241,31 @@ class FeaturedTrack extends React.Component {
 							}
 						</div>
 					</div>
-        </div>
-        <div className="featuredTrackMetaContainer">
+				</div>
+				<div className="featuredTrackMetaContainer">
 					<div>
 						{showFeaturedTrackLabel &&
-		          <h6
-								className={`featuredTrackTitle
+						<h6
+							className={`featuredTrackTitle
 									${status.length ? 'featuredTrackTitleHover' : ''}
 								`}
 							>
 								Featured Track
-							</h6>
+						</h6>
 						}
 					</div>
-          <span className="featuredTrackMetaItemTitle">
+					<span className="featuredTrackMetaItemTitle">
 						{postTitle}
 					</span>
 					{byline &&
-	          <span className="featuredTrackMetaItemAuthor">
-							{byline}
-						</span>
+					<span className="featuredTrackMetaItemAuthor">
+						{byline}
+					</span>
 					}
-        </div>
-      </div>
-    );
-  }
+				</div>
+			</div>
+		);
+	}
 }
 
 FeaturedTrack.propTypes = {

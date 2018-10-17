@@ -14,19 +14,19 @@ const PostListQuery = gql`
 `
 
 export function GetPostListQuery() {
-  return graphql(PostListQuery, {
-    options: (props) => ({
-      variables: {
-        post_type: props.layout.type
-      }
-    })
-  })
+	return graphql(PostListQuery, {
+		options: (props) => ({
+			variables: {
+				post_type: props.layout.type
+			}
+		})
+	})
 }
 
 export function PostQuery({ownProps}) {
-  return {
-    getPost: {
-      query: gql`
+	return {
+		getPost: {
+			query: gql`
         query post($id: Int){
           post(id: $id){
             id
@@ -37,9 +37,9 @@ export function PostQuery({ownProps}) {
           }
         }
       `,
-      variables: {
-        id: ownProps.id
-      }
-    }
-  };
+			variables: {
+				id: ownProps.id
+			}
+		}
+	};
 }

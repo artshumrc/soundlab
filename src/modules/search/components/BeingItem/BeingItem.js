@@ -8,29 +8,29 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 class BeingItem extends Component{
 
 
-  render() {
-    const { post_title: title } = this.props.post
+	render() {
+		const { post_title: title } = this.props.post
 
-    return(
+		return(
 
-      <div>
+			<div>
 
-        <Card>
+				<Card>
 
-          <CardTitle title={title} subtitle={this.props.post.byline.meta_value} />
-          <CardText>
-            <PostContent content={this.props.post.post_content}/>
-          </CardText>
-        </Card>
+					<CardTitle title={title} subtitle={this.props.post.byline.meta_value} />
+					<CardText>
+						<PostContent content={this.props.post.post_content}/>
+					</CardText>
+				</Card>
 
-      </div>
+			</div>
 
-    )
-  }
+		)
+	}
 }
 
 BeingItem.propTypes = {
-  post: PropTypes.object,
+	post: PropTypes.object,
 }
 
 export default BeingItem

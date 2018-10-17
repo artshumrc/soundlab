@@ -17,12 +17,12 @@ const tracksQuery = graphql(gql`
 		}
 	}
 `, {
-  name: 'tracksQuery',
-  props: props => {
-    return {
-      tracks: props.tracksQuery.posts,
-    };
-  },
+	name: 'tracksQuery',
+	props: props => {
+		return {
+			tracks: props.tracksQuery.posts,
+		};
+	},
 });
 
 export { tracksQuery };

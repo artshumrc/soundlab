@@ -77,7 +77,7 @@ class EventTeaser extends Component {
 								</h4>
 								*/}
 							</Link>
-						{/*	<h4 className="teaserTags">
+							{/*	<h4 className="teaserTags">
 								{categoriesAndTags.map((term, i) => (
 									<span
 										key={`${i}-${term.name}`}

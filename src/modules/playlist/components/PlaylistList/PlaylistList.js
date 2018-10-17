@@ -40,18 +40,18 @@ class PlaylistList extends React.Component {
 				</Row>
 
 				<Row className="postsColumnSectionTitles">
-	 			 <div className="sectionTitleNumberContainer">
-	 				 <span className="sectionTitleNumber">#</span>
-	 			 </div>
-	 			 <div className="sectionTrackLabelContainer">
-	 				 <span className="sectionTrackLabel">Track</span>
-	 			 </div>
-	 			 {/*
+					<div className="sectionTitleNumberContainer">
+						<span className="sectionTitleNumber">#</span>
+					</div>
+					<div className="sectionTrackLabelContainer">
+						<span className="sectionTrackLabel">Track</span>
+					</div>
+					{/*
 	 			 <Col sm={3}>
 	 				 <span className="sectionTitleDuration"></span>
 	 			 </Col>
 	 			 */}
-	 		 </Row>
+				</Row>
 
 				{playlists.map((playlist, i) => (
 					<PlaylistListItem

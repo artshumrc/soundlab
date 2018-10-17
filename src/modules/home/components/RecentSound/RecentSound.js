@@ -14,52 +14,52 @@ import PostContent from '../../../posts/components/PostContent';
 import './RecentSound.css';
 
 class RecentSound extends Component{
-  render() {
-    const {
+	render() {
+		const {
 			post_content: content,
 			post_title: title,
 			post_name: name,
 			thumbnail
 		} = this.props.post;
 
-    const thumbnailListImage = {
-      width: '100%',
-      height: '300px',
-      objectFit: 'cover',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center'
-    };
+		const thumbnailListImage = {
+			width: '100%',
+			height: '300px',
+			objectFit: 'cover',
+			backgroundSize: 'cover',
+			backgroundRepeat: 'no-repeat',
+			backgroundPosition: 'center'
+		};
 
 		if (thumbnail) {
-      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(thumbnail, 'medium_large')}")`;
+			thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(thumbnail, 'medium_large')}")`;
 		} else {
-      thumbnailListImage.backgroundImage = 'url("/images/default_sound.png")';
+			thumbnailListImage.backgroundImage = 'url("/images/default_sound.png")';
 		}
 
 		const byline = _.findWhere(this.props.post.post_meta, { meta_key: 'byline' });
 
-    return(
-      <Link to={`/sounds/${name}`} styleName="recent-track-link">
-	      <div styleName="recent-track">
-          <div styleName="thumbnail-container">
-            <div style={thumbnailListImage} />
-          </div>
+		return(
+			<Link to={`/sounds/${name}`} styleName="recent-track-link">
+				<div styleName="recent-track">
+					<div styleName="thumbnail-container">
+						<div style={thumbnailListImage} />
+					</div>
 
-          <div styleName="recent-track-meta-container">
-            <h4 styleName="recent-track-title">
+					<div styleName="recent-track-meta-container">
+						<h4 styleName="recent-track-title">
 							{title}
 						</h4>
 						{byline &&
-	            <span styleName="recent-track-author">
-								{_s.prune(byline.meta_value, 60)}
-							</span>
+						<span styleName="recent-track-author">
+							{_s.prune(byline.meta_value, 60)}
+						</span>
 						}
-          </div>
-	      </div>
-      </Link>
-    );
-  }
+					</div>
+				</div>
+			</Link>
+		);
+	}
 }
 
 export default RecentSound;

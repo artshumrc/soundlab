@@ -6,8 +6,8 @@ import SubmissionSingleContainer from '../containers/SubmissionSingleContainer';
 
 
 export default (
-  <div>
-    <Route path="resources/:slug" component={SubmissionSingleContainer}></Route>
-    <Route path="resources" component={SubmmissionListContainer}></Route>
-  </div>
+	<div>
+		<Route path="resources/:slug" component={SubmissionSingleContainer}></Route>
+		<Route path="resources" component={SubmmissionListContainer}></Route>
+	</div>
 );

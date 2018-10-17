@@ -16,12 +16,12 @@ const recentQuery = graphql(gql`
 		}
 	}
 `, {
-  name: 'recentQuery',
-  props: props => {
-    return {
-      items: props.recentQuery.posts,
-    };
-  },
+	name: 'recentQuery',
+	props: props => {
+		return {
+			items: props.recentQuery.posts,
+		};
+	},
 });
 
 export { recentQuery };

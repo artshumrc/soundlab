@@ -31,11 +31,11 @@ const submissionSingleQuery = graphql(gql`
     }
   }
 `, {
-  options: ({params}) => ({
-    variables: {
-      post: params.post
-    }
-  })
+	options: ({params}) => ({
+		variables: {
+			post: params.post
+		}
+	})
 });
 
 export { submissionListQuery, submissionSingleQuery };

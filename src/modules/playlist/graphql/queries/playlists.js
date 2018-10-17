@@ -23,12 +23,12 @@ const playlistSingleQuery = graphql(gql`
 			postname: params.slug,
 		}
 	}),
-  name: 'playlistQuery',
-  props: props => {
-    return {
-      playlist: props.playlistQuery.post,
-    };
-  },
+	name: 'playlistQuery',
+	props: props => {
+		return {
+			playlist: props.playlistQuery.post,
+		};
+	},
 });
 
 const playlistListQuery = graphql(gql`
@@ -46,12 +46,12 @@ const playlistListQuery = graphql(gql`
 		}
 	}
 `, {
-  name: 'playlistListQuery',
-  props: props => {
-    return {
-      playlists: props.playlistListQuery.posts,
-    };
-  },
+	name: 'playlistListQuery',
+	props: props => {
+		return {
+			playlists: props.playlistListQuery.posts,
+		};
+	},
 });
 
 const playlistSoundsQuery = graphql(gql`
@@ -71,12 +71,12 @@ const playlistSoundsQuery = graphql(gql`
 			post_ids: props.queue,
 		}
 	}),
-  name: 'playlistSoundsQuery',
-  props: props => {
-    return {
-      sounds: props.playlistSoundsQuery.posts,
-    };
-  },
+	name: 'playlistSoundsQuery',
+	props: props => {
+		return {
+			sounds: props.playlistSoundsQuery.posts,
+		};
+	},
 });
 
 export { playlistSingleQuery, playlistListQuery, playlistSoundsQuery };

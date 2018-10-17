@@ -7,10 +7,10 @@ import EventListContainer from '../containers/EventListContainer';
 
 
 export default (
-  <div>
-    <Route path="events" component={EventListContainer}></Route>
-    <Route path="events/:slug" component={EventSingleContainer}></Route>
-    <Route path="resources/:slug" component={ResourceSingleContainer}></Route>
-    <Route path="directory" component={ResourceListContainer}></Route>
-  </div>
+	<div>
+		<Route path="events" component={EventListContainer}></Route>
+		<Route path="events/:slug" component={EventSingleContainer}></Route>
+		<Route path="resources/:slug" component={ResourceSingleContainer}></Route>
+		<Route path="directory" component={ResourceListContainer}></Route>
+	</div>
 );

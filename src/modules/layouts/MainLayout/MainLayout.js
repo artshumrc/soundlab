@@ -24,20 +24,20 @@ class MainLayout extends Component {
 		}
 	}
 
-  render() {
-    return (
-      <div styleName="mainContainer">
+	render() {
+		return (
+			<div styleName="mainContainer">
 				<Header />
 				<div className="wavesContainer">
 					<img src="/images/wave1.png" />
 				</div>
 				<div className="containerContent">
-	        {this.props.children}
+					{this.props.children}
 				</div>
 				<Footer />
-      </div>
-    )
-  }
+			</div>
+		)
+	}
 }
 
 const mapStateToProps = state => ({

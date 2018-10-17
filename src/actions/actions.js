@@ -7,13 +7,13 @@ export const SET_PLAYER_PROGRESS = 'SET_PLAYER_PROGRESS';
 export const SET_PLAYER_TRACK = 'SET_PLAYER_TRACK';
 
 export const resumePlayer = () => ({
-  type: RESUME_PLAYER,
-  isPlaying: true,
+	type: RESUME_PLAYER,
+	isPlaying: true,
 });
 
 export const pausePlayer = () => ({
-  type: PAUSE_PLAYER,
-  isPlaying: false,
+	type: PAUSE_PLAYER,
+	isPlaying: false,
 });
 
 export const setPlaylist = (tracks) => ({
@@ -27,6 +27,6 @@ export const setPlayerProgress = (progress) => ({
 });
 
 export const setPlayerTrack = (track) => ({
-  type: SET_PLAYER_TRACK,
+	type: SET_PLAYER_TRACK,
 	track,
 });

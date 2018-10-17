@@ -39,7 +39,7 @@ class PlaylistList extends React.Component {
 						</h1>
 					</Col>
 				</Row>
-	      <Row className="postsColumnSectionTitles">
+				<Row className="postsColumnSectionTitles">
 					<div className="sectionTitleNumberContainer">
 						<span className="sectionTitleNumber">#</span>
 					</div>

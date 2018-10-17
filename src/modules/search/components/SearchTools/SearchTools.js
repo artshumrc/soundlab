@@ -8,26 +8,26 @@ import RaisedButton from 'material-ui/RaisedButton'
 class SearchTools extends Component{
 
 
-  render() {
+	render() {
 
-    return(
+		return(
 
-      <div>
+			<div>
 
-      <RaisedButton
-          label="Being"
-          onClick={this.props.filterBeing.bind(this)}
+				<RaisedButton
+					label="Being"
+					onClick={this.props.filterBeing.bind(this)}
         />
-      <RaisedButton
-          label="Time"
-          onClick={this.props.filterTime.bind(this)}
+				<RaisedButton
+					label="Time"
+					onClick={this.props.filterTime.bind(this)}
         />
 
 
-      </div>
+			</div>
 
-    )
-  }
+		)
+	}
 }
 
 export default SearchTools

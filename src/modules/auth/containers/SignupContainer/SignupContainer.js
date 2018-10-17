@@ -26,19 +26,19 @@ class SignupContainer extends React.Component {
 		}
 
 		this.props.userCreate({
-				user_nicename: slugify(`${userData.first_name} ${userData.last_name}`).toLowerCase(),
-				display_name: `${userData.first_name} ${userData.last_name}`,
-				user_email: userData.email,
-				password: userData.password,
-				field: userData.field,
-			})
+			user_nicename: slugify(`${userData.first_name} ${userData.last_name}`).toLowerCase(),
+			display_name: `${userData.first_name} ${userData.last_name}`,
+			user_email: userData.email,
+			password: userData.password,
+			field: userData.field,
+		})
 			.then(({ data }) => {
 				dispatchSetFormMessage('Signup successful! Please log in.');
 				dispatchChangeAuthMode('login');
-      }).catch((error) => {
+			}).catch((error) => {
 				dispatchSetFormMessage('There was an error creating your user account. Please check the signup form.');
 				// console.error(error);
-      });
+			});
 	}
 
 	render() {

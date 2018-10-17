@@ -75,12 +75,12 @@ class Sound extends React.Component {
 					{soundLocation && soundLocation.meta_value &&
 						<div className="metaItem">
 
-								<label>
+							<label>
 									Location
-								</label>
-								<p>
-									{soundLocation.meta_value}
-								</p>
+							</label>
+							<p>
+								{soundLocation.meta_value}
+							</p>
 
 						</div>
 					}

@@ -37,8 +37,8 @@ class SoundListItem extends Component{
 		});
 	}
 
-  render() {
-    const { sound, player } = this.props;
+	render() {
+		const { sound, player } = this.props;
 		const { mouseOver } = this.state;
 
 		if (!sound) {
@@ -48,19 +48,19 @@ class SoundListItem extends Component{
 		const byline = _.findWhere(sound.post_meta, { meta_key: 'byline' });
 		const duration = _.findWhere(sound.post_meta, { meta_key: 'duration' });
 
-    const thumbnailListImage = {
-      width: '70px',
-      height: '70px',
-      objectFit: 'cover',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center'
-    };
+		const thumbnailListImage = {
+			width: '70px',
+			height: '70px',
+			objectFit: 'cover',
+			backgroundSize: 'cover',
+			backgroundRepeat: 'no-repeat',
+			backgroundPosition: 'center'
+		};
 
 		if (sound.thumbnail) {
-      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(sound.thumbnail, 'thumbnail')}")`;
+			thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(sound.thumbnail, 'thumbnail')}")`;
 		} else {
-      thumbnailListImage.backgroundImage = 'url("/images/default_sound_600w600h.png")';
+			thumbnailListImage.backgroundImage = 'url("/images/default_sound_600w600h.png")';
 		}
 
 		let isCurrentTrack = false;
@@ -68,24 +68,24 @@ class SoundListItem extends Component{
 			isCurrentTrack = true;
 		}
 
-    return (
-      <Row >
-	      <Link
+		return (
+			<Row >
+				<Link
 					className={`soundListItem ${isCurrentTrack ? 'soundListItemIsCurrentTrack' : ''}`}
 					to={`/sounds/${sound.post_name}`}
 					onMouseEnter={this.handleMouseEnter.bind(this)}
 					onMouseLeave={this.handleMouseLeave.bind(this)}
 				>
 
-          <Col sm={12} className="itemTrack">
+					<Col sm={12} className="itemTrack">
 						<div className="itemIndex">
 							<span className="index">
 								{this.props.index + 1}
 							</span>
 						</div>
 						<div className="itemContent">
-	            <div className="thumbnail">
-		            <div
+							<div className="thumbnail">
+								<div
 									className="thumbnailImage"
 									style={thumbnailListImage}
 								/>
@@ -104,33 +104,33 @@ class SoundListItem extends Component{
 									{sound.post_title}
 								</h3>
 								{byline &&
-									<span className="byline">
-										{byline.meta_value}
-									</span>
+								<span className="byline">
+									{byline.meta_value}
+								</span>
 								}
 							</div>
 							<div className="durationColumn">
 								<span className="duration">
-								{duration &&
+									{duration &&
 									<span className="byline">
-										{duration.meta_value}
-									</span>
+									{duration.meta_value}
+								</span>
 								}
 								</span>
 							</div>
 						</div>
 
-          </Col>
+					</Col>
 
 				</Link>
-	    </Row>
-    );
-  }
+			</Row>
+		);
+	}
 }
 
 SoundListItem.propTypes = {
-  index: PropTypes.number,
-  post: PropTypes.object,
+	index: PropTypes.number,
+	post: PropTypes.object,
 };
 
 const mapStateToProps = state => ({

@@ -10,41 +10,41 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 
 class SubmissionItem extends Component{
 
-  componentDidMount() {
-    const { index } = this.props
-  }
+	componentDidMount() {
+		const { index } = this.props
+	}
 
-  handleClick(e) {
-    e.preventDefault()
-    const target = e.currentTarget.href
-    browserHistory.push(target)
-  }
+	handleClick(e) {
+		e.preventDefault()
+		const target = e.currentTarget.href
+		browserHistory.push(target)
+	}
 
 
-  render() {
-    const { post_content: content, post_title: title, post_name: name } = this.props.post
+	render() {
+		const { post_content: content, post_title: title, post_name: name } = this.props.post
 
-    return(
+		return(
 
-      <div>
+			<div>
 
-        <Card styleName="listContainer">
-          <Link to={"submissions/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
-          <CardTitle title={title} subtitle={this.props.post.submission_byline.meta_value} />
-          </Link>
+				<Card styleName="listContainer">
+					<Link to={"submissions/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
+						<CardTitle title={title} subtitle={this.props.post.submission_byline.meta_value} />
+					</Link>
 
-        </Card>
+				</Card>
 
-      </div>
+			</div>
 
-    )
-  }
+		)
+	}
 }
 
 SubmissionItem.propTypes = {
-  index: PropTypes.number,
-  styles: PropTypes.object,
-  post: PropTypes.object,
+	index: PropTypes.number,
+	styles: PropTypes.object,
+	post: PropTypes.object,
 }
 
 export default SubmissionItem

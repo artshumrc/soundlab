@@ -17,12 +17,12 @@ const featuredTrackQuery = graphql(gql`
 		}
 	}
 `, {
-  name: 'featuredTrackQuery',
-  props: props => {
-    return {
-      tracks: props.featuredTrackQuery.posts,
-    };
-  },
+	name: 'featuredTrackQuery',
+	props: props => {
+		return {
+			tracks: props.featuredTrackQuery.posts,
+		};
+	},
 });
 
 export { featuredTrackQuery };

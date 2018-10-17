@@ -143,11 +143,11 @@ class SoundList extends React.Component {
 							: ''}
 						</Col>
 					</Row>
-		      <Row className="postsColumnSectionTitles">
-	          <div className="sectionTitleNumberContainer">
+					<Row className="postsColumnSectionTitles">
+						<div className="sectionTitleNumberContainer">
 							<span className="sectionTitleNumber">#</span>
 						</div>
-	          <div className="sectionTrackLabelContainer">
+						<div className="sectionTrackLabelContainer">
 							<span className="sectionTrackLabel">Track</span>
 						</div>
 						{/*

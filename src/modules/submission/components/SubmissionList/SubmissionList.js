@@ -8,44 +8,44 @@ import { Grid, Row, Col } from 'react-bootstrap'
 
 class SubmissionList extends React.Component {
 
-  constructor(props) {
-    super(props)
+	constructor(props) {
+		super(props)
 
-    this.state = {
-      open: true
-    }
-  }
+		this.state = {
+			open: true
+		}
+	}
 
-  static propTypes = {
-    data: PropTypes.shape({
-      loading: React.PropTypes.bool,
-      error: React.PropTypes.object,
-      posts: React.PropTypes.array,
-    }).isRequired,
-  }
+	static propTypes = {
+		data: PropTypes.shape({
+			loading: React.PropTypes.bool,
+			error: React.PropTypes.object,
+			posts: React.PropTypes.array,
+		}).isRequired,
+	}
 
-  render () {
-    if (this.props.data.loading) {
-      return (<div>Loading</div>)
-    }
+	render () {
+		if (this.props.data.loading) {
+			return (<div>Loading</div>)
+		}
 
-    if (this.props.data.error) {
-      console.log(this.props.data.error)
-      return (<div>An unexpected error occurred</div>)
-    }
+		if (this.props.data.error) {
+			console.log(this.props.data.error)
+			return (<div>An unexpected error occurred</div>)
+		}
 
-    if (this.props.data.posts) {
-      return (
-        <Row>
-          <Col>
-            {this.props.data.posts.map((post) =>
-              <SubmissionItem key={post.id} post={post} />
+		if (this.props.data.posts) {
+			return (
+				<Row>
+					<Col>
+						{this.props.data.posts.map((post) =>
+							<SubmissionItem key={post.id} post={post} />
             )}
-          </Col>
-        </Row>
-      )
-    }
-  }
+					</Col>
+				</Row>
+			)
+		}
+	}
 }
 
 export default SubmissionList;

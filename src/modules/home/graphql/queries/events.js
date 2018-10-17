@@ -17,11 +17,11 @@ const calendarQuery = graphql(gql`
 	}
 `, {
 	name: 'calendarQuery',
-  props: props => {
+	props: props => {
 		return {
 			events: props.calendarQuery.posts,
 		};
-  },
+	},
 });
 
 export {

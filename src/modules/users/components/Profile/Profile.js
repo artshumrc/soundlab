@@ -15,9 +15,9 @@ import './Profile.css'
 
 class Profile extends Component {
 
-  render() {
-    return (
-      <div className="profile">
+	render() {
+		return (
+			<div className="profile">
 				<Grid>
 					<Row>
 						<Col>
@@ -33,11 +33,11 @@ class Profile extends Component {
 						</Col>
 					</Row>
 					<div className="yourTracks">
-			      <Row className="postsColumnSectionTitles">
-		          <Col sm={1}>
+						<Row className="postsColumnSectionTitles">
+							<Col sm={1}>
 								<span className="sectionTitleNumber">#</span>
 							</Col>
-		          <Col sm={8}>
+							<Col sm={8}>
 								<span className="sectionTrackLabel">Track</span>
 							</Col>
 							<Col sm={3}>
@@ -55,9 +55,9 @@ class Profile extends Component {
 						</div>
 					</div>
 				</Grid>
-      </div>
-    )
-  }
+			</div>
+		)
+	}
 }
 
 Profile.defaultProps = {

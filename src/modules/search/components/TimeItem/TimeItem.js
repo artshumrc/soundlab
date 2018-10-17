@@ -8,27 +8,27 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 class TimeItem extends Component{
 
 
-  render() {
-    const { post_title: title } = this.props.post
+	render() {
+		const { post_title: title } = this.props.post
 
-    return(
+		return(
 
-      <div>
+			<div>
 
-        <Card>
+				<Card>
 
-          <CardTitle title={title} subtitle={this.props.post.info_byline.meta_value} />
+					<CardTitle title={title} subtitle={this.props.post.info_byline.meta_value} />
 
-        </Card>
+				</Card>
 
-      </div>
+			</div>
 
-    )
-  }
+		)
+	}
 }
 
 TimeItem.propTypes = {
-  post: PropTypes.object,
+	post: PropTypes.object,
 }
 
 export default TimeItem

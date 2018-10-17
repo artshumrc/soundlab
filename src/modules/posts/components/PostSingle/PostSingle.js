@@ -5,60 +5,60 @@ import './post.css'
 import {TweenMax} from 'gsap'
 
 class PostSingle extends Component {
-  constructor() {
-    super()
-    this._animatePostIn = this._animatePostIn.bind(this)
-  }
+	constructor() {
+		super()
+		this._animatePostIn = this._animatePostIn.bind(this)
+	}
 
-  componentDidMount() {
-    this._animatePostIn()
-  }
+	componentDidMount() {
+		this._animatePostIn()
+	}
 
-  componentDidUpdate() {
-    this._animatePostIn()
-  }
+	componentDidUpdate() {
+		this._animatePostIn()
+	}
 
-  _animatePostIn() {
-    const post = this._post
-    if (post) {
-      TweenMax.fromTo(post, 0.5, {
-        opacity: 0
-      }, {
-        opacity: 1
-      })
-    }
-  }
+	_animatePostIn() {
+		const post = this._post
+		if (post) {
+			TweenMax.fromTo(post, 0.5, {
+				opacity: 0
+			}, {
+				opacity: 1
+			})
+		}
+	}
 
-  render() {
-    const { loading } = this.props.data
+	render() {
+		const { loading } = this.props.data
 
-    if (!loading) {
-      const { post_title: title, post_content: content, thumbnail } = this.props.data.post
-      const bg = {
-        backgroundImage: `url("${thumbnail}")`
-      }
+		if (!loading) {
+			const { post_title: title, post_content: content, thumbnail } = this.props.data.post
+			const bg = {
+				backgroundImage: `url("${thumbnail}")`
+			}
 
-      return (
-        <div ref={(c) => this._post = c} styleName="base with-header">
-          <div styleName="header" style={bg}>
+			return (
+				<div ref={(c) => this._post = c} styleName="base with-header">
+					<div styleName="header" style={bg}>
 
-          </div>
-          <div styleName="main">
-            <div styleName="wrapper">
-              <h1 styleName="title">{title}</h1>
-              <PostContent content={content}/>
-            </div>
-          </div>
-        </div>
-      )
-    }
+					</div>
+					<div styleName="main">
+						<div styleName="wrapper">
+							<h1 styleName="title">{title}</h1>
+							<PostContent content={content}/>
+						</div>
+					</div>
+				</div>
+			)
+		}
 
-    return <div></div>
-  }
+		return <div></div>
+	}
 }
 
 PostSingle.propTypes = {
-  data: PropTypes.object
+	data: PropTypes.object
 }
 
 const PostSingleQuery = gql`
@@ -77,11 +77,11 @@ const PostSingleQuery = gql`
 `
 
 const PostSingleWithData = graphql(PostSingleQuery, {
-  options: ({params}) => ({
-    variables: {
-      post: params.post
-    }
-  })
+	options: ({params}) => ({
+		variables: {
+			post: params.post
+		}
+	})
 })(PostSingle)
 
 export default PostSingleWithData

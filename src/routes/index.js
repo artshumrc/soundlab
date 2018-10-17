@@ -11,17 +11,17 @@ import playlistRoutes from '../modules/playlist/routes';
 import userRoutes from '../modules/users/routes';
 
 const routes = (
-  <Router history={browserHistory}>
-    <Route path="/" component={MainLayout}>
-  		{homeRoute}
-      {audioRoutes}
-      {resourceRoutes}
+	<Router history={browserHistory}>
+		<Route path="/" component={MainLayout}>
+			{homeRoute}
+			{audioRoutes}
+			{resourceRoutes}
 			{playlistRoutes}
 			{userRoutes}
 			{authRoutes}
-      {singlePageRoutes}
-    </Route>
-  </Router>
+			{singlePageRoutes}
+		</Route>
+	</Router>
 );
 
 export default routes;

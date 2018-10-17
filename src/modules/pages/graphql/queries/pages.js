@@ -10,17 +10,17 @@ const pageQuery = graphql(gql`
     }
   }
 `, {
-  options: ({ params }) => ({
-    variables: {
-      post: params.slug,
-    }
-  }),
-  name: 'pageQuery',
-  props: props => {
-    return {
-      page: props.pageQuery.post,
-    };
-  },
+	options: ({ params }) => ({
+		variables: {
+			post: params.slug,
+		}
+	}),
+	name: 'pageQuery',
+	props: props => {
+		return {
+			page: props.pageQuery.post,
+		};
+	},
 });
 
 

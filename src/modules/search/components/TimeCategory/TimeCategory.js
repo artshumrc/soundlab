@@ -7,40 +7,40 @@ import './search.css'
 
 class TimeCategory extends React.Component {
 
-  constructor(props) {
-    super(props)
+	constructor(props) {
+		super(props)
 
-  }
+	}
 
-  static propTypes = {
-    data: PropTypes.shape({
-      loading: React.PropTypes.bool,
-      error: React.PropTypes.object,
-      posts: React.PropTypes.array,
-    }).isRequired,
-  }
+	static propTypes = {
+		data: PropTypes.shape({
+			loading: React.PropTypes.bool,
+			error: React.PropTypes.object,
+			posts: React.PropTypes.array,
+		}).isRequired,
+	}
 
-  render() {
+	render() {
 
-    if (this.props.data.loading) {
-      return (<div>Loading</div>)
-    }
+		if (this.props.data.loading) {
+			return (<div>Loading</div>)
+		}
 
-    if (this.props.data.error) {
-      console.log(this.props.data.error)
-      return (<div>An unexpected error occurred</div>)
-    }
+		if (this.props.data.error) {
+			console.log(this.props.data.error)
+			return (<div>An unexpected error occurred</div>)
+		}
 
-    if (this.props.data.category.posts) {
-      return (
-        <div>
-          {this.props.data.category.posts.map((post) =>
-            <TimeItem key={post.id} post={post} />
+		if (this.props.data.category.posts) {
+			return (
+				<div>
+					{this.props.data.category.posts.map((post) =>
+						<TimeItem key={post.id} post={post} />
           )}
-        </div>
-      )
-    }
-  }
+				</div>
+			)
+		}
+	}
 }
 
 const TimeCategoryQuery = gql`

@@ -6,8 +6,8 @@ import PlaylistSingleContainer from '../containers/PlaylistSingleContainer';
 
 
 export default (
-  <div>
-    <Route path="playlists/:slug" component={PlaylistSingleContainer}></Route>
-    <Route path="playlists" component={PlaylistListContainer}></Route>
-  </div>
+	<div>
+		<Route path="playlists/:slug" component={PlaylistSingleContainer}></Route>
+		<Route path="playlists" component={PlaylistListContainer}></Route>
+	</div>
 );

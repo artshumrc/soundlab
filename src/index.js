@@ -17,20 +17,20 @@ injectTapEventPlugin();
 
 
 ReactDOM.render(
-  <AppContainer>
+	<AppContainer>
 		<Root store={store} history={history} />
-  </AppContainer>,
+	</AppContainer>,
   document.getElementById('root')
 )
 
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    const NextRoot = require('./containers/Root').default
+	module.hot.accept('./containers/Root', () => {
+		const NextRoot = require('./containers/Root').default
 		ReactDOM.render(
-      <AppContainer>
+			<AppContainer>
 				<NextRoot store={store} history={history} />
-      </AppContainer>,
+			</AppContainer>,
       document.getElementById('root')
     )
-  })
+	})
 }

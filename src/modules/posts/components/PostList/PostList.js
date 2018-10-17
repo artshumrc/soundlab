@@ -3,31 +3,31 @@ import { gql, graphql } from 'react-apollo'
 import Page from '../pages/page.js'
 
 class PostList extends Component {
-  render() {
-    const { posts, settings } = this.props.data
-    const { Excerpt } = this.props.layout
+	render() {
+		const { posts, settings } = this.props.data
+		const { Excerpt } = this.props.layout
 
-    if (posts) {
-      return (
-        <Page>
-          {posts.map( (post, index) => {
-            return (
-              <Excerpt index={index} key={post.id} post={post} settings={settings} />
-            )
-          })}
-        </Page>
-      )
-    }
+		if (posts) {
+			return (
+				<Page>
+					{posts.map( (post, index) => {
+						return (
+							<Excerpt index={index} key={post.id} post={post} settings={settings} />
+						)
+					})}
+				</Page>
+			)
+		}
 
-    return (
-      <div>Loading...</div>
-    )
-  }
+		return (
+			<div>Loading...</div>
+		)
+	}
 }
 
 PostList.propTypes = {
-  data: PropTypes.object,
-  layout: PropTypes.object
+	data: PropTypes.object,
+	layout: PropTypes.object
 }
 
 const PostListQuery = gql`
@@ -47,13 +47,13 @@ const PostListQuery = gql`
 `
 
 const PostListWithData = graphql(PostListQuery, {
-  options: ({layout}) => ({
-    variables: {
-      postType: layout.postType || 'post',
-      limit: layout.limit || 10,
-      skip: layout.skip || 0
-    }
-  })
+	options: ({layout}) => ({
+		variables: {
+			postType: layout.postType || 'post',
+			limit: layout.limit || 10,
+			skip: layout.skip || 0
+		}
+	})
 })(PostList)
 
 export default PostListWithData

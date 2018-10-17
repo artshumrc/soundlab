@@ -15,12 +15,12 @@ const resourceListQuery = graphql(gql`
     }
   }
 `, {
-  name: 'resourceListQuery',
-  props: props => {
-    return {
-      resources: props.resourceListQuery.posts,
-    };
-  },
+	name: 'resourceListQuery',
+	props: props => {
+		return {
+			resources: props.resourceListQuery.posts,
+		};
+	},
 });
 
 const additionalResourceListQuery = graphql(gql`
@@ -38,12 +38,12 @@ const additionalResourceListQuery = graphql(gql`
     }
   }
 `, {
-  name: 'additionalResourceListQuery',
-  props: props => {
-    return {
-      resources: props.additionalResourceListQuery.posts,
-    };
-  },
+	name: 'additionalResourceListQuery',
+	props: props => {
+		return {
+			resources: props.additionalResourceListQuery.posts,
+		};
+	},
 });
 
 
@@ -61,17 +61,17 @@ const resourceSingleQuery = graphql(gql`
     }
   }
 `, {
-  options: ({params}) => ({
-    variables: {
-      post: params.slug,
-    }
-  }),
-  name: 'resourceSingleQuery',
-  props: props => {
-    return {
-      resource: props.resourceSingleQuery.post,
-    };
-  },
+	options: ({params}) => ({
+		variables: {
+			post: params.slug,
+		}
+	}),
+	name: 'resourceSingleQuery',
+	props: props => {
+		return {
+			resource: props.resourceSingleQuery.post,
+		};
+	},
 });
 
 const eventSingleQuery = graphql(gql`
@@ -88,17 +88,17 @@ const eventSingleQuery = graphql(gql`
     }
   }
 `, {
-  options: ({params}) => ({
-    variables: {
-      post: params.slug,
-    }
-  }),
-  name: 'eventSingleQuery',
-  props: props => {
-    return {
-      event: props.eventSingleQuery.post,
-    };
-  },
+	options: ({params}) => ({
+		variables: {
+			post: params.slug,
+		}
+	}),
+	name: 'eventSingleQuery',
+	props: props => {
+		return {
+			event: props.eventSingleQuery.post,
+		};
+	},
 });
 
 
@@ -117,12 +117,12 @@ const featuredEventQuery = graphql(gql`
     }
   }
 `, {
-  name: 'featuredEventQuery',
-  props: props => {
-    return {
-      events: props.featuredEventQuery.posts,
-    };
-  },
+	name: 'featuredEventQuery',
+	props: props => {
+		return {
+			events: props.featuredEventQuery.posts,
+		};
+	},
 });
 
 const resourceEventListQuery = graphql(gql`
@@ -140,12 +140,12 @@ const resourceEventListQuery = graphql(gql`
     }
   }
 `, {
-  name: 'resourceEventListQuery',
-  props: props => {
-    return {
-      events: props.resourceEventListQuery.posts,
-    };
-  },
+	name: 'resourceEventListQuery',
+	props: props => {
+		return {
+			events: props.resourceEventListQuery.posts,
+		};
+	},
 });
 
 export {

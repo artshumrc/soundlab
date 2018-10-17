@@ -36,8 +36,8 @@ class PlaylistListItem extends Component{
 		});
 	}
 
-  render() {
-    const { playlist } = this.props;
+	render() {
+		const { playlist } = this.props;
 		const { mouseOver } = this.state;
 
 		if (!playlist) {
@@ -47,38 +47,38 @@ class PlaylistListItem extends Component{
 		const byline = _.findWhere(playlist.post_meta, { meta_key: 'byline' });
 		const duration = "0:00";
 
-    const thumbnailListImage = {
-      width: '70px',
-      height: '70px',
-      objectFit: 'cover',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center'
-    };
+		const thumbnailListImage = {
+			width: '70px',
+			height: '70px',
+			objectFit: 'cover',
+			backgroundSize: 'cover',
+			backgroundRepeat: 'no-repeat',
+			backgroundPosition: 'center'
+		};
 
 		if (playlist.thumbnail) {
-      thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(playlist.thumbnail, 'thumbnail')}")`;
+			thumbnailListImage.backgroundImage = `url("${getPostThumbnailBySize(playlist.thumbnail, 'thumbnail')}")`;
 		} else {
-      thumbnailListImage.backgroundImage = 'url("/images/default_sound_600w600h.png")';
+			thumbnailListImage.backgroundImage = 'url("/images/default_sound_600w600h.png")';
 		}
 
-    return (
-      <Row >
-	      <Link
+		return (
+			<Row >
+				<Link
 					className="playlistListItem"
 					to={`/playlists/${playlist.post_name}`}
 					onMouseEnter={this.handleMouseEnter.bind(this)}
 					onMouseLeave={this.handleMouseLeave.bind(this)}
 				>
-          <Col sm={12} className="itemTrack">
+					<Col sm={12} className="itemTrack">
 						<div className="itemIndex">
 							<span className="index">
 								{this.props.index + 1}
 							</span>
 						</div>
 						<div className="itemContent">
-	            <div className="thumbnail">
-		            <div
+							<div className="thumbnail">
+								<div
 									className="thumbnailImage"
 									style={thumbnailListImage}
 								/>
@@ -97,26 +97,26 @@ class PlaylistListItem extends Component{
 									{playlist.post_title}
 								</h3>
 								{byline &&
-									<span className="byline">
-										{byline.meta_value}
-									</span>
+								<span className="byline">
+									{byline.meta_value}
+								</span>
 								}
 							</div>
-		          <div className="durationColumn">
-		            <span className="duration">
+							<div className="durationColumn">
+								<span className="duration">
 								</span>
 							</div>
 						</div>
 					</Col>
 				</Link>
-	    </Row>
-    );
-  }
+			</Row>
+		);
+	}
 }
 
 PlaylistListItem.propTypes = {
-  index: PropTypes.number,
-  post: PropTypes.object,
+	index: PropTypes.number,
+	post: PropTypes.object,
 };
 
 export default PlaylistListItem;
