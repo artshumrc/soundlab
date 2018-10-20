@@ -2,6 +2,11 @@ import Sequelize from 'sequelize';
 import _ from 'lodash';
 import PHPUnserialize from 'php-unserialize';
 
+import dotenvSetup from './dotenv';
+
+// Get variables from dotenv
+dotenvSetup();
+
 const DB_HOST = process.env.DB_HOST;
 const DB_PORT = process.env.DB_PORT;
 const DB_NAME = process.env.DB_NAME;

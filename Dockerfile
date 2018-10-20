@@ -7,10 +7,10 @@ COPY . /app/.
 WORKDIR /app
 
 # Open port 3000 for serving the webpage
-EXPOSE 3000
+EXPOSE 3001
 
 RUN rm -rf node_modules
 RUN rm -rf client/node_modules
 RUN npm i -g yarn && yarn install
 
-CMD ["yarn", "startdev"]
+CMD ["yarn", "start-prod"]

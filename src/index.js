@@ -20,9 +20,6 @@ import db, { dbSetup } from './db';
 import Post from './models/Post';
 import Postmeta from './models/Postmeta';
 
-// webpack config
-import config from '../webpack.config.js';
-
 // dotenv
 import dotenvSetup from './dotenv';
 
@@ -50,31 +47,7 @@ dotenvSetup();
 
 const app = express();
 
-// app.use(basicAuth('soundlab', '2012'));
-
-const compiler = webpack(config);
-const middleware = webpackMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-  contentBase: './src',
-  stats: {
-    colors: true,
-    hash: false,
-    timings: true,
-    chunks: false,
-    chunkModules: false,
-    modules: false
-  }
-});
-
-app.use(middleware);
-app.use(webpackHotMiddleware(compiler));
-
-
 app.set('port', (process.env.PORT || 3001));
-
-if (process.env.NODE_ENV === 'production') {
-	app.use(express.static('client/build'));
-}
 
 app.use(logger('dev'));
 app.use(cookieParser());
@@ -110,15 +83,6 @@ oauthSetup(app);
 
 // Routes
 app.use('/auth', authenticationRouter);
-
-app.use(express.static('./public'));
-
-app.get('*', function response (req, res) {
-	// console.log(req);
-  // res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')))
-  // res.end()
-	res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
-});
 
 // App server listen
 const APP_PORT = process.env.APP_PORT || 3000;
