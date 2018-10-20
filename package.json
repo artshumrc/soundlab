@@ -20,9 +20,9 @@
   },
   "scripts": {
     "build": "babel -d ./build ./src",
+    "build-run": "node ./build/index.js",
     "start-dev": "NODE_ENV=development nodemon src --exec babel-node",
-    "start-build": "node ./build/index.js",
-    "start-prod": "yarn pm2 start src --name soundlab-api"
+    "start-prod": "yarn pm2 start build --name soundlab-api"
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
