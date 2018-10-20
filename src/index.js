@@ -85,7 +85,7 @@ oauthSetup(app);
 app.use('/auth', authenticationRouter);
 
 // App server listen
-const APP_PORT = process.env.APP_PORT || 3000;
+const APP_PORT = process.env.APP_PORT || 3001;
 const listen = () => {
 	app.listen(APP_PORT, () => {
 	  console.log(`App is now running on http://localhost:${APP_PORT}`)
