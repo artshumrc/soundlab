@@ -51,12 +51,12 @@ class PostExcerpt extends Component {
 
 		return (
 			<div ref={(c) => this._excerpt = c}>
-				<Link to={'post/' + encodeURIComponent(name)} styleName="base" onClick={this._handleClick.bind(this)}>
-					<div styleName="info">
-						<h2 styleName="title">{title}</h2>
-						<p styleName="text" dangerouslySetInnerHTML = {this._renderExcerpt()}/>
+				<Link to={'post/' + encodeURIComponent(name)} className="base" onClick={this._handleClick.bind(this)}>
+					<div className="info">
+						<h2 className="title">{title}</h2>
+						<p className="text" dangerouslySetInnerHTML = {this._renderExcerpt()}/>
 					</div>
-					<div styleName="thumbnail" style={bg}>
+					<div className="thumbnail" style={bg}>
 					</div>
 				</Link>
 			</div>

@@ -26,7 +26,7 @@ class MainLayout extends Component {
 
 	render() {
 		return (
-			<div styleName="mainContainer">
+			<div className="mainContainer">
 				<Header />
 				<div className="wavesContainer">
 					<img src="/images/wave1.png" />

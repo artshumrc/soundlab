@@ -79,7 +79,7 @@ class PostContent extends Component {
 
 	render() {
 		return (
-			<div ref={ (c)=> this._content = c } styleName="content" dangerouslySetInnerHTML = {this._parseContent()}></div>
+			<div ref={ (c)=> this._content = c } className="content" dangerouslySetInnerHTML = {this._parseContent()}></div>
 		)
 	}
 }

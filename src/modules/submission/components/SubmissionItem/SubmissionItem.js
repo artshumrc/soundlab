@@ -28,7 +28,7 @@ class SubmissionItem extends Component{
 
 			<div>
 
-				<Card styleName="listContainer">
+				<Card className="listContainer">
 					<Link to={"submissions/" + encodeURIComponent(name)} onClick={this.handleClick.bind(this)}>
 						<CardTitle title={title} subtitle={this.props.post.submission_byline.meta_value} />
 					</Link>

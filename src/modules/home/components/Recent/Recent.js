@@ -13,16 +13,16 @@ class Recent extends React.Component {
 		const { items } = this.props;
 
 		return (
-			<section styleName="recent-section">
+			<section className="recent-section">
 				<Grid>
-					<Row styleName="recent-section-title">
+					<Row className="recent-section-title">
 						<Col>
 							<h3>
 								Recent tracks
 							</h3>
 						</Col>
 					</Row>
-					<Row styleName="recent-sound-container">
+					<Row className="recent-sound-container">
 						{items.map((item, i) => (
 							<Col
 								md={4}
@@ -34,7 +34,7 @@ class Recent extends React.Component {
 							</Col>
 						))}
 					</Row>
-					<Row styleName="recent-section-title workshops">
+					<Row className="recent-section-title workshops">
 						<Col>
 							<h3>
 							 Workshops

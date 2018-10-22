@@ -53,8 +53,8 @@ class Timer extends React.Component {
 	render() {
 
 		return (
-			<div styleName="playTimeWrapper">
-				<span styleName="playTime">
+			<div className="playTimeWrapper">
+				<span className="playTime">
 					{this.renderPlayTime()}
 				</span>
 			</div>

@@ -185,31 +185,31 @@ class Player extends Component {
 				soundlabPlayer
 				${playlistVisible ? 'soundlabPlayerPlaylistVisible' : ''}
 			`}>
-				<div styleName="soundlabPlayerContainer">
+				<div className="soundlabPlayerContainer">
 					<div
-						styleName="playerProgressBar"
+						className="playerProgressBar"
 						style={{
 							width: `${player.progress}%`,
 						}}
 					/>
-					<div styleName="playerOverlay">
-						<div styleName="playerMetaContainer">
-							<div styleName="currentPlayMeta" >
-								<div styleName="playerAvatar" style={thumbnailListImage} />
-								<div styleName="playerMeta">
-									<h6 styleName="playerMetaTitle">
+					<div className="playerOverlay">
+						<div className="playerMetaContainer">
+							<div className="currentPlayMeta" >
+								<div className="playerAvatar" style={thumbnailListImage} />
+								<div className="playerMeta">
+									<h6 className="playerMetaTitle">
 										{currentTrack.post_title}
 									</h6>
 									{byline &&
-										<h6 styleName="playerMetaCreator">
+										<h6 className="playerMetaCreator">
 											{_s.prune(byline.meta_value, 60)}
 										</h6>
 									}
 								</div>
 							</div>
 						</div>
-						<div styleName="playerControls">
-							<div styleName="buttonWrapper">
+						<div className="playerControls">
+							<div className="buttonWrapper">
 								<SkipPrevious
 									style={buttonStyles}
 									onClick={this.playPrevious.bind(this)}
@@ -233,8 +233,8 @@ class Player extends Component {
 								/>
 							</div>
 
-							<div styleName="playerRight">
-								<div styleName="timerOuter">
+							<div className="playerRight">
+								<div className="timerOuter">
 									{currentTrack && currentTrack.sound &&
 										<Timer
 											track={currentTrack}
@@ -242,7 +242,7 @@ class Player extends Component {
 									}
 								</div>
 								<div
-									styleName="playlistToggle"
+									className="playlistToggle"
 									onClick={this.togglePlaylistVisibility.bind(this)}
 								>
 									{playlistVisible ?
@@ -255,7 +255,7 @@ class Player extends Component {
 						</div>
 					</div>
 				</div>
-				<div styleName="playlistDrawer">
+				<div className="playlistDrawer">
 					<PlayerSounds sounds={player.tracks} />
 				</div>
 			</div>

@@ -9,25 +9,25 @@ class Footer extends Component {
 			<footer>
 				<Row>
 					<Col md={6}>
-						<div styleName="footer-left">
+						<div className="footer-left">
 							<div>
-								<span styleName="footer-site-title">The Sound Lab</span>
+								<span className="footer-site-title">The Sound Lab</span>
 							</div>
 							<div>
-								<span styleName="footer-site-title">at Harvard University</span>
+								<span className="footer-site-title">at Harvard University</span>
 							</div>
-							<div styleName="footer-nav-container">
+							<div className="footer-nav-container">
 								<a
 									href="mailto:soundlab@g.harvard.edu"
 									target="_blank"
 									rel="noreferrer noopener"
-									styleName="footer-social-link"
+									className="footer-social-link"
 								>
 	                Contact
 								</a>
 								<a
 									href="/terms"
-									styleName="footer-social-link"
+									className="footer-social-link"
 								>
 									Privacy
 								</a>
@@ -36,12 +36,12 @@ class Footer extends Component {
 					</Col>
 					{/*
           <Col md={6}>
-						<div styleName="footer-social-links">
+						<div className="footer-social-links">
 							<a
 								href="https://facebook.com"
 								target="_blank"
 								rel="noreferrer noopener"
-								styleName="footer-social-link"
+								className="footer-social-link"
 							>
 	              Facebook
 							</a>
@@ -49,7 +49,7 @@ class Footer extends Component {
 								href="https://twitter.com"
 								target="_blank"
 								rel="noreferrer noopener"
-								styleName="footer-social-link"
+								className="footer-social-link"
 							>
 	              Twitter
 							</a>
@@ -57,7 +57,7 @@ class Footer extends Component {
 								href="https://youtube.com"
 								target="_blank"
 								rel="noreferrer noopener"
-								styleName="footer-social-link"
+								className="footer-social-link"
 							>
 	              YouTube
 							</a>
@@ -65,7 +65,7 @@ class Footer extends Component {
 								href="https://soundcloud.com"
 								target="_blank"
 								rel="noreferrer noopener"
-								styleName="footer-social-link"
+								className="footer-social-link"
 							>
 	              Soundcloud
 							</a>

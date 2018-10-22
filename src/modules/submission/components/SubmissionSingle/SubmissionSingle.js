@@ -13,11 +13,11 @@ class SubmissionSingle extends Component {
 
 			return (
 
-				<div styleName="main">
+				<div className="main">
 
-					<div styleName="wrapper">
+					<div className="wrapper">
 						<img src={this.props.data.post.thumbnail} alt=""/>
-						<h1 styleName="title">{title}</h1>
+						<h1 className="title">{title}</h1>
 						<h6>{this.props.data.post.submission_byline.meta_value}</h6>
 						<h6>{this.props.data.post.submission_date.meta_value}</h6>
 						<h6>{this.props.data.post.submission_link.meta_value}</h6>

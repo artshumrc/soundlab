@@ -34,40 +34,40 @@ class Learn extends React.Component {
 
 
 		return (
-			<section styleName="learn">
+			<section className="learn">
 				<Grid>
 					<Row>
 						<Col>
-							<div styleName="learn-upper">
+							<div className="learn-upper">
 								<Link to={`/events/${event.post_name}`}>
 									<div
-										styleName="learn-background"
+										className="learn-background"
 										style={thumbnailListImage}
 									/>
 								</Link>
-								<div styleName="learn-inlay">
+								<div className="learn-inlay">
 									<Link to={`/events/${event.post_name}`}>
-										<h3 styleName="learn-title">
-										{event.post_title}
-									</h3>
+										<h3 className="learn-title">
+											{event.post_title}
+										</h3>
 									</Link>
 									{dateDescription &&
-									<span styleName="learn-date">
-									{dateDescription.meta_value}
-								</span>
+									<span className="learn-date">
+										{dateDescription.meta_value}
+									</span>
 									}
 									{excerpt &&
-									<p styleName="learn-description">
-									{excerpt.meta_value}
-								</p>
+									<p className="learn-description">
+										{excerpt.meta_value}
+									</p>
 									}
 									<Link to={`/events/${event.post_name}`}>
-										<div styleName="learn-more">
-										<i className="mdi mdi-chevron-right" />
-										<span>
+										<div className="learn-more">
+											<i className="mdi mdi-chevron-right" />
+											<span>
 												Learn more
-									</span>
-									</div>
+											</span>
+										</div>
 									</Link>
 								</div>
 							</div>
@@ -75,16 +75,16 @@ class Learn extends React.Component {
 					</Row>
 					<Row>
 						<Col md={6}>
-							<div styleName="learn-lower">
-								<h3 styleName="site-tag">
+							<div className="learn-lower">
+								<h3 className="site-tag">
 									Learn through creation.
 								</h3>
-								<p styleName="site-tag-subtitle">
+								<p className="site-tag-subtitle">
 									We host weekly workshops covering topics ranging from beginner microphone use to advanced full studio sessions. All students are welcome!
 								</p>
 							</div>
 							<Link to="/events">
-								<div styleName="learn-more">
+								<div className="learn-more">
 									<i className="mdi mdi-chevron-right" />
 									<span>
 										View the full calendar of events

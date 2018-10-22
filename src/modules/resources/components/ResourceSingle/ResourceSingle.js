@@ -47,13 +47,13 @@ class ResourceSingle extends Component {
       //remove cover section and cover section image for release
 
 			<div>
-				{/* <Row styleName="cover-section">
+				{/* <Row className="cover-section">
       </Row> */}
-				<Row styleName="content-section">
+				<Row className="content-section">
 					<Col>
-						{/*<div styleName="cover-image" style={pageCoverImage} /> */}
+						{/*<div className="cover-image" style={pageCoverImage} /> */}
 						<div>
-							<h1 styleName="section-title">
+							<h1 className="section-title">
 								{resource.post_title}
 							</h1>
 							{byline &&
@@ -61,18 +61,18 @@ class ResourceSingle extends Component {
 								{byline.meta_value}
 							</h3>
 							}
-							<div styleName="content" dangerouslySetInnerHTML={{__html: linkifyHtml(wpautop(resource.post_content))}} />
+							<div className="content" dangerouslySetInnerHTML={{__html: linkifyHtml(wpautop(resource.post_content))}} />
 							{resourceDate &&
-							<Row styleName="metaItem">
+							<Row className="metaItem">
 								<Col md={2}>
 									<label>
 											Date
-								</label>
+									</label>
 								</Col>
 								<Col md={10}>
 									<p>
-									{moment(parseInt(resourceDate.meta_value, 10) * 1000).format('MMMM Do YYYY, h:mm a')}
-								</p>
+										{moment(parseInt(resourceDate.meta_value, 10) * 1000).format('MMMM Do YYYY, h:mm a')}
+									</p>
 								</Col>
 							</Row>
 							}

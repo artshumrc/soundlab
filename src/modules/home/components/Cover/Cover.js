@@ -8,16 +8,16 @@ class Cover extends React.Component {
 	render() {
 		return (
 			<Clearfix>
-				<div styleName="cover">
+				<div className="cover">
 					<Grid>
-						<Row styleName="coverRow">
+						<Row className="coverRow">
 							<Col md={6} sm={12}>
-								<div styleName="coverText">
-									<h1 styleName="siteTag">We hear you</h1>
-									<h2 styleName="siteTagSubtitle">The Sound Lab at Harvard University</h2>
+								<div className="coverText">
+									<h1 className="siteTag">We hear you</h1>
+									<h2 className="siteTagSubtitle">The Sound Lab at Harvard University</h2>
 								</div>
 							</Col>
-							<Col styleName="featuredTrackColumn" md={6} sm={12}>
+							<Col className="featuredTrackColumn" md={6} sm={12}>
 								<FeaturedTrackContainer />
 							</Col>
 						</Row>

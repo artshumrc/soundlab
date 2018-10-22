@@ -19,7 +19,7 @@ export default class ShowcaseList extends Component{
 
 			<div>
 
-				<Card styleName="listContainer">
+				<Card className="listContainer">
 
 					<CardTitle title={this.props.post.post_title} subtitle={this.props.post.byline.meta_value} />
 

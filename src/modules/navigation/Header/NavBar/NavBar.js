@@ -44,67 +44,67 @@ class NavBar extends React.Component {
 		return (
 			<div>
 				<Headroom
-					styleName="navbar"
+					className="navbar"
 					onMouseEnter={this.handleMouseEnter.bind(this)}
 					onMouseLeave={this.handleMouseLeave.bind(this)}
 				>
-					<div styleName="navHeader">
+					<div className="navHeader">
 						<Link to="/">
-							<div styleName="siteLogo">
+							<div className="siteLogo">
 								<div className={`siteLogo1 ${hover ? 'siteLogo1Hover' : ''}`} />
-								<div styleName="siteLogo2" />
-								<div styleName="siteLogo3" />
-								<div styleName="siteLogo4" />
+								<div className="siteLogo2" />
+								<div className="siteLogo3" />
+								<div className="siteLogo4" />
 								<div className={`siteLogo5 ${hover ? 'siteLogo5Hover' : ''}`} />
 							</div>
-							<h2 styleName="siteTitle">
+							<h2 className="siteTitle">
 								Sound Lab
 							</h2>
 						</Link>
 					</div>
-					<ul styleName="nav">
+					<ul className="nav">
 						<li>
-							<Link styleName="navLink" to={'/events'}>
+							<Link className="navLink" to={'/events'}>
 								Workshops
 							</Link>
 						</li>
-						<li styleName="hasDropdown">
-							<Link styleName="navLink" to={'/sounds'}>
+						<li className="hasDropdown">
+							<Link className="navLink" to={'/sounds'}>
 								Sounds
 							</Link>
-							<div styleName="dropdown">
+							<div className="dropdown">
 								<li>
-									<Link styleName="navDropdownLink" to={'/playlists'}>
+									<Link className="navDropdownLink" to={'/playlists'}>
 										Playlists
 									</Link>
 								</li>
 							</div>
 						</li>
-						<li styleName="hasDropdown">
-							<Link styleName="navLink" to={'/about'}>
+						<li className="hasDropdown">
+							<Link className="navLink" to={'/about'}>
 								About
 							</Link>
-							<div styleName="dropdown">
+							<div className="dropdown">
 								<li>
-									<Link styleName="navDropdownLink" to={'/directory'}>
+									<Link className="navDropdownLink" to={'/directory'}>
 										Directory
 									</Link>
 								</li>
 								<li>
-									<Link styleName="navDropdownLink" to={'/equipment'}>
+									<Link className="navDropdownLink" to={'/equipment'}>
 										Equipment
 									</Link>
 								</li>
 							</div>
 						</li>
 						{ token ?
-							<li styleName="hasDropdown">
-								<Link styleName="navLink" to={'/profile'}>
+							<li className="hasDropdown">
+								<Link className="navLink" to={'/profile'}>
 									My Tracks
 								</Link>
-								<div styleName="dropdown signOutDropdown">
+								<div className="dropdown signOutDropdown">
 									<li>
-										<Link styleName="navDropdownLink" to="/logout">
+										<Link className="navDropdownLink" to="/logout">
 											Sign out
 										</Link>
 									</li>
@@ -113,7 +113,7 @@ class NavBar extends React.Component {
 						:
 							<li>
 								<Link
-									styleName="navLink"
+									className="navLink"
 									to='/sign-in'
 								>
 									Join / Login
@@ -130,26 +130,26 @@ class NavBar extends React.Component {
 					<ul >
 						<li>
 							<Link
-								styleName="navLink"
+								className="navLink"
 								to={'/events'}
 								onClick={this.closeMenu}
 						>
 							Workshops
 							</Link>
 						</li>
-						<li styleName="mobileHasDropdown">
+						<li className="mobileHasDropdown">
 							<Link
-								styleName="navLink"
+								className="navLink"
 								to={'/sounds'}
 								onClick={this.closeMenu}
 						>
 							Sounds
 							</Link>
 
-							<div styleName="mobileHasDropdown">
+							<div className="mobileHasDropdown">
 								<li>
 									<Link
-										styleName="mobileNavDropdownLink"
+										className="mobileNavDropdownLink"
 										to={'/playlists'}
 										onClick={this.closeMenu}
 								>
@@ -159,18 +159,18 @@ class NavBar extends React.Component {
 							</div>
 
 						</li>
-						<li styleName="mobileHasDropdown">
+						<li className="mobileHasDropdown">
 							<Link
-								styleName="navLink"
+								className="navLink"
 								to={'/about'}
 								onClick={this.closeMenu}
 						>
 							About
 							</Link>
-							<div styleName="mobileHasDropdown">
+							<div className="mobileHasDropdown">
 								<li>
 									<Link
-										styleName="mobileNavDropdownLink"
+										className="mobileNavDropdownLink"
 										to={'/directory'}
 										onClick={this.closeMenu}
 								>
@@ -179,7 +179,7 @@ class NavBar extends React.Component {
 								</li>
 								<li>
 									<Link
-										styleName="mobileNavDropdownLink"
+										className="mobileNavDropdownLink"
 										to={'/equipment'}
 										onClick={this.closeMenu}
 								>
@@ -189,13 +189,13 @@ class NavBar extends React.Component {
 							</div>
 						</li>
 						{ token ?
-							<li styleName="mobileHasDropdown">
-								<Link styleName="navLink" to={'/profile'}>
+							<li className="mobileHasDropdown">
+								<Link className="navLink" to={'/profile'}>
 								My Tracks
 								</Link>
-								<div styleName="mobileHasDropdown">
+								<div className="mobileHasDropdown">
 									<li>
-										<Link styleName="mobileNavDropdownLink" to="/logout">
+										<Link className="mobileNavDropdownLink" to="/logout">
 										Sign out
 										</Link>
 									</li>
@@ -204,7 +204,7 @@ class NavBar extends React.Component {
 					:
 							<li>
 								<Link
-									styleName="navLink"
+									className="navLink"
 									to='/sign-in'
 							>
 								Join / Login

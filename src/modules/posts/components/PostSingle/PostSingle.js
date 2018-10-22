@@ -39,13 +39,13 @@ class PostSingle extends Component {
 			}
 
 			return (
-				<div ref={(c) => this._post = c} styleName="base with-header">
-					<div styleName="header" style={bg}>
+				<div ref={(c) => this._post = c} className="base with-header">
+					<div className="header" style={bg}>
 
 					</div>
-					<div styleName="main">
-						<div styleName="wrapper">
-							<h1 styleName="title">{title}</h1>
+					<div className="main">
+						<div className="wrapper">
+							<h1 className="title">{title}</h1>
 							<PostContent content={content}/>
 						</div>
 					</div>

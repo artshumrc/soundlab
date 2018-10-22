@@ -113,8 +113,8 @@ class SoundListItem extends Component{
 								<span className="duration">
 									{duration &&
 									<span className="byline">
-									{duration.meta_value}
-								</span>
+										{duration.meta_value}
+									</span>
 								}
 								</span>
 							</div>

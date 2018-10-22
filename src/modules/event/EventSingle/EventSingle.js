@@ -53,21 +53,21 @@ class EventSingle extends Component {
 
 		return (
 			<div>
-				<Row styleName="cover-section">
+				<Row className="cover-section">
 				</Row>
-				<Row styleName="content-section">
+				<Row className="content-section">
 					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
-						<div styleName="cover-image" style={coverImage}></div>
+						<div className="cover-image" style={coverImage}></div>
 						<div>
 
-							<h1 styleName="section-title">
+							<h1 className="section-title">
 								{event.post_title}
 							</h1>
 
-							<div styleName="content" dangerouslySetInnerHTML={{__html: linkifyHtml(wpautop(event.post_content)) }} />
+							<div className="content" dangerouslySetInnerHTML={{__html: linkifyHtml(wpautop(event.post_content)) }} />
 
 							{location &&
-							<div styleName="metaItem">
+							<div className="metaItem">
 								<label>
 										Location
 								</label>
@@ -78,7 +78,7 @@ class EventSingle extends Component {
 							}
 
 							{startDate &&
-							<div styleName="metaItem">
+							<div className="metaItem">
 								<label>
                     Date
 								</label>
