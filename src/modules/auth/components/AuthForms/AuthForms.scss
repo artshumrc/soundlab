@@ -14,11 +14,9 @@
 
 }
 
-:global {
-	.help-block {
-		color: $primary-600;
-		font-family: $font-label;
-		font-size: 16px;
-		text-align: left;
-	}
+.help-block {
+	color: $primary-600;
+	font-family: $font-label;
+	font-size: 16px;
+	text-align: left;
 }

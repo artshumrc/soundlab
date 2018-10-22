@@ -5,12 +5,9 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 const networkInterface = createNetworkInterface({
-	uri: '/graphql',
+	uri: `${process.env.REACT_APP_GRAPHQL_SERVER}/${process.env.REACT_APP_GRAPHQL_URI}`, 
 	opts: {
 	 	credentials: 'include',
-	},
-	headers: {
-		Authorization: 'Basic c291bmRsYWI6MjAxMg==',
 	},
 });
 

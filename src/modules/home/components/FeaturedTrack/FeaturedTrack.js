@@ -8,6 +8,9 @@ import { resumePlayer, pausePlayer, setPlayerTrack, setPlayerProgress, setPlayli
 import { getPostThumbnailBySize } from '../../../../lib/thumbnails';
 import { getAudioFileURL } from '../../../../lib/audioFiles';
 
+import './FeaturedTrack.css';
+
+
 class FeaturedTrack extends React.Component {
 	constructor(props) {
 		super(props);

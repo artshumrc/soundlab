@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import RecentSound from '../RecentSound';
 import './Recent.css';
@@ -14,7 +14,7 @@ class Recent extends React.Component {
 
 		return (
 			<section className="recent-section">
-				<Grid>
+				<div className="recent-section-grid">
 					<Row className="recent-section-title">
 						<Col>
 							<h3>
@@ -41,7 +41,7 @@ class Recent extends React.Component {
 							</h3>
 						</Col>
 					</Row>
-				</Grid>
+				</div>
 			</section>
 		);
 	}
