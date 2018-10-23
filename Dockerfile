@@ -1,10 +1,13 @@
-FROM node:8.2.1
+# base image
+FROM node:9.6.1
 
+# set working directory
 RUN mkdir /app
 COPY . /app/.
 WORKDIR /app
-RUN rm -rf node_modules
-RUN rm -rf client/node_modules
-RUN yarn install
 
+# install and cache app dependencies
+RUN yarn
+
+# start app
 CMD ["yarn", "start"]
