@@ -7,46 +7,48 @@
 	a:hover {
 		color: $primary;
 	}
-}
 
-.title {
-	font-size: 22px;
-	font-family: $font-reading;
-	line-height: 1.5em;
-	color: $darkGrey;
-	&:hover {
-		color: $primary;
-	}
-}
+	.title {
+		font-size: 22px;
+		font-family: $font-reading;
+		line-height: 1.5em;
+		color: $darkGrey;
+		text-align: left;
 
-.content {
-	font-family: $font-body;
-	font-weight: 100;
-  font-size: 16px;
-	line-height: 1.5em;
-	padding: 5px 0;
-  color: $darkGrey;
-}
-
-.readMoreLink {
-
-	&:hover {
-		i, span {
+		&:hover {
 			color: $primary;
 		}
 	}
 
-	i, span {
-	  color: $dark;
-		display: inline-block;
-		vertical-align: top;
-		padding: 0 2px;
+	.content {
+		font-family: $font-body;
+		font-weight: 100;
+	  font-size: 16px;
+		line-height: 1.5em;
+		padding: 5px 0;
+	  color: $darkGrey;
 	}
 
-	span {
-		font-family: $font-label;
-		font-weight: bold;
-		font-size: 16px;
-	}
+	.readMoreLink {
 
+		&:hover {
+			i, span {
+				color: $primary;
+			}
+		}
+
+		i, span {
+		  color: $dark;
+			display: inline-block;
+			vertical-align: top;
+			padding: 0 2px;
+		}
+
+		span {
+			font-family: $font-label;
+			font-weight: bold;
+			font-size: 16px;
+		}
+
+	}
 }

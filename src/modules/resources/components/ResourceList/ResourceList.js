@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router';
 import _ from 'underscore';
 
@@ -23,7 +23,7 @@ class ResourceList extends React.Component {
 
 		return (
 			<div className="resourceList">
-				<Grid>
+				<div>
 					<Row className="resourceListContainer">
 						<Col sm={12} md={12} lg={8}>
 							<h2 className="resourceSectionTitle">Resources</h2>
@@ -51,7 +51,7 @@ class ResourceList extends React.Component {
 	        </Col>
 	      </Row>
         */}
-				</Grid>
+				</div>
 			</div>
 		);
 	}

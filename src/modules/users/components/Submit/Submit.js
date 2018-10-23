@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import Recaptcha from 'react-recaptcha';
 import autoBind from 'react-autobind';
 import { Link } from 'react-router';

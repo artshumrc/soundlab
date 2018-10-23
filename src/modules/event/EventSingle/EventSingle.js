@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDisqusThread from 'react-disqus-thread';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import _ from 'underscore';
 import moment from 'moment';
 import wpautop from 'wpautop';

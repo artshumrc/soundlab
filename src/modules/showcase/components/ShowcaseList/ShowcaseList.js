@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 
 import ShowcaseItem from '../ShowcaseItem'
 import '../showcase.css'

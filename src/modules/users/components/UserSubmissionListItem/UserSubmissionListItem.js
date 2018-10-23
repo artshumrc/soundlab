@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import _ from 'underscore';
 import autoBind from 'react-autobind';
 import { connect } from 'react-redux';
@@ -71,7 +71,7 @@ class UserSubmissionListItem extends Component{
 		return (
 			<Row >
 				<div
-					className={`soundListItem ${isCurrentTrack ? 'soundListItemIsCurrentTrack' : ''}`}
+					className={`soundListItem userSubmissionListItem ${isCurrentTrack ? 'soundListItemIsCurrentTrack' : ''}`}
 					onMouseEnter={this.handleMouseEnter.bind(this)}
 					onMouseLeave={this.handleMouseLeave.bind(this)}
 				>

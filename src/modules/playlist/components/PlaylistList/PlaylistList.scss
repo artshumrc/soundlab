@@ -8,58 +8,58 @@
 	@media #{$breakpoint-0} {
 		padding: 80px 40px 60px;
 	}
-}
 
-.playlistListNoPadding {
-	padding: 0;
-}
+	.playlistListNoPadding {
+		padding: 0;
+	}
 
-.waveCoverSection {
-	// height: 80vh;
-}
+	.waveCoverSection {
+		// height: 80vh;
+	}
 
-.searchTitle {
-	padding: 20px 0;
+	.searchTitle {
+		padding: 20px 0;
 
-	i {
+		i {
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+
+	.title {
 		display: inline-block;
 		vertical-align: top;
+		font-size: 44px;
+		line-height: 1.3em;
+		color: $darkestGrey;
+		padding: 30px 0;
+		@media #{$breakpoint-0} {
+			//padding: 100px 5% 60px;
+		}
 	}
-}
 
-.title {
-	display: inline-block;
-	vertical-align: top;
-	font-size: 44px;
-	line-height: 1.3em;
-	color: $darkestGrey;
-	padding: 30px 0;
-	@media #{$breakpoint-0} {
-		//padding: 100px 5% 60px;
+	.postsColumnSectionTitles {
+		border-bottom: 1px solid $lightGrey;
+		margin-bottom: 16px;
+		font-family: $font-label;
+		font-size: 12px;
+		text-transform: uppercase;
+		display: block;
+		color: $lightGrey;
+		padding: 0 15px 6px;
 	}
-}
 
-.postsColumnSectionTitles {
-	border-bottom: 1px solid $lightGrey;
-	margin-bottom: 16px;
-	font-family: $font-label;
-	font-size: 12px;
-	text-transform: uppercase;
-	display: block;
-	color: $lightGrey;
-	padding: 0 15px 6px;
-}
+	.sectionTitleNumberContainer {
+		display: inline-block;
+		width: 10%;
+	}
 
-.sectionTitleNumberContainer {
-	display: inline-block;
-	width: 10%;
-}
+	.sectionTrackLabelContainer {
+		display: inline-block;
+		width: 90%;
+	}
 
-.sectionTrackLabelContainer {
-	display: inline-block;
-	width: 90%;
-}
-
-.durationColumn {
-	text-align: left;
+	.durationColumn {
+		text-align: left;
+	}
 }

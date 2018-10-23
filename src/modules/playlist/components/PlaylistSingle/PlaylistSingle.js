@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import autoBind from 'react-autobind';
 import { Link } from 'react-router';
 import _ from 'underscore';
@@ -31,7 +31,7 @@ class PlaylistList extends React.Component {
 		}
 
 		return (
-			<Grid className="playlistSingle">
+			<div className="playlistSingle">
 				<Row>
 					<Col >
 						<h1 className="title">
@@ -53,7 +53,7 @@ class PlaylistList extends React.Component {
 					*/}
 				</Row>
 				<PlaylistSounds sounds={playlist.queue} />
-			</Grid>
+			</div>
 		);
 	}
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import autoBind from 'react-autobind';
 import { Link } from 'react-router';
 
@@ -84,7 +84,7 @@ class SoundList extends React.Component {
 		});
 
 		return (
-			<Grid className="soundList">
+			<div className="soundList">
 				<Row className="waveCoverSection">
 					<Col >
 						<FeaturedTrack
@@ -165,7 +165,7 @@ class SoundList extends React.Component {
 						/>
 					))}
 				</div>
-			</Grid>
+			</div>
 		);
 	}
 }

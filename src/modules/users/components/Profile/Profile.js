@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { graphql } from 'react-apollo'
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import gql from 'graphql-tag'
 import ReactDOM from 'react-dom'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -18,7 +18,7 @@ class Profile extends Component {
 	render() {
 		return (
 			<div className="profile">
-				<Grid>
+				<div>
 					<Row>
 						<Col>
 							<h1 className="title">Your Tracks</h1>
@@ -54,7 +54,7 @@ class Profile extends Component {
 							))}
 						</div>
 					</div>
-				</Grid>
+				</div>
 			</div>
 		)
 	}

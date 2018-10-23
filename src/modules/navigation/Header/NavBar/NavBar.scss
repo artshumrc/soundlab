@@ -84,6 +84,10 @@
 			justify-content: flex-start;
 			align-items: flex-start;
 
+			 &:hover {
+				 text-decoration: none;
+			 }
+
 			 .siteTitle {
 				 top: auto;
 				 width: auto;

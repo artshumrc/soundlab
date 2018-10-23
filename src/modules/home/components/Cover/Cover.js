@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
+import { Row, Col, Clearfix } from 'react-bootstrap';
 
 import './Cover.css';
 import FeaturedTrackContainer from '../../containers/FeaturedTrackContainer';
@@ -9,7 +9,7 @@ class Cover extends React.Component {
 		return (
 			<Clearfix>
 				<div className="cover">
-					<Grid>
+					<div>
 						<Row className="coverRow">
 							<Col md={6} sm={12}>
 								<div className="coverText">
@@ -21,7 +21,7 @@ class Cover extends React.Component {
 								<FeaturedTrackContainer />
 							</Col>
 						</Row>
-					</Grid>
+					</div>
 				</div>
 			</Clearfix>
 		);

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router';
 import _ from 'underscore';
 
@@ -35,7 +35,7 @@ class Learn extends React.Component {
 
 		return (
 			<section className="learn">
-				<Grid>
+				<div>
 					<Row>
 						<Col>
 							<div className="learn-upper">
@@ -95,7 +95,7 @@ class Learn extends React.Component {
 						<Col md={6}>
 						</Col>
 					</Row>
-				</Grid>
+				</div>
 			</section>
 		);
 	}

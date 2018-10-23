@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 import './Intro.css';
@@ -7,7 +7,7 @@ import './Intro.css';
 class Intro extends React.Component {
 	render() {
 		return (
-			<Grid>
+			<div>
 				<Row className="intro-section">
 					<Col className="intro-section-col" md={6} sm={12}>
 						<div className="site-tag-container intro-tag">
@@ -35,7 +35,7 @@ class Intro extends React.Component {
 						</div>
 					</Col>
 				</Row>
-			</Grid>
+			</div>
 		);
 	}
 }

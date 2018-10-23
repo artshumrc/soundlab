@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import SubmissionItem from './SubmissionItem'
 import './submission.css'
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 
 
 class SubmissionList extends React.Component {

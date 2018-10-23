@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import OAuthButtons from '../OAuthButtons';
 import PWDSignupForm from '../PWDSignupForm';

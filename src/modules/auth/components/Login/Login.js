@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hello from 'hellojs';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import OAuthButtons from '../OAuthButtons';
 import PWDLoginForm from '../PWDLoginForm';
