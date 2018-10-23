@@ -8,6 +8,7 @@ variables:
   # SHA for ID in deployment; branchName for convenience;
   IMAGE_TAG: us.gcr.io/archimedes-01201/$GCP_PROJECT_NAME:$CI_COMMIT_SHA
   IMAGE_TAG_BRANCH: us.gcr.io/archimedes-01201/$GCP_PROJECT_NAME:$CI_COMMIT_REF_SLUG
+  CONTAINER_NAME: $GCP_PROJECT_NAME
   DEPLOYMENT_ID_STAGING: $GCP_PROJECT_NAME-staging
   DEPLOYMENT_ID_PRODUCION: $GCP_PROJECT_NAME-production
 
@@ -47,4 +48,4 @@ deploy-staging:
     # rolling upgrade container
     - gcloud config set compute/zone us-east1-b
     - gcloud container clusters get-credentials archimedes-cluster
-    - kubectl set image deployment/$DEPLOYMENT_ID_STAGING $DEPLOYMENT_ID_STAGING=us.gcr.io/archimedes-01201/$GCP_PROJECT_NAME:$CI_COMMIT_SHA
+    - kubectl set image deployment/$DEPLOYMENT_ID_STAGING $CONTAINER_NAME=us.gcr.io/archimedes-01201/$GCP_PROJECT_NAME:$CI_COMMIT_SHA
