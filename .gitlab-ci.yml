@@ -1,5 +1,7 @@
 stages:
   - containerize
+  - staging
+
 
 docker-build:
   stage: containerize
@@ -24,3 +26,21 @@ docker-build:
     # publish to private gcr
     - gcloud docker -- push $IMAGE_TAG
     - gcloud docker -- push $IMAGE_TAG_BRANCH 
+
+
+deploy-staging:
+  image: google/cloud-sdk:latest
+  services:
+    - docker:dind
+  only:
+    - master # staging
+  stage: staging
+  before_script: 
+    # auth to gcp
+    - echo $GCP_SERVICE_KEY > gcp-service-key.json
+    - gcloud auth activate-service-account --key-file gcp-service-key.json
+  script:
+    # rolling upgrade container
+    - gcloud config set compute/zone us-east1-b
+    - gcloud container clusters get-credentials archimedes-cluster
+    - kubectl set image deployment/$GCP_PROJECT_NAME $GCP_PROJECT_NAME=us.gcr.io/archimedes-01201/$GCP_PROJECT_NAME:$CI_COMMIT_SHA
