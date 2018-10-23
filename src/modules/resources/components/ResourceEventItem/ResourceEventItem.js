@@ -65,7 +65,7 @@ class ResourceEventItem extends Component {
 				<div className={`eventSectionWrapper eventMetaWrapper`}>
 					<div>
 						<span className="eventName">
-							{event.post_title}
+							{_s.prune(event.post_title, 60)}
 						</span>
 					</div>
 					<div>

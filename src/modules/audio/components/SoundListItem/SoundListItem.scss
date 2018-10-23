@@ -52,6 +52,8 @@
 		vertical-align: top;
 		width: 70px;
 		height: 70px;
+		min-width: 70px;
+		min-height: 70px;
 	}
 
 	.thumbnailImage {
@@ -106,12 +108,12 @@
 	}
 
 	.title {
-		font-size: 14px;
+		font-size: 14px !important;
+		line-height: 1.5em !important;
 		font-family: $font-title;
 		color: $dark;
 		margin: 0;
 		padding: 0;
-		line-height: 1.5em;
 		display: block;
 	}
 
