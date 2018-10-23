@@ -23,7 +23,7 @@ const Calendar = props => {
 	const { events } = props;
 
 	if (!events || !events.length) {
-		return <div>No events</div>;
+		return <div className="noEvents">No events are available on the calendar.</div>;
 	}
 
 	const _events = [];
