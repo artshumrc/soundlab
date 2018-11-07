@@ -9,6 +9,9 @@ import { Link, withRouter } from 'react-router';
 //import tabsMuiTheme from '../../../lib/tabsMuiTheme';
 //import Pagination from '../../Pagination';
 //import EventTeaser from '../EventTeaser';
+
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+
 import './Calendar.css';
 
 const localizer = BigCalendar.momentLocalizer(moment);
