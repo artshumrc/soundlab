@@ -1,6 +1,6 @@
 {
   "name": "soundlab-client",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "React application for Sound Lab",
   "main": "src/index.js",
   "dependencies": {
