@@ -1,10 +1,25 @@
-FROM node:8.2.1
-
+# build environment
+FROM node:9.6.1 as builder
+# set working directory
 RUN mkdir /app
 COPY . /app/.
 WORKDIR /app
-RUN rm -rf node_modules
-RUN rm -rf client/node_modules
-RUN yarn install
+# install and cache app dependencies
+RUN yarn
+# build
+RUN yarn build
 
-CMD ["yarn", "start"]
+
+# production environment
+FROM nginx:1.13.9-alpine
+COPY --from=builder /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+
+
+
+
+
+
+
