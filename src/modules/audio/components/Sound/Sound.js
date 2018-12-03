@@ -63,7 +63,6 @@ class Sound extends React.Component {
 					<Col >
 						<FeaturedTrack
 							track={sound}
-							purple
 						/>
 					</Col>
 				</Row>
