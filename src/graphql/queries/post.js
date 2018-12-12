@@ -56,6 +56,28 @@ const postQueryFields = {
 			return await postService.getUserPosts({ post_type, limit, skip, isFeatured });
 		}
 	},
+	events: {
+		type: new GraphQLList(PostType),
+		description: 'Get events (separate from posts due to sort criteria)',
+		args: {
+			post_type: {
+				type: new GraphQLList(GraphQLString),
+			},
+			limit: {
+				type: GraphQLInt,
+			},
+			skip: {
+				type: GraphQLInt,
+			},
+			upcoming: {
+				type: GraphQLBoolean,
+			},
+		},
+		async resolve(parent, { post_type, limit, skip, upcoming }, { token }) {
+			const postService = new PostService({ token });
+			return await postService.getEvents({ post_type, limit, skip, upcoming });
+		}
+	},
 	post: {
 		type: PostType,
 		description: 'Get a post',

@@ -1,10 +1,14 @@
 import https from 'https';
 import rp from 'request-promise';
-
+import { createError } from 'apollo-errors';
 
 import PermissionsService from './PermissionsService';
 
 import User from '../../models/User';
+
+const RegistrationError = createError('RegistrationError', {
+	message: 'Registration failed',
+});
 
 /**
  * Logic-layer service for dealing with users
@@ -17,7 +21,7 @@ export default class UserService extends PermissionsService {
 	 * @param {Object} user - user candidate to create via wordpress api
 	 * @returns {Object} create response
 	 */
-	create(user) {
+	async create(user) {
 		const uri = `${process.env.ADMIN_URL}/wp-admin/admin-ajax.php`;
 
 		const options = {
@@ -34,15 +38,14 @@ export default class UserService extends PermissionsService {
 			strictSSL: false,
 			json: true,
 		};
-		return rp(options)
-			.then(res => {
-				// return JSON.parse(res);
-				console.log(res);
-				return res;
-			})
-			.catch(err => {
-				console.log(err);
-			});
+		const result = await rp(options);
+
+		// without modifying the wordpress application, we can't determine what went wrong with creating a user
+		if (!result.id) {
+			throw new RegistrationError();
+		}
+		
+		return result;
   }
 
 	/**
