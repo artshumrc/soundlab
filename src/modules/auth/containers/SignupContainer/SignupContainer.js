@@ -17,7 +17,7 @@ class SignupContainer extends React.Component {
 		autoBind(this);
 	}
 
-	handleSignup(userData) {
+	async handleSignup(userData) {
 		const { dispatchChangeAuthMode, dispatchSetFormMessage } = this.props;
 
 		if (userData.password !== userData.confirm_password) {
@@ -25,7 +25,7 @@ class SignupContainer extends React.Component {
 			return false;
 		}
 
-		this.props.userCreate({
+		await this.props.userCreate({
 			user_nicename: slugify(`${userData.first_name} ${userData.last_name}`).toLowerCase(),
 			display_name: `${userData.first_name} ${userData.last_name}`,
 			user_email: userData.email,
@@ -36,7 +36,7 @@ class SignupContainer extends React.Component {
 				dispatchSetFormMessage('Signup successful! Please log in.');
 				dispatchChangeAuthMode('login');
 			}).catch((error) => {
-				dispatchSetFormMessage('There was an error creating your user account. Please check the signup form.');
+				dispatchSetFormMessage('There is already a user registered with that name or email. Please try again.');
 				// console.error(error);
 			});
 	}
@@ -44,7 +44,7 @@ class SignupContainer extends React.Component {
 	render() {
 		return (
 			<Signup
-				handleSignup={this.handleSignup}
+				onSubmit={this.handleSignup.bind(this)}
 				onSigninClick={this.props.onSigninClick}
 			/>
 		);

@@ -12,11 +12,11 @@ class Signup extends React.Component {
 
 	static propTypes = {
 		onSigninClick: PropTypes.func.isRequired,
-		handleSignup: PropTypes.func.isRequired,
+		onSubmit: PropTypes.func.isRequired,
 	}
 
 	render() {
-		const { handleSignup, onSigninClick } = this.props;
+		const { onSubmit, onSigninClick } = this.props;
 
 		return (
 			<div className="signupForm">
@@ -29,7 +29,7 @@ class Signup extends React.Component {
 				<Row>
 					<Col>
 						<PWDSignupForm
-							handleSignup={handleSignup}
+							onSubmit={onSubmit}
 						/>
 					</Col>
 				</Row>

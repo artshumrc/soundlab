@@ -12,14 +12,11 @@ const wrapSubmit = handleLogin => async (values, dispatch) => {
 		await handleLogin(values);
 		return {};
 	} catch (err) {
+		console.error(err);
 		throw new SubmissionError({ _error: 'Login failed!' });
 	}
 };
 
-const required = value => value ? undefined : 'Required';
-const maxLength = max => value =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined
-const maxLength100 = maxLength(100)
 
 function renderField({ input, label, type, meta }) {
 	return (
@@ -33,23 +30,21 @@ function renderField({ input, label, type, meta }) {
 				autoCorrect="off"
 				autoComplete="off"
 				spellCheck="false"
-				required
 			/>
 			{meta.touched && meta.error && <span className="help-block">{meta.error}</span>}
 		</div>
 	);
 }
 
-const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, handleLogin }) => (
+const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting }) => (
 	<div className="loginForm">
-		<form onSubmit={handleSubmit(wrapSubmit(handleLogin))}>
+		<form onSubmit={wrapSubmit(handleSubmit)}>
 			<label>Email</label>
 			<Field
 				name="username"
 				type="text"
 				placeholder=""
 				component={renderField}
-				validate={[required, maxLength100]}
 			/>
 			<label>Password</label>
 			<Field
@@ -57,7 +52,6 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, handle
 				type="password"
 				placeholder=""
 				component={renderField}
-				validate={[required, maxLength100]}
 			/>
 			<div className="at-pwd-link">
 				<p className="error-text">
@@ -76,10 +70,7 @@ const PWDLoginForm = ({ error, handleSubmit, pristine, reset, submitting, handle
 );
 
 PWDLoginForm.propTypes = {
-	handleLogin: PropTypes.func.isRequired,
-};
-PWDLoginForm.defaultProps = {
-	// errorMsg: null,
+	onSubmit: PropTypes.func.isRequired,
 };
 
 

@@ -5,18 +5,12 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 
 import './PWDSignupForm.css';
 
-// actions
-import { toggleAuthModal, setUser } from '../../actions';
-
-
 const wrapSubmit = handleSignup => async (values, dispatch) => {
 	try {
 		const userObj = await handleSignup(values);
 		return {};
 	} catch (err) {
-		if (err.passwordError) {
-			throw new SubmissionError({ _error: `Password too weak: ${err.suggestion}` });
-		}
+		console.error(err);
 		throw new SubmissionError({ _error: 'Registration failed!' });
 	}
 };
@@ -33,21 +27,15 @@ function renderField({ input, label, type, meta }) {
 				autoCorrect="off"
 				autoComplete="off"
 				spellCheck="false"
-				required
 			/>
 			{meta.touched && meta.error && <span className="help-block">{meta.error}</span>}
 		</div>
 	);
 }
 
-const required = value => value ? undefined : 'Required';
-const maxLength = max => value =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined
-const maxLength100 = maxLength(100)
-
-const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handleSignup }) => (
+const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting }) => (
 	<Row className="signupForm">
-		<form onSubmit={handleSubmit(wrapSubmit(handleSignup))}>
+		<form onSubmit={wrapSubmit(handleSubmit)}>
 			<Row>
 				<Col md={6}>
 					<label>First Name</label>
@@ -56,7 +44,6 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="text"
 						placeholder=""
 						component={renderField}
-						validate={[required, maxLength100]}
 					/>
 				</Col>
 				<Col md={6}>
@@ -66,7 +53,6 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="text"
 						placeholder=""
 						component={renderField}
-						validate={[required, maxLength100]}
 					/>
 				</Col>
 			</Row>
@@ -78,7 +64,6 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="email"
 						placeholder=""
 						component={renderField}
-						validate={[required, maxLength100]}
 					/>
 				</Col>
 				<Col md={6}>
@@ -88,7 +73,6 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="text"
 						placeholder=""
 						component={renderField}
-						validate={[maxLength100]}
 					/>
 				</Col>
 			</Row>
@@ -100,7 +84,6 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="password"
 						placeholder=""
 						component={renderField}
-						validate={[required, maxLength100]}
 					/>
 				</Col>
 				<Col md={6}>
@@ -110,7 +93,6 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 						type="password"
 						placeholder=""
 						component={renderField}
-						validate={[required, maxLength100]}
 					/>
 				</Col>
 			</Row>
@@ -136,20 +118,9 @@ const PWDSignupForm = ({ error, handleSubmit, pristine, reset, submitting, handl
 );
 
 PWDSignupForm.propTypes = {
-	handleSignup: PropTypes.func.isRequired,
-};
-
-const validate = (values) => {
-	const errors = {};
-
-	if (values.password !== values.passwordRepeat) {
-		errors.passwordRepeat = 'Passwords do not match';
-	}
-
-	return errors;
+	onSubmit: PropTypes.func.isRequired,
 };
 
 export default reduxForm({
 	form: 'PWDSignupForm',
-	validate,
 })(PWDSignupForm);

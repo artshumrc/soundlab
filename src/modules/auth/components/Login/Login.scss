@@ -1,6 +1,9 @@
 @import "../../../../styles.scss";
 
 .loginForm {
+	margin: 0 auto;
+	text-align: left;
+
 	h3 {
 		padding: 10px 0 20px;
 		font-family: $font-reading;
@@ -27,7 +30,7 @@
 		color: $primary;
 		font-weight: bold;
 		cursor: pointer;
-		
+
 		&:hover {
 			color: $primary-800;
 

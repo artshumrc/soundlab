@@ -1,5 +1,4 @@
 import React from 'react';
-import autoBind from 'react-autobind';
 
 import './Timer.css';
 
@@ -23,7 +22,7 @@ class Timer extends React.Component {
 	}
 
 	componentDidMount() {
-		setInterval(() => {
+		this.timerInterval = setInterval(() => {
 			const { track } = this.props;
 
 			this.setState({
@@ -31,6 +30,10 @@ class Timer extends React.Component {
 			})
 
 		}, 1000);
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.timerInterval);
 	}
 
 	renderPlayTime() {
