@@ -36,7 +36,7 @@ class SignupContainer extends React.Component {
 				dispatchSetFormMessage('Signup successful! Please log in.');
 				dispatchChangeAuthMode('login');
 			}).catch((error) => {
-				dispatchSetFormMessage('There was an error creating your user account. Please check the signup form.');
+				dispatchSetFormMessage('There is already a user registered with that name or email. Please try again.');
 				// console.error(error);
 			});
 	}
