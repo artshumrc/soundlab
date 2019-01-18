@@ -15,13 +15,6 @@ import TrackUploader from '../../../dashboard/components/TrackUploader';
 import './Submit.css';
 
 
-const required = value => value ? undefined : 'Required';
-const maxLength = max => value =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined
-const maxLength100 = maxLength(100)
-const maxLength1000 = maxLength(1000)
-
-
 class Submit extends React.Component {
 	constructor(props) {
 		super(props);
@@ -92,7 +85,6 @@ class Submit extends React.Component {
 											type="text"
 											component="input"
 											placeholder="Paste a link"
-											validate={[required, maxLength1000]}
 										/>
 									</Col>
 									<Col md="2">
@@ -112,20 +104,17 @@ class Submit extends React.Component {
 									name="title"
 									type="text"
 									component="input"
-									validate={[required, maxLength1000]}
 								/>
 								<label>Description</label>
 								<Field
 									name="description"
 									component="textarea"
-									validate={[required, maxLength1000]}
 								/>
 								<label>Location</label>
 								<Field
 									name="location"
 									type="text"
 									component="input"
-									validate={[maxLength1000]}
 								/>
 							</div>
 							<button type="submit">Submit</button>
