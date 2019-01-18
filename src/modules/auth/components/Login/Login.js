@@ -13,11 +13,11 @@ class Login extends React.Component {
 
 	static propTypes = {
 		onRegisterClick: PropTypes.func.isRequired,
-		handleLogin: PropTypes.func.isRequired,
+		onSubmit: PropTypes.func.isRequired,
 	}
 
 	render() {
-		const { handleLogin, onRegisterClick } = this.props;
+		const { onSubmit, onRegisterClick } = this.props;
 
 		return (
 			<div className="loginForm">
@@ -30,7 +30,7 @@ class Login extends React.Component {
 				<Row>
 					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
 						<PWDLoginForm
-							handleLogin={handleLogin}
+							onSubmit={onSubmit}
 						/>
 					</Col>
 				</Row>

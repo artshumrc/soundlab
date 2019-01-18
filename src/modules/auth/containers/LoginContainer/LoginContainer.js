@@ -23,10 +23,9 @@ class LoginContainer extends React.Component {
 	}
 
 	async handleLogin(userData) {
-		const self = this;
 		const { dispatchSetUser, dispatchToggleAuthModal, dispatchSetFormMessage, dispatchNavigateToHome } = this.props;
 
-		return await this.props.userCreateToken(userData)
+		this.props.userCreateToken(userData)
 			.then(async ({ data }) => {
 				const { token, user_display_name } = data.userCreateToken.response;
 				if (!token) {
@@ -53,7 +52,7 @@ class LoginContainer extends React.Component {
 
 		return (
 			<Login
-				handleLogin={this.handleLogin}
+				onSubmit={this.handleLogin.bind(this)}
 				onRegisterClick={this.props.onRegisterClick}
 				token={token}
 			/>
