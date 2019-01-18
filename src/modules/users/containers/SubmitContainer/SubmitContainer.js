@@ -49,7 +49,7 @@ class SubmitContainer extends React.Component {
 	render() {
 		return (
 			<Submit
-				onSubmit={this.onSubmit}
+				onSubmit={this.onSubmit.bind(this)}
 				dismissSubmitted={this.dismissSubmitted}
 				submitted={this.state.submitted}
 			/>
