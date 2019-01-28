@@ -33,7 +33,7 @@ export default class TrackUploader extends React.Component {
 		this.setState({ uploading: false });
 		const track = {
 			name: event.filename,
-			url: `https://soundlab-uploads.s3.amazonaws.com/${event.filename}`,
+			url: `https://${process.env.REACT_APP_BUCKET_URL}.s3.amazonaws.com/${event.filename}`,
 			_id: this.state._id
 		};
 		this.props.addFile(track);
@@ -57,7 +57,7 @@ export default class TrackUploader extends React.Component {
 				fileElement: fileToUpload,
 				signingUrl: '/s3/sign',
 				s3path: 'uploads/',
-				server: 'http://soundlab.fas.harvard.edu',
+				server: process.env.REACT_APP_SERVER,
 				onError: this.handleError,
 				uploadRequestHeaders: {'x-amz-acl': 'public-read'},
 				contentDisposition: 'auto',
