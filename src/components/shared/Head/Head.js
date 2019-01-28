@@ -14,7 +14,7 @@ class Head extends React.Component {
               {'property': 'og:description', 'content': 'Sound Lab at the Harvard University Department of Music'},
 				]}
 				link={[
-              {'rel': 'canonical', 'href': 'http://soundlab.fas.harvard.edu'},
+              {'rel': 'canonical', 'href': process.env.REACT_APP_CANONICAL_DOMAIN},
 				]}
 				onChangeClientState={(newState) => console.log(newState)}
       />
