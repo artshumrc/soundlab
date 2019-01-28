@@ -39,7 +39,7 @@ class Login extends React.Component {
 					<Col mdOffset={1} lgOffset={2} sm={12} md={10} lg={8}>
 						<p className="signupLink">
 							<a
-								href="//admin.soundlab.orphe.us/wp-login.php?action=lostpassword"
+								href="/wp-login.php?action=lostpassword"
 							>
 								Forgot Password?
 							</a>
