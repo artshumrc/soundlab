@@ -25,6 +25,14 @@ class SignupContainer extends React.Component {
 			return false;
 		}
 
+		/**
+		TODO: uncomment these lines if you want to include error checking
+		if (!userData.email.endsWith('harvard.edu')) {
+			dispatchSetFormMessage('You must use a harvard email address to sign up.');
+			return false;
+		}
+		*/
+
 		await this.props.userCreate({
 			user_nicename: slugify(`${userData.first_name} ${userData.last_name}`).toLowerCase(),
 			display_name: `${userData.first_name} ${userData.last_name}`,

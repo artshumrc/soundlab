@@ -305,7 +305,7 @@ Responsive mobile menu
 }
 
 @media screen and (max-width: 600px) {
-	.nav {
+	.navbar .nav {
 		display: none;
 	}
 
@@ -313,9 +313,9 @@ Responsive mobile menu
 		position: relative;
 	}
 
-	.mobileNavDropdownLink {
+	.navLink, .mobileNavDropdownLink {
 		margin: 0;
-		padding: 10px 20px 10px 40px;
+		padding: 10px 20px;
 		font-size: 14px;
 		font-family: $font-label;
 		font-weight: bold;
@@ -324,4 +324,9 @@ Responsive mobile menu
 		width: 100%;
 		display: block;
 	}
+
+	.bm-item-list {
+		padding-top: 20px;
+	}
+
 }
