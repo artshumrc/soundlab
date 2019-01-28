@@ -24,3 +24,12 @@ AWS_SECRET_ACCESS_KEY=x
 AWS_BUCKET=x
 AWS_REGION=us-east-1
 ```
+
+
+## Wordpress
+
+To configure the connection to the Wordpress backend, configure the `ADMIN_URL` parameters in the `.env` file:
+
+```
+ADMIN_URL=http://soundlab.local:8888
+```
