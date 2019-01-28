@@ -20,7 +20,7 @@ export default class FileUploader extends React.Component {
 	render() {
 		return (
 			<div>
-				<Dropzone className="dropzone} onDrop={this.handleDrop">
+			<Dropzone className="dropzone" onDrop={this.handleDrop}>
 					<div className="text">Upload</div>
 				</Dropzone>
 			</div>

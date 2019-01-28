@@ -33,7 +33,7 @@ export default class TrackUploader extends React.Component {
 		this.setState({ uploading: false });
 		const track = {
 			name: event.filename,
-			url: `https://soundlab-archimedes001.s3.amazonaws.com/${event.filename}`,
+			url: `https://soundlab-uploads.s3.amazonaws.com/${event.filename}`,
 			_id: this.state._id
 		};
 		this.props.addFile(track);
@@ -84,7 +84,7 @@ export default class TrackUploader extends React.Component {
 		}
 
 		return (
-			<Dropzone className="dropzone} onDrop={this.uploadFile">
+			<Dropzone className="dropzone" onDrop={this.uploadFile}>
 				<div className="text">
 					{textValue}
 				</div>
