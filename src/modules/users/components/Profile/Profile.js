@@ -21,7 +21,7 @@ class Profile extends Component {
 				<div>
 					<Row>
 						<Col>
-							<h1 className="title">Your Tracks</h1>
+							<h1 className="title">Your Submissions</h1>
 							<div className="submitOuter">
 								<Link
 									to="/submit"
