@@ -65,7 +65,7 @@ class Submit extends React.Component {
 							Thank you for submitting to Sound Lab.
 						</h1>
 						<p className="submittedMessage">
-							<Link to="/profile">Return to your tracks</Link>.
+							<Link to="/profile">Return to your pending submissions</Link>.
 						</p>
 					</div>
 				:
@@ -79,7 +79,7 @@ class Submit extends React.Component {
 							<div className="submitFormInner">
 								<label>File</label>
 								<Row>
-									<Col md="7">
+					                               <Col md={7}>
 										<Field
 											name="link"
 											type="text"
@@ -87,12 +87,12 @@ class Submit extends React.Component {
 											placeholder="Paste a link"
 										/>
 									</Col>
-									<Col md="2">
+					                                <Col md={2}>
 										<span className="submitOr" >
 											or
 										</span>
 									</Col>
-									<Col md="3">
+					                                <Col md={3}>
 										<TrackUploader
 											addFile={this.addFile}
 											track={track}
