@@ -80,24 +80,23 @@ const register = async (data) => {
 
 const verifyToken = async () => {
 	const token = cookies.get('token');
-	
+
 	if (!token) {
 		return null;
 	}
 
-	let ADMIN_URL = process.env.ADMIN_URL || 'http://admin.soundlab.local:8888';
+	let ADMIN_URL = process.env.REACT_APP_ADMIN_URL || 'http://soundlab.fas.harvard.edu';
 	const res = await fetch(`${ADMIN_URL}/wp-json/jwt-auth/v1/token/validate`, {
 		method: 'POST',
 		credentials: 'include',
 		headers: {
 			Accept: 'application/json',
 			'Content-Type': 'application/json',
-			authorization: token,
+			Authorization: `Bearer ${token}`,
 		}
 	});
 
 	if (!res.ok) {
-		console.error(res.statusText);
 		return null;
 	}
 
