@@ -17,6 +17,9 @@ const postCreateMutation = graphql(postCreate, {
 		}),
 	}),
 	name: 'postCreateMutation',
+	options: {
+		refetchQueries: ['userSoundsQuery'],
+	},
 });
 
 export {

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import Submit from '../../components/Submit';
 import { postCreateMutation } from '../../graphql/mutations/posts';
+import { userSoundsQuery } from '../../graphql/queries/users';
 
 
 class SubmitContainer extends React.Component {
@@ -64,5 +65,6 @@ const mapStateToProps = state => ({
 
 export default compose(
 	postCreateMutation,
+	userSoundsQuery,
 	connect(mapStateToProps),
 )(SubmitContainer);
