@@ -100,7 +100,7 @@ class NavBar extends React.Component {
 						{ token ?
 							<li className="hasDropdown">
 								<Link className="navLink" to={'/profile'}>
-									My Tracks
+									My Pending Submissions
 								</Link>
 								<div className="dropdown signOutDropdown">
 									<li>
@@ -191,7 +191,7 @@ class NavBar extends React.Component {
 						{ token ?
 							<li className="mobileHasDropdown">
 								<Link className="navLink" to={'/profile'}>
-								My Tracks
+								My Pending Submissions
 								</Link>
 								<div className="mobileHasDropdown">
 									<li>

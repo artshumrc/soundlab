@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import S3Upload from 'react-s3-uploader/s3upload';
+import $ from 'jquery';
 
 import './TrackUploader.css';
 
@@ -32,8 +33,8 @@ export default class TrackUploader extends React.Component {
 	handleFinish(event) {
 		this.setState({ uploading: false });
 		const track = {
-			name: event.filename,
-			url: `https://${process.env.REACT_APP_BUCKET_URL}.s3.amazonaws.com/${event.filename}`,
+			name: event.title.rendered,
+		    url: event.source_url,
 			_id: this.state._id
 		};
 		this.props.addFile(track);
@@ -42,7 +43,7 @@ export default class TrackUploader extends React.Component {
 	handleProgress(event) {
 	}
 
-	uploadFile(acceptedFile) {
+    uploadFile(acceptedFile) {
 		const fileToUpload = {
 			files: [acceptedFile[0]]
 		};
@@ -50,29 +51,33 @@ export default class TrackUploader extends React.Component {
 			this.setState({
 				uploading: true
 			});
+		    let apiUrl = `${process.env.REACT_APP_SERVER}/wp-json/wp/v2/media`;
+		    let formData = new FormData();
+		    formData.append('file', acceptedFile[0]);
+		    let _this = this;
 
-			const uploader = new S3Upload({
-				onFinishS3Put: this.handleFinish,
-				onProgress: this.handleProgress,
-				fileElement: fileToUpload,
-				signingUrl: '/s3/sign',
-				s3path: 'uploads/',
-				server: process.env.REACT_APP_SERVER,
-				onError: this.handleError,
-				uploadRequestHeaders: {'x-amz-acl': 'public-read'},
-				contentDisposition: 'auto',
-				scrubFilename: (filename) => {
-          const secureFilename = filename.replace(/[^\w\d_\-\.]+/ig, ''); // eslint-disable-line
-					return `${makeId()}-${secureFilename}`;
-				},
-				signingUrlMethod: 'GET',
-				signingUrlWithCredentials: true,
-			});
+		    $.ajax({
+                        url: apiUrl,
+			method: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+			headers: {
+			    Accept: 'application/json',
+			    'Content-Type': 'multipart/form-data',
+			    'Authorization': 'Bearer ' + this.props.token,
+			    'Content-Disposition': `attachment; filename=${acceptedFile[0].name}`
+			}
+                    }).done( function(response) {
+			_this.handleFinish(response);
+		    }).fail( function(error) {
+			_this.handleError(error);
+		    });
 		}
 	}
 
 	render() {
-		const { track } = this.props;
+	    const { track, token } = this.props;
 		const { uploading } = this.state;
 
 		let textValue = 'Upload';
