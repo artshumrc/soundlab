@@ -26,7 +26,7 @@ class Submit extends React.Component {
 	}
 
 	componentDidMount() {
-		const token = Cookies.get('token');
+	    const token = Cookies.get('token');
 		if (!token) {
 			window.location = '/';
 		}
@@ -48,10 +48,10 @@ class Submit extends React.Component {
 
 	render() {
 		const {
-			handleSubmit, onSubmit, submitted, dismissSubmitted, verifyCaptcha
+		    handleSubmit, onSubmit, submitted, dismissSubmitted, verifyCaptcha
 		} = this.props;
-		const { track } = this.state;
-
+	    const { track } = this.state;
+	    const token = Cookies.get('token');
 
 		return (
 			<form
@@ -79,7 +79,7 @@ class Submit extends React.Component {
 							<div className="submitFormInner">
 								<label>File</label>
 								<Row>
-					                               <Col md={7}>
+									<Col md={7}>
 										<Field
 											name="link"
 											type="text"
@@ -87,15 +87,16 @@ class Submit extends React.Component {
 											placeholder="Paste a link"
 										/>
 									</Col>
-					                                <Col md={2}>
+									<Col md={2}>
 										<span className="submitOr" >
 											or
 										</span>
 									</Col>
-					                                <Col md={3}>
+									<Col md={3}>
 										<TrackUploader
 											addFile={this.addFile}
-											track={track}
+				    track={track}
+				    token={token}
 										/>
 									</Col>
 								</Row>
@@ -125,7 +126,6 @@ class Submit extends React.Component {
 		);
 	}
 }
-
 
 export default reduxForm({
 	form: 'SubmitForm',
