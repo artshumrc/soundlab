@@ -41,13 +41,10 @@ class _AuthModal extends React.Component {
 
 		// methods:
 		this._handleKeyDown = this._handleKeyDown.bind(this);
-		this._initiateUser = this._initiateUser.bind(this);
 	}
 
 	componentWillMount() {
 		document.addEventListener('keydown', this._handleKeyDown);
-
-		this._initiateUser();
 	}
 
 	componentWillUnmount() {
@@ -57,24 +54,6 @@ class _AuthModal extends React.Component {
 	_handleKeyDown(event) {
 		const { dispatchToggleAuthModal, showAuthModal } = this.props;
 		if (event.keyCode === ESCAPE_KEY && showAuthModal) dispatchToggleAuthModal();
-	}
-
-	async _initiateUser() {
-		const { getUserFromServer, dispatchSetUser } = this.props;
-		if (getUserFromServer) {
-			try {
-				const user = await getUserFromServer();
-				const token = cookies.get('token');
-
-				if (user) {
-				 	dispatchSetUser({ token, ...user });
-				}
-			} catch (err) {
-				console.log(err);
-				// TODO: Determine why dispatchLogout always called on page load
-				// dispatchLogout();
-			}
-		}
 	}
 
 	render() {
