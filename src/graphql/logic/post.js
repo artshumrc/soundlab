@@ -71,6 +71,7 @@ export default class PostService extends PermissionsService {
 		return Post.findAll({
 			where: {
 				post_author: this.userId,
+				post_status: ['publish', 'draft', 'future', 'pending', 'private'],
 				post_type,
 			},
 			limit: limit,
