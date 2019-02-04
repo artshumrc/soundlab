@@ -1,6 +1,6 @@
 {
   "name": "soundlab-wordexpress",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "Orpheus Wordexpress frontend for Sound Lab",
   "main": "server.js",
   "keywords": [
