@@ -51,7 +51,7 @@ export default class TrackUploader extends React.Component {
 			this.setState({
 				uploading: true
 			});
-		    let apiUrl = `${process.env.REACT_APP_SERVER}/wp-json/wp/v2/media`;
+		    let apiUrl = `${process.env.ADMIN_URL}/wp-json/wp/v2/media`;
 		    let formData = new FormData();
 		    formData.append('file', acceptedFile[0]);
 		    let _this = this;
