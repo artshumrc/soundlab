@@ -15,6 +15,7 @@ const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 injectTapEventPlugin();
 
+window.soundManager.setup({debugMode: false});
 
 ReactDOM.render(
 	<AppContainer>

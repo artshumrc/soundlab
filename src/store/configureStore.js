@@ -14,7 +14,7 @@ const configureStore = (preloadedState) => {
 		rootReducer,
 		preloadedState,
 		composeEnhancers(
-			applyMiddleware(thunk, createLogger(), client.middleware(), routerMiddleware(browserHistory)),
+			applyMiddleware(thunk, client.middleware(), routerMiddleware(browserHistory)),
 		)
 	);
 
