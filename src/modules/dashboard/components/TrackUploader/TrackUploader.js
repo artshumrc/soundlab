@@ -43,7 +43,7 @@ export default class TrackUploader extends React.Component {
 	handleProgress(event) {
 	}
 
-    uploadFile(acceptedFile) {
+	uploadFile(acceptedFile) {
 		const fileToUpload = {
 			files: [acceptedFile[0]]
 		};
@@ -51,24 +51,24 @@ export default class TrackUploader extends React.Component {
 			this.setState({
 				uploading: true
 			});
-		    let apiUrl = `${process.env.REACT_APP_SERVER}/wp-json/wp/v2/media`;
+		    let apiUrl = `${process.env.REACT_APP_ADMIN_URL}/wp-json/wp/v2/media`;
 		    let formData = new FormData();
 		    formData.append('file', acceptedFile[0]);
 		    let _this = this;
 
 		    $.ajax({
-                        url: apiUrl,
+			url: apiUrl,
 			method: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
+			data: formData,
+			processData: false,
+			contentType: false,
 			headers: {
 			    Accept: 'application/json',
 			    'Content-Type': 'multipart/form-data',
 			    'Authorization': 'Bearer ' + this.props.token,
 			    'Content-Disposition': `attachment; filename=${acceptedFile[0].name}`
 			}
-                    }).done( function(response) {
+		}).done( function(response) {
 			_this.handleFinish(response);
 		    }).fail( function(error) {
 			_this.handleError(error);

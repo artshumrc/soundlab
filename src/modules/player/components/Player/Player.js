@@ -67,7 +67,7 @@ class Player extends Component {
 								onfinish: function() {
 									window.soundManager._writeDebug(this.id + ' finished playing')
 									self.playNext();
-								}
+								},
 							})
 						});
 					});
