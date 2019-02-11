@@ -64,7 +64,7 @@ export default class TrackUploader extends React.Component {
 			contentType: false,
 			headers: {
 			    Accept: 'application/json',
-			    'Content-Type': 'multipart/form-data',
+			    // 'Content-Type': 'multipart/form-data',
 			    'Authorization': 'Bearer ' + this.props.token,
 			    'Content-Disposition': `attachment; filename=${acceptedFile[0].name}`
 			}
