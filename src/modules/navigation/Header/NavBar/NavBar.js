@@ -97,29 +97,29 @@ class NavBar extends React.Component {
 								</li>
 							</div>
 						</li>
-						{ token ?
-							<li className="hasDropdown">
-								<Link className="navLink" to={'/profile'}>
-									My Pending Submissions
-								</Link>
-								<div className="dropdown signOutDropdown">
-									<li>
-										<Link className="navDropdownLink" to="/logout">
-											Sign out
-										</Link>
-									</li>
-								</div>
-							</li>
-						:
-							<li>
-								<Link
-									className="navLink"
-									to='/sign-in'
-								>
-									Join / Login
-								</Link>
-							</li>
-						}
+						// { token ?
+						// 	<li className="hasDropdown">
+						// 		<Link className="navLink" to={'/profile'}>
+						// 			My Pending Submissions
+						// 		</Link>
+						// 		<div className="dropdown signOutDropdown">
+						// 			<li>
+						// 				<Link className="navDropdownLink" to="/logout">
+						// 					Sign out
+						// 				</Link>
+						// 			</li>
+						// 		</div>
+						// 	</li>
+						// :
+						// 	<li>
+						// 		<Link
+						// 			className="navLink"
+						// 			to='/sign-in'
+						// 		>
+						// 			Join / Login
+						// 		</Link>
+						// 	</li>
+						// }
 					</ul>
 				</Headroom>
 				<Menu
