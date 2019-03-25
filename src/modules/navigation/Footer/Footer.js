@@ -18,7 +18,7 @@ class Footer extends Component {
 							</div>
 							<div className="footer-nav-container">
 								<a
-									href="mailto:soundlab@g.harvard.edu"
+									href="mailto:musiclabs@fas.harvard.edu"
 									target="_blank"
 									rel="noreferrer noopener"
 									className="footer-social-link"
