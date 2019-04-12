@@ -86,6 +86,11 @@ class NavBar extends React.Component {
 							</Link>
 							<div className="dropdown">
 								<li>
+									<Link className="navDropdownLink" to={'/directory'}>
+										Directory
+									</Link>
+								</li>
+								<li>
 									<Link className="navDropdownLink" to={'/equipment'}>
 										Equipment
 									</Link>
@@ -163,6 +168,15 @@ class NavBar extends React.Component {
 							About
 							</Link>
 							<div className="mobileHasDropdown">
+							<li>
+								<Link
+									className="mobileNavDropdownLink"
+									to={'/directory'}
+									onClick={this.closeMenu}
+							>
+								Directory
+								</Link>
+							</li>
 								<li>
 									<Link
 										className="mobileNavDropdownLink"
