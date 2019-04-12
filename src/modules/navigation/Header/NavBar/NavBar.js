@@ -168,15 +168,15 @@ class NavBar extends React.Component {
 							About
 							</Link>
 							<div className="mobileHasDropdown">
-							<li>
-								<Link
-									className="mobileNavDropdownLink"
-									to={'/directory'}
-									onClick={this.closeMenu}
+								<li>
+									<Link
+										className="mobileNavDropdownLink"
+										to={'/directory'}
+										onClick={this.closeMenu}
 							>
 								Directory
-								</Link>
-							</li>
+									</Link>
+								</li>
 								<li>
 									<Link
 										className="mobileNavDropdownLink"
