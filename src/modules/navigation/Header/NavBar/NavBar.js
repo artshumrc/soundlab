@@ -80,6 +80,11 @@ class NavBar extends React.Component {
 								</li>
 							</div>
 						</li>
+						<li>
+                                                    	<a className="navLink" href={'https://soundlab.fas.harvard.edu/mixtape-maker'}>
+                                                                Mixtape
+                                                        </a>
+                                                </li>
 						<li className="hasDropdown">
 							<Link className="navLink" to={'/about'}>
 								About

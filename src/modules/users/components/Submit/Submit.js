@@ -39,7 +39,8 @@ class Submit extends React.Component {
 		// resetForm();
 	}
 
-	addFile(track) {
+    addFile(track) {
+	console.log(this);
 		this.setState({
 			track,
 		});
@@ -94,9 +95,9 @@ class Submit extends React.Component {
 									</Col>
 									<Col md={3}>
 										<TrackUploader
-											addFile={this.addFile}
-				    track={track}
-				    token={token}
+											addFile={this.addFile.bind(this)}
+											track={track}
+											token={token}
 										/>
 									</Col>
 								</Row>

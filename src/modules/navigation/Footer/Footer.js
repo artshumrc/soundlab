@@ -23,13 +23,20 @@ class Footer extends Component {
 									rel="noreferrer noopener"
 									className="footer-social-link"
 								>
-	                Contact
+						                Contact
 								</a>
 								<a
 									href="/terms"
 									className="footer-social-link"
 								>
 									Privacy
+								</a>
+								<a 
+									href="https://accessibility.huit.harvard.edu/digital-accessibility-policy"
+									target="_blank"
+									className="footer-social-link"
+								>
+									Accessibility
 								</a>
 							</div>
 						</div>
