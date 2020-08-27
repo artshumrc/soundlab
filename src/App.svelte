@@ -391,7 +391,7 @@
           id="record"
           on:click={$isRecording ? onStopClick : onRecordClick}
           aria-label="Record"
-          class="border-none"
+          class="border-none rounded-none outline-none"
           style="background-image: url({$isRecording ? 'HSL-RecBTN-ON-animated.gif' : 'HSL-RecBTN-Active.gif'});
           background-size: contain; background-repeat: no-repeat; width: 200px;
           height: 162px;" />
@@ -401,7 +401,7 @@
           on:click={$isPlaying ? onPauseClick : onPlayClick}
           diabled={!$playbackBuffer}
           aria-label="Play"
-          class="border-none"
+          class="border-none rounded-none outline-none"
           style="background-image: url({$isPlaying ? 'HSL-PauseBtn-ON.gif' : 'HSL-PauseBtn-Active.gif'});
           background-size: contain; background-repeat: no-repeat; width: 200px;
           height: 162px;" />

@@ -32,10 +32,9 @@
       <p class="py-4 text-sm leading-7">
         MixtapeCreator captures some of the essential experience of an analog
         cassette recording situation in a digital medium. This may cause warm
-        and fuzzy feelings in some users, while others may at first be
-        frustrated by the differences from the drag-and-drop technique of
-        digital playlists. Most importantly, MixtapeCreator records in real
-        time.
+        and fuzzy feelings in some users, while others may first learn to accept
+        the differences from the drag-and-drop technique of digital playlists.
+        Most importantly, MixtapeCreator records in real time.
       </p>
 
       <p class="py-4 text-sm leading-7">
@@ -51,14 +50,7 @@
         MixtapeCreator automatically identifies your input sources. This is, at
         minimum, your computer speaker/microphone. If you have other devices,
         i.e. external microphones, these will all be listed in the dropdown menu
-        under audio source. To capture audio from YouTube, Spotify’s web player,
-        or any browser based sound source, you will need to install a virtual
-        audio routing platform like
-        <a href="https://rogueamoeba.com/loopback/">Loopback</a>
-        or
-        <a href="http://existential.audio/blackhole/">BlackHole</a>
-        . You will then need to change the audio source on the MixTapeCreator to
-        the virtual audio routing platform.
+        under audio source.
       </p>
 
       <h4 class="font-bold">Standard input</h4>
@@ -75,6 +67,45 @@
         don't appear, be sure you allowed microphone recording permissions.
       </p>
 
+      <h4 class="font-bold">Recording from Browser Tab (on Chrome)</h4>
+      <p class="py-4 text-sm leading-7">
+        MixtapeCreator can capture audio from YouTube, Spotify’s web player, or
+        any browser based sound source. To do this in Chrome go to the audio
+        inputs window and select “Share Audio from a Browser Tab”. Click “Ok”
+        and navigate to the Chrome Tab option, select the tab you’d like to
+        record from, make sure to select the “Share Audio” checkbox on the
+        bottom left.
+      </p>
+
+      <h4 class="font-bold">Virtual Audio Input</h4>
+      <p class="py-4 text-sm leading-7">
+        Virtual audio drivers help route audio from a non-browser source like
+        your iTunes library, or other digital media files saved on your
+        computer. To do this you will need to install a virtual audio routing
+        platform like
+        <a
+          href="https://rogueamoeba.com/loopback/"
+          class="underline hover:no-underline text-crimson">
+          Loopback
+        </a>
+        or
+        <a
+          href="http://existential.audio/blackhole/"
+          class="underline hover:no-underline visited:no-underline text-crimson">
+          BlackHole
+        </a>
+        .
+        <a
+          href="https://www.youtube.com/watch?v=sT7YKMTdnX4"
+          class="underline hover:no-underline visited:no-underline text-crimson">
+          Here is a video tutorial
+        </a>
+        on using BlackHole with a Mac. Once You have installed a virtual audio
+        driver it will appear in the Audio Source window. You might need to
+        click on the “Refresh Inputs” button to see the newly installed virtual
+        audio driver.
+      </p>
+
       <h3 class="font-bold text-xl">Recording</h3>
 
       <p class="py-4 text-sm leading-7">
@@ -89,9 +120,7 @@
         position from which you wish to start playback. To stop playback press
         “play” again. If you move the slider to a point on the tape that has
         already been recorded on and press “record” again MixtapeCreator will
-        record over your old recording; the earlier sounds will be lost. This
-        replicates one of the characteristic features of the experience of tape
-        recordings—for better or worse.
+        record over your old recording; the earlier sounds will be lost.
       </p>
 
       <h3 class="font-bold text-xl">Saving</h3>
@@ -103,6 +132,19 @@
         have saved it you can listen to your mixtape, share it, or edit it using
         other software such as Audacity or Garageband.
       </p>
+
+      <h3 class="font-bold text-xl">Troubleshooting</h3>
+      <p class="py-4 text-sm leading-7">
+        In some cases, playback may not work on Chrome. If that’s the case,
+        check your browser carefully. If you see this icon (speaker with an X on
+        it) then click it to unmute the page.
+      </p>
+
+      <img
+        src="AudioBlocked.png"
+        width="250px"
+        alt="Audio blocked indicator in Chrome" />
+
       <div class="py-4">
         <h3 class="font-bold text-xl">Starting Over</h3>
 
@@ -111,8 +153,8 @@
           All changes will be lost.
         </p>
         <button
-          class="py-2 px-4 border-crimson border-4 text-crimson text-sm
-          font-bold inline-block"
+          class="py-2 px-4 rounded-none border-crimson border-4 text-crimson
+          text-sm font-bold inline-block"
           on:click={() => {
             const iAmSure = confirm('Are you sure you want to discard your mix? This is not reversible.');
             if (!iAmSure) return;
