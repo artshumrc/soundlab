@@ -259,7 +259,7 @@
     <HelpHeader />
     <div class="pt-16">
       <h1 class="m-0 text-xl text-darkcream font-black uppercase leading-none">
-        The Sound Lab at Harvard University
+        <a class="slab" href="https://soundlab.fas.harvard.edu/">The Sound Lab at Harvard University</a>
       </h1>
       <h2 class="m-0 uppercase text-6xl font-black text-crimson leading-tight">
         Mixtape Creator

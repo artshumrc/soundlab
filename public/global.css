@@ -70,3 +70,143 @@ button:not(:disabled):active {
 button:focus {
   border-color: #666;
 }
+
+/** SoundLab styles **/
+.slab:visited {
+  color:inherit;
+}
+.slab:hover {
+  color: rgba(215, 97, 99, var(--text-opacity));
+}
+.navHeader {
+    float: left;
+    vertical-align: top;
+    cursor: pointer;
+    margin-top:24px;
+    margin-left:24px;
+}
+.siteLogo {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+}
+.siteLogo1 {
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 4;
+    background-image: -webkit-linear-gradient(top,#e69a9c,#fdd5c0);
+    background-image: -o-linear-gradient(top,#e69a9c 0,#fdd5c0 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#e69a9c),to(#fdd5c0));
+    background-image: linear-gradient(180deg,#e69a9c 0,#fdd5c0);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFE69A9C",endColorstr="#FFFDD5C0",GradientType=0);
+    opacity: .9;
+}
+.siteLogo2 {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+    background-image: -webkit-linear-gradient(top,#e69a9c,#fdd5c0);
+    background-image: -o-linear-gradient(top,#e69a9c 0,#fdd5c0 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#e69a9c),to(#fdd5c0));
+    background-image: linear-gradient(180deg,#e69a9c 0,#fdd5c0);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFE69A9C",endColorstr="#FFFDD5C0",GradientType=0);
+    opacity: .6;
+}
+.siteLogo3 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 2;
+    background-image: -webkit-linear-gradient(top,#e69a9c,#fdd5c0);
+    background-image: -o-linear-gradient(top,#e69a9c 0,#fdd5c0 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#e69a9c),to(#fdd5c0));
+    background-image: linear-gradient(180deg,#e69a9c 0,#fdd5c0);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFE69A9C",endColorstr="#FFFDD5C0",GradientType=0);
+    opacity: .3;
+}
+.siteLogo4 {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-image: -webkit-linear-gradient(top,#e69a9c,#fdd5c0);
+    background-image: -o-linear-gradient(top,#e69a9c 0,#fdd5c0 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#e69a9c),to(#fdd5c0));
+    background-image: linear-gradient(180deg,#e69a9c 0,#fdd5c0);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFE69A9C",endColorstr="#FFFDD5C0",GradientType=0);
+    opacity: .1;
+}
+.siteLogo5 {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: transparent;
+    opacity: 0;
+    border: 1px solid #c8c6c6;
+}
+.siteTitle {
+    top: auto;
+    width: auto;
+    left: auto;
+    display: inline-block;
+    vertical-align: top;
+    font-family: Overpass,sans-serif;
+    font-weight: 700;
+    padding: 10px 15px;
+    color: #353131;
+    line-height: 1.7em;
+    margin: 5px 10px;
+    text-shadow: 0 0 0 hsla(0,0%,100%,.6);
+    font-size: 18px;
+    letter-spacing: .6px;
+    position: relative;
+    z-index: 10;
+}
+/* .siteLogo1Hover, .siteLogo2Hover, .siteLogo3Hover, .siteLogo4Hover, .siteLogo5Hover { */
+.logoHover {
+    -webkit-animation: circle-outer-circle 500ms 1 ease-out;
+    animation: circle-outer-circle 500ms 1 ease-out;
+}
+@keyframes circle-inner-circle {
+  from {
+    transform: scale(1.1);
+  }
+
+  to {
+    transform: scale(1.05);
+  }
+}
+@keyframes circle-outer-circle {
+  from {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

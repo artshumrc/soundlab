@@ -5,12 +5,14 @@
     style="background-color: rgb(53, 49, 49); color: rgb(114, 114, 114);">
     <div class="grid grid-columns-3 py-8 px-4">
       <div class="footer-left">
-        <div>
-          <span class="font-overpass font-bold">The Sound Lab</span>
-        </div>
-        <div>
-          <span class="font-overpass font-bold">at Harvard University</span>
-        </div>
+        <a class="slab" href="https://soundlab.fas.harvard.edu/">
+          <div>
+            <span class="font-overpass font-bold">The Sound Lab</span>
+          </div>
+          <div>
+            <span class="font-overpass font-bold">at Harvard University</span>
+          </div>
+        </a>
         <div class="footer-nav-container pt-4">
           <a
             href="mailto:soundlab@g.harvard.edu"
