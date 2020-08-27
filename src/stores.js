@@ -9,6 +9,7 @@ export let chunks = writable([]);
 
 export let isRecording = writable(false);
 export let isPlaying = writable(false);
+export let isDownloading = writable(false)
 
 export let showHelp = writable(false)
 
@@ -17,3 +18,5 @@ export let playbackBuffer = writable(null);
 
 export let startedAt = writable(0);
 export let pausedAt = writable(0);
+
+export let mixURL = writable(null)
