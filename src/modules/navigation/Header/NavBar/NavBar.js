@@ -178,8 +178,8 @@ class NavBar extends React.Component {
 										className="mobileNavDropdownLink"
 										to={'/directory'}
 										onClick={this.closeMenu}
-								>
-									Directory
+							>
+								Directory
 									</Link>
 								</li>
 								<li>
@@ -216,7 +216,6 @@ class NavBar extends React.Component {
 								</Link>
 							</li>
 					}
-
 					</ul>
 
 				</Menu>

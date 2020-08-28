@@ -95,3 +95,14 @@ Priority of environment variables in `.env` files (client and server):
 	4.	`.env`
 
 **!IMPORTANT** do NOT commit `.env*.local` files to the repository. These should be used for __personal configuration__ and __secret values__.
+
+## Bugs
+See the issues. Major ones:
+- 401 Authentication error when admin users are logged in to both the clientside (SoundLab website) and the WP admin backend. Cookie issue.
+- No checking for filetypes when uploading sound files.
+
+
+## Additional Info
+- Requires GD be installed for image manipulation.
+- Currently a 32 MB upload max size.
+
