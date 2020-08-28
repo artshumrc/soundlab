@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
   import toWav from "audiobuffer-to-wav";
+  import sliceAudioBuffer from "audiobuffer-slice";
 
   import localforage from "localforage";
 
@@ -17,6 +18,7 @@
     mediaRecorder,
     recordingBuffer,
     playbackBuffer,
+    beforeScratchBuffer,
     isDownloading,
     isRecording,
     isPlaying,
@@ -48,6 +50,20 @@
     console.log("Recorder stopped");
   }
   async function onRecordClick(e) {
+    if ($playbackBuffer != null && $pausedAt < $playbackBuffer.duration) {
+      // Trim buffer for re-recording
+      try {
+        const beforeBuf = await new Promise((resolve, reject) =>
+          sliceAudioBuffer($playbackBuffer, 0, $pausedAt * 1000, (err, buf) => {
+            if (err) return reject(err);
+            resolve(buf);
+          })
+        );
+        beforeScratchBuffer.set(beforeBuf);
+      } catch (e) {
+        console.log("Error creating new recording startpoint", e);
+      }
+    }
     isRecording.set(true);
     $mediaRecorder.start();
     console.log("Recorder started");
@@ -82,10 +98,40 @@
 
   recordingBuffer.subscribe(rbuf => {
     if (rbuf == null) return;
-    audioCtx.decodeAudioData(rbuf, function(buf) {
+    audioCtx.decodeAudioData(rbuf, async function(buf) {
       if ($playbackBuffer == null) {
         playbackBuffer.set(buf);
         return;
+      }
+      if ($beforeScratchBuffer != null) {
+        try {
+          const remainingDuration = $playbackBuffer.duration - $pausedAt;
+          if (remainingDuration >= buf.duration) {
+            const recordingEndedAt = $pausedAt + buf.duration;
+            const afterBuf = await new Promise((resolve, reject) =>
+              sliceAudioBuffer(
+                $playbackBuffer,
+                recordingEndedAt * 1000,
+                $playbackBuffer.duration * 1000,
+                (err, buf) => {
+                  if (err) return reject(err);
+                  resolve(buf);
+                }
+              )
+            );
+            playbackBuffer.set(
+              concatBuffers(audioCtx, [$beforeScratchBuffer, buf, afterBuf])
+            );
+          } else {
+            playbackBuffer.set(
+              concatBuffers(audioCtx, [$beforeScratchBuffer, buf])
+            );
+          }
+          beforeScratchBuffer.set(null);
+          return;
+        } catch (e) {
+          console.log("Error creating new recording startpoint", e);
+        }
       }
       // Concatenate the two buffers into one.
       playbackBuffer.set(concatBuffers(audioCtx, [$playbackBuffer, buf]));
@@ -131,9 +177,9 @@
   }
 
   const downloadMix = async () => {
+    mixURL.set(null);
     isDownloading.set(true);
     console.log("Initializing Export Worker");
-    // adapted from https://github.com/zhuker/lamejs/issues/10
     const exportWorker = new Worker("export-worker.js");
 
     const payload = {
@@ -285,7 +331,9 @@
     <HelpHeader />
     <div class="pt-16">
       <h1 class="m-0 text-xl text-darkcream font-black uppercase leading-none">
-        <a class="slab" href="https://soundlab.fas.harvard.edu/">The Sound Lab at Harvard University</a>
+        <a class="slab" href="https://soundlab.fas.harvard.edu/">
+          The Sound Lab at Harvard University
+        </a>
       </h1>
       <h2 class="m-0 uppercase text-6xl font-black text-crimson leading-tight">
         Mixtape Creator
@@ -316,11 +364,12 @@
           </div>
           <div
             on:click={$mixURL ? () => {} : downloadMix}
-            class="absolute w-1/2 left-0 pr-24 font-bold text-4xl md:text-2xl
-            sm:text-xl text-right leading-none cursor-pointer"
+            class="absolute w-1/2 left-0 pr-12 xl:pr-24 font-bold text-4xl
+            md:text-2xl sm:text-xl text-right leading-none pointer-events-auto
+            cursor-pointer"
             style="color: #3d4e4c;">
-            <span class="block">OUTPUT</span>
-            <span class="block">MIX</span>
+            <span class="block" on:click={downloadMix}>OUTPUT</span>
+            <span class="block" on:click={downloadMix}>MIX</span>
             <div class="float-right pb-2 {$isDownloading ? '' : 'hidden'}">
               <svg
                 width="25"

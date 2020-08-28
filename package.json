@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "audio-recorder-polyfill": "^0.3.6",
+    "audiobuffer-slice": "^0.0.7",
     "audiobuffer-to-wav": "^1.0.0",
     "lamejs": "^1.2.0",
     "localforage": "^1.9.0",
