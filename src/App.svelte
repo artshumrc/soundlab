@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
   import toWav from "audiobuffer-to-wav";
+  import sliceAudioBuffer from "audiobuffer-slice";
 
   import localforage from "localforage";
 
@@ -17,10 +18,13 @@
     mediaRecorder,
     recordingBuffer,
     playbackBuffer,
+    beforeScratchBuffer,
+    isDownloading,
     isRecording,
     isPlaying,
     startedAt,
-    pausedAt
+    pausedAt,
+    mixURL
   } from "./stores";
   import { concatBuffers } from "./utils";
 
@@ -30,8 +34,6 @@
 
   let selectedDeviceId = undefined;
   let bufferSource = null;
-
-  let mixURL = null;
 
   let raf = null;
 
@@ -48,6 +50,20 @@
     console.log("Recorder stopped");
   }
   async function onRecordClick(e) {
+    if ($playbackBuffer != null && $pausedAt < $playbackBuffer.duration) {
+      // Trim buffer for re-recording
+      try {
+        const beforeBuf = await new Promise((resolve, reject) =>
+          sliceAudioBuffer($playbackBuffer, 0, $pausedAt * 1000, (err, buf) => {
+            if (err) return reject(err);
+            resolve(buf);
+          })
+        );
+        beforeScratchBuffer.set(beforeBuf);
+      } catch (e) {
+        console.log("Error creating new recording startpoint", e);
+      }
+    }
     isRecording.set(true);
     $mediaRecorder.start();
     console.log("Recorder started");
@@ -82,10 +98,40 @@
 
   recordingBuffer.subscribe(rbuf => {
     if (rbuf == null) return;
-    audioCtx.decodeAudioData(rbuf, function(buf) {
+    audioCtx.decodeAudioData(rbuf, async function(buf) {
       if ($playbackBuffer == null) {
         playbackBuffer.set(buf);
         return;
+      }
+      if ($beforeScratchBuffer != null) {
+        try {
+          const remainingDuration = $playbackBuffer.duration - $pausedAt;
+          if (remainingDuration >= buf.duration) {
+            const recordingEndedAt = $pausedAt + buf.duration;
+            const afterBuf = await new Promise((resolve, reject) =>
+              sliceAudioBuffer(
+                $playbackBuffer,
+                recordingEndedAt * 1000,
+                $playbackBuffer.duration * 1000,
+                (err, buf) => {
+                  if (err) return reject(err);
+                  resolve(buf);
+                }
+              )
+            );
+            playbackBuffer.set(
+              concatBuffers(audioCtx, [$beforeScratchBuffer, buf, afterBuf])
+            );
+          } else {
+            playbackBuffer.set(
+              concatBuffers(audioCtx, [$beforeScratchBuffer, buf])
+            );
+          }
+          beforeScratchBuffer.set(null);
+          return;
+        } catch (e) {
+          console.log("Error creating new recording startpoint", e);
+        }
       }
       // Concatenate the two buffers into one.
       playbackBuffer.set(concatBuffers(audioCtx, [$playbackBuffer, buf]));
@@ -130,10 +176,36 @@
     );
   }
 
-  const downloadMix = () => {
-    const wav = toWav($playbackBuffer);
-    const blob = new Blob([wav], { type: "audio/wav" });
-    open(URL.createObjectURL(blob));
+  const downloadMix = async () => {
+    mixURL.set(null);
+    isDownloading.set(true);
+    console.log("Initializing Export Worker");
+    const exportWorker = new Worker("export-worker.js");
+
+    const payload = {
+      sampleRate: $playbackBuffer.sampleRate,
+      numberOfChannels: 1,
+      channelData: $playbackBuffer.getChannelData(0)
+    };
+
+    exportWorker.postMessage(payload);
+
+    try {
+      mixURL.set(
+        await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            reject();
+          }, 60 * 1000);
+          exportWorker.onmessage = e => {
+            resolve(e.data);
+          };
+        })
+      );
+    } catch (e) {
+      alert("The export didn't complete within 60s. Please try again.");
+    }
+
+    isDownloading.set(false);
   };
 
   async function deviceChanged(e) {
@@ -259,7 +331,9 @@
     <HelpHeader />
     <div class="pt-16">
       <h1 class="m-0 text-xl text-darkcream font-black uppercase leading-none">
-        <a class="slab" href="https://soundlab.fas.harvard.edu/">The Sound Lab at Harvard University</a>
+        <a class="slab" href="https://soundlab.fas.harvard.edu/">
+          The Sound Lab at Harvard University
+        </a>
       </h1>
       <h2 class="m-0 uppercase text-6xl font-black text-crimson leading-tight">
         Mixtape Creator
@@ -279,20 +353,83 @@
             style="max-height: 330px; margin-left: -5px; margin-right: -5px;" />
         </div>
       </div>
-      <div class="flex items-center relative z-0 hover:opacity-50 ">
+      <div class="flex items-center relative z-0">
         <div
-          class="w-1/2 cursor-pointer"
-          style="margin-left: -10px"
-          on:click={downloadMix}>
-          <img src="ExportArrowFG.png" alt="" style="max-height: 350px" />
-        </div>
-        <div
-          on:click={downloadMix}
-          class="absolute w-1/2 left-0 pr-24 font-bold text-3xl md:text-2xl
-          sm:text-xl text-right leading-none cursor-pointer"
-          style="color: #3d4e4c;">
-          <span class="block">OUTPUT</span>
-          <span class="block">MIX</span>
+          class="flex items-center {$mixURL ? 'pointer-events-none' : 'hover:opacity-50'}">
+          <div
+            class="w-3/4 cursor-pointer"
+            style="margin-left: -10px"
+            on:click={$mixURL ? () => {} : downloadMix}>
+            <img src="ExportArrowFG.png" alt="" style="max-height: 350px" />
+          </div>
+          <div
+            on:click={$mixURL ? () => {} : downloadMix}
+            class="absolute w-1/2 left-0 pr-12 xl:pr-24 font-bold text-4xl
+            md:text-2xl sm:text-xl text-right leading-none pointer-events-auto
+            cursor-pointer"
+            style="color: #3d4e4c;">
+            <span class="block" on:click={downloadMix}>OUTPUT</span>
+            <span class="block" on:click={downloadMix}>MIX</span>
+            <div class="float-right pb-2 {$isDownloading ? '' : 'hidden'}">
+              <svg
+                width="25"
+                height="40"
+                viewBox="0 0 55 80"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="rgb(61, 78, 76)">
+                <g transform="matrix(1 0 0 -1 0 80)">
+                  <rect width="10" height="20" rx="3">
+                    <animate
+                      attributeName="height"
+                      begin="0s"
+                      dur="4.3s"
+                      values="20;45;57;80;64;32;66;45;64;23;66;13;64;56;34;34;2;23;76;79;20"
+                      calcMode="linear"
+                      repeatCount="indefinite" />
+                  </rect>
+                  <rect x="15" width="10" height="80" rx="3">
+                    <animate
+                      attributeName="height"
+                      begin="0s"
+                      dur="2s"
+                      values="80;55;33;5;75;23;73;33;12;14;60;80"
+                      calcMode="linear"
+                      repeatCount="indefinite" />
+                  </rect>
+                  <rect x="30" width="10" height="50" rx="3">
+                    <animate
+                      attributeName="height"
+                      begin="0s"
+                      dur="1.4s"
+                      values="50;34;78;23;56;23;34;76;80;54;21;50"
+                      calcMode="linear"
+                      repeatCount="indefinite" />
+                  </rect>
+                  <rect x="45" width="10" height="30" rx="3">
+                    <animate
+                      attributeName="height"
+                      begin="0s"
+                      dur="2s"
+                      values="30;45;13;80;56;72;45;76;34;23;67;30"
+                      calcMode="linear"
+                      repeatCount="indefinite" />
+                  </rect>
+                </g>
+              </svg>
+            </div>
+            <div
+              class={`flex justify-center items-center align-center px-4 pt-2 pb-1 mt-4 ml-4 rounded-none font-bold text-crimson
+          border-crimson border-2 hover:opacity-75 ${$mixURL ? 'pointer-events-auto' : 'hidden'}`}>
+              <a
+                href={$mixURL}
+                type="audio/mp3"
+                download="my-mix.mp3"
+                class="uppercase text-xs text-center"
+                style="text-decoration: none">
+                Download
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -303,7 +440,7 @@
           id="record"
           on:click={$isRecording ? onStopClick : onRecordClick}
           aria-label="Record"
-          class="border-none"
+          class="border-none rounded-none outline-none"
           style="background-image: url({$isRecording ? 'HSL-RecBTN-ON-animated.gif' : 'HSL-RecBTN-Active.gif'});
           background-size: contain; background-repeat: no-repeat; width: 200px;
           height: 162px;" />
@@ -313,7 +450,7 @@
           on:click={$isPlaying ? onPauseClick : onPlayClick}
           diabled={!$playbackBuffer}
           aria-label="Play"
-          class="border-none"
+          class="border-none rounded-none outline-none"
           style="background-image: url({$isPlaying ? 'HSL-PauseBtn-ON.gif' : 'HSL-PauseBtn-Active.gif'});
           background-size: contain; background-repeat: no-repeat; width: 200px;
           height: 162px;" />
