@@ -195,14 +195,14 @@
         await new Promise((resolve, reject) => {
           setTimeout(() => {
             reject();
-          }, 60 * 1000);
+          }, 180 * 1000);
           exportWorker.onmessage = e => {
             resolve(e.data);
           };
         })
       );
     } catch (e) {
-      alert("The export didn't complete within 60s. Please try again.");
+      alert("The export didn't complete successfully. Please reload the page and try again.");
     }
 
     isDownloading.set(false);
