@@ -1,6 +1,7 @@
 # Application
 web/app/plugins/*
 !web/app/plugins/soundlab
+!web/app/plugins/acf-repeater
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*/
 web/app/themes/twentytwentytwo/
