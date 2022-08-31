@@ -40,7 +40,12 @@
     "roots/wordpress": "6.0.2",
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.1.0",
-    "wpackagist-theme/twentytwentytwo": "^1.2"
+    "wpackagist-theme/twentytwentytwo": "^1.2",
+    "wpackagist-plugin/advanced-custom-fields": "4.4.12",
+    "wpackagist-plugin/acf-field-date-time-picker": "2.1.5",
+    "wpackagist-plugin/jwt-authentication-for-wp-rest-api": "1.2.5",
+    "wpackagist-plugin/user-role-editor": "4.36.1",
+    "wpackagist-plugin/wordpress-importer": "0.6.3"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.7.1",
