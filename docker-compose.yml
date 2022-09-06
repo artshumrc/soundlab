@@ -1,5 +1,6 @@
 services:
     static:
+        # Originally 9.6.1; 16 and 14 and 12 all threw node-gyp errors ...
         image: node:9.6.1
         volumes:
             - .:/app
