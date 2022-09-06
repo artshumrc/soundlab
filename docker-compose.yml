@@ -1,0 +1,70 @@
+services:
+  api:
+    # for debugging
+    # entrypoint: ["sh", "-c", "sleep infinity"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    build:
+      context: ./api
+      dockerfile: ./api/Dockerfile
+      # get rid of this and use node-16 directly from docker hub
+    image: soundlab-api
+    platform: linux/amd64
+    ports:
+        - 3001:3001
+    environment:
+      SESSION_SECRET: asdfgsfgdsadfgsdfgsadfsdfasdfsfdg
+      DB_NAME: slab
+      DB_HOST: host.docker.internal
+      DB_PORT: 3306
+      DB_USER: slab
+      DB_PASS: slab
+      CLIENT_SERVER: http://localhost:3000
+      JWT_SECRET: '-D!s=oukAx@n/AKrisldTuZY?@x!Ok&lQTflnHk?38k4-j9`RBywDYpU<f5?BHMS'
+      DEFAULT_LANGUAGE: en
+      ADMIN_URL: http://slab.loc/admin
+      PRERENDER_TOKEN:
+      REACT_APP_SERVER: http://slab.loc         
+      AWS_ACCESS_KEY_ID: AKIAFAKEKEY123456789
+      AWS_SECRET_ACCESS_KEY: fakesecretaccesskey/realkeygoes+here
+      AWS_REGION: us-east-1
+      AWS_BUCKET: soundlab-uploads
+      REACT_APP_BUCKET_URL: soundlab-uploads
+
+  frontend:
+    image: node:9.6.1
+    volumes:
+      - ./frontend:/frontend
+    working_dir: /frontend
+    command: /bin/sh -c 'yarn && yarn start'
+    ports:
+      - 3000:3000
+    environment:
+      REACT_APP_GRAPHQL_SERVER: http://localhost:3001
+      REACT_APP_GRAPHQL_URI: graphql
+      REACT_APP_SERVER: http://localhost:3001
+      REACT_APP_LOGIN_URI: auth/login
+      REACT_APP_LOGOUT_URI: auth/logout
+      REACT_APP_REGISTER_URI: auth/register
+      REACT_APP_VERIFY_TOKEN_URI: auth/verify-token
+      REACT_APP_WORDPRESS_UPLOADS_URL: http://slab.loc/app/uploads/
+  
+  mixtape:
+    image: node:16
+    ports:
+      - 3002:3002
+    volumes:
+      - ./mixtape-maker:/mixtape-maker
+    working_dir: /mixtape-maker
+    environment:
+      PORT: 3002 # overrides the default port for sirv cli: https://www.npmjs.com/package/sirv-cli
+      HOST: 0.0.0.0 # need to allow any network to connect to sirv
+    # command: /bin/sh -c 'yarn install && yarn dev && yarn start'
+    entrypoint: ["sh", "-c", "sleep infinity"]
+
+  # database:
+    
+  
+        
+
+        
