@@ -1,0 +1,39 @@
+# Application
+node_modules
+build
+dist
+coverage
+settings/local.json
+settings/prod.json
+*.log
+dump.rdb
+doc/
+.env*
+
+# Temp files
+tmp/
+
+# Editors
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+*.sw[po]
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.sh

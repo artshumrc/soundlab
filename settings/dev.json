@@ -1,0 +1,17 @@
+{
+  "public": {
+    "uploads": "http://admin.soundlab.local:8888/wp-content/uploads/",
+    "apiURI": "http://localhost:3000",
+    "amazonS3": false
+  },
+  "private": {
+    "wp_prefix": "wp_",
+    "database": {
+      "name": "soundlab",
+      "username": "root",
+      "password": "root",
+      "host": "localhost",
+      "port": "8889"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+services:
+  api:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: soundlab-api
+    platform: linux/amd64
+    ports:
+        - 3001:3001
+    environment:
+      SESSION_SECRET: asdfgsfgdsadfgsdfgsadfsdfasdfsfdg
+      DB_NAME: slab
+      DB_HOST: host.docker.internal
+      DB_PORT: 3306
+      DB_USER: slab
+      DB_PASS: slab
+      CLIENT_SERVER: http://localhost:3000
+      JWT_SECRET: '-D!s=oukAx@n/AKrisldTuZY?@x!Ok&lQTflnHk?38k4-j9`RBywDYpU<f5?BHMS'
+      DEFAULT_LANGUAGE: en
+
+      ADMIN_URL: http://slab.loc/admin
+      PRERENDER_TOKEN:
+      REACT_APP_SERVER: http://slab.loc
+                          
+      AWS_ACCESS_KEY_ID: AKIAFAKEKEY123456789
+      AWS_SECRET_ACCESS_KEY: fakesecretaccesskey/realkeygoes+here
+      AWS_REGION: us-east-1
+      AWS_BUCKET: soundlab-uploads
+      REACT_APP_BUCKET_URL: soundlab-uploads
+
+    # for debugging
+    # entrypoint: ["sh", "-c", "sleep infinity"]
+    
+  
+        
+
+        

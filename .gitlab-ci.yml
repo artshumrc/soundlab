@@ -1,0 +1,50 @@
+image: docker:latest
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+
+stages:
+  # - test
+  # - package
+  - deploy
+
+# test:
+  # stage: test
+  # image: node:8-wheezy
+  # before_script:
+  # - npm i -g yarn
+  #  - yarn install
+  # script:
+  #  - npm run test-client-ci
+
+# docker-build:
+  # only:
+  # - master
+  # - develop
+  # stage: package
+  # script:
+  #   - docker build -t soundlab-app .
+
+deploy:
+  only:
+    - master
+    - develop
+  image: geertjohan/google-cloud-sdk-with-docker
+  stage: deploy
+  before_script:
+    - export CLOUDSDK_CONTAINER_USE_CLIENT_CERTIFICATE=True
+  script:
+    - docker build -t soundlab-app . # Build docker image
+    - docker tag soundlab-app us.gcr.io/archimedes-01201/soundlab-app # Tag docker image for Google Cloud
+    - echo "$GOOGLE_KEY" > key.json # Google Cloud service account key
+    - gcloud auth activate-service-account --key-file key.json
+    - gcloud config set compute/zone us-central1-a
+    - gcloud config set project archimedes-01201
+    # - gcloud container clusters get-credentials soundlab-cluster
+    - gcloud docker -- push us.gcr.io/archimedes-01201/soundlab-app
+    # - kubectl delete service soundlab-app
+    # - kubectl delete deployment soundlab-app
+    # - kubectl run soundlab-app --image=us.gcr.io/archimedes-01201/soundlab-app --port=3000
+    # - kubectl expose deployment soundlab-app --port=80 --target-port=3000 --external-ip="10.3.250.157"
