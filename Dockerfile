@@ -1,4 +1,9 @@
-FROM node:8-wheezy
+# FROM node:8-wheezy # Can't get updates to install mysql
+# FROM node:8-jessie, stretch
+# ^ Fails: EEXIST: file already exists, symlink '../lib/node_modules/yarn/bin/yarn.js' -> '/usr/local/bin/yarn'
+# FROM node:12 # this seems to work?
+FROM node:16
+
 
 ENV NODE_ENV = development
 
@@ -11,6 +16,10 @@ EXPOSE 3001
 
 RUN rm -rf node_modules
 RUN rm -rf client/node_modules
-RUN npm i -g yarn && yarn install
+# RUN npm i -g yarn && yarn install
+RUN yarn install
 
-CMD ["yarn", "start-prod"]
+# RUN babel -d ./build ./src
+# RUN yarn run build
+
+CMD ["yarn", "start-dev"]

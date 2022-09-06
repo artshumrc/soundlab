@@ -1,9 +1,5 @@
 # Sound Lab Website
 
-[![pipeline status](http://gitlab.archimedes.digital/archimedes/soundlab-api/badges/develop/pipeline.svg)](http://gitlab.archimedes.digital/archimedes/soundlab-api/commits/develop)
-[![coverage report](http://gitlab.archimedes.digital/archimedes/soundlab-api/badges/develop/coverage.svg)](http://gitlab.archimedes.digital/archimedes/soundlab-api/commits/develop)
-
-
 Soundlab-API
 
 The API for the soundlab application.

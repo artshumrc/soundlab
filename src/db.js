@@ -28,7 +28,8 @@ const db = new Sequelize(
     define: {
       timestamps: false,
       freezeTableName: true,
-    }
+    },
+    // operatorsAliases: false
   }
 );
 

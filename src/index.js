@@ -99,6 +99,11 @@ db.authenticate()
 
 		listen();
 	})
-	.catch(() => {
+	.catch((e) => {
 		console.error(`Could not authenticate to database ${process.env.DB_NAME}`);
+		console.error(`${process.env.DB_HOST} ${process.env.DB_USER} ${process.env.DB_PASS}`);
+		console.error(e);
+		// Error: Client does not support authentication protocol requested by server; consider upgrading MySQL client
+		// See: https://github.com/sequelize/cli/issues/751
+		// Either upgrade Sequelize or downgrade MySQL or change the authentication method
 	});
