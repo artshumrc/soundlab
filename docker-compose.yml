@@ -1,5 +1,5 @@
 services:
-  api:
+  soundlab-api:
     # for debugging
     # entrypoint: ["sh", "-c", "sleep infinity"]
     extra_hosts:
@@ -31,7 +31,7 @@ services:
       AWS_BUCKET: soundlab-uploads
       REACT_APP_BUCKET_URL: soundlab-uploads
 
-  frontend:
+  soundlab-frontend:
     image: node:9.6.1
     volumes:
       - ./frontend:/frontend
@@ -49,7 +49,7 @@ services:
       REACT_APP_VERIFY_TOKEN_URI: auth/verify-token
       REACT_APP_WORDPRESS_UPLOADS_URL: http://slab.loc/app/uploads/
   
-  mixtape:
+  soundlab-mixtape:
     image: node:16
     ports:
       - 3002:3002
@@ -62,7 +62,7 @@ services:
     # command: /bin/sh -c 'yarn install && yarn dev && yarn start'
     entrypoint: ["sh", "-c", "sleep infinity"]
 
-  # database:
+  # soundlab-database:
     
   
         
