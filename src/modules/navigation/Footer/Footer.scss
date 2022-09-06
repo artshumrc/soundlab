@@ -1,0 +1,62 @@
+@import "../../../styles.scss";
+
+footer {
+  background: $dark;
+  height: 220px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-left {
+  width: 40%;
+  padding: 5% 0 0 5%;
+}
+
+.footer-site-title {
+  font-size: 16px;
+  color: $text-secondary;
+  font-weight: bold;
+  font-family: $font-title, sans-serif;
+}
+
+.footer-nav-container {
+  padding-top: 30px;
+}
+
+.footer-site-nav {
+  color: #e7e6e6;
+  font-size: 16px;
+  font-family: sans-serif;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+
+  &:hover {
+    text-decoration: none;
+    color: $primary-500;
+  }
+}
+
+.contact-nav {
+  padding-right: 20px;
+}
+
+.footer-social-links {
+  text-align: right;
+  padding-top: 50px;
+  padding-right: 60px;
+}
+
+.footer-social-link {
+  color: #e7e6e6;
+  font-size: 16px;
+  font-family: $font-title, sans-serif;
+  display: inline-block;
+  vertical-align: top;
+  padding: 2px 5px;
+
+  &:hover {
+    text-decoration: none;
+    color: $primary-500;
+  }
+}

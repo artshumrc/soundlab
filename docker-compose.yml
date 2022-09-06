@@ -1,0 +1,25 @@
+services:
+    static:
+        # Originally 9.6.1; 16 and 14 and 12 all threw node-gyp errors ...
+        image: node:9.6.1
+        volumes:
+            - .:/app
+        working_dir: /app
+        command: /bin/sh -c 'yarn && yarn start'
+        ports:
+            - 3000:3000
+        environment:
+            REACT_APP_GRAPHQL_SERVER: http://localhost:3001 # http://api.orpheus.local:3001
+            REACT_APP_GRAPHQL_URI: graphql
+            REACT_APP_SERVER: http://localhost:3001 # http://api.orpheus.local:3001
+            REACT_APP_LOGIN_URI: auth/login
+            REACT_APP_LOGOUT_URI: auth/logout
+            REACT_APP_REGISTER_URI: auth/register
+            REACT_APP_VERIFY_TOKEN_URI: auth/verify-token
+            REACT_APP_WORDPRESS_UPLOADS_URL: http://slab.loc/app/uploads/
+            # REACT_APP_COOKIE_DOMAIN: mindthegap.orpheus.local
+            # REACT_APP_BUCKET_URL: https://s3.amazonaws.com/iiif-orpheus
+            # REACT_APP_FACEBOOK_CLIENT_ID: client_id
+            # REACT_APP_GOOGLE_CLIENT_ID: client_id
+            # REACT_APP_TWITTER_CLIENT_ID: client_id
+            # REACT_APP_GOOGLE_MAPS_API_KEY: mapkey

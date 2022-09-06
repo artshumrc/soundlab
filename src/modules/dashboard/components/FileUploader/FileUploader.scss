@@ -1,0 +1,21 @@
+@import "../../../../styles.scss";
+
+.dropzone {
+  background-color: $light;
+  border: 2px solid #222;
+  border-radius: 2px;
+  position: relative;
+	color: #222;
+	padding: 15px;
+	font-size: 18px;
+	font-family: $font-label;
+	text-align: center;
+	cursor: pointer;
+	@include transition(all 100ms ease-in-out);
+
+	&:hover {
+		background: $primary;
+	  color: $light;
+	  border: 2px solid $primary;
+	}
+}

@@ -1,0 +1,6 @@
+{
+  "name": "FeaturedTrackContainer",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./FeaturedTrackContainer.js"
+}

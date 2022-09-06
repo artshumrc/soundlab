@@ -1,0 +1,6 @@
+{
+  "name": "CalendarContainer",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./CalendarContainer.js"
+}

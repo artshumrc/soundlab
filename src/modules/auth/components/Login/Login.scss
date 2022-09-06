@@ -1,0 +1,46 @@
+@import "../../../../styles.scss";
+
+.loginForm {
+	margin: 0 auto;
+	text-align: left;
+
+	h3 {
+		padding: 10px 0 20px;
+		font-family: $font-reading;
+		font-size: 24px;
+		font-weight: 100;
+	}
+}
+
+.loginSeparator {
+	font-size: 14px;
+	margin: 15px auto;
+	font-weight: 100;
+}
+
+.signupLink {
+	padding: 25px 0;
+	a, span {
+		font-size: 18px;
+		padding: 0 5px;
+		font-family: $font-body;
+
+	}
+	a {
+		color: $primary;
+		font-weight: bold;
+		cursor: pointer;
+
+		&:hover {
+			color: $primary-800;
+
+		}
+	}
+	span {
+		color: $dark;
+	}
+}
+
+.verificationEmailLink {
+	font-size: 16px;
+}

@@ -1,0 +1,11 @@
+@import "../../../../styles.scss";
+
+
+.playTimeWrapper {
+  display: flex;
+}
+
+.playTime {
+  color: $dark;
+  font-size: 14px;
+}

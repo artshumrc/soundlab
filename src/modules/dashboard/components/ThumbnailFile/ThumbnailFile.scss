@@ -1,0 +1,77 @@
+@import '../../../../styles.scss';
+
+.singleImage {
+  display: inline-block;
+  text-align: center;
+  .fileThumbnail {
+    line-height: 90px;
+    margin: 0px 4px;
+    border: 8px solid transparent;
+    outline: 2px solid transparent;
+    cursor: pointer;
+    -o-transition: all 100ms ease-in-out;
+    -webkit-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out;
+    .fileIcon {
+      border: 1px solid #999;
+      width: 88px;
+      height: 88px;
+      margin: 8px 12px;
+    }
+  }
+  .fileThumbnail:hover {
+    outline: 2px solid #222;
+  }
+  .thumbnailImage {
+    margin: 0px 4px;
+    border: 8px solid transparent;
+    outline: 2px solid transparent;
+    cursor: pointer;
+    -moz-transition: all 100ms ease-in-out;
+    -o-transition: all 100ms ease-in-out;
+    -webkit-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out;
+  }
+}
+
+.imageTitle {
+  display: inline-block;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #7f8fa4;
+  border-radius: 10px;
+  padding: 10px 40px;
+  z-index: 1000;
+}
+
+.fileDetails {
+  margin-top: -20px;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #dfe3e9;
+  z-index: 1000;
+  width: 250px;
+  -webkit-box-shadow: 3px 3px 20px 0px rgba(163,163,163,1);
+  -moz-box-shadow: 3px 3px 20px 0px rgba(163,163,163,1);
+  box-shadow: 3px 3px 20px 0px rgba(163,163,163,1);
+  .textInput {
+    margin: 10px 7px;
+  }
+  .deleteFile {
+    background-color: #a4142a;
+    border-color: #a4142a;
+    span {
+      color: #fff;
+    }
+  }
+}
+.fileDetailsHide {
+  visibility: hidden;
+}
+.fileDetailsButtons {
+  padding: 0 10px;
+  border-top: solid 1px #B2B6BC;
+  background-color: #f8f9fa;
+  text-align: right;
+}
