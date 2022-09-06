@@ -114,6 +114,11 @@ Config::define('SCRIPT_DEBUG', false);
 ini_set('display_errors', '0');
 
 /**
+ * JWT Authentication
+ */
+Config::define('JWT_AUTH_SECRET_KEY', env('JWT_AUTH_SECRET_KEY'));
+
+/**
  * Allow WordPress to detect HTTPS when used behind a reverse proxy or a load balancer
  * See https://codex.wordpress.org/Function_Reference/is_ssl#Notes
  */

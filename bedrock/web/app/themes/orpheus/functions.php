@@ -570,5 +570,5 @@ require get_parent_theme_file_path( '/inc/icon-functions.php' );
 
 add_filter( 'allowed_http_origin', '__return_true' );
 
-define('JWT_AUTH_SECRET_KEY', 'quidfaciatlaetassegetes');
+// define('JWT_AUTH_SECRET_KEY', 'quidfaciatlaetassegetes'); // Moved to Bedrock config, should not be set in a visible way
 define('JWT_AUTH_CORS_ENABLE', false);
